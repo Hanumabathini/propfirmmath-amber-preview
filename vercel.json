@@ -1,8 +1,5 @@
 {
-  "rewrites": [
-    {
-      "source": "/((?!api/|sitemap\\.xml$|robots\\.txt$|favicon\\.ico$).*)",
-      "destination": "/index.html"
-    }
-  ]
+  "buildCommand": "node scripts/build.js",
+  "outputDirectory": "dist",
+  "cleanUrls": true
 }
