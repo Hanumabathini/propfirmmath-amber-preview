@@ -2,7 +2,127 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!api/|sitemap\\.xml|robots\\.txt|favicon\\.ico).*)",
+      "source": "/firm/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/best-for/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/vs/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/guide/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/compare",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/firms",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/best-for",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/futures",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forex",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/crypto",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/perps",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/deals",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/tracker",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/tools",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/quiz",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/calendar",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/guides",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/rules",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/statistics",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/methodology",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/glossary",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/account",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/disclosure",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/cookies",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/delisted",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/list-your-firm",
       "destination": "/index.html"
     }
   ]
