@@ -43,6 +43,16 @@ nav.main a{color:var(--ink);font-weight:700;font-size:14.5px;padding:10px 14px;b
 nav.main a:hover{text-decoration:none;background:#1a1208}
 nav.main a.on{background:linear-gradient(160deg,#3a2708,#241806);box-shadow:var(--neu-in);color:var(--gold)}
 .signin{border:1px solid var(--line);border-radius:999px;padding:9px 18px !important;box-shadow:var(--neu-btn)}
+
+/* Compact, keyboard-accessible Resources navigation */
+nav.main .nav-resources{position:relative;min-width:0}
+nav.main .nav-resources summary{list-style:none;cursor:pointer;color:var(--ink);font-weight:700;font-size:14.5px;padding:10px 14px;border-radius:12px;min-height:44px;display:inline-flex;align-items:center;gap:7px}
+nav.main .nav-resources summary::-webkit-details-marker{display:none}
+nav.main .nav-resources summary:hover,nav.main .nav-resources summary.on{background:#241806;color:var(--gold)}
+nav.main .nav-resources-menu{position:absolute;right:0;top:100%;min-width:230px;z-index:100;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:var(--neu-out)}
+nav.main .nav-resources-menu a{display:flex;min-height:40px;padding:8px 12px;border-radius:8px}
+nav.main .nav-resources-heading{padding:8px 12px 3px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
+@media(max-width:850px){nav.main .nav-resources-menu{position:static;min-width:0;width:100%;box-shadow:none}nav.main .nav-resources{width:100%}nav.main .nav-resources summary{width:100%}}
 /* ---------- generic ---------- */
 .card{background:linear-gradient(155deg,var(--panel2),var(--panel));border:1px solid rgba(255,176,32,.10);border-radius:var(--r);box-shadow:var(--neu-out);padding:22px}
 .card h3{font-size:19px}
@@ -473,17 +483,28 @@ function faqHTML(list,start){
 }
 /* ================= nav ================= */
 var NAV = [
-  ["/","Home"],["/firms","Prop Firms"],["/compare","Compare"],["/tools","Calculators"],
-  ["/calendar","Economic Calendar"],["/tracker","Payout Research"],["/deals","Deals"],["/guides","Guides"],
-  ["/quiz","Find Your Firm"],["/rules","Rules"],["/statistics","Statistics"],["/methodology","Methodology"],
-  ["/faq","FAQ"],["/glossary","Glossary"],["/journal","Journal"],["/account","Sign In"]
+  ["/firms","Prop Firms"],["/compare","Compare"],["/deals","Deals"],
+  ["/tools","Calculators"],["/tracker","Payout Tracker"]
+];
+var RESOURCE_NAV = [
+  ["/guides","Guides"],["/rules","Prop Firm Rules"],["/statistics","Statistics"],
+  ["/calendar","Economic Calendar"],["/quiz","Find Your Firm"],
+  ["/glossary","Trading Glossary"]
 ];
 function renderNav(route){
-  $("#mainnav").innerHTML = NAV.map(function(n){
-    var on = (n[0]==="/" && (route===""||route==="/")) || (n[0]!=="/" && route.indexOf(n[0])===0);
-    if (n[0]==="/guide") on=false;
-    return '<a href="'+n[0]+'" class="'+(on?"on":"")+(n[0]==="/account"?" signin":"")+'">'+esc(n[1])+'</a>';
+  var html = NAV.map(function(n){
+    var on = route===n[0] || route.indexOf(n[0]+"/")===0;
+    return '<a href="'+n[0]+'" class="'+(on?"on":"")+'">'+esc(n[1])+'</a>';
   }).join("");
+  var resourceOn = RESOURCE_NAV.some(function(n){return route===n[0] || route.indexOf(n[0]+"/")===0;});
+  html += '<details class="nav-resources"><summary class="'+(resourceOn?"on":"")+'">Resources <span aria-hidden="true">▾</span></summary><div class="nav-resources-menu" role="group" aria-label="Resources">';
+  html += '<div class="nav-resources-heading">Research</div>';
+  RESOURCE_NAV.slice(0,3).forEach(function(n){html+='<a href="'+n[0]+'">'+esc(n[1])+'</a>';});
+  html += '<div class="nav-resources-heading">Trader Utilities</div>';
+  RESOURCE_NAV.slice(3).forEach(function(n){html+='<a href="'+n[0]+'">'+esc(n[1])+'</a>';});
+  html += '</div></details>';
+  html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
+  $("#mainnav").innerHTML = html;
 }
 /* ================= router ================= */
 var app = $("#app");
