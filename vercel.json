@@ -3,127 +3,127 @@
   "rewrites": [
     {
       "source": "/firm/:slug",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/best-for/:slug",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/vs/:slug",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/guide/:slug",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/compare",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/firms",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/best-for",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/futures",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/forex",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/crypto",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/perps",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/deals",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/tracker",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/tools",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/quiz",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/calendar",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/guides",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/rules",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/statistics",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/methodology",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/faq",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/glossary",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/journal",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/account",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/login",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/privacy",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/terms",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/disclosure",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/cookies",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/delisted",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/list-your-firm",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
