@@ -981,6 +981,91 @@ function pageCalendar(){
   sc.text=JSON.stringify({colorTheme:"dark",isTransparent:true,width:"100%",height:"560",locale:"en",importanceFilter:"-1,0,1",currencyFilter:"USD,EUR,GBP,JPY,AUD,CAD,CHF,NZD"});
   host.appendChild(sc);
 }
+/* ================= BEST-FOR ================= */
+function pageBestForHub(){
+  var keys = Object.keys(BESTFOR);
+  go(pageHead('<a href="/">Home</a> · Best Prop Firms', "Best prop firms — "+keys.length+" guides",
+    "Each guide picks firms from the reviewed set for one need, with the selection note written down. The method matters more than the count, and it is published on the <a href='/methodology'>Methodology</a> page.")+
+  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
+  keys.map(function(k){ var b=BESTFOR[k]; return '<article class="card"><h3>'+esc(b.title)+'</h3><p class="mut small">'+esc(b.note)+'</p><a href="/best-for/'+k+'" style="font-weight:800">See the picks →</a></article>'; }).join("")+
+  "</div>");
+}
+function pageBestFor(key){
+  var b = BESTFOR[key]; if (!b) return pageBestForHub();
+  var picks = b.pick.map(firm).filter(Boolean);
+  go(pageHead('<a href="/">Home</a> · <a href="/best-for">Best Prop Firms</a>', esc(b.title), esc(b.note)+" Snapshot: "+SNAPSHOT+".")+
+  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
+  picks.map(function(f,i){ return '<article class="card"><div style="display:flex;gap:10px;align-items:center"><span class="rank">'+(i+1)+'</span><a href="/firm/'+f.slug+'" style="display:flex;gap:10px;align-items:center;color:var(--ink)">'+avatar(f,34)+"<strong>"+esc(f.name)+'</strong></a></div><p class="snap-note" style="margin-top:10px">FROM '+priceHTML(f)+' · SPLIT '+esc(f.split)+' · PAYOUT '+esc(payoutShort(f))+' · DRAWDOWN '+esc(f.dd)+"</p>"+(f.off?'<p><span class="chip">🏷 Up to '+f.off+'% off in snapshot</span></p>':"")+'<a href="/firm/'+f.slug+'" style="font-weight:800">Full review →</a></article>'; }).join("")+
+  '</div><div class="secttl"><span class="bar"></span><h2>Side by side</h2></div>'+firmTableHTML(picks)+
+  '<div class="secttl"><span class="bar"></span><h2>How to choose</h2></div><div class="card"><p class="mut">Ask five things: (1) Does the drawdown type fit how you trade? (2) Is there a consistency rule, and can your best day stay under it? (3) What is the all-in price including activation? (4) How fast — and by what rail — does the firm pay? (5) What does the payout evidence show? The <a href="/quiz">quiz</a> scores exactly these from your answers.</p></div>');
+  bindCopy();
+}
+/* ================= GUIDES ================= */
+function pageGuides(){
+  go(pageHead('<a href="/">Home</a> · Guides', "Prop trading guides",
+    "Deep dives, comparisons and strategy — written for PropFirmMath from our firm data. Snapshot figures inside articles are dated where they appear.")+
+  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));margin-top:20px">'+
+  GUIDES.map(function(g){ return '<article class="card"><span class="chip">'+esc(g.tag)+'</span><h3 style="margin-top:10px">'+esc(g.title)+'</h3><p class="mut small">'+esc(g.excerpt)+'</p><a href="/guide/'+g.slug+'" style="font-weight:800">Read article →</a></article>'; }).join("")+
+  "</div>");
+}
+function pageGuide(slug){
+  var g=null; GUIDES.forEach(function(x){ if (x.slug===slug) g=x; });
+  if (!g) return pageGuides();
+  go(pageHead('<a href="/">Home</a> · <a href="/guides">Guides</a>', esc(g.title), esc(g.excerpt))+
+  '<article class="card prose" style="max-width:860px;margin-top:20px">'+
+  g.body.map(function(p){ return p.charAt(0)==="<" ? p : "<p>"+p+"</p>"; }).join("")+
+  '<p class="snap-note">Researched data snapshot: '+SNAPSHOT+'. Prices and rules change — confirm on the firm\'s own site.</p>'+
+  '<p style="margin-top:18px"><a class="btn small" href="/compare">Compare firms</a> <a class="btn small ghost" href="/guides">All guides</a></p></article>');
+}
+/* ================= FAQ ================= */
+function pageFaq(){
+  var cats = [["Prop Firm Basics",7],["Rules & Drawdown",7],["Choosing a Prop Firm",7],["Payouts, Fees & Discounts",7],["Platforms & Eligibility",5],["Managing Your Accounts",4],["About PropFirmMath",3]];
+  go(pageHead('<a href="/">Home</a> · FAQ', "Frequently asked questions",
+    "Answers to the 14 questions traders ask most. Figures quoted in answers are dated where they appear.")+
+  '<div style="margin:20px 0"></div>'+
+  '<div style="max-width:860px">'+faqHTML(FAQS,0)+"</div>"+
+  '<div class="card" style="margin-top:22px;max-width:860px"><h3>Figures behind these answers</h3><p class="mut" style="margin-top:8px">'+FIRMS.filter(function(f){ return f.instant; }).length+' of the '+COUNTS.total+' firms sell at least one instant account · '+codesCount()+' discount codes verified on official sites across '+firmsWithCodes().length+' firms · 4 firms price in euros (FTMO global, Core Funded, PineX, BrightFunded) · 4 charge monthly subscriptions (Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero) · payout cycles run from daily/on-demand to quarterly. Source: the '+SNAPSHOT+' official-site research behind every firm page here.</p></div>');
+}
+/* ================= GLOSSARY ================= */
+function pageGlossary(){
+  go(pageHead('<a href="/">Home</a> · Glossary', "Prop firm glossary", "The terms that decide whether an account survives — defined the way the rules pages use them.")+
+  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(330px,1fr));margin-top:20px">'+
+  GLOSSARY.map(function(g){ return '<article class="card"><h3 style="font-size:17px">'+esc(g[0])+'</h3><p class="mut small" style="margin:6px 0 0">'+esc(g[1])+"</p></article>"; }).join("")+
+  "</div>");
+}
+/* ================= RULES ================= */
+function pageRules(){
+  var list = FIRMS.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
+  go(pageHead('<a href="/">Home</a> · Rules Comparison', "Trading rules, compared",
+    "Drawdown, consistency, split, target and payout cycle for all "+COUNTS.total+" firms — researched on official firm sites, "+SNAPSHOT+". Where a firm has no consistency rule, the table says None; where a figure could not be verified, it says so. The same database the quiz scores from.")+
+  '<div class="tblwrap" style="margin-top:20px"><table class="dt"><thead><tr><th>Firm</th><th>Max drawdown</th><th>Consistency</th><th>Split</th><th>Target</th><th>Payout cycle</th><th>Platforms</th></tr></thead><tbody>'+
+  list.map(function(f){ return '<tr><td><a href="/firm/'+f.slug+'" style="display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-weight:700">'+avatar(f,30)+' '+esc(f.name)+'</a></td><td>'+esc(f.dd)+'</td><td>'+esc(f.consistencyText)+'</td><td>'+esc(f.split)+'</td><td>'+esc(f.target)+'</td><td>'+esc(f.payoutText)+'</td><td>'+esc(f.platforms.join(", "))+"</td></tr>"; }).join("")+
+  '</tbody></table></div>'+
+  '<div class="card" style="margin-top:22px"><h3>The three drawdown types</h3><p class="mut" style="margin-top:8px"><strong style="color:var(--ink)">Static</strong> — the floor never moves. <strong style="color:var(--ink)">EOD trailing</strong> — the floor follows your end-of-day balance up. <strong style="color:var(--ink)">Intraday trailing</strong> — the floor follows your highest open profit, and is the easiest to breach. Consistency figures name the program they belong to — many firms run several programs with different rules, and the firm page carries the full breakdown.</p></div>');
+  bindCopy();
+}
+/* ================= STATISTICS ================= */
+function pageStats(){
+  var cards = [[COUNTS.total,"Firms in this directory","Every one with a full research record — no named-only firms remain"],[VERIF_SPLIT,"Verification split, "+SNAPSHOT,"Official firm websites only; the 2 not verifiable are E8 Perpetuals and Funded Trading Plus"],[FIRMS.filter(function(f){ return f.instant; }).length,"Firms selling an instant account","Counted from the "+SNAPSHOT+" firm records"],[codesCount(),"Discount codes verified on official sites","Across "+firmsWithCodes().length+" firms — the only deal count this site quotes, and it reconciles with the Deals page"],["4","Firms pricing in euros, not dollars","FTMO (global), Core Funded, PineX Capital, BrightFunded"],["4","Firms charging monthly subscriptions","Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero"],["Daily → quarterly","Payout cycle range","Daily/on-demand at the fast end; Darwinex Zero pays performance fees quarterly"],[COUNTS.tracked+" of "+COUNTS.total,"Tracker coverage","Rise rail only — paid totals captured in the Nov 25, 2026 tracker snapshot"]];
+  go(pageHead('<a href="/">Home</a> · Statistics', "Prop firm statistics",
+    "Every figure below is computed from the "+SNAPSHOT+" firm research (official sites only) or labelled with its own snapshot date. Nothing here is a live number.")+
+  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
+  cards.map(function(s){ return '<article class="card"><div style="font-family:Sora;font-size:30px;font-weight:800" class="gold">'+s[0]+'</div><h3 style="margin-top:6px">'+s[1]+'</h3><p class="mut small">'+s[2]+"</p></article>"; }).join("")+
+  "</div>");
+}
+/* ================= METHODOLOGY ================= */
+function pageMethodology(){
+  go(pageHead('<a href="/">Home</a> · Methodology', "How PropFirmMath ranks firms",
+    "Exactly how a firm earns its place, in a form you can reproduce.")+
+  '<div class="card prose" style="max-width:860px;margin-top:20px">'+
+  "<h3>The formula</h3><p>The Top Rated table orders firms by their public trader rating where a numeric score was verified in the research (Trustpilot, read directly or shown on the firm's own site — always labelled with its source). Firms whose Trustpilot rating has been withheld, or whose score could not be verified, are never given an estimated score: they appear in the directory with that status labelled. The Nov 26, 2026 research verified every firm's core figures on its own official website — 28 firms fully, 17 partially, and 2 (E8 Perpetuals, Funded Trading Plus) not at all, which their pages state plainly. Best-for shortlists are editorial but constrained: a firm is only eligible if (1) traders in our firm data report getting paid, (2) where a rating was verified, its rating and review volume hold up (firms with no verified rating are labelled Not verified), and (3) its payout record cross-checks against on-chain evidence where a rail exists. Quiz matches ignore ratings almost entirely and score published rules against your answers — the scoring runs in your browser on the quiz page, so you can test it.</p>"+
+  "<h3>One database</h3><p>Reviews, compare, deals, the savings calculator and the quiz all read the same firm records. A price or rule change is made once and appears everywhere — deal pages cannot drift from reviews.</p>"+
+  "<h3>Dates, always</h3><p>Every price, code and payout figure carries its snapshot date ("+SNAPSHOT+" for the firm research; the payout-tracker figures carry their own Nov 25, 2026 snapshot date and say so). A figure without a date is a figure you cannot judge, so we don't publish any.</p>"+
+  "<h3>Money</h3><p>PropFirmMath earns affiliate commissions (see the <a href='/disclosure'>Affiliate Disclosure</a>). Commissions never change a position, a score or a quiz result. Firms that stop treating traders fairly come off the lists even if they pay commission — see <a href='/delisted'>Delisted Firms</a>.</p>"+
+  "<h3>Who runs PropFirmMath</h3><p>PropFirmMath is operated by Hanumantha Rao Bathini, Memphis, TN, USA. Contact: <a href='mailto:hanumabathini9@gmail.com'>hanumabathini9@gmail.com</a>.</p>"+
+  "</div>");
+}
+/* ================= ACCOUNT / LOGIN / JOURNAL ================= */
 function authUnavailable(){
   return '<div class="notice" style="margin-bottom:18px"><b>Accounts are temporarily unavailable.</b> The sign-in service could not be reached. Please reload the page or try again shortly.</div>';
 }
