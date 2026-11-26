@@ -31,14 +31,22 @@ function page(route, r, extraHead) {
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
   return h;
 }
-let n = 0, bad = [];
-for (const route of routes) {
+let n = 0, bad = [], warn = [];
+const done = new Set(), queue = [...routes], listed = new Set(routes);
+const hrefs = h => [...h.matchAll(/href="(\/[a-z0-9\-\/]*)"/g)].map(m => m[1].replace(/\/$/, '') || '/').filter(x => !x.startsWith('/vendor'));
+hrefs(src).forEach(h => queue.push(h));
+while (queue.length) {
+  const route = queue.shift(); if (done.has(route)) continue; done.add(route);
   let r; try { r = render(route); } catch (e) { bad.push(route + ' ' + e.message); continue; }
-  if (r.h1 < 1 || r.app.length < 300) { bad.push(route + ' (empty render)'); continue; }
+  const missing = /page not found|something went wrong/i.test(r.app.slice(0, 600));
+  if (r.h1 < 1 || r.app.length < 300 || missing) { (listed.has(route) ? bad : warn).push(route + (missing ? ' (not found / error)' : ' (empty render)')); continue; }
+  routes.add(route);
+  hrefs(r.app).forEach(h => { if (!done.has(h)) queue.push(h); });
   const file = route === '/' ? 'index.html' : route.replace(/^\//, '') + '.html';
   fs.mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
   fs.writeFileSync(path.join(out, file), page(route, r)); n++;
 }
+if (warn.length) console.warn('Linked but not renderable (check these links):\n' + warn.join('\n'));
 // Real 404: unknown paths get status 404 from the host; the app shows its not-found page.
 fs.writeFileSync(path.join(out, '404.html'), src.replace('</head>', '<meta name="robots" content="noindex"></head>'));
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });

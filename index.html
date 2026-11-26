@@ -562,6 +562,7 @@ function updateSeo(path){
   var label = path.split("/").filter(Boolean).map(function(x){return x.replace(/-/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();});}).join(" — ");
   var firmMatch = path.match(/^\/firm\/([^/]+)$/);
   if (firmMatch && typeof firm==="function") {var item=firm(firmMatch[1]);if(item)label=item.name+" Review";}
+  label = label.replace(/^Faq$/,"FAQ");
   document.title = (label?label+" | ":"")+name+" — Prop Firm Research";
   var description = label ? "Independent "+label+" research, prop firm rules, costs and payout information. Check the verification date before making decisions." : "Compare prop firm rules, costs, payouts and trading tools with PropFirmMath.";
   var meta=document.querySelector('meta[name="description"]');
