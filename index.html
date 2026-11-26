@@ -105,6 +105,28 @@ details.faq p{color:var(--muted);margin:0 0 14px}
 @media (max-width:900px){ .fwrap{grid-template-columns:1fr 1fr} }
 @media (max-width:640px){ .fwrap{grid-template-columns:1fr} nav.main a{padding:9px 10px;font-size:13.5px} .logo small{display:none} }
 @media (prefers-reduced-motion:reduce){ *{animation:none !important;transition:none !important} }
+
+/* Market-first prop firm landing, inspired by the supplied four-category reference, in Amber's own palette. */
+.market-landing{text-align:center;padding:48px 0 70px;max-width:1200px;margin:auto}
+.market-eyebrow{display:inline-block;padding:9px 20px;border:1px solid var(--amber);border-radius:999px;color:var(--amber);font-size:13px;font-weight:800}
+.market-landing h1{font-size:clamp(44px,6vw,72px);line-height:1.08;margin:25px 0 18px;letter-spacing:-.045em}
+.market-landing h1 em{font-style:normal;color:var(--amber)}
+.market-intro{max-width:720px;margin:0 auto 48px;color:var(--muted);line-height:1.75;font-size:17px}
+.market-intro strong{color:var(--ink)}
+.market-landing h2{font-size:clamp(24px,3vw,32px);margin-bottom:8px}
+.market-subtitle{color:var(--muted);margin-bottom:26px}
+.market-landing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;text-align:center}
+.market-landing-card{display:flex;flex-direction:column;align-items:center;min-height:290px;padding:28px 18px;border:1px solid var(--line);border-radius:17px;background:var(--panel);color:var(--ink);transition:transform .2s,border-color .2s,box-shadow .2s}
+.market-landing-card:hover,.market-landing-card:focus-visible{transform:translateY(-4px);border-color:var(--amber);box-shadow:var(--neu-out);text-decoration:none}
+.market-tag{font-size:11px;font-weight:900;letter-spacing:.08em;padding:5px 10px;border-radius:5px;background:rgba(255,176,32,.13);color:var(--amber)}
+.market-landing-card h3{font-size:19px;margin:18px 0 5px}
+.market-landing-card>strong{font-size:12px;color:var(--amber)}
+.market-landing-card p{font-size:14px;line-height:1.6;color:var(--muted);flex:1;margin:18px 0}
+.market-cta{font-size:13px;font-weight:800;color:var(--amber)}
+.market-landing-bottom{margin-top:32px;color:var(--muted)}
+.market-landing-bottom button{margin-top:12px;cursor:pointer}
+@media(max-width:1000px){.market-landing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.market-landing{padding:28px 0 45px}.market-landing-grid{grid-template-columns:1fr}.market-landing-card{min-height:240px}.market-intro{font-size:15px;margin-bottom:35px}}
 </style>
 <style>
 /* ---------- home hero ---------- */
@@ -610,8 +632,21 @@ function pageHome(){
   $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ homeState.topFilter=b.getAttribute("data-m"); homeState.topShow=5; $$("#home-tabs button").forEach(function(x){ x.classList.toggle("on", x===b); }); draw(); }); });
 }
 /* ================= FIRMS DIRECTORY ================= */
-var dirState = { q:"", market:"all" };
+var dirState = { q:"", market:"all", view:"markets" };
 function pageFirms(){
+  if (dirState.view!=="directory") {
+    var featuredMarkets = [
+      ["futures","FUTURES","Futures Prop Firms","CME futures such as ES, NQ, CL and GC, typically traded through futures platforms.","Explore futures firms"],
+      ["forex","FOREX","Forex Prop Firms","Currency pairs, metals and indices with evaluation rules and percentage-based drawdowns.","Explore forex firms"],
+      ["crypto","CRYPTO","Crypto Prop Firms","Bitcoin, Ethereum and other crypto markets, including firms offering 24/7 trading.","Explore crypto firms"],
+      ["perps","PERPS","Perps Prop Firms","Perpetual futures and crypto derivatives, with platform and risk rules varying by firm.","Explore perps firms"]
+    ];
+    go('<section class="market-landing"><div class="market-eyebrow">All Markets</div><h1>Prop <em>Firms</em></h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="market-tag">'+x[1]+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
+    var browse=document.getElementById("view-all-firms");
+    if(browse)browse.addEventListener("click",function(){dirState.view="directory";pageFirms();});
+    return;
+  }
+
   go(pageHead('<a href="/">Home</a> · Prop Firms', "All prop firms — "+COUNTS.total+" in the directory",
     "All "+COUNTS.total+" firms now carry a full research record from the "+SNAPSHOT+" deep research — official firm websites only. Verification: "+VERIF_SPLIT+". Where a firm's own site does not state a figure, the record says so instead of estimating it. One database drives this page, the compare tool, the deals and the quiz.")+
   '<div style="display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 14px;align-items:center"><div style="flex:1;min-width:210px;max-width:340px"><input type="search" id="dirSearch" placeholder="Search firms…" value="'+esc(dirState.q)+'" aria-label="Search firms" /></div>'+
