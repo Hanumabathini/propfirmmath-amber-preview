@@ -336,6 +336,7 @@ details.faq .ans p{margin:0}
 .pay-big small{display:block;font-family:"Manrope";font-size:12px;color:var(--muted);font-weight:700;margin-top:2px}
 select.cmp{width:100%}
 </style>
+<script src="/vendor/supabase.js"></script>
 <script>
 /* Legacy hash links are upgraded once to canonical path URLs. */
 if (location.hash.startsWith("#/")) {
@@ -533,11 +534,23 @@ function renderNav(route){
   html += '<div class="nav-resources-heading">Trader Utilities</div>';
   RESOURCE_NAV.slice(3).forEach(function(n){html+='<a href="'+n[0]+'">'+esc(n[1])+'</a>';});
   html += '</div></details>';
-  html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
+  html += PM_USER ? '<a href="/journal" class="signin'+(route==="/journal"?" on":"")+'">My Journal</a>' : '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
   $("#mainnav").innerHTML = html;
 }
 /* ================= router ================= */
 var app = $("#app");
+var SB_URL = "https://yomrezvtmovuruhkgikf.supabase.co";
+var SB_KEY = "sb_publishable_PHkj5jGsgpuVhGmIbyll3w_DsqIbNL2";
+var sb = null, PM_USER = null;
+try { if (window.supabase) sb = window.supabase.createClient(SB_URL, SB_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}); } catch(e){ sb = null; }
+if (sb){
+  sb.auth.getSession().then(function(r){ PM_USER = r.data && r.data.session ? r.data.session.user : null; renderNav(location.pathname||"/"); });
+  sb.auth.onAuthStateChange(function(ev, session){
+    PM_USER = session ? session.user : null;
+    renderNav(location.pathname||"/");
+    if (ev==="PASSWORD_RECOVERY" && location.pathname!=="/reset"){ history.pushState({},"","/reset"); route(); }
+  });
+}
 function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
 function updateSeo(path){
@@ -584,6 +597,7 @@ function route(){
     if (parts[0]==="account") return pageAccount();
     if (parts[0]==="login") return pageLogin();
     if (parts[0]==="journal") return pageJournal();
+    if (parts[0]==="reset") return pageReset();
     if (parts[0]==="privacy") return pageLegal("privacy");
     if (parts[0]==="terms") return pageLegal("terms");
     if (parts[0]==="disclosure") return pageLegal("disclosure");
@@ -870,7 +884,7 @@ function pageQuiz(){
      + '<form id="quizEmailForm" style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><input type="email" id="quizEmail" placeholder="you@example.com" aria-label="Email for quiz results" style="flex:1;min-width:220px;width:auto" /><button class="btn small" type="submit">Send Results</button></form>'
      + '<label class="checkline"><input type="checkbox" id="quizConsent" /> <span>Send me new deals (optional).</span></label>'
      + '<p class="form-msg" id="quizEmailMsg"></p>'
-     + '<p class="snap-note">Demo notice: this static preview has no mail server, so nothing is actually sent or stored. The validation is real; the sending is not.</p></div>'
+     + '<p class="snap-note">Email sending is not set up yet, so nothing is sent or stored here. The validation is real.</p></div>'
      + '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn ghost" id="qShare">Share Results</button><button class="btn ghost" id="qRetake">Retake Quiz</button></div>';
   }
   html += "</div>"
@@ -899,7 +913,7 @@ function pageQuiz(){
     if (f) f.addEventListener("submit", function(e){ e.preventDefault();
       var em=$("#quizEmail").value.trim(); var msg=$("#quizEmailMsg");
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ msg.className="form-msg err"; msg.textContent="That email address doesn't look valid — check it and try again."; return; }
-      msg.className="form-msg ok"; msg.textContent="Valid address — but this static preview has no mail server, so nothing was sent or stored. Your matches stay on this page.";
+      msg.className="form-msg ok"; msg.textContent="Valid address — but email sending isn't set up yet, so nothing was sent or stored. Your matches stay on this page.";
     });
     var sh=$("#qShare"); if (sh) sh.addEventListener("click", function(){ if (navigator.clipboard) navigator.clipboard.writeText("My PropFirmMath quiz matches — take the quiz: /quiz").then(function(){ toast("Share text copied"); }); else toast("Copy this page's address to share"); });
     var rt=$("#qRetake"); if (rt) rt.addEventListener("click", function(){ quizState={step:0,answers:{},done:false}; pageQuiz(); });
@@ -952,108 +966,32 @@ var CAL_EVENTS = [
 ];
 function pageCalendar(){
   go(pageHead('<a href="/">Home</a> · Economic Calendar', "Economic Calendar",
-    "The recurring releases that move funded accounts, on their usual schedule. This is a <strong style='color:var(--amber)'>reference template of recurring events</strong> — not a live feed. Always confirm the exact date and time for this week on a live calendar before trading.")+
-  '<div class="tblwrap" style="margin-top:20px"><table class="dt"><thead><tr><th>When</th><th>Frequency</th><th>Usual Time</th><th>Currency</th><th>Event</th><th>Impact</th><th>Why it matters for funded accounts</th></tr></thead><tbody>'+
+    "Live economic events for this week, with impact levels, from the TradingView widget. Always confirm timing again with your firm's own news rules before trading a release.")+
+  '<div class="card" style="margin-top:20px;padding:8px"><div id="tvCal" style="min-height:560px"></div><p class="mut small" style="padding:6px 10px">Live data by <a href="https://www.tradingview.com/economic-calendar/" rel="noopener nofollow" target="_blank">TradingView</a>. Loading it connects your browser to TradingView.</p></div>'+
+  '<h2 style="margin-top:28px">Recurring releases that move funded accounts</h2><p class="mut">The usual schedule of the big recurring releases — a reference, not a live feed.</p>'+
+  '<div class="tblwrap" style="margin-top:14px"><table class="dt"><thead><tr><th>When</th><th>Frequency</th><th>Usual Time</th><th>Currency</th><th>Event</th><th>Impact</th><th>Why it matters for funded accounts</th></tr></thead><tbody>'+
   CAL_EVENTS.map(function(e){ return '<tr><td>'+esc(e[0])+'</td><td>'+esc(e[1])+'</td><td class="num">'+esc(e[2])+'</td><td>'+esc(e[3])+'</td><td style="font-weight:700">'+esc(e[4])+'</td><td>'+(e[5]==="High"?'<span class="chip" style="color:#ff9d7a">High</span>':'<span class="chip grey">Medium</span>')+'</td><td class="mut">'+esc(e[6])+'</td></tr>'; }).join("")+
   '</tbody></table></div>'+
   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:18px">'+
   '<div class="card"><h3>News-trading rules differ by firm</h3><p class="mut" style="margin-top:8px">Some firms ban trading around red-folder news on funded accounts, some only on specific plans, and some allow it fully. The <a href="/rules">Rules page</a> compares all 48 firms side by side, and every firm page carries its exact news-trading wording.</p></div>'+
   '<div class="card"><h3>Protect the account first</h3><p class="mut" style="margin-top:8px">A single CPI spike can travel further than a full daily drawdown. Size down or stand aside — run your numbers in the <a href="/tools">Consistency Calculator</a> before the release, not after.</p></div></div>');
+  var host=$("#tvCal");
+  var sc=document.createElement("script");
+  sc.src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"; sc.async=true;
+  sc.text=JSON.stringify({colorTheme:"dark",isTransparent:true,width:"100%",height:"560",locale:"en",importanceFilter:"-1,0,1",currencyFilter:"USD,EUR,GBP,JPY,AUD,CAD,CHF,NZD"});
+  host.appendChild(sc);
 }
-/* ================= BEST-FOR ================= */
-function pageBestForHub(){
-  var keys = Object.keys(BESTFOR);
-  go(pageHead('<a href="/">Home</a> · Best Prop Firms', "Best prop firms — "+keys.length+" guides",
-    "Each guide picks firms from the reviewed set for one need, with the selection note written down. The method matters more than the count, and it is published on the <a href='/methodology'>Methodology</a> page.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
-  keys.map(function(k){ var b=BESTFOR[k]; return '<article class="card"><h3>'+esc(b.title)+'</h3><p class="mut small">'+esc(b.note)+'</p><a href="/best-for/'+k+'" style="font-weight:800">See the picks →</a></article>'; }).join("")+
-  "</div>");
+function authUnavailable(){
+  return '<div class="notice" style="margin-bottom:18px"><b>Accounts are temporarily unavailable.</b> The sign-in service could not be reached. Please reload the page or try again shortly.</div>';
 }
-function pageBestFor(key){
-  var b = BESTFOR[key]; if (!b) return pageBestForHub();
-  var picks = b.pick.map(firm).filter(Boolean);
-  go(pageHead('<a href="/">Home</a> · <a href="/best-for">Best Prop Firms</a>', esc(b.title), esc(b.note)+" Snapshot: "+SNAPSHOT+".")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
-  picks.map(function(f,i){ return '<article class="card"><div style="display:flex;gap:10px;align-items:center"><span class="rank">'+(i+1)+'</span><a href="/firm/'+f.slug+'" style="display:flex;gap:10px;align-items:center;color:var(--ink)">'+avatar(f,34)+"<strong>"+esc(f.name)+'</strong></a></div><p class="snap-note" style="margin-top:10px">FROM '+priceHTML(f)+' · SPLIT '+esc(f.split)+' · PAYOUT '+esc(payoutShort(f))+' · DRAWDOWN '+esc(f.dd)+"</p>"+(f.off?'<p><span class="chip">🏷 Up to '+f.off+'% off in snapshot</span></p>':"")+'<a href="/firm/'+f.slug+'" style="font-weight:800">Full review →</a></article>'; }).join("")+
-  '</div><div class="secttl"><span class="bar"></span><h2>Side by side</h2></div>'+firmTableHTML(picks)+
-  '<div class="secttl"><span class="bar"></span><h2>How to choose</h2></div><div class="card"><p class="mut">Ask five things: (1) Does the drawdown type fit how you trade? (2) Is there a consistency rule, and can your best day stay under it? (3) What is the all-in price including activation? (4) How fast — and by what rail — does the firm pay? (5) What does the payout evidence show? The <a href="/quiz">quiz</a> scores exactly these from your answers.</p></div>');
-  bindCopy();
-}
-/* ================= GUIDES ================= */
-function pageGuides(){
-  go(pageHead('<a href="/">Home</a> · Guides', "Prop trading guides",
-    "Deep dives, comparisons and strategy — written for PropFirmMath from our firm data. Snapshot figures inside articles are dated where they appear.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));margin-top:20px">'+
-  GUIDES.map(function(g){ return '<article class="card"><span class="chip">'+esc(g.tag)+'</span><h3 style="margin-top:10px">'+esc(g.title)+'</h3><p class="mut small">'+esc(g.excerpt)+'</p><a href="/guide/'+g.slug+'" style="font-weight:800">Read article →</a></article>'; }).join("")+
-  "</div>");
-}
-function pageGuide(slug){
-  var g=null; GUIDES.forEach(function(x){ if (x.slug===slug) g=x; });
-  if (!g) return pageGuides();
-  go(pageHead('<a href="/">Home</a> · <a href="/guides">Guides</a>', esc(g.title), esc(g.excerpt))+
-  '<article class="card prose" style="max-width:860px;margin-top:20px">'+
-  g.body.map(function(p){ return p.charAt(0)==="<" ? p : "<p>"+p+"</p>"; }).join("")+
-  '<p class="snap-note">Researched data snapshot: '+SNAPSHOT+'. Prices and rules change — confirm on the firm\'s own site.</p>'+
-  '<p style="margin-top:18px"><a class="btn small" href="/compare">Compare firms</a> <a class="btn small ghost" href="/guides">All guides</a></p></article>');
-}
-/* ================= FAQ ================= */
-function pageFaq(){
-  var cats = [["Prop Firm Basics",7],["Rules & Drawdown",7],["Choosing a Prop Firm",7],["Payouts, Fees & Discounts",7],["Platforms & Eligibility",5],["Managing Your Accounts",4],["About PropFirmMath",3]];
-  go(pageHead('<a href="/">Home</a> · FAQ', "Frequently asked questions",
-    "Answers to the 14 questions traders ask most. Figures quoted in answers are dated where they appear.")+
-  '<div style="margin:20px 0"></div>'+
-  '<div style="max-width:860px">'+faqHTML(FAQS,0)+"</div>"+
-  '<div class="card" style="margin-top:22px;max-width:860px"><h3>Figures behind these answers</h3><p class="mut" style="margin-top:8px">'+FIRMS.filter(function(f){ return f.instant; }).length+' of the '+COUNTS.total+' firms sell at least one instant account · '+codesCount()+' discount codes verified on official sites across '+firmsWithCodes().length+' firms · 4 firms price in euros (FTMO global, Core Funded, PineX, BrightFunded) · 4 charge monthly subscriptions (Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero) · payout cycles run from daily/on-demand to quarterly. Source: the '+SNAPSHOT+' official-site research behind every firm page here.</p></div>');
-}
-/* ================= GLOSSARY ================= */
-function pageGlossary(){
-  go(pageHead('<a href="/">Home</a> · Glossary', "Prop firm glossary", "The terms that decide whether an account survives — defined the way the rules pages use them.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(330px,1fr));margin-top:20px">'+
-  GLOSSARY.map(function(g){ return '<article class="card"><h3 style="font-size:17px">'+esc(g[0])+'</h3><p class="mut small" style="margin:6px 0 0">'+esc(g[1])+"</p></article>"; }).join("")+
-  "</div>");
-}
-/* ================= RULES ================= */
-function pageRules(){
-  var list = FIRMS.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
-  go(pageHead('<a href="/">Home</a> · Rules Comparison', "Trading rules, compared",
-    "Drawdown, consistency, split, target and payout cycle for all "+COUNTS.total+" firms — researched on official firm sites, "+SNAPSHOT+". Where a firm has no consistency rule, the table says None; where a figure could not be verified, it says so. The same database the quiz scores from.")+
-  '<div class="tblwrap" style="margin-top:20px"><table class="dt"><thead><tr><th>Firm</th><th>Max drawdown</th><th>Consistency</th><th>Split</th><th>Target</th><th>Payout cycle</th><th>Platforms</th></tr></thead><tbody>'+
-  list.map(function(f){ return '<tr><td><a href="/firm/'+f.slug+'" style="display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-weight:700">'+avatar(f,30)+' '+esc(f.name)+'</a></td><td>'+esc(f.dd)+'</td><td>'+esc(f.consistencyText)+'</td><td>'+esc(f.split)+'</td><td>'+esc(f.target)+'</td><td>'+esc(f.payoutText)+'</td><td>'+esc(f.platforms.join(", "))+"</td></tr>"; }).join("")+
-  '</tbody></table></div>'+
-  '<div class="card" style="margin-top:22px"><h3>The three drawdown types</h3><p class="mut" style="margin-top:8px"><strong style="color:var(--ink)">Static</strong> — the floor never moves. <strong style="color:var(--ink)">EOD trailing</strong> — the floor follows your end-of-day balance up. <strong style="color:var(--ink)">Intraday trailing</strong> — the floor follows your highest open profit, and is the easiest to breach. Consistency figures name the program they belong to — many firms run several programs with different rules, and the firm page carries the full breakdown.</p></div>');
-  bindCopy();
-}
-/* ================= STATISTICS ================= */
-function pageStats(){
-  var cards = [[COUNTS.total,"Firms in this directory","Every one with a full research record — no named-only firms remain"],[VERIF_SPLIT,"Verification split, "+SNAPSHOT,"Official firm websites only; the 2 not verifiable are E8 Perpetuals and Funded Trading Plus"],[FIRMS.filter(function(f){ return f.instant; }).length,"Firms selling an instant account","Counted from the "+SNAPSHOT+" firm records"],[codesCount(),"Discount codes verified on official sites","Across "+firmsWithCodes().length+" firms — the only deal count this site quotes, and it reconciles with the Deals page"],["4","Firms pricing in euros, not dollars","FTMO (global), Core Funded, PineX Capital, BrightFunded"],["4","Firms charging monthly subscriptions","Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero"],["Daily → quarterly","Payout cycle range","Daily/on-demand at the fast end; Darwinex Zero pays performance fees quarterly"],[COUNTS.tracked+" of "+COUNTS.total,"Tracker coverage","Rise rail only — paid totals captured in the Nov 25, 2026 tracker snapshot"]];
-  go(pageHead('<a href="/">Home</a> · Statistics', "Prop firm statistics",
-    "Every figure below is computed from the "+SNAPSHOT+" firm research (official sites only) or labelled with its own snapshot date. Nothing here is a live number.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
-  cards.map(function(s){ return '<article class="card"><div style="font-family:Sora;font-size:30px;font-weight:800" class="gold">'+s[0]+'</div><h3 style="margin-top:6px">'+s[1]+'</h3><p class="mut small">'+s[2]+"</p></article>"; }).join("")+
-  "</div>");
-}
-/* ================= METHODOLOGY ================= */
-function pageMethodology(){
-  go(pageHead('<a href="/">Home</a> · Methodology', "How PropFirmMath ranks firms",
-    "Exactly how a firm earns its place, in a form you can reproduce.")+
-  '<div class="card prose" style="max-width:860px;margin-top:20px">'+
-  "<h3>The formula</h3><p>The Top Rated table orders firms by their public trader rating where a numeric score was verified in the research (Trustpilot, read directly or shown on the firm's own site — always labelled with its source). Firms whose Trustpilot rating has been withheld, or whose score could not be verified, are never given an estimated score: they appear in the directory with that status labelled. The Nov 26, 2026 research verified every firm's core figures on its own official website — 28 firms fully, 17 partially, and 2 (E8 Perpetuals, Funded Trading Plus) not at all, which their pages state plainly. Best-for shortlists are editorial but constrained: a firm is only eligible if (1) traders in our firm data report getting paid, (2) where a rating was verified, its rating and review volume hold up (firms with no verified rating are labelled Not verified), and (3) its payout record cross-checks against on-chain evidence where a rail exists. Quiz matches ignore ratings almost entirely and score published rules against your answers — the scoring runs in your browser on the quiz page, so you can test it.</p>"+
-  "<h3>One database</h3><p>Reviews, compare, deals, the savings calculator and the quiz all read the same firm records. A price or rule change is made once and appears everywhere — deal pages cannot drift from reviews.</p>"+
-  "<h3>Dates, always</h3><p>Every price, code and payout figure carries its snapshot date ("+SNAPSHOT+" for the firm research; the payout-tracker figures carry their own Nov 25, 2026 snapshot date and say so). A figure without a date is a figure you cannot judge, so we don't publish any.</p>"+
-  "<h3>Money</h3><p>PropFirmMath earns affiliate commissions (see the <a href='/disclosure'>Affiliate Disclosure</a>). Commissions never change a position, a score or a quiz result. Firms that stop treating traders fairly come off the lists even if they pay commission — see <a href='/delisted'>Delisted Firms</a>.</p>"+
-  "<h3>Who runs PropFirmMath</h3><p>PropFirmMath is operated by Hanumantha Rao Bathini, Memphis, TN, USA. Contact: <a href='mailto:hanumabathini9@gmail.com'>hanumabathini9@gmail.com</a>.</p>"+
-  "</div>");
-}
-/* ================= ACCOUNT / LOGIN / JOURNAL ================= */
-function demoNotice(){
-  return '<div class="notice" style="margin-bottom:18px"><b>Static preview demo:</b> this build has no server or database, so accounts and journal rows are <b>not stored or sent anywhere</b>. Forms validate in your browser and tell you plainly that nothing was saved.</div>';
-}
+var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 function pageAccount(){
+  if (PM_USER) { history.replaceState({},"","/journal"); return route(); }
   var locale = (navigator.language || "en-US");
   var region = locale.indexOf("-")>0 ? locale.split("-")[1].toUpperCase() : "";
   var countryGuess = region==="US" ? "United States" : (region==="GB" ? "United Kingdom" : (region==="IN" ? "India" : (region==="AU" ? "Australia" : "")));
   go(pageHead('<a href="/">Home</a> · Account', "Create your free account", "Sign up free. Takes under a minute; no card.")+
-  '<div style="max-width:560px;margin-top:20px">'+demoNotice()+
+  '<div style="max-width:560px;margin-top:20px">'+(sb?"":authUnavailable())+
   '<div class="card"><form id="regForm"><div class="field"><label class="fl" for="regName">Full name</label><input type="text" id="regName" autocomplete="name" /></div>'+
   '<div class="field"><label class="fl" for="regCountry">Country (pre-filled from your browser locale: '+esc(locale)+')</label><input type="text" id="regCountry" value="'+esc(countryGuess)+'" autocomplete="country-name" /></div>'+
   '<div class="field"><label class="fl" for="regEmail">Email</label><input type="email" id="regEmail" autocomplete="email" /></div>'+
@@ -1068,20 +1006,28 @@ function pageAccount(){
     var msg=$("#regMsg"); var em=$("#regEmail").value.trim();
     var p1=$("#regPass").value, p2=$("#regPass2").value;
     function err(t){ msg.className="form-msg err"; msg.textContent=t; }
+    if (!sb) return err("The sign-in service is unavailable right now. Please reload and try again.");
     if (!$("#regName").value.trim()) return err("Enter your full name.");
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) return err("That email address doesn't look valid.");
+    if (!EMAIL_RE.test(em)) return err("That email address doesn't look valid.");
     if (p1.length<8) return err("Password needs at least 8 characters.");
     if (p1!==p2) return err("Passwords don't match.");
     if (!$("#regTerms").checked) return err("Please agree to the Terms and Privacy Policy.");
-    msg.className="form-msg ok"; msg.textContent="Form valid — but this static preview has no backend, so no account was created and nothing was stored.";
+    var btn=$("#regForm button[type=submit]"); btn.disabled=true; msg.className="form-msg"; msg.textContent="Creating your account…";
+    sb.auth.signUp({email:em,password:p1,options:{emailRedirectTo:location.origin+"/login",data:{full_name:$("#regName").value.trim(),country:$("#regCountry").value.trim(),deals_opt_in:$("#regNews").checked}}}).then(function(r){
+      btn.disabled=false;
+      if (r.error) return err(r.error.message);
+      if (r.data && r.data.session){ toast("Account created"); history.pushState({},"","/journal"); route(); return; }
+      if (r.data && r.data.user && r.data.user.identities && r.data.user.identities.length===0) return err("An account with this email already exists. Try logging in instead.");
+      msg.className="form-msg ok"; msg.textContent="Almost done — we sent a confirmation link to "+em+". Open it, then log in.";
+    }).catch(function(){ btn.disabled=false; err("Could not reach the sign-in service. Please try again."); });
   });
 }
 function pageLogin(){
+  if (PM_USER) { history.replaceState({},"","/journal"); return route(); }
   go(pageHead('<a href="/">Home</a> · Account', "Log in", "Welcome back.")+
-  '<div style="max-width:480px;margin-top:20px">'+demoNotice()+
+  '<div style="max-width:480px;margin-top:20px">'+(sb?"":authUnavailable())+
   '<div class="card"><form id="loginForm"><div class="field"><label class="fl" for="liEmail">Email</label><input type="email" id="liEmail" autocomplete="email" /></div>'+
   '<div class="field"><label class="fl" for="liPass">Password</label><input type="password" id="liPass" autocomplete="current-password" /></div>'+
-  '<label class="checkline"><input type="checkbox" id="liKeep" /> <span>Keep me signed in</span></label>'+
   '<button class="btn" type="submit" style="width:100%">Log in</button>'+
   '<p class="form-msg" id="liMsg"></p></form>'+
   '<p style="margin-top:12px"><button class="btn ghost small" id="forgotBtn" type="button">Forgot password?</button></p>'+
@@ -1089,46 +1035,111 @@ function pageLogin(){
   '<p class="mut small" style="margin-top:14px">New here? <a href="/account"><strong>Sign up free</strong></a></p></div></div>');
   $("#loginForm").addEventListener("submit", function(e){ e.preventDefault();
     var msg=$("#liMsg"); var em=$("#liEmail").value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ msg.className="form-msg err"; msg.textContent="That email address doesn't look valid."; return; }
-    msg.className="form-msg ok"; msg.textContent="This static preview has no accounts to log into — nothing was checked or stored. The form validation is real; the account system is not part of this build.";
+    function err(t){ msg.className="form-msg err"; msg.textContent=t; }
+    if (!EMAIL_RE.test(em)) return err("That email address doesn't look valid.");
+    if (!$("#liPass").value) return err("Enter your password.");
+    if (!sb) return err("The sign-in service is unavailable right now. Please reload and try again.");
+    msg.className="form-msg"; msg.textContent="Signing in…";
+    sb.auth.signInWithPassword({email:em,password:$("#liPass").value}).then(function(r){
+      if (r.error) return err(r.error.message==="Email not confirmed" ? "Please confirm your email first — check your inbox for the link." : "Wrong email or password.");
+      history.pushState({},"","/journal"); route();
+    }).catch(function(){ err("Could not reach the sign-in service. Please try again."); });
   });
   $("#forgotBtn").addEventListener("click", function(){
-    var m=$("#forgotMsg"); m.className="form-msg ok";
-    m.textContent="Password reset needs the live account system, which this static preview doesn't include. On the live site a reset link would be emailed to you.";
+    var m=$("#forgotMsg"); var em=$("#liEmail").value.trim();
+    if (!EMAIL_RE.test(em)){ m.className="form-msg err"; m.textContent="Type your email above first, then press Forgot password."; return; }
+    if (!sb){ m.className="form-msg err"; m.textContent="The sign-in service is unavailable right now."; return; }
+    sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+"/reset"}).then(function(r){
+      if (r.error){ m.className="form-msg err"; m.textContent=r.error.message; return; }
+      m.className="form-msg ok"; m.textContent="If an account exists for that email, a reset link is on its way.";
+    });
   });
 }
-var journalRows = [];
-function pageJournal(){
-  var total = journalRows.reduce(function(s,r){ return s+r.pnl; },0);
-  go(pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal",
-    "Track trades and P&L across funded accounts. The researched feature set includes a Rithmic importer. This preview's journal is an in-page demo: rows live only until you leave the page.")+
-  '<div style="margin-top:20px">'+demoNotice()+
-  '<div class="card" style="margin-bottom:18px"><form id="jForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">'+
-  '<div class="field" style="margin:0"><label class="fl" for="jInst">Instrument</label><input type="text" id="jInst" placeholder="NQ" /></div>'+
-  '<div class="field" style="margin:0"><label class="fl" for="jPnl">P&amp;L ($)</label><input type="number" id="jPnl" placeholder="250" step="0.01" /></div>'+
-  '<div class="field" style="margin:0"><label class="fl" for="jNote">Note</label><input type="text" id="jNote" placeholder="Setup, mistake, lesson…" /></div></div>'+
-  '<button class="btn small" type="submit" style="margin-top:14px">Add trade (this page only)</button>'+
-  '<p class="form-msg" id="jMsg"></p></form></div>'+
-  '<div class="card"><h3>Session P&amp;L: <span style="color:'+(total>=0?"#a9dc7d":"#ff9078")+'">'+money(total)+'</span> · '+journalRows.length+' trade(s)</h3>'+
-  (journalRows.length? '<div style="margin-top:10px">'+journalRows.map(function(r){ return '<div class="pay-row"><span><strong>'+esc(r.inst)+'</strong> <span class="mut">'+esc(r.note)+'</span></span><span class="num" style="font-weight:800;color:'+(r.pnl>=0?"#a9dc7d":"#ff9078")+'">'+money(r.pnl)+"</span></div>"; }).join("")+"</div>" : '<p class="mut" style="margin-top:8px">No trades yet this session. Add one above — it will not be saved anywhere.</p>')+
-  "</div></div>");
-  $("#jForm").addEventListener("submit", function(e){ e.preventDefault();
-    var inst=$("#jInst").value.trim(), pnl=parseFloat($("#jPnl").value), note=$("#jNote").value.trim();
-    var msg=$("#jMsg");
-    if (!inst || isNaN(pnl)){ msg.className="form-msg err"; msg.textContent="Enter an instrument and a numeric P&L."; return; }
-    journalRows.push({inst:inst,pnl:pnl,note:note}); pageJournal(); toast("Trade added — this page only, nothing saved");
+function pageReset(){
+  go(pageHead('<a href="/">Home</a> · Account', "Set a new password", "Choose a new password for your account.")+
+  '<div style="max-width:480px;margin-top:20px"><div class="card"><form id="rsForm"><div class="field"><label class="fl" for="rsPass">New password</label><input type="password" id="rsPass" autocomplete="new-password" /></div>'+
+  '<button class="btn" type="submit" style="width:100%">Update password</button><p class="form-msg" id="rsMsg"></p></form></div></div>');
+  $("#rsForm").addEventListener("submit", function(e){ e.preventDefault();
+    var msg=$("#rsMsg"); var pw=$("#rsPass").value;
+    function err(t){ msg.className="form-msg err"; msg.textContent=t; }
+    if (pw.length<8) return err("Password needs at least 8 characters.");
+    if (!sb || !PM_USER) return err("This reset link has expired or was already used. Request a new one from the login page.");
+    sb.auth.updateUser({password:pw}).then(function(r){
+      if (r.error) return err(r.error.message);
+      toast("Password updated"); history.pushState({},"","/journal"); route();
+    });
   });
+}
+/* ---- Journal: trades saved per user in Supabase (row-level security) ---- */
+var journalState = {rows:[], acct:null};
+function journalLoad(){
+  return sb.from("trader_accounts").select("id").eq("user_id",PM_USER.id).order("created_at").limit(1).then(function(r){
+    if (r.error) throw r.error;
+    if (r.data && r.data.length) return r.data[0];
+    return sb.from("trader_accounts").insert({user_id:PM_USER.id,firm:"Unspecified",account_label:"Main journal",account_size:0}).select("id").single().then(function(x){ if (x.error) throw x.error; return x.data; });
+  }).then(function(a){
+    journalState.acct=a;
+    return sb.from("trades").select("id,traded_at,pnl,symbol,note").eq("user_id",PM_USER.id).order("traded_at",{ascending:false}).limit(500);
+  }).then(function(r){ if (r.error) throw r.error; journalState.rows=r.data||[]; });
+}
+function pageJournal(){
+  var head=pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.");
+  if (!sb){ go(head+'<div style="margin-top:20px">'+authUnavailable()+'</div>'); return; }
+  if (!PM_USER){
+    go(head+'<div class="card" style="margin-top:20px;max-width:560px"><h3>Log in to use your journal</h3><p class="mut" style="margin-top:8px">The journal saves your trades to your free account so they are there next time.</p><p style="margin-top:14px"><a class="btn" href="/account">Sign up free</a> <a class="btn ghost" href="/login">Log in</a></p></div>');
+    return;
+  }
+  go(head+'<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');
+  journalLoad().then(renderJournal).catch(function(e){
+    go(head+'<div class="notice" style="margin-top:20px"><b>Could not load your journal.</b> '+esc(e && e.message || "Please try again.")+'</div>');
+  });
+}
+function renderJournal(){
+  var rows=journalState.rows;
+  var total=rows.reduce(function(s,r){ return s+Number(r.pnl); },0);
+  var wins=rows.filter(function(r){ return Number(r.pnl)>0; }).length;
+  var wr=rows.length?Math.round(100*wins/rows.length):0;
+  var today=new Date().toISOString().slice(0,10);
+  go(pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.")+
+  '<div style="margin-top:20px"><p class="mut small" style="margin-bottom:12px">Signed in as '+esc(PM_USER.email)+' · <button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></p>'+
+  '<div class="card" style="margin-bottom:18px"><form id="jForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">'+
+  '<div class="field" style="margin:0"><label class="fl" for="jDate">Date</label><input type="date" id="jDate" value="'+today+'" /></div>'+
+  '<div class="field" style="margin:0"><label class="fl" for="jInst">Instrument</label><input type="text" id="jInst" placeholder="NQ" maxlength="20" /></div>'+
+  '<div class="field" style="margin:0"><label class="fl" for="jPnl">P&amp;L ($)</label><input type="number" id="jPnl" placeholder="250" step="0.01" /></div>'+
+  '<div class="field" style="margin:0"><label class="fl" for="jNote">Note</label><input type="text" id="jNote" placeholder="Setup, mistake, lesson…" maxlength="300" /></div></div>'+
+  '<button class="btn small" type="submit" style="margin-top:14px">Save trade</button><p class="form-msg" id="jMsg"></p></form></div>'+
+  '<div class="card"><h3>Total P&amp;L: <span style="color:'+(total>=0?"#a9dc7d":"#ff9078")+'">'+money(total)+'</span> · '+rows.length+' trade(s) · '+wr+'% winners</h3>'+
+  (rows.length? '<div style="margin-top:10px">'+rows.map(function(r){ var v=Number(r.pnl); return '<div class="pay-row"><span><strong>'+esc(r.symbol||"—")+'</strong> <span class="mut">'+esc(String(r.traded_at).slice(0,10))+' · '+esc(r.note||"")+'</span></span><span><span class="num" style="font-weight:800;color:'+(v>=0?"#a9dc7d":"#ff9078")+'">'+money(v)+'</span> <button class="btn ghost small" data-del="'+esc(r.id)+'" type="button" aria-label="Delete trade">Delete</button></span></div>'; }).join("")+"</div>" : '<p class="mut" style="margin-top:8px">No trades yet. Add your first one above.</p>')+
+  "</div></div>");
+  $("#signOutBtn").addEventListener("click", function(){ sb.auth.signOut().then(function(){ journalState={rows:[],acct:null}; history.pushState({},"","/"); route(); }); });
+  $("#jForm").addEventListener("submit", function(e){ e.preventDefault();
+    var inst=$("#jInst").value.trim(), pnl=parseFloat($("#jPnl").value), note=$("#jNote").value.trim(), d=$("#jDate").value;
+    var msg=$("#jMsg");
+    if (!inst || isNaN(pnl) || !d){ msg.className="form-msg err"; msg.textContent="Enter a date, an instrument and a numeric P&L."; return; }
+    sb.from("trades").insert({user_id:PM_USER.id,account_id:journalState.acct.id,traded_at:new Date(d+"T12:00:00").toISOString(),pnl:pnl,symbol:inst,note:note||null}).select("id,traded_at,pnl,symbol,note").single().then(function(r){
+      if (r.error){ msg.className="form-msg err"; msg.textContent="Could not save: "+r.error.message; return; }
+      journalState.rows.unshift(r.data); journalState.rows.sort(function(a,b){ return String(b.traded_at).localeCompare(String(a.traded_at)); });
+      renderJournal(); toast("Trade saved");
+    });
+  });
+  app.querySelectorAll("[data-del]").forEach(function(b){ b.addEventListener("click", function(){
+    var id=b.getAttribute("data-del");
+    sb.from("trades").delete().eq("id",id).eq("user_id",PM_USER.id).then(function(r){
+      if (r.error){ toast("Could not delete: "+r.error.message); return; }
+      journalState.rows=journalState.rows.filter(function(x){ return x.id!==id; }); renderJournal(); toast("Trade deleted");
+    });
+  }); });
 }
 /* ================= LEGAL ================= */
 var LEGAL = {
   privacy:["Privacy Policy","What PropFirmMath collects, why, and your choices.",
-   "<h3>Who we are</h3><p>PropFirmMath ('we', 'us') is an independent prop firm review and comparison site operated by Hanumantha Rao Bathini, Memphis, TN, USA. Questions about this policy: hanumabathini9@gmail.com.</p><h3>What this static preview collects</h3><p>This preview build collects nothing. It has no server, no database, no analytics and no tracking cookies. Forms on this build validate in your browser and store nothing; the cookie notice on this build records your choice only in page memory, and it is forgotten when you close the tab.</p><h3>What the live service collects</h3><p>On the live PropFirmMath service, we collect: account details you give us (name, country, email, password hash); journal entries you save; and basic technical logs (IP address, browser, pages visited) needed to run and secure the site.</p><h3>How we use it</h3><p>To run your account, show your journal back to you, answer support email, prevent fraud and duplicate accounts, and understand which pages are useful. We do not sell your personal data.</p><h3>Affiliate links</h3><p>When you click an affiliate link or use a code, the firm may set its own cookies and tell us a purchase happened so commission can be credited. The firm's own privacy policy governs data on its site.</p><h3>Sharing</h3><p>We share data only with the service providers needed to run the site (hosting, email delivery), and where the law requires it.</p><h3>Retention and your rights</h3><p>Account data is kept while your account is open. You may ask us to access, correct, export or delete your personal data at any time by emailing hanumabathini9@gmail.com; we respond within 30 days. Deleting your account deletes your journal.</p><h3>Children</h3><p>PropFirmMath is for adults (18+). We do not knowingly collect data from children.</p><h3>Changes</h3><p>Material changes to this policy will be posted on this page with a new effective date.</p>"],
+   "<h3>Who we are</h3><p>PropFirmMath ('we', 'us') is an independent prop firm review and comparison site operated by Hanumantha Rao Bathini, Memphis, TN, USA. Questions about this policy: hanumabathini9@gmail.com.</p><h3>What we collect</h3><p>We run no analytics and no advertising trackers. If you create an account, your sign-in and journal data are stored with our database provider, Supabase, and protected so only you can read your own rows. We collect: account details you give us (name, country, email, password hash); journal entries you save; and basic technical logs (IP address, browser, pages visited) needed to run and secure the site.</p><h3>How we use it</h3><p>To run your account, show your journal back to you, answer support email, prevent fraud and duplicate accounts, and understand which pages are useful. We do not sell your personal data.</p><h3>Affiliate links</h3><p>When you click an affiliate link or use a code, the firm may set its own cookies and tell us a purchase happened so commission can be credited. The firm's own privacy policy governs data on its site.</p><h3>Sharing</h3><p>We share data only with the service providers needed to run the site (hosting, email delivery), and where the law requires it.</p><h3>Retention and your rights</h3><p>Account data is kept while your account is open. You may ask us to access, correct, export or delete your personal data at any time by emailing hanumabathini9@gmail.com; we respond within 30 days. Deleting your account deletes your journal.</p><h3>Children</h3><p>PropFirmMath is for adults (18+). We do not knowingly collect data from children.</p><h3>Changes</h3><p>Material changes to this policy will be posted on this page with a new effective date.</p>"],
   terms:["Terms & Conditions","The rules for using PropFirmMath.",
    "<h3>1. The service</h3><p>PropFirmMath, operated by Hanumantha Rao Bathini, Memphis, TN, USA, publishes independent reviews, comparisons, discount codes and tools for proprietary trading firms. We are not a broker, not a prop firm, and not a financial advisor. Nothing on this site is investment advice or a recommendation to buy any evaluation or account.</p><h3>2. Accuracy</h3><p>Firms change prices, rules and offers frequently, often without notice. We date every figure we publish, but we cannot guarantee that information is current, complete or error-free. Always confirm price, rules and terms on the firm's own website before buying. Your contract is with the firm, not with us.</p><h3>3. Risk</h3><p>Trading leveraged products carries a high level of risk. Prop firm evaluations and funded accounts are simulated trading programs and most traders do not pass them. Never spend money on an evaluation that you cannot afford to lose.</p><h3>4. Accounts</h3><p>Free accounts are for one person aged 18 or over. You are responsible for activity under your account. We may suspend or close accounts that breach these terms or are used for fraud, including duplicate accounts.</p><h3>5. Reviews</h3><p>Only traders who prove they hold or held an account may review a firm. Reviews must be honest and your own. We may remove reviews that are fake, abusive or unverifiable.</p><h3>6. Intellectual property</h3><p>Site content is owned by PropFirmMath or its licensors. Firm names and marks belong to their owners and are used to identify the firms reviewed.</p><h3>7. Liability</h3><p>To the fullest extent allowed by law, PropFirmMath is not liable for losses arising from decisions you make using this site, including purchases made at firms we review. Nothing in these terms limits liability that cannot be limited by law.</p><h3>8. Governing law</h3><p>These terms are governed by the laws of the State of Tennessee, USA. Disputes will be handled in the state or federal courts located in Tennessee.</p><h3>9. Changes and contact</h3><p>We may update these terms; the version on this page with its effective date is the current one. Contact: hanumabathini9@gmail.com.</p>"],
   disclosure:["Affiliate Disclosure","How PropFirmMath makes money, and how it stays independent.",
    "<h3>How we make money</h3><p>PropFirmMath is free to use because it earns commission from many of the firms it reviews. Many links and discount codes on this site are affiliate links: when you click through and buy an account, the firm may pay PropFirmMath a commission, at no extra cost to you — and the code usually lowers your price. Commission rates differ between firms and can change. We may also be paid for clearly labelled sponsored content, and some tools listed on this site pay commission through their links.</p><h3>How we stay independent</h3><ul><li><strong>No paid rankings.</strong> A firm cannot pay to rank higher, score better or be featured.</li><li><strong>No listing fees.</strong> A firm cannot buy a place in the directory.</li><li><strong>Same standards for everyone.</strong> Every review is built from the firm's own published rules, prices and payout terms, checked the same way whether or not we earn commission from that firm.</li><li><strong>Delisting.</strong> Firms that stop treating traders fairly are removed, even if they paid commission — see <a href='/delisted'>Delisted Firms</a>.</li><li><strong>Sponsored content is labelled</strong> wherever it appears.</li></ul><h3>Ratings you can check</h3><p>Next to any editorial view, reviews show the firm's public rating and its source (Trustpilot — read directly, or as shown on the firm's own site, and labelled either way). Where Trustpilot has withheld a firm's rating, the page says so and shows no score. A Verified Trader Score appears once enough verified traders have reviewed the firm. Quiz results are scored on published rules only — never on commission.</p><h3>Not financial advice</h3><p>Everything on PropFirmMath is information only. Confirm all details on the firm's own website before buying.</p><h3>FTC disclosure</h3><p>This disclosure is made in line with US Federal Trade Commission guidance on endorsements and testimonials. Where a page contains affiliate links, assume PropFirmMath may earn commission from purchases made through them.</p><h3>Contact</h3><p>PropFirmMath, operated by Hanumantha Rao Bathini, Memphis, TN, USA. Partnership and disclosure questions: hanumabathini9@gmail.com.</p>"],
-  cookies:["Cookie Policy","What cookies PropFirmMath uses — and what this preview build uses (none).",
-   "<h3>This preview build</h3><p>This static preview sets no cookies and runs no analytics or advertising trackers. Your cookie-banner choice is kept only in page memory and forgotten when the tab closes.</p><h3>The live service</h3><p>The live PropFirmMath service uses: (1) strictly necessary cookies to keep you signed in and secure your session; (2) a cookie remembering your cookie-banner choice; (3) affiliate attribution — when you click through to a firm, that firm may set its own cookies under its own policy so a purchase can be credited. We do not run third-party advertising trackers.</p><h3>Your choices</h3><p>Use the banner's Reject All option to refuse everything beyond strictly necessary cookies on the live service, or clear cookies in your browser at any time. Blocking cookies may sign you out.</p><h3>Contact</h3><p>hanumabathini9@gmail.com.</p>"]
+  cookies:["Cookie Policy","What cookies and browser storage PropFirmMath uses.",
+   "<h3>What we use</h3><p>We run no analytics or advertising trackers. If you sign in, your browser stores a session token in local storage so you stay signed in. The Economic Calendar page loads a widget from TradingView, which may set its own cookies under its own policy. In summary: (1) strictly necessary storage to keep you signed in and secure your session; (2) a cookie remembering your cookie-banner choice; (3) affiliate attribution — when you click through to a firm, that firm may set its own cookies under its own policy so a purchase can be credited. We do not run third-party advertising trackers.</p><h3>Your choices</h3><p>Use the banner's Reject All option to refuse everything beyond strictly necessary cookies on the live service, or clear cookies in your browser at any time. Blocking cookies may sign you out.</p><h3>Contact</h3><p>hanumabathini9@gmail.com.</p>"]
 };
 function pageLegal(id){
   var L = LEGAL[id]; if (!L) return page404();
@@ -1141,7 +1152,7 @@ function pageDelisted(){
     "Firms removed from PropFirmMath's lists. The researched directory's contents for this page were not captured in the research snapshot, so no firm is named here rather than inventing a delisting — the policy below is how delisting works.")+
   '<div class="card prose" style="max-width:860px;margin-top:20px">'+
   "<h3>When a firm is delisted</h3><p>A firm comes off our lists when traders report withheld payouts or predatory rule changes, when it stops treating traders fairly, or when it shuts down. Delisting applies even to firms that paid commission. A delisted firm keeps a page here explaining the reason and the date, so the record is public.</p>"+
-  "<h3>Current status</h3><p>No delisted firms are recorded in the "+SNAPSHOT+" snapshot carried by this preview. If you have evidence about a firm's conduct, send it to hanumabathini9@gmail.com.</p></div>");
+  "<h3>Current status</h3><p>No delisted firms are recorded in the "+SNAPSHOT+" snapshot carried by this site. If you have evidence about a firm's conduct, send it to hanumabathini9@gmail.com.</p></div>");
 }
 function pageListFirm(){
   go(pageHead('<a href="/">Home</a> · List Your Firm', "List your firm on PropFirmMath",
