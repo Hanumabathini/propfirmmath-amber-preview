@@ -503,7 +503,7 @@ function updateSeo(path){
   canonical.href=location.origin+path;
 }
 function route(){
-  var raw = location.hash.replace(/^/,"") || "/";
+  var raw = location.pathname || "/";
   var q = location.search.replace(/^\?/, "");
   var h = raw;
   var parts = h.split("/").filter(Boolean);
