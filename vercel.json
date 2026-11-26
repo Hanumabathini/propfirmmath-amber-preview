@@ -1,8 +1,7 @@
 {
-  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!api/|sitemap\\.xml|robots\\.txt|favicon\\.ico).*)",
+      "source": "/((?!api/|sitemap\\.xml$|robots\\.txt$|favicon\\.ico$).*)",
       "destination": "/index.html"
     }
   ]
