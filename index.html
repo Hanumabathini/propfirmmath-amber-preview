@@ -809,7 +809,7 @@ function firmAccountExplorer(f){
   var known=f.from!==null&&f.from!==undefined;
   var starter='<div class="pfm-account-option"><div class="pfm-account-option-head"><strong>'+esc(f.fromPlan||"Starting account")+'</strong><span class="chip grey">Starting option</span></div>'+
     '<div class="pfm-account-price">'+(known?priceHTML(f):"Price not verified")+'</div>'+
-    '<p class="mut small">This is the starting offer recorded in our research, not a complete list of account sizes or a guaranteed checkout price.</p></div>';
+    '<p class="mut small">This is the starting offer recorded in our research, not a complete list of account sizes or a guaranteed checkout price.</p><a href="'+esc(f.site)+'" target="_blank" rel="noopener noreferrer nofollow">Check available sizes and current prices ↗</a></div>';
   var options=plans.length?plans.map(function(p){
     return '<div class="pfm-account-option"><div class="pfm-account-option-head"><strong>'+esc(p.name)+'</strong><span class="chip grey">Source-linked</span></div>'+
       '<p class="mut small">'+esc(p.size||"Account size not recorded")+' · '+esc(p.priceText||"Check official price")+'</p>'+
@@ -823,11 +823,11 @@ function firmAccountExplorer(f){
     '<details class="pfm-account-faq"><summary>New to prop firms? Understand the terms before choosing</summary>'+
     '<dl><dt>Account size</dt><dd>The nominal trading account balance. It is not money you can withdraw.</dd>'+
     '<dt>Evaluation / challenge</dt><dd>A trading test with a profit target and risk limits. Passing does not automatically mean a payout.</dd>'+
-    '<dt>Maximum drawdown</dt><dd>The loss limit that can end an account. Static, end-of-day trailing and intraday trailing limits behave differently.</dd>'+
+    '<dt>Maximum drawdown</dt><dd>The loss limit that can end an account. Static, end-of-day trailing and intraday trailing limits behave differently. <a href="/glossary">Learn the terminology</a>.</dd>'+ 
     '<dt>Daily loss limit</dt><dd>The maximum loss allowed in a day, if that plan has one.</dd>'+
     '<dt>Activation or subscription fee</dt><dd>Possible extra charges beyond the advertised evaluation price.</dd>'+
-    '<dt>Payout eligibility</dt><dd>The plan-specific requirements you must satisfy before requesting a withdrawal.</dd></dl></details>'+
-    '<div class="pfm-account-actions"><a class="btn small" href="/compare?add='+esc(f.slug)+'">Compare this firm</a><a class="btn small ghost" href="'+esc(f.site)+'" target="_blank" rel="noopener noreferrer nofollow">See official account options ↗</a></div>'+
+    '<dt>Payout eligibility</dt><dd>The plan-specific requirements you must satisfy before requesting a withdrawal. <a href="/rules">Read the rules guide</a>.</dd></dl></details>'+ 
+    '<div class="pfm-account-actions"><a class="btn small" href="/compare?add='+esc(f.slug)+'">Compare this firm</a><a class="btn small ghost" href="/tools">Use calculators</a><a class="btn small ghost" href="'+esc(f.site)+'" target="_blank" rel="noopener noreferrer nofollow">See official account options ↗</a></div>'+ 
     '</section>';
 }
 function pageFirm(f){
