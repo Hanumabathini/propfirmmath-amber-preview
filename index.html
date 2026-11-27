@@ -1360,35 +1360,26 @@ function pageJournal(){
 }
 function journalDashboard(rows){
   var ordered=rows.slice().sort(function(a,b){return String(a.traded_at).localeCompare(String(b.traded_at));});
-  var total=ordered.reduce(function(v,r){return v+Number(r.pnl||0);},0);
-  var wins=ordered.filter(function(r){return Number(r.pnl)>0;});
-  var losses=ordered.filter(function(r){return Number(r.pnl)<0;});
-  var grossWin=wins.reduce(function(v,r){return v+Number(r.pnl);},0);
-  var grossLoss=-losses.reduce(function(v,r){return v+Number(r.pnl);},0);
-  var best=ordered.length?Math.max.apply(null,ordered.map(function(r){return Number(r.pnl);})):0;
-  var worst=ordered.length?Math.min.apply(null,ordered.map(function(r){return Number(r.pnl);})):0;
-  var equity=[0],running=0,peak=0,maxDrawdown=0,winStreak=0,lossStreak=0,bestWinStreak=0,bestLossStreak=0;
-  ordered.forEach(function(r){var v=Number(r.pnl);running+=v;equity.push(running);peak=Math.max(peak,running);maxDrawdown=Math.max(maxDrawdown,peak-running);winStreak=v>0?winStreak+1:0;lossStreak=v<0?lossStreak+1:0;bestWinStreak=Math.max(bestWinStreak,winStreak);bestLossStreak=Math.max(bestLossStreak,lossStreak);});
-  var lo=Math.min.apply(null,equity),hi=Math.max.apply(null,equity),span=Math.max(1,hi-lo);
-  var path=equity.map(function(v,i){return (i?"L":"M")+(20+(i/Math.max(1,equity.length-1))*760).toFixed(1)+","+(180-((v-lo)/span)*150).toFixed(1);}).join(" ");
-  var chart=ordered.length?'<svg viewBox="0 0 800 210" role="img" aria-label="Cumulative profit and loss chart" style="display:block;width:100%;height:auto;max-height:260px"><line x1="20" y1="180" x2="780" y2="180" stroke="currentColor" opacity=".18"/><path d="'+path+'" fill="none" stroke="'+(total>=0?"#eaa328":"#ff9078")+'" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="780" cy="'+(180-((total-lo)/span)*150).toFixed(1)+'" r="5" fill="#eaa328"/></svg>':'<p class="mut">Your equity curve appears after you log your first trade.</p>';
-  var stat=function(label,value,detail){return '<div class="card" style="padding:17px;min-width:0"><div class="mut small">'+label+'</div><div style="font-size:clamp(20px,2.2vw,30px);font-weight:800;margin-top:7px;overflow-wrap:anywhere">'+value+'</div><div class="mut small" style="margin-top:5px">'+detail+'</div></div>';};
-  var dates={};ordered.forEach(function(r){var d=String(r.traded_at).slice(0,10);dates[d]=(dates[d]||0)+Number(r.pnl);});
-  var dayKeys=Object.keys(dates).sort().slice(-14);
-  var maxDay=Math.max(1,...dayKeys.map(function(d){return Math.abs(dates[d]);}));
-  var dayChart=dayKeys.length?'<div style="display:flex;align-items:end;gap:7px;height:130px;margin-top:16px">'+dayKeys.map(function(d){var v=dates[d];return '<div title="'+esc(d)+': '+money(v)+'" style="flex:1;min-width:5px;max-width:42px;height:'+Math.max(5,Math.abs(v)/maxDay*110)+'px;background:'+(v>=0?'#eaa328':'#ff9078')+';border-radius:5px 5px 2px 2px"></div>';}).join('')+'</div><p class="mut small">Daily net P&amp;L · last 14 trading days · hover bars for values</p>':'<p class="mut">Daily results will appear here.</p>';
-  return '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px;margin:18px 0">'+
-    stat('Net P&amp;L',money(total),ordered.length+' recorded trades')+
-    stat('Win rate',(ordered.length?(100*wins.length/ordered.length).toFixed(1):'0')+'%',wins.length+' wins · '+losses.length+' losses')+
-    stat('Profit factor',grossLoss?(grossWin/grossLoss).toFixed(2):grossWin?'∞':'—','Gross wins / gross losses')+
-    stat('Average trade',money(ordered.length?total/ordered.length:0),'Best '+money(best)+' · Worst '+money(worst))+
-    stat('Max drawdown',money(maxDrawdown),'Peak-to-trough realized P&amp;L decline')+
-    stat('Avg win / loss',money(wins.length?grossWin/wins.length:0)+' / '+money(losses.length?-grossLoss/losses.length:0),'Based on closed winning and losing trades')+
-    stat('Expectancy',money(ordered.length?total/ordered.length:0),'Average realized result per trade')+
-    stat('Streaks',bestWinStreak+'W / '+bestLossStreak+'L','Longest consecutive winning / losing trades')+'</div>'+
-    '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;margin-bottom:18px">'+
-    '<div class="card" style="min-width:0"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L · all logged trades</p>'+chart+'</div>'+
-    '<div class="card" style="min-width:0"><h3>Daily performance</h3>'+dayChart+'</div></div>';
+  var total=0,peak=0,drawdown=0,win=0,loss=0,grossWin=0,grossLoss=0,points=[0],symbols={},months={};
+  ordered.forEach(function(r){var p=Number(r.pnl)||0;total+=p;points.push(total);peak=Math.max(peak,total);drawdown=Math.max(drawdown,peak-total);
+    if(p>0){win++;grossWin+=p;}else if(p<0){loss++;grossLoss-=p;}
+    var k=(r.symbol||"Other").toUpperCase();symbols[k]=(symbols[k]||0)+p;
+    var m=String(r.traded_at).slice(0,7);months[m]=(months[m]||0)+p;
+  });
+  var count=ordered.length,lo=Math.min.apply(null,points),hi=Math.max.apply(null,points),span=Math.max(1,hi-lo);
+  var path=points.map(function(v,i){return (i?"L":"M")+(12+756*i/Math.max(1,points.length-1)).toFixed(1)+","+(184-158*(v-lo)/span).toFixed(1);}).join(" ");
+  var stat=function(label,value,sub,color){return '<div class="card journal-kpi"><div class="mut small">'+label+'</div><div class="journal-kpi-value"'+(color?' style="color:'+color+'"':'')+'>'+value+'</div><div class="mut small">'+sub+'</div></div>';};
+  var pf=grossLoss?(grossWin/grossLoss).toFixed(2)+'x':grossWin?'∞':'—';
+  var kpis='<div class="journal-kpis">'+stat('Net profit',money(total),count+' recorded trades',total>=0?'#36d993':'#ff7474')+stat('Win rate',(count?(100*win/count).toFixed(1):'0')+'%',win+' wins / '+loss+' losses')+stat('Profit factor',pf,'Gross profit / gross loss')+stat('Average trade',money(count?total/count:0),'Realized P&amp;L per trade')+stat('Max drawdown',money(drawdown),'Peak-to-trough decline','#ff8585')+stat('Expectancy',money(count?total/count:0),'Per recorded trade')+'</div>';
+  var curve=count?'<svg viewBox="0 0 780 210" role="img" aria-label="Equity curve based on recorded trades" style="display:block;width:100%;height:auto"><defs><linearGradient id="pfmEquityFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#efad2d" stop-opacity=".3"/><stop offset="100%" stop-color="#efad2d" stop-opacity="0"/></linearGradient></defs><path d="'+path+' L768,194 L12,194 Z" fill="url(#pfmEquityFill)"/><path d="'+path+'" fill="none" stroke="#f2af2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>':'<div class="journal-empty">Log your first trade to start building your equity curve.</div>';
+  var year=new Date().getFullYear();
+  var tiles=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map(function(m,i){var k=year+'-'+String(i+1).padStart(2,'0'),v=months[k],cls=v===undefined?'none':v>=0?'gain':'loss';return '<div class="journal-month '+cls+'" title="'+m+' '+year+'"><span>'+m+'</span><strong>'+(v===undefined?'—':money(v))+'</strong></div>';}).join('');
+  var keys=Object.keys(symbols).sort(function(a,b){return Math.abs(symbols[b])-Math.abs(symbols[a]);}).slice(0,5),max=Math.max(1,...keys.map(function(k){return Math.abs(symbols[k]);}));
+  var bars=keys.length?keys.map(function(k){return '<div class="journal-symbol"><span>'+esc(k)+'</span><div class="journal-bar"><div style="width:'+Math.max(2,100*Math.abs(symbols[k])/max)+'%;background:'+(symbols[k]>=0?'#efad2d':'#ff7474')+'"></div></div><strong style="color:'+(symbols[k]>=0?'#36d993':'#ff8585')+'">'+money(symbols[k])+'</strong></div>';}).join(''):'<p class="mut small">Instrument results appear after your first trade.</p>';
+  var recent=ordered.slice().reverse().slice(0,5);
+  var table=recent.length?'<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th>Date</th><th>Symbol</th><th>P&amp;L</th></tr></thead><tbody>'+recent.map(function(r){var p=Number(r.pnl)||0;return '<tr><td>'+esc(String(r.traded_at).slice(0,10))+'</td><td>'+esc(r.symbol||'—')+'</td><td style="color:'+(p>=0?'#36d993':'#ff8585')+'">'+money(p)+'</td></tr>';}).join('')+'</tbody></table></div>':'<p class="mut small">Your latest trades will appear here.</p>';
+  return kpis+'<div class="journal-dashboard-top"><div class="card"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L</p>'+curve+'</div><div class="card"><h3>Monthly performance <span class="mut small">'+year+' · USD</span></h3><div class="journal-month-grid">'+tiles+'</div></div></div>'+
+  '<div class="journal-dashboard-bottom"><div class="card"><h3>Trading statistics</h3><div class="journal-stat-line"><span>Total trades</span><strong>'+count+'</strong></div><div class="journal-stat-line"><span>Average win</span><strong>'+money(win?grossWin/win:0)+'</strong></div><div class="journal-stat-line"><span>Average loss</span><strong>'+money(loss?-grossLoss/loss:0)+'</strong></div><div class="journal-stat-line"><span>Winning trades</span><strong>'+win+'</strong></div><div class="journal-stat-line"><span>Losing trades</span><strong>'+loss+'</strong></div></div><div class="card"><h3>P&amp;L by symbol</h3>'+bars+'</div><div class="card"><h3>Recent trades</h3>'+table+'</div></div>';
 }
 function journalInsights(rows){
   var symbols={};
@@ -1435,6 +1426,29 @@ function renderJournal(){
   '.pfm-journal .card h3{color:#f2f5f8;letter-spacing:-.025em}'+
   '.pfm-journal .mut{color:#94a9ba!important}'+
   '.pfm-journal .btn:not(.ghost){background:#d8aa64;color:#10202e;border-color:#d8aa64}'+
+  '.pfm-journal .journal-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:18px}'+
+  '.pfm-journal .journal-kpi{padding:17px 14px!important;min-width:0}'+
+  '.pfm-journal .journal-kpi-value{font-size:clamp(18px,1.8vw,26px);font-weight:800;letter-spacing:-.04em;overflow-wrap:anywhere;margin:10px 0 5px}'+
+  '.pfm-journal .journal-dashboard-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:14px;margin-bottom:14px}'+
+  '.pfm-journal .journal-dashboard-bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}'+
+  '.pfm-journal .journal-dashboard-top>.card,.pfm-journal .journal-dashboard-bottom>.card{min-width:0;padding:19px!important}'+
+  '.pfm-journal .journal-month-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px}'+
+  '.pfm-journal .journal-month{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:7px;background:#172a3a;font-size:11px;min-width:0}'+
+  '.pfm-journal .journal-month strong{font-size:12px;overflow-wrap:anywhere;text-align:center}'+
+  '.pfm-journal .journal-month.gain{background:#103d31;color:#51e6a1}'+
+  '.pfm-journal .journal-month.loss{background:#40232e;color:#ff8d94}'+
+  '.pfm-journal .journal-stat-line{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #2b3b4a;padding:10px 0;font-size:13px}'+
+  '.pfm-journal .journal-symbol{display:grid;grid-template-columns:65px minmax(0,1fr) 95px;gap:10px;align-items:center;margin:15px 0;font-size:12px}'+
+  '.pfm-journal .journal-symbol strong{text-align:right}'+
+  '.pfm-journal .journal-bar{height:12px;background:#1a3142;border-radius:3px;overflow:hidden}'+
+  '.pfm-journal .journal-bar>div{height:100%;border-radius:3px}'+
+  '.pfm-journal .journal-table-wrap{overflow-x:auto}'+
+  '.pfm-journal .journal-table{width:100%;border-collapse:collapse;font-size:12px}'+
+  '.pfm-journal .journal-table th,.pfm-journal .journal-table td{padding:12px 7px;border-bottom:1px solid #2b3b4a;text-align:left;white-space:nowrap}'+
+  '.pfm-journal .journal-table th{color:#a1b3c2;font-weight:500}'+
+  '.pfm-journal .journal-empty{padding:70px 20px;text-align:center;color:#a1b3c2;font-size:13px}'+
+  '@media(max-width:1180px){.pfm-journal .journal-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.pfm-journal .journal-dashboard-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}.pfm-journal .journal-dashboard-bottom>.card:last-child{grid-column:1/-1}}'+
+  '@media(max-width:650px){.pfm-journal .journal-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pfm-journal .journal-dashboard-top,.pfm-journal .journal-dashboard-bottom{grid-template-columns:minmax(0,1fr)}.pfm-journal .journal-dashboard-bottom>.card:last-child{grid-column:auto}.pfm-journal .journal-month-grid{gap:5px}.pfm-journal .journal-month{padding:10px 2px}}'+
   '.pfm-journal [role="tabpanel"][hidden]{display:none!important}'+
   '.pfm-journal .journal-account{margin-top:auto;padding:14px 10px;border-top:1px solid #26394b;color:#9fb1c1;font-size:11px;overflow-wrap:anywhere}'+
   '.pfm-journal .journal-account strong{display:block;color:#e8eef4;font-size:12px;margin-bottom:4px}'+
