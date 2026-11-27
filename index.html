@@ -2270,8 +2270,9 @@ function journalFirmRules(firm, plan, size){
       return !plan || n.toLowerCase() === String(plan).toLowerCase();
     });
     var sized = named.filter(function(p){ return size && Number(p.size) === Number(size); });
-    rec = (sized.length ? sized[0] : named[0]) || null;
+    rec = plan && size && sized.length === 1 ? sized[0] : null;
   }
+  if (!rec) return null;
   function clause(text){
     text = String(text || "");
     if (!text) return "";
@@ -2316,16 +2317,16 @@ function journalFirmRules(firm, plan, size){
     var n = /(\d+(?:\.\d+)?)/.exec(text);
     return n ? parseFloat(n[1]) : null;
   }
-  var targetText = (rec && rec.target) || clause(firm.target);
-  var dailyText = (rec && rec.dailyLoss) || clause(firm.dailyDD);
-  var ddText = (rec && rec.maxDD) || clause(firm.dd);
-  var dayText = (rec && rec.minDays) || clause(firm.minDays);
-  var consText = (rec && rec.consistency) || clause(firm.consistencyText);
+  var targetText = rec.target || null;
+  var dailyText = rec.dailyLoss || null;
+  var ddText = rec.maxDD || null;
+  var dayText = rec.minDays || null;
+  var consText = rec.consistency || null;
   var plainDollar = /\$([\d,]+(?:\.\d+)?)/.exec(String(ddText || ""));
   return {
     target: dollars(targetText) || percentMoney(targetText),
     daily: dollars(dailyText) || percentMoney(dailyText),
-    drawdown: dollars(ddText) || percentMoney(ddText) || (plainDollar ? Number(plainDollar[1].replace(/,/g, "")) : null),
+    drawdown: dollars(ddText) || percentMoney(ddText) || (plainDollar && !/\(\d+(?:\.\d+)?K\)/i.test(String(ddText || "")) ? Number(plainDollar[1].replace(/,/g, "")) : null),
     minDays: days(dayText),
     consistency: cap(consText)
   };
@@ -2354,7 +2355,7 @@ function journalRuleCard(account, rows){
     if (unit === "days") shown = used + " / " + limit + " days";
     return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>' + shown + '</strong></div><div class="journal-rule-track"><div style="width:' + pct.toFixed(1) + '%;background:' + (over ? "#ff7474" : "#d8aa64") + '"></div></div></div>';
   }
-  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">This firm is not in the directory, so plan limits are not filled in.</p></div>';
+  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">Verified limits for this exact program and account size are not available.</p></div>';
   return '<div class="card"><h3>' + esc(account.account_label || "Account") + '</h3><p class="mut small">' + esc(account.firm || "Account") + (account.plan ? " · " + esc(account.plan) : "") + (Number(account.account_size) > 0 ? " · " + money(account.account_size) : "") + '</p>' +
     bar("Profit target", Math.max(0, stats.total), rules.target, "$") +
     bar("Daily loss", todayPnl < 0 ? -todayPnl : 0, rules.daily, "$") +
