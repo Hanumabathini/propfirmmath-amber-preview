@@ -9,7 +9,7 @@ fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive:
 
 // Forge/derive route list from the firm data and the existing sitemap.
 const old = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
-const routes = new Set([...old.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1] || '/'));
+const routes = new Set([...old.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1] || '/').filter(r => r !== '/quiz'));
 ['/account', '/login', '/reset', '/journal'].forEach(r => routes.add(r));
 
 const noLib = src.replace('<script src="/vendor/supabase.js"></script>', '');
@@ -47,7 +47,7 @@ const done = new Set(), queue = [...routes], listed = new Set(routes);
 const hrefs = h => [...h.matchAll(/href="(\/[a-z0-9\-\/]*)"/g)].map(m => m[1].replace(/\/$/, '') || '/').filter(x => !x.startsWith('/vendor'));
 hrefs(src).forEach(h => queue.push(h));
 while (queue.length) {
-  const route = queue.shift(); if (done.has(route)) continue; done.add(route);
+  const route = queue.shift(); if (done.has(route) || route === '/quiz') continue; done.add(route);
   let r; try { r = render(route); } catch (e) { bad.push(route + ' ' + e.message); continue; }
   const missing = /page not found|something went wrong/i.test(r.app.slice(0, 600));
   if (r.h1 < 1 || r.app.length < 300 || missing) { (listed.has(route) ? bad : warn).push(route + (missing ? ' (not found / error)' : ' (empty render)')); continue; }
