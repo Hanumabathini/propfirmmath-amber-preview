@@ -31,7 +31,7 @@ function page(route, r, extraHead) {
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
   // Make market statistic cards robust even if an overlay or client-side handler
   // interferes: the entire card remains a native anchor with a real destination.
-  if (/^\\/(futures|forex|crypto)$/.test(route)) {
+  if (['/futures', '/forex', '/crypto'].includes(route)) {
     h = h.replace(/<a class="stat pfm-stat-link" href="([^"]+)"/g,
       '<a class="stat pfm-stat-link" style="position:relative;z-index:2;pointer-events:auto;cursor:pointer" href="$1"');
   }
