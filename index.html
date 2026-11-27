@@ -64,6 +64,12 @@ nav.main .nav-resources-heading{padding:8px 12px 3px;font-size:11px;text-transfo
  header.menu-open nav.main{display:flex}
  nav.main a{width:100%}
 }
+.skip-link{position:absolute;left:12px;top:-60px;z-index:200;background:var(--amber);color:#231500;font-weight:800;padding:12px 18px;border-radius:10px}
+.skip-link:focus{top:10px;text-decoration:none}
+#app:focus{outline:none}
+.crumb a{display:inline-block;padding:12px 4px}
+.card>a[href^="/guide/"],.card a[href^="/best-for/"]{display:inline-block;padding:12px 0}
+.tblwrap td>a,.dt th>a{min-height:44px}
 /* ---------- generic ---------- */
 .card{background:linear-gradient(155deg,var(--panel2),var(--panel));border:1px solid rgba(255,176,32,.10);border-radius:var(--r);box-shadow:var(--neu-out);padding:22px}
 .card h3{font-size:19px}
@@ -361,6 +367,7 @@ if (location.hash.startsWith("#/")) {
 </script>
 </head>
 <body>
+<a class="skip-link" href="#app">Skip to main content</a>
 <header>
   <div class="hbar">
     <a class="logo" href="/" aria-label="PropFirmMath home">
@@ -371,7 +378,7 @@ if (location.hash.startsWith("#/")) {
     <nav class="main" id="mainnav" aria-label="Main"></nav>
   </div>
 </header>
-<main class="wrap" id="app"></main>
+<main class="wrap" id="app" tabindex="-1"></main>
 <footer>
   <div class="fwrap">
     <div>
@@ -594,6 +601,8 @@ function renderNav(route){
   html += PM_USER ? '<a href="/journal" class="signin'+(route==="/journal"?" on":"")+'">My Journal</a>' : '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
   $("#mainnav").innerHTML = html;
 }
+/* skip link: move focus to main content without changing the route */
+(function(){var a=document.querySelector(".skip-link");if(a)a.addEventListener("click",function(e){e.preventDefault();var m=document.getElementById("app");if(m){m.focus();m.scrollIntoView();}});})();
 /* mobile menu toggle */
 (function(){var t=document.getElementById("navtoggle"),h=document.querySelector("header");if(!t||!h)return;
  function set(o){h.classList.toggle("menu-open",o);t.setAttribute("aria-expanded",o?"true":"false");t.setAttribute("aria-label",o?"Close menu":"Open menu");}
@@ -618,6 +627,17 @@ if (sb){
 }
 function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
+var ROUTE_DESC={"/":"Compare 48 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/quiz":"A 60-second quiz that matches your budget, market and style to prop firms using published rules — never commission.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"How PropFirmMath makes money through affiliate commissions, and the rules that keep rankings independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices."};
+function seoDescription(path,label){
+  if(ROUTE_DESC[path]) return ROUTE_DESC[path];
+  var fm=path.match(/^\/firm\/([^/]+)$/); if(fm&&typeof firm==="function"){var f=firm(fm[1]); if(f) return f.name+" review: "+(f.split?"profit split "+f.split+", ":"")+(f.from!==null?"from "+(f.fromCur==="EUR"?"€":"$")+f.from+". ":"")+"Rules, drawdown and payouts researched on the firm's own site, "+SNAPSHOT+".";}
+  var vm=path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/); if(vm&&typeof firm==="function"){var a=firm(vm[1]),b=firm(vm[2]); if(a&&b) return a.name+" vs "+b.name+": rating, profit split, entry price and payout cycle side by side, from each firm's own site.";}
+  return label ? label+" — prop firm research from PropFirmMath: rules, costs and payouts, each dated and checked on the firm's own site." : ROUTE_DESC["/"];
+}
+function seoSet(sel,make){ var el=document.head.querySelector(sel); if(!el){el=make();el.setAttribute("data-seo","1");document.head.appendChild(el);} return el; }
+function seoMeta(attr,key,val){ var el=seoSet('meta['+attr+'="'+key+'"]',function(){var m=document.createElement("meta");m.setAttribute(attr,key);return m;}); el.content=val; }
+function seoLd(objs){ document.head.querySelectorAll('script[type="application/ld+json"][data-seo]').forEach(function(x){x.remove();}); objs.forEach(function(o){ var sc=document.createElement("script"); sc.type="application/ld+json"; sc.setAttribute("data-seo","1"); sc.text=JSON.stringify(o); document.head.appendChild(sc); }); }
+function stripTags(h){ return String(h).replace(/<[^>]*>/g,"").replace(/&amp;/g,"&").replace(/\s+/g," ").trim(); }
 function updateSeo(path){
   var name = "PropFirmMath";
   var label = path.split("/").filter(Boolean).map(function(x){return x.replace(/-/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();});}).join(" — ");
@@ -627,12 +647,19 @@ function updateSeo(path){
   var vsMatch = path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/);
   if (vsMatch && typeof firm==="function") {var fa=firm(vsMatch[1]), fb=firm(vsMatch[2]); if(fa&&fb) label=fa.name+" vs "+fb.name+" — Rules, Price & Payout Compared";}
   document.title = (label?label+" | ":"")+name+" — Prop Firm Research";
-  var description = label ? "Independent "+label+" research, prop firm rules, costs and payout information. Check the verification date before making decisions." : "Compare prop firm rules, costs, payouts and trading tools with PropFirmMath.";
+  var description = seoDescription(path,label);
   var meta=document.querySelector('meta[name="description"]');
   if(!meta){meta=document.createElement("meta");meta.name="description";document.head.appendChild(meta);}meta.content=description;
   var canonical=document.querySelector('link[rel="canonical"]');
   if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.appendChild(canonical);}
   canonical.href=location.origin+path;
+  var url=location.origin+path;
+  seoMeta("property","og:type","website"); seoMeta("property","og:site_name",name); seoMeta("property","og:title",document.title); seoMeta("property","og:description",description); seoMeta("property","og:url",url); seoMeta("property","og:image",location.origin+"/og.png"); seoMeta("property","og:image:width","1200"); seoMeta("property","og:image:height","630");
+  seoMeta("name","twitter:card","summary_large_image"); seoMeta("name","twitter:title",document.title); seoMeta("name","twitter:description",description); seoMeta("name","twitter:image",location.origin+"/og.png");
+  var ld=[{"@context":"https://schema.org","@type":"WebSite","name":name,"url":location.origin+"/"},{"@context":"https://schema.org","@type":"Organization","name":name,"url":location.origin+"/","logo":location.origin+"/og.png"}];
+  if(path==="/faq"&&typeof FAQS!=="undefined") ld.push({"@context":"https://schema.org","@type":"FAQPage","mainEntity":FAQS.map(function(q){return {"@type":"Question","name":q.q,"acceptedAnswer":{"@type":"Answer","text":stripTags(q.a)}};})});
+  if(firmMatch||vsMatch) ld.push({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":location.origin+"/"},{"@type":"ListItem","position":2,"name":firmMatch?"Prop Firms":"Compare","item":location.origin+(firmMatch?"/firms":"/compare")},{"@type":"ListItem","position":3,"name":label.replace(/ — Rules.*$/,""),"item":url}]});
+  seoLd(ld);
 }
 function route(){
   var raw = location.pathname || "/";
