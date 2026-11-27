@@ -71,7 +71,69 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Futures-only firm (CME group). Four evaluation lines — Builder, Rapid, Rapid EOD and Pro, $25K–$150K — plus the small static-drawdown Signature accounts. Rapid pays daily; Pro pays every 14 days. No activation fee on any plan.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "my-funded-futures-signature-5000",
+        "program": "Signature",
+        "name": "Signature",
+        "size": 5000,
+        "price": 75,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "verified",
+        "note": "One-time. Homepage Signature prices checked 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "Builder soft pause only",
+        "maxDD": "EOD trailing, $1000 (25K)",
+        "ddType": "EOD",
+        "minDays": "Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2",
+        "split": "80-90%",
+        "payout": "Rapid daily / Builder 48h / Pro 14d",
+        "platform": "Tradovate, NinjaTrader, Quantower",
+        "source": "https://myfundedfutures.com"
+      },
+      {
+        "id": "my-funded-futures-signature-10000",
+        "program": "Signature",
+        "name": "Signature",
+        "size": 10000,
+        "price": 140,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "verified",
+        "note": null,
+        "target": "6",
+        "dailyLoss": "Builder soft pause only",
+        "maxDD": "EOD trailing, $1000 (25K)",
+        "ddType": "EOD",
+        "minDays": "Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2",
+        "split": "80-90%",
+        "payout": "Rapid daily / Builder 48h / Pro 14d",
+        "platform": "Tradovate, NinjaTrader, Quantower",
+        "source": "https://myfundedfutures.com"
+      },
+      {
+        "id": "my-funded-futures-signature-20000",
+        "program": "Signature",
+        "name": "Signature",
+        "size": 20000,
+        "price": 280,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "verified",
+        "note": null,
+        "target": "6",
+        "dailyLoss": "Builder soft pause only",
+        "maxDD": "EOD trailing, $1000 (25K)",
+        "ddType": "EOD",
+        "minDays": "Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2",
+        "split": "80-90%",
+        "payout": "Rapid daily / Builder 48h / Pro 14d",
+        "platform": "Tradovate, NinjaTrader, Quantower",
+        "source": "https://myfundedfutures.com"
+      }
+    ]
   },
   {
     "slug": "next-level-funded",
@@ -138,7 +200,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm — not a futures firm. Step evaluations and three instant lines (Flex, Pro, Crown) from $5K to $500K, on Match-Trader, Platform 5 and TradeLocker. Cards advertise '100%*' splits; the default is 80%, with 100% only as a paid add-on.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "next-level-funded-instant-flex-10000",
+        "program": "Instant Flex",
+        "name": "Instant Flex",
+        "size": 10000,
+        "price": 7.92,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "verified",
+        "note": "List $19.80. $7.92 with BOGO60, checked 27 Nov 2026.",
+        "target": "1-Step 8 / 2-Step 8 then 6",
+        "dailyLoss": "3%",
+        "maxDD": "7% static (1-Step)",
+        "ddType": "Static",
+        "minDays": "none",
+        "split": "80 std (100% paid add-on)",
+        "payout": "on-demand",
+        "platform": null,
+        "source": "https://www.nextlevelfunded.com/evaluations"
+      }
+    ]
   },
   {
     "slug": "ftmo",
@@ -202,7 +286,29 @@ var FIRMS = [
     "largest": null,
     "note": "Global ftmo.com prices are in EUR and US residents cannot buy there — US clients are served by FTMO US at ftmo.oanda.com (USD, 2-Step from $99), except AR, DE, LA, MT, SC. The Instant Account (launched Oct 2026) is a CFD product, not a futures product.",
     "summary": "The longest-running firm in this directory. Main product is forex/CFD (2-Step, 1-Step and, since Oct 2026, an Instant Account), priced in EUR on ftmo.com, plus a separate monthly-subscription FTMO Futures line. US clients are served only through FTMO US at ftmo.oanda.com, in USD, except in AR, DE, LA, MT and SC.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "ftmo-2-step-10000",
+        "program": "2-Step",
+        "name": "2-Step",
+        "size": 10000,
+        "price": 89,
+        "currency": "EUR",
+        "monthly": false,
+        "coverage": "verified",
+        "note": "List price. The 27 Nov 2026 homepage showed this 10K challenge at €62 during the Black Friday sale.",
+        "target": "2-Step 10 then 5",
+        "dailyLoss": "5% (2-Step)",
+        "maxDD": "10% static (2-Step)",
+        "ddType": "Static",
+        "minDays": "2-Step 4 per phase",
+        "split": "80-90%",
+        "payout": "first payout day 14, then on demand",
+        "platform": "MT4, MT5, cTrader, TradingView",
+        "source": "https://ftmo.com"
+      }
+    ]
   },
   {
     "slug": "top-one-futures",
@@ -343,7 +449,49 @@ var FIRMS = [
     "largest": null,
     "note": "One research read reports a 33% consistency rule on the futures program, which conflicts with the homepage's 'no consistency' position for accounts under $1M. Unresolved on the firm's own pages.",
     "summary": "US firm running a single 1-step evaluation across forex/CFD, CME futures and S&P 100 equities, up to $2M. 10% target, 6% static drawdown, 75% split (90% add-on), first withdrawal from day 1, then every 30 days.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "ment-funding-equities-5000",
+        "program": "Equities",
+        "name": "Equities",
+        "size": 5000,
+        "price": 220,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "10",
+        "dailyLoss": "5%",
+        "maxDD": "6% static",
+        "ddType": "Static",
+        "minDays": "none",
+        "split": "75 (90% add-on)",
+        "payout": "first withdrawal day 1, then every 30d",
+        "platform": "cTrader, DXtrade, Match-Trader, Rithmic, ATAS",
+        "source": "https://mentfunding.com"
+      },
+      {
+        "id": "ment-funding-forex-25000",
+        "program": "Forex",
+        "name": "Forex",
+        "size": 25000,
+        "price": 325,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Named in the recorded starting-offer line. Not a full catalog.",
+        "target": "10",
+        "dailyLoss": "5%",
+        "maxDD": "6% static",
+        "ddType": "Static",
+        "minDays": "none",
+        "split": "75 (90% add-on)",
+        "payout": "first withdrawal day 1, then every 30d",
+        "platform": "cTrader, DXtrade, Match-Trader, Rithmic, ATAS",
+        "source": "https://mentfunding.com"
+      }
+    ]
   },
   {
     "slug": "tradeify",
@@ -411,7 +559,29 @@ var FIRMS = [
     "largest": 400000,
     "note": "The firm's homepage crawl on Nov 26, 2026 rendered $359 / $251 for every size, which conflicts with its own Pricing Reference ($99 list for Growth 25K). This page uses the documented Pricing Reference; the checkout price is the final word.",
     "summary": "US futures-only firm. Growth, Select and Lightning (instant) lines, $25K–$150K plus a 300K Select. 90% split on sim-funded accounts, 80% on Elite Live. Prices here are the firm's documented Pricing Reference list.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "tradeify-growth-25000",
+        "program": "Growth",
+        "name": "Growth",
+        "size": 25000,
+        "price": 99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "Growth soft DLL $600 (25K)",
+        "maxDD": "EOD trailing, $1000 (25K)",
+        "ddType": "EOD",
+        "minDays": "Growth 1 / Select 3",
+        "split": "90 sim / 80 live",
+        "payout": "Growth after 5 profitable days / Select Daily daily",
+        "platform": "Tradovate, NinjaTrader",
+        "source": "https://tradeify.co"
+      }
+    ]
   },
   {
     "slug": "apex-trader-funding",
@@ -479,7 +649,29 @@ var FIRMS = [
     "largest": null,
     "note": "List price is shown. With code SAVENOW (90% off) the 25K Intraday Trail Standard was $16.70 on Nov 26, 2026. Instant funding is only partial: a limited-time $50K Instant Sim offer, with 'Instant PAs (coming soon)'.",
     "summary": "US futures firm built around running several accounts at once. Intraday Trail and EOD Trail evaluations, each in Standard and No-Activation-Fee versions. Pays 100% of each approved payout in the sim-funded Performance Account, with a 50% consistency gate at payout.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "apex-trader-funding-intraday-trail-std-25000",
+        "program": "Intraday Trail Std",
+        "name": "Intraday Trail Std",
+        "size": 25000,
+        "price": 167,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "Intraday none; EOD $500 (25K)",
+        "maxDD": "Intraday or EOD trailing, $1000 (25K)",
+        "ddType": "Intraday",
+        "minDays": "none",
+        "split": "100% of approved payouts",
+        "payout": "5 trading days between payouts",
+        "platform": "Rithmic, Tradovate, WealthCharts",
+        "source": "https://apextraderfunding.com"
+      }
+    ]
   },
   {
     "slug": "bulenox",
@@ -545,7 +737,29 @@ var FIRMS = [
     "largest": null,
     "note": "One research read listed Momentum drawdowns for larger sizes as $2,000 / $3,000 / $4,500 where another listed $2,250 / $4,000 / $5,500. The 25K figure ($1,000) agrees in both; treat larger sizes as checkout-verified only.",
     "summary": "US futures firm with three lines — Qualification, Momentum and Fast Track (instant). Traders keep 100% of the first $10,000 of payouts, then 90%. Two drawdown models (intraday or EOD trailing); the choice is locked for the life of the account.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "bulenox-momentum-25000",
+        "program": "Momentum",
+        "name": "Momentum",
+        "size": 25000,
+        "price": 94,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "Option 2 only",
+        "maxDD": "Intraday or EOD trailing, $1000 (25K Momentum)",
+        "ddType": "Intraday",
+        "minDays": "none to pass Qualification",
+        "split": "100% of first $10K, then 90%",
+        "payout": "daily (Fast Track/Momentum)",
+        "platform": null,
+        "source": "https://bulenox.com"
+      }
+    ]
   },
   {
     "slug": "fundednext",
@@ -611,7 +825,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "CFD line (Stellar Lite, 2-Step, 1-Step, Instant) plus a separate Futures Flex line on Tradovate. Payout structure is chosen at checkout for the life of the account: Standard (21 days, then 14), 3-Day, or On-Demand with a 40% best-day rule.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "fundednext-stellar-lite-5000",
+        "program": "Stellar Lite",
+        "name": "Stellar Lite",
+        "size": 5000,
+        "price": 32.99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step 8 then 5",
+        "dailyLoss": "5% (2-Step)",
+        "maxDD": "10% static (2-Step)",
+        "ddType": "Static",
+        "minDays": "5 per phase",
+        "split": "80 (90 scale-up, 95 add-on)",
+        "payout": "Std first 21d then 14d / 3-Day every 3d / On-Demand anytime",
+        "platform": "MT4, MT5, cTrader, Tradovate (Futures)",
+        "source": "https://fundednext.com/blog/fundednext-cfds-stellar-2-step-explained"
+      }
+    ]
   },
   {
     "slug": "fundingpips",
@@ -684,7 +920,29 @@ var FIRMS = [
     "largest": null,
     "note": "US eligibility is NOT confirmed on fundingpips.com. A different domain, fundingpips.net (FundingPips Corp, a different entity), states it does not accept US residents — do not mix the two sites' answers.",
     "summary": "Forex/CFD firm — no futures program was stated on the pages read. 2-Step Standard lets you pick the payout cycle at checkout and the split follows it: weekly 60%, bi-weekly 80%, on demand 100%. Zero is the instant line, at 95% every 14 days.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "fundingpips-2-step-pro-5000",
+        "program": "2-Step Pro",
+        "name": "2-Step Pro",
+        "size": 5000,
+        "price": 29,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step Std 8 then 5",
+        "dailyLoss": "3% or 5% (2-Step Std)",
+        "maxDD": "10% static (2-Step Std)",
+        "ddType": "Static",
+        "minDays": "2-Step Std 3 per phase",
+        "split": "60-100 by cycle",
+        "payout": "weekly / bi-weekly / on demand",
+        "platform": "MT5, cTrader, Match-Trader",
+        "source": "https://fundingpips.com/blog/fundingpips-vs-breakout-challenge-costs"
+      }
+    ]
   },
   {
     "slug": "fxify",
@@ -756,7 +1014,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD evaluations (One, Two and Three Phase) plus separate crypto and futures programs. Three Phase is the cheapest entry at $39 for 5K with a 5% static drawdown; instant funding runs from a $19 Lite account to a $1,749 Standard 50K.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "fxify-three-phase-5000",
+        "program": "Three Phase",
+        "name": "Three Phase",
+        "size": 5000,
+        "price": 39,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Three Phase 5% per phase",
+        "dailyLoss": "Lightning 3%",
+        "maxDD": "5% static (Three Phase)",
+        "ddType": "Static",
+        "minDays": "Lightning 5",
+        "split": "80 std (90% add-on)",
+        "payout": "Instant bi-weekly",
+        "platform": "MT4, MT5, DXtrade, TradingView",
+        "source": "https://fxify.com/blog/cheapest-path-funded-50k-fxify/"
+      }
+    ]
   },
   {
     "slug": "goat-funded-trader",
@@ -835,7 +1115,29 @@ var FIRMS = [
     "largest": null,
     "note": "Do not mix with GOAT Funded Futures (goatfundedfutures.com), the futures sister brand — different rules, prices and programs.",
     "summary": "Forex/CFD firm (futures are the separate GOAT Funded Futures brand). 1-Step and 2-Step GOAT evaluations plus Instant HERO, GOAT and PREMIUM lines. 80% split from the first funded payout on every route; news, overnight and weekend holding are permitted.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "goat-funded-trader-2-step-goat-instant-hero-5000",
+        "program": "2-Step GOAT / Instant HERO",
+        "name": "2-Step GOAT / Instant HERO",
+        "size": 5000,
+        "price": 17,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step 10 then 5",
+        "dailyLoss": "5% (2-Step Std)",
+        "maxDD": "10% static (2-Step)",
+        "ddType": "Static",
+        "minDays": "3 profitable days eval",
+        "split": "80 (100% add-on)",
+        "payout": "bi-weekly 14d",
+        "platform": "MT5, cTrader, MatchTrader, TradeLocker",
+        "source": "https://www.goatfundedtrader.com/blog/goat-funded-trader-vs-the-5ers"
+      }
+    ]
   },
   {
     "slug": "e8-perpetuals",
@@ -904,7 +1206,29 @@ var FIRMS = [
     "largest": 216000,
     "note": "Read from e8markets.com on Nov 26, 2026 (perpetuals page and account configurator). Figures shown are for E8 Classic unless stated. The firm also sells Classic Markets (forex, futures) on MT5, TradeLocker, cTrader and MatchTrader; those were not reviewed here. Trustpilot shows no score for E8.",
     "summary": "Perpetual futures on crypto, stocks, indices and metals traded on the E8 Terminal. E8 Classic starts at $27 for 2K: 8% target, 5% static loss floor that never trails, 2% daily limit, no consistency rule, daily payouts from $100.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "e8-perpetuals-e8-classic-2000",
+        "program": "E8 Classic",
+        "name": "E8 Classic",
+        "size": 2000,
+        "price": 27,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "8% ($4,000 on 50K Classic)",
+        "dailyLoss": "2% daily limit ($1,000 on 50K Classic)",
+        "maxDD": "5% static, never trails (e.g. $2,500 on 50K Classic)",
+        "ddType": "Static",
+        "minDays": "not stated",
+        "split": "80% on E8 One; Classic not stated",
+        "payout": "Daily payouts, $100 minimum (E8 Classic)",
+        "platform": "E8 Terminal",
+        "source": "https://trade.e8markets.com/docs/05_markets_and_instruments.html"
+      }
+    ]
   },
   {
     "slug": "the5ers",
@@ -965,7 +1289,29 @@ var FIRMS = [
     "largest": null,
     "note": "Internal conflict on the firm's own pages: the $100K High Stakes account is $405 (New) / $455 (Classic) on the program page, but a payout FAQ example prices it at $545. Re-check at checkout. The 10% max drawdown and 5% daily figures are partially verified.",
     "summary": "Forex/CFD firm known for scaling: the High Stakes split starts at 80% and rises with account growth to 100% plus fixed payouts at the top tiers. First payout 14 days after the funded account starts, then bi-weekly.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "the5ers-high-stakes-2500",
+        "program": "High Stakes",
+        "name": "High Stakes",
+        "size": 2500,
+        "price": 19,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "High Stakes 10 then 5",
+        "dailyLoss": "5% (partially verified)",
+        "maxDD": "10% (partially verified)",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80 rising to 100%",
+        "payout": "first 14d, then bi-weekly",
+        "platform": "MT5",
+        "source": "https://the5ers.com/high-stakes/"
+      }
+    ]
   },
   {
     "slug": "alpha-capital",
@@ -1035,7 +1381,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm with Alpha One, Alpha Pro (6%, 8% and 10% variants), Alpha Swing and Alpha Direct (instant, 90% split). Payout cycle — bi-weekly or on-demand — is chosen at checkout and changes both the price and the consistency rule.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "alpha-capital-alpha-pro-6-5000",
+        "program": "Alpha Pro 6%",
+        "name": "Alpha Pro 6%",
+        "size": 5000,
+        "price": 27,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Pro 6% 6 then 6",
+        "dailyLoss": "3-5% by variant",
+        "maxDD": "6% static (Pro 6%)",
+        "ddType": "Static",
+        "minDays": "Pro 3 per phase",
+        "split": "80 (90% add-on / Direct)",
+        "payout": "bi-weekly or on-demand",
+        "platform": "MT5, cTrader, DXtrade, TradeLocker",
+        "source": "https://alphacapitalgroup.uk/resources/alpha-capital-2026-plan-pricing-update"
+      }
+    ]
   },
   {
     "slug": "funded-trading-plus",
@@ -1115,7 +1483,29 @@ var FIRMS = [
     "largest": null,
     "note": "Read from fundedtradingplus.com compare-challenges page on Nov 26, 2026; prices are the $100K list prices. The profit split page is an accordion that did not render its figures, so the split is not stated. Trustpilot shows no score for this firm.",
     "summary": "UK-based forex/CFD firm offering Instant Funding, 1-Step Express, 2-Step Classic and Pass Now Pay Later (start for $4). News trading allowed on every path; 7-day reward cycle.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "funded-trading-plus-1-step-express-100000",
+        "program": "1-Step Express",
+        "name": "1-Step Express",
+        "size": 100000,
+        "price": 549,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "verified",
+        "note": "List $549. $370.58 with code BF325, checked 27 Nov 2026. A separate pay-later start at $4 is the recorded from-price and is not a sized plan.",
+        "target": "10% (1-Step), 7% + 7% (2-Step), 2% (Pass Now Pay Later), none on Instant",
+        "dailyLoss": "4% (6% on Instant)",
+        "maxDD": "Max drawdown 6% trailing (1-Step, Instant), 8% static (2-Step), 6% static (Pass Now Pay Later)",
+        "ddType": "Trailing, Static",
+        "minDays": "not stated",
+        "split": "not stated",
+        "payout": "7-day reward cycle (10 days on 2-Step)",
+        "platform": "MT5, Match-Trader",
+        "source": "https://www.fundedtradingplus.com/affiliates"
+      }
+    ]
   },
   {
     "slug": "blue-guardian",
@@ -1190,7 +1580,49 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Two markets: CFD evaluations and instant accounts to $400K, plus a newer futures model. 2-Step Standard is 85% (90% add-on) with an 8% static drawdown and payouts every 14 days. Note the Guardian Shield: at 2% floating loss on a funded account, trades close and the split drops to 50% permanently.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "blue-guardian-2-step-std-5000",
+        "program": "2-Step Std",
+        "name": "2-Step Std",
+        "size": 5000,
+        "price": 32,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step 8 then 4",
+        "dailyLoss": "4%",
+        "maxDD": "8% static (2-Step Std)",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "85 std (90% add-on)",
+        "payout": "every 14d (7d add-on)",
+        "platform": "MT5, Match-Trader, TradeLocker, Tradovate, NinjaTrader, TradingView, DeepCharts",
+        "source": "https://blueguardian.com/"
+      },
+      {
+        "id": "blue-guardian-2-step-std-100000",
+        "program": "2-Step Std",
+        "name": "2-Step Std",
+        "size": 100000,
+        "price": 463,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Second size named in the recorded starting-offer line. Not re-checked as its own plan on 27 Nov 2026.",
+        "target": "2-Step 8 then 4",
+        "dailyLoss": "4%",
+        "maxDD": "8% static (2-Step Std)",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "85 std (90% add-on)",
+        "payout": "every 14d (7d add-on)",
+        "platform": "MT5, Match-Trader, TradeLocker, Tradovate, NinjaTrader, TradingView, DeepCharts",
+        "source": "https://blueguardian.com/"
+      }
+    ]
   },
   {
     "slug": "aquafunded",
@@ -1265,7 +1697,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "CFD, futures and perps firm with Instant, One-Step, Two-Step, Three-Step and Flex models, from a $14 5K account. 90% standard split, 8% static drawdown, bi-weekly payouts, and scaling to $4,000,000.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "aquafunded-starting-offer-5000",
+        "program": "Starting offer",
+        "name": "Starting offer",
+        "size": 5000,
+        "price": 14,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step 8 then 5",
+        "dailyLoss": "4%",
+        "maxDD": "8% static",
+        "ddType": "Static",
+        "minDays": "5 (Pro Instant); 3 profitable (One-Step)",
+        "split": "90 (100% add-on)",
+        "payout": "bi-weekly",
+        "platform": "MT5, cTrader, Match-Trader, TradeLocker, Tradovate, NinjaTrader",
+        "source": "https://aquafunded.com/"
+      }
+    ]
   },
   {
     "slug": "tradeday",
@@ -1332,7 +1786,29 @@ var FIRMS = [
     "largest": null,
     "note": "Internal conflict on the firm's own pages: the homepage FAQ says Fast Pass has no minimum trading day requirement, while the plan cards say 'Min Trading Days 3'. Unresolved — check before buying.",
     "summary": "US futures firm (CME) with two programs: Quick Pay (day-one payouts, 50/50 split below $4,000 of current profit, 80/20 above) and Fast Pass (80/20). No activation fee and no subscription since Nov 12, 2026.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "tradeday-quick-pay-intraday-25000",
+        "program": "Quick Pay Intraday",
+        "name": "Quick Pay Intraday",
+        "size": 25000,
+        "price": 99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "none",
+        "maxDD": "trailing, $1000 (25K)",
+        "ddType": "EOD",
+        "minDays": "Quick Pay 5 / Fast Pass 3 (FAQ says none — conflict)",
+        "split": "50/50 below $4K profit, 80/20 above (Quick Pay Sim)",
+        "payout": "Quick Pay day-one payouts",
+        "platform": null,
+        "source": "https://tradeday.com/"
+      }
+    ]
   },
   {
     "slug": "qt-funded",
@@ -1599,7 +2075,29 @@ var FIRMS = [
     "largest": null,
     "note": "Internal conflict: the firm's help centre states a flat 80/20 split, while the main site advertises 'up to 100%'. This page uses the help-centre figure. Prices also differ between the help-centre table and a newer 'Two Step Classic' list — checkout is the deciding price. The $19 Flash price is an entry fee; a $50 activation fee applies on passing at 10K ($269 at $100K).",
     "summary": "Multi-market firm (futures, stocks, CFDs, crypto) run from Saint Lucia. CFD programs include Instant, One Trade, 2-Step, Flash and One Rule. Payouts are on demand but capped at 2% of the initial balance per request.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "nys-markets-flash-10000",
+        "program": "Flash",
+        "name": "Flash",
+        "size": 10000,
+        "price": 19,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step 8 then 5",
+        "dailyLoss": "5% (2-Step)",
+        "maxDD": "10% static (2-Step)",
+        "ddType": "Static",
+        "minDays": "none",
+        "split": "80/20 (help centre; site claims up to 100%)",
+        "payout": "on demand, max 2% of balance per payout",
+        "platform": "MT5 (CFD), dxFeed (Futures), DeepCharts (Stocks)",
+        "source": "https://nysmarkets.com/"
+      }
+    ]
   },
   {
     "slug": "top-one-trader",
@@ -1667,7 +2165,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm (the futures side is the separate Top One Futures brand). 1-Step FLASH, 2-Step PRO, Instant Funding, Instant Prime and Nova lines from $5K to $1M. First payout 14 days after funding, then every 14 days.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "top-one-trader-1-step-flash-5000",
+        "program": "1-Step FLASH",
+        "name": "1-Step FLASH",
+        "size": 5000,
+        "price": 64,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step 10 / 2-Step 8 then 5",
+        "dailyLoss": "4% (1-Step/2-Step)",
+        "maxDD": "7% trailing (1-Step)",
+        "ddType": "EOD",
+        "minDays": "1-Step 3 profitable days",
+        "split": "up to 90% (1-Step) / 100% (2-Step PRO)",
+        "payout": "first 14d, then 14d",
+        "platform": "Match-Trader, MetaTrader, TradeLocker",
+        "source": "https://www.toponetrader.com/"
+      }
+    ]
   },
   {
     "slug": "blueberry-futures",
@@ -1735,7 +2255,29 @@ var FIRMS = [
     "largest": null,
     "note": "US eligibility is UNRESOLVED: two checks of the firm's own restricted list disagree (one includes the US, one does not). Re-verify on the live help centre before buying. Separately: this is not Blueberry Funded.",
     "summary": "Futures-only firm (CME via BlackArrow) with two monthly-subscription evaluations: Ascent (EOD trailing) and Accelerated (intraday trailing). 90% split, 6% target, no activation fee, and a 'Road to Live' path after 7 payout cycles. Not Blueberry Funded.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "blueberry-futures-accelerated-25000",
+        "program": "Accelerated",
+        "name": "Accelerated",
+        "size": 25000,
+        "price": 110.4,
+        "currency": "USD",
+        "monthly": true,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "none",
+        "maxDD": "4% trailing (EOD Ascent / intraday Accelerated)",
+        "ddType": "Intraday",
+        "minDays": "Ascent 2 / Accelerated 1",
+        "split": "90%",
+        "payout": "on demand, 5 profitable days $200+",
+        "platform": "BlackArrow",
+        "source": "https://blueberryfutures.com"
+      }
+    ]
   },
   {
     "slug": "get-leveraged",
@@ -1803,7 +2345,29 @@ var FIRMS = [
     "largest": null,
     "note": "$8.88 is an entry fee, not the full price: the Turbo 10K total is $85 ($8.88 now + $76.12 activation after passing). The cheapest full one-time price is $29 (ONE 10K). US traders are not eligible.",
     "summary": "Forex/CFD and crypto firm. The $8.88 headline is an entry fee for Pay After You Pass, not the full price — a Turbo 10K costs $85 in total. US traders are on the restricted list and cannot join.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "get-leveraged-turbo-10000",
+        "program": "Turbo",
+        "name": "Turbo",
+        "size": 10000,
+        "price": 8.88,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6",
+        "dailyLoss": "3%",
+        "maxDD": "6% trailing",
+        "ddType": "EOD",
+        "minDays": "3 profitable days funded",
+        "split": "80 (95% add-on)",
+        "payout": "every 14d (5d add-on)",
+        "platform": "MT5, cTrader",
+        "source": "https://getleveraged.com"
+      }
+    ]
   },
   {
     "slug": "goat-funded-futures",
@@ -1878,7 +2442,29 @@ var FIRMS = [
     "largest": null,
     "note": "Do not mix with Goat Funded Trader (goatfundedtrader.com), the CFD sister brand — different rules, prices and programs. The $39 GOAT Access price also carries a $99 activation fee after passing ($138 total); the cheapest standard plan is the $138 EOD 50K.",
     "summary": "Futures-only firm (CME group) — a different firm from Goat Funded Trader, the CFD brand. Lines include GOAT Daily (24-hour payouts), Flex, EOD Challenge, 1-Day Pass, Instant Classic/Lite and GOAT Access (50K, $39 plus a $99 activation fee after passing).",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "goat-funded-futures-goat-access-50000",
+        "program": "GOAT Access",
+        "name": "GOAT Access",
+        "size": 50000,
+        "price": 39,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "verified",
+        "note": "Homepage on 27 Nov 2026: default 90/10 split and $0 activation on all plans. The $39 figure is the recorded GOAT Access price.",
+        "target": "6",
+        "dailyLoss": "EOD none eval / 2.5% funded",
+        "maxDD": "EOD trailing, 4% (25K/50K)",
+        "ddType": "EOD",
+        "minDays": "GOAT Daily 3 / EOD 2 / Flex 2",
+        "split": "90/10",
+        "payout": "twice monthly windows; GOAT Daily 24h",
+        "platform": "Tradovate, NinjaTrader, Rithmic, Quantower, TradingView, WealthCharts, DeepCharts, ATAS",
+        "source": "https://goatfundedfutures.com/goat-access"
+      }
+    ]
   },
   {
     "slug": "atlas-funded",
@@ -1951,7 +2537,49 @@ var FIRMS = [
     "largest": null,
     "note": "The firm's own site claims a 4.8 rating; Trustpilot shows 3.9/5 (~2,294 reviews). This page uses the Trustpilot figure. CFD note: the firm's terms say MT5 services are not intended for US citizens or residents; TradeLocker/Match-Trader are not restricted that way — confirm with support in writing.",
     "summary": "Two lines under one brand: forex/CFD (to $400K) and CME futures (to $150K), both at a 90% standard split with a claimed 24-hour payout guarantee. This is atlasfunded.com — not myatlasfund.com ('Atlas'), a separate futures-only firm.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "atlas-funded-cfd-2-step-std-5000",
+        "program": "CFD 2-Step Std",
+        "name": "CFD 2-Step Std",
+        "size": 5000,
+        "price": 43,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Futures evals 6",
+        "dailyLoss": "Futures Std $600 (25K) lockout",
+        "maxDD": "EOD trailing (Futures); 10% static (CFD 2-Step Std)",
+        "ddType": "Static, EOD",
+        "minDays": "Futures 2; CFD 3 per phase",
+        "split": "90 (100% add-on)",
+        "payout": "24h payout guarantee claimed",
+        "platform": "TradeLocker, Match-Trader, MT5, Volumetrica / Tradara / HyperProp (Futures)",
+        "source": "https://atlasfunded.com"
+      },
+      {
+        "id": "atlas-funded-daily-25000",
+        "program": "Daily",
+        "name": "Daily",
+        "size": 25000,
+        "price": 85,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Named in the recorded starting-offer line. Not a full catalog.",
+        "target": "Futures evals 6",
+        "dailyLoss": "Futures Std $600 (25K) lockout",
+        "maxDD": "EOD trailing (Futures); 10% static (CFD 2-Step Std)",
+        "ddType": "Static, EOD",
+        "minDays": "Futures 2; CFD 3 per phase",
+        "split": "90 (100% add-on)",
+        "payout": "24h payout guarantee claimed",
+        "platform": "TradeLocker, Match-Trader, MT5, Volumetrica / Tradara / HyperProp (Futures)",
+        "source": "https://atlasfunded.com"
+      }
+    ]
   },
   {
     "slug": "blueberry-funded",
@@ -2039,7 +2667,29 @@ var FIRMS = [
     "largest": null,
     "note": "Do not mix with Blueberry Futures (blueberryfutures.com) — a futures firm on a monthly subscription, with different prices and rules.",
     "summary": "Forex/CFD firm (MT5, TradeLocker) with Flex 1-Step, 1-Step and Prime 2-Step challenges plus Instant Elite and Instant Lite. US and Australian residents are restricted. Not Blueberry Futures, the monthly-subscription futures firm.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "blueberry-funded-1-step-5000",
+        "program": "1-Step",
+        "name": "1-Step",
+        "size": 5000,
+        "price": 44,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step 10 / Flex 12",
+        "dailyLoss": "4% (1-Step)",
+        "maxDD": "6% static (1-Step)",
+        "ddType": "Static",
+        "minDays": "3 per phase",
+        "split": "80 (85% Flex)",
+        "payout": "14d cycle",
+        "platform": "MT5, TradeLocker",
+        "source": "https://blueberryfunded.com"
+      }
+    ]
   },
   {
     "slug": "core-funded",
@@ -2108,7 +2758,29 @@ var FIRMS = [
     "largest": null,
     "note": "Formerly 'Swiss Funded' (swissfunded.io now redirects here). Do not mix with FundedCore (fundedcore.uk), a different firm. All prices on the official site are in euros.",
     "summary": "Forex/CFD firm on Match-Trader, formerly called Swiss Funded. Prices are in euros, not dollars. Instant, 1-Step, 2-Step, 2-Step Flex and Pay After Pass programs, payouts on demand, and scaling up to $10,000,000 of total capital. Not FundedCore, a different firm.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "core-funded-2-step-5000",
+        "program": "2-Step",
+        "name": "2-Step",
+        "size": 5000,
+        "price": 45,
+        "currency": "EUR",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step 10 / 2-Step 10 then 5",
+        "dailyLoss": "5% (2-Step)",
+        "maxDD": "8% static (2-Step)",
+        "ddType": "Static",
+        "minDays": "not documented for evals",
+        "split": "80 (95% upgrade)",
+        "payout": "on demand",
+        "platform": "Match-Trader",
+        "source": "https://www.corefunded.io/en/funded-account"
+      }
+    ]
   },
   {
     "slug": "for-traders",
@@ -2247,7 +2919,29 @@ var FIRMS = [
     "largest": null,
     "note": "The BF20 code was reported on the firm's channels; it was not confirmed on the propr.xyz homepage on Nov 26, 2026. Confirm at checkout.",
     "summary": "Perpetual futures on Hyperliquid — 140+ crypto, stock, index, commodity and FX perps, trading 24/7. Classic, Turbo and Pro evaluations at a flat 80% split, no consistency rule, payouts on demand in USDC, and every payout published with its transaction hash.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "propr-turbo-1-step-5000",
+        "program": "Turbo 1-Step",
+        "name": "Turbo 1-Step",
+        "size": 5000,
+        "price": 25,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Turbo 9 / Classic 1-Step 10",
+        "dailyLoss": "3% (1-Step) / 5% (2-Step)",
+        "maxDD": "3% static (Turbo) / 6% (Classic 1-Step)",
+        "ddType": "Static",
+        "minDays": "none",
+        "split": "80%",
+        "payout": "on demand, USDC on-chain",
+        "platform": "Hyperliquid",
+        "source": "https://propr.xyz"
+      }
+    ]
   },
   {
     "slug": "crypto-fund-trader",
@@ -2317,7 +3011,29 @@ var FIRMS = [
     "largest": null,
     "note": "Internal conflict: the homepage shows a single '1-Phase' program (12% target, 5% max loss), while the firm's FAQ/pricing pages list three 1-Step variants (Classic, Pro, Turbo) with different targets and drawdowns. The two versions do not reconcile — verify at checkout.",
     "summary": "Crypto-first firm (715+ pairs) that also runs forex/CFD, on Bybit, MT5 and Match-Trader. 1-Step and 2-Phase evaluations plus instant accounts. US residents can use Bybit/Match-Trader, but MT5 is not offered to them.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "crypto-fund-trader-1-step-turbo-5000",
+        "program": "1-Step Turbo",
+        "name": "1-Step Turbo",
+        "size": 5000,
+        "price": 25,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Phase 12 / 2-Phase 8 then 5",
+        "dailyLoss": "3% (1-Phase) / 5% (2-Phase)",
+        "maxDD": "5% (1-Phase) / 10% (2-Phase)",
+        "ddType": "Static",
+        "minDays": "0",
+        "split": "80 (90% add-on)",
+        "payout": "1-Step every 7 traded days",
+        "platform": "Bybit, MT5, Match-Trader",
+        "source": "https://cryptofundtrader.com/"
+      }
+    ]
   },
   {
     "slug": "upscale",
@@ -2379,7 +3095,29 @@ var FIRMS = [
     "largest": null,
     "note": "Internal conflict on the firm's own site: the Terms of Use exclude US residents while the FAQ says 'available worldwide' — the terms govern. The terms also require passport KYC before withdrawal, despite 'no KYC' marketing.",
     "summary": "Crypto perps and real-world-asset markets (forex, commodities, indices, stocks) on its own TradingView-based terminal. Basic, Accelerated and Turbo (instant) lines, USDT payouts. US residents are excluded under the Terms of Use.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "upscale-basic-rwa-5000",
+        "program": "Basic RWA",
+        "name": "Basic RWA",
+        "size": 5000,
+        "price": 59,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Basic 5 then 8",
+        "dailyLoss": "5% (Basic)",
+        "maxDD": "10% static (Basic)",
+        "ddType": "Static",
+        "minDays": "3 profit days 0.5%+",
+        "split": "80 (90% upgrade)",
+        "payout": "every 14d",
+        "platform": "Own TradingView-based terminal",
+        "source": "https://upscale.trade/"
+      }
+    ]
   },
   {
     "slug": "hyrotrader",
@@ -2441,7 +3179,29 @@ var FIRMS = [
     "largest": null,
     "note": "One figure conflicts between sources: the per-payout cap is 5% of starting balance per the firm, 4% per one tracker. Unresolved.",
     "summary": "Crypto-only firm: 700+ USDT perpetual pairs. Core, One-Step, Two-Step and Instant lines from a $9 Core 2.5K account. One-Step and Two-Step fees are refundable deposits returned with the first payout; Core and Instant fees are not.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "hyrotrader-hyro-core-2500",
+        "program": "Hyro Core",
+        "name": "Hyro Core",
+        "size": 2500,
+        "price": 9,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Core 10 / One-Step 10 / Two-Step 10 then 5",
+        "dailyLoss": "3% (Core)",
+        "maxDD": "5% static (Core)",
+        "ddType": "Static",
+        "minDays": "Core 4 / One-Step 3",
+        "split": "80 (90% as you scale)",
+        "payout": "on demand",
+        "platform": "Hyro terminal, Bybit / BloFin via API",
+        "source": "https://www.hyrotrader.com/"
+      }
+    ]
   },
   {
     "slug": "kraken-prop",
@@ -2503,7 +3263,29 @@ var FIRMS = [
     "largest": null,
     "note": "Kraken describes Prop as an unregulated service run by Payward Oceanic Ltd. The Trustpilot figure for kraken.com covers the exchange generally; there is no Prop-specific score.",
     "summary": "Kraken's prop service: crypto plus Nasdaq 100, S&P 500, metals and oil perpetuals on Kraken Pro. Starter, Intermediate and Advanced evaluations at 80% (90% upgrade), payouts on demand to a Kraken wallet. Kraken itself describes the service as unregulated, run by Payward Oceanic Ltd.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "kraken-prop-advanced-5000",
+        "program": "Advanced",
+        "name": "Advanced",
+        "size": 5000,
+        "price": 20,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Advanced 9 / Starter 10 / Intermediate 12",
+        "dailyLoss": "3% all plans",
+        "maxDD": "3% static (Advanced)",
+        "ddType": "Static",
+        "minDays": "not stated",
+        "split": "80 (90% upgrade)",
+        "payout": "on demand",
+        "platform": "Kraken Pro",
+        "source": "https://support.kraken.com/articles/what-is-kraken-prop"
+      }
+    ]
   },
   {
     "slug": "hola-prime",
@@ -2575,7 +3357,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex and futures firm (plus crypto CFDs) on MT5, cTrader, TradeLocker, Match-Trader and DXtrade. Prime and Pro challenges pay 80% bi-weekly or 95% on a monthly cycle; Direct accounts are instant. Futures fees are monthly, not one-time.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "hola-prime-1-step-prime-forex-5000",
+        "program": "1-Step Prime Forex",
+        "name": "1-Step Prime Forex",
+        "size": 5000,
+        "price": 49,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step Prime 10",
+        "dailyLoss": "3% (1-Step Prime)",
+        "maxDD": "6% static (1-Step Prime)",
+        "ddType": "Static",
+        "minDays": "2 (1-Step Prime)",
+        "split": "80 (95% monthly cycle)",
+        "payout": "bi-weekly / monthly / on-demand",
+        "platform": "MT5, cTrader, TradeLocker, Match-Trader, DXtrade",
+        "source": "https://holaprime.com/"
+      }
+    ]
   },
   {
     "slug": "instant-funding",
@@ -2717,7 +3521,29 @@ var FIRMS = [
     "largest": null,
     "note": "Open questions: the plan tables run to $100K while the homepage FAQ says simulated accounts go up to $200K; and the firm's 40% Black Friday code (Nov 26–29) had not been published as a code string when we checked, so no code is listed for this firm.",
     "summary": "Forex/CFD firm with Value, Core, Flash and Instant plans, $5K–$100K in the plan tables. 80% base split, 14-day payout cycle, fee refunded with the third payout (not on Instant). MT5 is not available to clients in the USA or Turkey.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "onefunded-value-5000",
+        "program": "Value",
+        "name": "Value",
+        "size": 5000,
+        "price": 29,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Value 8 then 6",
+        "dailyLoss": "4% (Value)",
+        "maxDD": "8% (Value)",
+        "ddType": "Static",
+        "minDays": "none stated on homepage",
+        "split": "80 (90% add-on)",
+        "payout": "14d cycle (7d add-on)",
+        "platform": "MT5, cTrader, TradeLocker",
+        "source": "https://onefunded.com/"
+      }
+    ]
   },
   {
     "slug": "brightfunded",
@@ -2792,7 +3618,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm (plus a futures line sold through its US company). Account balances are in USD but prices are billed in euros. All three CFD plans were revamped on Nov 16, 2026; accounts bought before that keep their original rules.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "brightfunded-2-step-bright-5000",
+        "program": "2-Step Bright",
+        "name": "2-Step Bright",
+        "size": 5000,
+        "price": 47,
+        "currency": "EUR",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "2-Step Bright 8 then 5",
+        "dailyLoss": "4% (2-Step Bright)",
+        "maxDD": "8% static (2-Step Bright)",
+        "ddType": "Static",
+        "minDays": "none (1-Step); 3 profitable per phase (2-Step)",
+        "split": "80 (90% add-on)",
+        "payout": "14d / on demand (Instant)",
+        "platform": "MT5, cTrader, DXtrade",
+        "source": "https://brightfunded.com/"
+      }
+    ]
   },
   {
     "slug": "darwinex-zero",
@@ -2919,7 +3767,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm founded in 2018. 1-Step and 2-Step challenges plus Instant and Direct Funding, with US traders welcome on Match-Trader. Every program allows news trading, overnight and weekend holding, and there is no consistency rule to get paid.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "city-traders-imperium-1-step-2500",
+        "program": "1-Step",
+        "name": "1-Step",
+        "size": 2500,
+        "price": 29,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step 8 / 2-Step 10 then 5",
+        "dailyLoss": "1-Step none; 2-Step 5%",
+        "maxDD": "5% trailing (1-Step)",
+        "ddType": "EOD",
+        "minDays": "3 profitable days",
+        "split": "80 (up to 100% VIP)",
+        "payout": "first 7d, then monthly",
+        "platform": "Match-Trader, MT5 (not available to US traders)",
+        "source": "https://citytradersimperium.com/choosing-your-funding-program/"
+      }
+    ]
   },
   {
     "slug": "maven-trading",
@@ -2993,7 +3863,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm (plus prediction markets; no futures or options). Standard 1-Step, 2-Step and 3-Step challenges from a $13 2K account, plus Instant and Instant Mini. Funded payouts run every 10 business days on Standard plans.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "maven-trading-standard-3-step-2000",
+        "program": "Standard 3-Step",
+        "name": "Standard 3-Step",
+        "size": 2000,
+        "price": 13,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step 8 / 2-Step 8 then 5 / 3-Step 3x3",
+        "dailyLoss": "3% (1-Step)",
+        "maxDD": "5% (1-Step)",
+        "ddType": "Static",
+        "minDays": "not stated",
+        "split": "80 Standard (70% some plans)",
+        "payout": "every 10 business days (Standard)",
+        "platform": "MT5, Match-Trader",
+        "source": "https://maventrading.com/pricing"
+      }
+    ]
   },
   {
     "slug": "pinex-capital",
@@ -3061,7 +3953,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "Forex/CFD firm pricing in euros, not dollars. 1-Step and 2-Step challenges, Instant Funding (to $300K), Instant Funding Elite and Direct Funding. Standard payout cycle is every 21 exchange days; weekend holding has been allowed on every program since Nov 2, 2026.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "pinex-capital-1-step-5000",
+        "program": "1-Step",
+        "name": "1-Step",
+        "size": 5000,
+        "price": 79,
+        "currency": "EUR",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "1-Step 9",
+        "dailyLoss": "3% static (1-Step)",
+        "maxDD": "6% static (1-Step)",
+        "ddType": "Static",
+        "minDays": "not stated for passing",
+        "split": "80 (100% add-on)",
+        "payout": "every 21 exchange days (14d add-on)",
+        "platform": "MT5",
+        "source": "https://pinexcapital.com/en/1-step-challenge"
+      }
+    ]
   },
   {
     "slug": "trade-the-pool",
@@ -3122,7 +4036,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "US stocks and ETFs only — over 12,000 symbols, no futures, forex or crypto. Day Trading, Swing Trading and Edge programs. Day accounts are liquidated 10 minutes before the close; Swing accounts may hold overnight and over the weekend.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "trade-the-pool-max-day-5000",
+        "program": "Max Day",
+        "name": "Max Day",
+        "size": 5000,
+        "price": 47,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Day 6 / Swing 15 / Edge 6",
+        "dailyLoss": "Daily Pause 2% (Flex Day) — pause, not loss limit",
+        "maxDD": "4% static (Flex Day)",
+        "ddType": "Static",
+        "minDays": "3 days 0.5%+ (Flex Day cash-out)",
+        "split": "70/30 (Flex/Max); 80/20 Edge Pro",
+        "payout": "min withdrawal period 14d",
+        "platform": null,
+        "source": "https://tradethepool.com/the-program/"
+      }
+    ]
   },
   {
     "slug": "phidias-prop-firm",
@@ -3195,7 +4131,29 @@ var FIRMS = [
     "largest": null,
     "note": "Do not use the $88 from-price seen in secondary sources — that is the monthly-subscription path. The one-time from-price is $277 list. Secondary sources also conflict on the switch to LIVE (3 payouts / $75K vs 5 payouts / $100K).",
     "summary": "Futures-only firm (NQ, ES, YM, MNQ, CL, GC and 70+ instruments) on Rithmic and dxFeed. Express to Live, Fundamental and Premium lines, all 1-phase, with no daily loss limit. Premium's split climbs from 75% to 100% by the fifth payout.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "phidias-prop-firm-express-to-live-25000",
+        "program": "Express to Live",
+        "name": "Express to Live",
+        "size": 25000,
+        "price": 277,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "Express 25K $1500",
+        "dailyLoss": "none",
+        "maxDD": "$500 static (Express 25K)",
+        "ddType": "Static",
+        "minDays": "Fundamental 3 / Premium 1 / Express 0",
+        "split": "80 (Premium up to 100% from payout 5)",
+        "payout": "Fundamental every 10 trading days; Premium every 5 days",
+        "platform": "Rithmic, Tradovate, NinjaTrader, TradingView, DeepCharts, R/Trader",
+        "source": "https://member.phidiaspropfirm.com/?_lang=en"
+      }
+    ]
   },
   {
     "slug": "take-profit-trader",
@@ -3264,7 +4222,29 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "US futures firm (Tradovate) with three monthly-subscription Test plans — Intraday, Classic and EOD — repriced on Nov 23, 2026. Pass the Test and PRO pays daily from day one at 80/20; PRO+ (live, by invitation) pays 90/10.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "take-profit-trader-intraday-test-25000",
+        "program": "INTRADAY Test",
+        "name": "INTRADAY Test",
+        "size": 25000,
+        "price": 110,
+        "currency": "USD",
+        "monthly": true,
+        "coverage": "starting",
+        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
+        "target": "6% all sizes",
+        "dailyLoss": "INTRADAY/CLASSIC none; EOD $500 (25K)",
+        "maxDD": "trailing, $1000 (25K)",
+        "ddType": "EOD",
+        "minDays": "3 to pass Test",
+        "split": "80/20 PRO; 90/10 PRO+",
+        "payout": "daily payouts from day 1 in PRO",
+        "platform": "Tradovate, NinjaTrader, Rithmic",
+        "source": "https://takeprofittrader.com/blog/plans"
+      }
+    ]
   },
   {
     "slug": "topstep",
@@ -3334,6 +4314,88 @@ var FIRMS = [
     "largest": null,
     "note": "Checked 27 Nov 2026 on topstep.com. The $49 price is the Challenge, not the Trading Combine. Combine first payout is as little as 5 trading days, not 3. Profit target, minimum days and news rules were not re-read, so those fields stay as previously recorded.",
     "summary": "US futures firm. The $49 entry is the Challenge: keep 100% of a fixed payout, up to $9,000, after the target is hit twice, with a static max loss. The Trading Combine is separate: keep 90%, a trailing maximum loss limit, and a first payout in as little as 5 trading days, up to $12,000.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "plans": [
+      {
+        "id": "topstep-challenge",
+        "program": "Challenge",
+        "name": "Challenge",
+        "size": null,
+        "price": 49,
+        "currency": "USD",
+        "monthly": true,
+        "coverage": "verified",
+        "note": "The $49 entry is this Challenge. Account size was not stated on the homepage.",
+        "target": "not stated",
+        "dailyLoss": "not stated",
+        "maxDD": "Static max loss",
+        "ddType": "Static",
+        "minDays": "not stated",
+        "split": "100% of the fixed payout",
+        "payout": "Up to $9,000 after the target is hit twice",
+        "platform": "TopstepX",
+        "source": "https://www.topstep.com/topstep-prop"
+      },
+      {
+        "id": "topstep-trading-combine-50000",
+        "program": "Trading Combine",
+        "name": "Trading Combine",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": true,
+        "coverage": "verified",
+        "note": "Price for this size was not on the homepage.",
+        "target": "not stated",
+        "dailyLoss": "not stated",
+        "maxDD": "$2,000 trailing maximum loss limit",
+        "ddType": "Trailing",
+        "minDays": "not stated",
+        "split": "90%",
+        "payout": "First payout in as little as 5 trading days, up to $12,000",
+        "platform": "TopstepX",
+        "source": "https://www.topstep.com/topstep-prop"
+      },
+      {
+        "id": "topstep-trading-combine-100000",
+        "program": "Trading Combine",
+        "name": "Trading Combine",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": true,
+        "coverage": "verified",
+        "note": "Price for this size was not on the homepage.",
+        "target": "not stated",
+        "dailyLoss": "not stated",
+        "maxDD": "$3,000 trailing maximum loss limit",
+        "ddType": "Trailing",
+        "minDays": "not stated",
+        "split": "90%",
+        "payout": "First payout in as little as 5 trading days, up to $12,000",
+        "platform": "TopstepX",
+        "source": "https://www.topstep.com/topstep-prop"
+      },
+      {
+        "id": "topstep-trading-combine-150000",
+        "program": "Trading Combine",
+        "name": "Trading Combine",
+        "size": 150000,
+        "price": null,
+        "currency": "USD",
+        "monthly": true,
+        "coverage": "verified",
+        "note": "Price for this size was not on the homepage.",
+        "target": "not stated",
+        "dailyLoss": "not stated",
+        "maxDD": "$4,500 trailing maximum loss limit",
+        "ddType": "Trailing",
+        "minDays": "not stated",
+        "split": "90%",
+        "payout": "First payout in as little as 5 trading days, up to $12,000",
+        "platform": "TopstepX",
+        "source": "https://www.topstep.com/topstep-prop"
+      }
+    ]
   }
 ];

@@ -440,6 +440,9 @@ if (location.hash.startsWith("#/")) {
 .firm-card .firm-head{align-items:flex-start}
 .firm-card .firm-head>.btn,.firm-card .firm-head>button{margin-left:auto;flex:none}
 .compare-tray{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#14100a}
+.plan-board{margin:6px 0 22px}
+.plan-sheet{margin-top:14px}
+.plan-sheet .kvgrid{margin-top:12px}
 .code-btn.is-copied{background:linear-gradient(160deg,#ffc233,#ff8a00);color:#231500;border-style:solid}
 .disclaimer{color:#e7d8bf}
 .btn{transition:transform .12s ease,filter .12s ease}
@@ -1161,6 +1164,132 @@ function pageMarket(key){
 }
 /* ================= FIRM DETAIL ================= */
 /* Account-plan display: only render options backed by firm-specific records. */
+
+function firmPlanList(f){
+  if (f && Array.isArray(f.plans) && f.plans.length) return f.plans;
+  return [{
+    id: (f.slug || "firm") + "-starting",
+    program: "Starting offer",
+    name: "Starting offer",
+    size: null,
+    price: f.from,
+    currency: f.fromCur || "USD",
+    monthly: !!f.monthly,
+    target: f.target || null,
+    dailyLoss: f.dailyDD || null,
+    maxDD: f.dd || null,
+    ddType: (f.ddTypes || []).join(", ") || null,
+    minDays: f.minDays || null,
+    split: f.split || null,
+    payout: f.payoutText || null,
+    platform: listOrDash(f.platforms),
+    source: (f.sources && f.sources[0]) || f.site || null,
+    coverage: "starting",
+    note: f.fromPlan || "Recorded starting price. A full account-size list has not been verified."
+  }];
+}
+function planSizeLabel(p){
+  if (!p || p.size == null) return "Size not listed";
+  var n = p.size / 1000;
+  return (Math.round(n * 10) / 10).toString().replace(/\.0$/, "") + "K";
+}
+function planLabel(p){ return p.program + (p.size ? " " + planSizeLabel(p) : ""); }
+function planPriceHTML(p){
+  if (!p || p.price == null || p.price === "") return '<span class="mut">Price not verified</span>';
+  var sym = p.currency === "EUR" ? "€" : "$";
+  var num = Number(p.price).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return sym + num + (p.monthly ? '<span class="mut small"> /month</span>' : "");
+}
+function planCoverageNote(p){
+  if (p.coverage === "verified" && p.price != null) return "Checked on the firm's site, 27 Nov 2026.";
+  if (p.coverage === "verified") return "Rules checked on the firm's site, 27 Nov 2026. The price for this size was not listed.";
+  return "Recorded starting offer. Other account sizes are not in the verified catalog yet.";
+}
+function planFact(label, html){
+  return '<div class="kvcell"><div class="k">' + label + '</div><div class="v sm">' + html + "</div></div>";
+}
+function planSheetHTML(f, p){
+  return '<div class="plan-sheet"><p class="snap-note">' + esc(planCoverageNote(p)) + (p.note ? " " + esc(p.note) : "") + "</p>" +
+    '<div class="kvgrid">' +
+    planFact("Price", planPriceHTML(p)) +
+    planFact("Size", p.size ? esc(planSizeLabel(p)) : "Not listed") +
+    planFact("Profit target", esc(p.target || "—")) +
+    planFact("Daily loss", esc(p.dailyLoss || "—")) +
+    planFact("Max drawdown", esc(p.maxDD || "—")) +
+    planFact("Drawdown type", esc(p.ddType || "—")) +
+    planFact("Min days", esc(p.minDays || "—")) +
+    planFact("Split", esc(formatSplit(p.split || "—"))) +
+    planFact("Payout", esc(p.payout || "—")) +
+    planFact("Platform", esc(p.platform || "—")) +
+    "</div>" +
+    '<p style="margin-top:12px"><a class="btn small" href="/compare?add=' + esc(f.slug) + "&plan=" + esc(p.id) + '">Compare this plan</a>' +
+    (p.source ? ' <a class="btn small ghost" href="' + esc(p.source) + '" target="_blank" rel="noopener nofollow">Source</a>' : "") +
+    "</p></div>";
+}
+function planBoardHTML(f){
+  var plans = firmPlanList(f);
+  var groups = [];
+  plans.forEach(function(p){
+    var g = null;
+    for (var i = 0; i < groups.length; i++) if (groups[i].program === p.program) g = groups[i];
+    if (!g) { g = { program: p.program, plans: [] }; groups.push(g); }
+    g.plans.push(p);
+  });
+  return '<section class="plan-board" id="plan-board" aria-label="Account plans">' +
+    '<div class="secttl"><span class="bar"></span><h2>Choose a program and size</h2></div>' +
+    '<p class="mut">The figures in this table are for the plan you select. Sizes that are missing were not in the verified catalog.</p>' +
+    (groups.length > 1 ? '<div class="pill-tabs" id="plan-programs" role="tablist" aria-label="Programs">' + groups.map(function(g, i){
+      return '<button type="button" data-program="' + esc(g.program) + '" class="' + (i === 0 ? "on" : "") + '" role="tab" aria-selected="' + (i === 0 ? "true" : "false") + '">' + esc(g.program) + "</button>";
+    }).join("") + "</div>" : '<p class="kicker" style="margin-top:8px">' + esc(groups[0].program) + "</p>") +
+    '<div class="pill-tabs" id="plan-sizes" aria-label="Account sizes"></div><div id="plan-sheet"></div></section>';
+}
+function bindPlanBoard(f){
+  var root = document.getElementById("plan-board");
+  if (!root) return;
+  var plans = firmPlanList(f);
+  var current = plans[0].id;
+  function programOf(id){
+    for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return plans[i].program;
+    return plans[0].program;
+  }
+  function paint(){
+    var program = programOf(current);
+    var sizes = plans.filter(function(p){ return p.program === program; });
+    if (!sizes.some(function(p){ return p.id === current; })) current = sizes[0].id;
+    var sizeBox = document.getElementById("plan-sizes");
+    sizeBox.innerHTML = sizes.length > 1 ? sizes.map(function(p){
+      var on = p.id === current;
+      return '<button type="button" data-plan="' + esc(p.id) + '" class="' + (on ? "on" : "") + '" aria-pressed="' + on + '">' + esc(p.size ? planSizeLabel(p) : "Size not listed") + "</button>";
+    }).join("") : "";
+    var chosen = plans[0];
+    for (var i = 0; i < plans.length; i++) if (plans[i].id === current) chosen = plans[i];
+    document.getElementById("plan-sheet").innerHTML = planSheetHTML(f, chosen);
+    var buttons = sizeBox.querySelectorAll("button");
+    for (var b = 0; b < buttons.length; b++) {
+      buttons[b].addEventListener("click", function(){ current = this.getAttribute("data-plan"); paint(); });
+    }
+  }
+  var tabs = root.querySelectorAll("#plan-programs button");
+  for (var t = 0; t < tabs.length; t++) {
+    tabs[t].addEventListener("click", function(){
+      var program = this.getAttribute("data-program");
+      for (var i = 0; i < tabs.length; i++) {
+        var on = tabs[i] === this;
+        tabs[i].classList.toggle("on", on);
+        tabs[i].setAttribute("aria-selected", on ? "true" : "false");
+      }
+      for (var j = 0; j < plans.length; j++) if (plans[j].program === program) { current = plans[j].id; break; }
+      paint();
+    });
+  }
+  paint();
+}
+function selectedPlan(f){
+  var list = firmPlanList(f);
+  var id = cmpState.planBySlug && cmpState.planBySlug[f.slug];
+  for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+  return list[0];
+}
 function firmAccountExplorer(f){
   var plans=Array.isArray(f.accountPlans)?f.accountPlans.filter(function(p){return p && p.name && p.officialSource;}):[];
   var known=f.from!==null&&f.from!==undefined;
@@ -1201,7 +1330,7 @@ function pageFirm(f){
   '<div class="kvcell"><div class="k">Max drawdown</div><div class="v sm">'+esc(f.dd)+'</div></div>'+
   '<div class="kvcell"><div class="k">Starts from</div><div class="v">'+priceHTML(f)+'</div><div class="snap-note">'+(f.fromPlan?esc(f.fromPlan):"Not verified")+' · Last verified '+esc(verifiedDate(f))+'</div></div></div>'+
   (f.note? '<div class="notice" style="margin-bottom:18px"><b>Read before you buy — conflicts &amp; open questions:</b> '+esc(presentText(f.note))+'</div>' : "")+
-  firmAccountExplorer(f)+
+  planBoardHTML(f)+
   '<div class="detail-grid"><div class="card"><h3>Firm facts — from the firm\'s own site</h3><div style="margin-top:8px">'+
   facts.filter(function(r){ var t=String(r[1]).replace(/<[^>]*>/g,"").trim().toLowerCase(); return t!=="not listed" && t!=="—" && t!=="-"; }).map(function(r){ return '<div class="pay-row"><span class="mut" style="font-weight:700">'+r[0]+'</span><span style="font-weight:700;text-align:right;max-width:62%">'+r[1]+'</span></div>'; }).join("")+
   '</div></div>'+
@@ -1220,6 +1349,7 @@ function pageFirm(f){
   (others.length? '<div class="secttl"><span class="bar"></span><h2>More '+MARKETS[f.markets[0]].label+' firms</h2></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">'+others.map(function(o){ return '<article class="card"><a href="/firm/'+o.slug+'" style="display:flex;gap:10px;align-items:center;color:var(--ink)">'+avatar(o,34)+"<strong>"+esc(o.name)+'</strong></a><p class="mut small">Split '+esc(o.split)+' · Drawdown '+esc(o.dd)+' · From '+priceHTML(o)+'</p><a href="/firm/'+o.slug+'" style="font-weight:800">Review →</a></article>'; }).join("")+"</div>" : "")+
   snapLine("This review's figures were checked against the firm's own official site in the "+SNAPSHOT+" research. Rules and prices change — confirm on the firm's own site before buying."));
   bindCopy();
+  bindPlanBoard(f);
 }
 /* ================= COMPARE / VS ================= */
 
@@ -1325,6 +1455,14 @@ function clearFilters(st){
 function ensurePicks(){
   if (cmpState._loaded) return;
   cmpState._loaded = true;
+  if (!cmpState.planBySlug) cmpState.planBySlug = {};
+  try {
+    var savedPlans = sessionStorage.getItem("pfm-compare-plans");
+    if (savedPlans) {
+      var parsedPlans = JSON.parse(savedPlans);
+      if (parsedPlans && typeof parsedPlans === "object") cmpState.planBySlug = parsedPlans;
+    }
+  } catch (e0) {}
   try {
     var raw = sessionStorage.getItem("pfm-compare");
     if (!raw) return;
@@ -1335,7 +1473,10 @@ function ensurePicks(){
   } catch (e) {}
 }
 function rememberPicks(){
-  try { sessionStorage.setItem("pfm-compare", JSON.stringify([cmpState.picks[0] || "", cmpState.picks[1] || "", cmpState.picks[2] || ""])); } catch (e) {}
+  try {
+    sessionStorage.setItem("pfm-compare", JSON.stringify([cmpState.picks[0] || "", cmpState.picks[1] || "", cmpState.picks[2] || ""]));
+    sessionStorage.setItem("pfm-compare-plans", JSON.stringify(cmpState.planBySlug || {}));
+  } catch (e) {}
 }
 function toggleCompare(slug){
   ensurePicks();
@@ -1374,7 +1515,7 @@ function dealHeadline(c, expired){
   return "Code";
 }
 
-var cmpState = { picks:["my-funded-futures","ftmo","tradeify"] };
+var cmpState = { picks:["my-funded-futures","ftmo","tradeify"], planBySlug:{} };
 var dealState = { market:"all" };
 function pageCompare(q){
   ensurePicks();
@@ -1385,6 +1526,18 @@ function pageCompare(q){
       var rest = cmpState.picks.filter(function(s){ return s && s !== slug; });
       cmpState.picks = [slug, rest[0] || "", rest[1] || ""];
     }
+    var wanted = /(?:^|&)plan=([a-z0-9-]+)/.exec(q);
+    if (wanted) {
+      FIRMS.forEach(function(f){
+        firmPlanList(f).forEach(function(p){
+          if (p.id === wanted[1]) {
+            if (!cmpState.planBySlug) cmpState.planBySlug = {};
+            cmpState.planBySlug[f.slug] = p.id;
+            if (cmpState.picks.indexOf(f.slug) < 0) cmpState.picks[0] = f.slug;
+          }
+        });
+      });
+    }
   }
   rememberPicks();
   var picks = cmpState.picks.map(firm).filter(Boolean);
@@ -1394,12 +1547,16 @@ function pageCompare(q){
     ["Last verified", function(f){ return esc(verifiedDate(f)); }],
     ["Markets", function(f){ return f.markets.map(function(mk){ return MARKETS[mk].label; }).join(", "); }],
     ["US eligibility", function(f){ return esc(cap(presentText(f.us))); }],
-    ["From price", function(f){ return priceHTML(f) + (f.fromPlan ? " — " + esc(f.fromPlan) : ""); }],
-    ["Profit split", function(f){ return esc(formatSplit(f.split)); }],
-    ["Max drawdown", function(f){ return esc(f.dd); }],
-    ["Drawdown type", function(f){ return esc((f.ddTypes || []).join(", ") || "—"); }],
-    ["Payout cycle", function(f){ return esc(cap(f.payoutText)); }],
-    ["Platforms", function(f){ return esc(listOrDash(f.platforms)); }],
+    ["Account plan", function(f){ var p = selectedPlan(f); return esc(planLabel(p)) + '<div class="snap-note">' + esc(planCoverageNote(p)) + "</div>"; }],
+    ["Plan price", function(f){ return planPriceHTML(selectedPlan(f)); }],
+    ["Profit split", function(f){ return esc(formatSplit(selectedPlan(f).split || f.split)); }],
+    ["Profit target", function(f){ return esc(selectedPlan(f).target || "—"); }],
+    ["Daily loss", function(f){ return esc(selectedPlan(f).dailyLoss || "—"); }],
+    ["Max drawdown", function(f){ return esc(selectedPlan(f).maxDD || f.dd); }],
+    ["Drawdown type", function(f){ return esc(selectedPlan(f).ddType || "—"); }],
+    ["Min days", function(f){ return esc(selectedPlan(f).minDays || "—"); }],
+    ["Payout", function(f){ return esc(selectedPlan(f).payout || f.payoutText || "—"); }],
+    ["Platform", function(f){ return esc(selectedPlan(f).platform || listOrDash(f.platforms)); }],
     ["Verified code", function(f){ return f.codes.length ? f.codes.map(function(c){ return esc(c.code) + (c.off ? " (" + c.off + "% off)" : ""); }).join(" · ") : "None verified"; }]
   ];
   var table = picks.length
@@ -1408,9 +1565,13 @@ function pageCompare(q){
       "</tbody></table></div>" + (picks.length < 2 ? '<p class="mut" style="margin-top:12px">Add a second firm to compare them side by side. Three is the maximum.</p>' : "")
     : '<div class="empty-note"><h3>Pick two or three firms</h3><p>Use the selectors, or filter the list below and choose Compare. The table shows only the firms you select.</p></div>';
   go(pageHead('<a href="/">Home</a> · Compare', "Compare prop firms side by side",
-    "Choose up to 3 of the " + COUNTS.total + " firms. Every figure comes from the same research file as the reviews. The table shows the date each firm was last checked.") +
+    "Choose up to 3 firms, then the plan inside each one. A missing size was not in the verified catalog.") +
     '<div class="card" style="margin:20px 0 14px"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">' +
-    [0,1,2].map(function(i){ return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select></div>"; }).join("") +
+    [0,1,2].map(function(i){
+      var picked = firm(cmpState.picks[i] || "");
+      var planMenu = picked ? '<label class="fl" for="cmpPlan' + i + '" style="margin-top:8px">Plan</label><select id="cmpPlan' + i + '">' + firmPlanList(picked).map(function(p){ var on = selectedPlan(picked).id === p.id; return '<option value="' + esc(p.id) + '"' + (on ? " selected" : "") + ">" + esc(planLabel(p)) + "</option>"; }).join("") + "</select>" : "";
+      return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
+    }).join("") +
     "</div></div>" + table +
     '<div class="secttl"><span class="bar"></span><h2>Find a firm to add</h2></div>' +
     '<p class="mut small" style="margin-top:-8px">Filter by market, platform, entry price, payout speed and drawdown. Prices stay in each firm\'s own currency.</p>' +
@@ -1422,7 +1583,22 @@ function pageCompare(q){
     '<p class="snap-note" style="margin-top:14px">Prices compare each firm\'s verified entry plan, in the currency the firm itself charges. Euro prices stay in euros, and monthly subscriptions are marked /month.</p>');
   [0,1,2].forEach(function(i){
     var sel = document.getElementById("cmp" + i);
-    if (sel) sel.addEventListener("change", function(e){ cmpState.picks[i] = e.target.value; rememberPicks(); pageCompare(""); });
+    if (sel) sel.addEventListener("change", function(e){
+      var prev = cmpState.picks[i];
+      cmpState.picks[i] = e.target.value;
+      if (prev && prev !== e.target.value && cmpState.planBySlug) delete cmpState.planBySlug[prev];
+      rememberPicks();
+      pageCompare("");
+    });
+    var planSel = document.getElementById("cmpPlan" + i);
+    if (planSel) planSel.addEventListener("change", function(e){
+      var slug = cmpState.picks[i];
+      if (!slug) return;
+      if (!cmpState.planBySlug) cmpState.planBySlug = {};
+      cmpState.planBySlug[slug] = e.target.value;
+      rememberPicks();
+      pageCompare("");
+    });
   });
   function paint(){
     var list = sortFirms(FIRMS.filter(function(f){ return firmQueryMatch(f, cmpFilter); }), cmpFilter.sort || "name");
