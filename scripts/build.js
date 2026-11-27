@@ -29,6 +29,12 @@ function page(route, r, extraHead) {
   h = h.replace('</head>', '<meta name="description" content="' + esc(r.desc) + '"><link rel="canonical" href="' + SITE + route + '">' + (extraHead || '') + '</head>');
   h = h.replace(/(<nav[^>]*id="mainnav"[^>]*>)[\s\S]*?(<\/nav>)/, (m, a, b) => a + r.nav + b);
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
+  // Make market statistic cards robust even if an overlay or client-side handler
+  // interferes: the entire card remains a native anchor with a real destination.
+  if (/^\\/(futures|forex|crypto)$/.test(route)) {
+    h = h.replace(/<a class="stat pfm-stat-link" href="([^"]+)"/g,
+      '<a class="stat pfm-stat-link" style="position:relative;z-index:2;pointer-events:auto;cursor:pointer" href="$1"');
+  }
   return h;
 }
 // Large inline scripts are written once to /js and referenced from every page (keeps dist small and cacheable).
@@ -63,6 +69,10 @@ fs.writeFileSync(path.join(out, '404.html'), externalise(src.replace('</head>', 
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
 // Prevent browsers and edge caches from retaining old pre-rendered calculator markup.
 fs.writeFileSync(path.join(out, '_headers'), [
+  '/*.html', '  Cache-Control: no-cache, must-revalidate',
+  '/futures', '  Cache-Control: no-cache, must-revalidate',
+  '/forex', '  Cache-Control: no-cache, must-revalidate',
+  '/crypto', '  Cache-Control: no-cache, must-revalidate',
   '/tools', '  Cache-Control: no-cache, must-revalidate',
   '/tools.html', '  Cache-Control: no-cache, must-revalidate',
   '/js/*', '  Cache-Control: public, max-age=31536000, immutable',
