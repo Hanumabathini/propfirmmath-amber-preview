@@ -184,6 +184,22 @@ details.faq p{color:var(--muted);margin:0 0 14px}
 .pfm-clickable-calculator.pfm-tool-expanded{cursor:default}
 
 .pfm-calc-help{font-size:13px;line-height:1.65;color:var(--muted);margin:6px 0 18px;max-width:66ch}
+
+/* Account guide — isolated from existing Amber layout */
+.pfm-account-guide{margin:26px 0 30px}
+.pfm-account-guide>.mut{max-width:820px;line-height:1.65;margin:0 0 18px}
+.pfm-account-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px}
+.pfm-account-option,.pfm-account-notice,.pfm-account-faq{border:1px solid var(--line);border-radius:var(--r);padding:18px;background:var(--panel)}
+.pfm-account-option-head{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.pfm-account-price{font-size:25px;font-weight:800;color:var(--gold);margin:12px 0 6px}
+.pfm-account-option p{line-height:1.6}
+.pfm-account-notice{margin-top:12px;line-height:1.65;font-size:13px}
+.pfm-account-faq{margin-top:12px}
+.pfm-account-faq summary{cursor:pointer;font-weight:800;color:var(--gold)}
+.pfm-account-faq dl{display:grid;grid-template-columns:minmax(125px,1fr) 3fr;gap:10px 16px;margin:18px 0 0;font-size:13px;line-height:1.55}
+.pfm-account-faq dt{font-weight:800}.pfm-account-faq dd{margin:0;color:var(--muted)}
+.pfm-account-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+@media(max-width:600px){.pfm-account-faq dl{grid-template-columns:1fr;gap:4px}.pfm-account-faq dd{margin-bottom:10px}}
 </style>
 <style>
 /* ---------- home hero ---------- */
@@ -787,6 +803,33 @@ function pageMarket(key){
   bindCopy();
 }
 /* ================= FIRM DETAIL ================= */
+/* Account-plan display: only render options backed by firm-specific records. */
+function firmAccountExplorer(f){
+  var plans=Array.isArray(f.accountPlans)?f.accountPlans.filter(function(p){return p && p.name && p.officialSource;}):[];
+  var known=f.from!==null&&f.from!==undefined;
+  var starter='<div class="pfm-account-option"><div class="pfm-account-option-head"><strong>'+esc(f.fromPlan||"Starting account")+'</strong><span class="chip grey">Starting option</span></div>'+
+    '<div class="pfm-account-price">'+(known?priceHTML(f):"Price not verified")+'</div>'+
+    '<p class="mut small">This is the starting offer recorded in our research, not a complete list of account sizes or a guaranteed checkout price.</p></div>';
+  var options=plans.length?plans.map(function(p){
+    return '<div class="pfm-account-option"><div class="pfm-account-option-head"><strong>'+esc(p.name)+'</strong><span class="chip grey">Source-linked</span></div>'+
+      '<p class="mut small">'+esc(p.size||"Account size not recorded")+' · '+esc(p.priceText||"Check official price")+'</p>'+
+      '<a href="'+esc(p.officialSource)+'" target="_blank" rel="noopener noreferrer nofollow">Verify this account on the firm site ↗</a></div>';
+  }).join(""):starter;
+  return '<section class="pfm-account-guide" aria-label="Account options and beginner guide">'+
+    '<div class="secttl"><span class="bar"></span><h2>Choose an account — beginner guide</h2></div>'+
+    '<p class="mut">A prop firm can offer different account sizes and programs. The same firm may have different prices, targets, drawdowns and payout rules for each option.</p>'+
+    '<div class="pfm-account-options">'+options+'</div>'+
+    '<div class="pfm-account-notice"><strong>More account options may exist.</strong> We have not verified a complete plan-by-plan catalog for this firm. Do not assume the starting price or rules apply to every account size. <a href="'+esc(f.site)+'" target="_blank" rel="noopener noreferrer nofollow">View all current accounts on the official website ↗</a></div>'+
+    '<details class="pfm-account-faq"><summary>New to prop firms? Understand the terms before choosing</summary>'+
+    '<dl><dt>Account size</dt><dd>The nominal trading account balance. It is not money you can withdraw.</dd>'+
+    '<dt>Evaluation / challenge</dt><dd>A trading test with a profit target and risk limits. Passing does not automatically mean a payout.</dd>'+
+    '<dt>Maximum drawdown</dt><dd>The loss limit that can end an account. Static, end-of-day trailing and intraday trailing limits behave differently.</dd>'+
+    '<dt>Daily loss limit</dt><dd>The maximum loss allowed in a day, if that plan has one.</dd>'+
+    '<dt>Activation or subscription fee</dt><dd>Possible extra charges beyond the advertised evaluation price.</dd>'+
+    '<dt>Payout eligibility</dt><dd>The plan-specific requirements you must satisfy before requesting a withdrawal.</dd></dl></details>'+
+    '<div class="pfm-account-actions"><a class="btn small" href="/compare?add='+esc(f.slug)+'">Compare this firm</a><a class="btn small ghost" href="'+esc(f.site)+'" target="_blank" rel="noopener noreferrer nofollow">See official account options ↗</a></div>'+
+    '</section>';
+}
 function pageFirm(f){
   var others = FIRMS.filter(function(x){ return x.slug!==f.slug && x.markets[0]===f.markets[0]; }).slice(0,3);
   var facts = [["Official site",'<a href="'+esc(outUrl(f))+'" target="_blank" rel="'+outRel(f)+'">'+esc(f.site.replace(/^https?:\/\//,""))+"</a>"],["Markets",f.markets.map(function(mk){return MARKETS[mk].label}).join(", ")],["US eligibility",esc(cap(f.us))],["Entry price",f.from!==null&&f.from!==undefined?(priceHTML(f)+" — "+esc(f.fromPlan||"")):"Not verified"],["Profit target",esc(cap(f.target))],["Max drawdown",esc(cap(f.dd))],["Daily drawdown",esc(cap(f.dailyDD))],["Consistency rule",esc(cap(f.consistencyText))],["Min trading days",esc(cap(f.minDays))],["Payout cycle",esc(cap(f.payoutText))],["Activation fee",esc(cap(f.activation))],["Instant funding",esc(cap(f.instantText))],["Scaling",esc(cap(f.scaling))],["News trading",esc(cap(f.news))],["Overnight / weekend",esc(cap(f.overnight))],["Platforms",esc(f.platforms.join(", "))],["Payout methods",esc(f.payMethods.join(", "))],["Affiliate program",esc(cap(f.affiliate))]];
@@ -801,6 +844,7 @@ function pageFirm(f){
   '<div class="kvcell"><div class="k">Max drawdown</div><div class="v sm">'+esc(f.dd)+'</div></div>'+
   '<div class="kvcell"><div class="k">Starts from</div><div class="v">'+priceHTML(f)+'</div><div class="snap-note">'+(f.fromPlan?esc(f.fromPlan):"Not verified")+' · Snapshot '+SNAPSHOT+'</div></div></div>'+
   (f.note? '<div class="notice" style="margin-bottom:18px"><b>Read before you buy — conflicts &amp; open questions:</b> '+esc(f.note)+'</div>' : "")+
+  firmAccountExplorer(f)+
   '<div class="detail-grid"><div class="card"><h3>Firm facts — from the firm\'s own site</h3><div style="margin-top:8px">'+
   facts.map(function(r){ return '<div class="pay-row"><span class="mut" style="font-weight:700">'+r[0]+'</span><span style="font-weight:700;text-align:right;max-width:62%">'+r[1]+'</span></div>'; }).join("")+
   '</div></div>'+
