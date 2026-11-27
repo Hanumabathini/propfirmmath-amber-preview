@@ -62,7 +62,12 @@ if (warn.length) console.warn('Linked but not renderable (check these links):\n'
 fs.writeFileSync(path.join(out, '404.html'), externalise(src.replace('</head>', '<meta name="robots" content="noindex"></head>')));
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
 // Prevent browsers and edge caches from retaining old pre-rendered calculator markup.
-fs.writeFileSync(path.join(out, '_headers'), '/tools\n  Cache-Control: no-cache, must-revalidate\n/tools.html\n  Cache-Control: no-cache, must-revalidate\n/js/*\n  Cache-Control: public, max-age=31536000, immutable\n');
+fs.writeFileSync(path.join(out, '_headers'), [
+  '/tools', '  Cache-Control: no-cache, must-revalidate',
+  '/tools.html', '  Cache-Control: no-cache, must-revalidate',
+  '/js/*', '  Cache-Control: public, max-age=31536000, immutable',
+  ''
+].join('\\n'));
 fs.writeFileSync(path.join(out, 'robots.txt'), 'User-agent: *\nAllow: /\nSitemap: ' + SITE + '/sitemap.xml\n');
 fs.writeFileSync(path.join(out, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   [...routes].filter(r => !['/account', '/login', '/reset', '/journal'].includes(r)).sort().map(r => '  <url><loc>' + SITE + (r === '/' ? '/' : r) + '</loc></url>').join('\n') + '\n</urlset>\n');
