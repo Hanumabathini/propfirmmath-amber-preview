@@ -200,6 +200,7 @@ details.faq p{color:var(--muted);margin:0 0 14px}
 .pfm-account-faq dt{font-weight:800}.pfm-account-faq dd{margin:0;color:var(--muted)}
 .pfm-account-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 @media(max-width:600px){.pfm-account-faq dl{grid-template-columns:1fr;gap:4px}.pfm-account-faq dd{margin-bottom:10px}}
+.pfm-stat-link{text-decoration:none;color:inherit;cursor:pointer;transition:transform .16s ease,border-color .16s ease}.pfm-stat-link:hover,.pfm-stat-link:focus-visible{transform:translateY(-2px);border-color:var(--gold);outline-offset:3px}.pfm-glossary-entry[hidden],#pfm-glossary-empty[hidden]{display:none!important}
 </style>
 <style>
 /* ---------- home hero ---------- */
@@ -544,7 +545,14 @@ function marketStats(key){
   var pays = list.map(function(f){return f.payoutDays}).filter(function(v){return v!==null});
   var splits = list.map(function(f){return f.splitMax}).filter(function(v){return v!==null});
   var cf=null; list.forEach(function(f){ if (f.from!==null && (cf===null || f.from<cf.from)) cf=f; });
-  return { count:list.length, cheapest: froms.length?Math.min.apply(null,froms):null, cheapestFirm: cf, bigOff: offs.length?Math.max.apply(null,offs):null, fastest: pays.length?Math.min.apply(null,pays):null, split:"Up to "+Math.max.apply(null,splits)+"%" };
+  var maxOff=offs.length?Math.max.apply(null,offs):null;
+  var minPay=pays.length?Math.min.apply(null,pays):null;
+  var maxSplit=splits.length?Math.max.apply(null,splits):null;
+  return { count:list.length, cheapest: froms.length?Math.min.apply(null,froms):null, cheapestFirm:cf,
+    bigOff:maxOff, discountFirm:list.find(function(f){return maxOff!==null&&f.off===maxOff;})||null,
+    fastest:minPay, fastestFirm:list.find(function(f){return minPay!==null&&f.payoutDays===minPay;})||null,
+    split:maxSplit!==null?"Up to "+maxSplit+"%":"—",
+    splitFirm:list.find(function(f){return maxSplit!==null&&f.splitMax===maxSplit;})||null };
 }
 function icon(name, sz){
   sz = sz||22;
@@ -791,10 +799,10 @@ function pageMarket(key){
   go(pageHead('<a href="/">Home</a> · <a href="/firms">Prop Firms</a>', ms.count+" "+m.label+" prop firms in the directory",
     esc(m.desc)+" All figures on this page are computed from the firms below — the same directory data as the homepage. Snapshot "+SNAPSHOT+".")+
   '<div class="statrow" style="margin-top:20px">'+
-  '<div class="stat"><span class="ic">'+icon("coins",24)+'</span><span><b>'+(ms.cheapestFirm?priceHTML(ms.cheapestFirm):"—")+'</b><span>Cheapest account</span></span></div>'+
-  '<div class="stat"><span class="ic">'+icon("tag",24)+'</span><span><b>'+(ms.bigOff?ms.bigOff+"%":"—")+'</b><span>Biggest discount</span></span></div>'+
-  '<div class="stat"><span class="ic">'+icon("bolt",24)+'</span><span><b>'+(ms.fastest?ms.fastest+" day":"—")+'</b><span>Fastest payout</span></span></div>'+
-  '<div class="stat"><span class="ic">'+icon("chart",24)+'</span><span><b>'+esc(ms.split)+'</b><span>Top split</span></span></div></div>'+
+  '<a class="stat pfm-stat-link" href="'+(ms.cheapestFirm?'/firm/'+ms.cheapestFirm.slug:'/firms')+'" aria-label="View firm with cheapest listed starting account"><span class="ic">'+icon("coins",24)+'</span><span><b>'+(ms.cheapestFirm?priceHTML(ms.cheapestFirm):"—")+'</b><span>Cheapest account · View firm ↗</span></span></a>'+
+  '<a class="stat pfm-stat-link" href="'+(ms.discountFirm?'/firm/'+ms.discountFirm.slug:'/deals')+'" aria-label="View firm offering the biggest listed discount"><span class="ic">'+icon("tag",24)+'</span><span><b>'+(ms.bigOff?ms.bigOff+"%":"—")+'</b><span>Biggest discount · View firm ↗</span></span></a>'+
+  '<a class="stat pfm-stat-link" href="'+(ms.fastestFirm?'/firm/'+ms.fastestFirm.slug:'/rules')+'" aria-label="View firm with fastest listed payout cycle"><span class="ic">'+icon("bolt",24)+'</span><span><b>'+(ms.fastest?ms.fastest+" day":"—")+'</b><span>Fastest payout · View firm ↗</span></span></a>'+
+  '<a class="stat pfm-stat-link" href="'+(ms.splitFirm?'/firm/'+ms.splitFirm.slug:'/rules')+'" aria-label="View firm with highest listed maximum profit split"><span class="ic">'+icon("chart",24)+'</span><span><b>'+esc(ms.split)+'</b><span>Top split · View firm ↗</span></span></a></div>'+
   snapLine("Figures computed from the directory firms below, "+SNAPSHOT+". \"From\" prices are in each firm's own currency.")+
   '<div class="secttl"><span class="bar"></span><h2>'+m.label+' firms in the directory</h2></div>'+
   (list.length? firmTableHTML(list) : '<div class="empty-note">No firms for this market in the directory.</div>')+
@@ -1210,9 +1218,12 @@ function pageFaq(){
 /* ================= GLOSSARY ================= */
 function pageGlossary(){
   go(pageHead('<a href="/">Home</a> · Glossary', "Prop firm glossary", "The terms that decide whether an account survives — defined the way the rules pages use them.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(330px,1fr));margin-top:20px">'+
-  GLOSSARY.map(function(g){ return '<article class="card"><h3 style="font-size:17px">'+esc(g[0])+'</h3><p class="mut small" style="margin:6px 0 0">'+esc(g[1])+"</p></article>"; }).join("")+
-  "</div>");
+  '<div class="card" style="margin-top:20px"><label for="pfm-glossary-search"><strong>Search trading terms</strong></label><input id="pfm-glossary-search" type="search" placeholder="Try drawdown, payout, consistency…" autocomplete="off" style="display:block;width:100%;margin-top:10px" aria-controls="pfm-glossary-list"><p class="mut small" style="margin-top:10px">New to prop trading? Read a definition, then <a href="/rules">compare firm rules</a> or <a href="/tools">try the calculators</a>.</p></div>'+
+  '<div id="pfm-glossary-list" class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));margin-top:20px">'+
+  GLOSSARY.slice().sort(function(a,b){return a[0].localeCompare(b[0]);}).map(function(g){return '<article class="card pfm-glossary-entry" data-glossary="'+esc((g[0]+' '+g[1]).toLowerCase())+'"><h3 style="font-size:17px">'+esc(g[0])+'</h3><p class="mut small" style="margin:6px 0 0">'+esc(g[1])+"</p></article>";}).join("")+
+  '</div><p id="pfm-glossary-empty" class="mut" hidden>No matching terms. Try a shorter word.</p>');
+  var search=document.getElementById("pfm-glossary-search");
+  if(search)search.addEventListener("input",function(){var q=search.value.trim().toLowerCase(),shown=0;$(".pfm-glossary-entry").forEach(function(el){var yes=el.getAttribute("data-glossary").indexOf(q)>=0;el.hidden=!yes;if(yes)shown++;});var empty=document.getElementById("pfm-glossary-empty");if(empty)empty.hidden=shown!==0;});
 }
 /* ================= RULES ================= */
 function pageRules(){
