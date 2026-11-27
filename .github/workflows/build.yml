@@ -15,6 +15,8 @@ jobs:
       - run: npm ci
       - name: Pre-render every route (fails if a listed page renders empty or errors)
         run: npm run build
+      - name: Journal behavior checks
+        run: node scripts/test-journal.js
       - name: Smoke-check output
         run: |
           test -f dist/404.html

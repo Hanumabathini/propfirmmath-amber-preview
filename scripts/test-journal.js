@@ -1,0 +1,349 @@
+/* Journal behavior checks. Uses jsdom and a fake Supabase client — no network.
+   Run: node scripts/test-journal.js */
+const fs = require("fs");
+const path = require("path");
+const { JSDOM, VirtualConsole } = require("jsdom");
+
+const root = path.join(__dirname, "..");
+let html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+html = html.replace(/src="data:image\/[^"]+"/g, 'src=""');
+html = html.replace(
+  '<script src="/site.config.js"></script>',
+  "<script>\n" + fs.readFileSync(path.join(root, "site.config.js"), "utf8") + "\n</script>"
+);
+html = html.replace('<script src="/vendor/supabase.js"></script>', "");
+
+let pass = 0, fail = 0;
+function ok(name, cond, got) {
+  if (cond) pass++;
+  else { fail++; console.log("FAIL", name, "->", got); }
+}
+
+function install(window, state) {
+  const listeners = [];
+  window.scrollTo = () => {};
+  window.HTMLElement.prototype.scrollIntoView = () => {};
+  window.matchMedia = window.matchMedia || (() => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} }));
+  window.IntersectionObserver = window.IntersectionObserver || class { observe() {} unobserve() {} disconnect() {} };
+  if (!window.URL.createObjectURL) window.URL.createObjectURL = () => "blob:test";
+  window.URL.revokeObjectURL = window.URL.revokeObjectURL || (() => {});
+  function builder(table) {
+    const q = { filters: [], op: "select", payload: null, single: false, cols: "*", orderCol: null, asc: true };
+    const b = {
+      select(c) { q.cols = c; return b; },
+      eq(col, val) { q.filters.push([col, val]); return b; },
+      order(col, opts) { q.orderCol = col; q.asc = !(opts && opts.ascending === false); return b; },
+      limit() { return b; },
+      insert(row) { q.op = "insert"; q.payload = Object.assign({}, row); return b; },
+      update(row) { q.op = "update"; q.payload = Object.assign({}, row); return b; },
+      delete() { q.op = "delete"; return b; },
+      single() { q.single = true; return b; },
+      then(resolve, reject) {
+        let result;
+        try { result = { data: run(), error: null }; }
+        catch (e) { result = { data: null, error: { message: e.message } }; }
+        return Promise.resolve(result).then(resolve, reject);
+      }
+    };
+    function matching() {
+      return state[table].filter(row => q.filters.every(([c, v]) => row[c] === v));
+    }
+    function run() {
+      if (q.op === "select") {
+        const list = matching().slice();
+        if (q.orderCol) list.sort((a, c) => String(a[q.orderCol]).localeCompare(String(c[q.orderCol])) * (q.asc ? 1 : -1));
+        return list;
+      }
+      if (q.op === "insert") {
+        const row = Object.assign({ id: state.nextId() }, q.payload);
+        state[table].push(row);
+        state.inserts.push({ table, row });
+        return q.single ? row : [row];
+      }
+      if (q.op === "update") {
+        const list = matching();
+        list.forEach(row => Object.assign(row, q.payload));
+        if (q.single) return list[0] || null;
+        return list;
+      }
+      const ids = new Set(matching().map(row => row.id));
+      state[table] = state[table].filter(row => !ids.has(row.id));
+      state.deletes.push({ table, ids: [...ids] });
+      return null;
+    }
+    return b;
+  }
+  window.supabase = {
+    createClient() {
+      return {
+        auth: {
+          onAuthStateChange(cb) {
+            listeners.push(cb);
+            setTimeout(() => cb("INITIAL_SESSION", state.user ? { user: state.user } : null), 0);
+            return { data: { subscription: { unsubscribe() {} } } };
+          },
+          getSession() {
+            return Promise.resolve({ data: { session: state.user ? { user: state.user } : null } });
+          },
+          signUp(args) {
+            state.signUps.push(args);
+            return Promise.resolve({ data: { user: { identities: [{}] }, session: null }, error: null });
+          },
+          signInWithPassword() { return Promise.resolve({ data: {}, error: null }); },
+          resetPasswordForEmail(email, opts) {
+            state.resets.push({ email, opts });
+            return Promise.resolve({ error: null });
+          },
+          updateUser() { return Promise.resolve({ data: {}, error: null }); },
+          signOut() {
+            state.user = null;
+            listeners.slice().forEach(fn => fn("SIGNED_OUT", null));
+            return Promise.resolve({ error: null });
+          }
+        },
+        from: builder
+      };
+    }
+  };
+}
+
+function load(url, state) {
+  const vc = new VirtualConsole();
+  const errors = [];
+  vc.on("jsdomError", e => errors.push(String(e.message || e)));
+  const dom = new JSDOM(html, {
+    url,
+    runScripts: "dangerously",
+    pretendToBeVisual: true,
+    virtualConsole: vc,
+    beforeParse(w) { install(w, state); }
+  });
+  dom.window.__jsdomErrors = errors;
+  return dom;
+}
+
+function freshState(user) {
+  let n = 0;
+  return {
+    user,
+    trader_accounts: [],
+    trades: [],
+    inserts: [],
+    deletes: [],
+    signUps: [],
+    resets: [],
+    nextId() { n += 1; return "id-" + n; }
+  };
+}
+
+async function waitFor(fn, label) {
+  const start = Date.now();
+  while (Date.now() - start < 4000) {
+    const v = fn();
+    if (v) return v;
+    await new Promise(r => setTimeout(r, 20));
+  }
+  throw new Error("timed out waiting for " + label);
+}
+
+function submit(form) {
+  form.dispatchEvent(new form.ownerDocument.defaultView.Event("submit", { bubbles: true, cancelable: true }));
+}
+
+(async () => {
+  const user = { id: "user-1", email: "3rsj8cxh@mail.grokbot.com", user_metadata: { full_name: "Test Trader", country: "United States" } };
+  const state = freshState(user);
+  state.trader_accounts.push({ id: "a1", user_id: user.id, firm: "FTMO", plan: null, account_label: "Main journal", account_size: 0, stage: "evaluation", created_at: "2026-11-01T00:00:00Z" });
+  const trades = [
+    ["t-ym", "2026-11-01T12:00:00Z", -2, "YM"],
+    ["t-si", "2026-11-02T12:00:00Z", 0, "SI"],
+    ["t-rty", "2026-11-03T12:00:00Z", 5, "RTY"],
+    ["t-gc", "2026-11-04T12:00:00Z", 10, "GC"],
+    ["t-es", "2026-11-05T12:00:00Z", -40, "ES"],
+    ["t-nq", "2026-11-06T12:00:00Z", 100, "NQ"],
+    ["t-cl", "2026-11-07T12:00:00Z", 25, "CL"]
+  ];
+  trades.forEach(([id, traded_at, pnl, symbol]) => {
+    state.trades.push({ id, user_id: user.id, account_id: "a1", traded_at, pnl, symbol, note: symbol === "CL" ? "#breakout" : null });
+  });
+
+  const dom = load("https://propfirmmath-amber-preview.pages.dev/journal", state);
+  const w = dom.window;
+  const d = w.document;
+  try {
+    await waitFor(() => d.getElementById("journalAddAccount"), "journal shell");
+    ok("no jsdom errors", w.__jsdomErrors.length === 0, w.__jsdomErrors.join(" | "));
+
+    ok("money negative", w.money(-120) === "-$120.00", w.money(-120));
+    ok("money positive grouping", w.money(2052.45) === "$2,052.45", w.money(2052.45));
+    ok("money zero", w.money(0) === "$0.00", w.money(0));
+    ok("preview redirect", w.authRedirectTo("/login") === "https://propfirmmath-amber-preview.pages.dev/login", w.authRedirectTo("/login"));
+    ok("preview reset redirect", w.authRedirectTo("/reset") === "https://propfirmmath-amber-preview.pages.dev/reset", w.authRedirectTo("/reset"));
+
+    const rateRows = [];
+    for (let i = 0; i < 7; i++) rateRows.push({ traded_at: "2026-11-" + String(i + 1).padStart(2, "0"), pnl: 1, symbol: "NQ" });
+    for (let i = 0; i < 4; i++) rateRows.push({ traded_at: "2026-11-" + String(i + 8).padStart(2, "0"), pnl: -1, symbol: "ES" });
+    rateRows.push({ traded_at: "2026-11-12", pnl: 0, symbol: "CL" });
+    const stats = w.journalStats(rateRows);
+    ok("win rate keeps breakeven in the denominator", stats.count === 12 && stats.win === 7 && stats.loss === 4 && w.journalWinRateText(stats.count, stats.win, stats.loss) === "58.3%", w.journalWinRateText(stats.count, stats.win, stats.loss));
+    ok("breakeven win rate is blank", w.journalWinRateText(1, 0, 0) === "—", w.journalWinRateText(1, 0, 0));
+    ok("empty win rate stays 0%", w.journalWinRateText(0, 0, 0) === "0%", w.journalWinRateText(0, 0, 0));
+    const hand = w.journalStats([
+      { traded_at: "2026-11-01", pnl: 100, symbol: "NQ" },
+      { traded_at: "2026-11-02", pnl: -40, symbol: "ES" },
+      { traded_at: "2026-11-03", pnl: 10, symbol: "NQ" },
+      { traded_at: "2026-11-04", pnl: 0, symbol: "ES" }
+    ]);
+    ok("profit factor", hand.pf === 2.75, hand.pf);
+    ok("max drawdown", hand.drawdown === 40, hand.drawdown);
+    const emptyDash = w.journalDashboard([]);
+    ok("empty drawdown is not red", emptyDash.includes("Max drawdown") && !/Max drawdown[\s\S]{0,160}#ff8585/.test(emptyDash), emptyDash.slice(emptyDash.indexOf("Max drawdown"), emptyDash.indexOf("Max drawdown") + 180));
+    const lossDash = w.journalDashboard([{ traded_at: "2026-11-01", pnl: -120, symbol: "ES" }]);
+    ok("dashboard negative money", lossDash.includes("-$120.00") && !lossDash.includes("$-120.00"), "missing signed money");
+    const beDash = w.journalInsights([{ traded_at: "2026-11-01", pnl: 0, symbol: "ES" }]);
+    ok("analytics breakeven label", beDash.includes("breakeven") && !beDash.includes("0% wins"), beDash);
+    const ranked = w.journalInsights([
+      { traded_at: "2026-11-01", pnl: 10, symbol: "NQ" },
+      { traded_at: "2026-11-02", pnl: 50, symbol: "ES" },
+      { traded_at: "2026-11-03", pnl: -5, symbol: "CL" }
+    ]);
+    ok("analytics sorted by P&L", ranked.indexOf(">ES<") !== -1 && ranked.indexOf(">ES<") < ranked.indexOf(">NQ<") && ranked.indexOf(">NQ<") < ranked.indexOf(">CL<"), "order");
+
+    const shell = d.querySelector(".pfm-journal");
+    ok("rendered negatives", shell.innerHTML.includes("-$40.00") && !shell.innerHTML.includes("$-"), "sign");
+    ok("live win rate includes breakeven", shell.textContent.includes("57.1%") && shell.textContent.includes("4 wins / 2 losses"), shell.textContent.slice(0, 400));
+
+    const accounts = d.getElementById("journalAccounts");
+    const tradesPanel = d.getElementById("journalTrades");
+    ok("accounts panel is not inside the trade log", accounts && accounts.parentElement.classList.contains("journal-main") && !tradesPanel.contains(accounts), accounts && accounts.parentElement.className);
+    d.getElementById("journalAddAccount").click();
+    ok("add account shows the form", accounts.hidden === false && !accounts.closest("[hidden]") && d.getElementById("journalAccountForm") && d.getElementById("journalHeading").textContent === "Trading accounts", d.getElementById("journalHeading") && d.getElementById("journalHeading").textContent);
+
+    const filter = d.getElementById("journalAccountFilter");
+    filter.value = "firm:FTMO";
+    filter.dispatchEvent(new w.Event("change"));
+    ok("firm dropdown opens a prefilled account", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newAccountLabel").value === "FTMO Account 1" && d.getElementById("newAccountSize").value === "50000", d.getElementById("newAccountLabel") && d.getElementById("newAccountLabel").value);
+    submit(d.getElementById("journalAccountForm"));
+    await waitFor(() => state.trader_accounts.length === 2 && d.getElementById("journalHeading") && d.getElementById("journalHeading").textContent === "Trading Dashboard", "new account");
+    const created = state.trader_accounts[1];
+    ok("second account saved", created.firm === "FTMO" && created.account_label === "FTMO Account 1" && Number(created.account_size) === 50000, created);
+    ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);
+    ok("new account dashboard is empty", d.getElementById("journalOverview").textContent.includes("0 recorded trades"), "overview");
+
+    const filterNow = d.getElementById("journalAccountFilter");
+    filterNow.value = "all";
+    filterNow.dispatchEvent(new w.Event("change"));
+    await waitFor(() => d.getElementById("journalOverview") && d.getElementById("journalOverview").textContent.includes("7 recorded trades"), "all accounts");
+    ok("all accounts combines trades", d.querySelectorAll(".journal-symbol").length === 5, d.querySelectorAll(".journal-symbol").length);
+    d.getElementById("journalSymbolsToggle").click();
+    ok("show all symbols", d.querySelectorAll(".journal-symbol").length === 7 && d.getElementById("journalSymbolsToggle").textContent === "Show top 5", d.querySelectorAll(".journal-symbol").length);
+
+    d.querySelector('[data-jtab="insights"]').click();
+    const insightText = d.getElementById("journalInsights").textContent;
+    ok("rendered analytics order and breakeven", insightText.indexOf("NQ") < insightText.indexOf("CL") && insightText.indexOf("SI") !== -1 && insightText.slice(insightText.indexOf("SI"), insightText.indexOf("SI") + 40).includes("breakeven"), insightText.slice(insightText.indexOf("SI"), insightText.indexOf("SI") + 40));
+
+    d.querySelector('[data-jtab="calendar"]').click();
+    const cal = d.getElementById("journalCalendar");
+    const before = cal.querySelector("h3").textContent;
+    d.getElementById("journalCalNext").click();
+    const after = d.getElementById("journalCalendar").querySelector("h3").textContent;
+    ok("calendar next month", after !== before, before + " -> " + after);
+    d.getElementById("journalCalPrev").click();
+    ok("calendar previous month", d.getElementById("journalCalendar").querySelector("h3").textContent === before, d.getElementById("journalCalendar").querySelector("h3").textContent);
+
+    d.querySelector('[data-jtab="trades"]').click();
+    ok("trade log stays put", d.getElementById("journalTrades").hidden === false && d.getElementById("journalOverview").hidden === true, "tabs");
+    const edit = d.querySelector("[data-edit]");
+    edit.click();
+    ok("edit shows cancel", d.getElementById("jCancel").hidden === false && d.getElementById("jForm").querySelector("button[type=submit]").textContent === "Update trade", d.getElementById("jForm").querySelector("button[type=submit]").textContent);
+    d.getElementById("jCancel").click();
+    ok("cancel clears edit and stays on the trade log", d.getElementById("jCancel").hidden === true && d.getElementById("journalTrades").hidden === false && d.getElementById("journalOverview").hidden === true && d.getElementById("jForm").querySelector("button[type=submit]").textContent === "Save trade", "cancel");
+
+    const del = d.querySelector('[data-del="t-es"]');
+    del.click();
+    ok("delete asks first", del.textContent === "Delete?" && state.trades.some(t => t.id === "t-es"), del.textContent);
+    del.click();
+    await waitFor(() => !state.trades.some(t => t.id === "t-es") && d.getElementById("journalTrades") && d.getElementById("journalTrades").hidden === false, "deleted");
+    ok("delete confirms and stays on the trade log", d.getElementById("journalOverview").hidden === true && !d.querySelector('[data-del="t-es"]'), "deleted view");
+
+    ok("instrument is not silently capped", d.getElementById("jInst").getAttribute("maxlength") == null, d.getElementById("jInst").outerHTML);
+    d.getElementById("jInst").value = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    d.getElementById("jInst").dispatchEvent(new w.Event("input"));
+    ok("instrument counter warns", d.getElementById("jInstCount").textContent === "36 / 32", d.getElementById("jInstCount").textContent);
+    d.getElementById("jPnl").value = "10";
+    submit(d.getElementById("jForm"));
+    ok("long instrument rejected", d.getElementById("jMsg").textContent.includes("32 characters"), d.getElementById("jMsg").textContent);
+
+    d.getElementById("jInst").value = "NQ";
+    d.getElementById("jPnl").value = "-0.005";
+    submit(d.getElementById("jForm"));
+    ok("too many decimals", d.getElementById("jMsg").textContent.includes("at most 2 decimal places") && !d.getElementById("jMsg").textContent.includes("Enter a date, an instrument and a numeric"), d.getElementById("jMsg").textContent);
+
+    d.getElementById("jPnl").value = "abc";
+    submit(d.getElementById("jForm"));
+    ok("text P&L", /digits/.test(d.getElementById("jMsg").textContent), d.getElementById("jMsg").textContent);
+
+    d.getElementById("jPnl").value = "99999999999999";
+    submit(d.getElementById("jForm"));
+    ok("absurd P&L rejected", d.getElementById("jMsg").textContent.includes("$1,000,000.00"), d.getElementById("jMsg").textContent);
+
+    d.getElementById("jPnl").value = "10";
+    d.getElementById("jDate").value = "2027-06-01";
+    submit(d.getElementById("jForm"));
+    ok("future date rejected", d.getElementById("jMsg").textContent.includes("future"), d.getElementById("jMsg").textContent);
+
+    d.getElementById("jDate").value = w.journalToday();
+    d.getElementById("jInst").value = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    d.getElementById("jPnl").value = "15.5";
+    d.getElementById("jAccount").value = created.id;
+    const beforeInserts = state.inserts.length;
+    submit(d.getElementById("jForm"));
+    await waitFor(() => state.inserts.length > beforeInserts && d.getElementById("journalTrades").hidden === false, "saved trade");
+    const saved = state.inserts[state.inserts.length - 1].row;
+    ok("26-character instrument kept", saved.symbol === "ABCDEFGHIJKLMNOPQRSTUVWXYZ" && saved.symbol.length === 26, saved.symbol);
+    ok("trade assigned to the selected account", saved.account_id === created.id && saved.pnl === 15.5 && !("position_size" in saved), saved);
+    ok("still on the trade log after save", d.getElementById("journalTrades").hidden === false && d.getElementById("journalOverview").hidden === true, "tab");
+
+    w.history.pushState({}, "", "/account");
+    w.route();
+    ok("logged-in account page", d.getElementById("accountSignOut") && d.body.textContent.includes("3rsj8cxh@mail.grokbot.com") && d.body.textContent.includes("Test Trader") && !d.getElementById("regForm"), d.querySelector("h1") && d.querySelector("h1").textContent);
+    const nav = d.getElementById("mainnav").textContent;
+    ok("nav shows account and sign out", nav.includes("Account") && nav.includes("Sign out") && nav.includes("My Journal") && !nav.includes("Sign In"), nav);
+
+    d.getElementById("navSignOut").click();
+    await waitFor(() => w.location.pathname === "/" && d.getElementById("mainnav").textContent.includes("Sign In"), "signed out");
+    ok("signed out nav", !d.getElementById("navSignOut") && d.getElementById("mainnav").textContent.includes("Sign In"), d.getElementById("mainnav").textContent);
+    w.history.pushState({}, "", "/account");
+    w.route();
+    ok("logged-out account page is signup", !!d.getElementById("regForm") && !d.getElementById("accountSignOut"), d.querySelector("h1") && d.querySelector("h1").textContent);
+    d.getElementById("regName").value = "Test Trader";
+    d.getElementById("regEmail").value = "trader@example.com";
+    d.getElementById("regPass").value = "password1";
+    d.getElementById("regPass2").value = "password1";
+    d.getElementById("regTerms").checked = true;
+    submit(d.getElementById("regForm"));
+    await waitFor(() => state.signUps.length === 1, "signup");
+    ok("signup emailRedirectTo uses this site", state.signUps[0].options.emailRedirectTo === "https://propfirmmath-amber-preview.pages.dev/login", state.signUps[0].options.emailRedirectTo);
+  } catch (e) {
+    fail++;
+    console.log("FAIL exception", e && e.stack || e);
+    const app = d.getElementById("app");
+    console.log("page:", app ? app.textContent.slice(0, 500) : "(no app)");
+    console.log("jsdom:", w.__jsdomErrors.join(" | "));
+  }
+  dom.window.close();
+
+  const local = freshState(null);
+  const localDom = load("http://localhost:3000/account", local);
+  try {
+    ok("localhost redirect falls back to SITE_URL", localDom.window.authRedirectTo("/login") === "https://propfirmmath.com/login", localDom.window.authRedirectTo("/login"));
+  } catch (e) {
+    fail++;
+    console.log("FAIL localhost", e && e.stack || e);
+  }
+  await new Promise(r => setTimeout(r, 40));
+  localDom.window.close();
+
+  console.log(pass + " passed, " + fail + " failed");
+  process.exit(fail ? 1 : 0);
+})();

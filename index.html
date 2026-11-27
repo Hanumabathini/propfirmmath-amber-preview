@@ -43,6 +43,8 @@ nav.main a{color:var(--ink);font-weight:700;font-size:14.5px;padding:10px 14px;b
 nav.main a:hover{text-decoration:none;background:#1a1208}
 nav.main a.on{background:linear-gradient(160deg,#3a2708,#241806);box-shadow:var(--neu-in);color:var(--gold)}
 .signin{border:1px solid var(--line);border-radius:999px;padding:9px 18px !important;box-shadow:var(--neu-btn)}
+nav.main button.nav-signout{background:transparent;color:var(--ink);font-weight:700;font-size:14.5px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);cursor:pointer;min-height:44px;font-family:inherit}
+nav.main button.nav-signout:hover{background:#1a1208;color:var(--gold)}
 
 /* Compact, keyboard-accessible Resources navigation */
 nav.main .nav-resources{position:relative;min-width:0}
@@ -486,6 +488,22 @@ function siteCfg(){
   };
 }
 function siteBase(){ return String(siteCfg().SITE_URL).replace(/\/$/, ""); }
+/* Confirmation and password-reset links must come back to this site.
+   Use the origin the person is actually on (preview or production). A local
+   origin falls back to SITE_URL in site.config.js so a dev machine does not
+   become the address in the email. Supabase only honors this when that URL
+   is allowed under Authentication → URL Configuration. */
+function authRedirectTo(path){
+  var origin = "";
+  try {
+    if (location.protocol === "http:" || location.protocol === "https:") origin = String(location.origin || "").replace(/\/$/, "");
+  } catch (e) {}
+  var local = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin);
+  var base = (!origin || local) ? siteBase() : origin;
+  if (!base) base = origin || siteBase();
+  path = path.charAt(0) === "/" ? path : "/" + path;
+  return base + path;
+}
 function affiliateActive(){ return siteCfg().AFFILIATE_LINKS_ACTIVE; }
 function contactHref(subject){
   var href = "mailto:" + siteCfg().CONTACT_EMAIL;
@@ -597,7 +615,7 @@ function applyExpiry(){
   });
 }
 applyExpiry();
-function money(n){ if (n===null||n===undefined) return "—"; return "$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); }
+function money(n){ if (n===null||n===undefined||n==="") return "—"; var v=Number(n); if(!Number.isFinite(v)) return "—"; var abs=Math.abs(v).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); return (v<0?"-":"")+"$"+abs; }
 function money0(n){ if (n===null||n===undefined) return "—"; if (n>=1000000) return "$"+(n/1000000).toFixed(2)+"M"; if (n>=1000) return "$"+(n/1000).toFixed(1)+"K"; return "$"+n; }
 function initials(n){ var p=n.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).filter(Boolean); if (p.length===1) return p[0].slice(0,2).toUpperCase(); return (p[0][0]+p[1][0]).toUpperCase(); }
 var AVCOLORS = [["#ffd34d","#ff8a00"],["#ffb020","#e06400"],["#ffe9a8","#ffb020"],["#f7b733","#fc4a1a"],["#ffd34d","#b8860b"],["#ffb347","#ff7e00"],["#ffcf4d","#d35400"],["#ffe082","#ffa000"]];
@@ -738,8 +756,16 @@ function renderNav(route){
   html += '<div class="nav-resources-heading">Trader Utilities</div>';
   RESOURCE_NAV.slice(3).forEach(function(n){html+='<a href="'+n[0]+'">'+esc(n[1])+'</a>';});
   html += '</div></details>';
-  html += PM_USER ? '<a href="/journal" class="signin'+(route==="/journal"?" on":"")+'">My Journal</a>' : '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
+  if (PM_USER) {
+    html += '<a href="/journal"'+(route==="/journal"?' class="on"':'')+'>My Journal</a>';
+    html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Account</a>';
+    html += '<button type="button" class="nav-signout" id="navSignOut">Sign out</button>';
+  } else {
+    html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
+  }
   $("#mainnav").innerHTML = html;
+  var navOut = document.getElementById("navSignOut");
+  if (navOut) navOut.addEventListener("click", function(){ signOutAndLeave(); });
 }
 /* skip link: move focus to main content without changing the route */
 (function(){var a=document.querySelector(".skip-link");if(a)a.addEventListener("click",function(e){e.preventDefault();var m=document.getElementById("app");if(m){m.focus();m.scrollIntoView();}});})();
@@ -747,14 +773,44 @@ function renderNav(route){
 var app = $("#app");
 var SB_URL = "https://yomrezvtmovuruhkgikf.supabase.co";
 var SB_KEY = "sb_publishable_PHkj5jGsgpuVhGmIbyll3w_DsqIbNL2";
-var sb = null, PM_USER = null;
+var sb = null, PM_USER = null, authReady = false;
 try { if (window.supabase) sb = window.supabase.createClient(SB_URL, SB_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}); } catch(e){ sb = null; }
+authReady = !sb;
+function signOutAndLeave(){
+  if (!sb) return;
+  sb.auth.signOut().then(function(){
+    PM_USER = null;
+    if (typeof journalState !== "undefined" && journalState) journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
+    history.pushState({},"","/");
+    route();
+  });
+}
+function refreshAuthPage(){
+  var path = location.pathname || "/";
+  if (/^\/(account|login|journal|reset)\/?$/.test(path)) route();
+}
 if (sb){
-  sb.auth.getSession().then(function(r){ PM_USER = r.data && r.data.session ? r.data.session.user : null; renderNav(location.pathname||"/"); });
+  var lastAuthUserId = null, authSeen = false;
   sb.auth.onAuthStateChange(function(ev, session){
     PM_USER = session ? session.user : null;
+    var id = PM_USER ? PM_USER.id : null;
+    var changed = authSeen && id !== lastAuthUserId;
+    lastAuthUserId = id;
+    var first = !authReady;
+    authReady = true;
+    authSeen = true;
     renderNav(location.pathname||"/");
-    if (ev==="PASSWORD_RECOVERY" && location.pathname!=="/reset"){ history.pushState({},"","/reset"); route(); }
+    if (ev==="PASSWORD_RECOVERY" && location.pathname!=="/reset"){ history.pushState({},"","/reset"); route(); return; }
+    if (first || changed) refreshAuthPage();
+  });
+  sb.auth.getSession().then(function(r){
+    if (authReady) return;
+    PM_USER = r.data && r.data.session ? r.data.session.user : null;
+    lastAuthUserId = PM_USER ? PM_USER.id : null;
+    authReady = true;
+    authSeen = true;
+    renderNav(location.pathname||"/");
+    refreshAuthPage();
   });
 }
 function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
@@ -1317,8 +1373,26 @@ function authUnavailable(){
   return '<div class="notice" style="margin-bottom:18px"><b>Accounts are temporarily unavailable.</b> The sign-in service could not be reached. Please reload the page or try again shortly.</div>';
 }
 var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+function authChecking(title){
+  go(pageHead('<a href="/">Home</a> · Account', title || "Account", "Checking your session.")+
+    '<div class="card" style="margin-top:20px;max-width:560px"><p class="mut">Checking your session…</p></div>');
+}
 function pageAccount(){
-  if (PM_USER) { history.replaceState({},"","/journal"); return route(); }
+  if (sb && !authReady) { authChecking("Your account"); return; }
+  if (PM_USER) {
+    var meta = PM_USER.user_metadata || {};
+    var name = meta.full_name ? String(meta.full_name) : "";
+    var country = meta.country ? String(meta.country) : "";
+    go(pageHead('<a href="/">Home</a> · Account', "Your account", "Signed in. Your journal is private to this login.")+
+      '<div style="max-width:560px;margin-top:20px"><div class="card">'+
+      (name ? '<p style="margin:0"><strong>'+esc(name)+'</strong></p>' : '')+
+      '<p class="mut small" style="margin:14px 0 0">Email</p><p style="margin:4px 0 0;font-weight:800">'+esc(PM_USER.email||"")+'</p>'+
+      (country ? '<p class="mut small" style="margin:8px 0 0">'+esc(country)+'</p>' : '')+
+      '<p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/journal">Open journal</a> <button class="btn ghost" type="button" id="accountSignOut">Sign out</button></p>'+
+      '</div></div>');
+    $("#accountSignOut").addEventListener("click", signOutAndLeave);
+    return;
+  }
   var locale = (navigator.language || "en-US");
   var region = locale.indexOf("-")>0 ? locale.split("-")[1].toUpperCase() : "";
   var countryGuess = region==="US" ? "United States" : (region==="GB" ? "United Kingdom" : (region==="IN" ? "India" : (region==="AU" ? "Australia" : "")));
@@ -1345,16 +1419,17 @@ function pageAccount(){
     if (p1!==p2) return err("Passwords don't match.");
     if (!$("#regTerms").checked) return err("Please agree to the Terms and Privacy Policy.");
     var btn=$("#regForm button[type=submit]"); btn.disabled=true; msg.className="form-msg"; msg.textContent="Creating your account…";
-    sb.auth.signUp({email:em,password:p1,options:{emailRedirectTo:location.origin+"/login",data:{full_name:$("#regName").value.trim(),country:$("#regCountry").value.trim(),deals_opt_in:$("#regNews").checked}}}).then(function(r){
+    sb.auth.signUp({email:em,password:p1,options:{emailRedirectTo:authRedirectTo("/login"),data:{full_name:$("#regName").value.trim(),country:$("#regCountry").value.trim(),deals_opt_in:$("#regNews").checked}}}).then(function(r){
       btn.disabled=false;
       if (r.error) return err(r.error.message);
       if (r.data && r.data.session){ toast("Account created"); history.pushState({},"","/journal"); route(); return; }
       if (r.data && r.data.user && r.data.user.identities && r.data.user.identities.length===0) return err("An account with this email already exists. Try logging in instead.");
-      msg.className="form-msg ok"; msg.textContent="Almost done — we sent a confirmation link to "+em+". Open it, then log in.";
+      msg.className="form-msg ok"; msg.textContent="Almost done — we sent a confirmation link to "+em+". Open it on this device and it will bring you back here, signed in.";
     }).catch(function(){ btn.disabled=false; err("Could not reach the sign-in service. Please try again."); });
   });
 }
 function pageLogin(){
+  if (sb && !authReady) { authChecking("Log in"); return; }
   if (PM_USER) { history.replaceState({},"","/journal"); return route(); }
   go(pageHead('<a href="/">Home</a> · Account', "Log in", "Welcome back.")+
   '<div style="max-width:480px;margin-top:20px">'+(sb?"":authUnavailable())+
@@ -1381,13 +1456,14 @@ function pageLogin(){
     var m=$("#forgotMsg"); var em=$("#liEmail").value.trim();
     if (!EMAIL_RE.test(em)){ m.className="form-msg err"; m.textContent="Type your email above first, then press Forgot password."; return; }
     if (!sb){ m.className="form-msg err"; m.textContent="The sign-in service is unavailable right now."; return; }
-    sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+"/reset"}).then(function(r){
+    sb.auth.resetPasswordForEmail(em,{redirectTo:authRedirectTo("/reset")}).then(function(r){
       if (r.error){ m.className="form-msg err"; m.textContent=r.error.message; return; }
       m.className="form-msg ok"; m.textContent="If an account exists for that email, a reset link is on its way.";
     });
   });
 }
 function pageReset(){
+  if (sb && !authReady) { authChecking("Set a new password"); return; }
   go(pageHead('<a href="/">Home</a> · Account', "Set a new password", "Choose a new password for your account.")+
   '<div style="max-width:480px;margin-top:20px"><div class="card"><form id="rsForm"><div class="field"><label class="fl" for="rsPass">New password</label><input type="password" id="rsPass" autocomplete="new-password" /></div>'+
   '<button class="btn" type="submit" style="width:100%">Update password</button><p class="form-msg" id="rsMsg"></p></form></div></div>');
@@ -1403,222 +1479,574 @@ function pageReset(){
   });
 }
 /* ---- Journal: trades saved per user in Supabase (row-level security) ---- */
-var journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all"};
-function journalLoad(){
- return sb.from("trader_accounts").select("id,firm,plan,account_label,account_size,stage,created_at").eq("user_id",PM_USER.id).order("created_at").then(function(r){
- if(r.error)throw r.error;
- if(r.data.length)return r.data;
- return sb.from("trader_accounts").insert({user_id:PM_USER.id,firm:"Unspecified",account_label:"Main journal",account_size:0}).select("id,firm,plan,account_label,account_size,stage,created_at").then(function(x){if(x.error)throw x.error;return x.data;});
- }).then(function(a){journalState.accounts=a;journalState.acct=a[0];if(journalState.selected!=="all"&&!a.some(function(x){return x.id===journalState.selected;}))journalState.selected="all";
- return sb.from("trades").select("id,account_id,traded_at,pnl,symbol,note").eq("user_id",PM_USER.id).order("traded_at",{ascending:false}).limit(1000);
- }).then(function(r){if(r.error)throw r.error;journalState.allRows=r.data||[];journalState.rows=journalState.selected==="all"?journalState.allRows:journalState.allRows.filter(function(x){return x.account_id===journalState.selected;});});
+var JOURNAL_PNL_MAX = 1000000;
+var JOURNAL_SYMBOL_MAX = 32;
+var TRADE_CORE = "id,account_id,traded_at,pnl,symbol,note";
+var journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
+function journalFetchTrades(){
+  return sb.from("trades").select(TRADE_CORE).eq("user_id", PM_USER.id).order("traded_at", {ascending:false}).limit(1000);
 }
-function journalAccountLabel(a){return (a.account_label||a.firm||"Account")+(Number(a.account_size)>0?" · "+money(a.account_size):"");}
+function journalLoad(){
+  return sb.from("trader_accounts").select("id,firm,plan,account_label,account_size,stage,created_at").eq("user_id", PM_USER.id).order("created_at").then(function(r){
+    if (r.error) throw r.error;
+    if (r.data && r.data.length) return r.data;
+    return sb.from("trader_accounts").insert({user_id:PM_USER.id,firm:"Unspecified",account_label:"Main journal",account_size:0}).select("id,firm,plan,account_label,account_size,stage,created_at").then(function(x){
+      if (x.error) throw x.error;
+      return x.data;
+    });
+  }).then(function(a){
+    journalState.accounts = a || [];
+    journalState.acct = journalState.accounts[0] || null;
+    if (journalState.selected !== "all" && !journalState.accounts.some(function(x){ return x.id === journalState.selected; })) journalState.selected = "all";
+    return journalFetchTrades();
+  }).then(function(r){
+    if (r.error) throw r.error;
+    journalState.allRows = r.data || [];
+    journalState.rows = journalState.selected === "all" ? journalState.allRows : journalState.allRows.filter(function(x){ return x.account_id === journalState.selected; });
+  });
+}
+function journalAccountLabel(a){ return (a.account_label || a.firm || "Account") + (Number(a.account_size) > 0 ? " · " + money(a.account_size) : ""); }
+function journalFirmChoices(){
+  return FIRMS.slice().sort(function(a, b){ return a.name.localeCompare(b.name, undefined, {sensitivity:"base"}); });
+}
+function journalToday(){
+  var n = new Date();
+  return n.getFullYear() + "-" + String(n.getMonth() + 1).padStart(2, "0") + "-" + String(n.getDate()).padStart(2, "0");
+}
+function journalNormalizePnl(raw){ return String(raw == null ? "" : raw).trim().replace(/,/g, ""); }
+function journalSymbolError(raw){
+  var s = String(raw || "").trim();
+  if (!s) return "Enter an instrument.";
+  if (s.length > JOURNAL_SYMBOL_MAX) return "Instrument names can be up to " + JOURNAL_SYMBOL_MAX + " characters. This one is " + s.length + ".";
+  return "";
+}
+function journalPnlError(raw){
+  var s = journalNormalizePnl(raw);
+  if (!s) return "Enter a numeric P&L.";
+  if (!/^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(s)) return "Enter a numeric P&L. Use digits, not words.";
+  if (/\.\d{3,}$/.test(s)) return "P&L can have at most 2 decimal places.";
+  var n = Number(s);
+  if (!Number.isFinite(n)) return "Enter a numeric P&L.";
+  if (Math.abs(n) > JOURNAL_PNL_MAX) return "P&L must be between -$1,000,000.00 and $1,000,000.00.";
+  return "";
+}
+function journalDateError(raw){
+  var s = String(raw || "").trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return "Enter a date.";
+  var p = s.split("-"), dt = new Date(+p[0], +p[1] - 1, +p[2]);
+  if (dt.getFullYear() !== +p[0] || dt.getMonth() !== +p[1] - 1 || dt.getDate() !== +p[2]) return "Enter a real date.";
+  if (s > journalToday()) return "That date is in the future. Use today or an earlier session.";
+  return "";
+}
+function journalWinRateText(count, win, loss){
+  if (!count) return "0%";
+  if (!(win + loss)) return "—";
+  return (100 * win / count).toFixed(1) + "%";
+}
+function journalWinLabel(wins, losses, n){
+  var noun = n === 1 ? "1 trade" : n + " trades";
+  if (!(wins + losses)) return noun + " · breakeven";
+  return noun + " · " + Math.round(wins / n * 100) + "% wins";
+}
+function journalStats(rows){
+  var ordered = rows.slice().sort(function(a, b){ return String(a.traded_at).localeCompare(String(b.traded_at)); });
+  var total = 0, peak = 0, drawdown = 0, win = 0, loss = 0, grossWin = 0, grossLoss = 0, points = [0], symbols = {}, months = {};
+  ordered.forEach(function(r){
+    var p = Number(r.pnl) || 0;
+    total += p;
+    points.push(total);
+    peak = Math.max(peak, total);
+    drawdown = Math.max(drawdown, peak - total);
+    if (p > 0) { win++; grossWin += p; }
+    else if (p < 0) { loss++; grossLoss -= p; }
+    var k = (r.symbol || "Other").toUpperCase();
+    symbols[k] = (symbols[k] || 0) + p;
+    var m = String(r.traded_at).slice(0, 7);
+    months[m] = (months[m] || 0) + p;
+  });
+  var count = ordered.length;
+  var pf = grossLoss ? (grossWin / grossLoss) : (grossWin ? Infinity : null);
+  return {ordered:ordered, total:total, peak:peak, drawdown:drawdown, win:win, loss:loss, grossWin:grossWin, grossLoss:grossLoss, points:points, symbols:symbols, months:months, count:count, pf:pf};
+}
 function pageJournal(){
-  var head=pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.");
-  if (!sb){ go(head+'<div style="margin-top:20px">'+authUnavailable()+'</div>'); return; }
-  if (!PM_USER){
-    go(head+'<div class="card" style="margin-top:20px;max-width:560px"><h3>Log in to use your journal</h3><p class="mut" style="margin-top:8px">The journal saves your trades to your free account so they are there next time.</p><p style="margin-top:14px"><a class="btn" href="/account">Sign up free</a> <a class="btn ghost" href="/login">Log in</a></p></div>');
+  var head = pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.");
+  if (!sb) { go(head + '<div style="margin-top:20px">' + authUnavailable() + '</div>'); return; }
+  if (!authReady) { go(head + '<div class="card" style="margin-top:20px"><p class="mut">Checking your session…</p></div>'); return; }
+  if (!PM_USER) {
+    go(head + '<div class="card" style="margin-top:20px;max-width:560px"><h3>Log in to use your journal</h3><p class="mut" style="margin-top:8px">The journal saves your trades to your free account so they are there next time.</p><p style="margin-top:14px"><a class="btn" href="/account">Sign up free</a> <a class="btn ghost" href="/login">Log in</a></p></div>');
     return;
   }
-  go(head+'<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');
+  go(head + '<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');
   journalLoad().then(renderJournal).catch(function(e){
-    go(head+'<div class="notice" style="margin-top:20px"><b>Could not load your journal.</b> '+esc(e && e.message || "Please try again.")+'</div>');
+    go(head + '<div class="notice" style="margin-top:20px"><b>Could not load your journal.</b> ' + esc(e && e.message || "Please try again.") + '</div>');
   });
 }
 function journalDashboard(rows){
-  var ordered=rows.slice().sort(function(a,b){return String(a.traded_at).localeCompare(String(b.traded_at));});
-  var total=0,peak=0,drawdown=0,win=0,loss=0,grossWin=0,grossLoss=0,points=[0],symbols={},months={};
-  ordered.forEach(function(r){var p=Number(r.pnl)||0;total+=p;points.push(total);peak=Math.max(peak,total);drawdown=Math.max(drawdown,peak-total);
-    if(p>0){win++;grossWin+=p;}else if(p<0){loss++;grossLoss-=p;}
-    var k=(r.symbol||"Other").toUpperCase();symbols[k]=(symbols[k]||0)+p;
-    var m=String(r.traded_at).slice(0,7);months[m]=(months[m]||0)+p;
-  });
-  var count=ordered.length,lo=Math.min.apply(null,points),hi=Math.max.apply(null,points),span=Math.max(1,hi-lo);
-  var path=points.map(function(v,i){return (i?"L":"M")+(12+756*i/Math.max(1,points.length-1)).toFixed(1)+","+(184-158*(v-lo)/span).toFixed(1);}).join(" ");
-  var stat=function(label,value,sub,color){return '<div class="card journal-kpi"><div class="mut small">'+label+'</div><div class="journal-kpi-value"'+(color?' style="color:'+color+'"':'')+'>'+value+'</div><div class="mut small">'+sub+'</div></div>';};
-  var pf=grossLoss?(grossWin/grossLoss).toFixed(2)+'x':grossWin?'∞':'—';
-  var kpis='<div class="journal-kpis">'+stat('Net profit',money(total),count+' recorded trades',total>=0?'#36d993':'#ff7474')+stat('Win rate',(count?(100*win/count).toFixed(1):'0')+'%',win+' wins / '+loss+' losses')+stat('Profit factor',pf,'Gross profit / gross loss')+stat('Average trade',money(count?total/count:0),'Realized P&amp;L per trade')+stat('Max drawdown',money(drawdown),'Peak-to-trough decline','#ff8585')+stat('Expectancy',money(count?total/count:0),'Per recorded trade')+'</div>';
-  var curve=count?'<svg viewBox="0 0 780 210" role="img" aria-label="Equity curve based on recorded trades" style="display:block;width:100%;height:auto"><defs><linearGradient id="pfmEquityFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#efad2d" stop-opacity=".3"/><stop offset="100%" stop-color="#efad2d" stop-opacity="0"/></linearGradient></defs><path d="'+path+' L768,194 L12,194 Z" fill="url(#pfmEquityFill)"/><path d="'+path+'" fill="none" stroke="#f2af2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>':'<div class="journal-empty">Log your first trade to start building your equity curve.</div>';
-  var year=new Date().getFullYear();
-  var tiles=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map(function(m,i){var k=year+'-'+String(i+1).padStart(2,'0'),v=months[k],cls=v===undefined?'none':v>=0?'gain':'loss';return '<div class="journal-month '+cls+'" title="'+m+' '+year+'"><span>'+m+'</span><strong>'+(v===undefined?'—':money(v))+'</strong></div>';}).join('');
-  var keys=Object.keys(symbols).sort(function(a,b){return Math.abs(symbols[b])-Math.abs(symbols[a]);}).slice(0,5),max=Math.max(1,...keys.map(function(k){return Math.abs(symbols[k]);}));
-  var bars=keys.length?keys.map(function(k){return '<div class="journal-symbol"><span>'+esc(k)+'</span><div class="journal-bar"><div style="width:'+Math.max(2,100*Math.abs(symbols[k])/max)+'%;background:'+(symbols[k]>=0?'#efad2d':'#ff7474')+'"></div></div><strong style="color:'+(symbols[k]>=0?'#36d993':'#ff8585')+'">'+money(symbols[k])+'</strong></div>';}).join(''):'<p class="mut small">Instrument results appear after your first trade.</p>';
-  var recent=ordered.slice().reverse().slice(0,5);
-  var table=recent.length?'<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th>Date</th><th>Symbol</th><th>P&amp;L</th></tr></thead><tbody>'+recent.map(function(r){var p=Number(r.pnl)||0;return '<tr><td>'+esc(String(r.traded_at).slice(0,10))+'</td><td>'+esc(r.symbol||'—')+'</td><td style="color:'+(p>=0?'#36d993':'#ff8585')+'">'+money(p)+'</td></tr>';}).join('')+'</tbody></table></div>':'<p class="mut small">Your latest trades will appear here.</p>';
-  return kpis+'<div class="journal-dashboard-top"><div class="card"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L</p>'+curve+'</div><div class="card"><h3>Monthly performance <span class="mut small">'+year+' · USD</span></h3><div class="journal-month-grid">'+tiles+'</div></div></div>'+
-  '<div class="journal-dashboard-bottom"><div class="card"><h3>Trading statistics</h3><div class="journal-stat-line"><span>Total trades</span><strong>'+count+'</strong></div><div class="journal-stat-line"><span>Average win</span><strong>'+money(win?grossWin/win:0)+'</strong></div><div class="journal-stat-line"><span>Average loss</span><strong>'+money(loss?-grossLoss/loss:0)+'</strong></div><div class="journal-stat-line"><span>Winning trades</span><strong>'+win+'</strong></div><div class="journal-stat-line"><span>Losing trades</span><strong>'+loss+'</strong></div></div><div class="card"><h3>P&amp;L by symbol</h3>'+bars+'</div><div class="card"><h3>Recent trades</h3>'+table+'</div></div>';
+  var s = journalStats(rows);
+  var lo = Math.min.apply(null, s.points), hi = Math.max.apply(null, s.points), span = Math.max(1, hi - lo);
+  var path = s.points.map(function(v, i){ return (i ? "L" : "M") + (12 + 756 * i / Math.max(1, s.points.length - 1)).toFixed(1) + "," + (184 - 158 * (v - lo) / span).toFixed(1); }).join(" ");
+  var stat = function(label, value, sub, color){ return '<div class="card journal-kpi"><div class="mut small">' + label + '</div><div class="journal-kpi-value"' + (color ? ' style="color:' + color + '"' : '') + '>' + value + '</div><div class="mut small">' + sub + '</div></div>'; };
+  var pfText = s.pf == null ? "—" : (s.pf === Infinity ? "∞" : s.pf.toFixed(2) + "x");
+  var kpis = '<div class="journal-kpis">' +
+    stat("Net profit", money(s.total), s.count + " recorded trades", s.total >= 0 ? "#36d993" : "#ff7474") +
+    stat("Win rate", journalWinRateText(s.count, s.win, s.loss), s.win + " wins / " + s.loss + " losses") +
+    stat("Profit factor", pfText, "Gross profit / gross loss") +
+    stat("Average trade", money(s.count ? s.total / s.count : 0), "Realized P&amp;L per trade") +
+    stat("Max drawdown", money(s.drawdown), "Peak-to-trough decline", s.drawdown > 0 ? "#ff8585" : null) +
+    stat("Expectancy", money(s.count ? s.total / s.count : 0), "Per recorded trade") +
+    "</div>";
+  var curve = s.count ? '<svg viewBox="0 0 780 210" role="img" aria-label="Equity curve based on recorded trades" style="display:block;width:100%;height:auto"><defs><linearGradient id="pfmEquityFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#efad2d" stop-opacity=".3"/><stop offset="100%" stop-color="#efad2d" stop-opacity="0"/></linearGradient></defs><path d="' + path + ' L768,194 L12,194 Z" fill="url(#pfmEquityFill)"/><path d="' + path + '" fill="none" stroke="#f2af2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>' : '<div class="journal-empty">Log your first trade to start building your equity curve.</div>';
+  var year = new Date().getFullYear();
+  var tiles = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].map(function(m, i){
+    var k = year + "-" + String(i + 1).padStart(2, "0"), v = s.months[k], cls = v === undefined ? "none" : v >= 0 ? "gain" : "loss";
+    return '<div class="journal-month ' + cls + '" title="' + m + " " + year + '"><span>' + m + "</span><strong>" + (v === undefined ? "—" : money(v)) + "</strong></div>";
+  }).join("");
+  var ranked = Object.keys(s.symbols).sort(function(a, b){ return Math.abs(s.symbols[b]) - Math.abs(s.symbols[a]) || a.localeCompare(b); });
+  var keys = journalState.showAllSymbols ? ranked : ranked.slice(0, 5);
+  var maxBar = Math.max(1, Math.max.apply(null, keys.map(function(k){ return Math.abs(s.symbols[k]); }).concat([0])));
+  var bars = keys.length ? keys.map(function(k){
+    var v = s.symbols[k];
+    return '<div class="journal-symbol"><span>' + esc(k) + '</span><div class="journal-bar"><div style="width:' + Math.max(2, 100 * Math.abs(v) / maxBar) + "%;background:" + (v >= 0 ? "#efad2d" : "#ff7474") + '"></div></div><strong style="color:' + (v >= 0 ? "#36d993" : "#ff8585") + '">' + money(v) + "</strong></div>";
+  }).join("") : '<p class="mut small">Instrument results appear after your first trade.</p>';
+  var toggle = ranked.length > 5 ? '<p style="margin:12px 0 0"><button type="button" class="btn ghost small" id="journalSymbolsToggle">' + (journalState.showAllSymbols ? "Show top 5" : "Show all " + ranked.length) + "</button></p>" : "";
+  var recent = s.ordered.slice().reverse().slice(0, 5);
+  var table = recent.length ? '<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th>Date</th><th>Symbol</th><th>P&amp;L</th></tr></thead><tbody>' + recent.map(function(r){
+    var p = Number(r.pnl) || 0;
+    var color = p > 0 ? "#36d993" : p < 0 ? "#ff8585" : "#94a9ba";
+    return "<tr><td>" + esc(String(r.traded_at).slice(0, 10)) + "</td><td>" + esc(r.symbol || "—") + '</td><td style="color:' + color + '">' + money(p) + "</td></tr>";
+  }).join("") + "</tbody></table></div>" : '<p class="mut small">Your latest trades will appear here.</p>';
+  return kpis +
+    '<div class="journal-dashboard-top"><div class="card"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L</p>' + curve + '</div><div class="card"><h3>Monthly performance <span class="mut small">' + year + ' · USD</span></h3><div class="journal-month-grid">' + tiles + "</div></div></div>" +
+    '<div class="journal-dashboard-bottom"><div class="card"><h3>Trading statistics</h3><div class="journal-stat-line"><span>Total trades</span><strong>' + s.count + '</strong></div><div class="journal-stat-line"><span>Average win</span><strong>' + money(s.win ? s.grossWin / s.win : 0) + '</strong></div><div class="journal-stat-line"><span>Average loss</span><strong>' + money(s.loss ? -s.grossLoss / s.loss : 0) + '</strong></div><div class="journal-stat-line"><span>Winning trades</span><strong>' + s.win + '</strong></div><div class="journal-stat-line"><span>Losing trades</span><strong>' + s.loss + '</strong></div></div><div class="card"><h3>P&amp;L by symbol</h3>' + bars + toggle + '</div><div class="card"><h3>Recent trades</h3>' + table + "</div></div>";
 }
 function journalInsights(rows){
-  var symbols={};
-  rows.forEach(function(r){var k=(r.symbol||"Unknown").toUpperCase();if(!symbols[k])symbols[k]={n:0,pnl:0,wins:0};symbols[k].n++;symbols[k].pnl+=Number(r.pnl);if(Number(r.pnl)>0)symbols[k].wins++;});
-  var sorted=Object.keys(symbols).sort(function(a,b){return symbols[b].n-symbols[a].n;});
-  var max=Math.max(1,...sorted.map(function(k){return Math.abs(symbols[k].pnl);}));
-  return '<div class="card" style="margin-bottom:18px"><h3>Instrument breakdown</h3><p class="mut small">Find the instruments contributing most to your realized results.</p>'+
-  (sorted.length?sorted.map(function(k){var o=symbols[k],v=o.pnl;return '<div style="display:grid;grid-template-columns:minmax(75px,1fr) minmax(80px,3fr) minmax(85px,1fr);align-items:center;gap:12px;margin-top:15px"><div><strong>'+esc(k)+'</strong><div class="mut small">'+o.n+' trades · '+Math.round(o.wins/o.n*100)+'% wins</div></div><div style="height:11px;background:rgba(150,150,150,.12);border-radius:20px;overflow:hidden"><div style="width:'+Math.max(2,Math.abs(v)/max*100)+'%;height:100%;background:'+(v>=0?'#eaa328':'#ff9078')+';border-radius:20px"></div></div><strong style="text-align:right">'+money(v)+'</strong></div>';}).join(""):'<p class="mut" style="margin-top:15px">Log trades to see instrument analytics.</p>')+'</div>';
+  var symbols = {};
+  rows.forEach(function(r){
+    var k = (r.symbol || "Unknown").toUpperCase();
+    if (!symbols[k]) symbols[k] = {n:0, pnl:0, wins:0, losses:0};
+    var p = Number(r.pnl) || 0;
+    symbols[k].n++;
+    symbols[k].pnl += p;
+    if (p > 0) symbols[k].wins++;
+    else if (p < 0) symbols[k].losses++;
+  });
+  var sorted = Object.keys(symbols).sort(function(a, b){ return symbols[b].pnl - symbols[a].pnl || a.localeCompare(b); });
+  var max = Math.max(1, Math.max.apply(null, sorted.map(function(k){ return Math.abs(symbols[k].pnl); }).concat([0])));
+  return '<div class="card" style="margin-bottom:18px"><h3>Instrument breakdown</h3><p class="mut small">Ranked by realized P&amp;L. Breakeven instruments are labelled as breakeven.</p>' +
+    (sorted.length ? sorted.map(function(k){
+      var o = symbols[k], v = o.pnl;
+      return '<div style="display:grid;grid-template-columns:minmax(75px,1fr) minmax(80px,3fr) minmax(85px,1fr);align-items:center;gap:12px;margin-top:15px"><div><strong>' + esc(k) + '</strong><div class="mut small">' + esc(journalWinLabel(o.wins, o.losses, o.n)) + '</div></div><div style="height:11px;background:rgba(150,150,150,.12);border-radius:20px;overflow:hidden"><div style="width:' + Math.max(2, Math.abs(v) / max * 100) + "%;height:100%;background:" + (v >= 0 ? "#eaa328" : "#ff9078") + ';border-radius:20px"></div></div><strong style="text-align:right">' + money(v) + "</strong></div>";
+    }).join("") : '<p class="mut" style="margin-top:15px">Log trades to see instrument analytics.</p>') + "</div>";
+}
+function journalCalCursor(){
+  var now = new Date();
+  return {
+    year: journalState.calYear == null ? now.getFullYear() : journalState.calYear,
+    month: journalState.calMonth == null ? now.getMonth() : journalState.calMonth
+  };
+}
+function journalShiftMonth(delta){
+  var c = journalCalCursor();
+  var d = new Date(c.year, c.month + delta, 1);
+  journalState.calYear = d.getFullYear();
+  journalState.calMonth = d.getMonth();
+  journalState.tab = "calendar";
+  renderJournal();
 }
 function journalCalendar(rows){
-  var totals={};rows.forEach(function(r){var d=String(r.traded_at).slice(0,10);totals[d]=(totals[d]||0)+Number(r.pnl);});
-  var now=new Date(),year=now.getFullYear(),month=now.getMonth(),start=new Date(year,month,1).getDay(),count=new Date(year,month+1,0).getDate();
-  var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  var cells=days.map(function(d){return '<div class="mut small" style="text-align:center;padding:9px 0">'+d+'</div>';}).join('');
-  for(var i=0;i<start;i++)cells+='<div></div>';
-  for(var d=1;d<=count;d++){var date=year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'),v=totals[date],bg=v===undefined?'rgba(150,150,150,.07)':v>0?'rgba(79,160,99,.25)':v<0?'rgba(217,88,79,.25)':'rgba(150,150,150,.15)';
-    cells+='<div title="'+esc(date)+(v===undefined?' · No trades':' · '+money(v))+'" style="min-height:72px;padding:9px;border:1px solid rgba(150,150,150,.1);border-radius:10px;background:'+bg+'"><strong>'+d+'</strong>'+(v===undefined?'':'<div style="font-size:12px;margin-top:10px;color:'+(v>=0?'#a9dc7d':'#ff9078')+'">'+money(v)+'</div>')+'</div>';
+  var totals = {};
+  rows.forEach(function(r){ var d = String(r.traded_at).slice(0, 10); totals[d] = (totals[d] || 0) + Number(r.pnl); });
+  var c = journalCalCursor(), year = c.year, month = c.month;
+  var start = new Date(year, month, 1).getDay(), count = new Date(year, month + 1, 0).getDate();
+  var label = new Date(year, month, 1).toLocaleDateString("en-US", {month:"long", year:"numeric"});
+  var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var cells = days.map(function(d){ return '<div class="mut small" style="text-align:center;padding:9px 0">' + d + "</div>"; }).join("");
+  for (var i = 0; i < start; i++) cells += "<div></div>";
+  for (var d = 1; d <= count; d++) {
+    var date = year + "-" + String(month + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0"), v = totals[date];
+    var bg = v === undefined ? "rgba(150,150,150,.07)" : v > 0 ? "rgba(79,160,99,.25)" : v < 0 ? "rgba(217,88,79,.25)" : "rgba(150,150,150,.15)";
+    var color = v > 0 ? "#a9dc7d" : v < 0 ? "#ff9078" : "#94a9ba";
+    cells += '<div title="' + esc(date) + (v === undefined ? " · No trades" : " · " + money(v)) + '" style="min-height:72px;padding:9px;border:1px solid rgba(150,150,150,.1);border-radius:10px;background:' + bg + '"><strong>' + d + "</strong>" + (v === undefined ? "" : '<div style="font-size:12px;margin-top:10px;color:' + color + '">' + money(v) + "</div>") + "</div>";
   }
-  return '<div class="card" style="margin-bottom:18px"><h3>Trading calendar · '+now.toLocaleDateString('en-US',{month:'long',year:'numeric'})+'</h3><p class="mut small">Green = profitable day · Red = losing day · Empty = no trades</p><div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:16px">'+cells+'</div></div>';
+  return '<div class="card" style="margin-bottom:18px"><div class="journal-cal-nav"><button type="button" class="btn ghost small" id="journalCalPrev" aria-label="Previous month">← Previous</button><h3>Trading calendar · ' + esc(label) + '</h3><button type="button" class="btn ghost small" id="journalCalNext" aria-label="Next month">Next →</button></div><p class="mut small" style="margin-top:8px">Green = profitable day · Red = losing day · Empty = no trades</p><div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:16px">' + cells + "</div></div>";
 }
-function renderJournal(){
-  if(!PM_USER){ pageJournal(); return; }
-  journalState.rows=journalState.selected==="all"?journalState.allRows:journalState.allRows.filter(function(x){return x.account_id===journalState.selected;});
-  var rows=journalState.rows;
-  var total=rows.reduce(function(s,r){ return s+Number(r.pnl); },0);
-  var wins=rows.filter(function(r){ return Number(r.pnl)>0; }).length;
-  var wr=rows.length?Math.round(100*wins/rows.length):0;
-  var today=new Date().toISOString().slice(0,10);
-  var journalStyle='<style>'+
-  '.pfm-journal{--j-accent:#d8aa64;--j-line:rgba(181,202,221,.10);max-width:1540px;margin:0 auto 48px;display:grid;grid-template-columns:216px minmax(0,1fr);min-height:680px;background:#081725;border:1px solid #243548;border-radius:19px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.38);color:#e8eef4}'+
-  '.pfm-journal .journal-side{background:#0d2031;border-right:1px solid #25384b;padding:24px 13px;display:flex;flex-direction:column;gap:20px}'+
-  '.pfm-journal .journal-brand{font-weight:800;font-size:17px;letter-spacing:-.04em;padding:5px 11px 16px;border-bottom:1px solid #26394b}.pfm-journal .journal-brand span{color:var(--j-accent)}'+
-  '.pfm-journal .journal-side-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#7f98aa;font-weight:800;padding:0 12px}'+
-  '.pfm-journal .journal-tabs{display:flex;flex-direction:column;gap:5px;margin:0}'+
-  '.pfm-journal .journal-tabs [data-jtab]{display:flex;align-items:center;gap:12px;text-align:left;width:100%;border:1px solid transparent!important;background:transparent!important;color:#a5b6c7!important;box-shadow:none!important;border-radius:10px!important;padding:13px 12px!important;min-height:45px;font-size:13px;font-weight:600}'+
-  '.pfm-journal .journal-tabs [data-jtab][aria-selected="true"]{background:#173849!important;border-color:#275768!important;color:#e7c38b!important}'+
-  '.pfm-journal .journal-tabs [data-jtab]:focus-visible{outline:2px solid #d8aa64;outline-offset:2px}'+
-  '.pfm-journal .journal-main{padding:26px 28px 36px;min-width:0;background:linear-gradient(145deg,#071724,#0a1928 65%,#081522)}'+
-  '.pfm-journal .journal-mast{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:25px}'+
-  '.pfm-journal .journal-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#91a9b9;margin-bottom:7px}'+
-  '.pfm-journal .journal-mast h2{font-size:clamp(23px,2.6vw,32px);letter-spacing:-.04em;line-height:1.15;margin:0;color:#f5f7fa}'+
-  '.pfm-journal .journal-mast p{margin:8px 0 0;color:#91a9b9;font-size:13px}'+
-  '.pfm-journal .journal-primary{display:flex;align-items:center;gap:9px;flex-wrap:wrap}'+
-  '.pfm-journal .card{border:1px solid #22374a!important;border-radius:13px!important;background:#102538!important;box-shadow:none!important;color:#e8eef4}'+
-  '.pfm-journal .card h3{color:#f2f5f8;letter-spacing:-.025em}'+
-  '.pfm-journal .mut{color:#94a9ba!important}'+
-  '.pfm-journal .btn:not(.ghost){background:#d8aa64;color:#10202e;border-color:#d8aa64}'+
-  '.pfm-journal .journal-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:18px}'+
-  '.pfm-journal .journal-kpi{padding:17px 14px!important;min-width:0}'+
-  '.pfm-journal .journal-kpi-value{font-size:clamp(18px,1.8vw,26px);font-weight:800;letter-spacing:-.04em;overflow-wrap:anywhere;margin:10px 0 5px}'+
-  '.pfm-journal .journal-dashboard-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:14px;margin-bottom:14px}'+
-  '.pfm-journal .journal-dashboard-bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}'+
-  '.pfm-journal .journal-dashboard-top>.card,.pfm-journal .journal-dashboard-bottom>.card{min-width:0;padding:19px!important}'+
-  '.pfm-journal .journal-month-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px}'+
-  '.pfm-journal .journal-month{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:7px;background:#172a3a;font-size:11px;min-width:0}'+
-  '.pfm-journal .journal-month strong{font-size:12px;overflow-wrap:anywhere;text-align:center}'+
-  '.pfm-journal .journal-month.gain{background:#103d31;color:#51e6a1}'+
-  '.pfm-journal .journal-month.loss{background:#40232e;color:#ff8d94}'+
-  '.pfm-journal .journal-stat-line{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #2b3b4a;padding:10px 0;font-size:13px}'+
-  '.pfm-journal .journal-symbol{display:grid;grid-template-columns:65px minmax(0,1fr) 95px;gap:10px;align-items:center;margin:15px 0;font-size:12px}'+
-  '.pfm-journal .journal-symbol strong{text-align:right}'+
-  '.pfm-journal .journal-bar{height:12px;background:#1a3142;border-radius:3px;overflow:hidden}'+
-  '.pfm-journal .journal-bar>div{height:100%;border-radius:3px}'+
-  '.pfm-journal .journal-table-wrap{overflow-x:auto}'+
-  '.pfm-journal .journal-table{width:100%;border-collapse:collapse;font-size:12px}'+
-  '.pfm-journal .journal-table th,.pfm-journal .journal-table td{padding:12px 7px;border-bottom:1px solid #2b3b4a;text-align:left;white-space:nowrap}'+
-  '.pfm-journal .journal-table th{color:#a1b3c2;font-weight:500}'+
-  '.pfm-journal .journal-empty{padding:70px 20px;text-align:center;color:#a1b3c2;font-size:13px}'+
-  '@media(max-width:1180px){.pfm-journal .journal-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.pfm-journal .journal-dashboard-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}.pfm-journal .journal-dashboard-bottom>.card:last-child{grid-column:1/-1}}'+
-  '@media(max-width:650px){.pfm-journal .journal-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pfm-journal .journal-dashboard-top,.pfm-journal .journal-dashboard-bottom{grid-template-columns:minmax(0,1fr)}.pfm-journal .journal-dashboard-bottom>.card:last-child{grid-column:auto}.pfm-journal .journal-month-grid{gap:5px}.pfm-journal .journal-month{padding:10px 2px}}'+
-  '.pfm-journal .journal-primary select{background:#102538;color:#e8eef4;border:1px solid #344b5e;border-radius:9px;min-height:42px;padding:8px;max-width:220px}'+
-  '.pfm-journal .journal-account-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #2b4053;padding:14px 0}'+
-  '.pfm-journal #journalAccountForm select,.pfm-journal #journalAccountForm input{width:100%;min-width:0;background:#102538;color:#e8eef4;border:1px solid #344b5e;border-radius:8px;padding:10px 12px;min-height:43px}'+
-  '.pfm-journal #journalFirmCount{display:block;margin-top:7px;line-height:1.45}'+
-
-  '.pfm-journal [role="tabpanel"][hidden]{display:none!important}'+
-  '.pfm-journal .journal-account{margin-top:auto;padding:14px 10px;border-top:1px solid #26394b;color:#9fb1c1;font-size:11px;overflow-wrap:anywhere}'+
-  '.pfm-journal .journal-account strong{display:block;color:#e8eef4;font-size:12px;margin-bottom:4px}'+
-  '@media(max-width:820px){.pfm-journal{grid-template-columns:minmax(0,1fr)}.pfm-journal .journal-side{padding:13px;gap:8px;border-right:0;border-bottom:1px solid #25384b}.pfm-journal .journal-brand{padding:5px 8px 9px}.pfm-journal .journal-side-label,.pfm-journal .journal-account{display:none}.pfm-journal .journal-tabs{flex-direction:row;overflow-x:auto}.pfm-journal .journal-tabs [data-jtab]{white-space:nowrap;min-width:max-content;padding:11px 12px!important}.pfm-journal .journal-main{padding:20px 14px}.pfm-journal .journal-mast{align-items:start;flex-direction:column}}'+
-  '</style>';
-  go(pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.")+
-  journalStyle+'<section class="pfm-journal" aria-label="Private trading journal"><aside class="journal-side"><div class="journal-brand">◈ PropFirm<span>Math</span><div class="mut small" style="font-weight:400;font-size:11px;letter-spacing:0;margin-top:5px">TRADING JOURNAL</div></div><div class="journal-side-label">Workspace</div>'+
-  '<nav class="journal-tabs" role="tablist" aria-label="Journal sections"><button type="button" class="btn small" data-jtab="overview" role="tab" aria-selected="true" aria-controls="journalOverview">▦ &nbsp; Dashboard</button><button type="button" class="btn ghost small" data-jtab="accounts" role="tab" aria-selected="false" aria-controls="journalAccounts">▤ &nbsp; Accounts</button><button type="button" class="btn ghost small" data-jtab="trades" role="tab" aria-selected="false" aria-controls="journalTrades">≡ &nbsp; Trade Log</button><button type="button" class="btn ghost small" data-jtab="calendar" role="tab" aria-selected="false" aria-controls="journalCalendar">▦ &nbsp; Calendar</button><button type="button" class="btn ghost small" data-jtab="insights" role="tab" aria-selected="false" aria-controls="journalInsights">◫ &nbsp; Analytics</button></nav><div class="journal-account"><strong>Private workspace</strong>'+esc(PM_USER.email)+'</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2>Trading Dashboard</h2><p>Performance, consistency and trading decisions in one place.</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Trading account"><option value="all">All accounts</option><optgroup label="Saved trading accounts">'+journalState.accounts.map(function(a){return '<option value="'+esc(a.id)+'"'+(journalState.selected===a.id?' selected':'')+'>'+esc(journalAccountLabel(a))+'</option>';}).join("")+'</optgroup><optgroup label="Add an account from a prop firm">'+FIRMS.slice().sort(function(a,b){return a.name.localeCompare(b.name,undefined,{sensitivity:"base"});}).map(function(f){return '<option value="firm:'+esc(f.name)+'">+ '+esc(f.name)+'</option>';}).join("")+'</optgroup><option value="firm:__other__">+ Other firm / broker</option></select><button class="btn small" id="journalAddAccount" type="button">+ Add account</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></header>'+
-  '<div id="journalOverview" role="tabpanel">'+journalDashboard(rows)+'<div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn small" type="button" id="journalQuickAdd">+ Log a trade</button></div></div><div id="journalCalendar" role="tabpanel" hidden>'+journalCalendar(rows)+'</div><div id="journalInsights" role="tabpanel" hidden>'+journalInsights(rows)+'</div><div id="journalTrades" role="tabpanel" hidden>'+
-  '<div class="card" style="margin-bottom:18px"><h3 style="margin-bottom:12px">Log a trade</h3><form id="jForm"><div class="field"><label class="fl" for="jAccount">Trading account</label><select id="jAccount">'+journalState.accounts.map(function(a){return '<option value="'+esc(a.id)+'"'+((journalState.selected==="all"?journalState.acct.id:journalState.selected)===a.id?' selected':'')+'>'+esc(journalAccountLabel(a))+'</option>';}).join("")+'</select></div><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">'+
-  '<div class="field" style="margin:0"><label class="fl" for="jDate">Date</label><input type="date" id="jDate" value="'+today+'" /></div>'+
-  '<div class="field" style="margin:0"><label class="fl" for="jInst">Instrument</label><input type="text" id="jInst" placeholder="NQ" maxlength="20" /></div>'+
-  '<div class="field" style="margin:0"><label class="fl" for="jPnl">P&amp;L ($)</label><input type="number" id="jPnl" placeholder="250" step="0.01" /></div>'+
-  '<div class="field" style="margin:0"><label class="fl" for="jNote">Note</label><input type="text" id="jNote" placeholder="Setup, mistake, lesson…" maxlength="300" /></div></div>'+
-  '<button class="btn small" type="submit" style="margin-top:14px">Save trade</button><p class="form-msg" id="jMsg"></p></form></div>'+
-  '<div class="card"><h3>Trade history <span class="mut small">· '+rows.length+' entries</span></h3>'+
-  '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px"><input id="journalSearch" aria-label="Search trades" placeholder="Search instrument or notes" style="flex:1;min-width:170px" /><select id="journalFilter" aria-label="Filter trades" style="min-width:150px"><option value="all">All trades</option><option value="wins">Winning trades</option><option value="losses">Losing trades</option></select><button class="btn ghost small" id="journalExport" type="button">Export CSV</button></div>'+ (rows.length? '<div id="journalRows" style="margin-top:10px">'+rows.map(function(r){ var v=Number(r.pnl); return '<div class="pay-row" data-pnl="'+Number(r.pnl)+'"><span><strong>'+esc(r.symbol||"—")+'</strong> <span class="mut">'+esc(String(r.traded_at).slice(0,10))+' · '+esc(r.note||"")+'</span></span><span><span class="num" style="font-weight:800;color:'+(v>=0?"#a9dc7d":"#ff9078")+'">'+money(v)+'</span> <button class="btn ghost small" data-edit="'+esc(r.id)+'" type="button" aria-label="Edit trade">Edit</button> <button class="btn ghost small" data-del="'+esc(r.id)+'" type="button" aria-label="Delete trade">Delete</button></span></div>'; }).join("")+"</div>" : '<p class="mut" style="margin-top:8px">No trades yet. Add your first one above.</p>')+
-  '<div id="journalAccounts" role="tabpanel" hidden><div class="card"><h3>Trading accounts</h3><p class="mut small">Select a firm from the PropFirmMath directory, then maintain each account manually. No API keys or broker login required.</p>'+journalState.accounts.map(function(a){return '<div class="journal-account-row"><div><strong>'+esc(a.account_label||"Account")+'</strong><p class="mut small">'+esc(a.firm)+' · '+esc(a.plan||"Custom plan")+' · '+esc(a.stage||"evaluation")+' · '+money(a.account_size)+'</p></div><button class="btn ghost small" type="button" data-select-account="'+esc(a.id)+'">View</button></div>';}).join("")+'<h3 style="margin-top:20px">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all '+FIRMS.length+' listed prop firms</option>'+FIRMS.slice().sort(function(a,b){return a.name.localeCompare(b.name,undefined,{sensitivity:"base"});}).map(function(f){return '<option value="'+esc(f.name)+'">'+esc(f.name)+'</option>';}).join("")+'<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">All '+FIRMS.length+' firms from the PropFirmMath directory · A–Z · scroll to see every firm</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div><div class="field"><label class="fl" for="newPlan">Firm account / plan</label><select id="newPlan"><option value="">Select an account plan</option></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div><div class="field"><label class="fl" for="newAccountSize">Account size ($)</label><select id="newAccountSizePreset"><option value="">Select account size</option><option value="5000">$5,000</option><option value="10000">$10,000</option><option value="25000">$25,000</option><option value="50000">$50,000</option><option value="100000">$100,000</option><option value="150000">$150,000</option><option value="200000">$200,000</option><option value="300000">$300,000</option><option value="__custom__">Other size</option></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="margin-top:8px"></div><div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded</option><option value="personal">Personal</option></select></div></div><button class="btn small" type="submit">Save account</button><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div></div>'+ 
-  "</div></div></div></div></section>");
-  $("#journalAccountFilter").addEventListener("change",function(){var v=this.value;if(v.indexOf("firm:")===0){var firm=v.slice(5);app.querySelector('[data-jtab="accounts"]').click();$("#newFirm").value=firm==="__other__"?"__other__":firm;$("#newFirm").dispatchEvent(new Event("change"));$("#newPlan").value="__custom__";$("#newPlan").dispatchEvent(new Event("change"));$("#newAccountLabel").value=firm==="__other__"?"Account 1":firm+" Account 1";$("#newAccountSize").value="50000";$("#newAccountSizePreset").value="50000";$("#journalAccountForm").scrollIntoView({behavior:"smooth",block:"center"});$("#newAccountLabel").focus();this.value=journalState.selected;return;}journalState.selected=v;renderJournal();});
-  $("#journalAddAccount").addEventListener("click",function(){app.querySelector('[data-jtab="accounts"]').click();$("#journalAccountForm").scrollIntoView({behavior:"smooth",block:"center"});$("#newFirm").focus();});
-  app.querySelectorAll("[data-select-account]").forEach(function(b){b.addEventListener("click",function(){journalState.selected=b.getAttribute("data-select-account");renderJournal();});});
-  function refreshJournalPlans(){var firm=FIRMS.find(function(f){return f.name===$("#newFirm").value;}),select=$("#newPlan");select.innerHTML='<option value="">Select an account plan</option>';
-    if(firm&&firm.fromPlan){var option=document.createElement("option");option.value=firm.fromPlan;option.textContent=firm.fromPlan+" (listed starting plan)";select.appendChild(option);}
-    var custom=document.createElement("option");custom.value="__custom__";custom.textContent="Enter plan manually";select.appendChild(custom);select.value="__custom__";
-    $("#newPlanOther").style.display="block";$("#newPlanOther").required=false;$("#newPlanOther").value="";
-  }
-  $("#newFirm").addEventListener("change",function(){var other=this.value==="__other__";$("#newFirmOther").style.display=other?"block":"none";$("#newFirmOther").required=other;if(!other)$("#newFirmOther").value="";refreshJournalPlans();});
-  $("#newPlan").addEventListener("change",function(){var custom=this.value==="__custom__";$("#newPlanOther").style.display=custom?"block":"none";$("#newPlanOther").required=false;if(!custom)$("#newPlanOther").value="";});
-  $("#newAccountSizePreset").addEventListener("change",function(){if(this.value&&this.value!=="__custom__")$("#newAccountSize").value=this.value;else $("#newAccountSize").value="";$("#newAccountSize").focus();});
-  refreshJournalPlans();
-  $("#journalAccountForm").addEventListener("submit",function(e){e.preventDefault();var msg=$("#journalAccountMsg"),firm=$("#newFirm").value==="__other__"?$("#newFirmOther").value.trim():$("#newFirm").value.trim(),label=$("#newAccountLabel").value.trim(),size=Number($("#newAccountSize").value),stage=$("#newAccountStage").value,plan=$("#newPlan").value==="__custom__"?$("#newPlanOther").value.trim():$("#newPlan").value.trim();
-    if(!firm||!label||!Number.isFinite(size)||size<0||size>1000000000){msg.textContent="Choose a firm and account name; account size must be a valid number.";msg.className="form-msg err";return;}
-    msg.textContent="Saving…";msg.className="form-msg";var saveBtn=this.querySelector('button[type="submit"]');saveBtn.disabled=true;
-    sb.from("trader_accounts").insert({user_id:PM_USER.id,firm:firm,plan:plan||null,account_label:label,account_size:size,stage:stage}).select("id").single().then(function(r){if(r.error)throw r.error;journalState.selected=r.data.id;return journalLoad();}).then(function(){renderJournal();toast("Account added");}).catch(function(err){saveBtn.disabled=false;msg.className="form-msg err";msg.textContent="Could not save: "+(err.message||"Please try again");});
+function journalTabCopy(tab){
+  return ({
+    overview: ["Trading Dashboard", "Performance, consistency and trading decisions in one place."],
+    accounts: ["Trading accounts", "Create a funded account, then switch to it from the menu above."],
+    trades: ["Trade log", "Add, edit and review the trades in this view."],
+    calendar: ["Trading calendar", "Move between months to see each day's realized P&L."],
+    insights: ["Analytics", "Instruments ranked by realized P&L."]
+  })[tab] || ["Trading Dashboard", "Performance, consistency and trading decisions in one place."];
+}
+function journalPanelId(tab){ return "journal" + tab.charAt(0).toUpperCase() + tab.slice(1); }
+function journalApplyTab(tab){
+  journalState.tab = tab;
+  ["overview","accounts","trades","calendar","insights"].forEach(function(t){
+    var el = document.getElementById(journalPanelId(t));
+    if (el) el.hidden = t !== tab;
   });
-  $("#journalQuickAdd").addEventListener("click",function(){var btn=app.querySelector('[data-jtab="trades"]');if(btn)btn.click();$("#jInst").focus();});
-  app.querySelectorAll("[data-jtab]").forEach(function(btn){btn.addEventListener("click",function(){var tab=btn.getAttribute("data-jtab");["overview","calendar","insights","trades","accounts"].forEach(function(t){var el=$("#journal"+t[0].toUpperCase()+t.slice(1));if(el)el.hidden=t!==tab;});app.querySelectorAll("[data-jtab]").forEach(function(b){var active=b===btn;b.classList.toggle("ghost",!active);b.setAttribute("aria-selected",String(active));});});});
-  $("#signOutBtn").addEventListener("click", function(){ sb.auth.signOut().then(function(){ journalState={rows:[],allRows:[],accounts:[],acct:null,selected:"all"}; history.pushState({},"","/"); route(); }); });
-  $("#jForm").addEventListener("submit", function(e){ e.preventDefault();
-    var inst=$("#jInst").value.trim(), pnl=parseFloat($("#jPnl").value), note=$("#jNote").value.trim(), d=$("#jDate").value;
-    var msg=$("#jMsg");
-    if (!inst || isNaN(pnl) || !d){ msg.className="form-msg err"; msg.textContent="Enter a date, an instrument and a numeric P&L."; return; }
-    var editId=$("#jForm").dataset.editId;
-    var payload={traded_at:new Date(d+"T12:00:00").toISOString(),pnl:pnl,symbol:inst,note:note||null};
-    if(editId)payload.account_id=$("#jAccount").value;
-    var query=editId
-      ? sb.from("trades").update(payload).eq("id",editId).eq("user_id",PM_USER.id)
-      : sb.from("trades").insert(Object.assign({user_id:PM_USER.id,account_id:$("#jAccount").value},payload));
-    query.select("id,account_id,traded_at,pnl,symbol,note").single().then(function(r){
-      if (r.error){ msg.className="form-msg err"; msg.textContent="Could not save: "+r.error.message; return; }
-      if(editId) journalState.allRows=journalState.allRows.map(function(x){return x.id===editId?r.data:x;});
+  app.querySelectorAll("[data-jtab]").forEach(function(b){
+    var active = b.getAttribute("data-jtab") === tab;
+    b.classList.toggle("ghost", !active);
+    b.setAttribute("aria-selected", String(active));
+  });
+  var copy = journalTabCopy(tab);
+  var h = document.getElementById("journalHeading"), sub = document.getElementById("journalSub");
+  if (h) h.textContent = copy[0];
+  if (sub) sub.textContent = copy[1];
+}
+function journalTradeMeta(r){
+  var bits = [String(r.traded_at).slice(0, 10)];
+  if (journalState.selected === "all") {
+    var name = "";
+    journalState.accounts.forEach(function(a){ if (a.id === r.account_id) name = a.account_label || a.firm || "Account"; });
+    if (name) bits.push(name);
+  }
+  if (r.note) bits.push(r.note);
+  return bits.join(" · ");
+}
+function journalPnlColor(v){ return v > 0 ? "#a9dc7d" : v < 0 ? "#ff9078" : "#94a9ba"; }
+function renderJournal(){
+  if (!PM_USER) { pageJournal(); return; }
+  if (!journalState.tab) journalState.tab = "overview";
+  journalState.rows = journalState.selected === "all" ? journalState.allRows : journalState.allRows.filter(function(x){ return x.account_id === journalState.selected; });
+  var rows = journalState.rows;
+  var today = journalToday();
+  var copy = journalTabCopy(journalState.tab);
+  var defaultAcct = journalState.selected === "all" ? (journalState.acct && journalState.acct.id) : journalState.selected;
+  var firmOptions = journalFirmChoices().map(function(f){ return '<option value="' + esc(f.name) + '">' + esc(f.name) + "</option>"; }).join("");
+  var savedOptions = journalState.accounts.map(function(a){ return '<option value="' + esc(a.id) + '"' + (journalState.selected === a.id ? " selected" : "") + ">" + esc(journalAccountLabel(a)) + "</option>"; }).join("");
+  var tradeAccountOptions = journalState.accounts.map(function(a){ return '<option value="' + esc(a.id) + '"' + (defaultAcct === a.id ? " selected" : "") + ">" + esc(journalAccountLabel(a)) + "</option>"; }).join("");
+  var addFirmOptions = journalFirmChoices().map(function(f){ return '<option value="firm:' + esc(f.name) + '">+ ' + esc(f.name) + "</option>"; }).join("");
+  function shown(tab){ return journalState.tab === tab ? "" : " hidden"; }
+  function tabBtn(id, label, icon){
+    var on = journalState.tab === id;
+    return '<button type="button" class="btn small' + (on ? "" : " ghost") + '" data-jtab="' + id + '" role="tab" aria-selected="' + (on ? "true" : "false") + '" aria-controls="' + journalPanelId(id) + '">' + icon + " &nbsp; " + label + "</button>";
+  }
+  var accountsPanel = '<div class="card"><h3>Trading accounts</h3><p class="mut small">Each funded account is stored on its own. Trades belong to one account, and the menu above can show that account or all of them together. No API keys or broker login.</p>' +
+    journalState.accounts.map(function(a){
+      return '<div class="journal-account-row"><div><strong>' + esc(a.account_label || "Account") + '</strong><p class="mut small">' + esc(a.firm) + " · " + esc(a.plan || "Custom plan") + " · " + esc(a.stage || "evaluation") + " · " + money(a.account_size) + '</p></div><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></div>';
+    }).join("") +
+    '<h3 style="margin-top:20px">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">All ' + FIRMS.length + ' firms from the PropFirmMath directory · A–Z</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
+    '<div class="field"><label class="fl" for="newPlan">Firm account / plan</label><select id="newPlan"><option value="">Select an account plan</option></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
+    '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
+    '<div class="field"><label class="fl" for="newAccountSize">Account size ($)</label><select id="newAccountSizePreset"><option value="">Select account size</option><option value="5000">$5,000</option><option value="10000">$10,000</option><option value="25000">$25,000</option><option value="50000">$50,000</option><option value="100000">$100,000</option><option value="150000">$150,000</option><option value="200000">$200,000</option><option value="300000">$300,000</option><option value="__custom__">Other size</option></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="margin-top:8px"></div>' +
+    '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded</option><option value="personal">Personal</option></select></div></div>' +
+    '<button class="btn small" type="submit">Save account</button><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>';
+  var tradeRows = rows.length ? '<div id="journalRows" style="margin-top:10px">' + rows.map(function(r){
+    var v = Number(r.pnl);
+    return '<div class="pay-row" data-pnl="' + Number(r.pnl) + '"><span><strong>' + esc(r.symbol || "—") + '</strong> <span class="mut">' + esc(journalTradeMeta(r)) + '</span></span><span><span class="num" style="font-weight:800;color:' + journalPnlColor(v) + '">' + money(v) + '</span> <button class="btn ghost small" data-edit="' + esc(r.id) + '" type="button" aria-label="Edit trade">Edit</button> <button class="btn ghost small" data-del="' + esc(r.id) + '" type="button" aria-label="Delete trade">Delete</button></span></div>';
+  }).join("") + "</div>" : '<p class="mut" style="margin-top:8px">No trades yet. Add your first one above.</p>';
+  var journalStyle = "<style>" +
+    ".pfm-journal{--j-accent:#d8aa64;--j-line:rgba(181,202,221,.10);max-width:1540px;margin:0 auto 48px;display:grid;grid-template-columns:216px minmax(0,1fr);min-height:680px;background:#081725;border:1px solid #243548;border-radius:19px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.38);color:#e8eef4}" +
+    ".pfm-journal .journal-side{background:#0d2031;border-right:1px solid #25384b;padding:24px 13px;display:flex;flex-direction:column;gap:20px}" +
+    ".pfm-journal .journal-brand{font-weight:800;font-size:17px;letter-spacing:-.04em;padding:5px 11px 16px;border-bottom:1px solid #26394b}.pfm-journal .journal-brand span{color:var(--j-accent)}" +
+    ".pfm-journal .journal-side-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#7f98aa;font-weight:800;padding:0 12px}" +
+    ".pfm-journal .journal-tabs{display:flex;flex-direction:column;gap:5px;margin:0}" +
+    '.pfm-journal .journal-tabs [data-jtab]{display:flex;align-items:center;gap:12px;text-align:left;width:100%;border:1px solid transparent!important;background:transparent!important;color:#a5b6c7!important;box-shadow:none!important;border-radius:10px!important;padding:13px 12px!important;min-height:45px;font-size:13px;font-weight:600}' +
+    '.pfm-journal .journal-tabs [data-jtab][aria-selected="true"]{background:#173849!important;border-color:#275768!important;color:#e7c38b!important}' +
+    ".pfm-journal .journal-tabs [data-jtab]:focus-visible{outline:2px solid #d8aa64;outline-offset:2px}" +
+    ".pfm-journal .journal-main{padding:26px 28px 36px;min-width:0;background:linear-gradient(145deg,#071724,#0a1928 65%,#081522)}" +
+    ".pfm-journal .journal-mast{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:25px}" +
+    ".pfm-journal .journal-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#91a9b9;margin-bottom:7px}" +
+    ".pfm-journal .journal-mast h2{font-size:clamp(23px,2.6vw,32px);letter-spacing:-.04em;line-height:1.15;margin:0;color:#f5f7fa}" +
+    ".pfm-journal .journal-mast p{margin:8px 0 0;color:#91a9b9;font-size:13px}" +
+    ".pfm-journal .journal-primary{display:flex;align-items:center;gap:9px;flex-wrap:wrap}" +
+    ".pfm-journal .card{border:1px solid #22374a!important;border-radius:13px!important;background:#102538!important;box-shadow:none!important;color:#e8eef4}" +
+    ".pfm-journal .card h3{color:#f2f5f8;letter-spacing:-.025em}" +
+    ".pfm-journal .mut{color:#94a9ba!important}" +
+    ".pfm-journal .btn:not(.ghost){background:#d8aa64;color:#10202e;border-color:#d8aa64}" +
+    ".pfm-journal .journal-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:18px}" +
+    ".pfm-journal .journal-kpi{padding:17px 14px!important;min-width:0}" +
+    ".pfm-journal .journal-kpi-value{font-size:clamp(18px,1.8vw,26px);font-weight:800;letter-spacing:-.04em;overflow-wrap:anywhere;margin:10px 0 5px}" +
+    ".pfm-journal .journal-dashboard-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:14px;margin-bottom:14px}" +
+    ".pfm-journal .journal-dashboard-bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}" +
+    ".pfm-journal .journal-dashboard-top>.card,.pfm-journal .journal-dashboard-bottom>.card{min-width:0;padding:19px!important}" +
+    ".pfm-journal .journal-month-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px}" +
+    ".pfm-journal .journal-month{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:7px;background:#172a3a;font-size:11px;min-width:0}" +
+    ".pfm-journal .journal-month strong{font-size:12px;overflow-wrap:anywhere;text-align:center}" +
+    ".pfm-journal .journal-month.gain{background:#103d31;color:#51e6a1}" +
+    ".pfm-journal .journal-month.loss{background:#40232e;color:#ff8d94}" +
+    ".pfm-journal .journal-stat-line{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #2b3b4a;padding:10px 0;font-size:13px}" +
+    ".pfm-journal .journal-symbol{display:grid;grid-template-columns:65px minmax(0,1fr) 95px;gap:10px;align-items:center;margin:15px 0;font-size:12px}" +
+    ".pfm-journal .journal-symbol strong{text-align:right}" +
+    ".pfm-journal .journal-bar{height:12px;background:#1a3142;border-radius:3px;overflow:hidden}" +
+    ".pfm-journal .journal-bar>div{height:100%;border-radius:3px}" +
+    ".pfm-journal .journal-table-wrap{overflow-x:auto}" +
+    ".pfm-journal .journal-table{width:100%;border-collapse:collapse;font-size:12px}" +
+    ".pfm-journal .journal-table th,.pfm-journal .journal-table td{padding:12px 7px;border-bottom:1px solid #2b3b4a;text-align:left;white-space:nowrap}" +
+    ".pfm-journal .journal-table th{color:#a1b3c2;font-weight:500}" +
+    ".pfm-journal .journal-empty{padding:70px 20px;text-align:center;color:#a1b3c2;font-size:13px}" +
+    "@media(max-width:1180px){.pfm-journal .journal-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.pfm-journal .journal-dashboard-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}.pfm-journal .journal-dashboard-bottom>.card:last-child{grid-column:1/-1}}" +
+    "@media(max-width:650px){.pfm-journal .journal-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pfm-journal .journal-dashboard-top,.pfm-journal .journal-dashboard-bottom{grid-template-columns:minmax(0,1fr)}.pfm-journal .journal-dashboard-bottom>.card:last-child{grid-column:auto}.pfm-journal .journal-month-grid{gap:5px}.pfm-journal .journal-month{padding:10px 2px}}" +
+    ".pfm-journal .journal-primary select{background:#102538;color:#e8eef4;border:1px solid #344b5e;border-radius:9px;min-height:42px;padding:8px;max-width:220px}" +
+    ".pfm-journal .journal-account-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #2b4053;padding:14px 0}" +
+    ".pfm-journal #journalAccountForm select,.pfm-journal #journalAccountForm input,.pfm-journal #jForm select,.pfm-journal #jForm input{width:100%;min-width:0;background:#102538;color:#e8eef4;border:1px solid #344b5e;border-radius:8px;padding:10px 12px;min-height:43px}" +
+    ".pfm-journal #journalFirmCount{display:block;margin-top:7px;line-height:1.45}" +
+    '.pfm-journal [role="tabpanel"][hidden]{display:none!important}' +
+    ".pfm-journal .journal-account{margin-top:auto;padding:14px 10px;border-top:1px solid #26394b;color:#9fb1c1;font-size:11px;overflow-wrap:anywhere}" +
+    ".pfm-journal .journal-account strong{display:block;color:#e8eef4;font-size:12px;margin-bottom:4px}" +
+    ".pfm-journal .journal-cal-nav{display:flex;align-items:center;justify-content:space-between;gap:10px}.pfm-journal .journal-cal-nav h3{margin:0}" +
+    "@media(max-width:820px){.pfm-journal{grid-template-columns:minmax(0,1fr)}.pfm-journal .journal-side{padding:13px;gap:8px;border-right:0;border-bottom:1px solid #25384b}.pfm-journal .journal-brand{padding:5px 8px 9px}.pfm-journal .journal-side-label,.pfm-journal .journal-account{display:none}.pfm-journal .journal-tabs{flex-direction:row;overflow-x:auto}.pfm-journal .journal-tabs [data-jtab]{white-space:nowrap;min-width:max-content;padding:11px 12px!important}.pfm-journal .journal-main{padding:20px 14px}.pfm-journal .journal-mast{align-items:start;flex-direction:column}.pfm-journal .journal-cal-nav{flex-wrap:wrap}}" +
+    "</style>";
+  go(pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.") +
+    journalStyle + '<section class="pfm-journal" aria-label="Private trading journal"><aside class="journal-side"><div class="journal-brand">◈ PropFirm<span>Math</span><div class="mut small" style="font-weight:400;font-size:11px;letter-spacing:0;margin-top:5px">TRADING JOURNAL</div></div><div class="journal-side-label">Workspace</div>' +
+    '<nav class="journal-tabs" role="tablist" aria-label="Journal sections">' +
+    tabBtn("overview", "Dashboard", "▦") + tabBtn("accounts", "Accounts", "▤") + tabBtn("trades", "Trade Log", "≡") + tabBtn("calendar", "Calendar", "▦") + tabBtn("insights", "Analytics", "◫") +
+    '</nav><div class="journal-account"><strong>Private workspace</strong>' + esc(PM_USER.email) + '</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Trading account"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All accounts</option><optgroup label="Saved trading accounts">' + savedOptions + '</optgroup><optgroup label="Add an account from a prop firm">' + addFirmOptions + '</optgroup><option value="firm:__other__">+ Other firm / broker</option></select><button class="btn small" id="journalAddAccount" type="button">+ Add account</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></header>' +
+    '<div id="journalOverview" role="tabpanel"' + shown("overview") + ">" + journalDashboard(rows) + '<div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn small" type="button" id="journalQuickAdd">+ Log a trade</button></div></div>' +
+    '<div id="journalAccounts" role="tabpanel"' + shown("accounts") + ">" + accountsPanel + "</div>" +
+    '<div id="journalTrades" role="tabpanel"' + shown("trades") + ">" +
+    '<div class="card" style="margin-bottom:18px"><h3 style="margin-bottom:12px">Log a trade</h3><form id="jForm" novalidate><div class="field"><label class="fl" for="jAccount">Trading account</label><select id="jAccount">' + tradeAccountOptions + "</select></div>" +
+    '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">' +
+    '<div class="field" style="margin:0"><label class="fl" for="jDate">Date</label><input type="date" id="jDate" value="' + today + '" max="' + today + '" /></div>' +
+    '<div class="field" style="margin:0"><label class="fl" for="jInst">Instrument</label><input type="text" id="jInst" placeholder="NQ" aria-describedby="jInstCount" /><span class="mut small" id="jInstCount">0 / ' + JOURNAL_SYMBOL_MAX + "</span></div>" +
+    '<div class="field" style="margin:0"><label class="fl" for="jPnl">P&amp;L ($)</label><input type="text" inputmode="decimal" id="jPnl" placeholder="250.00" aria-describedby="jPnlHelp" /><span class="mut small" id="jPnlHelp">Up to 2 decimal places, between -$1,000,000 and $1,000,000</span></div>' +
+    '<div class="field" style="margin:0"><label class="fl" for="jNote">Note</label><input type="text" id="jNote" placeholder="Setup, mistake, lesson…" maxlength="300" /></div></div>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="submit">Save trade</button><button class="btn ghost small" type="button" id="jCancel" hidden>Cancel</button></div><p class="form-msg" id="jMsg" role="status"></p></form></div>' +
+    '<div class="card"><h3>Trade history <span class="mut small">· ' + rows.length + " entries</span></h3>" +
+    '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px"><input id="journalSearch" aria-label="Search trades" placeholder="Search instrument or notes" style="flex:1;min-width:170px" /><select id="journalFilter" aria-label="Filter trades" style="min-width:150px"><option value="all">All trades</option><option value="wins">Winning trades</option><option value="losses">Losing trades</option></select><button class="btn ghost small" id="journalExport" type="button">Export CSV</button></div>' +
+    tradeRows + "</div></div>" +
+    '<div id="journalCalendar" role="tabpanel"' + shown("calendar") + ">" + journalCalendar(rows) + "</div>" +
+    '<div id="journalInsights" role="tabpanel"' + shown("insights") + ">" + journalInsights(rows) + "</div>" +
+    "</div></section>");
+  function openAccounts(prefillFirm){
+    journalApplyTab("accounts");
+    if (prefillFirm) {
+      $("#newFirm").value = prefillFirm === "__other__" ? "__other__" : prefillFirm;
+      $("#newFirm").dispatchEvent(new Event("change"));
+      $("#newPlan").value = "__custom__";
+      $("#newPlan").dispatchEvent(new Event("change"));
+      $("#newAccountLabel").value = prefillFirm === "__other__" ? "Account 1" : prefillFirm + " Account 1";
+      $("#newAccountSize").value = "50000";
+      $("#newAccountSizePreset").value = "50000";
+    }
+    var form = $("#journalAccountForm");
+    if (form && form.scrollIntoView) form.scrollIntoView({behavior:"smooth", block:"center"});
+    var focusEl = prefillFirm ? $("#newAccountLabel") : $("#newFirm");
+    if (focusEl) focusEl.focus();
+  }
+  $("#journalAccountFilter").addEventListener("change", function(){
+    var v = this.value;
+    if (v.indexOf("firm:") === 0) {
+      openAccounts(v.slice(5));
+      this.value = journalState.selected;
+      return;
+    }
+    journalState.selected = v;
+    renderJournal();
+  });
+  $("#journalAddAccount").addEventListener("click", function(){ openAccounts(); });
+  app.querySelectorAll("[data-select-account]").forEach(function(b){
+    b.addEventListener("click", function(){
+      journalState.selected = b.getAttribute("data-select-account");
+      journalState.tab = "overview";
+      renderJournal();
+    });
+  });
+  function refreshJournalPlans(){
+    var firm = FIRMS.find(function(f){ return f.name === $("#newFirm").value; }), select = $("#newPlan");
+    select.innerHTML = '<option value="">Select an account plan</option>';
+    if (firm && firm.fromPlan) {
+      var option = document.createElement("option");
+      option.value = firm.fromPlan;
+      option.textContent = firm.fromPlan + " (listed starting plan)";
+      select.appendChild(option);
+    }
+    var custom = document.createElement("option");
+    custom.value = "__custom__";
+    custom.textContent = "Enter plan manually";
+    select.appendChild(custom);
+    select.value = "__custom__";
+    $("#newPlanOther").style.display = "block";
+    $("#newPlanOther").required = false;
+    $("#newPlanOther").value = "";
+  }
+  $("#newFirm").addEventListener("change", function(){
+    var other = this.value === "__other__";
+    $("#newFirmOther").style.display = other ? "block" : "none";
+    $("#newFirmOther").required = other;
+    if (!other) $("#newFirmOther").value = "";
+    refreshJournalPlans();
+  });
+  $("#newPlan").addEventListener("change", function(){
+    var custom = this.value === "__custom__";
+    $("#newPlanOther").style.display = custom ? "block" : "none";
+    $("#newPlanOther").required = false;
+    if (!custom) $("#newPlanOther").value = "";
+  });
+  $("#newAccountSizePreset").addEventListener("change", function(){
+    if (this.value && this.value !== "__custom__") $("#newAccountSize").value = this.value;
+    else $("#newAccountSize").value = "";
+    $("#newAccountSize").focus();
+  });
+  refreshJournalPlans();
+  $("#journalAccountForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var msg = $("#journalAccountMsg");
+    var firm = $("#newFirm").value === "__other__" ? $("#newFirmOther").value.trim() : $("#newFirm").value.trim();
+    var label = $("#newAccountLabel").value.trim();
+    var size = Number($("#newAccountSize").value);
+    var stage = $("#newAccountStage").value;
+    var plan = $("#newPlan").value === "__custom__" ? $("#newPlanOther").value.trim() : $("#newPlan").value.trim();
+    if (!firm || !label || !Number.isFinite(size) || size < 0 || size > 1000000000) {
+      msg.textContent = "Choose a firm and account name. Account size must be a number from 0 up.";
+      msg.className = "form-msg err";
+      return;
+    }
+    msg.textContent = "Saving…";
+    msg.className = "form-msg";
+    var saveBtn = this.querySelector('button[type="submit"]');
+    saveBtn.disabled = true;
+    sb.from("trader_accounts").insert({user_id:PM_USER.id, firm:firm, plan:plan || null, account_label:label, account_size:size, stage:stage}).select("id").single().then(function(r){
+      if (r.error) throw r.error;
+      journalState.selected = r.data.id;
+      journalState.tab = "overview";
+      return journalLoad();
+    }).then(function(){
+      renderJournal();
+      toast("Account added");
+    }).catch(function(err){
+      saveBtn.disabled = false;
+      msg.className = "form-msg err";
+      msg.textContent = "Could not save: " + (err.message || "Please try again");
+    });
+  });
+  var quick = $("#journalQuickAdd");
+  if (quick) quick.addEventListener("click", function(){ journalApplyTab("trades"); var inst = $("#jInst"); if (inst) inst.focus(); });
+  app.querySelectorAll("[data-jtab]").forEach(function(btn){
+    btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
+  });
+  var symbolToggle = $("#journalSymbolsToggle");
+  if (symbolToggle) symbolToggle.addEventListener("click", function(){
+    journalState.showAllSymbols = !journalState.showAllSymbols;
+    journalState.tab = "overview";
+    renderJournal();
+  });
+  var prev = $("#journalCalPrev"), next = $("#journalCalNext");
+  if (prev) prev.addEventListener("click", function(){ journalShiftMonth(-1); });
+  if (next) next.addEventListener("click", function(){ journalShiftMonth(1); });
+  $("#signOutBtn").addEventListener("click", signOutAndLeave);
+  function journalSymbolCount(){
+    var el = $("#jInst"), out = $("#jInstCount");
+    if (!el || !out) return;
+    var n = el.value.trim().length;
+    out.textContent = n + " / " + JOURNAL_SYMBOL_MAX;
+    out.style.color = n > JOURNAL_SYMBOL_MAX ? "#ff8585" : "";
+  }
+  $("#jInst").addEventListener("input", journalSymbolCount);
+  function journalClearTradeForm(){
+    delete $("#jForm").dataset.editId;
+    $("#jDate").value = journalToday();
+    $("#jInst").value = "";
+    $("#jPnl").value = "";
+    $("#jNote").value = "";
+    $("#jForm button[type=submit]").textContent = "Save trade";
+    $("#jCancel").hidden = true;
+    $("#jMsg").textContent = "";
+    $("#jMsg").className = "form-msg";
+    journalSymbolCount();
+  }
+  $("#jCancel").addEventListener("click", journalClearTradeForm);
+  $("#jForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var inst = $("#jInst").value.trim();
+    var pnlRaw = $("#jPnl").value;
+    var note = $("#jNote").value.trim();
+    var d = $("#jDate").value;
+    var msg = $("#jMsg");
+    var errs = [];
+    var dateErr = journalDateError(d); if (dateErr) errs.push(dateErr);
+    var symErr = journalSymbolError(inst); if (symErr) errs.push(symErr);
+    var pnlErr = journalPnlError(pnlRaw); if (pnlErr) errs.push(pnlErr);
+    if (!$("#jAccount").value) errs.push("Choose a trading account.");
+    if (errs.length) { msg.className = "form-msg err"; msg.textContent = errs.join(" "); return; }
+    var editId = $("#jForm").dataset.editId;
+    var payload = {traded_at:new Date(d + "T12:00:00").toISOString(), pnl:Number(journalNormalizePnl(pnlRaw)), symbol:inst, note:note || null};
+    if (editId) payload.account_id = $("#jAccount").value;
+    var query = editId
+      ? sb.from("trades").update(payload).eq("id", editId).eq("user_id", PM_USER.id)
+      : sb.from("trades").insert(Object.assign({user_id:PM_USER.id, account_id:$("#jAccount").value}, payload));
+    query.select(TRADE_CORE).single().then(function(r){
+      if (r.error) { msg.className = "form-msg err"; msg.textContent = "Could not save: " + r.error.message; return; }
+      if (editId) journalState.allRows = journalState.allRows.map(function(x){ return x.id === editId ? r.data : x; });
       else journalState.allRows.unshift(r.data);
-      journalState.allRows.sort(function(a,b){ return String(b.traded_at).localeCompare(String(a.traded_at)); });
-      renderJournal(); toast(editId?"Trade updated":"Trade saved");
-    }).catch(function(){ msg.className="form-msg err";msg.textContent="Could not save. Check your connection and try again."; });
+      journalState.allRows.sort(function(a, b){ return String(b.traded_at).localeCompare(String(a.traded_at)); });
+      journalState.tab = "trades";
+      renderJournal();
+      toast(editId ? "Trade updated" : "Trade saved");
+    }).catch(function(){ msg.className = "form-msg err"; msg.textContent = "Could not save. Check your connection and try again."; });
   });
   function applyJournalFilter(){
-    var term=$("#journalSearch").value.trim().toLowerCase(),kind=$("#journalFilter").value;
+    var term = $("#journalSearch").value.trim().toLowerCase(), kind = $("#journalFilter").value;
     app.querySelectorAll("#journalRows .pay-row").forEach(function(el){
-      var pnl=Number(el.getAttribute("data-pnl"));
-      var match=(!term||el.textContent.toLowerCase().includes(term))&&(kind==="all"||(kind==="wins"&&pnl>0)||(kind==="losses"&&pnl<0));
-      el.style.display=match?"":"none";
+      var pnl = Number(el.getAttribute("data-pnl"));
+      var match = (!term || el.textContent.toLowerCase().indexOf(term) >= 0) && (kind === "all" || (kind === "wins" && pnl > 0) || (kind === "losses" && pnl < 0));
+      el.style.display = match ? "" : "none";
     });
   }
-  $("#journalSearch").addEventListener("input",applyJournalFilter);
-  $("#journalFilter").addEventListener("change",applyJournalFilter);
-  $("#journalExport").addEventListener("click",function(){
-    var csv=[["Date","Instrument","PnL","Note"].join(",")].concat(journalState.rows.map(function(r){
-      return [String(r.traded_at).slice(0,10),r.symbol||"",String(r.pnl),r.note||""].map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(",");
-    })).join("\r\n");
-    var blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
-    a.href=url;a.download="propfirmmath-trades.csv";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  $("#journalSearch").addEventListener("input", applyJournalFilter);
+  $("#journalFilter").addEventListener("change", applyJournalFilter);
+  $("#journalExport").addEventListener("click", function(){
+    var header = ["Date","Instrument","PnL","Note","Account"];
+    var lines = [header.join(",")].concat(journalState.rows.map(function(r){
+      var acct = "";
+      journalState.accounts.forEach(function(a){ if (a.id === r.account_id) acct = a.account_label || a.firm || ""; });
+      return [String(r.traded_at).slice(0, 10), r.symbol || "", String(r.pnl), r.note || "", acct].map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(",");
+    }));
+    var blob = new Blob([lines.join("\r\n")], {type:"text/csv;charset=utf-8"}), url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = "propfirmmath-trades.csv"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
   });
-  app.querySelectorAll("[data-edit]").forEach(function(b){ b.addEventListener("click", function(){
-    var id=b.getAttribute("data-edit");
-    var row=journalState.rows.find(function(x){ return x.id===id; });
-    if(!row)return;
-    $("#jAccount").value=row.account_id||journalState.acct.id;
-    $("#jDate").value=String(row.traded_at).slice(0,10);
-    $("#jInst").value=row.symbol||"";
-    $("#jPnl").value=Number(row.pnl);
-    $("#jNote").value=row.note||"";
-    $("#jForm").dataset.editId=id;
-    $("#jForm button[type=submit]").textContent="Update trade";
-    $("#jMsg").textContent="Editing trade — save to update this entry.";
-    $("#jForm").scrollIntoView({behavior:"smooth",block:"center"});
-    $("#jInst").focus();
-  }); });
-  app.querySelectorAll("[data-del]").forEach(function(b){ b.addEventListener("click", function(){
-    var id=b.getAttribute("data-del");
-    sb.from("trades").delete().eq("id",id).eq("user_id",PM_USER.id).then(function(r){
-      if (r.error){ toast("Could not delete: "+r.error.message); return; }
-      journalState.allRows=journalState.allRows.filter(function(x){ return x.id!==id; }); renderJournal(); toast("Trade deleted");
+  app.querySelectorAll("[data-edit]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-edit");
+      var row = journalState.allRows.find(function(x){ return x.id === id; });
+      if (!row) return;
+      journalApplyTab("trades");
+      $("#jAccount").value = row.account_id || (journalState.acct && journalState.acct.id) || "";
+      $("#jDate").value = String(row.traded_at).slice(0, 10);
+      $("#jInst").value = row.symbol || "";
+      $("#jPnl").value = Number(row.pnl);
+      $("#jNote").value = row.note || "";
+      $("#jForm").dataset.editId = id;
+      $("#jForm button[type=submit]").textContent = "Update trade";
+      $("#jCancel").hidden = false;
+      $("#jMsg").className = "form-msg";
+      $("#jMsg").textContent = "Editing this trade. Save to update it, or cancel.";
+      journalSymbolCount();
+      $("#jForm").scrollIntoView({behavior:"smooth", block:"center"});
+      $("#jInst").focus();
     });
-  }); });
+  });
+  app.querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-del");
+      if (b.getAttribute("data-armed") !== "1") {
+        b.setAttribute("data-armed", "1");
+        b.textContent = "Delete?";
+        var cancel = document.createElement("button");
+        cancel.type = "button";
+        cancel.className = "btn ghost small";
+        cancel.textContent = "Cancel";
+        cancel.addEventListener("click", function(){
+          b.removeAttribute("data-armed");
+          b.textContent = "Delete";
+          cancel.remove();
+        });
+        b.after(cancel);
+        return;
+      }
+      sb.from("trades").delete().eq("id", id).eq("user_id", PM_USER.id).then(function(r){
+        if (r.error) { toast("Could not delete: " + r.error.message); return; }
+        journalState.allRows = journalState.allRows.filter(function(x){ return x.id !== id; });
+        journalState.tab = "trades";
+        renderJournal();
+        toast("Trade deleted");
+      });
+    });
+  });
 }
 /* ================= LEGAL ================= */
 var LEGAL = {
