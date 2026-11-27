@@ -73,6 +73,7 @@ nav.main .nav-resources-heading{padding:8px 12px 3px;font-size:11px;text-transfo
 .btn.ghost{background:linear-gradient(160deg,#221809,#150e05);color:var(--ink);border:1px solid var(--line);box-shadow:var(--neu-btn)}
 .btn.small{padding:8px 14px;min-height:40px;font-size:13.5px;border-radius:10px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
+.chip.hot{background:#3a1208;color:#ff9078}
 .chip{display:inline-block;padding:4px 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.4px;background:#241a0d;box-shadow:var(--neu-in);color:var(--gold);text-transform:uppercase}
 .chip.grey{color:var(--muted)}
 .mut{color:var(--muted)} .small{font-size:13px} .tiny{font-size:12px}
@@ -437,6 +438,35 @@ var $$ = function(s, el){ return Array.prototype.slice.call((el||document).query
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
 function cap(s){ s=String(s==null?"":s); return s.charAt(0).toUpperCase()+s.slice(1); }
 function firm(slug){ for (var i=0;i<FIRMS.length;i++) if (FIRMS[i].slug===slug) return FIRMS[i]; return null; }
+/* ---- Deal expiry: parse "ends <date>[, <time> <zone>]" from each code's detail, DST-correct ---- */
+var MON={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+var ZONES={EST:"America/New_York",EDT:"America/New_York",ET:"America/New_York",CST:"America/Chicago",CDT:"America/Chicago",CT:"America/Chicago",PST:"America/Los_Angeles",PDT:"America/Los_Angeles",PT:"America/Los_Angeles",UTC:"UTC",GMT:"UTC","German time":"Europe/Berlin",CET:"Europe/Berlin",CEST:"Europe/Berlin","UK time":"Europe/London"};
+function tzOffsetMs(zone,ms){ var f=new Intl.DateTimeFormat("en-US",{timeZone:zone,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric"}); var p={}; f.formatToParts(new Date(ms)).forEach(function(x){p[x.type]=+x.value;}); return Date.UTC(p.year,p.month-1,p.day,p.hour,p.minute,p.second)-ms; }
+function zonedToUtc(y,mo,d,h,mi,zone){ if(zone==="UTC") return Date.UTC(y,mo,d,h,mi,59); var guess=Date.UTC(y,mo,d,h,mi,59); var t=guess-tzOffsetMs(zone,guess); return guess-tzOffsetMs(zone,t); }
+/* returns {ms, zoned, label} or null when the text carries no end date */
+function parseDealEnd(detail){
+  var m=/ends?\s+(?:on\s+)?([A-Z][a-z]{2})[a-z]*\s+(\d{1,2}),?\s+(\d{4})(?:,?\s+(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?\s*(EST|EDT|ET|CST|CDT|CT|PST|PDT|PT|UTC|GMT|CET|CEST|German time|UK time))?/.exec(detail||"");
+  if(!m||MON[m[1]]===undefined) return null;
+  var y=+m[3],mo=MON[m[1]],d=+m[2];
+  if(m[4]!==undefined&&m[7]){ var h=+m[4],mi=m[5]?+m[5]:0; if(m[6]==="PM"&&h<12)h+=12; if(m[6]==="AM"&&h===12)h=0; var z=ZONES[m[7]]; return {ms:zonedToUtc(y,mo,d,h,mi,z),zoned:true,label:m[1]+" "+d+", "+(m[6]?(+m[4])+(m[5]?":"+m[5]:"")+" "+m[6]:m[4]+":"+(m[5]||"00"))+" "+m[7]}; }
+  /* date only: stays live through the end of that day in the westernmost zone, so a live code is never hidden early */
+  return {ms:Date.UTC(y,mo,d+1,11,59,59),zoned:false,label:m[1]+" "+d};
+}
+function nowMs(){ return typeof window!=="undefined"&&window.__NOW?window.__NOW:Date.now(); }
+function applyExpiry(){
+  FIRMS.forEach(function(f){
+    if(f.__exp) return; f.__exp=1; var live=[],ended=[];
+    (f.codes||[]).forEach(function(c){ var e=parseDealEnd(c.detail); if(e&&e.ms<nowMs()) ended.push(c); else live.push(c); });
+    f.endedCodes=ended;
+    if(!ended.length) return;
+    f.codes=live;
+    var offs=live.map(function(c){return c.off}).filter(function(v){return v});
+    f.off=offs.length?Math.max.apply(null,offs):null;
+    f.code=live.length?live[0].code:null;
+    f.deal=live.length?live[0].detail:null;
+  });
+}
+applyExpiry();
 function money(n){ if (n===null||n===undefined) return "—"; return "$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); }
 function money0(n){ if (n===null||n===undefined) return "—"; if (n>=1000000) return "$"+(n/1000000).toFixed(2)+"M"; if (n>=1000) return "$"+(n/1000).toFixed(1)+"K"; return "$"+n; }
 function initials(n){ var p=n.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).filter(Boolean); if (p.length===1) return p[0].slice(0,2).toUpperCase(); return (p[0][0]+p[1][0]).toUpperCase(); }
@@ -519,13 +549,14 @@ function firmTableHTML(list){
   + list.map(firmRowHTML).join("") + '</tbody></table></div>';
 }
 function dealEndBadge(detail){
-  var m=/ends?\s+(?:on\s+)?([A-Z][a-z]{2})[a-z]*\s+(\d{1,2}),?\s+(\d{4})/.exec(detail||"");
-  if(!m) return "";
-  var d=new Date(m[1]+" "+m[2]+", "+m[3]+" 23:59:59");
-  if(isNaN(d.getTime())) return "";
-  var past=d<new Date();
-  return '<p style="margin:6px 0 0"><span class="chip'+(past?' grey':'')+'">'+(past?'Expired ':'Ends ')+m[1]+' '+m[2]+'</span></p>';
+  var e=parseDealEnd(detail); if(!e) return "";
+  var left=e.ms-nowMs(); if(left<=0) return '<p style="margin:6px 0 0"><span class="chip grey">Ended '+e.label+'</span></p>';
+  var hrs=Math.floor(left/3600000), soon=hrs<48;
+  var txt=soon?(hrs<1?"Ends in under 1 hour":"Ends in "+hrs+" hours")+" ("+e.label+")":"Ends "+e.label;
+  return '<p style="margin:6px 0 0"><span class="chip'+(soon?' hot':'')+'">'+txt+'</span></p>';
 }
+function endedNote(){ var ended=[]; FIRMS.forEach(function(f){ (f.endedCodes||[]).forEach(function(c){ var e=parseDealEnd(c.detail); ended.push(esc(f.name)+" "+esc(c.code)+(e?" (ended "+e.label+")":"")); }); });
+  return ended.length?'<div class="card" style="margin-top:24px"><h3>Recently ended</h3><p class="mut small" style="margin-top:8px">These codes passed the end date printed on the firm\'s own page and are no longer listed above: '+ended.join(", ")+'. Firms often extend or replace sales, so check the firm\'s site.</p></div>':""; }
 function dealCardHTML(f){
   return '<article class="card"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><a href="/firm/'+f.slug+'" style="display:flex;gap:12px;align-items:center;color:var(--ink)">'+avatar(f,44)+'<strong style="font-family:Sora">'+esc(f.name)+'</strong></a>'
   + f.markets.map(function(m){return '<span class="chip grey">'+MARKETS[m].label+"</span>"}).join("")+"</div>"
@@ -821,6 +852,7 @@ function pageDeals(){
   go(pageHead('<a href="/">Home</a> · Deals', "Prop firm deals &amp; discount codes",
     nCodes+" discount codes verified on the firms' own official sites, across "+deals.length+" of the "+COUNTS.total+" firms in the directory — researched "+SNAPSHOT+". Every count on this page is computed from those verified codes, so the totals reconcile by construction. Firms with no officially verified code are not listed, and no third-party or affiliate-only code is shown.")+
   '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+deals.map(dealCardHTML).join("")+"</div>"+
+  endedNote()+
   '<div class="card" style="margin-top:24px"><h3>How these counts work</h3><p class="mut" style="margin-top:8px">This page counts only codes that were verified on a firm\'s own website in the '+SNAPSHOT+' research: <strong style="color:var(--ink)">'+nCodes+' codes across '+deals.length+' firms</strong>. Where a firm stated an end date, it is shown on the card as an Ends badge. Several of these are Black Friday and Black Week offers, so after the end date treat the code as expired unless the firm\'s checkout still accepts it.</p>'+
   '<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><a class="btn small ghost" href="/futures">Futures firms</a><a class="btn small ghost" href="/forex">Forex firms</a><a class="btn small ghost" href="/crypto">Crypto firms</a><a class="btn small ghost" href="/perps">Perps firms</a><a class="btn small ghost" href="/firms">All '+COUNTS.total+' firms</a></div></div>');
   bindCopy();
