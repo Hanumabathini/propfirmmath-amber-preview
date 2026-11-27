@@ -464,6 +464,59 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.nav-toggle:focus-vis
   nav.main .nav-resources-menu{position:static;width:100%;min-width:0;box-shadow:none}
 }
 </style>
+<style>
+/* Auth stage. Scoped so the home page is untouched. */
+.wrap:has(.auth-stage){max-width:1120px;padding-top:28px}
+.auth-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:start}
+.auth-form-pane h1{font-size:clamp(32px,4vw,46px);letter-spacing:-.03em;margin:12px 0 10px}
+.auth-lede{color:var(--muted);max-width:42ch;margin:0 0 22px;font-size:16.5px}
+.auth-form-pane .card{padding:22px 22px 18px}
+.auth-field{margin:0 0 14px}
+.auth-field input{transition:border-color .16s ease,box-shadow .16s ease}
+.auth-field input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,176,32,.18)}
+.auth-pass{display:flex;gap:8px;align-items:center}
+.auth-pass input{flex:1}
+.auth-reveal{flex:none;min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:#120d07;color:var(--gold);font-weight:800;cursor:pointer}
+.auth-reveal:hover{border-color:var(--amber)}
+.auth-meter{height:4px;border-radius:99px;background:#120d07;margin-top:8px;overflow:hidden}
+.auth-meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff8a00,#ffd34d);transition:width .2s ease}
+.auth-meter-label{min-height:1.2em;margin:4px 0 0;color:var(--muted);font-size:12.5px;font-weight:700}
+.auth-form-pane form.is-invalid{animation:auth-shake .35s ease}
+.form-msg.err,.form-msg.ok{animation:auth-in .28s ease both}
+.auth-skel{display:grid;gap:12px}
+.auth-skel span{display:block;height:44px;border-radius:12px;background:linear-gradient(90deg,#161009,#241a0d,#161009);background-size:200% 100%;animation:auth-shimmer 1.2s ease infinite}
+.auth-preview{background:#100c08;border:1px solid var(--line);border-radius:22px;padding:28px 26px 22px;box-shadow:var(--neu-out)}
+.auth-preview-kicker{margin:0;color:var(--amber);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.auth-preview h2{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;margin:10px 0 12px;max-width:16ch}
+.auth-preview>p{color:#e6d7b8;margin:0 0 18px;max-width:42ch}
+.auth-panel{background:#0c0906;border:1px solid rgba(255,176,32,.14);border-radius:16px;padding:16px 16px 8px}
+.auth-curve{display:block;width:100%;height:auto}
+.auth-curve path{fill:none;stroke:#ffb020;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;animation:auth-draw 1.4s ease .2s forwards}
+.auth-panel-label{margin:4px 0 12px;color:var(--faint);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.auth-stat{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(255,176,32,.1)}
+.auth-stat span{color:var(--muted);font-size:13.5px;font-weight:700}
+.auth-stat strong{font-family:"Sora",sans-serif;font-size:22px;color:var(--gold)}
+.auth-rule{padding:12px 0 8px;border-top:1px solid rgba(255,176,32,.1)}
+.auth-rule span{display:block;color:var(--muted);font-size:13px;font-weight:700;margin-bottom:8px}
+.auth-rule i{display:block;height:8px;border-radius:99px;background:#1a1208;position:relative;overflow:hidden}
+.auth-rule i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--fill,0%);background:linear-gradient(90deg,#ff8a00,#ffd34d);animation:auth-fill .8s ease .15s both}
+@keyframes auth-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes auth-draw{to{stroke-dashoffset:0}}
+@keyframes auth-fill{from{width:0}to{width:var(--fill,62%)}}
+@keyframes auth-shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+@keyframes auth-shake{0%,100%{transform:none}30%{transform:translateX(-3px)}60%{transform:translateX(3px)}}
+.auth-form-pane{animation:auth-in .4s ease both}
+.auth-preview{animation:auth-in .5s ease .06s both}
+@media(min-width:960px){
+  .auth-stage{grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:42px;align-items:stretch}
+  .auth-preview{position:sticky;top:84px}
+}
+@media(prefers-reduced-motion:reduce){
+  .auth-form-pane,.auth-preview,.auth-curve path,.auth-rule i::after,.auth-skel span,.form-msg.err,.form-msg.ok,.auth-form-pane form.is-invalid{animation:none}
+  .auth-curve path{stroke-dashoffset:0}
+  .auth-rule i::after{width:var(--fill,62%)}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -967,7 +1020,7 @@ function signOutAndLeave(){
 }
 function refreshAuthPage(){
   var path = location.pathname || "/";
-  if (/^\/(account|login|journal|reset)\/?$/.test(path)) route();
+  if (/^\/(account|signup|login|journal|reset)\/?$/.test(path)) route();
 }
 if (sb){
   var lastAuthUserId = null, authSeen = false;
@@ -1057,7 +1110,7 @@ function route(){
     if (parts[0]==="rules") return pageRules();
     if (parts[0]==="statistics" || parts[0]==="stats") return pageStats();
     if (parts[0]==="methodology") return pageMethodology();
-    if (parts[0]==="account") return pageAccount();
+    if (parts[0]==="account" || parts[0]==="signup") return pageAccount();
     if (parts[0]==="login") return pageLogin();
     if (parts[0]==="journal") return pageJournal();
     if (parts[0]==="reset") return pageReset();
@@ -1760,9 +1813,78 @@ function authUnavailable(){
   return '<div class="notice" style="margin-bottom:18px"><b>Accounts are temporarily unavailable.</b> The sign-in service could not be reached. Please reload the page or try again shortly.</div>';
 }
 var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+function authCountUp(el){
+  var to = Number(el.getAttribute("data-count")) || 0;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { el.textContent = to.toLocaleString("en-US"); return; }
+  var t0 = null;
+  function frame(now){
+    if (t0 == null) t0 = now;
+    var t = Math.min(1, (now - t0) / 700);
+    var eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(to * eased).toLocaleString("en-US");
+    if (t < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+function bindAuthChrome(){
+  $$("[data-reveal]").forEach(function(b){
+    if (b.dataset.bound) return;
+    b.dataset.bound = "1";
+    b.addEventListener("click", function(){
+      var input = document.getElementById(b.getAttribute("data-reveal"));
+      if (!input) return;
+      var show = input.type === "password";
+      input.type = show ? "text" : "password";
+      b.textContent = show ? "Hide" : "Show";
+      b.setAttribute("aria-pressed", show ? "true" : "false");
+      b.setAttribute("aria-label", show ? "Hide password" : "Show password");
+    });
+  });
+  var pass = document.getElementById("regPass");
+  if (pass) pass.addEventListener("input", function(){
+    var n = pass.value.length;
+    var meter = document.getElementById("regPassMeter");
+    var label = document.getElementById("regPassMeterLabel");
+    if (meter) meter.style.width = Math.min(100, n * 10) + "%";
+    if (label) label.textContent = n === 0 ? "" : (n < 8 ? n + " of 8 characters" : "Long enough to continue");
+  });
+  $$(".auth-num").forEach(authCountUp);
+}
+function authMark(form, invalid){
+  if (!form) return;
+  form.classList.toggle("is-invalid", !!invalid);
+  form.classList.toggle("is-valid", !invalid);
+}
+function authPreview(){
+  var firms = (typeof FIRMS !== "undefined") ? FIRMS.length : 0;
+  var codes = (typeof codesCount === "function") ? codesCount() : 0;
+  return '<aside class="auth-preview"><p class="auth-preview-kicker">On this account</p>'+
+    '<h2>The journal is private. The directory is not.</h2>'+
+    '<p>Trades you save stay on this login. Signing in does not move a firm up or down the tables.</p>'+
+    '<div class="auth-panel">'+
+      '<svg class="auth-curve" viewBox="0 0 320 96" role="img" aria-label="Example equity line, not your trades"><path d="M4 78 C 36 76, 48 58, 78 60 S 118 30, 150 38 S 196 18, 230 24 S 270 14, 316 18"/></svg>'+
+      '<p class="auth-panel-label">Example curve, not your trades</p>'+
+      '<div class="auth-stat"><span>Firms in the directory</span><strong class="auth-num" data-count="'+firms+'">0</strong></div>'+
+      '<div class="auth-stat"><span>Recorded discount codes</span><strong class="auth-num" data-count="'+codes+'">0</strong></div>'+
+      '<div class="auth-rule"><span>Example rule room, 6% static</span><i style="--fill:62%"></i></div>'+
+    '</div></aside>';
+}
+function authShell(kicker, title, lede, body){
+  return '<div class="auth-stage"><section class="auth-form-pane"><p class="kicker">'+kicker+'</p><h1>'+title+'</h1><p class="auth-lede">'+lede+'</p>'+body+'</section>'+authPreview()+'</div>';
+}
+function authField(id, label, type, ac, value){
+  return '<div class="auth-field"><label class="fl" for="'+id+'">'+label+'</label><input type="'+type+'" id="'+id+'" autocomplete="'+ac+'"'+(value!=null?' value="'+esc(value)+'"':'')+' /></div>';
+}
+function authPassword(id, label, ac, meter){
+  return '<div class="auth-field"><label class="fl" for="'+id+'">'+label+'</label><div class="auth-pass"><input type="password" id="'+id+'" autocomplete="'+ac+'" /><button type="button" class="auth-reveal" data-reveal="'+id+'" aria-pressed="false" aria-label="Show password">Show</button></div>'+
+    (meter ? '<div class="auth-meter" aria-hidden="true"><i id="'+id+'Meter"></i></div><p class="auth-meter-label" id="'+id+'MeterLabel"></p>' : '')+
+    '</div>';
+}
 function authChecking(title){
-  go(pageHead('<a href="/">Home</a> · Account', title || "Account", "Checking your session.")+
-    '<div class="card" style="margin-top:20px;max-width:560px"><p class="mut">Checking your session…</p></div>');
+  go(authShell("Account", title || "Account", "Checking whether you are already signed in.",
+    '<div class="card"><div class="auth-skel" aria-busy="true" aria-live="polite"><span></span><span></span><span></span></div><p class="mut small">Checking your session.</p></div>'));
+  bindAuthChrome();
 }
 function pageAccount(){
   if (sb && !authReady) { authChecking("Your account"); return; }
@@ -1770,79 +1892,87 @@ function pageAccount(){
     var meta = PM_USER.user_metadata || {};
     var name = meta.full_name ? String(meta.full_name) : "";
     var country = meta.country ? String(meta.country) : "";
-    go(pageHead('<a href="/">Home</a> · Account', "Your account", "Signed in. Your journal is private to this login.")+
-      '<div style="max-width:560px;margin-top:20px"><div class="card">'+
-      (name ? '<p style="margin:0"><strong>'+esc(name)+'</strong></p>' : '')+
-      '<p class="mut small" style="margin:14px 0 0">Email</p><p style="margin:4px 0 0;font-weight:800">'+esc(PM_USER.email||"")+'</p>'+
+    go(authShell("Account", name ? esc(name) : "Your account", "This login holds your journal. The directory stays the same either way.",
+      '<div class="card">'+
+      '<p class="mut small" style="margin:0">Email</p><p style="margin:4px 0 0;font-weight:800">'+esc(PM_USER.email||"")+'</p>'+
       (country ? '<p class="mut small" style="margin:8px 0 0">'+esc(country)+'</p>' : '')+
       '<p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/journal">Open journal</a> <button class="btn ghost" type="button" id="accountSignOut">Sign out</button></p>'+
-      '</div></div>');
+      '</div>'));
+    bindAuthChrome();
     $("#accountSignOut").addEventListener("click", signOutAndLeave);
     return;
   }
   var locale = (navigator.language || "en-US");
   var region = locale.indexOf("-")>0 ? locale.split("-")[1].toUpperCase() : "";
   var countryGuess = region==="US" ? "United States" : (region==="GB" ? "United Kingdom" : (region==="IN" ? "India" : (region==="AU" ? "Australia" : "")));
-  go(pageHead('<a href="/">Home</a> · Account', "Create your free account", "Sign up free. Takes under a minute; no card.")+
-  '<div style="max-width:560px;margin-top:20px">'+(sb?"":authUnavailable())+
-  '<div class="card"><form id="regForm"><div class="field"><label class="fl" for="regName">Full name</label><input type="text" id="regName" autocomplete="name" /></div>'+
-  '<div class="field"><label class="fl" for="regCountry">Country (pre-filled from your browser locale: '+esc(locale)+')</label><input type="text" id="regCountry" value="'+esc(countryGuess)+'" autocomplete="country-name" /></div>'+
-  '<div class="field"><label class="fl" for="regEmail">Email</label><input type="email" id="regEmail" autocomplete="email" /></div>'+
-  '<div class="field"><label class="fl" for="regPass">Password</label><input type="password" id="regPass" autocomplete="new-password" /></div>'+
-  '<div class="field"><label class="fl" for="regPass2">Confirm password</label><input type="password" id="regPass2" autocomplete="new-password" /></div>'+
-  '<label class="checkline"><input type="checkbox" id="regTerms" /> <span>I agree to the <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</span></label>'+
-  '<label class="checkline"><input type="checkbox" id="regNews" /> <span>Send me new deals (optional).</span></label>'+
-  '<button class="btn" type="submit" style="width:100%">Sign up free</button>'+
-  '<p class="form-msg" id="regMsg"></p></form>'+
-  '<p class="mut small" style="margin-top:14px">Already a member? <a href="/login"><strong>Log in</strong></a></p></div></div>');
+  go(authShell("Create account", "Create your free account", "It stores the journal. It does not ask for a card, and it does not buy a ranking.",
+    (sb?"":authUnavailable())+
+    '<div class="card"><form id="regForm" novalidate>'+
+    authField("regName","Full name","text","name")+
+    authField("regCountry","Country","text","country-name", countryGuess)+
+    '<p class="mut small" style="margin:-6px 0 12px">Suggested from your browser language ('+esc(locale)+'). Change it if that is wrong.</p>'+
+    authField("regEmail","Email","email","email")+
+    authPassword("regPass","Password","new-password", true)+
+    authPassword("regPass2","Confirm password","new-password", false)+
+    '<label class="checkline"><input type="checkbox" id="regTerms" /> <span>I agree to the <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</span></label>'+
+    '<label class="checkline"><input type="checkbox" id="regNews" /> <span>Email me when a checked deal changes. Optional.</span></label>'+
+    '<button class="btn" type="submit" style="width:100%">Create account</button>'+
+    '<p class="form-msg" id="regMsg" role="alert"></p></form>'+
+    '<p class="mut small" style="margin-top:14px">Already have an account? <a href="/login"><strong>Log in</strong></a></p></div>'));
+  bindAuthChrome();
   $("#regForm").addEventListener("submit", function(e){ e.preventDefault();
     var msg=$("#regMsg"); var em=$("#regEmail").value.trim();
     var p1=$("#regPass").value, p2=$("#regPass2").value;
-    function err(t){ msg.className="form-msg err"; msg.textContent=t; }
+    var form=$("#regForm");
+    function err(t){ authMark(form, true); msg.className="form-msg err"; msg.textContent=t; }
     if (!sb) return err("The sign-in service is unavailable right now. Please reload and try again.");
     if (!$("#regName").value.trim()) return err("Enter your full name.");
     if (!EMAIL_RE.test(em)) return err("That email address doesn't look valid.");
     if (p1.length<8) return err("Password needs at least 8 characters.");
     if (p1!==p2) return err("Passwords don't match.");
     if (!$("#regTerms").checked) return err("Please agree to the Terms and Privacy Policy.");
-    var btn=$("#regForm button[type=submit]"); btn.disabled=true; msg.className="form-msg"; msg.textContent="Creating your account…";
+    var btn=$("#regForm button[type=submit]"); btn.disabled=true; authMark(form, false); msg.className="form-msg"; msg.textContent="Creating your account…";
     sb.auth.signUp({email:em,password:p1,options:{emailRedirectTo:authRedirectTo("/login"),data:{full_name:$("#regName").value.trim(),country:$("#regCountry").value.trim(),deals_opt_in:$("#regNews").checked}}}).then(function(r){
       btn.disabled=false;
       if (r.error) return err(r.error.message);
       if (r.data && r.data.session){ toast("Account created"); history.pushState({},"","/journal"); route(); return; }
       if (r.data && r.data.user && r.data.user.identities && r.data.user.identities.length===0) return err("An account with this email already exists. Try logging in instead.");
-      msg.className="form-msg ok"; msg.textContent="Almost done — we sent a confirmation link to "+em+". Open it on this device and it will bring you back here, signed in.";
+      authMark(form, false); msg.className="form-msg ok"; msg.textContent="Almost done. We sent a confirmation link to "+em+". Open it on this device and it will bring you back here, signed in.";
     }).catch(function(){ btn.disabled=false; err("Could not reach the sign-in service. Please try again."); });
   });
 }
 function pageLogin(){
   if (sb && !authReady) { authChecking("Log in"); return; }
   if (PM_USER) { history.replaceState({},"","/journal"); return route(); }
-  go(pageHead('<a href="/">Home</a> · Account', "Log in", "Welcome back.")+
-  '<div style="max-width:480px;margin-top:20px">'+(sb?"":authUnavailable())+
-  '<div class="card"><form id="loginForm"><div class="field"><label class="fl" for="liEmail">Email</label><input type="email" id="liEmail" autocomplete="email" /></div>'+
-  '<div class="field"><label class="fl" for="liPass">Password</label><input type="password" id="liPass" autocomplete="current-password" /></div>'+
-  '<button class="btn" type="submit" style="width:100%">Log in</button>'+
-  '<p class="form-msg" id="liMsg"></p></form>'+
-  '<p style="margin-top:12px"><button class="btn ghost small" id="forgotBtn" type="button">Forgot password?</button></p>'+
-  '<p class="form-msg" id="forgotMsg"></p>'+
-  '<p class="mut small" style="margin-top:14px">New here? <a href="/account"><strong>Sign up free</strong></a></p></div></div>');
+  go(authShell("Log in", "Log in", "Welcome back. The journal you saved last time is on this account.",
+    (sb?"":authUnavailable())+
+    '<div class="card"><form id="loginForm" novalidate>'+
+    authField("liEmail","Email","email","email")+
+    authPassword("liPass","Password","current-password", false)+
+    '<button class="btn" type="submit" style="width:100%">Log in</button>'+
+    '<p class="form-msg" id="liMsg" role="alert"></p></form>'+
+    '<p style="margin-top:12px"><button class="btn ghost small" id="forgotBtn" type="button">Email me a reset link</button></p>'+
+    '<p class="form-msg" id="forgotMsg" role="status"></p>'+
+    '<p class="mut small" style="margin-top:14px">New here? <a href="/signup"><strong>Create an account</strong></a></p></div>'));
+  bindAuthChrome();
   $("#loginForm").addEventListener("submit", function(e){ e.preventDefault();
     var msg=$("#liMsg"); var em=$("#liEmail").value.trim();
-    function err(t){ msg.className="form-msg err"; msg.textContent=t; }
+    var form=$("#loginForm");
+    function err(t){ authMark(form, true); msg.className="form-msg err"; msg.textContent=t; }
     if (!EMAIL_RE.test(em)) return err("That email address doesn't look valid.");
     if (!$("#liPass").value) return err("Enter your password.");
     if (!sb) return err("The sign-in service is unavailable right now. Please reload and try again.");
-    msg.className="form-msg"; msg.textContent="Signing in…";
+    authMark(form, false); msg.className="form-msg"; msg.textContent="Signing in…";
     sb.auth.signInWithPassword({email:em,password:$("#liPass").value}).then(function(r){
-      if (r.error) return err(r.error.message==="Email not confirmed" ? "Please confirm your email first — check your inbox for the link." : "Wrong email or password.");
+      if (r.error) return err(r.error.message==="Email not confirmed" ? "Please confirm your email first. The link is in your inbox." : "Wrong email or password.");
       history.pushState({},"","/journal"); route();
     }).catch(function(){ err("Could not reach the sign-in service. Please try again."); });
   });
   $("#forgotBtn").addEventListener("click", function(){
     var m=$("#forgotMsg"); var em=$("#liEmail").value.trim();
-    if (!EMAIL_RE.test(em)){ m.className="form-msg err"; m.textContent="Type your email above first, then press Forgot password."; return; }
+    if (!EMAIL_RE.test(em)){ m.className="form-msg err"; m.textContent="Type your email above first, then ask for the reset link."; return; }
     if (!sb){ m.className="form-msg err"; m.textContent="The sign-in service is unavailable right now."; return; }
+    m.className="form-msg"; m.textContent="Sending the reset link…";
     sb.auth.resetPasswordForEmail(em,{redirectTo:authRedirectTo("/reset")}).then(function(r){
       if (r.error){ m.className="form-msg err"; m.textContent=r.error.message; return; }
       m.className="form-msg ok"; m.textContent="If an account exists for that email, a reset link is on its way.";
@@ -1851,18 +1981,31 @@ function pageLogin(){
 }
 function pageReset(){
   if (sb && !authReady) { authChecking("Set a new password"); return; }
-  go(pageHead('<a href="/">Home</a> · Account', "Set a new password", "Choose a new password for your account.")+
-  '<div style="max-width:480px;margin-top:20px"><div class="card"><form id="rsForm"><div class="field"><label class="fl" for="rsPass">New password</label><input type="password" id="rsPass" autocomplete="new-password" /></div>'+
-  '<button class="btn" type="submit" style="width:100%">Update password</button><p class="form-msg" id="rsMsg"></p></form></div></div>');
+  go(authShell("Reset", "Set a new password", "This page only works from the link in your email. It replaces the old password and nothing else.",
+    '<div class="card"><form id="rsForm" novalidate>'+
+    authPassword("rsPass","New password","new-password", true)+
+    '<button class="btn" type="submit" style="width:100%">Update password</button><p class="form-msg" id="rsMsg" role="alert"></p></form>'+
+    '<p class="mut small" style="margin-top:14px"><a href="/login">Back to log in</a></p></div>'));
+  bindAuthChrome();
+  var rs = document.getElementById("rsPass");
+  if (rs) rs.addEventListener("input", function(){
+    var meter = document.getElementById("rsPassMeter");
+    var label = document.getElementById("rsPassMeterLabel");
+    var n = rs.value.length;
+    if (meter) meter.style.width = Math.min(100, n * 10) + "%";
+    if (label) label.textContent = n === 0 ? "" : (n < 8 ? n + " of 8 characters" : "Long enough to continue");
+  });
   $("#rsForm").addEventListener("submit", function(e){ e.preventDefault();
     var msg=$("#rsMsg"); var pw=$("#rsPass").value;
-    function err(t){ msg.className="form-msg err"; msg.textContent=t; }
+    var form=$("#rsForm");
+    function err(t){ authMark(form, true); msg.className="form-msg err"; msg.textContent=t; }
     if (pw.length<8) return err("Password needs at least 8 characters.");
     if (!sb || !PM_USER) return err("This reset link has expired or was already used. Request a new one from the login page.");
+    authMark(form, false); msg.className="form-msg"; msg.textContent="Updating your password…";
     sb.auth.updateUser({password:pw}).then(function(r){
       if (r.error) return err(r.error.message);
       toast("Password updated"); history.pushState({},"","/journal"); route();
-    });
+    }).catch(function(){ err("Could not reach the sign-in service. Please try again."); });
   });
 }
 /* ---- Journal: trades saved per user in Supabase (row-level security) ---- */
