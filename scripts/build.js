@@ -1,6 +1,6 @@
 /* Static build: pre-renders every route to its own HTML file (real titles, descriptions, canonical,
    and visible content for crawlers), plus a real 404 page. Run: SITE_URL=https://yourdomain.com node scripts/build.js */
-const fs = require('fs'), path = require('path');
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
 const SITE = (process.env.SITE_URL || 'https://propfirmmath-amber-preview.pages.dev').replace(/\/$/, '');
 const root = path.join(__dirname, '..'), out = path.join(root, 'dist');
@@ -38,7 +38,7 @@ function externalise(html) {
   return html.replace(/<script>([\s\S]*?)<\/script>/g, (m, code) => {
     if (code.length < 5000) return m;
     let f = jsSeen.get(code);
-    if (!f) { f = 'js/s' + (jsN++) + '.js'; jsSeen.set(code, f); fs.writeFileSync(path.join(out, f), code); }
+    if (!f) { f = 'js/s' + (jsN++) + '-' + crypto.createHash('sha256').update(code).digest('hex').slice(0,12) + '.js'; jsSeen.set(code, f); fs.writeFileSync(path.join(out, f), code); }
     return '<script src="/' + f + '"></script>';
   });
 }
