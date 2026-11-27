@@ -31,6 +31,17 @@ function page(route, r, extraHead) {
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
   return h;
 }
+// Large inline scripts are written once to /js and referenced from every page (keeps dist small and cacheable).
+fs.mkdirSync(path.join(out, 'js'), { recursive: true });
+let jsN = 0; const jsSeen = new Map();
+function externalise(html) {
+  return html.replace(/<script>([\s\S]*?)<\/script>/g, (m, code) => {
+    if (code.length < 5000) return m;
+    let f = jsSeen.get(code);
+    if (!f) { f = 'js/s' + (jsN++) + '.js'; jsSeen.set(code, f); fs.writeFileSync(path.join(out, f), code); }
+    return '<script src="/' + f + '"></script>';
+  });
+}
 let n = 0, bad = [], warn = [];
 const done = new Set(), queue = [...routes], listed = new Set(routes);
 const hrefs = h => [...h.matchAll(/href="(\/[a-z0-9\-\/]*)"/g)].map(m => m[1].replace(/\/$/, '') || '/').filter(x => !x.startsWith('/vendor'));
@@ -44,11 +55,11 @@ while (queue.length) {
   hrefs(r.app).forEach(h => { if (!done.has(h)) queue.push(h); });
   const file = route === '/' ? 'index.html' : route.replace(/^\//, '') + '.html';
   fs.mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
-  fs.writeFileSync(path.join(out, file), page(route, r)); n++;
+  fs.writeFileSync(path.join(out, file), externalise(page(route, r))); n++;
 }
 if (warn.length) console.warn('Linked but not renderable (check these links):\n' + warn.join('\n'));
 // Real 404: unknown paths get status 404 from the host; the app shows its not-found page.
-fs.writeFileSync(path.join(out, '404.html'), src.replace('</head>', '<meta name="robots" content="noindex"></head>'));
+fs.writeFileSync(path.join(out, '404.html'), externalise(src.replace('</head>', '<meta name="robots" content="noindex"></head>')));
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
 fs.writeFileSync(path.join(out, 'robots.txt'), 'User-agent: *\nAllow: /\nSitemap: ' + SITE + '/sitemap.xml\n');
 fs.writeFileSync(path.join(out, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
