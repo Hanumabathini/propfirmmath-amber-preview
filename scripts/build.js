@@ -2,7 +2,7 @@
    and visible content for crawlers), plus a real 404 page. Run: SITE_URL=https://yourdomain.com node scripts/build.js */
 const fs = require('fs'), path = require('path');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const SITE = (process.env.SITE_URL || 'https://propfirmmath-amber-preview.vercel.app').replace(/\/$/, '');
+const SITE = (process.env.SITE_URL || 'https://propfirmmath-amber-preview.pages.dev').replace(/\/$/, '');
 const root = path.join(__dirname, '..'), out = path.join(root, 'dist');
 const src = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive: true });
