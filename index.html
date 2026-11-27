@@ -99,7 +99,8 @@ footer{border-top:1px solid var(--line);margin-top:20px;background:#080503}
 footer a{color:var(--muted);display:block;padding:5px 0;font-size:14px;min-height:32px}
 footer h4{color:var(--ink);margin-bottom:10px;font-size:15px}
 .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:linear-gradient(160deg,#ffc233,#ff8a00);color:#231500;font-weight:800;padding:12px 22px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.6)}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.toast button{margin-left:12px;background:#231500;color:#ffc233;border:0;border-radius:8px;font:inherit;font-weight:800;padding:6px 10px;cursor:pointer}
 .prose p{margin:0 0 13px;color:#e9dcc2}
 .prose h3{margin:22px 0 9px}
 .prose ul{margin:0 0 13px;padding-left:20px;color:#e9dcc2}
@@ -726,7 +727,29 @@ function logoImg(f){
   var fallback="https://www.google.com/s2/favicons?domain="+encodeURIComponent(host)+"&sz=128";
   return '<img class="avatar-logo" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="'+esc(official)+'" data-fallback="'+esc(fallback)+'" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;delete this.dataset.fallback;}else{this.remove();}" onload="if(this.naturalWidth<24 && this.dataset.fallback){this.src=this.dataset.fallback;delete this.dataset.fallback;}else if(this.naturalWidth<16){this.remove();}">';
 }
-function toast(msg){ var t=$("#toast"); t.textContent=msg; t.classList.add("show"); setTimeout(function(){ t.classList.remove("show"); },2200); }
+var toastTimer = null;
+function toast(msg, undo){
+  var t = $("#toast");
+  if (!t) return;
+  if (toastTimer) clearTimeout(toastTimer);
+  t.textContent = "";
+  var label = document.createElement("span");
+  label.textContent = msg;
+  t.appendChild(label);
+  if (typeof undo === "function") {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = "Undo";
+    btn.addEventListener("click", function(){
+      if (toastTimer) clearTimeout(toastTimer);
+      t.classList.remove("show");
+      undo();
+    });
+    t.appendChild(btn);
+  }
+  t.classList.add("show");
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, undo ? 8000 : 2600);
+}
 function copyText(txt, msg){
   function done(){ toast(msg || "Copied"); }
   function fallback(){
@@ -1846,18 +1869,15 @@ function pageReset(){
 var JOURNAL_PNL_MAX = 1000000;
 var JOURNAL_SYMBOL_MAX = 32;
 var TRADE_CORE = "id,account_id,traded_at,pnl,symbol,note";
+var ACCOUNT_COLS = "id,firm,plan,account_label,account_size,stage,status,created_at";
 var journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
 function journalFetchTrades(){
   return sb.from("trades").select(TRADE_CORE).eq("user_id", PM_USER.id).order("traded_at", {ascending:false}).limit(1000);
 }
 function journalLoad(){
-  return sb.from("trader_accounts").select("id,firm,plan,account_label,account_size,stage,created_at").eq("user_id", PM_USER.id).order("created_at").then(function(r){
+  return sb.from("trader_accounts").select(ACCOUNT_COLS).eq("user_id", PM_USER.id).order("created_at").then(function(r){
     if (r.error) throw r.error;
-    if (r.data && r.data.length) return r.data;
-    return sb.from("trader_accounts").insert({user_id:PM_USER.id,firm:"Unspecified",account_label:"Main journal",account_size:0}).select("id,firm,plan,account_label,account_size,stage,created_at").then(function(x){
-      if (x.error) throw x.error;
-      return x.data;
-    });
+    return r.data || [];
   }).then(function(a){
     journalState.accounts = a || [];
     journalState.acct = journalState.accounts[0] || null;
@@ -1868,6 +1888,10 @@ function journalLoad(){
     journalState.allRows = r.data || [];
     journalState.rows = journalState.selected === "all" ? journalState.allRows : journalState.allRows.filter(function(x){ return x.account_id === journalState.selected; });
   });
+}
+function journalStatusLabel(v){
+  var map = { active: "Active", passed: "Passed", breached: "Breached", closed: "Closed", evaluation: "Evaluation", funded: "Funded", personal: "Personal" };
+  return map[v] || (v ? String(v).charAt(0).toUpperCase() + String(v).slice(1) : "");
 }
 function journalAccountLabel(a){
   if (!a) return "Account";
@@ -2189,7 +2213,7 @@ function renderJournal(){
   var firmOptions = journalFirmChoices().map(function(f){ return '<option value="' + esc(f.name) + '">' + esc(f.name) + "</option>"; }).join("");
   var savedOptions = journalState.accounts.map(function(a){ return '<option value="' + esc(a.id) + '"' + (journalState.selected === a.id ? " selected" : "") + ">" + esc(journalAccountLabel(a)) + "</option>"; }).join("");
   var tradeAccountOptions = journalState.accounts.map(function(a){ return '<option value="' + esc(a.id) + '"' + (defaultAcct === a.id ? " selected" : "") + ">" + esc(journalAccountLabel(a)) + "</option>"; }).join("");
-  var addFirmOptions = journalFirmChoices().map(function(f){ return '<option value="firm:' + esc(f.name) + '">+ ' + esc(f.name) + "</option>"; }).join("");
+  var hasAccounts = journalState.accounts.length > 0;
   function shown(tab){ return journalState.tab === tab ? "" : " hidden"; }
   function tabBtn(id, label, icon){
     var on = journalState.tab === id;
@@ -2197,14 +2221,16 @@ function renderJournal(){
   }
   var accountsPanel = '<div class="card"><h3>Trading accounts</h3><p class="mut small">Each funded account is stored on its own. Trades belong to one account, and the menu above can show that account or all of them together. No API keys or broker login.</p>' +
     journalState.accounts.map(function(a){
-      return '<div class="journal-account-row"><div><strong>' + esc(journalAccountLabel(a)) + '</strong><p class="mut small">' + esc(a.stage || "evaluation") + '</p></div><span style="display:flex;gap:6px"><button class="btn ghost small" type="button" data-edit-account="' + esc(a.id) + '">Edit</button><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></span></div>';
+      return '<div class="journal-account-row"><div><strong>' + esc(journalAccountLabel(a)) + '</strong><p class="mut small">' + esc(journalStatusLabel(a.stage || "evaluation")) + " · " + esc(journalStatusLabel(a.status || "active")) + '</p></div><span style="display:flex;gap:6px"><button class="btn ghost small" type="button" data-edit-account="' + esc(a.id) + '">Edit</button><button class="btn ghost small" type="button" data-delete-account="' + esc(a.id) + '">Delete</button><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></span></div>';
     }).join("") +
     '<h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
     '<div class="field"><label class="fl" for="newPlan">Program / plan</label><select id="newPlan"></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
     '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
-    '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded</option><option value="personal">Personal</option></select></div></div>' +
-    '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel" hidden>Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>';
+    '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded</option><option value="personal">Personal</option></select></div>' +
+    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div></div>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel" hidden>Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form>' +
+    '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move trades and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var tradeRows = rows.length ? '<div id="journalRows" style="margin-top:10px">' + rows.map(function(r){
     var v = Number(r.pnl);
     return '<div class="pay-row" data-pnl="' + Number(r.pnl) + '"><span><strong>' + esc(r.symbol || "—") + '</strong> <span class="mut">' + esc(journalTradeMeta(r)) + '</span></span><span><span class="num" style="font-weight:800;color:' + journalPnlColor(v) + '">' + money(v) + '</span> <button class="btn ghost small" data-edit="' + esc(r.id) + '" type="button" aria-label="Edit trade">Edit</button> <button class="btn ghost small" data-del="' + esc(r.id) + '" type="button" aria-label="Delete trade">Delete</button></span></div>';
@@ -2256,6 +2282,10 @@ function renderJournal(){
     ".pfm-journal #journalAccountForm select,.pfm-journal #journalAccountForm input,.pfm-journal #jForm select,.pfm-journal #jForm input{width:100%;min-width:0;background:#102538;color:#e8eef4;border:1px solid #344b5e;border-radius:8px;padding:10px 12px;min-height:43px}" +
     ".pfm-journal #journalFirmCount{display:block;margin-top:7px;line-height:1.45}" +
     '.pfm-journal [role="tabpanel"][hidden]{display:none!important}' +
+    '.pfm-journal .journal-dialog{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:18px}' +
+    '.pfm-journal .journal-dialog[hidden]{display:none!important}' +
+    '.pfm-journal .journal-dialog-card{max-width:480px;width:100%;background:#102538;border:1px solid #345068;border-radius:14px;padding:18px;color:#e8eef4}' +
+    '.pfm-journal .journal-dialog-card select{width:100%;margin-top:6px;background:#102538;color:#e8eef4;border:1px solid #344b5e;border-radius:8px;min-height:42px}' +
     ".pfm-journal .journal-account{margin-top:auto;padding:14px 10px;border-top:1px solid #26394b;color:#9fb1c1;font-size:11px;overflow-wrap:anywhere}" +
     ".pfm-journal .journal-account strong{display:block;color:#e8eef4;font-size:12px;margin-bottom:4px}" +
     ".pfm-journal .journal-cal-nav{display:flex;align-items:center;justify-content:space-between;gap:10px}.pfm-journal .journal-cal-nav h3{margin:0}" +
@@ -2265,8 +2295,8 @@ function renderJournal(){
     journalStyle + '<section class="pfm-journal" aria-label="Private trading journal"><aside class="journal-side"><div class="journal-brand">◈ PropFirm<span>Math</span><div class="mut small" style="font-weight:400;font-size:11px;letter-spacing:0;margin-top:5px">TRADING JOURNAL</div></div><div class="journal-side-label">Workspace</div>' +
     '<nav class="journal-tabs" role="tablist" aria-label="Journal sections">' +
     tabBtn("overview", "Dashboard", "▦") + tabBtn("accounts", "Accounts", "▤") + tabBtn("trades", "Trade Log", "≡") + tabBtn("calendar", "Calendar", "▦") + tabBtn("insights", "Analytics", "◫") +
-    '</nav><div class="journal-account"><strong>Private workspace</strong>' + esc(PM_USER.email) + '</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Trading account"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All accounts</option><optgroup label="Saved trading accounts">' + savedOptions + '</optgroup><optgroup label="Add an account from a prop firm">' + addFirmOptions + '</optgroup><option value="firm:__other__">+ Other firm / broker</option></select><button class="btn small" id="journalAddAccount" type="button">+ Add account</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></header>' +
-    '<div id="journalOverview" role="tabpanel"' + shown("overview") + ">" + journalDashboard(rows) + '<div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn small" type="button" id="journalQuickAdd">+ Log a trade</button></div></div>' +
+    '</nav><div class="journal-account"><strong>Private workspace</strong>' + esc(PM_USER.email) + '</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Your trading accounts"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All my accounts</option>' + savedOptions + '</select><button class="btn small" id="journalAddAccount" type="button">+ Add account</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></header>' +
+    '<div id="journalOverview" role="tabpanel"' + shown("overview") + ">" + (hasAccounts ? journalDashboard(rows) + '<div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn small" type="button" id="journalQuickAdd">+ Log a trade</button></div>' : '<div class="card journal-empty"><h3>Add your first account</h3><p>The dashboard uses only accounts you add. Choose the firm, plan, and size in the form.</p><button class="btn" type="button" id="journalEmptyAdd">Add your first account</button></div>') + "</div>" +
     '<div id="journalAccounts" role="tabpanel"' + shown("accounts") + ">" + accountsPanel + "</div>" +
     '<div id="journalTrades" role="tabpanel"' + shown("trades") + ">" +
     '<div class="card" style="margin-bottom:18px"><h3 style="margin-bottom:12px">Log a trade</h3><form id="jForm" novalidate><div class="field"><label class="fl" for="jAccount">Trading account</label><select id="jAccount">' + tradeAccountOptions + "</select></div>" +
@@ -2383,6 +2413,7 @@ function renderJournal(){
     $("#newAccountLabel").value = "";
     delete $("#newAccountLabel").dataset.auto;
     $("#newAccountStage").value = "evaluation";
+    $("#newAccountStatus").value = "active";
     $("#journalAccountMsg").textContent = "";
     $("#journalAccountMsg").className = "form-msg";
     journalApplyFirm(null, true);
@@ -2400,16 +2431,12 @@ function renderJournal(){
     if (focusEl) focusEl.focus();
   }
   $("#journalAccountFilter").addEventListener("change", function(){
-    var v = this.value;
-    if (v.indexOf("firm:") === 0) {
-      openAccounts(v.slice(5));
-      this.value = journalState.selected;
-      return;
-    }
-    journalState.selected = v;
+    journalState.selected = this.value;
     renderJournal();
   });
   $("#journalAddAccount").addEventListener("click", function(){ openAccounts(); });
+  var emptyAdd = $("#journalEmptyAdd");
+  if (emptyAdd) emptyAdd.addEventListener("click", function(){ openAccounts(); });
   app.querySelectorAll("[data-select-account]").forEach(function(b){
     b.addEventListener("click", function(){
       journalState.selected = b.getAttribute("data-select-account");
@@ -2450,16 +2477,129 @@ function renderJournal(){
       $("#newAccountLabel").value = row.account_label || "";
       $("#newAccountLabel").dataset.auto = "0";
       $("#newAccountStage").value = row.stage || "evaluation";
+      $("#newAccountStatus").value = row.status || "active";
       $("#journalAccountMsg").textContent = "";
       $("#journalAccountForm").scrollIntoView({ behavior: "smooth", block: "center" });
     });
   });
+  function journalCopyRow(row){
+    var copy = {};
+    Object.keys(row || {}).forEach(function(key){ copy[key] = row[key]; });
+    return copy;
+  }
+  function journalCloseAccountDelete(){
+    var box = $("#journalAccountDelete");
+    if (box) { box.hidden = true; delete box.dataset.id; }
+  }
+  function journalReloadAccounts(message, undo){
+    journalState.tab = "accounts";
+    return journalLoad().then(function(){
+      renderJournal();
+      if (message) toast(message, undo);
+    });
+  }
+  function journalRestoreDeleted(snapshot){
+    var account = journalCopyRow(snapshot.account);
+    account.user_id = PM_USER.id;
+    return sb.from("trader_accounts").insert(account).select(ACCOUNT_COLS).single().then(function(r){
+      if (r.error) throw r.error;
+      var pending = Promise.resolve();
+      (snapshot.trades || []).forEach(function(trade){
+        pending = pending.then(function(){
+          var row = journalCopyRow(trade);
+          row.user_id = PM_USER.id;
+          row.account_id = account.id;
+          return sb.from("trades").insert(row).select(TRADE_CORE).single().then(function(res){
+            if (res.error) throw res.error;
+          });
+        });
+      });
+      return pending;
+    }).then(function(){ return journalReloadAccounts("Account restored"); });
+  }
+  function journalUndoMove(snapshot){
+    var account = journalCopyRow(snapshot.account);
+    account.user_id = PM_USER.id;
+    return sb.from("trader_accounts").insert(account).select("id").single().then(function(r){
+      if (r.error) throw r.error;
+      var pending = Promise.resolve();
+      (snapshot.trades || []).forEach(function(trade){
+        pending = pending.then(function(){
+          return sb.from("trades").update({ account_id: account.id }).eq("id", trade.id).eq("user_id", PM_USER.id).then(function(res){
+            if (res.error) throw res.error;
+          });
+        });
+      });
+      return pending;
+    }).then(function(){ return journalReloadAccounts("Account restored"); });
+  }
+  function journalDeleteAccount(id, mode){
+    var account = journalState.accounts.filter(function(a){ return a.id === id; })[0];
+    var trades = journalState.allRows.filter(function(r){ return r.account_id === id; });
+    var snapshot = { account: journalCopyRow(account), trades: trades.map(journalCopyRow) };
+    var dest = mode === "move" ? $("#journalDeleteMove").value : "";
+    if (mode === "move" && !dest) { toast("Choose another account for these trades."); return; }
+    if (mode === "move" && dest === id) { toast("Choose a different account."); return; }
+    var step = mode === "move"
+      ? sb.from("trades").update({ account_id: dest }).eq("account_id", id).eq("user_id", PM_USER.id)
+      : sb.from("trades").delete().eq("account_id", id).eq("user_id", PM_USER.id);
+    step.then(function(r){
+      if (r.error) throw r.error;
+      return sb.from("trades").select("id,account_id").eq("user_id", PM_USER.id).eq("account_id", id);
+    }).then(function(r){
+      if (r.error) throw r.error;
+      if (r.data && r.data.length) throw new Error("Trades are still on this account, so it was not deleted.");
+      return sb.from("trader_accounts").delete().eq("id", id).eq("user_id", PM_USER.id);
+    }).then(function(r){
+      if (r.error) throw r.error;
+      if (journalState.selected === id) journalState.selected = mode === "move" ? dest : "all";
+      journalCloseAccountDelete();
+      var note = mode === "move" ? "Account deleted. Trades were moved." : (trades.length ? "Account and its trades were deleted." : "Account deleted.");
+      return journalReloadAccounts(note, function(){
+        var job = mode === "move" ? journalUndoMove(snapshot) : journalRestoreDeleted(snapshot);
+        job.catch(function(err){ toast(err && err.message ? err.message : "Could not undo"); });
+      });
+    }).catch(function(err){
+      toast(err && err.message ? err.message : "Could not delete the account.");
+    });
+  }
+  function journalOpenAccountDelete(id){
+    var account = journalState.accounts.filter(function(a){ return a.id === id; })[0];
+    if (!account) return;
+    var trades = journalState.allRows.filter(function(r){ return r.account_id === id; });
+    var others = journalState.accounts.filter(function(a){ return a.id !== id; });
+    var box = $("#journalAccountDelete");
+    box.hidden = false;
+    box.dataset.id = id;
+    var n = trades.length;
+    var noun = n === 1 ? "1 trade" : n + " trades";
+    var name = account.account_label || "This account";
+    $("#journalDeleteText").textContent = n
+      ? name + " has " + noun + ". Move them to another account, or delete them with this account. Trades are never left without an account."
+      : name + " has no trades.";
+    var canMove = n > 0 && others.length > 0;
+    $("#journalDeleteMoveWrap").hidden = !canMove;
+    $("#journalDeleteMoveBtn").hidden = !canMove;
+    if (canMove) {
+      $("#journalDeleteMove").innerHTML = others.map(function(a){ return '<option value="' + esc(a.id) + '">' + esc(journalAccountLabel(a)) + "</option>"; }).join("");
+    }
+    $("#journalDeleteAllBtn").textContent = n ? "Delete account and " + noun : "Delete account";
+    if (n && !others.length) $("#journalDeleteText").textContent += " This is the only account, so the trades can only be deleted with it.";
+    $("#journalDeleteCancel").focus();
+  }
+  app.querySelectorAll("[data-delete-account]").forEach(function(b){
+    b.addEventListener("click", function(){ journalOpenAccountDelete(b.getAttribute("data-delete-account")); });
+  });
+  $("#journalDeleteCancel").addEventListener("click", journalCloseAccountDelete);
+  $("#journalDeleteMoveBtn").addEventListener("click", function(){ journalDeleteAccount($("#journalAccountDelete").dataset.id, "move"); });
+  $("#journalDeleteAllBtn").addEventListener("click", function(){ journalDeleteAccount($("#journalAccountDelete").dataset.id, "delete"); });
   $("#journalAccountForm").addEventListener("submit", function(e){
     e.preventDefault();
     var msg = $("#journalAccountMsg");
     var firm = $("#newFirm").value === "__other__" ? $("#newFirmOther").value.trim() : $("#newFirm").value.trim();
     var label = $("#newAccountLabel").value.trim();
     var stage = $("#newAccountStage").value;
+    var status = $("#newAccountStatus").value || "active";
     var plan = $("#newPlan").value === "__custom__" ? $("#newPlanOther").value.trim() : $("#newPlan").value.trim();
     var listed = $("#newAccountSizePreset").style.display !== "none" && $("#newAccountSizePreset").value && $("#newAccountSizePreset").value !== "__custom__";
     var size = listed ? Number($("#newAccountSizePreset").value) : Number($("#newAccountSize").value);
@@ -2487,11 +2627,11 @@ function renderJournal(){
     var saveBtn = $("#journalAccountSave");
     saveBtn.disabled = true;
     var editId = $("#journalAccountForm").dataset.editId;
-    var payload = { firm: firm, plan: plan || null, account_label: label, account_size: size, stage: stage };
+    var payload = { firm: firm, plan: plan || null, account_label: label, account_size: size, stage: stage, status: status };
     var query = editId
       ? sb.from("trader_accounts").update(payload).eq("id", editId).eq("user_id", PM_USER.id)
       : sb.from("trader_accounts").insert(Object.assign({ user_id: PM_USER.id }, payload));
-    query.select("id,firm,plan,account_label,account_size,stage").single().then(function(r){
+    query.select(ACCOUNT_COLS).single().then(function(r){
       if (r.error) throw r.error;
       journalState.selected = r.data.id;
       journalState.tab = "accounts";
@@ -2502,7 +2642,9 @@ function renderJournal(){
     }).catch(function(err){
       saveBtn.disabled = false;
       msg.className = "form-msg err";
-      msg.textContent = "Could not save: " + (err.message || "Please try again");
+      var text = "Could not save: " + (err.message || "Please try again");
+      msg.textContent = text;
+      toast(text);
     });
   });
   var quick = $("#journalQuickAdd");
@@ -2561,14 +2703,14 @@ function renderJournal(){
       ? sb.from("trades").update(payload).eq("id", editId).eq("user_id", PM_USER.id)
       : sb.from("trades").insert(Object.assign({user_id:PM_USER.id, account_id:$("#jAccount").value}, payload));
     query.select(TRADE_CORE).single().then(function(r){
-      if (r.error) { msg.className = "form-msg err"; msg.textContent = "Could not save: " + r.error.message; return; }
+      if (r.error) { msg.className = "form-msg err"; msg.textContent = "Could not save: " + r.error.message; toast("Could not save: " + r.error.message); return; }
       if (editId) journalState.allRows = journalState.allRows.map(function(x){ return x.id === editId ? r.data : x; });
       else journalState.allRows.unshift(r.data);
       journalState.allRows.sort(function(a, b){ return String(b.traded_at).localeCompare(String(a.traded_at)); });
       journalState.tab = "trades";
       renderJournal();
       toast(editId ? "Trade updated" : "Trade saved");
-    }).catch(function(){ msg.className = "form-msg err"; msg.textContent = "Could not save. Check your connection and try again."; });
+    }).catch(function(){ msg.className = "form-msg err"; msg.textContent = "Could not save. Check your connection and try again."; toast("Could not save the trade."); });
   });
   function applyJournalFilter(){
     var term = $("#journalSearch").value.trim().toLowerCase(), kind = $("#journalFilter").value;
@@ -2630,12 +2772,22 @@ function renderJournal(){
         b.after(cancel);
         return;
       }
+      var snapshot = journalState.allRows.filter(function(x){ return x.id === id; })[0];
       sb.from("trades").delete().eq("id", id).eq("user_id", PM_USER.id).then(function(r){
         if (r.error) { toast("Could not delete: " + r.error.message); return; }
         journalState.allRows = journalState.allRows.filter(function(x){ return x.id !== id; });
         journalState.tab = "trades";
         renderJournal();
-        toast("Trade deleted");
+        toast("Trade deleted", function(){
+          var row = {};
+          Object.keys(snapshot || {}).forEach(function(key){ row[key] = snapshot[key]; });
+          row.user_id = PM_USER.id;
+          sb.from("trades").insert(row).select(TRADE_CORE).single().then(function(res){
+            if (res.error) { toast("Could not undo: " + res.error.message); return; }
+            journalState.tab = "trades";
+            journalLoad().then(function(){ renderJournal(); toast("Trade restored"); }).catch(function(){ toast("Could not undo"); });
+          });
+        });
       });
     });
   });
