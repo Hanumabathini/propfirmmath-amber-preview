@@ -21,6 +21,13 @@ if (!src.includes(configTag)) {
   process.exit(1);
 }
 src = src.replace(configTag, '<script>\n' + configJs + '\n</script>');
+const firmsTag = '<script src="/data/firms.js"></script>';
+const firmsJs = fs.readFileSync(path.join(root, 'data', 'firms.js'), 'utf8');
+if (!src.includes(firmsTag)) {
+  console.error('index.html is missing the data/firms.js script tag.');
+  process.exit(1);
+}
+src = src.replace(firmsTag, '<script>\n' + firmsJs + '\n</script>');
 fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive: true });
 
 // Forge/derive route list from the firm data and the existing sitemap.
