@@ -1536,7 +1536,7 @@ function renderJournal(){
     var id=b.getAttribute("data-del");
     sb.from("trades").delete().eq("id",id).eq("user_id",PM_USER.id).then(function(r){
       if (r.error){ toast("Could not delete: "+r.error.message); return; }
-      journalState.rows=journalState.rows.filter(function(x){ return x.id!==id; }); renderJournal(); toast("Trade deleted");
+      journalState.allRows=journalState.allRows.filter(function(x){ return x.id!==id; }); renderJournal(); toast("Trade deleted");
     });
   }); });
 }
