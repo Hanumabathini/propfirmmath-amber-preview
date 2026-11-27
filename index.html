@@ -53,6 +53,17 @@ nav.main .nav-resources-menu{position:absolute;right:0;top:100%;min-width:230px;
 nav.main .nav-resources-menu a{display:flex;min-height:40px;padding:8px 12px;border-radius:8px}
 nav.main .nav-resources-heading{padding:8px 12px 3px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
 @media(max-width:850px){nav.main .nav-resources-menu{position:static;min-width:0;width:100%;box-shadow:none}nav.main .nav-resources{width:100%}nav.main .nav-resources summary{width:100%}}
+/* Mobile menu: header stays one row; links open in a panel */
+.nav-toggle{display:none;margin-left:auto;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:12px;background:#1a1208;cursor:pointer;position:relative}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{display:block;position:absolute;left:12px;width:18px;height:2px;background:var(--gold);border-radius:2px;content:""}
+.nav-toggle span{top:21px}.nav-toggle span::before{left:0;top:-6px}.nav-toggle span::after{left:0;top:6px}
+@media(max-width:850px){
+ .hbar{flex-wrap:wrap;gap:8px}
+ .nav-toggle{display:block}
+ nav.main{display:none;width:100%;margin-left:0;flex-direction:column;align-items:stretch;gap:2px;padding:6px 0 10px;max-height:calc(100vh - 70px);overflow-y:auto}
+ header.menu-open nav.main{display:flex}
+ nav.main a{width:100%}
+}
 /* ---------- generic ---------- */
 .card{background:linear-gradient(155deg,var(--panel2),var(--panel));border:1px solid rgba(255,176,32,.10);border-radius:var(--r);box-shadow:var(--neu-out);padding:22px}
 .card h3{font-size:19px}
@@ -355,6 +366,7 @@ if (location.hash.startsWith("#/")) {
       <span class="logo-mark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3 L22 21 H17.5 L12 10.5 L6.5 21 H2 Z" fill="#ffb020"/><path d="M12 14.5 L15 21 H9 Z" fill="#ff8a00"/></svg></span>
       <span><b>PropFirm<span>Math</span></b><small>Prop Firm Research • Calculators • Analytics</small></span>
     </a>
+    <button type="button" class="nav-toggle" id="navtoggle" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu"><span aria-hidden="true"></span></button>
     <nav class="main" id="mainnav" aria-label="Main"></nav>
   </div>
 </header>
@@ -551,6 +563,14 @@ function renderNav(route){
   html += PM_USER ? '<a href="/journal" class="signin'+(route==="/journal"?" on":"")+'">My Journal</a>' : '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
   $("#mainnav").innerHTML = html;
 }
+/* mobile menu toggle */
+(function(){var t=document.getElementById("navtoggle"),h=document.querySelector("header");if(!t||!h)return;
+ function set(o){h.classList.toggle("menu-open",o);t.setAttribute("aria-expanded",o?"true":"false");t.setAttribute("aria-label",o?"Close menu":"Open menu");}
+ t.addEventListener("click",function(){set(!h.classList.contains("menu-open"));});
+ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("menu-open")){set(false);t.focus();}});
+ document.getElementById("mainnav").addEventListener("click",function(e){if(e.target.closest("a"))set(false);});
+ window.addEventListener("popstate",function(){set(false);});
+})();
 /* ================= router ================= */
 var app = $("#app");
 var SB_URL = "https://yomrezvtmovuruhkgikf.supabase.co";
