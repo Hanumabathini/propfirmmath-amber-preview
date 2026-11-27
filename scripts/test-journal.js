@@ -213,22 +213,54 @@ function submit(form) {
     ok("rendered negatives", shell.innerHTML.includes("-$40.00") && !shell.innerHTML.includes("$-"), "sign");
     ok("live win rate includes breakeven", shell.textContent.includes("57.1%") && shell.textContent.includes("4 wins / 2 losses"), shell.textContent.slice(0, 400));
 
+    function sizesOf(slug) {
+      const cat = w.journalFirmCatalog(w.firm(slug));
+      return cat.map(p => p.name + ":" + p.sizes.join("/")).join(" | ");
+    }
+    ok("FTMO plan is 10k, not a forced 50k", sizesOf("ftmo") === "2-Step:10000", sizesOf("ftmo"));
+    ok("Topstep lists 50k, 100k and 150k", sizesOf("topstep") === "Trading Combine:50000/100000/150000", sizesOf("topstep"));
+    ok("Apex stays on the 25k plan", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000", sizesOf("apex-trader-funding"));
+    ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
+    const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
+    ok("MFFU plans share only 25k and 150k", mffu.length === 4 && mffu.every(p => p.sizes.join() === "25000,150000") && mffu[0].name === "Builder", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
+    const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
+    ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
+
     const accounts = d.getElementById("journalAccounts");
     const tradesPanel = d.getElementById("journalTrades");
     ok("accounts panel is not inside the trade log", accounts && accounts.parentElement.classList.contains("journal-main") && !tradesPanel.contains(accounts), accounts && accounts.parentElement.className);
     d.getElementById("journalAddAccount").click();
     ok("add account shows the form", accounts.hidden === false && !accounts.closest("[hidden]") && d.getElementById("journalAccountForm") && d.getElementById("journalHeading").textContent === "Trading accounts", d.getElementById("journalHeading") && d.getElementById("journalHeading").textContent);
 
+    function sizeOptions() {
+      return Array.prototype.map.call(d.getElementById("newAccountSizePreset").options, o => o.value);
+    }
     const filter = d.getElementById("journalAccountFilter");
     filter.value = "firm:FTMO";
     filter.dispatchEvent(new w.Event("change"));
-    ok("firm dropdown opens a prefilled account", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newAccountLabel").value === "FTMO Account 1" && d.getElementById("newAccountSize").value === "50000", d.getElementById("newAccountLabel") && d.getElementById("newAccountLabel").value);
+    ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
+    filter.value = "firm:Topstep";
+    filter.dispatchEvent(new w.Event("change"));
+    ok("Topstep offers every listed size", d.getElementById("newPlan").value === "Trading Combine" && sizeOptions().join() === "50000,100000,150000" && d.getElementById("newAccountSizePreset").value === "50000", sizeOptions().join());
+    d.getElementById("newAccountSizePreset").value = "150000";
+    d.getElementById("newAccountSizePreset").dispatchEvent(new w.Event("change"));
+    ok("chosen size is not replaced by 50k", d.getElementById("newAccountSizePreset").value === "150000", d.getElementById("newAccountSizePreset").value);
     submit(d.getElementById("journalAccountForm"));
-    await waitFor(() => state.trader_accounts.length === 2 && d.getElementById("journalHeading") && d.getElementById("journalHeading").textContent === "Trading Dashboard", "new account");
+    await waitFor(() => state.trader_accounts[1] && d.getElementById("journalAccountFilter") && d.getElementById("journalAccountFilter").value === state.trader_accounts[1].id, "new account");
     const created = state.trader_accounts[1];
-    ok("second account saved", created.firm === "FTMO" && created.account_label === "FTMO Account 1" && Number(created.account_size) === 50000, created);
+    ok("selected size saves with its plan", created.firm === "Topstep" && created.plan === "Trading Combine" && Number(created.account_size) === 150000 && created.account_label === "Topstep Trading Combine", created);
+    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("Topstep Trading Combine · Trading Combine · $150,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$150,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Trading Combine") && o.textContent.includes("$150,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);
     ok("new account dashboard is empty", d.getElementById("journalOverview").textContent.includes("0 recorded trades"), "overview");
+    const live = w.journalState.accounts.find(a => a.id === created.id);
+    live.account_size = 42000;
+    w.journalState.tab = "accounts";
+    w.renderJournal();
+    d.querySelector('[data-edit-account="' + created.id + '"]').click();
+    ok("editing keeps a saved size the plan does not list", d.getElementById("newAccountSizePreset").value === "42000" && sizeOptions().indexOf("42000") >= 0 && sizeOptions().indexOf("50000") >= 0, sizeOptions().join());
+    submit(d.getElementById("journalAccountForm"));
+    await waitFor(() => Number(state.trader_accounts.find(a => a.id === created.id).account_size) === 42000 && state.inserts.filter(x => x.table === "trader_accounts").length === 1, "edited account");
+    ok("saved size is not rewritten to the plan default", Number(state.trader_accounts.find(a => a.id === created.id).account_size) === 42000, state.trader_accounts.find(a => a.id === created.id));
 
     const filterNow = d.getElementById("journalAccountFilter");
     filterNow.value = "all";
