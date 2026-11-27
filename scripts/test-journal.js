@@ -12,6 +12,10 @@ html = html.replace(
   "<script>\n" + fs.readFileSync(path.join(root, "site.config.js"), "utf8") + "\n</script>"
 );
 html = html.replace('<script src="/vendor/supabase.js"></script>', "");
+html = html.replace(
+  '<script src="/data/firms.js"></script>',
+  "<script>\n" + fs.readFileSync(path.join(root, "data", "firms.js"), "utf8") + "\n</script>"
+);
 
 let pass = 0, fail = 0;
 function ok(name, cond, got) {
@@ -222,7 +226,7 @@ function submit(form) {
     ok("Apex stays on the 25k plan", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000", sizesOf("apex-trader-funding"));
     ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
-    ok("MFFU plans share only 25k and 150k", mffu.length === 4 && mffu.every(p => p.sizes.join() === "25000,150000") && mffu[0].name === "Builder", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
+    ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
     const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
     ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
 
