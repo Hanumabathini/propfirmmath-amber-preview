@@ -161,6 +161,21 @@ details.faq p{color:var(--muted);margin:0 0 14px}
 .pfm-calculator-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .pfm-calculator-close{cursor:pointer;color:var(--amber);background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px 14px;white-space:nowrap}
 @media(max-width:680px){.pfm-calculator-heading{align-items:flex-start}.pfm-calculator-close{font-size:12px}}
+
+/* Tool cards are the sole calculator interface: all input forms hidden until clicked. */
+.pfm-calculator-workspace,.pfm-calculator-workspace[hidden]{display:none!important}
+.pfm-tool-directory .tool-card.pfm-tool-expanded{grid-column:1/-1;display:block!important;padding:22px!important;border-color:rgba(255,176,32,.4)}
+.pfm-tool-directory .tool-card.pfm-tool-expanded>.ic{display:inline-grid!important;vertical-align:middle;margin-right:10px!important}
+.pfm-tool-directory .tool-card.pfm-tool-expanded>.chip{display:inline-block}
+.pfm-tool-directory .tool-card.pfm-tool-expanded>h3{margin:12px 0 4px!important}
+.pfm-tool-directory .tool-card.pfm-tool-expanded>p{margin-bottom:15px!important}
+.pfm-tool-directory .tool-card>.card[hidden]{display:none!important}
+.pfm-tool-directory .tool-card>.card:not([hidden]){display:block!important;width:100%;max-width:760px;margin:18px auto 0;padding:24px!important;grid-column:1/-1}
+.pfm-tool-directory .tool-card>.card input,.pfm-tool-directory .tool-card>.card select{width:100%;max-width:100%}
+.pfm-tool-directory .tool-card>.card .field{margin-bottom:14px}
+.pfm-tool-directory .tool-card>.card p[id$="Out"]{overflow-wrap:anywhere;line-height:1.65}
+.pfm-tool-directory [data-jump]{cursor:pointer}
+@media(max-width:680px){.pfm-tool-directory .tool-card>.card:not([hidden]){padding:16px!important}}
 </style>
 <style>
 /* ---------- home hero ---------- */
@@ -1034,21 +1049,39 @@ function pageTools(){
   ["cstFee","cstPass","cstAct","cstPay","cstSurv"].forEach(function(id){ $("#"+id).addEventListener("input",cst); });
   cons(); tick(); fx(); sav(); sim(); cst();
   $$("#tool-tabs button").forEach(function(b){ b.addEventListener("click", function(){ $$("#tool-tabs button").forEach(function(x){ x.classList.remove("on"); }); b.classList.add("on"); var t=b.getAttribute("data-tab"); $$(".tool-card").forEach(function(c){ var show = t==="all" || (t==="free"?c.getAttribute("data-free")==="1":c.getAttribute("data-cat")===t); c.style.display = show?"":"none"; }); }); });
-  var workspace=$("#pfm-calculator-section"), panels=$$(".pfm-calculator-grid > .card");
-  function closeCalculator(){workspace.hidden=true;panels.forEach(function(p){p.hidden=true;});$$("[data-jump]").forEach(function(a){a.setAttribute("aria-expanded","false");});}
-  function openCalculator(id){
+  // Keep every input panel inside its selected tool card; never render a second open grid.
+  var workspace=$("#pfm-calculator-section"), panelGrid=$(".pfm-calculator-grid");
+  var panels=$$(".pfm-calculator-grid > .card");
+  var activeCard=null, activePanel=null;
+  function closeCalculator(){
+    if(activePanel){activePanel.hidden=true;panelGrid.appendChild(activePanel);}
+    if(activeCard){activeCard.classList.remove("pfm-tool-expanded");}
+    activeCard=null;activePanel=null;
+    panels.forEach(function(panel){panel.hidden=true;});
+    $$("[data-jump]").forEach(function(link){link.setAttribute("aria-expanded","false");});
+    workspace.hidden=true;
+  }
+  function openCalculator(id,trigger){
     var selected=document.getElementById(id);
     if(!selected||panels.indexOf(selected)<0)return;
-    panels.forEach(function(p){p.hidden=p!==selected;});
-    workspace.hidden=false;
-    $("#pfm-active-calculator-title").textContent=selected.querySelector("h3").textContent;
-    $$("[data-jump]").forEach(function(a){a.setAttribute("aria-expanded",a.getAttribute("data-jump")===id?"true":"false");});
-    workspace.scrollIntoView({behavior:"smooth",block:"start"});
+    var card=trigger.closest(".tool-card");
+    if(!card)return;
+    if(activeCard===card){closeCalculator();return;}
+    closeCalculator();
+    activeCard=card;activePanel=selected;
+    card.classList.add("pfm-tool-expanded");
+    selected.hidden=false;
+    card.appendChild(selected);
+    trigger.setAttribute("aria-expanded","true");
+    card.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
   closeCalculator();
-  $$("[data-jump]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();openCalculator(a.getAttribute("data-jump"));});});
-  $("#pfm-close-calculator").addEventListener("click",function(){closeCalculator();$("#tool-tabs").scrollIntoView({behavior:"smooth",block:"start"});});
-  if(location.hash&&document.getElementById(location.hash.slice(1)))openCalculator(location.hash.slice(1));
+  $$("[data-jump]").forEach(function(link){
+    link.setAttribute("aria-expanded","false");
+    link.addEventListener("click",function(e){e.preventDefault();openCalculator(link.getAttribute("data-jump"),link);});
+  });
+  // Do not auto-open from a URL hash: only explicit user clicks open inputs.
+
 }
 /* ================= ECONOMIC CALENDAR ================= */
 var CAL_EVENTS = [
