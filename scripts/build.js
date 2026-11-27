@@ -1,10 +1,26 @@
 /* Static build: pre-renders every route to its own HTML file (real titles, descriptions, canonical,
-   and visible content for crawlers), plus a real 404 page. Run: SITE_URL=https://yourdomain.com node scripts/build.js */
+   and visible content for crawlers), plus a real 404 page.
+   Canonical host is SITE_URL in site.config.js. Optional override: SITE_URL=https://yourdomain.com node scripts/build.js */
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
-const SITE = (process.env.SITE_URL || 'https://propfirmmath-amber-preview.pages.dev').replace(/\/$/, '');
 const root = path.join(__dirname, '..'), out = path.join(root, 'dist');
-const src = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const SITE_CONFIG = require(path.join(root, 'site.config.js'));
+const SITE = (process.env.SITE_URL || SITE_CONFIG.SITE_URL || '').replace(/\/$/, '');
+if (!/^https?:\/\//.test(SITE)) {
+  console.error('Set SITE_URL in site.config.js to an absolute http(s) origin, with no trailing slash.');
+  process.exit(1);
+}
+let src = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+let configJs = fs.readFileSync(path.join(root, 'site.config.js'), 'utf8');
+if (process.env.SITE_URL) {
+  configJs = configJs.replace(/SITE_URL:\s*"(?:\\.|[^"\\])*"/, 'SITE_URL: ' + JSON.stringify(SITE));
+}
+const configTag = '<script src="/site.config.js"></script>';
+if (!src.includes(configTag)) {
+  console.error('index.html is missing the site.config.js script tag.');
+  process.exit(1);
+}
+src = src.replace(configTag, '<script>\n' + configJs + '\n</script>');
 fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive: true });
 
 // Forge/derive route list from the firm data and the existing sitemap.
@@ -19,7 +35,7 @@ function render(route) {
   const dom = new JSDOM(noLib, { url: SITE + route, runScripts: 'dangerously', pretendToBeVisual: true, virtualConsole: vc,
     beforeParse(w) { w.scrollTo = () => {}; w.HTMLElement.prototype.scrollIntoView = () => {}; w.matchMedia = w.matchMedia || (() => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} })); w.IntersectionObserver = w.IntersectionObserver || class { observe() {} unobserve() {} disconnect() {} }; } });
   const d = dom.window.document;
-  const res = { title: d.title, desc: (d.querySelector('meta[name="description"]') || {}).content || '', seo: [...d.head.querySelectorAll('[data-seo]')].map(e => e.outerHTML).join(''), app: d.querySelector('#app').innerHTML, nav: d.querySelector('#mainnav').innerHTML, h1: d.querySelectorAll('#app h1').length };
+  const res = { title: d.title, desc: (d.querySelector('meta[name="description"]') || {}).content || '', seo: [...d.head.querySelectorAll('[data-seo]')].map(e => e.outerHTML).join(''), app: d.querySelector('#app').innerHTML, nav: d.querySelector('#mainnav').innerHTML, foot: (d.querySelector('footer') || {}).innerHTML || '', h1: d.querySelectorAll('#app h1').length };
   dom.window.close(); return res;
 }
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -30,6 +46,7 @@ function page(route, r, extraHead) {
   h = h.replace('</head>', '<meta name="description" content="' + esc(r.desc) + '"><link rel="canonical" href="' + SITE + route + '">' + (extraHead || '') + (r.seo || '') + '</head>');
   h = h.replace(/(<nav[^>]*id="mainnav"[^>]*>)[\s\S]*?(<\/nav>)/, (m, a, b) => a + r.nav + b);
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
+  if (r.foot) h = h.replace(/(<footer[^>]*>)[\s\S]*?(<\/footer>)/, (m, a, b) => a + r.foot + b);
   // Make market statistic cards robust even if an overlay or client-side handler
   // interferes: the entire card remains a native anchor with a real destination.
   if (['/futures', '/forex', '/crypto'].includes(route)) {
@@ -57,7 +74,7 @@ function externalise(html) {
     return '<script src="/' + f + '"></script>';
   });
 }
-let n = 0, bad = [], warn = [];
+let n = 0, bad = [], warn = [], bakedFoot = '';
 const done = new Set(), queue = [...routes], listed = new Set(routes);
 const hrefs = h => [...h.matchAll(/href="(\/[a-z0-9\-\/]*)"/g)].map(m => m[1].replace(/\/$/, '') || '/').filter(x => !x.startsWith('/vendor'));
 hrefs(src).forEach(h => queue.push(h));
@@ -68,13 +85,15 @@ while (queue.length) {
   if (r.h1 < 1 || r.app.length < 300 || missing) { (listed.has(route) ? bad : warn).push(route + (missing ? ' (not found / error)' : ' (empty render)')); continue; }
   routes.add(route);
   hrefs(r.app).forEach(h => { if (!done.has(h)) queue.push(h); });
+  if (r.foot) bakedFoot = r.foot;
   const file = route === '/' ? 'index.html' : route.replace(/^\//, '') + '.html';
   fs.mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
   fs.writeFileSync(path.join(out, file), externalise(page(route, r))); n++;
 }
 if (warn.length) console.warn('Linked but not renderable (check these links):\n' + warn.join('\n'));
 // Real 404: unknown paths get status 404 from the host; the app shows its not-found page.
-fs.writeFileSync(path.join(out, '404.html'), externalise(src.replace('</head>', '<meta name="robots" content="noindex"></head>')));
+const shell404 = bakedFoot ? src.replace(/(<footer[^>]*>)[\s\S]*?(<\/footer>)/, (m, a, b) => a + bakedFoot + b) : src;
+fs.writeFileSync(path.join(out, '404.html'), externalise(shell404.replace('</head>', '<meta name="robots" content="noindex"></head>')));
 if (fs.existsSync(path.join(root, 'og.png'))) fs.copyFileSync(path.join(root, 'og.png'), path.join(out, 'og.png'));
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
 // Prevent browsers and edge caches from retaining old pre-rendered calculator markup.
