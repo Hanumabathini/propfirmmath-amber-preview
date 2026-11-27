@@ -1472,8 +1472,8 @@ function journalDashboard(rows){
   var grossLoss=-losses.reduce(function(v,r){return v+Number(r.pnl);},0);
   var best=ordered.length?Math.max.apply(null,ordered.map(function(r){return Number(r.pnl);})):0;
   var worst=ordered.length?Math.min.apply(null,ordered.map(function(r){return Number(r.pnl);})):0;
-  var equity=[0],running=0;
-  ordered.forEach(function(r){running+=Number(r.pnl);equity.push(running);});
+  var equity=[0],running=0,peak=0,maxDrawdown=0,winStreak=0,lossStreak=0,bestWinStreak=0,bestLossStreak=0;
+  ordered.forEach(function(r){var v=Number(r.pnl);running+=v;equity.push(running);peak=Math.max(peak,running);maxDrawdown=Math.max(maxDrawdown,peak-running);winStreak=v>0?winStreak+1:0;lossStreak=v<0?lossStreak+1:0;bestWinStreak=Math.max(bestWinStreak,winStreak);bestLossStreak=Math.max(bestLossStreak,lossStreak);});
   var lo=Math.min.apply(null,equity),hi=Math.max.apply(null,equity),span=Math.max(1,hi-lo);
   var path=equity.map(function(v,i){return (i?"L":"M")+(20+(i/Math.max(1,equity.length-1))*760).toFixed(1)+","+(180-((v-lo)/span)*150).toFixed(1);}).join(" ");
   var chart=ordered.length?'<svg viewBox="0 0 800 210" role="img" aria-label="Cumulative profit and loss chart" style="display:block;width:100%;height:auto;max-height:260px"><line x1="20" y1="180" x2="780" y2="180" stroke="currentColor" opacity=".18"/><path d="'+path+'" fill="none" stroke="'+(total>=0?"#eaa328":"#ff9078")+'" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="780" cy="'+(180-((total-lo)/span)*150).toFixed(1)+'" r="5" fill="#eaa328"/></svg>':'<p class="mut">Your equity curve appears after you log your first trade.</p>';
@@ -1486,7 +1486,11 @@ function journalDashboard(rows){
     stat('Net P&amp;L',money(total),ordered.length+' recorded trades')+
     stat('Win rate',(ordered.length?(100*wins.length/ordered.length).toFixed(1):'0')+'%',wins.length+' wins · '+losses.length+' losses')+
     stat('Profit factor',grossLoss?(grossWin/grossLoss).toFixed(2):grossWin?'∞':'—','Gross wins / gross losses')+
-    stat('Average trade',money(ordered.length?total/ordered.length:0),'Best '+money(best)+' · Worst '+money(worst))+'</div>'+
+    stat('Average trade',money(ordered.length?total/ordered.length:0),'Best '+money(best)+' · Worst '+money(worst))+
+    stat('Max drawdown',money(maxDrawdown),'Peak-to-trough realized P&amp;L decline')+
+    stat('Avg win / loss',money(wins.length?grossWin/wins.length:0)+' / '+money(losses.length?-grossLoss/losses.length:0),'Based on closed winning and losing trades')+
+    stat('Expectancy',money(ordered.length?total/ordered.length:0),'Average realized result per trade')+
+    stat('Streaks',bestWinStreak+'W / '+bestLossStreak+'L','Longest consecutive winning / losing trades')+'</div>'+
     '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;margin-bottom:18px">'+
     '<div class="card" style="min-width:0"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L · all logged trades</p>'+chart+'</div>'+
     '<div class="card" style="min-width:0"><h3>Daily performance</h3>'+dayChart+'</div></div>';
