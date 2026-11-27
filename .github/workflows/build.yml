@@ -20,6 +20,6 @@ jobs:
       - name: Smoke-check output
         run: |
           test -f dist/404.html
-          test -f dist/firm/topstep.html
+          test -f dist/firm/ftmo.html
           test -f dist/faq.html
           test $(ls dist/firm | wc -l) -ge 48
