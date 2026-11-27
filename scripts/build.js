@@ -15,6 +15,7 @@ const routes = new Set([...old.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)]
 const noLib = src.replace('<script src="/vendor/supabase.js"></script>', '');
 function render(route) {
   const vc = new VirtualConsole();
+  if (route === '/') vc.on('jsdomError', e => console.error('JSDOM runtime:', e.message, e.stack));
   const dom = new JSDOM(noLib, { url: SITE + route, runScripts: 'dangerously', pretendToBeVisual: true, virtualConsole: vc,
     beforeParse(w) { w.scrollTo = () => {}; w.HTMLElement.prototype.scrollIntoView = () => {}; w.matchMedia = w.matchMedia || (() => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} })); w.IntersectionObserver = w.IntersectionObserver || class { observe() {} unobserve() {} disconnect() {} }; } });
   const d = dom.window.document;
