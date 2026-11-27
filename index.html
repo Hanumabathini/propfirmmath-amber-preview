@@ -587,22 +587,42 @@ function firmTableHTML(list){
   return '<div class="tblwrap"><table class="dt"><thead><tr><th>#</th><th>Firm</th><th>Rating</th><th>Profit split</th><th>Drawdown</th><th>Payouts</th><th>From</th><th>Code</th><th></th></tr></thead><tbody>'
   + list.map(firmRowHTML).join("") + '</tbody></table></div>';
 }
-function dealEndBadge(detail){
-  var m=/ends?\s+(?:on\s+)?([A-Z][a-z]{2})[a-z]*\s+(\d{1,2}),?\s+(\d{4})/.exec(detail||"");
-  if(!m) return "";
-  var d=new Date(m[1]+" "+m[2]+", "+m[3]+" 23:59:59");
-  if(isNaN(d.getTime())) return "";
-  var past=d<new Date();
-  return '<p style="margin:6px 0 0"><span class="chip'+(past?' grey':'')+'">'+(past?'Expired ':'Ends ')+m[1]+' '+m[2]+'</span></p>';
+/* Expiry is calculated in the browser and refreshed without requiring a new crawl.
+   An unqualified date uses 11:59:59 PM America/New_York; exact times override it. */
+function dealDeadline(detail){
+  var m=/\bends?\s+(?:on\s+)?([A-Z][a-z]+)\s+(\d{1,2}),?\s+(\d{4})(?:[,\s]+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\s*(EST|EDT|ET|CST|CDT|CT|PST|PDT|PT|UTC))?/i.exec(detail||"");
+  if(!m)return null;
+  var month={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11}[m[1].slice(0,3).toLowerCase()];
+  if(month===undefined)return null;
+  var hour=m[4]?Number(m[4])%12+(m[6].toUpperCase()==="PM"?12:0):23;
+  var minute=m[5]?Number(m[5]):59;
+  var zone=(m[7]||"ET").toUpperCase();
+  var offset={EST:5,EDT:4,ET:5,CST:6,CDT:5,CT:6,PST:8,PDT:7,PT:8,UTC:0}[zone];
+  var date=new Date(Date.UTC(Number(m[3]),month,Number(m[2]),hour+offset,minute,m[4]?0:59));
+  if(date.getUTCFullYear()<2020 || isNaN(date.getTime()))return null;
+  return date;
 }
-function dealCardHTML(f){
-  return '<article class="card"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><a href="/firm/'+f.slug+'" style="display:flex;gap:12px;align-items:center;color:var(--ink)">'+avatar(f,44)+'<strong style="font-family:Sora">'+esc(f.name)+'</strong></a>'
-  + f.markets.map(function(m){return '<span class="chip grey">'+MARKETS[m].label+"</span>"}).join("")+"</div>"
-  +'<div class="deal-up">'+(f.off?("UP TO "+f.off+"%"):"CODE")+'</div>'
-  +'<p style="margin:4px 0 0"><strong>'+esc(f.codes[0].detail)+'</strong></p>'+dealEndBadge(f.codes[0].detail)+'<p class="mut small">Verified on the firm\'s own site, '+SNAPSHOT+'. The firm\'s checkout is the deciding price.</p>'
-  +(f.codes.length>1?'<p class="mut small">Also verified: '+f.codes.slice(1).map(function(c){return "<strong>"+esc(c.code)+"</strong> — "+esc(c.detail)}).join("; ")+'.</p>':"")
-  +'<p style="display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:12px 0 0">'+(f.code?codeBtn(f):"")+'<a class="btn small" href="/firm/'+f.slug+'">Claim deal →</a></p>'
-  +'<p style="margin:10px 0 0"><a href="/firm/'+f.slug+'" style="font-weight:700;font-size:14px">Full review →</a></p></article>';
+function dealExpired(detail){var d=dealDeadline(detail);return !!d && Date.now()>d.getTime();}
+function activeCodes(f){return (f.codes||[]).filter(function(c){return !dealExpired(c.detail);});}
+function dealEndBadge(detail){
+  var d=dealDeadline(detail);
+  if(!d)return '<p class="mut small">Expiration not confirmed</p>';
+  var ended=Date.now()>d.getTime();
+  var soon=!ended && d.getTime()-Date.now()<=86400000;
+  return '<p class="deal-deadline" data-expires="'+d.toISOString()+'" style="margin:6px 0"><span class="chip'+(ended?' grey':'')+'">'+(ended?'Ended':soon?'Ending soon':'Ends')+' · '+esc(d.toLocaleString("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"America/New_York"}))+'</span></p>';
+}
+function dealCardHTML(f, code, ended){
+  var c=code||f.codes[0], expired=ended===undefined?dealExpired(c.detail):ended;
+  var deadline=dealDeadline(c.detail);
+  var codeMarkup=expired?'<span class="chip grey">Ended — code no longer promoted</span>':
+    '<button class="code-btn" data-copy="'+esc(c.code)+'" aria-label="Copy code '+esc(c.code)+'">'+esc(c.code)+'</button>';
+  return '<article class="card deal-card"'+(deadline?' data-deadline="'+deadline.toISOString()+'"':'')+'><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><a href="/firm/'+f.slug+'" style="display:flex;gap:12px;align-items:center;color:var(--ink)">'+avatar(f,44)+'<strong style="font-family:Sora">'+esc(f.name)+'</strong></a>'+
+    f.markets.map(function(m){return '<span class="chip grey">'+MARKETS[m].label+'</span>';}).join('')+'</div>'+
+    '<div class="deal-up">'+(expired?'ENDED':f.off?'UP TO '+f.off+'%':'CODE')+'</div>'+
+    '<p style="margin:4px 0 0"><strong>'+esc(c.detail)+'</strong></p>'+dealEndBadge(c.detail)+
+    '<p class="mut small">Research snapshot '+SNAPSHOT+'. Verify final eligibility and price at checkout.</p>'+
+    '<p style="display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:12px 0 0">'+codeMarkup+
+    '<a class="btn small" href="/firm/'+f.slug+'">'+(expired?'View firm':'Review offer')+' →</a></p></article>';
 }
 function faqHTML(list,start){
   return list.map(function(x,i){ return '<details class="faq"><summary><span><span class="n">'+String((start||0)+i+1).padStart(2,"0")+'</span>'+esc(x.q)+'</span><span class="amber">+</span></summary><div class="ans">'+x.a+'</div></details>'; }).join("");
@@ -905,14 +925,42 @@ function pageVs(a,b){
 }
 /* ================= DEALS ================= */
 function pageDeals(){
-  var deals = firmsWithCodes().sort(function(a,b){ return (b.off||0)-(a.off||0); });
-  var nCodes = codesCount();
-  go(pageHead('<a href="/">Home</a> · Deals', "Prop firm deals &amp; discount codes",
-    nCodes+" discount codes verified on the firms' own official sites, across "+deals.length+" of the "+COUNTS.total+" firms in the directory — researched "+SNAPSHOT+". Every count on this page is computed from those verified codes, so the totals reconcile by construction. Firms with no officially verified code are not listed, and no third-party or affiliate-only code is shown.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+deals.map(dealCardHTML).join("")+"</div>"+
-  '<div class="card" style="margin-top:24px"><h3>How these counts work</h3><p class="mut" style="margin-top:8px">This page counts only codes that were verified on a firm\'s own website in the '+SNAPSHOT+' research: <strong style="color:var(--ink)">'+nCodes+' codes across '+deals.length+' firms</strong>. Where a firm stated an end date, it is shown on the card as an Ends badge. Several of these are Black Friday and Black Week offers, so after the end date treat the code as expired unless the firm\'s checkout still accepts it.</p>'+
-  '<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><a class="btn small ghost" href="/futures">Futures firms</a><a class="btn small ghost" href="/forex">Forex firms</a><a class="btn small ghost" href="/crypto">Crypto firms</a><a class="btn small ghost" href="/perps">Perps firms</a><a class="btn small ghost" href="/firms">All '+COUNTS.total+' firms</a></div></div>');
+  var active=[],ended=[];
+  firmsWithCodes().forEach(function(f){
+    f.codes.forEach(function(c){(dealExpired(c.detail)?ended:active).push({f:f,c:c});});
+  });
+  active.sort(function(a,b){return (b.f.off||0)-(a.f.off||0);});
+  ended.sort(function(a,b){return (dealDeadline(b.c.detail)||0)-(dealDeadline(a.c.detail)||0);});
+  go(pageHead('<a href="/">Home</a> · Deals',"Prop firm deals &amp; discount codes",
+    "Official-source promotions researched "+SNAPSHOT+". Dated offers automatically move to Ended after their deadline; confirm every offer at checkout.")+
+    '<div class="card" style="margin-top:18px"><strong id="active-deal-count">'+active.length+'</strong> offers not past their stated deadline · <span class="mut">Last researched '+SNAPSHOT+'; expiration not confirmed means status is unverified.</span></div>'+
+    '<div id="deal-active-list" class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));margin-top:20px">'+
+    active.map(function(x){return dealCardHTML(x.f,x.c,false);}).join('')+'</div>'+
+    '<details id="ended-deals" class="card" style="margin-top:24px"><summary style="cursor:pointer;min-height:44px;font-weight:800">Ended offers ('+ended.length+')</summary>'+
+    '<div id="deal-ended-list" class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));margin-top:16px">'+
+    ended.map(function(x){return dealCardHTML(x.f,x.c,true);}).join('')+'</div></details>'+
+    '<p class="mut small" style="margin-top:18px">Deadlines use the stated timezone where present. Otherwise dates are treated as 11:59 PM Eastern Time. A missing deadline is not proof that a code remains valid. The firm checkout determines eligibility.</p>');
   bindCopy();
+  /* Re-evaluate in place every minute, including while the page stays open. */
+  if(window.pfmDealTimer)clearInterval(window.pfmDealTimer);
+  window.pfmDealTimer=setInterval(function(){
+    if(location.pathname!=="/deals"){clearInterval(window.pfmDealTimer);return;}
+    var cards=Array.prototype.slice.call(document.querySelectorAll("#deal-active-list .deal-card"));
+    var moved=false;
+    cards.forEach(function(card){
+      var date=card.getAttribute("data-deadline");
+      if(date && Date.now()>new Date(date).getTime()){
+        var btn=card.querySelector("[data-copy]");if(btn)btn.remove();
+        var label=card.querySelector(".deal-up");if(label)label.textContent="ENDED";
+        var badge=card.querySelector(".deal-deadline .chip");if(badge){badge.classList.add("grey");badge.textContent="Ended";}
+        document.getElementById("deal-ended-list").prepend(card);moved=true;
+      }
+    });
+    if(moved){
+      document.getElementById("active-deal-count").textContent=document.querySelectorAll("#deal-active-list .deal-card").length;
+      document.querySelector("#ended-deals summary").textContent="Ended offers ("+document.querySelectorAll("#deal-ended-list .deal-card").length+")";
+    }
+  },60000);
 }
 /* ================= PAYOUT TRACKER ================= */
 function pageTracker(){
