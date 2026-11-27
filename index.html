@@ -2255,19 +2255,140 @@ function pageJournal(){
     go(head + '<div class="notice" style="margin-top:20px"><b>Could not load your journal.</b> ' + esc(e && e.message || "Please try again.") + '</div>');
   });
 }
+function journalMotionOn(){
+  if (!window.matchMedia) return false;
+  var q = window.matchMedia("(prefers-reduced-motion: reduce)");
+  return !!(q && q.media && !q.matches);
+}
+function journalFirmRules(firm, plan, size){
+  if (!firm) return null;
+  function clause(text){
+    text = String(text || "");
+    if (!text) return "";
+    var parts = text.split(/\s*[\/;]\s*/);
+    if (plan) {
+      var hits = parts.filter(function(p){ return p.toLowerCase().indexOf(String(plan).toLowerCase()) >= 0; });
+      if (hits.length) return hits.join("; ");
+      if (parts.length > 1) return text;
+    }
+    return /not stated/i.test(text) ? "" : text;
+  }
+  function dollars(text){
+    var re = /\$([\d,]+(?:\.\d+)?)\s*\((\d+(?:\.\d+)?)K\)/gi, m, any = null;
+    while ((m = re.exec(String(text || "")))) {
+      var amt = Number(m[1].replace(/,/g, ""));
+      if (size && Math.round(parseFloat(m[2]) * 1000) === Math.round(Number(size))) return amt;
+      if (any == null) any = amt;
+    }
+    return null;
+  }
+  function percentMoney(text){
+    text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
+    if (!text || /none|not stated|soft pause/i.test(text)) return null;
+    var pct = /(\d+(?:\.\d+)?)\s*%/.exec(text);
+    if (pct && size) return Number(size) * parseFloat(pct[1]) / 100;
+    var bare = /(\d+(?:\.\d+)?)/.exec(text);
+    if (bare && size && !/\$/.test(text)) return Number(size) * parseFloat(bare[1]) / 100;
+    return null;
+  }
+  function days(text){
+    text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
+    if (!text || /none|not stated/i.test(text)) return null;
+    var m = /(\d+)/.exec(text);
+    return m ? Number(m[1]) : null;
+  }
+  function cap(text){
+    text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
+    if (!text || /not stated/i.test(text)) return null;
+    if (/none/i.test(text) && !/\d/.test(text)) return null;
+    var pct = /(\d+(?:\.\d+)?)\s*%/.exec(text);
+    if (pct) return parseFloat(pct[1]);
+    var n = /(\d+(?:\.\d+)?)/.exec(text);
+    return n ? parseFloat(n[1]) : null;
+  }
+  return {
+    target: dollars(clause(firm.target)) || percentMoney(clause(firm.target)),
+    daily: dollars(firm.dailyDD) || percentMoney(clause(firm.dailyDD)),
+    drawdown: dollars(firm.dd) || percentMoney(clause(firm.dd)),
+    minDays: days(clause(firm.minDays)),
+    consistency: cap(clause(firm.consistencyText))
+  };
+}
+function journalRuleCard(account, rows){
+  var firm = FIRMS.filter(function(f){ return f.name === account.firm; })[0];
+  var rules = journalFirmRules(firm, account.plan, Number(account.account_size));
+  var stats = journalStats(rows);
+  var days = {};
+  var today = journalToday();
+  var todayPnl = 0;
+  rows.forEach(function(r){
+    var d = String(r.traded_at).slice(0, 10);
+    days[d] = (days[d] || 0) + Number(r.pnl);
+    if (d === today) todayPnl += Number(r.pnl);
+  });
+  var dayCount = Object.keys(days).length;
+  var best = 0;
+  Object.keys(days).forEach(function(d){ if (days[d] > best) best = days[d]; });
+  var bestShare = stats.total > 0 ? (100 * best / stats.total) : 0;
+  function bar(label, used, limit, unit){
+    if (limit == null) return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>Not in the plan notes</strong></div></div>';
+    var pct = limit > 0 ? Math.max(0, Math.min(100, 100 * used / limit)) : 0;
+    var over = used > limit;
+    var shown = unit === "%" ? used.toFixed(0) + "% / " + limit.toFixed(0) + "%" : money(used) + " / " + money(limit);
+    if (unit === "days") shown = used + " / " + limit + " days";
+    return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>' + shown + '</strong></div><div class="journal-rule-track"><div style="width:' + pct.toFixed(1) + '%;background:' + (over ? "#ff7474" : "#d8aa64") + '"></div></div></div>';
+  }
+  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">This firm is not in the directory, so plan limits are not filled in.</p></div>';
+  return '<div class="card"><h3>' + esc(account.account_label || "Account") + '</h3><p class="mut small">' + esc(account.firm || "Account") + (account.plan ? " · " + esc(account.plan) : "") + (Number(account.account_size) > 0 ? " · " + money(account.account_size) : "") + '</p>' +
+    bar("Profit target", Math.max(0, stats.total), rules.target, "$") +
+    bar("Daily loss", todayPnl < 0 ? -todayPnl : 0, rules.daily, "$") +
+    bar("Max drawdown", stats.drawdown, rules.drawdown, "$") +
+    bar("Minimum days", dayCount, rules.minDays, "days") +
+    bar("Consistency", bestShare, rules.consistency, "%") + "</div>";
+}
+function journalAnimateKpis(){
+  if (!journalMotionOn()) return;
+  var nodes = document.querySelectorAll(".journal-kpi-value[data-count]");
+  Array.prototype.forEach.call(nodes, function(el){
+    var target = Number(el.getAttribute("data-count"));
+    var kind = el.getAttribute("data-count-kind") || "num";
+    var finalText = el.getAttribute("data-count-final") || el.textContent;
+    var t0 = (window.performance && performance.now) ? performance.now() : Date.now();
+    function paint(v){
+      if (kind === "money") el.textContent = money(v);
+      else if (kind === "pct") el.textContent = v.toFixed(1) + "%";
+      else if (kind === "pf") el.textContent = v >= 999 ? "∞" : v.toFixed(2) + "x";
+      else el.textContent = String(Math.round(v));
+    }
+    function frame(now){
+      var t = Math.min(1, ((now || Date.now()) - t0) / 700);
+      var eased = 1 - Math.pow(1 - t, 3);
+      if (t < 1) { paint(target * eased); window.requestAnimationFrame(frame); }
+      else el.textContent = finalText;
+    }
+    if (window.requestAnimationFrame) window.requestAnimationFrame(frame);
+  });
+}
 function journalDashboard(rows){
   var s = journalStats(rows);
   var lo = Math.min.apply(null, s.points), hi = Math.max.apply(null, s.points), span = Math.max(1, hi - lo);
   var path = s.points.map(function(v, i){ return (i ? "L" : "M") + (12 + 756 * i / Math.max(1, s.points.length - 1)).toFixed(1) + "," + (184 - 158 * (v - lo) / span).toFixed(1); }).join(" ");
-  var stat = function(label, value, sub, color){ return '<div class="card journal-kpi"><div class="mut small">' + label + '</div><div class="journal-kpi-value"' + (color ? ' style="color:' + color + '"' : '') + '>' + value + '</div><div class="mut small">' + sub + '</div></div>'; };
+  var stat = function(label, value, sub, color, count, kind){
+    var attrs = count == null ? "" : ' data-count="' + count + '" data-count-kind="' + kind + '" data-count-final="' + esc(value) + '"';
+    return '<div class="card journal-kpi"><div class="mut small">' + label + '</div><div class="journal-kpi-value"' + attrs + (color ? ' style="color:' + color + '"' : '') + '>' + value + '</div><div class="mut small">' + sub + '</div></div>';
+  };
   var pfText = s.pf == null ? "—" : (s.pf === Infinity ? "∞" : s.pf.toFixed(2) + "x");
+  var pfCount = s.pf == null ? null : (s.pf === Infinity ? 999 : s.pf);
+  var winText = journalWinRateText(s.count, s.win, s.loss);
+  var winCount = (!s.count || !(s.win + s.loss)) ? null : (100 * s.win / s.count);
   var kpis = '<div class="journal-kpis">' +
-    stat("Net profit", money(s.total), s.count + " recorded trades", s.total >= 0 ? "#36d993" : "#ff7474") +
-    stat("Win rate", journalWinRateText(s.count, s.win, s.loss), s.win + " wins / " + s.loss + " losses") +
-    stat("Profit factor", pfText, "Gross profit / gross loss") +
-    stat("Average trade", money(s.count ? s.total / s.count : 0), "Realized P&amp;L per trade") +
-    stat("Max drawdown", money(s.drawdown), "Peak-to-trough decline", s.drawdown > 0 ? "#ff8585" : null) +
-    stat("Expectancy", money(s.count ? s.total / s.count : 0), "Per recorded trade") +
+    stat("Net P&L", money(s.total), s.count + " recorded trades", s.total >= 0 ? "#36d993" : "#ff7474", s.total, "money") +
+    stat("Win rate", winText, s.win + " wins / " + s.loss + " losses", null, winCount, "pct") +
+    stat("Profit factor", pfText, "Gross profit / gross loss", null, pfCount, "pf") +
+    stat("Avg win", money(s.win ? s.grossWin / s.win : 0), s.win + " winning trades", "#36d993", s.win ? s.grossWin / s.win : 0, "money") +
+    stat("Avg loss", money(s.loss ? -s.grossLoss / s.loss : 0), s.loss + " losing trades", s.loss ? "#ff8585" : null, s.loss ? -s.grossLoss / s.loss : 0, "money") +
+    stat("Expectancy", money(s.count ? s.total / s.count : 0), "Per recorded trade", null, s.count ? s.total / s.count : 0, "money") +
+    stat("Max drawdown", money(s.drawdown), "Peak-to-trough decline", s.drawdown > 0 ? "#ff8585" : null, s.drawdown, "money") +
     "</div>";
   var curve = s.count ? '<svg viewBox="0 0 780 210" role="img" aria-label="Equity curve based on recorded trades" style="display:block;width:100%;height:auto"><defs><linearGradient id="pfmEquityFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#efad2d" stop-opacity=".3"/><stop offset="100%" stop-color="#efad2d" stop-opacity="0"/></linearGradient></defs><path d="' + path + ' L768,194 L12,194 Z" fill="url(#pfmEquityFill)"/><path d="' + path + '" fill="none" stroke="#f2af2f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>' : '<div class="journal-empty">Log your first trade to start building your equity curve.</div>';
   var year = new Date().getFullYear();
@@ -2283,14 +2404,19 @@ function journalDashboard(rows){
     return '<div class="journal-symbol"><span>' + esc(k) + '</span><div class="journal-bar"><div style="width:' + Math.max(2, 100 * Math.abs(v) / maxBar) + "%;background:" + (v >= 0 ? "#efad2d" : "#ff7474") + '"></div></div><strong style="color:' + (v >= 0 ? "#36d993" : "#ff8585") + '">' + money(v) + "</strong></div>";
   }).join("") : '<p class="mut small">Instrument results appear after your first trade.</p>';
   var toggle = ranked.length > 5 ? '<p style="margin:12px 0 0"><button type="button" class="btn ghost small" id="journalSymbolsToggle">' + (journalState.showAllSymbols ? "Show top 5" : "Show all " + ranked.length) + "</button></p>" : "";
-  var recent = s.ordered.slice().reverse().slice(0, 5);
-  var table = recent.length ? '<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th>Date</th><th>Symbol</th><th>P&amp;L</th></tr></thead><tbody>' + recent.map(function(r){
+  var recent = s.ordered.slice().reverse().slice(0, 8);
+  var table = recent.length ? '<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th>Date</th><th>Symbol</th><th>P&amp;L</th><th></th></tr></thead><tbody>' + recent.map(function(r){
     var p = Number(r.pnl) || 0;
     var color = p > 0 ? "#36d993" : p < 0 ? "#ff8585" : "#94a9ba";
-    return "<tr><td>" + esc(String(r.traded_at).slice(0, 10)) + "</td><td>" + esc(r.symbol || "—") + '</td><td style="color:' + color + '">' + money(p) + "</td></tr>";
-  }).join("") + "</tbody></table></div>" : '<p class="mut small">Your latest trades will appear here.</p>';
-  return kpis +
-    '<div class="journal-dashboard-top"><div class="card"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L</p>' + curve + '</div><div class="card"><h3>Monthly performance <span class="mut small">' + year + ' · USD</span></h3><div class="journal-month-grid">' + tiles + "</div></div></div>" +
+    return '<tr data-dash-row="' + esc(r.id) + '"><td>' + esc(String(r.traded_at).slice(0, 10)) + "</td><td>" + esc(r.symbol || "—") + '</td><td style="color:' + color + '">' + money(p) + '</td><td><button class="btn ghost small" type="button" data-dash-edit="' + esc(r.id) + '">Edit</button> <button class="btn ghost small" type="button" data-del="' + esc(r.id) + '" aria-label="Delete trade">Delete</button></td></tr>';
+  }).join("") + '</tbody></table></div><form id="journalDashEdit" hidden novalidate><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:12px"><input id="dashDate" type="date" aria-label="Trade date" /><input id="dashInst" type="text" aria-label="Instrument" maxlength="32" /><input id="dashPnl" type="text" inputmode="decimal" aria-label="P&L" /><input id="dashNote" type="text" aria-label="Note" maxlength="300" /></div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn small" type="submit">Update trade</button><button class="btn ghost small" type="button" id="dashCancel">Cancel</button></div><p class="form-msg" id="dashMsg"></p></form>' : '<p class="mut small">Your latest trades will appear here.</p>';
+  var scope = journalState.selected === "all" ? journalState.accounts : journalState.accounts.filter(function(a){ return a.id === journalState.selected; });
+  var rules = scope.length ? '<div class="journal-rules"><h3 style="margin:0 0 8px">Prop rules for this view</h3>' + scope.map(function(a){
+    var mine = journalState.selected === "all" ? journalState.allRows.filter(function(r){ return r.account_id === a.id; }) : rows;
+    return journalRuleCard(a, mine);
+  }).join("") + "</div>" : "";
+  return kpis + rules +
+    '<div class="journal-dashboard-top"><div class="card"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L</p>' + curve + '</div>' + journalCalendar(rows, "journalDashCal") + '</div>' +
     '<div class="journal-dashboard-bottom"><div class="card"><h3>Trading statistics</h3><div class="journal-stat-line"><span>Total trades</span><strong>' + s.count + '</strong></div><div class="journal-stat-line"><span>Average win</span><strong>' + money(s.win ? s.grossWin / s.win : 0) + '</strong></div><div class="journal-stat-line"><span>Average loss</span><strong>' + money(s.loss ? -s.grossLoss / s.loss : 0) + '</strong></div><div class="journal-stat-line"><span>Winning trades</span><strong>' + s.win + '</strong></div><div class="journal-stat-line"><span>Losing trades</span><strong>' + s.loss + '</strong></div></div><div class="card"><h3>P&amp;L by symbol</h3>' + bars + toggle + '</div><div class="card"><h3>Recent trades</h3>' + table + "</div></div>";
 }
 function journalInsights(rows){
@@ -2324,12 +2450,13 @@ function journalShiftMonth(delta){
   var d = new Date(c.year, c.month + delta, 1);
   journalState.calYear = d.getFullYear();
   journalState.calMonth = d.getMonth();
-  journalState.tab = "calendar";
   renderJournal();
 }
-function journalCalendar(rows){
+function journalCalendar(rows, prefix){
   var totals = {};
   rows.forEach(function(r){ var d = String(r.traded_at).slice(0, 10); totals[d] = (totals[d] || 0) + Number(r.pnl); });
+  var maxAbs = 1;
+  Object.keys(totals).forEach(function(k){ maxAbs = Math.max(maxAbs, Math.abs(totals[k])); });
   var c = journalCalCursor(), year = c.year, month = c.month;
   var start = new Date(year, month, 1).getDay(), count = new Date(year, month + 1, 0).getDate();
   var label = new Date(year, month, 1).toLocaleDateString("en-US", {month:"long", year:"numeric"});
@@ -2338,11 +2465,13 @@ function journalCalendar(rows){
   for (var i = 0; i < start; i++) cells += "<div></div>";
   for (var d = 1; d <= count; d++) {
     var date = year + "-" + String(month + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0"), v = totals[date];
-    var bg = v === undefined ? "rgba(150,150,150,.07)" : v > 0 ? "rgba(79,160,99,.25)" : v < 0 ? "rgba(217,88,79,.25)" : "rgba(150,150,150,.15)";
-    var color = v > 0 ? "#a9dc7d" : v < 0 ? "#ff9078" : "#94a9ba";
+    var heat = v == null ? 0.08 : 0.18 + 0.72 * Math.abs(v) / maxAbs;
+    var bg = v == null ? "rgba(150,150,150,.08)" : v > 0 ? "rgba(54,217,147," + heat.toFixed(2) + ")" : v < 0 ? "rgba(255,116,116," + heat.toFixed(2) + ")" : "rgba(150,150,150,.2)";
+    var color = v > 0 ? "#e8fff4" : v < 0 ? "#ffe8e8" : "#94a9ba";
     cells += '<div title="' + esc(date) + (v === undefined ? " · No trades" : " · " + money(v)) + '" style="min-height:72px;padding:9px;border:1px solid rgba(150,150,150,.1);border-radius:10px;background:' + bg + '"><strong>' + d + "</strong>" + (v === undefined ? "" : '<div style="font-size:12px;margin-top:10px;color:' + color + '">' + money(v) + "</div>") + "</div>";
   }
-  return '<div class="card" style="margin-bottom:18px"><div class="journal-cal-nav"><button type="button" class="btn ghost small" id="journalCalPrev" aria-label="Previous month">← Previous</button><h3>Trading calendar · ' + esc(label) + '</h3><button type="button" class="btn ghost small" id="journalCalNext" aria-label="Next month">Next →</button></div><p class="mut small" style="margin-top:8px">Green = profitable day · Red = losing day · Empty = no trades</p><div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:16px">' + cells + "</div></div>";
+  var pre = prefix || "journalCal";
+  return '<div class="card journal-heat" style="margin-bottom:18px"><div class="journal-cal-nav"><button type="button" class="btn ghost small" id="' + pre + 'Prev" aria-label="Previous month">← Previous</button><h3>P&amp;L calendar · ' + esc(label) + '</h3><button type="button" class="btn ghost small" id="' + pre + 'Next" aria-label="Next month">Next →</button></div><p class="mut small" style="margin-top:8px">Darker green is a stronger up day. Darker red is a stronger down day.</p><div class="journal-heat-grid">' + cells + "</div></div>";
 }
 function journalTabCopy(tab){
   return ({
@@ -2433,7 +2562,14 @@ function renderJournal(){
     ".pfm-journal .card h3{color:#f2f5f8;letter-spacing:-.025em}" +
     ".pfm-journal .mut{color:#94a9ba!important}" +
     ".pfm-journal .btn:not(.ghost){background:#d8aa64;color:#10202e;border-color:#d8aa64}" +
-    ".pfm-journal .journal-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:18px}" +
+    ".pfm-journal .journal-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}" +
+    ".pfm-journal .journal-rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:14px}" +
+    ".pfm-journal .journal-rule{margin-top:10px}" +
+    ".pfm-journal .journal-rule-top{display:flex;justify-content:space-between;gap:8px;font-size:12px}" +
+    ".pfm-journal .journal-rule-track{height:8px;background:#1a3142;border-radius:99px;overflow:hidden;margin-top:4px}" +
+    ".pfm-journal .journal-rule-track>div{height:100%;border-radius:99px}" +
+    ".pfm-journal .journal-heat-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:16px}" +
+    ".pfm-journal .journal-heat-grid>div{min-height:64px;padding:8px;border-radius:8px}" +
     ".pfm-journal .journal-kpi{padding:17px 14px!important;min-width:0}" +
     ".pfm-journal .journal-kpi-value{font-size:clamp(18px,1.8vw,26px);font-weight:800;letter-spacing:-.04em;overflow-wrap:anywhere;margin:10px 0 5px}" +
     ".pfm-journal .journal-dashboard-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);gap:14px;margin-bottom:14px}" +
@@ -2837,9 +2973,45 @@ function renderJournal(){
     journalState.tab = "overview";
     renderJournal();
   });
-  var prev = $("#journalCalPrev"), next = $("#journalCalNext");
-  if (prev) prev.addEventListener("click", function(){ journalShiftMonth(-1); });
-  if (next) next.addEventListener("click", function(){ journalShiftMonth(1); });
+  [["journalCalPrev","journalCalNext"],["journalDashCalPrev","journalDashCalNext"]].forEach(function(pair){
+    var prevBtn = document.getElementById(pair[0]), nextBtn = document.getElementById(pair[1]);
+    if (prevBtn) prevBtn.addEventListener("click", function(){ journalShiftMonth(-1); });
+    if (nextBtn) nextBtn.addEventListener("click", function(){ journalShiftMonth(1); });
+  });
+  journalAnimateKpis();
+  var dashForm = $("#journalDashEdit");
+  if (dashForm) {
+    app.querySelectorAll("[data-dash-edit]").forEach(function(b){
+      b.addEventListener("click", function(){
+        var row = journalState.allRows.filter(function(x){ return x.id === b.getAttribute("data-dash-edit"); })[0];
+        if (!row) return;
+        dashForm.hidden = false;
+        dashForm.dataset.id = row.id;
+        $("#dashDate").value = String(row.traded_at).slice(0, 10);
+        $("#dashInst").value = row.symbol || "";
+        $("#dashPnl").value = Number(row.pnl);
+        $("#dashNote").value = row.note || "";
+        $("#dashMsg").textContent = "";
+      });
+    });
+    $("#dashCancel").addEventListener("click", function(){ dashForm.hidden = true; delete dashForm.dataset.id; });
+    dashForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var id = dashForm.dataset.id;
+      var msg = $("#dashMsg");
+      var errs = [];
+      var dateErr = journalDateError($("#dashDate").value); if (dateErr) errs.push(dateErr);
+      var symErr = journalSymbolError($("#dashInst").value.trim()); if (symErr) errs.push(symErr);
+      var pnlErr = journalPnlError($("#dashPnl").value); if (pnlErr) errs.push(pnlErr);
+      if (errs.length) { msg.className = "form-msg err"; msg.textContent = errs.join(" "); return; }
+      var payload = { traded_at: new Date($("#dashDate").value + "T12:00:00").toISOString(), symbol: $("#dashInst").value.trim(), pnl: Number(journalNormalizePnl($("#dashPnl").value)), note: $("#dashNote").value.trim() || null };
+      sb.from("trades").update(payload).eq("id", id).eq("user_id", PM_USER.id).select(TRADE_CORE).single().then(function(r){
+        if (r.error) { msg.className = "form-msg err"; msg.textContent = r.error.message; toast("Could not update the trade."); return; }
+        journalState.tab = "overview";
+        journalLoad().then(function(){ renderJournal(); toast("Trade updated"); }).catch(function(){ toast("Could not reload the journal."); });
+      });
+    });
+  }
   $("#signOutBtn").addEventListener("click", signOutAndLeave);
   function journalSymbolCount(){
     var el = $("#jInst"), out = $("#jInstCount");
@@ -2952,10 +3124,11 @@ function renderJournal(){
         return;
       }
       var snapshot = journalState.allRows.filter(function(x){ return x.id === id; })[0];
+      var stay = journalState.tab;
       sb.from("trades").delete().eq("id", id).eq("user_id", PM_USER.id).then(function(r){
         if (r.error) { toast("Could not delete: " + r.error.message); return; }
         journalState.allRows = journalState.allRows.filter(function(x){ return x.id !== id; });
-        journalState.tab = "trades";
+        journalState.tab = stay;
         renderJournal();
         toast("Trade deleted", function(){
           var row = {};
@@ -2963,7 +3136,7 @@ function renderJournal(){
           row.user_id = PM_USER.id;
           sb.from("trades").insert(row).select(TRADE_CORE).single().then(function(res){
             if (res.error) { toast("Could not undo: " + res.error.message); return; }
-            journalState.tab = "trades";
+            journalState.tab = stay || "trades";
             journalLoad().then(function(){ renderJournal(); toast("Trade restored"); }).catch(function(){ toast("Could not undo"); });
           });
         });

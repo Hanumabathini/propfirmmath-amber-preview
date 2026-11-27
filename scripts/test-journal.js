@@ -216,6 +216,7 @@ function submit(form) {
     const shell = d.querySelector(".pfm-journal");
     ok("rendered negatives", shell.innerHTML.includes("-$40.00") && !shell.innerHTML.includes("$-"), "sign");
     ok("live win rate includes breakeven", shell.textContent.includes("57.1%") && shell.textContent.includes("4 wins / 2 losses"), shell.textContent.slice(0, 400));
+    ok("dashboard has the curve, calendar, rules and inline trade edit", !!d.querySelector(".pfm-journal svg") && !!d.getElementById("journalDashCalNext") && shell.textContent.includes("Prop rules") && !!d.querySelector("[data-dash-edit]"), "missing dashboard piece");
 
     function sizesOf(slug) {
       const cat = w.journalFirmCatalog(w.firm(slug));
@@ -229,6 +230,12 @@ function submit(form) {
     ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
     const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
     ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
+    const ftmoRules = w.journalFirmRules(w.firm("ftmo"), "2-Step", 10000);
+    ok("FTMO 2-Step 10k fills target, daily loss, drawdown and days", ftmoRules.target === 1000 && ftmoRules.daily === 500 && ftmoRules.drawdown === 1000 && ftmoRules.minDays === 4 && ftmoRules.consistency == null, JSON.stringify(ftmoRules));
+    const topRules = w.journalFirmRules(w.firm("topstep"), "Trading Combine", 50000);
+    ok("Topstep 50k uses the $2,000 drawdown for that size", topRules.drawdown === 2000, JSON.stringify(topRules));
+    const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
+    ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily === 500, JSON.stringify(apexRules));
 
     const accounts = d.getElementById("journalAccounts");
     const tradesPanel = d.getElementById("journalTrades");
