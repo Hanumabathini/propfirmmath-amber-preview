@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<script>
+if (/(^|\.)pages\.dev$/i.test(location.hostname)) {
+  var previewRobots = document.createElement("meta");
+  previewRobots.name = "robots";
+  previewRobots.content = "noindex, nofollow";
+  document.head.appendChild(previewRobots);
+}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
@@ -1002,25 +1010,110 @@ if (sb){
 function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
 var ROUTE_DESC={"/":"Compare 48 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices."};
+function clipText(s, n){
+  s = String(s || "").replace(/\s+/g, " ").trim();
+  if (s.length <= n) return s;
+  var cut = s.slice(0, n);
+  cut = cut.replace(/\s+\S*$/, "").replace(/[.,;:]+$/, "");
+  return cut;
+}
+function seoTitle(label){
+  var suffix = " | PropFirmMath";
+  var max = 60 - suffix.length;
+  var text = String(label || "").replace(/\s+/g, " ").trim();
+  if (!text) return "PropFirmMath";
+  if ((text + suffix).length <= 60) return text + suffix;
+  var short = text.replace(/:.*/, "").replace(/ — .*/, "").trim();
+  if ((short + suffix).length <= 60) return short + suffix;
+  short = short.slice(0, max).replace(/\s+\S*$/, "").replace(/[,:;–—-]+$/, "").trim();
+  return short + suffix;
+}
+var SEO_COPY = {
+  "/best-for": "Shortlists of prop firms for one need: beginners, scalpers, payout speed, price, or a country. Each note says why those firms are on the list.",
+  "/guides": "Guides on how an evaluation works, how drawdown types differ, and how a consistency rule changes when you can be paid.",
+  "/statistics": "Counts from the firm file: firms listed, verification split, instant accounts, discount codes, euro prices, monthly plans, and payout-cycle range.",
+  "/stats": "Counts from the firm file: firms listed, verification split, instant accounts, discount codes, euro prices, monthly plans, and payout-cycle range.",
+  "/stocks": "US stocks and ETFs in the directory. Day-trading programs liquidate before the close; swing programs may hold overnight.",
+  "/privacy": "No analytics. An account stores your name, email, and journal entries so only you can read them. The contact address is on this page.",
+  "/terms": "PropFirmMath is not a broker, not a prop firm, and not advice. Dated prices and rules can change; confirm them on the firm's own site.",
+  "/cookies": "No analytics tracker. Signing in stores a session. The calendar widget and firm icons may receive your IP address.",
+  "/journal": "Sign in to record trades against a firm and plan from the directory. Entries stay on your account. No broker connection.",
+  "/login": "Sign in to a PropFirmMath account to open the trading journal. The journal does not connect to a broker.",
+  "/account": "Create a PropFirmMath account to save trades you enter by hand. The journal does not connect to a broker.",
+  "/reset": "Reset the password for a PropFirmMath account. This page does not show journal entries until you sign in.",
+  "/best-for/beginners": "Beginner shortlist: forgiving drawdown and a low entry price, because a trailing floor and a large fee end most first accounts.",
+  "/best-for/scalpers": "Scalper shortlist: fast payout cycles and end-of-day or static drawdown, so a trailing floor does not chase intraday highs.",
+  "/best-for/swing": "Swing shortlist: static drawdown and programs that allow overnight or weekend holding. Some firms allow that only in evaluation.",
+  "/best-for/cheapest": "Lowest recorded starting prices, with the catch on each: a $5 or $9 headline is often not the all-in cost of the named plan.",
+  "/best-for/no-consistency": "Firms whose headline program had no consistency rule in the research. Another program at the same firm may still have one.",
+  "/best-for/highest-split": "Highest recorded profit splits. An up-to figure is a ceiling, often an add-on, a scale-up, or one payout cycle only.",
+  "/best-for/instant": "Programs with no evaluation target. They skip the profit target, not the loss rules, and usually cost more than a challenge.",
+  "/best-for/fastest-payouts": "Firms with a daily or on-demand payout route. That route usually belongs to one program, not every account the firm sells.",
+  "/best-for/no-time-limit": "Evaluations with no deadline. The drawdown rules still apply, and a time limit can change between promotions.",
+  "/best-for/us": "US eligibility as each firm states it. FTMO's US clients use FTMO US; the global challenge is not sold to US residents.",
+  "/best-for/uk": "UK shortlist. Where a firm did not state eligibility, the page says so. Check its restricted-country list before buying.",
+  "/best-for/eu": "EU shortlist, including the four firms that price in euros: FTMO, Core Funded, PineX Capital, and BrightFunded.",
+  "/best-for/india": "India shortlist. Most firms did not state eligibility. Kraken Prop excludes India, so it is not on this list.",
+  "/best-for/australia": "Australia shortlist. Blueberry Funded restricts Australia, so it is left off. Confirm the firm's list before you buy.",
+  "/best-for/africa": "Africa shortlist. Crypto payout rails are the practical route in much of the region. Most firms did not state eligibility."
+};
 function seoDescription(path,label){
-  if(ROUTE_DESC[path]) return ROUTE_DESC[path];
-  var fm=path.match(/^\/firm\/([^/]+)$/); if(fm&&typeof firm==="function"){var f=firm(fm[1]); if(f) return f.name+" review: "+(f.split?"profit split "+f.split+", ":"")+(f.from!==null?"from "+(f.fromCur==="EUR"?"€":"$")+f.from+". ":"")+"Rules, drawdown and payouts researched on the firm's own site, "+SNAPSHOT+".";}
-  var vm=path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/); if(vm&&typeof firm==="function"){var a=firm(vm[1]),b=firm(vm[2]); if(a&&b) return a.name+" vs "+b.name+": rating, profit split, entry price and payout cycle side by side, from each firm's own site.";}
-  return label ? label+" — prop firm research from PropFirmMath: rules, costs and payouts, each dated and checked on the firm's own site." : ROUTE_DESC["/"];
+  if (SEO_COPY[path]) return clipText(SEO_COPY[path], 160);
+  if (ROUTE_DESC[path]) return clipText(ROUTE_DESC[path], 160);
+  var bm = path.match(/^\/best-for\/([^/]+)$/);
+  if (bm && typeof BESTFOR !== "undefined" && BESTFOR[bm[1]]) {
+    var b = BESTFOR[bm[1]];
+    return clipText(b.title + ". " + b.note, 160);
+  }
+  var gm = path.match(/^\/guide\/([^/]+)$/);
+  if (gm && typeof GUIDES !== "undefined") {
+    var guide = null;
+    GUIDES.forEach(function(x){ if (x.slug === gm[1]) guide = x; });
+    if (guide) return clipText(guide.title + ". " + guide.excerpt, 160);
+  }
+  var fm=path.match(/^\/firm\/([^/]+)$/); if(fm&&typeof firm==="function"){var f=firm(fm[1]); if(f) return clipText(f.name+" review: "+(f.split?"profit split "+f.split+", ":"")+(f.from!==null?"from "+(f.fromCur==="EUR"?"€":"$")+f.from+". ":"")+"Rules, drawdown and payouts from the firm's own site, "+SNAPSHOT+".", 160);}
+  var vm=path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/); if(vm&&typeof firm==="function"){var a=firm(vm[1]),b=firm(vm[2]); if(a&&b) return clipText(a.name+" vs "+b.name+": rating, profit split, entry price and payout cycle from each firm's own site.", 160);}
+  return clipText(label ? label+". Rules, costs and payouts from the firm's own site, dated "+SNAPSHOT+"." : ROUTE_DESC["/"], 160);
 }
 function seoSet(sel,make){ var el=document.head.querySelector(sel); if(!el){el=make();el.setAttribute("data-seo","1");document.head.appendChild(el);} return el; }
 function seoMeta(attr,key,val){ var el=seoSet('meta['+attr+'="'+key+'"]',function(){var m=document.createElement("meta");m.setAttribute(attr,key);return m;}); el.content=val; }
 function seoLd(objs){ document.head.querySelectorAll('script[type="application/ld+json"][data-seo]').forEach(function(x){x.remove();}); objs.forEach(function(o){ var sc=document.createElement("script"); sc.type="application/ld+json"; sc.setAttribute("data-seo","1"); sc.text=JSON.stringify(o); document.head.appendChild(sc); }); }
 function stripTags(h){ return String(h).replace(/<[^>]*>/g,"").replace(/&amp;/g,"&").replace(/\s+/g," ").trim(); }
+function crumbLd(items){
+  return {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":items.map(function(it,i){
+    return {"@type":"ListItem","position":i+1,"name":it[0],"item":siteBase()+it[1]};
+  })};
+}
+function itemListLd(name, rows){
+  return {"@context":"https://schema.org","@type":"ItemList","name":name,"itemListElement":rows.map(function(row,i){
+    return {"@type":"ListItem","position":i+1,"name":row[0],"url":siteBase()+row[1]};
+  })};
+}
+function previewHost(){
+  var host = "";
+  try { host = String(location.hostname || ""); } catch (e) {}
+  return /(^|\.)pages\.dev$/i.test(host);
+}
 function updateSeo(path){
   var name = "PropFirmMath";
-  var label = path.split("/").filter(Boolean).map(function(x){return x.replace(/-/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();});}).join(" — ");
+  var label = path==="/" ? "Compare Prop Firms by the Math" : path.split("/").filter(Boolean).map(function(x){return x.replace(/-/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();});}).join(" ");
   var firmMatch = path.match(/^\/firm\/([^/]+)$/);
   if (firmMatch && typeof firm==="function") {var item=firm(firmMatch[1]);if(item)label=item.name+" Review";}
-  label = label.replace(/^Faq$/,"FAQ");
+  if (path==="/faq") label = "FAQ";
+  if (path==="/deals") label = "Prop Firm Discount Codes";
+  if (path==="/journal") label = "Trading Journal";
+  if (path==="/statistics" || path==="/stats") label = "Prop Firm Statistics";
+  if (path==="/best-for") label = "Best Prop Firms";
+  if (path==="/guides") label = "Prop Firm Guides";
+  if (typeof BESTFOR !== "undefined" && path.indexOf("/best-for/")===0 && BESTFOR[path.split("/")[2]]) label = BESTFOR[path.split("/")[2]].title;
+  if (typeof GUIDES !== "undefined" && path.indexOf("/guide/")===0) {
+    var guideSlug = path.split("/")[2];
+    GUIDES.forEach(function(g){ if (g.slug===guideSlug) label = g.title; });
+  }
+  if (MARKETS && MARKETS[path.slice(1)]) label = MARKETS[path.slice(1)].label+" Prop Firms Compared";
   var vsMatch = path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/);
-  if (vsMatch && typeof firm==="function") {var fa=firm(vsMatch[1]), fb=firm(vsMatch[2]); if(fa&&fb) label=fa.name+" vs "+fb.name+" — Rules, Price & Payout Compared";}
-  document.title = (label?label+" | ":"")+name+" — Prop Firm Research";
+  if (vsMatch && typeof firm==="function") {var fa=firm(vsMatch[1]), fb=firm(vsMatch[2]); if(fa&&fb) label=fa.name+" vs "+fb.name;}
+  document.title = seoTitle(label);
   var description = seoDescription(path,label);
   var meta=document.querySelector('meta[name="description"]');
   if(!meta){meta=document.createElement("meta");meta.name="description";document.head.appendChild(meta);}meta.content=description;
@@ -1028,11 +1121,31 @@ function updateSeo(path){
   if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.appendChild(canonical);}
   canonical.href=siteBase()+path;
   var url=siteBase()+path;
+  var noindex = previewHost() || path==="/login" || path==="/account" || path==="/signup" || path==="/reset";
+  seoMeta("name","robots", noindex ? "noindex, nofollow" : "index, follow");
   seoMeta("property","og:type","website"); seoMeta("property","og:site_name",name); seoMeta("property","og:title",document.title); seoMeta("property","og:description",description); seoMeta("property","og:url",url); seoMeta("property","og:image",siteBase()+"/og.png"); seoMeta("property","og:image:width","1200"); seoMeta("property","og:image:height","630");
   seoMeta("name","twitter:card","summary_large_image"); seoMeta("name","twitter:title",document.title); seoMeta("name","twitter:description",description); seoMeta("name","twitter:image",siteBase()+"/og.png");
-  var ld=[{"@context":"https://schema.org","@type":"WebSite","name":name,"url":siteBase()+"/"},{"@context":"https://schema.org","@type":"Organization","name":name,"url":siteBase()+"/","logo":siteBase()+"/og.png"}];
+  var ld=[{"@context":"https://schema.org","@type":"WebSite","name":name,"url":siteBase()+"/"},{"@context":"https://schema.org","@type":"Organization","name":name,"url":siteBase()+"/","logo":siteBase()+"/img/logo.svg"}];
   if(path==="/faq"&&typeof FAQS!=="undefined") ld.push({"@context":"https://schema.org","@type":"FAQPage","mainEntity":FAQS.map(function(q){return {"@type":"Question","name":q.q,"acceptedAnswer":{"@type":"Answer","text":stripTags(q.a)}};})});
-  if(firmMatch||vsMatch) ld.push({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":siteBase()+"/"},{"@type":"ListItem","position":2,"name":firmMatch?"Prop Firms":"Compare","item":siteBase()+(firmMatch?"/firms":"/compare")},{"@type":"ListItem","position":3,"name":label.replace(/ — Rules.*$/,""),"item":url}]});
+  if(firmMatch) ld.push(crumbLd([["Home","/"],["Prop Firms","/firms"],[label,path]]));
+  if(vsMatch) ld.push(crumbLd([["Home","/"],["Compare","/compare"],[label,path]]));
+  if(path==="/guides") ld.push(crumbLd([["Home","/"],["Guides","/guides"]]));
+  var guideCrumb = path.match(/^\/guide\/([^/]+)$/);
+  if(guideCrumb) ld.push(crumbLd([["Home","/"],["Guides","/guides"],[label,path]]));
+  if(path==="/best-for") ld.push(crumbLd([["Home","/"],["Best Prop Firms","/best-for"]]));
+  if(path.indexOf("/best-for/")===0) ld.push(crumbLd([["Home","/"],["Best Prop Firms","/best-for"],[label,path]]));
+  if(MARKETS && MARKETS[path.slice(1)]) ld.push(crumbLd([["Home","/"],["Prop Firms","/firms"],[label,path]]));
+  if(path==="/deals") ld.push(crumbLd([["Home","/"],["Discount Codes","/deals"]]));
+  if(path==="/firms" && typeof FIRMS!=="undefined") ld.push(itemListLd("Prop firms", FIRMS.map(function(f){ return [f.name, "/firm/"+f.slug]; })));
+  if(MARKETS && MARKETS[path.slice(1)] && typeof FIRMS!=="undefined"){
+    var marketKey = path.slice(1);
+    ld.push(itemListLd(label, FIRMS.filter(function(f){ return f.markets.indexOf(marketKey)>=0; }).map(function(f){ return [f.name, "/firm/"+f.slug]; })));
+  }
+  if(path==="/deals" && typeof FIRMS!=="undefined"){
+    var deals=[];
+    FIRMS.forEach(function(f){ (f.codes||[]).forEach(function(c){ deals.push([f.name+" "+c.code, "/firm/"+f.slug]); }); });
+    ld.push(itemListLd("Prop firm discount codes", deals));
+  }
   seoLd(ld);
 }
 function route(){
@@ -1176,7 +1289,7 @@ function pageMarket(key){
   var ms = marketStats(key);
   var list = FIRMS.filter(function(f){ return f.markets.indexOf(key)>=0; });
   var deals = list.filter(function(f){ return f.codes.length; });
-  go(pageHead('<a href="/">Home</a> · <a href="/firms">Prop Firms</a>', ms.count+" "+m.label+" prop firms in the directory",
+  go(pageHead('<a href="/">Home</a> · <a href="/firms">Prop Firms</a>', esc(m.label)+" Prop Firms Compared",
     esc(m.desc)+" All figures on this page are computed from the firms below — the same directory data as the homepage. Snapshot "+SNAPSHOT+".")+
   marketStatHTML(ms)+snapLine("Figures computed from the directory firms below, "+SNAPSHOT+". \"From\" prices are in each firm's own currency.")+
   '<div class="secttl"><span class="bar"></span><h2>'+m.label+' firms in the directory</h2></div>'+
@@ -1339,10 +1452,48 @@ function firmAccountExplorer(f){
     '<div class="pfm-account-actions"><a class="btn small" href="/compare?add='+esc(f.slug)+'">Compare this firm</a><a class="btn small ghost" href="/tools">Use calculators</a><a class="btn small ghost" href="'+esc(f.site)+'" target="_blank" rel="noopener noreferrer nofollow">See official account options ↗</a></div>'+ 
     '</section>';
 }
+var VS_PAIRS = ["fxify-vs-fundingpips","ftmo-vs-fundingpips","my-funded-futures-vs-top-one-futures","topstep-vs-apex-trader-funding","topstep-vs-tradeify","apex-trader-funding-vs-tradeify","fundednext-vs-fundingpips","ftmo-vs-the5ers","fundednext-vs-the5ers","fxify-vs-the5ers","topstep-vs-take-profit-trader","tradeify-vs-take-profit-trader","bulenox-vs-apex-trader-funding","ftmo-vs-fundednext","alpha-capital-vs-fundednext"];
+function vsSides(pair){ var i = pair.indexOf("-vs-"); return [pair.slice(0, i), pair.slice(i + 4)]; }
+function firmRelatedHTML(f){
+  var vs = VS_PAIRS.filter(function(pair){ var s = vsSides(pair); return s[0]===f.slug || s[1]===f.slug; });
+  var lists = [];
+  if (typeof BESTFOR !== "undefined") {
+    Object.keys(BESTFOR).forEach(function(k){
+      if ((BESTFOR[k].pick || []).indexOf(f.slug) >= 0) lists.push('<a href="/best-for/'+k+'">'+esc(BESTFOR[k].title)+'</a>');
+    });
+  }
+  var guides = ['<a href="/guide/how-prop-firms-work">How prop firms work</a>', '<a href="/guide/drawdown-explained">Drawdown types</a>'];
+  if ((f.markets || []).indexOf("futures") >= 0) guides.push('<a href="/guide/consistency-rules">Consistency rules</a>');
+  if ((f.markets || []).indexOf("futures") >= 0 || (f.payoutText || "").toLowerCase().indexOf("day") >= 0) guides.push('<a href="/guide/first-payout-fast">First payout</a>');
+  var blocks = [];
+  if (vs.length) blocks.push('<h3>Head-to-head</h3><p>'+vs.map(function(pair){
+    var s = vsSides(pair);
+    var other = firm(s[0]===f.slug ? s[1] : s[0]);
+    return '<a href="/vs/'+pair+'">'+esc(f.name)+' vs '+esc(other ? other.name : (s[0]===f.slug ? s[1] : s[0]))+'</a>';
+  }).join(" · ")+'</p>');
+  if (lists.length) blocks.push('<h3>Lists that include '+esc(f.name)+'</h3><p>'+lists.join(" · ")+'</p>');
+  blocks.push('<h3>Guides</h3><p>'+guides.join(" · ")+'</p>');
+  return '<div class="card" style="margin-top:18px"><h2>Related reading</h2>'+blocks.join("")+'</div>';
+}
+var GUIDE_RELATED = {
+  "how-prop-firms-work": { firms: ["ftmo","my-funded-futures","topstep"], calcs: [["/tools#calc-cost","Cost to get funded"],["/tools#calc-sim","Pass probability simulator"]] },
+  "drawdown-explained": { firms: ["ftmo","topstep","apex-trader-funding"], calcs: [["/tools#calc-tick","Dollar to tick calculator"]] },
+  "consistency-rules": { firms: ["my-funded-futures","tradeify","topstep"], calcs: [["/tools#calc-consistency","Consistency calculator"]] },
+  "first-payout-fast": { firms: ["my-funded-futures","bulenox","tradeify"], calcs: [["/tools#calc-savings","Savings calculator"]] },
+  "choose-your-firm": { firms: ["ftmo","apex-trader-funding","fundednext"], calcs: [["/compare","Compare firms"],["/tools#calc-cost","Cost to get funded"]] },
+  "risk-management-funded": { firms: ["ftmo","the5ers"], calcs: [["/tools#calc-tick","Dollar to tick calculator"],["/tools#calc-fx","Forex pip calculator"]] }
+};
+function guideRelatedHTML(g){
+  var spec = GUIDE_RELATED[g.slug] || { firms: ["ftmo","topstep"], calcs: [["/tools#calc-cost","Cost to get funded"]] };
+  var firms = spec.firms.map(function(slug){ return typeof firm==="function" ? firm(slug) : null; }).filter(Boolean);
+  var firmLinks = firms.map(function(item){ return '<a href="/firm/'+item.slug+'">'+esc(item.name)+' review</a>'; }).join(" · ");
+  var calcLinks = spec.calcs.map(function(c){ return '<a href="'+c[0]+'">'+esc(c[1])+'</a>'; }).join(" · ");
+  return (firmLinks ? '<h3>Related firms</h3><p>'+firmLinks+'</p>' : '') + (calcLinks ? '<h3>Calculators</h3><p>'+calcLinks+'</p>' : '');
+}
 function pageFirm(f){
   var others = FIRMS.filter(function(x){ return x.slug!==f.slug && x.markets[0]===f.markets[0]; }).slice(0,3);
   var facts = [["Official site",'<a href="'+esc(outUrl(f))+'" target="_blank" rel="'+outRel(f)+'">'+esc(f.site.replace(/^https?:\/\//,""))+"</a>"],["Markets",f.markets.map(function(mk){return MARKETS[mk].label}).join(", ")],["US eligibility",esc(cap(presentText(f.us)))],["Entry price",f.from!==null&&f.from!==undefined?(priceHTML(f)+" — "+esc(f.fromPlan||"")):"Not verified"],["Profit target",esc(cap(f.target))],["Max drawdown",esc(cap(f.dd))],["Daily drawdown",esc(cap(f.dailyDD))],["Consistency rule",esc(cap(f.consistencyText))],["Min trading days",esc(cap(f.minDays))],["Payout cycle",esc(cap(f.payoutText))],["Activation fee",esc(cap(f.activation))],["Instant funding",esc(cap(f.instantText))],["Scaling",esc(cap(f.scaling))],["News trading",esc(cap(f.news))],["Overnight / weekend",esc(cap(f.overnight))],["Platforms",esc(listOrDash(f.platforms))],["Payout methods",esc(listOrDash(f.payMethods))],["Affiliate program",esc(cap(f.affiliate))]];
-  go(pageHead('<a href="/">Home</a> · <a href="/firms">Prop Firms</a> · <a href="/'+f.markets[0]+'">'+MARKETS[f.markets[0]].label+"</a>", esc(f.name), esc(presentText(f.summary)))+
+  go(pageHead('<a href="/">Home</a> · <a href="/firms">Prop Firms</a> · <a href="/'+f.markets[0]+'">'+MARKETS[f.markets[0]].label+"</a>", esc(f.name)+" Review: Rules, Prices &amp; Payouts", esc(presentText(f.summary)))+
   (f.verifLabel.indexOf("Not verifiable")===0 ? '<div class="notice" style="margin:18px 0"><b>Coverage gap — not verifiable during our Nov 26, 2026 check.</b> This firm\'s official pricing/configurator pages could not be opened on '+SNAPSHOT+' (rate-limited, not retried). No price, target, drawdown or payout figure is presented as verified for this firm, and none has been filled in from comparison sites. What is shown below is only what the firm\'s own public pages and docs did confirm.</div>' : "")+
   '<div class="card" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px">'+avatar(f,58)+
   f.markets.map(function(mk){ return '<span class="chip">'+MARKETS[mk].label+"</span>"; }).join("")+verChip(f)+
@@ -1369,6 +1520,7 @@ function pageFirm(f){
     : '<p class="mut" style="margin-top:8px">No on-chain payout tracking for this firm in the tracker snapshot — it does not pay via the Rise rail we track. That is a coverage limit, not evidence the firm doesn\'t pay.</p>')+
   '<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:16px"><a class="btn small" href="/compare?add='+f.slug+'">Compare this firm</a><a class="btn small ghost" href="'+esc(outUrl(f))+'" target="_blank" rel="'+outRel(f)+'">Visit the firm\'s site</a></div>'+
   '</div></div></div>'+
+  firmRelatedHTML(f)+
   (others.length? '<div class="secttl"><span class="bar"></span><h2>More '+MARKETS[f.markets[0]].label+' firms</h2></div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">'+others.map(function(o){ return '<article class="card"><a href="/firm/'+o.slug+'" style="display:flex;gap:10px;align-items:center;color:var(--ink)">'+avatar(o,34)+"<strong>"+esc(o.name)+'</strong></a><p class="mut small">Split '+esc(o.split)+' · Drawdown '+esc(o.dd)+' · From '+priceHTML(o)+'</p><a href="/firm/'+o.slug+'" style="font-weight:800">Review →</a></article>'; }).join("")+"</div>" : "")+
   snapLine("This review's figures were checked against the firm's own official site in the "+SNAPSHOT+" research. Rules and prices change — confirm on the firm's own site before buying."));
   bindCopy();
@@ -1652,7 +1804,7 @@ function pageDeals(){
   active.sort(function(a, b){ return (b.c.off || 0) - (a.c.off || 0) || a.f.name.localeCompare(b.f.name); });
   ended.sort(function(a, b){ return ((dealDeadline(b.c.detail) || 0) - (dealDeadline(a.c.detail) || 0)); });
   var shown = active.filter(function(x){ return dealState.market === "all" || x.f.markets.indexOf(dealState.market) >= 0; });
-  go(pageHead('<a href="/">Home</a> · Deals', "Prop firm deals &amp; discount codes",
+  go(pageHead('<a href="/">Home</a> · Deals', "Prop Firm Discount Codes",
     "Published promotions from the " + SNAPSHOT + " research. A code with an end date leaves this list after that moment. Confirm every offer at checkout.") +
     '<div class="card" style="margin-top:18px"><strong id="active-deal-count">' + shown.length + '</strong> current ' + (dealState.market === "all" ? "offers" : MARKETS[dealState.market].label + " offers") + ' · <span class="mut">Last researched ' + SNAPSHOT + '. A missing end date means the expiry was not published, not that the code lasts forever.</span></div>' +
     '<div class="pill-tabs" id="deal-markets" style="margin-top:16px">' + ["all","futures","forex","crypto","perps","stocks"].map(function(k){ return '<button type="button" data-deal="' + k + '" class="' + (dealState.market === k ? "on" : "") + '">' + (k === "all" ? "All markets" : MARKETS[k].label) + '</button>'; }).join("") + '</div>' +
@@ -1880,6 +2032,7 @@ function pageGuide(slug){
   go(pageHead('<a href="/">Home</a> · <a href="/guides">Guides</a>', esc(g.title), esc(g.excerpt))+
   '<article class="card prose" style="max-width:860px;margin-top:20px">'+
   g.body.map(function(p){ return p.charAt(0)==="<" ? p : "<p>"+p+"</p>"; }).join("")+
+  guideRelatedHTML(g)+
   '<p class="snap-note">Researched data snapshot: '+SNAPSHOT+'. Prices and rules change — confirm on the firm\'s own site.</p>'+
   '<p style="margin-top:18px"><a class="btn small" href="/compare">Compare firms</a> <a class="btn small ghost" href="/guides">All guides</a></p></article>');
 }
@@ -2242,12 +2395,15 @@ function journalStats(rows){
   var pf = grossLoss ? (grossWin / grossLoss) : (grossWin ? Infinity : null);
   return {ordered:ordered, total:total, peak:peak, drawdown:drawdown, win:win, loss:loss, grossWin:grossWin, grossLoss:grossLoss, points:points, symbols:symbols, months:months, count:count, pf:pf};
 }
+function journalSignedOutHTML(){
+  return '<div class="card" style="margin-top:20px;max-width:720px"><h2>Sign in to use the journal</h2><p class="mut" style="margin-top:8px">After you sign in, the journal stores what you type. You add an account by picking a firm from the directory (plan and size follow that firm’s recorded account, or you type a name that is not listed), then log trades with a date, symbol, profit or loss, and an optional note.</p><p class="mut">Signed in, you can switch accounts and see total P&amp;L, win rate, drawdown, and profit factor, a calendar of each day’s result, and totals by symbol. The journal does not connect to a broker, import fills, or place trades.</p><p style="margin-top:14px"><a class="btn" href="/account">Create an account</a> <a class="btn ghost" href="/login">Log in</a></p></div>';
+}
 function pageJournal(){
-  var head = pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.");
-  if (!sb) { go(head + '<div style="margin-top:20px">' + authUnavailable() + '</div>'); return; }
+  var head = pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "A private log for accounts and trades you enter by hand. Sign in to save them. Nothing here connects to a broker.");
+  if (!sb) { go(head + journalSignedOutHTML()); return; }
   if (!authReady) { go(head + '<div class="card" style="margin-top:20px"><p class="mut">Checking your session…</p></div>'); return; }
   if (!PM_USER) {
-    go(head + '<div class="card" style="margin-top:20px;max-width:560px"><h3>Log in to use your journal</h3><p class="mut" style="margin-top:8px">The journal saves your trades to your free account so they are there next time.</p><p style="margin-top:14px"><a class="btn" href="/account">Sign up free</a> <a class="btn ghost" href="/login">Log in</a></p></div>');
+    go(head + journalSignedOutHTML());
     return;
   }
   go(head + '<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');

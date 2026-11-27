@@ -119,6 +119,6 @@ fs.writeFileSync(path.join(out, '_headers'), [
 fs.writeFileSync(path.join(out, '_redirects'), '/quiz /firms 301\n');
 fs.writeFileSync(path.join(out, 'robots.txt'), 'User-agent: *\nAllow: /\nSitemap: ' + SITE + '/sitemap.xml\n');
 fs.writeFileSync(path.join(out, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  [...routes].filter(r => !['/account', '/login', '/reset', '/journal'].includes(r)).sort().map(r => '  <url><loc>' + SITE + (r === '/' ? '/' : r) + '</loc></url>').join('\n') + '\n</urlset>\n');
+  [...routes].filter(r => !['/account', '/login', '/signup', '/reset'].includes(r)).sort().map(r => '  <url><loc>' + SITE + (r === '/' ? '/' : r) + '</loc></url>').join('\n') + '\n</urlset>\n');
 console.log('pre-rendered', n, 'routes for', SITE);
 if (bad.length) { console.error('FAILED:\n' + bad.join('\n')); process.exit(1); }
