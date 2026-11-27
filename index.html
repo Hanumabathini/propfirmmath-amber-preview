@@ -1491,6 +1491,25 @@ function journalDashboard(rows){
     '<div class="card" style="min-width:0"><h3>Equity curve</h3><p class="mut small">Cumulative realized P&amp;L · all logged trades</p>'+chart+'</div>'+
     '<div class="card" style="min-width:0"><h3>Daily performance</h3>'+dayChart+'</div></div>';
 }
+function journalInsights(rows){
+  var symbols={};
+  rows.forEach(function(r){var k=(r.symbol||"Unknown").toUpperCase();if(!symbols[k])symbols[k]={n:0,pnl:0,wins:0};symbols[k].n++;symbols[k].pnl+=Number(r.pnl);if(Number(r.pnl)>0)symbols[k].wins++;});
+  var sorted=Object.keys(symbols).sort(function(a,b){return symbols[b].n-symbols[a].n;});
+  var max=Math.max(1,...sorted.map(function(k){return Math.abs(symbols[k].pnl);}));
+  return '<div class="card" style="margin-bottom:18px"><h3>Instrument breakdown</h3><p class="mut small">Find the instruments contributing most to your realized results.</p>'+
+  (sorted.length?sorted.map(function(k){var o=symbols[k],v=o.pnl;return '<div style="display:grid;grid-template-columns:minmax(75px,1fr) minmax(80px,3fr) minmax(85px,1fr);align-items:center;gap:12px;margin-top:15px"><div><strong>'+esc(k)+'</strong><div class="mut small">'+o.n+' trades · '+Math.round(o.wins/o.n*100)+'% wins</div></div><div style="height:11px;background:rgba(150,150,150,.12);border-radius:20px;overflow:hidden"><div style="width:'+Math.max(2,Math.abs(v)/max*100)+'%;height:100%;background:'+(v>=0?'#eaa328':'#ff9078')+';border-radius:20px"></div></div><strong style="text-align:right">'+money(v)+'</strong></div>';}).join(""):'<p class="mut" style="margin-top:15px">Log trades to see instrument analytics.</p>')+'</div>';
+}
+function journalCalendar(rows){
+  var totals={};rows.forEach(function(r){var d=String(r.traded_at).slice(0,10);totals[d]=(totals[d]||0)+Number(r.pnl);});
+  var now=new Date(),year=now.getFullYear(),month=now.getMonth(),start=new Date(year,month,1).getDay(),count=new Date(year,month+1,0).getDate();
+  var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var cells=days.map(function(d){return '<div class="mut small" style="text-align:center;padding:9px 0">'+d+'</div>';}).join('');
+  for(var i=0;i<start;i++)cells+='<div></div>';
+  for(var d=1;d<=count;d++){var date=year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'),v=totals[date],bg=v===undefined?'rgba(150,150,150,.07)':v>0?'rgba(79,160,99,.25)':v<0?'rgba(217,88,79,.25)':'rgba(150,150,150,.15)';
+    cells+='<div title="'+esc(date)+(v===undefined?' · No trades':' · '+money(v))+'" style="min-height:72px;padding:9px;border:1px solid rgba(150,150,150,.1);border-radius:10px;background:'+bg+'"><strong>'+d+'</strong>'+(v===undefined?'':'<div style="font-size:12px;margin-top:10px;color:'+(v>=0?'#a9dc7d':'#ff9078')+'">'+money(v)+'</div>')+'</div>';
+  }
+  return '<div class="card" style="margin-bottom:18px"><h3>Trading calendar · '+now.toLocaleDateString('en-US',{month:'long',year:'numeric'})+'</h3><p class="mut small">Green = profitable day · Red = losing day · Empty = no trades</p><div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:16px">'+cells+'</div></div>';
+}
 function renderJournal(){
   var rows=journalState.rows;
   var total=rows.reduce(function(s,r){ return s+Number(r.pnl); },0);
@@ -1498,7 +1517,9 @@ function renderJournal(){
   var wr=rows.length?Math.round(100*wins/rows.length):0;
   var today=new Date().toISOString().slice(0,10);
   go(pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.")+
-  '<div style="margin-top:20px"><p class="mut small" style="margin-bottom:12px">Signed in as '+esc(PM_USER.email)+' · <button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></p>'+journalDashboard(rows)+
+  '<div style="margin-top:20px"><p class="mut small" style="margin-bottom:12px">Signed in as '+esc(PM_USER.email)+' · <button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></p>'+
+  '<div class="card" style="margin-bottom:16px;padding:12px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn small" data-jtab="overview">Overview</button><button type="button" class="btn ghost small" data-jtab="calendar">Calendar</button><button type="button" class="btn ghost small" data-jtab="insights">Insights</button><button type="button" class="btn ghost small" data-jtab="trades">Trade log</button></div>'+
+  '<div id="journalOverview">'+journalDashboard(rows)+'</div><div id="journalCalendar" hidden>'+journalCalendar(rows)+'</div><div id="journalInsights" hidden>'+journalInsights(rows)+'</div><div id="journalTrades">'+
   '<div class="card" style="margin-bottom:18px"><form id="jForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">'+
   '<div class="field" style="margin:0"><label class="fl" for="jDate">Date</label><input type="date" id="jDate" value="'+today+'" /></div>'+
   '<div class="field" style="margin:0"><label class="fl" for="jInst">Instrument</label><input type="text" id="jInst" placeholder="NQ" maxlength="20" /></div>'+
@@ -1507,7 +1528,8 @@ function renderJournal(){
   '<button class="btn small" type="submit" style="margin-top:14px">Save trade</button><p class="form-msg" id="jMsg"></p></form></div>'+
   '<div class="card"><h3>Total P&amp;L: <span style="color:'+(total>=0?"#a9dc7d":"#ff9078")+'">'+money(total)+'</span> · '+rows.length+' trade(s) · '+wr+'% winners</h3>'+
   '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px"><input id="journalSearch" aria-label="Search trades" placeholder="Search instrument or notes" style="flex:1;min-width:170px" /><select id="journalFilter" aria-label="Filter trades" style="min-width:150px"><option value="all">All trades</option><option value="wins">Winning trades</option><option value="losses">Losing trades</option></select><button class="btn ghost small" id="journalExport" type="button">Export CSV</button></div>'+ (rows.length? '<div id="journalRows" style="margin-top:10px">'+rows.map(function(r){ var v=Number(r.pnl); return '<div class="pay-row" data-pnl="'+Number(r.pnl)+'"><span><strong>'+esc(r.symbol||"—")+'</strong> <span class="mut">'+esc(String(r.traded_at).slice(0,10))+' · '+esc(r.note||"")+'</span></span><span><span class="num" style="font-weight:800;color:'+(v>=0?"#a9dc7d":"#ff9078")+'">'+money(v)+'</span> <button class="btn ghost small" data-edit="'+esc(r.id)+'" type="button" aria-label="Edit trade">Edit</button> <button class="btn ghost small" data-del="'+esc(r.id)+'" type="button" aria-label="Delete trade">Delete</button></span></div>'; }).join("")+"</div>" : '<p class="mut" style="margin-top:8px">No trades yet. Add your first one above.</p>')+
-  "</div></div>");
+  "</div></div></div>");
+  app.querySelectorAll("[data-jtab]").forEach(function(btn){btn.addEventListener("click",function(){var tab=btn.getAttribute("data-jtab");["overview","calendar","insights","trades"].forEach(function(t){var el=$("#journal"+t[0].toUpperCase()+t.slice(1));if(el)el.hidden=t!==tab;});app.querySelectorAll("[data-jtab]").forEach(function(b){b.classList.toggle("ghost",b!==btn);});});});
   $("#signOutBtn").addEventListener("click", function(){ sb.auth.signOut().then(function(){ journalState={rows:[],acct:null}; history.pushState({},"","/"); route(); }); });
   $("#jForm").addEventListener("submit", function(e){ e.preventDefault();
     var inst=$("#jInst").value.trim(), pnl=parseFloat($("#jPnl").value), note=$("#jNote").value.trim(), d=$("#jDate").value;
