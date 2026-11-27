@@ -1085,7 +1085,7 @@ function pageTools(){
   closeCalculator();
   $$(".pfm-clickable-calculator").forEach(function(card){
     function activate(){openCalculator(card.getAttribute("data-calculator"),card);}
-    card.addEventListener("click",function(e){if(e.target.closest("input,select,textarea,button,a,label"))return;activate();});
+    card.addEventListener("click",function(e){if(e.target.closest("input,select,textarea,button,a,label") || e.target.closest(".card[id^=calc-]"))return;activate();});
     card.addEventListener("keydown",function(e){if(e.target!==card)return;if(e.key==="Enter"||e.key===" "){e.preventDefault();activate();}});
   });
   // Do not auto-open from a URL hash: only explicit user clicks open inputs.
