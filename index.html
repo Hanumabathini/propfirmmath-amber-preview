@@ -573,6 +573,8 @@ function updateSeo(path){
   var firmMatch = path.match(/^\/firm\/([^/]+)$/);
   if (firmMatch && typeof firm==="function") {var item=firm(firmMatch[1]);if(item)label=item.name+" Review";}
   label = label.replace(/^Faq$/,"FAQ");
+  var vsMatch = path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/);
+  if (vsMatch && typeof firm==="function") {var fa=firm(vsMatch[1]), fb=firm(vsMatch[2]); if(fa&&fb) label=fa.name+" vs "+fb.name+" — Rules, Price & Payout Compared";}
   document.title = (label?label+" | ":"")+name+" — Prop Firm Research";
   var description = label ? "Independent "+label+" research, prop firm rules, costs and payout information. Check the verification date before making decisions." : "Compare prop firm rules, costs, payouts and trading tools with PropFirmMath.";
   var meta=document.querySelector('meta[name="description"]');
@@ -643,7 +645,7 @@ function pageHome(){
   '<div class="hero-in"><div><span class="kicker">Your prop trading math resource</span>'+
   '<h1 style="margin-top:18px">Compare prop firms by <span class="a">the math,</span> not the <span class="g">marketing.</span></h1>'+
   '<p class="sub">Side-by-side rules, prices and payout evidence for '+COUNTS.total+' futures, forex, crypto, perps and stocks firms — every one researched firm by firm on its own official site ('+SNAPSHOT+'). Every figure carries the date it was checked, so you always know how fresh it is.</p>'+
-  '<div class="hero-cta"><a class="btn" href="/compare">Compare Firms →</a><a class="btn ghost" href="/quiz">Take the 60-second quiz</a></div>'+
+  '<div class="hero-cta"><a class="btn" href="/deals">See Current Deals →</a><a class="btn ghost" href="/compare">Compare Firms</a><a class="btn ghost" href="/quiz">Take the 60-second quiz</a></div>'+
   '<p class="small mut" style="margin-top:16px">Rankings follow published rules and ratings — never commission. <a href="/methodology" style="font-weight:800">How we rank →</a></p></div>'+
   '</div></section>'+
   '<div class="secttl"><span class="bar"></span><h2>'+COUNTS.total+' Prop Firms in the Directory</h2></div>'+
