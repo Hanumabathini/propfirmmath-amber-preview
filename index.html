@@ -381,9 +381,6 @@ table.dt th,table.dt td{min-width:0 !important}
 .code-btn{font-family:ui-monospace,Menlo,monospace;background:#0d0906;border:1px dashed rgba(255,176,32,.45);color:var(--gold);border-radius:9px;padding:8px 13px;font-weight:700;cursor:pointer;min-height:40px;font-size:14px}
 .code-btn:hover{border-color:var(--amber)}
 .code-btn .off{color:var(--amber);margin-left:8px;font-family:"Manrope";font-weight:800;font-size:12.5px}
-.quiz-opt{display:block;width:100%;text-align:left;background:#120d07;border:1px solid rgba(255,176,32,.14);border-radius:12px;padding:13px 15px;margin:8px 0;cursor:pointer;font-weight:700;color:var(--ink);min-height:52px;font-size:15px}
-.quiz-opt:hover{border-color:rgba(255,176,32,.45)}
-.quiz-opt.sel{background:linear-gradient(160deg,#ffc233,#ff8a00);color:#231500;border-color:transparent}
 .fit-chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
 .fit-chips span{background:#241a0d;box-shadow:var(--neu-in);color:var(--gold);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:700}
 .match-pct{font-family:"Sora";font-weight:800;color:var(--gold);margin-left:auto}
@@ -1030,108 +1027,6 @@ function pageTracker(){
 </script>
 <script>
 "use strict";
-/* ================= QUIZ ================= */
-var QUIZ = [
- {key:"market",q:"What market do you trade?",multi:true,opts:[["futures","Futures"],["forex","Forex"],["crypto","Crypto"],["perps","Perps"],["all","All Markets"]]},
- {key:"style",q:"What is your trading style?",multi:true,opts:[["scalping","Scalping"],["day","Day Trading"],["swing","Swing Trading"]]},
- {key:"overnight",q:"Do you hold trades overnight or over weekends?",multi:false,opts:[["yes","Yes"],["no","No"]]},
- {key:"size",q:"What account size are you looking for?",multi:true,opts:[["small","Small — under $25,000"],["medium","Medium — $25,000–$99,999"],["large","Large — $100,000+"]]},
- {key:"consistency",q:"Are you okay with a consistency rule?",multi:false,opts:[["yes","Yes"],["no","No"]]},
- {key:"news",q:"How do you handle news events?",multi:false,opts:[["through","I trade through news"],["avoid","I avoid 2–5 min windows around news"],["none","I don't trade news"]]},
- {key:"drawdown",q:"Which drawdown type do you prefer?",multi:true,opts:[["Static","Static"],["EOD","EOD Trailing"],["Intraday","Intraday Trailing"]]},
- {key:"payout",q:"How often do you want payouts?",multi:true,opts:[["daily","Daily / On-demand"],["fewdays","Every few days (3–5 day cycles)"],["biweekly","Bi-weekly (every 14 days)"],["monthly","Monthly"]]}
-];
-var quizState = { step:0, answers:{}, done:false };
-function quizScore(f, a){
-  var score = 0, max = 0, chips = [];
-  max += 30;
-  if (a.market && a.market.length){
-    if (a.market.indexOf("all")>=0 || f.markets.some(function(m){ return a.market.indexOf(m)>=0; })){ score += 30; chips.push(f.markets.map(function(m){ return MARKETS[m].label; }).join(" / ")); }
-    else return null;
-  } else score += 30;
-  max += 20;
-  if (a.drawdown && a.drawdown.length){
-    if (f.ddTypes.some(function(d){ return a.drawdown.indexOf(d)>=0; })){ score += 20; chips.push(f.dd+" drawdown"); }
-  } else score += 20;
-  max += 15;
-  if (a.consistency==="no"){ if (f.consNone){ score += 15; chips.push("No consistency rule on the headline program"); } }
-  else if (a.consistency==="yes"){ score += 15; chips.push("Consistency rule okay"); }
-  else score += 15;
-  max += 15;
-  if (a.size && a.size.length){
-    var fits = (a.size.indexOf("medium")>=0 && f.from!==null && f.from>=25) || (a.size.indexOf("small")>=0 && f.from!==null && f.from<100) || (a.size.indexOf("large")>=0);
-    if (fits){ score += 15; chips.push("Accounts in your size range"); }
-  } else score += 15;
-  max += 20;
-  if (a.payout && a.payout.length){
-    if (a.payout.indexOf("daily")>=0 && f.payoutDays===1){ score += 20; chips.push("Payouts as often as daily"); }
-    else if (a.payout.indexOf("biweekly")>=0 && f.payoutDays!==null && f.payoutDays>=4){ score += 20; chips.push("Bi-weekly payouts"); }
-    else if (f.payoutDays!==null){ score += 8; }
-  } else score += 20;
-  if (f.rating) score += Math.round(f.rating);
-  max += 5;
-  return { pct: Math.min(98, Math.round(score/max*100)), chips: chips };
-}
-function pageQuiz(){
-  var html = pageHead('<a href="/">Home</a> · Find Your Firm', "Find your perfect prop firm",
-    "Answer eight quick questions. Matches are scored live, in your browser, on each firm's published rules in the "+SNAPSHOT+" snapshot — ratings and commissions play no part in the score. "+COUNTS.reviewed+" firms scored · 8 questions · about 2 minutes.");
-  html += '<div class="card" style="max-width:760px;margin:20px auto 0">';
-  if (!quizState.done){
-    if (quizState.step===0 && !Object.keys(quizState.answers).length){
-      html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:20px">'
-       + [["1","Tell us how you trade","Market, style, holding and news answers set the hard filters."],["2","Scored on published rules","The same rules data that powers the reviews and the compare tool."],["3","Get your top three","Match %, the reasons, the review and the current snapshot deal."]].map(function(s){ return '<div><div class="step-num">'+s[0]+'</div><h3 style="font-size:16px">'+s[1]+'</h3><p class="mut small" style="margin-top:5px">'+s[2]+"</p></div>"; }).join("") + "</div>";
-    }
-    var step = QUIZ[quizState.step];
-    var pct = Math.round((quizState.step)/QUIZ.length*100);
-    html += '<p class="snap-note">Question '+(quizState.step+1)+' of '+QUIZ.length+' · '+pct+'%'+(step.multi?" · select all that apply":"")+'</p><div class="progress" style="margin:10px 0 16px"><i style="width:'+Math.max(6,pct)+'%"></i></div>'
-     + '<h2 style="font-size:21px;margin-bottom:14px">'+esc(step.q)+"</h2>"
-     + step.opts.map(function(o){ var sel = (quizState.answers[step.key]||[]).indexOf(o[0])>=0; return '<button class="quiz-opt'+(sel?" sel":"")+'" data-qopt="'+o[0]+'">'+esc(o[1])+"</button>"; }).join("")
-     + '<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">'
-     + (quizState.step>0?'<button class="btn ghost" id="qBack">← Back</button>':"")
-     + '<button class="btn" id="qNext" style="margin-left:auto">'+(quizState.step===QUIZ.length-1?"Find My Matches":"Next →")+"</button></div>";
-  } else {
-    var scored = FIRMS.map(function(f){ var s = quizScore(f, quizState.answers); return s?{f:f,s:s}:null; }).filter(Boolean).sort(function(a,b){ return b.s.pct-a.s.pct; }).slice(0,3);
-    html += '<h2 style="font-size:22px">Your top 3 prop firm matches</h2><p class="mut">Scored from your answers against the snapshot rules. Different answers produce different matches — retake to test.</p>'
-     + '<div style="margin-top:18px;display:flex;flex-direction:column;gap:14px">'
-     + (scored.length? scored.map(function(r,i){ return '<article class="card" style="box-shadow:var(--neu-in)"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="rank">'+(i+1)+'</span><a href="/firm/'+r.f.slug+'" style="display:flex;gap:10px;align-items:center;color:var(--ink)">'+avatar(r.f,34)+"<strong>"+esc(r.f.name)+'</strong></a><span class="chip grey">'+MARKETS[r.f.markets[0]].label+'</span><span class="match-pct">'+r.s.pct+'% MATCH</span></div>'
-       + '<p class="snap-note" style="margin-top:10px;letter-spacing:.1em">HOW IT FITS YOUR ANSWERS</p><div class="fit-chips">'+r.s.chips.map(function(c){ return "<span>"+esc(c)+"</span>"; }).join("")+"</div>"
-       + '<div style="display:flex;gap:9px;flex-wrap:wrap"><a class="btn small" href="/deals">Get Started</a><a class="btn small ghost" href="/firm/'+r.f.slug+'">Read Full Review →</a></div></article>'; }).join("")
-       : '<div class="empty-note">No firm in the reviewed set fits that combination. Loosen a filter — for example allow all markets — and retake.</div>')
-     + '</div>'
-     + '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn ghost" id="qShare">Share Results</button><button class="btn ghost" id="qRetake">Retake Quiz</button></div>';
-  }
-  html += "</div>"
-   + '<div style="max-width:760px;margin:22px auto 0"><h2 style="font-size:20px;margin-bottom:12px">Quiz questions, answered</h2>'
-   + faqHTML([
-     {q:"How does the matching work?",a:"Hard filters drop firms that cannot work for your answers (for example the wrong market); soft scoring then ranks the rest on drawdown fit, size fit, payout speed and consistency. The score is computed from your answers — it is not a fixed list."},
-     {q:"Do ratings affect my matches?",a:"Only as a tie-breaker of a few points. The researched method is explicit that opinion scores play no part in quiz scoring — published rules do."},
-     {q:"What is a consistency rule, in one line?",a:"A cap — typically 15–50% — on how much of your total profit may come from a single day."}
-   ],0) + "</div>";
-  go(html);
-  if (!quizState.done){
-    var step2 = QUIZ[quizState.step];
-    $$("[data-qopt]").forEach(function(b){ b.addEventListener("click", function(){
-      var v=b.getAttribute("data-qopt"); var cur=quizState.answers[step2.key]||[];
-      if (step2.multi){ var i=cur.indexOf(v); if (i>=0) cur.splice(i,1); else cur.push(v); quizState.answers[step2.key]=cur; }
-      else quizState.answers[step2.key]=[v];
-      pageQuiz();
-    });});
-    var nx=$("#qNext"); if (nx) nx.addEventListener("click", function(){
-      if (quizState.step<QUIZ.length-1){ quizState.step++; pageQuiz(); }
-      else { quizState.done=true; pageQuiz(); }
-    });
-    var bk=$("#qBack"); if (bk) bk.addEventListener("click", function(){ quizState.step--; pageQuiz(); });
-  } else {
-    var f=$("#quizEmailForm");
-    if (f) f.addEventListener("submit", function(e){ e.preventDefault();
-      var em=$("#quizEmail").value.trim(); var msg=$("#quizEmailMsg");
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ msg.className="form-msg err"; msg.textContent="That email address doesn't look valid — check it and try again."; return; }
-      msg.className="form-msg ok"; msg.textContent="Valid address — but email sending isn't set up yet, so nothing was sent or stored. Your matches stay on this page.";
-    });
-    var sh=$("#qShare"); if (sh) sh.addEventListener("click", function(){ if (navigator.clipboard) navigator.clipboard.writeText("Find your prop firm match on PropFirmMath: "+location.origin+"/quiz").then(function(){ toast("Share text copied"); }); else toast("Copy this page's address to share"); });
-    var rt=$("#qRetake"); if (rt) rt.addEventListener("click", function(){ quizState={step:0,answers:{},done:false}; pageQuiz(); });
-  }
-}
 /* ================= TOOLS / CALCULATORS ================= */
 var TOOL_CAT = {"Savings Calculator":"calc","Consistency Calculator":"calc","Dollar to Tick Calculator":"calc","Forex Calculator":"calc","Payout Tracker":"data","Trading Journal":"data","Economic Calendar":"data","Affordable Indicators":"copy","TradeSyncer":"copy","Replikanto":"copy","Tradeus / Thor":"copy","Pass Probability Simulator":"calc","Cost to Get Funded":"calc"};
 var TOOL_ANCHOR = {"Savings Calculator":"calc-savings","Consistency Calculator":"calc-consistency","Dollar to Tick Calculator":"calc-tick","Forex Calculator":"calc-fx","Pass Probability Simulator":"calc-sim","Cost to Get Funded":"calc-cost"};
