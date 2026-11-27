@@ -682,7 +682,9 @@ var SB_KEY = "sb_publishable_PHkj5jGsgpuVhGmIbyll3w_DsqIbNL2";
 var sb = null, PM_USER = null;
 try { if (window.supabase) sb = window.supabase.createClient(SB_URL, SB_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}); } catch(e){ sb = null; }
 if (sb){
-  sb.auth.getSession().then(function(r){ PM_USER = r.data && r.data.session ? r.data.session.user : null; renderNav(location.pathname||"/"); });
+  sb.auth.getSession().then(function(r){ var was=PM_USER; PM_USER = r.data && r.data.session ? r.data.session.user : null; renderNav(location.pathname||"/");
+    /* the first render happens before the saved session is read; redraw pages that depend on it */
+    if (PM_USER && !was && /^\/(journal|account|login)\/?$/.test(location.pathname||"")) route(); });
   sb.auth.onAuthStateChange(function(ev, session){
     PM_USER = session ? session.user : null;
     renderNav(location.pathname||"/");
