@@ -223,7 +223,7 @@ function submit(form) {
       return cat.map(p => p.name + ":" + p.sizes.join("/")).join(" | ");
     }
     ok("FTMO plan is 10k, not a forced 50k", sizesOf("ftmo") === "2-Step:10000", sizesOf("ftmo"));
-    ok("Topstep lists 50k, 100k and 150k", sizesOf("topstep") === "Trading Combine:50000/100000/150000", sizesOf("topstep"));
+    ok("FTUK is listed from $9", w.firm("ftuk") && w.firm("ftuk").from === 9, w.firm("ftuk") && w.firm("ftuk").from);
     ok("Apex stays on the 25k plan", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000", sizesOf("apex-trader-funding"));
     ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
@@ -232,8 +232,8 @@ function submit(form) {
     ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
     const ftmoRules = w.journalFirmRules(w.firm("ftmo"), "2-Step", 10000);
     ok("FTMO 2-Step 10k fills target, daily loss, drawdown and days", ftmoRules.target === 1000 && ftmoRules.daily === 500 && ftmoRules.drawdown === 1000 && ftmoRules.minDays === 4 && ftmoRules.consistency == null, JSON.stringify(ftmoRules));
-    const topRules = w.journalFirmRules(w.firm("topstep"), "Trading Combine", 50000);
-    ok("Topstep 50k uses the $2,000 drawdown for that size", topRules.drawdown === 2000, JSON.stringify(topRules));
+    const mffuRules = w.journalFirmRules(w.firm("my-funded-futures"), "Signature", 10000);
+    ok("MFFU Signature 10k uses the $1,000 drawdown for that size", mffuRules.target === 600 && mffuRules.daily == null && mffuRules.drawdown === 1000 && mffuRules.minDays === 1 && mffuRules.consistency === 50, JSON.stringify(mffuRules));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
     ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily === 500, JSON.stringify(apexRules));
 
@@ -251,17 +251,17 @@ function submit(form) {
     d.getElementById("newFirm").value = "FTMO";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
     ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
-    d.getElementById("newFirm").value = "Topstep";
+    d.getElementById("newFirm").value = "My Funded Futures";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
-    ok("Topstep offers every listed size", d.getElementById("newPlan").value === "Trading Combine" && sizeOptions().join() === "50000,100000,150000" && d.getElementById("newAccountSizePreset").value === "50000", sizeOptions().join());
-    d.getElementById("newAccountSizePreset").value = "150000";
+    ok("MFFU offers every listed size", d.getElementById("newPlan").value === "Signature" && sizeOptions().join() === "5000,10000,20000" && d.getElementById("newAccountSizePreset").value === "5000", sizeOptions().join());
+    d.getElementById("newAccountSizePreset").value = "20000";
     d.getElementById("newAccountSizePreset").dispatchEvent(new w.Event("change"));
-    ok("chosen size is not replaced by 50k", d.getElementById("newAccountSizePreset").value === "150000", d.getElementById("newAccountSizePreset").value);
+    ok("chosen size is not replaced by 5k", d.getElementById("newAccountSizePreset").value === "20000", d.getElementById("newAccountSizePreset").value);
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => state.trader_accounts[1] && d.getElementById("journalAccountFilter") && d.getElementById("journalAccountFilter").value === state.trader_accounts[1].id, "new account");
     const created = state.trader_accounts[1];
-    ok("selected size saves with its plan", created.firm === "Topstep" && created.plan === "Trading Combine" && Number(created.account_size) === 150000 && created.account_label === "Topstep Trading Combine", created);
-    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("Topstep Trading Combine · Trading Combine · $150,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$150,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Trading Combine") && o.textContent.includes("$150,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
+    ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
+    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);
     ok("new account dashboard is empty", d.getElementById("journalOverview").textContent.includes("0 recorded trades"), "overview");
     const live = w.journalState.accounts.find(a => a.id === created.id);
@@ -269,7 +269,7 @@ function submit(form) {
     w.journalState.tab = "accounts";
     w.renderJournal();
     d.querySelector('[data-edit-account="' + created.id + '"]').click();
-    ok("editing keeps a saved size the plan does not list", d.getElementById("newAccountSizePreset").value === "42000" && sizeOptions().indexOf("42000") >= 0 && sizeOptions().indexOf("50000") >= 0, sizeOptions().join());
+    ok("editing keeps a saved size the plan does not list", d.getElementById("newAccountSizePreset").value === "42000" && sizeOptions().indexOf("42000") >= 0 && sizeOptions().indexOf("5000") >= 0, sizeOptions().join());
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => Number(state.trader_accounts.find(a => a.id === created.id).account_size) === 42000 && state.inserts.filter(x => x.table === "trader_accounts").length === 1, "edited account");
     ok("saved size is not rewritten to the plan default", Number(state.trader_accounts.find(a => a.id === created.id).account_size) === 42000, state.trader_accounts.find(a => a.id === created.id));
