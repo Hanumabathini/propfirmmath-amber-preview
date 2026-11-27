@@ -2,7 +2,8 @@
   "name": "propfirmmath",
   "private": true,
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test": "node scripts/build.js && node scripts/test-calcs.js"
   },
   "devDependencies": {
     "jsdom": "24.1.1"

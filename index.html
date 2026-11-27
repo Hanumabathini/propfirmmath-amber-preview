@@ -53,6 +53,9 @@ nav.main .nav-resources-menu{position:absolute;right:0;top:100%;min-width:230px;
 nav.main .nav-resources-menu a{display:flex;min-height:40px;padding:8px 12px;border-radius:8px}
 nav.main .nav-resources-heading{padding:8px 12px 3px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
 @media(max-width:850px){nav.main .nav-resources-menu{position:static;min-width:0;width:100%;box-shadow:none}nav.main .nav-resources{width:100%}nav.main .nav-resources summary{width:100%}}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:200;background:var(--amber);color:#231500;font-weight:800;padding:12px 18px;border-radius:10px}
+.skip-link:focus{top:10px;text-decoration:none}
+#app:focus{outline:none}
 /* ---------- generic ---------- */
 .card{background:linear-gradient(155deg,var(--panel2),var(--panel));border:1px solid rgba(255,176,32,.10);border-radius:var(--r);box-shadow:var(--neu-out);padding:22px}
 .card h3{font-size:19px}
@@ -423,6 +426,7 @@ if (location.hash.startsWith("#/")) {
 </script>
 </head>
 <body>
+<a class="skip-link" href="#app">Skip to main content</a>
 <header>
   <div class="hbar">
     <a class="logo" href="/" aria-label="PropFirmMath home">
@@ -432,7 +436,7 @@ if (location.hash.startsWith("#/")) {
     <nav class="main" id="mainnav" aria-label="Main"></nav>
   </div>
 </header>
-<main class="wrap" id="app"></main>
+<main class="wrap" id="app" tabindex="-1"></main>
 <footer>
   <div class="fwrap">
     <div>
@@ -499,6 +503,35 @@ var $$ = function(s, el){ return Array.prototype.slice.call((el||document).query
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
 function cap(s){ s=String(s==null?"":s); return s.charAt(0).toUpperCase()+s.slice(1); }
 function firm(slug){ for (var i=0;i<FIRMS.length;i++) if (FIRMS[i].slug===slug) return FIRMS[i]; return null; }
+/* ---- Deal expiry: parse "ends <date>[, <time> <zone>]" from each code's detail, DST-correct ---- */
+var MON={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+var ZONES={EST:"America/New_York",EDT:"America/New_York",ET:"America/New_York",CST:"America/Chicago",CDT:"America/Chicago",CT:"America/Chicago",PST:"America/Los_Angeles",PDT:"America/Los_Angeles",PT:"America/Los_Angeles",UTC:"UTC",GMT:"UTC","German time":"Europe/Berlin",CET:"Europe/Berlin",CEST:"Europe/Berlin","UK time":"Europe/London"};
+function tzOffsetMs(zone,ms){ var f=new Intl.DateTimeFormat("en-US",{timeZone:zone,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric"}); var p={}; f.formatToParts(new Date(ms)).forEach(function(x){p[x.type]=+x.value;}); return Date.UTC(p.year,p.month-1,p.day,p.hour,p.minute,p.second)-ms; }
+function zonedToUtc(y,mo,d,h,mi,zone){ if(zone==="UTC") return Date.UTC(y,mo,d,h,mi,59); var guess=Date.UTC(y,mo,d,h,mi,59); var t=guess-tzOffsetMs(zone,guess); return guess-tzOffsetMs(zone,t); }
+/* returns {ms, zoned, label} or null when the text carries no end date */
+function parseDealEnd(detail){
+  var m=/ends?\s+(?:on\s+)?([A-Z][a-z]{2})[a-z]*\s+(\d{1,2}),?\s+(\d{4})(?:,?\s+(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?\s*(EST|EDT|ET|CST|CDT|CT|PST|PDT|PT|UTC|GMT|CET|CEST|German time|UK time))?/.exec(detail||"");
+  if(!m||MON[m[1]]===undefined) return null;
+  var y=+m[3],mo=MON[m[1]],d=+m[2];
+  if(m[4]!==undefined&&m[7]){ var h=+m[4],mi=m[5]?+m[5]:0; if(m[6]==="PM"&&h<12)h+=12; if(m[6]==="AM"&&h===12)h=0; var z=ZONES[m[7]]; return {ms:zonedToUtc(y,mo,d,h,mi,z),zoned:true,label:m[1]+" "+d+", "+(m[6]?(+m[4])+(m[5]?":"+m[5]:"")+" "+m[6]:m[4]+":"+(m[5]||"00"))+" "+m[7]}; }
+  /* date only: 11:59:59 PM Eastern, the rule stated on the Deals page */
+  return {ms:zonedToUtc(y,mo,d,23,59,"America/New_York"),zoned:false,label:m[1]+" "+d};
+}
+function nowMs(){ return typeof window!=="undefined"&&window.__NOW?window.__NOW:Date.now(); }
+function applyExpiry(){
+  FIRMS.forEach(function(f){
+    if(f.__exp) return; f.__exp=1; var live=[],ended=[];
+    (f.codes||[]).forEach(function(c){ var e=parseDealEnd(c.detail); if(e&&e.ms<nowMs()) ended.push(c); else live.push(c); });
+    f.endedCodes=ended; f.allCodes=(f.codes||[]).slice();
+    if(!ended.length) return;
+    f.codes=live;
+    var offs=live.map(function(c){return c.off}).filter(function(v){return v});
+    f.off=offs.length?Math.max.apply(null,offs):null;
+    f.code=live.length?live[0].code:null;
+    f.deal=live.length?live[0].detail:null;
+  });
+}
+applyExpiry();
 function money(n){ if (n===null||n===undefined) return "—"; return "$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); }
 function money0(n){ if (n===null||n===undefined) return "—"; if (n>=1000000) return "$"+(n/1000000).toFixed(2)+"M"; if (n>=1000) return "$"+(n/1000).toFixed(1)+"K"; return "$"+n; }
 function initials(n){ var p=n.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).filter(Boolean); if (p.length===1) return p[0].slice(0,2).toUpperCase(); return (p[0][0]+p[1][0]).toUpperCase(); }
@@ -590,25 +623,16 @@ function firmTableHTML(list){
 /* Expiry is calculated in the browser and refreshed without requiring a new crawl.
    An unqualified date uses 11:59:59 PM America/New_York; exact times override it. */
 function dealDeadline(detail){
-  var m=/\bends?\s+(?:on\s+)?([A-Z][a-z]+)\s+(\d{1,2}),?\s+(\d{4})(?:[,\s]+(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(AM|PM)\s*(EST|EDT|ET|CST|CDT|CT|PST|PDT|PT|UTC))?/i.exec(detail||"");
-  if(!m)return null;
-  var month={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11}[m[1].slice(0,3).toLowerCase()];
-  if(month===undefined)return null;
-  var hour=m[4]?Number(m[4])%12+(m[6].toUpperCase()==="PM"?12:0):23;
-  var minute=m[5]?Number(m[5]):59;
-  var zone=(m[7]||"ET").toUpperCase();
-  var offset={EST:5,EDT:4,ET:5,CST:6,CDT:5,CT:6,PST:8,PDT:7,PT:8,UTC:0}[zone];
-  var date=new Date(Date.UTC(Number(m[3]),month,Number(m[2]),hour+offset,minute,m[4]?0:59));
-  if(date.getUTCFullYear()<2020 || isNaN(date.getTime()))return null;
-  return date;
+  var e=parseDealEnd(detail); if(!e) return null;
+  var d=new Date(e.ms); return isNaN(d.getTime())||d.getUTCFullYear()<2020?null:d;
 }
-function dealExpired(detail){var d=dealDeadline(detail);return !!d && Date.now()>d.getTime();}
+function dealExpired(detail){var d=dealDeadline(detail);return !!d && nowMs()>d.getTime();}
 function activeCodes(f){return (f.codes||[]).filter(function(c){return !dealExpired(c.detail);});}
 function dealEndBadge(detail){
   var d=dealDeadline(detail);
   if(!d)return '<p class="mut small">Expiration not confirmed</p>';
-  var ended=Date.now()>d.getTime();
-  var soon=!ended && d.getTime()-Date.now()<=86400000;
+  var ended=nowMs()>d.getTime();
+  var soon=!ended && d.getTime()-nowMs()<=86400000;
   return '<p class="deal-deadline" data-expires="'+d.toISOString()+'" style="margin:6px 0"><span class="chip'+(ended?' grey':'')+'">'+(ended?'Ended':soon?'Ending soon':'Ends')+' · '+esc(d.toLocaleString("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"America/New_York"}))+'</span></p>';
 }
 function dealCardHTML(f, code, ended){
@@ -652,6 +676,8 @@ function renderNav(route){
   html += PM_USER ? '<a href="/journal" class="signin'+(route==="/journal"?" on":"")+'">My Journal</a>' : '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
   $("#mainnav").innerHTML = html;
 }
+/* skip link: move focus to main content without changing the route */
+(function(){var a=document.querySelector(".skip-link");if(a)a.addEventListener("click",function(e){e.preventDefault();var m=document.getElementById("app");if(m){m.focus();m.scrollIntoView();}});})();
 /* ================= router ================= */
 var app = $("#app");
 var SB_URL = "https://yomrezvtmovuruhkgikf.supabase.co";
@@ -668,6 +694,17 @@ if (sb){
 }
 function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
+var ROUTE_DESC={"/":"Compare 48 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/quiz":"A 60-second quiz that matches your budget, market and style to prop firms using published rules — never commission.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"How PropFirmMath makes money through affiliate commissions, and the rules that keep rankings independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices."};
+function seoDescription(path,label){
+  if(ROUTE_DESC[path]) return ROUTE_DESC[path];
+  var fm=path.match(/^\/firm\/([^/]+)$/); if(fm&&typeof firm==="function"){var f=firm(fm[1]); if(f) return f.name+" review: "+(f.split?"profit split "+f.split+", ":"")+(f.from!==null?"from "+(f.fromCur==="EUR"?"€":"$")+f.from+". ":"")+"Rules, drawdown and payouts researched on the firm's own site, "+SNAPSHOT+".";}
+  var vm=path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/); if(vm&&typeof firm==="function"){var a=firm(vm[1]),b=firm(vm[2]); if(a&&b) return a.name+" vs "+b.name+": rating, profit split, entry price and payout cycle side by side, from each firm's own site.";}
+  return label ? label+" — prop firm research from PropFirmMath: rules, costs and payouts, each dated and checked on the firm's own site." : ROUTE_DESC["/"];
+}
+function seoSet(sel,make){ var el=document.head.querySelector(sel); if(!el){el=make();el.setAttribute("data-seo","1");document.head.appendChild(el);} return el; }
+function seoMeta(attr,key,val){ var el=seoSet('meta['+attr+'="'+key+'"]',function(){var m=document.createElement("meta");m.setAttribute(attr,key);return m;}); el.content=val; }
+function seoLd(objs){ document.head.querySelectorAll('script[type="application/ld+json"][data-seo]').forEach(function(x){x.remove();}); objs.forEach(function(o){ var sc=document.createElement("script"); sc.type="application/ld+json"; sc.setAttribute("data-seo","1"); sc.text=JSON.stringify(o); document.head.appendChild(sc); }); }
+function stripTags(h){ return String(h).replace(/<[^>]*>/g,"").replace(/&amp;/g,"&").replace(/\s+/g," ").trim(); }
 function updateSeo(path){
   var name = "PropFirmMath";
   var label = path.split("/").filter(Boolean).map(function(x){return x.replace(/-/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();});}).join(" — ");
@@ -677,12 +714,19 @@ function updateSeo(path){
   var vsMatch = path.match(/^\/vs\/([^/]+)-vs-([^/]+)$/);
   if (vsMatch && typeof firm==="function") {var fa=firm(vsMatch[1]), fb=firm(vsMatch[2]); if(fa&&fb) label=fa.name+" vs "+fb.name+" — Rules, Price & Payout Compared";}
   document.title = (label?label+" | ":"")+name+" — Prop Firm Research";
-  var description = label ? "Independent "+label+" research, prop firm rules, costs and payout information. Check the verification date before making decisions." : "Compare prop firm rules, costs, payouts and trading tools with PropFirmMath.";
+  var description = seoDescription(path,label);
   var meta=document.querySelector('meta[name="description"]');
   if(!meta){meta=document.createElement("meta");meta.name="description";document.head.appendChild(meta);}meta.content=description;
   var canonical=document.querySelector('link[rel="canonical"]');
   if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.appendChild(canonical);}
   canonical.href=location.origin+path;
+  var url=location.origin+path;
+  seoMeta("property","og:type","website"); seoMeta("property","og:site_name",name); seoMeta("property","og:title",document.title); seoMeta("property","og:description",description); seoMeta("property","og:url",url); seoMeta("property","og:image",location.origin+"/og.png"); seoMeta("property","og:image:width","1200"); seoMeta("property","og:image:height","630");
+  seoMeta("name","twitter:card","summary_large_image"); seoMeta("name","twitter:title",document.title); seoMeta("name","twitter:description",description); seoMeta("name","twitter:image",location.origin+"/og.png");
+  var ld=[{"@context":"https://schema.org","@type":"WebSite","name":name,"url":location.origin+"/"},{"@context":"https://schema.org","@type":"Organization","name":name,"url":location.origin+"/","logo":location.origin+"/og.png"}];
+  if(path==="/faq"&&typeof FAQS!=="undefined") ld.push({"@context":"https://schema.org","@type":"FAQPage","mainEntity":FAQS.map(function(q){return {"@type":"Question","name":q.q,"acceptedAnswer":{"@type":"Answer","text":stripTags(q.a)}};})});
+  if(firmMatch||vsMatch) ld.push({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":location.origin+"/"},{"@type":"ListItem","position":2,"name":firmMatch?"Prop Firms":"Compare","item":location.origin+(firmMatch?"/firms":"/compare")},{"@type":"ListItem","position":3,"name":label.replace(/ — Rules.*$/,""),"item":url}]});
+  seoLd(ld);
 }
 function route(){
   var raw = location.pathname || "/";
@@ -926,8 +970,8 @@ function pageVs(a,b){
 /* ================= DEALS ================= */
 function pageDeals(){
   var active=[],ended=[];
-  firmsWithCodes().forEach(function(f){
-    f.codes.forEach(function(c){(dealExpired(c.detail)?ended:active).push({f:f,c:c});});
+  FIRMS.forEach(function(f){
+    (f.allCodes||f.codes||[]).forEach(function(c){(dealExpired(c.detail)?ended:active).push({f:f,c:c});});
   });
   active.sort(function(a,b){return (b.f.off||0)-(a.f.off||0);});
   ended.sort(function(a,b){return (dealDeadline(b.c.detail)||0)-(dealDeadline(a.c.detail)||0);});
@@ -949,7 +993,7 @@ function pageDeals(){
     var moved=false;
     cards.forEach(function(card){
       var date=card.getAttribute("data-deadline");
-      if(date && Date.now()>new Date(date).getTime()){
+      if(date && nowMs()>new Date(date).getTime()){
         var btn=card.querySelector("[data-copy]");if(btn)btn.remove();
         var label=card.querySelector(".deal-up");if(label)label.textContent="ENDED";
         var badge=card.querySelector(".deal-deadline .chip");if(badge){badge.classList.add("grey");badge.textContent="Ended";}

@@ -19,7 +19,7 @@ function render(route) {
   const dom = new JSDOM(noLib, { url: SITE + route, runScripts: 'dangerously', pretendToBeVisual: true, virtualConsole: vc,
     beforeParse(w) { w.scrollTo = () => {}; w.HTMLElement.prototype.scrollIntoView = () => {}; w.matchMedia = w.matchMedia || (() => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} })); w.IntersectionObserver = w.IntersectionObserver || class { observe() {} unobserve() {} disconnect() {} }; } });
   const d = dom.window.document;
-  const res = { title: d.title, desc: (d.querySelector('meta[name="description"]') || {}).content || '', app: d.querySelector('#app').innerHTML, nav: d.querySelector('#mainnav').innerHTML, h1: d.querySelectorAll('#app h1').length };
+  const res = { title: d.title, desc: (d.querySelector('meta[name="description"]') || {}).content || '', seo: [...d.head.querySelectorAll('[data-seo]')].map(e => e.outerHTML).join(''), app: d.querySelector('#app').innerHTML, nav: d.querySelector('#mainnav').innerHTML, h1: d.querySelectorAll('#app h1').length };
   dom.window.close(); return res;
 }
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -27,7 +27,7 @@ function page(route, r, extraHead) {
   let h = src;
   h = h.replace(/<title>[\s\S]*?<\/title>/, '<title>' + esc(r.title) + '</title>');
   h = h.replace(/<meta name="description"[^>]*>/, '');
-  h = h.replace('</head>', '<meta name="description" content="' + esc(r.desc) + '"><link rel="canonical" href="' + SITE + route + '">' + (extraHead || '') + '</head>');
+  h = h.replace('</head>', '<meta name="description" content="' + esc(r.desc) + '"><link rel="canonical" href="' + SITE + route + '">' + (extraHead || '') + (r.seo || '') + '</head>');
   h = h.replace(/(<nav[^>]*id="mainnav"[^>]*>)[\s\S]*?(<\/nav>)/, (m, a, b) => a + r.nav + b);
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
   // Make market statistic cards robust even if an overlay or client-side handler
@@ -40,9 +40,17 @@ function page(route, r, extraHead) {
 }
 // Large inline scripts are written once to /js and referenced from every page (keeps dist small and cacheable).
 fs.mkdirSync(path.join(out, 'js'), { recursive: true });
+let imgN = 0; const imgSeen = new Map();
+function externaliseImages(html) {
+  return html.replace(/data:image\/(webp|png|jpeg|jpg);base64,([A-Za-z0-9+\/=]{8000,})/g, (m, ext, b64) => {
+    let f = imgSeen.get(b64);
+    if (!f) { f = 'img/i' + (imgN++) + '.' + ext; imgSeen.set(b64, f); fs.mkdirSync(path.join(out, 'img'), { recursive: true }); fs.writeFileSync(path.join(out, f), Buffer.from(b64, 'base64')); }
+    return '/' + f;
+  });
+}
 let jsN = 0; const jsSeen = new Map();
 function externalise(html) {
-  return html.replace(/<script>([\s\S]*?)<\/script>/g, (m, code) => {
+  return externaliseImages(html).replace(/<script>([\s\S]*?)<\/script>/g, (m, code) => {
     if (code.length < 5000) return m;
     let f = jsSeen.get(code);
     if (!f) { f = 'js/s' + (jsN++) + '-' + crypto.createHash('sha256').update(code).digest('hex').slice(0,12) + '.js'; jsSeen.set(code, f); fs.writeFileSync(path.join(out, f), code); }
@@ -67,6 +75,7 @@ while (queue.length) {
 if (warn.length) console.warn('Linked but not renderable (check these links):\n' + warn.join('\n'));
 // Real 404: unknown paths get status 404 from the host; the app shows its not-found page.
 fs.writeFileSync(path.join(out, '404.html'), externalise(src.replace('</head>', '<meta name="robots" content="noindex"></head>')));
+if (fs.existsSync(path.join(root, 'og.png'))) fs.copyFileSync(path.join(root, 'og.png'), path.join(out, 'og.png'));
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
 // Prevent browsers and edge caches from retaining old pre-rendered calculator markup.
 fs.writeFileSync(path.join(out, '_headers'), [
