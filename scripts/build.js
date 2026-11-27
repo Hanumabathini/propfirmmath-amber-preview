@@ -95,6 +95,7 @@ if (warn.length) console.warn('Linked but not renderable (check these links):\n'
 const shell404 = bakedFoot ? src.replace(/(<footer[^>]*>)[\s\S]*?(<\/footer>)/, (m, a, b) => a + bakedFoot + b) : src;
 fs.writeFileSync(path.join(out, '404.html'), externalise(shell404.replace('</head>', '<meta name="robots" content="noindex"></head>')));
 if (fs.existsSync(path.join(root, 'og.png'))) fs.copyFileSync(path.join(root, 'og.png'), path.join(out, 'og.png'));
+if (fs.existsSync(path.join(root, 'img'))) fs.cpSync(path.join(root, 'img'), path.join(out, 'img'), { recursive: true });
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
 // Prevent browsers and edge caches from retaining old pre-rendered calculator markup.
 fs.writeFileSync(path.join(out, '_headers'), [
@@ -105,6 +106,7 @@ fs.writeFileSync(path.join(out, '_headers'), [
   '/tools', '  Cache-Control: no-cache, must-revalidate',
   '/tools.html', '  Cache-Control: no-cache, must-revalidate',
   '/js/*', '  Cache-Control: public, max-age=31536000, immutable',
+  '/img/*', '  Cache-Control: public, max-age=604800',
   ''
 ].join('\n'));
 fs.writeFileSync(path.join(out, '_redirects'), '/quiz /firms 301\n');
