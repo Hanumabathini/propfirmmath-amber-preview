@@ -1034,19 +1034,19 @@ function pageTools(){
   ["cstFee","cstPass","cstAct","cstPay","cstSurv"].forEach(function(id){ $("#"+id).addEventListener("input",cst); });
   cons(); tick(); fx(); sav(); sim(); cst();
   $$("#tool-tabs button").forEach(function(b){ b.addEventListener("click", function(){ $$("#tool-tabs button").forEach(function(x){ x.classList.remove("on"); }); b.classList.add("on"); var t=b.getAttribute("data-tab"); $$(".tool-card").forEach(function(c){ var show = t==="all" || (t==="free"?c.getAttribute("data-free")==="1":c.getAttribute("data-cat")===t); c.style.display = show?"":"none"; }); }); });
-  var workspace=$("#pfm-calculator-section"), panels=$(".pfm-calculator-grid > .card");
-  function closeCalculator(){workspace.hidden=true;panels.forEach(function(p){p.hidden=true;});$("[data-jump]").forEach(function(a){a.setAttribute("aria-expanded","false");});}
+  var workspace=$("#pfm-calculator-section"), panels=$$(".pfm-calculator-grid > .card");
+  function closeCalculator(){workspace.hidden=true;panels.forEach(function(p){p.hidden=true;});$$("[data-jump]").forEach(function(a){a.setAttribute("aria-expanded","false");});}
   function openCalculator(id){
     var selected=document.getElementById(id);
     if(!selected||panels.indexOf(selected)<0)return;
     panels.forEach(function(p){p.hidden=p!==selected;});
     workspace.hidden=false;
     $("#pfm-active-calculator-title").textContent=selected.querySelector("h3").textContent;
-    $("[data-jump]").forEach(function(a){a.setAttribute("aria-expanded",a.getAttribute("data-jump")===id?"true":"false");});
+    $$("[data-jump]").forEach(function(a){a.setAttribute("aria-expanded",a.getAttribute("data-jump")===id?"true":"false");});
     workspace.scrollIntoView({behavior:"smooth",block:"start"});
   }
   closeCalculator();
-  $("[data-jump]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();openCalculator(a.getAttribute("data-jump"));});});
+  $$("[data-jump]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();openCalculator(a.getAttribute("data-jump"));});});
   $("#pfm-close-calculator").addEventListener("click",function(){closeCalculator();$("#tool-tabs").scrollIntoView({behavior:"smooth",block:"start"});});
   if(location.hash&&document.getElementById(location.hash.slice(1)))openCalculator(location.hash.slice(1));
 }
