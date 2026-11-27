@@ -434,10 +434,14 @@ function avatar(f, size){
   var c = AVCOLORS[idx%AVCOLORS.length];
   return '<span class="avatar" style="background:linear-gradient(140deg,'+c[0]+','+c[1]+');'+(size?('width:'+size+'px;height:'+size+'px;font-size:'+Math.round(size*0.33)+'px;'):'')+'" aria-hidden="true">'+esc(initials(f.name))+logoImg(f)+'</span>';
 }
-/* Firm logo: the firm's own site icon, loaded from Google's favicon service. Falls back to the initials badge if missing or tiny. */
+/* Use each firm's own official-site icon first, then the high-resolution favicon service;
+   keep initials visible when the official asset is unavailable. */
 function logoImg(f){
-  var host=""; try { host=new URL(f.site).hostname; } catch(e){ return ""; }
-  return '<img class="avatar-logo" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(host)+'&sz=128" onerror="this.remove()" onload="if(this.naturalWidth<32)this.remove()">';
+  var host="", origin="";
+  try { var u=new URL(f.site); host=u.hostname; origin=u.origin; } catch(e){ return ""; }
+  var official=origin+"/favicon.ico";
+  var fallback="https://www.google.com/s2/favicons?domain="+encodeURIComponent(host)+"&sz=128";
+  return '<img class="avatar-logo" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="'+esc(official)+'" data-fallback="'+esc(fallback)+'" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;delete this.dataset.fallback;}else{this.remove();}" onload="if(this.naturalWidth<24 && this.dataset.fallback){this.src=this.dataset.fallback;delete this.dataset.fallback;}else if(this.naturalWidth<16){this.remove();}">';
 }
 function toast(msg){ var t=$("#toast"); t.textContent=msg; t.classList.add("show"); setTimeout(function(){ t.classList.remove("show"); },2200); }
 function copyText(txt, msg){
