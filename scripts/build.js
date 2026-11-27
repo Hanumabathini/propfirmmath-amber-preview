@@ -1,6 +1,6 @@
 /* Static build: pre-renders every route to its own HTML file (real titles, descriptions, canonical,
    and visible content for crawlers), plus a real 404 page. Run: SITE_URL=https://yourdomain.com node scripts/build.js */
-const fs = require('fs'), path = require('path');
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const { JSDOM, VirtualConsole } = require('jsdom');
 const SITE = (process.env.SITE_URL || 'https://propfirmmath-amber-preview.pages.dev').replace(/\/$/, '');
 const root = path.join(__dirname, '..'), out = path.join(root, 'dist');
@@ -9,14 +9,15 @@ fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive:
 
 // Forge/derive route list from the firm data and the existing sitemap.
 const old = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
-const routes = new Set([...old.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1] || '/'));
+const routes = new Set([...old.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1] || '/').filter(r => r !== '/quiz'));
 ['/account', '/login', '/reset', '/journal'].forEach(r => routes.add(r));
 
 const noLib = src.replace('<script src="/vendor/supabase.js"></script>', '');
 function render(route) {
   const vc = new VirtualConsole();
+  if (route === '/') vc.on('jsdomError', e => console.error('JSDOM runtime:', e.message, e.stack));
   const dom = new JSDOM(noLib, { url: SITE + route, runScripts: 'dangerously', pretendToBeVisual: true, virtualConsole: vc,
-    beforeParse(w) { w.scrollTo = () => {}; w.matchMedia = w.matchMedia || (() => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} })); w.IntersectionObserver = w.IntersectionObserver || class { observe() {} unobserve() {} disconnect() {} }; } });
+    beforeParse(w) { w.scrollTo = () => {}; w.HTMLElement.prototype.scrollIntoView = () => {}; w.matchMedia = w.matchMedia || (() => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} })); w.IntersectionObserver = w.IntersectionObserver || class { observe() {} unobserve() {} disconnect() {} }; } });
   const d = dom.window.document;
   const res = { title: d.title, desc: (d.querySelector('meta[name="description"]') || {}).content || '', seo: [...d.head.querySelectorAll('[data-seo]')].map(e => e.outerHTML).join(''), app: d.querySelector('#app').innerHTML, nav: d.querySelector('#mainnav').innerHTML, h1: d.querySelectorAll('#app h1').length };
   dom.window.close(); return res;
@@ -29,6 +30,12 @@ function page(route, r, extraHead) {
   h = h.replace('</head>', '<meta name="description" content="' + esc(r.desc) + '"><link rel="canonical" href="' + SITE + route + '">' + (extraHead || '') + (r.seo || '') + '</head>');
   h = h.replace(/(<nav[^>]*id="mainnav"[^>]*>)[\s\S]*?(<\/nav>)/, (m, a, b) => a + r.nav + b);
   h = h.replace(/(<main[^>]*id="app"[^>]*>)[\s\S]*?(<\/main>)/, (m, a, b) => a + r.app + b);
+  // Make market statistic cards robust even if an overlay or client-side handler
+  // interferes: the entire card remains a native anchor with a real destination.
+  if (['/futures', '/forex', '/crypto'].includes(route)) {
+    h = h.replace(/<a class="stat pfm-stat-link" href="([^"]+)"/g,
+      '<a class="stat pfm-stat-link" style="position:relative;z-index:2;pointer-events:auto;cursor:pointer" href="$1"');
+  }
   return h;
 }
 // Large inline scripts are written once to /js and referenced from every page (keeps dist small and cacheable).
@@ -46,7 +53,7 @@ function externalise(html) {
   return externaliseImages(html).replace(/<script>([\s\S]*?)<\/script>/g, (m, code) => {
     if (code.length < 5000) return m;
     let f = jsSeen.get(code);
-    if (!f) { f = 'js/s' + (jsN++) + '.js'; jsSeen.set(code, f); fs.writeFileSync(path.join(out, f), code); }
+    if (!f) { f = 'js/s' + (jsN++) + '-' + crypto.createHash('sha256').update(code).digest('hex').slice(0,12) + '.js'; jsSeen.set(code, f); fs.writeFileSync(path.join(out, f), code); }
     return '<script src="/' + f + '"></script>';
   });
 }
@@ -55,7 +62,7 @@ const done = new Set(), queue = [...routes], listed = new Set(routes);
 const hrefs = h => [...h.matchAll(/href="(\/[a-z0-9\-\/]*)"/g)].map(m => m[1].replace(/\/$/, '') || '/').filter(x => !x.startsWith('/vendor'));
 hrefs(src).forEach(h => queue.push(h));
 while (queue.length) {
-  const route = queue.shift(); if (done.has(route)) continue; done.add(route);
+  const route = queue.shift(); if (done.has(route) || route === '/quiz') continue; done.add(route);
   let r; try { r = render(route); } catch (e) { bad.push(route + ' ' + e.message); continue; }
   const missing = /page not found|something went wrong/i.test(r.app.slice(0, 600));
   if (r.h1 < 1 || r.app.length < 300 || missing) { (listed.has(route) ? bad : warn).push(route + (missing ? ' (not found / error)' : ' (empty render)')); continue; }
@@ -70,6 +77,18 @@ if (warn.length) console.warn('Linked but not renderable (check these links):\n'
 fs.writeFileSync(path.join(out, '404.html'), externalise(src.replace('</head>', '<meta name="robots" content="noindex"></head>')));
 if (fs.existsSync(path.join(root, 'og.png'))) fs.copyFileSync(path.join(root, 'og.png'), path.join(out, 'og.png'));
 fs.cpSync(path.join(root, 'vendor'), path.join(out, 'vendor'), { recursive: true });
+// Prevent browsers and edge caches from retaining old pre-rendered calculator markup.
+fs.writeFileSync(path.join(out, '_headers'), [
+  '/*.html', '  Cache-Control: no-cache, must-revalidate',
+  '/futures', '  Cache-Control: no-cache, must-revalidate',
+  '/forex', '  Cache-Control: no-cache, must-revalidate',
+  '/crypto', '  Cache-Control: no-cache, must-revalidate',
+  '/tools', '  Cache-Control: no-cache, must-revalidate',
+  '/tools.html', '  Cache-Control: no-cache, must-revalidate',
+  '/js/*', '  Cache-Control: public, max-age=31536000, immutable',
+  ''
+].join('\n'));
+fs.writeFileSync(path.join(out, '_redirects'), '/quiz /firms 301\n');
 fs.writeFileSync(path.join(out, 'robots.txt'), 'User-agent: *\nAllow: /\nSitemap: ' + SITE + '/sitemap.xml\n');
 fs.writeFileSync(path.join(out, 'sitemap.xml'), '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   [...routes].filter(r => !['/account', '/login', '/reset', '/journal'].includes(r)).sort().map(r => '  <url><loc>' + SITE + (r === '/' ? '/' : r) + '</loc></url>').join('\n') + '\n</urlset>\n');
