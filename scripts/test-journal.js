@@ -90,6 +90,7 @@ function install(window, state) {
           getSession() {
             return Promise.resolve({ data: { session: state.user ? { user: state.user } : null } });
           },
+          refreshSession() { return Promise.resolve({data:{session:state.user?{user:state.user}:null},error:null}); },
           signUp(args) {
             state.signUps.push(args);
             return Promise.resolve({ data: { user: { identities: [{}] }, session: null }, error: null });
@@ -108,6 +109,11 @@ function install(window, state) {
         },
         rpc(name,args){
           try {
+            if(name==="journal_set_test_tier"){
+              if(!state.user?.app_metadata?.pfm_membership_tester||!["basic","pro","elite"].includes(args.p_tier))throw Error("Membership test selection not permitted");
+              state.user={...state.user,app_metadata:{...state.user.app_metadata,pfm_membership:args.p_tier}};
+              return Promise.resolve({data:args.p_tier,error:null});
+            }
             if(name==="journal_remove_account"){
               const a=state.trader_accounts.find(x=>x.id===args.p_account&&x.user_id===state.user.id);
               if(!a)throw Error("Account not found");
@@ -177,6 +183,19 @@ function submit(form) {
 }
 
 (async () => {
+  const tester={id:"tester-1",email:"tester@example.com",app_metadata:{pfm_membership:"elite",pfm_membership_tester:true},user_metadata:{full_name:"Test User"}};
+  const testState=freshState(tester), testDom=load("https://propfirmmath-amber-preview.pages.dev/journal",testState),td=testDom.window.document;
+  try{
+    await waitFor(()=>td.getElementById("journalViewMemberships"),"tester journal");
+    td.getElementById("journalViewMemberships").click();
+    for(const [tier,limit] of [["basic",1],["pro",10],["elite",25]]){
+      const button=td.querySelector('[data-test-tier="'+tier+'"]');
+      ok("test switch available for "+tier,!!button&&!button.disabled,"switch button");
+      button.click();
+      await waitFor(()=>td.querySelector('.pfm-current-tier')?.textContent.toLowerCase().startsWith(tier+" ·"),"test switch "+tier);
+      ok("test switch refreshes account limit "+tier,td.querySelector(".pfm-member-usage").textContent.includes("of "+limit)&&testState.user.app_metadata.pfm_membership===tier,"membership limit");
+    }
+  }finally{testDom.window.close();}
   const user = { id: "user-1", email: "3rsj8cxh@mail.grokbot.com", app_metadata: { pfm_membership: "pro" }, user_metadata: { full_name: "Test Trader", country: "United States" } };
   const state = freshState(user);
   state.trader_accounts.push({ id: "a1", user_id: user.id, firm: "FTMO", plan: null, account_label: "Main journal", account_size: 0, stage: "evaluation", created_at: "2026-11-01T00:00:00Z" });
@@ -296,6 +315,7 @@ function submit(form) {
     ok("one membership section in Settings",d.querySelectorAll("#journalSettings #memberships").length===1,"membership scope");
     ok("private workspace identity only in Settings",!d.querySelector(".journal-side .journal-account")&&d.querySelector("#journalSettings .pfm-journal-profile").textContent.includes("Private workspace"),"sidebar identity");
     ok("settings owns journal membership upgrades", d.getElementById("journalSettings").textContent.includes("Pro") && d.getElementById("journalSettings").textContent.includes("Journal memberships & upgrades") && !d.querySelector('#journalSettings #memberships a[href="/account"]'), "membership");
+    ok("regular accounts cannot see free test switching",!d.querySelector("[data-test-tier]"),"restricted UI");
     ok("all membership prices visible without expanding",Array.from(d.querySelectorAll("#memberships .pfm-member-price")).map(x=>x.textContent).join("|")==="Free|$9.99|$19.99","prices");
     d.querySelector('[data-jtab="overview"]').click();
     const membershipCards=d.querySelectorAll("#journalSettings .pfm-membership-card");
