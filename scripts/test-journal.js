@@ -303,7 +303,8 @@ function submit(form) {
 
     ok("approved journal has six labeled SVG side tabs", d.querySelectorAll(".journal-side [data-jtab] svg").length === 6 && Array.from(d.querySelectorAll(".journal-side [data-jtab]")).every(b=>b.getAttribute("aria-label")), "side navigation");
     ok("approved journal has four primary metrics", d.querySelectorAll(".jv14-overview-top .journal-kpi").length === 4, "metric count");
-    ok("rules beside equity and top header trade button", !!d.querySelector(".journal-dashboard-top .jv14-rule-monitor") && !!d.querySelector(".jv14-header #journalQuickAdd"), "layout");
+    ok("rules beside equity and workspace mast trade button", !!d.querySelector(".journal-dashboard-top .jv14-rule-monitor") && !!d.querySelector(".journal-mast #journalQuickAdd"), "layout");
+    ok("journal uses a single compact site header",d.querySelectorAll("#mainnav a").length===1&&d.querySelector("#mainnav a").getAttribute("href")==="/firms"&&!d.querySelector(".pfm-journal .journal-brand")&&!d.querySelector("#app .pagehead")&&d.querySelector("#journalHeading").tagName==="H1","integrated journal layout");
     d.querySelector('[data-jtab="settings"]').click();
     ok("settings is a dedicated side tab", !d.getElementById("journalSettings").hidden && d.getElementById("journalOverview").hidden, "settings");
     d.querySelector('[data-jtab="overview"]').click();
