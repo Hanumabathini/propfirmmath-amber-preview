@@ -927,6 +927,21 @@ h1,h2,h3,h4{font-weight:650;letter-spacing:-.045em}
 @media(max-width:680px){.terra-deals-stage,.research-rankings{padding:var(--space-4)}.terra-feature-offers{grid-template-columns:minmax(0,1fr)}.terra-copy h1{font-size:clamp(42px,10vw,60px)}.terra-workflow-grid a,.terra-workflow-grid a:first-child,.terra-workflow-grid a:last-child{padding:var(--space-4);min-height:150px}.terra-workflow-grid a strong{font-size:24px}#deal-active-list>.deal-card,#deal-ended-list>.deal-card,.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n),.firm-grid>.firm-card,#app .pfm-tool-directory .tool-card,#app .pfm-tool-directory .tool-card:nth-child(odd){grid-column:1/-1}.market-landing-card{min-height:0}#app .pfm-tool-directory .tool-card{min-height:150px!important}[data-terra-route=deals] .pagehead,[data-terra-route=compare] .pagehead,[data-terra-route=tools] .pagehead{padding:var(--space-4)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+
+<style>
+/* Finite, staggered transitions: only the first visible group is animated. */
+.terra-deal-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}
+.terra-feature-offer,.market-landing-card,#deal-active-list>.deal-card:nth-child(-n+6),.firm-grid>.firm-card:nth-child(-n+6){animation:terra-enter .42s var(--ease) both}
+.terra-feature-offer:nth-child(2),.market-landing-card:nth-child(2),#deal-active-list>.deal-card:nth-child(2),.firm-grid>.firm-card:nth-child(2){animation-delay:45ms}
+.terra-feature-offer:nth-child(3),.market-landing-card:nth-child(3),#deal-active-list>.deal-card:nth-child(3),.firm-grid>.firm-card:nth-child(3){animation-delay:90ms}
+.market-landing-card:nth-child(4),#deal-active-list>.deal-card:nth-child(4),.firm-grid>.firm-card:nth-child(4){animation-delay:135ms}
+.market-landing-card:nth-child(5),#deal-active-list>.deal-card:nth-child(5),.firm-grid>.firm-card:nth-child(5){animation-delay:180ms}
+.market-landing-card:nth-child(6),#deal-active-list>.deal-card:nth-child(6),.firm-grid>.firm-card:nth-child(6){animation-delay:225ms}
+.terra-workflow-grid a:nth-child(4),.market-landing-card:nth-child(4){background:#586e50}
+.terra-market:focus-visible,.terra-index-foot :focus-visible{outline-color:var(--ivory)!important}
+.market-landing-card:nth-child(1):focus-visible,.market-landing-card:nth-child(4):focus-visible,.market-landing-card:nth-child(5):focus-visible{outline:3px solid var(--clay-ink)!important}
+@media(prefers-reduced-motion:reduce){.terra-feature-offer,.market-landing-card,#deal-active-list>.deal-card,.firm-grid>.firm-card{animation:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2136,6 +2151,7 @@ function pageDeals(){
   go(pageHead('<a href="/">Home</a> · Deals', "Prop firm deals &amp; discount codes",
     "Published promotions from the " + SNAPSHOT + " research. A code with an end date leaves this list after that moment. Confirm every offer at checkout.") +
     '<div class="card deal-summary" style="margin-top:18px"><strong id="active-deal-count">' + shown.length + '</strong> current ' + (dealState.market === "all" ? "offers" : MARKETS[dealState.market].label + " offers") + ' · <span class="mut">Last researched ' + SNAPSHOT + '. A missing end date means the expiry was not published, not that the code lasts forever.</span></div>' +
+    '<div class="terra-deal-controls"><button class="btn ghost small" type="button" id="terra-clock-toggle" aria-pressed="false">Pause countdowns</button><span class="mut small">Timers use published expiry dates, not a live pricing feed.</span></div>' +
     '<div class="pill-tabs" id="deal-markets" style="margin-top:16px">' + ["all","futures","forex","crypto","perps","stocks","prediction"].map(function(k){ return '<button type="button" data-deal="' + k + '" class="' + (dealState.market === k ? "on" : "") + '">' + (k === "all" ? "All markets" : MARKETS[k].label) + '</button>'; }).join("") + '</div>' +
     '<div id="deal-active-list" class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));margin-top:16px">' +
     (shown.length ? shown.map(function(x){ return dealCardHTML(x.f, x.c, false); }).join("") : '<div class="empty-note"><h3>No current offers in this market</h3><p>Expired codes stay in the ended list. Try another market, or check back after the next research pass.</p></div>') +
@@ -2145,17 +2161,24 @@ function pageDeals(){
   bindCopy();
   $$("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
   if (window.pfmDealTimer) clearInterval(window.pfmDealTimer);
+  var clocksPaused=!!dealState.clocksPaused;
+  var clockToggle=$("#terra-clock-toggle");
+  function updateClockToggle(){if(clockToggle){clockToggle.textContent=clocksPaused?"Resume countdowns":"Pause countdowns";clockToggle.setAttribute("aria-pressed",clocksPaused?"true":"false");}}
+  if(clockToggle)clockToggle.addEventListener("click",function(){clocksPaused=!clocksPaused;dealState.clocksPaused=clocksPaused;updateClockToggle();if(!clocksPaused)updateDealClocks();});
+  updateClockToggle();
   function updateDealClocks(){
     var expiredNow=false;
     $$("#deal-active-list [data-terra-deadline]").forEach(function(el){
       var remaining=new Date(el.getAttribute("data-terra-deadline")).getTime()-nowMs();
-      if(remaining<=0){expiredNow=true;return;}
+      if(remaining<0){expiredNow=true;return;}
+      if(clocksPaused){el.textContent="Countdown paused · see expiry above";return;}
       var secs=Math.ceil(remaining/1000),days=Math.floor(secs/86400),hours=Math.floor(secs%86400/3600),mins=Math.floor(secs%3600/60),ss=secs%60;
       el.textContent="Time remaining: "+(days?days+"d ":"")+String(hours).padStart(2,"0")+":"+String(mins).padStart(2,"0")+":"+String(ss).padStart(2,"0");
     });
-    if(expiredNow){var y=window.scrollY||0;pageDeals();window.scrollTo(0,y);}
+    if(expiredNow){var y=window.scrollY||0;pageDeals();window.scrollTo(0,y);return true;}
+    return false;
   }
-  updateDealClocks();
+  if(updateDealClocks())return;
   window.pfmDealTimer=setInterval(function(){if(location.pathname!=="/deals"){clearInterval(window.pfmDealTimer);return;}updateDealClocks();},1000);
 }
 
