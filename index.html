@@ -1468,7 +1468,7 @@ function pageHome(){
   }).join("");
   go(
   '<section class="terra-hero"><div class="terra-copy"><h1>Better decisions begin with better numbers.</h1><p>Independent prop firm research. Compare account rules, understand costs and manage your trading journey with '+COUNTS.total+' firms in the directory.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div><p class="terra-method">Rankings follow published rules and ratings, never commission. <a href="/methodology">How we rank</a></p></div>'+
-  '<div class="terra-index"><div class="terra-index-head"><div><span>Research directory</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><svg class="terra-orbit" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="43" fill="none" stroke="#d9c9b2" stroke-width="1"/><circle cx="60" cy="60" r="51" fill="none" stroke="#6b7f5b" stroke-width="1" stroke-dasharray="2 5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c96f4f" stroke-width="6" stroke-dasharray="160 214" transform="rotate(-90 60 60)"/><g class="terra-orbit-dot"><circle cx="60" cy="9" r="4" fill="#f8f6ee"/></g></svg></div>'+
+  '<div class="terra-index"><div class="terra-index-head"><div><span>Research directory</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><svg class="terra-orbit" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="43" fill="none" stroke="#d9c9b2" stroke-width="1"/><circle cx="60" cy="60" r="51" fill="none" stroke="#6b7f5b" stroke-width="1" stroke-dasharray="2 5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c96f4f" stroke-width="6" stroke-dasharray="6 30" transform="rotate(-90 60 60)"/><g class="terra-orbit-dot"><circle cx="60" cy="9" r="4" fill="#f8f6ee"/></g></svg></div>'+
   '<div class="terra-market-list">'+marketIndex+'</div><div class="terra-index-foot"><button type="button" id="terra-reset">All markets</button><a id="terra-market-link" href="/firms">Explore directory</a></div><p class="terra-snapshot">Research snapshot: '+SNAPSHOT+'. Markets overlap.</p></div></section>'+
   '<section class="terra-workflow"><h2>Your trading decisions, in one place.</h2><div class="terra-workflow-grid"><a href="/firms"><span>01</span><strong>Discover</strong><span>Research firms and account programs.</span></a><a href="/compare"><span>02</span><strong>Compare</strong><span>Evaluate account prices and rules.</span></a><a href="/tools"><span>03</span><strong>Calculate</strong><span>Run the numbers before buying.</span></a><a href="/journal"><span>04</span><strong>Track</strong><span>Manage your trading accounts.</span></a></div></section>'+
   '<section class="research-rankings"><div class="section-mast"><div><h2>The highest-rated firms right now</h2><p class="mut">Ranked by verified numeric trader ratings from the '+SNAPSHOT+' research. Firms without a verified numeric rating remain listed in the directory.</p></div><a class="btn ghost small" href="/firms">Explore all firms</a></div>'+
@@ -1487,7 +1487,7 @@ function pageHome(){
     bindCopy();
   }
   draw();
-  $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ homeState.topFilter=b.getAttribute("data-m"); homeState.topShow=5; $$("#home-tabs button").forEach(function(x){ x.classList.toggle("on", x===b); }); draw(); }); });
+  $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ selectTerraMarket(b.getAttribute("data-m")); }); });
   function selectTerraMarket(key){
     var items=$$("[data-terra-market]");
     var chosen=items.filter(function(el){return el.getAttribute("data-terra-market")===key;})[0];
@@ -1496,8 +1496,10 @@ function pageHome(){
     if(total){total.textContent=chosen?chosen.getAttribute("data-count"):COUNTS.total;total.classList.remove("terra-count-change");void total.offsetWidth;total.classList.add("terra-count-change");}
     if(label)label.textContent=chosen?MARKETS[key].label+" firms":"Firms across six markets";
     if(link){link.href=chosen?"/"+key:"/firms";link.textContent=chosen?"Explore "+MARKETS[key].label:"Explore directory";}
-    var tab=$$("#home-tabs button").filter(function(el){return el.getAttribute("data-m")===(chosen?key:"all");})[0];
-    if(tab)tab.click();
+    var selectedKey=chosen?key:"all";
+    homeState.topFilter=selectedKey;homeState.topShow=5;
+    $("#home-tabs button").forEach(function(el){el.classList.toggle("on",el.getAttribute("data-m")===selectedKey);});
+    draw();
   }
   $$("[data-terra-market]").forEach(function(el){el.addEventListener("click",function(){selectTerraMarket(el.getAttribute("data-terra-market"));});});
   var reset=$("#terra-reset");if(reset)reset.addEventListener("click",function(){selectTerraMarket("all");});
