@@ -3223,7 +3223,7 @@ function renderJournal(){
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
     '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
     '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded (unspecified)</option><option value="sim_funded">Sim funded</option><option value="live_funded">Live funded</option><option value="personal">Personal</option></select></div>' +
-    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div</div>' +
+    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div></div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel">Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>' +
     '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move records and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var sortedTrades=rows.slice().sort(function(a,b){return String(b.traded_at).localeCompare(String(a.traded_at))||String(a.id).localeCompare(String(b.id));});
@@ -3322,6 +3322,10 @@ function renderJournal(){
     '<div id="journalInsights" role="tabpanel"' + shown("insights") + ">" + journalInsights(rows) + "</div>" +
     '<div id="journalSettings" role="tabpanel"' + shown("settings") + '>'+pfmMembershipCards(PM_USER,journalState.accounts.length)+'<div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export all trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
     "</div></section>");
+  app.querySelectorAll("[data-jtab]").forEach(function(btn){
+    btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
+  });
+  $("#journalViewMemberships").addEventListener("click",function(){journalApplyTab("settings");var h=$("#journalMembershipHeading");if(h){h.focus();if(h.scrollIntoView)h.scrollIntoView({block:"nearest"});}});
   function journalSelectedPlan(){
     var name = $("#newPlan").value;
     if (!name || name === "__custom__") return null;
@@ -3667,7 +3671,7 @@ function renderJournal(){
       toast(text);
     });
   });
-  $("#journalViewMemberships").addEventListener("click",function(){journalApplyTab("settings");var h=$("#journalMembershipHeading");if(h){h.focus();if(h.scrollIntoView)h.scrollIntoView({block:"nearest"});}});
+
   var quick = $("#journalQuickAdd");
   if (quick) quick.addEventListener("click", function(){ if(!hasAccounts){journalApplyTab("accounts");$("#journalAddAccount").focus();return;} journalApplyTab("trades"); var inst = $("#jInst"); if (inst) inst.focus(); });
   var rulePicker=$("#journalRuleAccount");
@@ -3676,9 +3680,7 @@ function renderJournal(){
     app.querySelectorAll("[data-rule-index]").forEach(function(card){card.hidden=card.getAttribute("data-rule-index")!==selected;});
   });
   var viewTrades=$("#jv14ViewTrades");if(viewTrades)viewTrades.addEventListener("click",function(){journalApplyTab("trades");});
-  app.querySelectorAll("[data-jtab]").forEach(function(btn){
-    btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
-  });
+
   var symbolToggle = $("#journalSymbolsToggle");
   if (symbolToggle) symbolToggle.addEventListener("click", function(){
     journalState.showAllSymbols = !journalState.showAllSymbols;
