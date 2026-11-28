@@ -1233,6 +1233,47 @@ header :focus-visible{outline-color:var(--ivory)!important}
 }
 @media(prefers-reduced-motion:reduce){.terra-cinematic .terra-coin-object,.terra-cinematic .terra-medallion{animation:none!important}}
 </style>
+
+<style>
+/* Kinetic gallery / original implementation. Spatially distinct from the old central card. */
+.kinetic-hero{padding:40px 0 0}
+.kinetic-heading{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:end;gap:40px;margin-bottom:32px}
+.kinetic-heading h1{font-size:clamp(58px,8.3vw,116px);font-weight:700;line-height:.93;letter-spacing:-.065em;max-width:9ch;margin:0}
+.kinetic-heading p{font-size:19px;line-height:1.55;max-width:44ch;margin:0 0 20px;color:var(--muted)}
+.kinetic-heading .hero-cta{margin:0}
+.kinetic-stage.terra-3d-scene{display:block;position:relative;min-height:0;height:clamp(350px,37vw,510px);padding:0;isolation:isolate;background:radial-gradient(ellipse at 50% 35%,#4f6048,var(--forest) 55%,#1b2a20 100%);border-radius:18px;overflow:hidden;perspective:none;box-shadow:0 18px 42px rgba(46,58,47,.13)}
+.kinetic-stage:before{display:none}
+.kinetic-horizon{position:absolute;left:50%;top:10%;transform:translateX(-50%);font-family:var(--font-display);font-size:clamp(45px,12vw,166px);font-weight:700;letter-spacing:-.07em;color:rgba(248,246,238,.055);white-space:nowrap;pointer-events:none}
+.kinetic-floor{position:absolute;left:50%;top:57%;width:86%;height:36%;border-radius:50%;transform:translate(-50%,-50%);border:1px solid rgba(217,201,178,.35);background:radial-gradient(ellipse,rgba(217,201,178,.10),transparent 68%);box-shadow:0 0 0 22px rgba(217,201,178,.045),0 0 0 44px rgba(217,201,178,.025);pointer-events:none}
+.kinetic-drag-area{position:absolute;inset:0 0 66px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.kinetic-drag-area.is-dragging{cursor:grabbing}
+.kinetic-stage .terra-orbit-layer{display:block;position:absolute;inset:0;width:auto;overflow:visible;transform:none;pointer-events:none;padding:0}
+.kinetic-stage .terra-medallion{display:flex;position:absolute;left:50%;top:56%;width:128px;min-height:0;animation:none!important;transform:none;pointer-events:auto;gap:10px;will-change:transform;transition:opacity .15s linear;color:var(--ivory);flex:none}
+.kinetic-stage .terra-coin-object{animation:none!important;scale:1;width:clamp(86px,11vw,148px);height:clamp(86px,11vw,148px);transform:rotateY(-12deg) rotateX(10deg);transition:transform .4s var(--tc-timing)}
+.kinetic-stage .terra-medallion.kinetic-near .terra-coin-object{transform:rotateY(0) rotateX(4deg)}
+.kinetic-stage .terra-medallion:hover .terra-coin-object,.kinetic-stage .terra-medallion:focus-visible .terra-coin-object{transform:rotateY(20deg) translateY(-9px)}
+.kinetic-stage .terra-coin-object .avatar{width:65%!important;height:65%!important;font-size:25px!important}
+.kinetic-stage .terra-coin-name{font-size:12px;border:0;background:var(--forest);padding:4px 8px;border-radius:4px;max-width:138px}
+.kinetic-stage .terra-medallion:focus-visible{z-index:250!important}
+.kinetic-ring-controls{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:12px;z-index:300;width:max-content;max-width:95%}
+.kinetic-ring-controls>button{font:inherit;cursor:pointer;border:1px solid var(--sand);background:var(--ivory);color:var(--forest);border-radius:50%;width:42px;height:42px;min-width:42px}
+.kinetic-ring-controls #kinetic-selected{color:var(--ivory);font-size:14px;font-weight:650;min-width:100px;text-align:center;max-width:150px;overflow-wrap:anywhere}
+.kinetic-ring-controls .terra-motion-toggle{display:block;position:static;transform:none;width:auto;min-width:0;height:42px;padding:0 12px;border-radius:6px;background:transparent;color:var(--ivory);font-size:12px}
+.kinetic-instruction{position:absolute;top:18px;left:22px;color:var(--sand);font-size:12px;pointer-events:none}
+.kinetic-research{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);align-items:center;gap:48px;padding:70px 0 34px;border-bottom:1px solid var(--sand)}
+.kinetic-research h2{font-size:clamp(39px,5vw,64px);line-height:1.04;margin:0}
+.kinetic-research-copy>p{font-size:17px;color:var(--muted);max-width:39ch}
+.kinetic-research-copy .terra-method{font-size:13px}
+.kinetic-research .terra-index{grid-column:auto;background:var(--forest);padding:24px;border-radius:12px;animation:none}
+.kinetic-research .terra-market{min-height:43px}
+.kinetic-research .terra-command-header #terra-total{font-size:55px}
+.kinetic-research .terra-command-header{border-color:var(--sand)}
+.kinetic-tactile{transform:perspective(900px) rotateX(var(--kinetic-y,0deg)) rotateY(var(--kinetic-x,0deg));transition:transform .2s var(--tc-timing),background-color .2s ease}
+.kinetic-tactile:hover{position:relative;z-index:2}
+@media(max-width:820px){.kinetic-heading{grid-template-columns:1fr;gap:20px}.kinetic-heading h1{font-size:clamp(52px,11vw,82px)}.kinetic-hero{padding-top:28px}.kinetic-stage.terra-3d-scene{height:360px;border-radius:12px}.kinetic-stage .terra-medallion{width:100px;top:58%}.kinetic-stage .terra-coin-object{width:98px;height:98px}.kinetic-research{grid-template-columns:1fr;gap:22px;padding-top:44px}.kinetic-ring-controls{gap:8px}.kinetic-ring-controls #kinetic-selected{min-width:72px;max-width:100px;font-size:12px}.kinetic-ring-controls .terra-motion-toggle{padding-inline:8px}.kinetic-stage .terra-orbit-layer{scroll-snap-type:none}}
+@media(max-width:480px){.kinetic-stage.terra-3d-scene{height:310px}.kinetic-stage .terra-coin-object{width:80px;height:80px}.kinetic-stage .terra-medallion{width:92px}.kinetic-instruction{left:12px;font-size:11px}.kinetic-ring-controls>button{width:36px;min-width:36px;height:36px}.kinetic-ring-controls .terra-motion-toggle{height:36px}.kinetic-research .terra-index{padding:16px}}
+@media(prefers-reduced-motion:reduce){.kinetic-stage .terra-medallion,.kinetic-stage .terra-coin-object,.kinetic-tactile{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -1850,6 +1891,81 @@ window.addEventListener("popstate", route);
 "use strict";
 /* ================= HOME — intro + firms only ================= */
 var homeState = { topFilter:"all", topShow:5 };
+
+/* Original kinetic controller: projected circular stage, direct drag + damped velocity.
+   Folio is an interaction reference; no third-party source or branding is embedded. */
+function mountKineticRing(scene){
+  if(!scene)return;
+  var area=scene.querySelector("#kinetic-ring"),links=Array.from(scene.querySelectorAll(".terra-medallion")),pause=scene.querySelector("#terra-motion-toggle"),prev=scene.querySelector("#kinetic-prev"),next=scene.querySelector("#kinetic-next"),label=scene.querySelector("#kinetic-selected");
+  if(!area||!links.length||!pause)return;
+  var reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches),step=2*Math.PI/links.length,phase=0,speed=0,frame=0,last=0,visible=true,hover=false,paused=reduced,drag=null,blockClick=false,selected=-1,focusHold=0;
+  function render(){
+    var width=area.clientWidth||800,small=width<650,radius=Math.max(116,Math.min(width*.39,490)),depth=small?38:64,frontIndex=0,frontValue=-Infinity;
+    links.forEach(function(link,i){
+      var p=i*step+phase,z=Math.cos(p),x=Math.sin(p)*radius,y=-z*depth,scale=.57+.43*(z+1)/2;
+      if(z>frontValue){frontValue=z;frontIndex=i;}
+      link.style.transform="translate3d(calc(-50% + "+x.toFixed(1)+"px),calc(-50% + "+y.toFixed(1)+"px),0) scale("+scale.toFixed(3)+")";
+      link.style.zIndex=String(Math.round((z+1)*100));
+      link.style.opacity=String(.48+.52*(z+1)/2);
+      link.classList.toggle("kinetic-near",z>.76);
+    });
+    if(frontIndex!==selected){selected=frontIndex;if(label)label.textContent=links[selected].querySelector(".terra-coin-name").textContent;scene.setAttribute("data-ring-index",String(selected));}
+    scene.setAttribute("data-ring-angle",phase.toFixed(3));
+  }
+  function tick(t){
+    frame=0;if(!scene.isConnected)return;
+    if(!visible||document.hidden){last=0;return;}
+    var dt=last?Math.min(.05,(t-last)/1000):0;last=t;
+    if(!drag){
+      var target=paused||focusHold>t?0:(hover?-.035:-.24);
+      speed+=(target-speed)*Math.min(1,dt*3.7);
+      if(!paused&&focusHold<=t)phase+=speed*dt;
+    }
+    render();if(!paused||drag||Math.abs(speed)>.001)frame=requestAnimationFrame(tick);
+  }
+  function wake(){if(!frame&&visible&&!document.hidden&&scene.isConnected&&!reduced){last=0;frame=requestAnimationFrame(tick);}}
+  function stop(){if(frame)cancelAnimationFrame(frame);frame=0;last=0;speed=0;}
+  function nudge(direction){phase+=direction*step;speed=0;focusHold=performance.now()+1600;render();wake();}
+  function setPaused(v){paused=v;scene.classList.toggle("terra-orbit-paused",v);pause.setAttribute("aria-pressed",String(v));pause.textContent=reduced?"Motion reduced":v?"Resume motion":"Pause motion";if(v)stop();else wake();}
+  pause.addEventListener("click",function(){setPaused(!paused);});
+  if(prev)prev.addEventListener("click",function(){nudge(1);});
+  if(next)next.addEventListener("click",function(){nudge(-1);});
+  area.addEventListener("pointerenter",function(){hover=true;});
+  area.addEventListener("pointerleave",function(){hover=false;});
+  area.addEventListener("pointerdown",function(e){if(e.button!==0||!e.isPrimary)return;drag={id:e.pointerId,origin:e.clientX,x:e.clientX,y:e.clientY,t:performance.now(),moved:false};speed=0;blockClick=false;});
+  area.addEventListener("pointermove",function(e){
+    if(!drag||e.pointerId!==drag.id)return;
+    var dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+    if(!drag.moved&&Math.abs(e.clientX-drag.origin)>7&&Math.abs(dx)>=Math.abs(dy)){drag.moved=true;area.classList.add("is-dragging");try{area.setPointerCapture(e.pointerId);}catch(err){}}
+    var now=performance.now();
+    if(drag.moved){var shift=dx/Math.max(90,area.clientWidth*.30);phase+=shift;speed=Math.max(-2.8,Math.min(2.8,shift/Math.max(.012,(now-drag.t)/1000)));render();}
+    drag.x=e.clientX;drag.y=e.clientY;drag.t=now;
+  });
+  function release(e){if(!drag||e.pointerId!==drag.id)return;blockClick=drag.moved;drag=null;area.classList.remove("is-dragging");if(blockClick)setTimeout(function(){blockClick=false;},100);if(paused||reduced)speed=0;wake();}
+  area.addEventListener("pointerup",release);area.addEventListener("pointercancel",release);area.addEventListener("lostpointercapture",release);
+  area.addEventListener("click",function(e){if(blockClick){e.preventDefault();e.stopImmediatePropagation();}},true);
+  links.forEach(function(link,i){link.addEventListener("focus",function(){phase=-i*step;speed=0;focusHold=performance.now()+2000;render();});});
+  area.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();nudge(e.key==="ArrowLeft"?1:-1);}});
+  var io=null,ro=null,cleanup=null;
+  if(typeof IntersectionObserver==="function"){io=new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;if(visible){render();wake();}else stop();});io.observe(scene);}
+  if(typeof ResizeObserver==="function"){ro=new ResizeObserver(render);ro.observe(area);}
+  function visibility(){if(document.hidden)stop();else wake();}
+  document.addEventListener("visibilitychange",visibility);
+  if(typeof MutationObserver==="function"){cleanup=new MutationObserver(function(){if(!scene.isConnected){stop();if(io)io.disconnect();if(ro)ro.disconnect();document.removeEventListener("visibilitychange",visibility);cleanup.disconnect();}});cleanup.observe(app,{childList:true});}
+  if(reduced){pause.disabled=true;setPaused(true);}
+  render();wake();
+}
+function mountTerraTactile(root){
+  if(!root||!window.matchMedia||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var nodes=Array.from(root.querySelectorAll(".terra-feature-offer,.terra-workbench-item,.terra-rail-cell"));
+  nodes.forEach(function(el){
+    el.classList.add("kinetic-tactile");
+    var queued=0,x=0,y=0;
+    el.addEventListener("pointermove",function(e){if(e.pointerType==="touch")return;x=e.clientX;y=e.clientY;if(queued)return;queued=requestAnimationFrame(function(){queued=0;if(!el.isConnected)return;var box=el.getBoundingClientRect();if(!box.width||!box.height)return;el.style.setProperty("--kinetic-x",((x-box.left)/box.width-.5)*10+"deg");el.style.setProperty("--kinetic-y",((y-box.top)/box.height-.5)*-8+"deg");});});
+    el.addEventListener("pointerleave",function(){if(queued)cancelAnimationFrame(queued);queued=0;el.style.removeProperty("--kinetic-x");el.style.removeProperty("--kinetic-y");});
+  });
+}
+
 function pageHome(){
   var half = Math.ceil(FIRMS.length/2);
   function mqRow(list, rev){
@@ -1879,10 +1995,9 @@ function pageHome(){
     return '<a class="terra-medallion" href="/firm/'+esc(f.slug)+'" aria-label="Research '+esc(f.name)+'" style="--scale:'+scale+';--phase:'+(-30*i/orbitFirms.length).toFixed(3)+'s;--ox:'+Math.cos(phase).toFixed(4)+';--oy:'+Math.sin(phase).toFixed(4)+'"><span class="terra-coin-object" aria-hidden="true"><span class="terra-coin-rim"></span><span class="terra-coin-face terra-coin-front">'+avatar(f,58)+'</span><span class="terra-coin-face terra-coin-back">'+esc(initials(f.name))+'</span></span><span class="terra-coin-name">'+esc(f.name)+'</span></a>';
   }).join("");
   go(
-  '<section class="terra-hero terra-cinematic"><div class="terra-3d-scene" id="terra-orbit-scene"><div class="terra-orbit-track" aria-hidden="true"></div><div class="terra-orbit-track terra-orbit-track-secondary" aria-hidden="true"></div><div class="terra-orbit-layer">'+orbitMarkup+'</div>'+
-  '<div class="terra-hero-content"><div class="terra-copy"><h1>Find your edge.</h1><p>Independent research across '+COUNTS.total+' prop firms. Compare account rules and costs before you trade.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div></div>'+
-  '<div class="terra-index terra-command"><div class="terra-command-header"><div><span>Market explorer</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><div class="terra-command-caption">Select a market</div></div><div class="terra-market-list">'+marketIndex+'</div><div class="terra-index-foot"><button type="button" id="terra-reset">All markets</button><a id="terra-market-link" href="/firms">Explore directory</a></div></div>'+
-  '<p class="terra-hero-disclosure">Research snapshot: '+SNAPSHOT+'. Markets overlap. <a href="/methodology">How we rank</a></p></div><button type="button" id="terra-motion-toggle" class="terra-motion-toggle" aria-pressed="false">Pause motion</button></div></section>'+
+  '<section class="kinetic-hero"><div class="kinetic-heading"><h1>Trade on your terms.</h1><div><p>Explore '+COUNTS.total+' prop firms. Know the rules, the costs and the payout conditions before you commit.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div></div></div>'+
+  '<div class="terra-3d-scene kinetic-stage" id="terra-orbit-scene"><div class="kinetic-floor" aria-hidden="true"></div><div class="kinetic-horizon" aria-hidden="true">PropFirmMath</div><div class="kinetic-drag-area" id="kinetic-ring" aria-label="Interactive firm carousel. Drag horizontally or use previous and next."><div class="terra-orbit-layer">'+orbitMarkup+'</div></div><div class="kinetic-ring-controls"><button type="button" id="kinetic-prev" aria-label="Previous firm">←</button><span id="kinetic-selected">Explore firms</span><button type="button" id="kinetic-next" aria-label="Next firm">→</button><button type="button" id="terra-motion-toggle" class="terra-motion-toggle" aria-pressed="false">Pause motion</button></div><span class="kinetic-instruction">Drag to spin · Select a firm to research</span></div>'+
+  '<div class="kinetic-research"><div class="kinetic-research-copy"><h2>Find the market<br>that fits you.</h2><p>Filter the research by the instruments you trade. Counts come directly from our directory.</p><p class="terra-method">Research snapshot: '+SNAPSHOT+'. Markets overlap. <a href="/methodology">How we rank</a></p></div><div class="terra-index terra-command"><div class="terra-command-header"><div><span>Market explorer</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><div class="terra-command-caption">Select a market</div></div><div class="terra-market-list">'+marketIndex+'</div><div class="terra-index-foot"><button type="button" id="terra-reset">All markets</button><a id="terra-market-link" href="/firms">Explore directory</a></div></div></div></section>'+
   '<section class="terra-discover-band"><div class="terra-discover-head"><h2>Choose your market.</h2><a href="/firms" class="btn ghost">Full directory</a></div><div class="terra-market-rail">'+["futures","forex","crypto","perps","stocks","prediction"].map(function(k){return '<a href="/'+k+'" class="terra-rail-cell"><span class="terra-rail-art">'+terraMarketArt(k)+'</span><strong>'+esc(MARKETS[k].label)+'</strong><span>'+dirCount(k)+' firms</span></a>';}).join("")+'</div></section>'+
   '<section class="terra-deals-stage terra-offers-editorial"><div class="terra-deals-heading"><h2>Make the fee count.</h2><p>Published prop firm deals from '+SNAPSHOT+'. Confirm all terms at checkout.</p><a class="btn" href="/deals">Explore all deals</a></div><div class="terra-feature-offers">'+(featuredMarkup||'<p>No percentage offers in the current research snapshot.</p>')+'</div></section>'+
   '<section class="terra-workflow terra-workbench"><div class="terra-workbench-title"><h2>Do the math.<br>Then make the move.</h2><p>From research to evaluation costs to your own recorded performance.</p></div><div class="terra-workbench-tools"><a href="/compare" class="terra-workbench-item"><span class="terra-tool-art" aria-hidden="true"><i></i><i></i><i></i></span><strong>Compare accounts</strong><span>See rules and prices side by side.</span></a><a href="/tools" class="terra-workbench-item"><span class="terra-tool-art terra-tool-calc" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>Calculators</strong><span>Work through the numbers before buying.</span></a><a href="/journal" class="terra-workbench-item"><span class="terra-tool-art terra-tool-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>Trading journal</strong><span>Track your own accounts and results.</span></a></div></section>'+
@@ -1902,17 +2017,8 @@ function pageHome(){
     bindCopy();
   }
   draw();
-  var scene=$("#terra-orbit-scene"),motion=$("#terra-motion-toggle");
-  var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(scene&&motion){
-    if(reduceMotion){scene.classList.add("terra-orbit-paused");motion.textContent="Motion reduced";motion.disabled=true;}
-    else {
-      motion.addEventListener("click",function(){var paused=scene.classList.toggle("terra-orbit-paused");motion.setAttribute("aria-pressed",String(paused));motion.textContent=paused?"Resume motion":"Pause motion";});
-      scene.addEventListener("pointermove",function(e){if(e.pointerType==="touch")return;var rect=scene.getBoundingClientRect();if(!rect.width||!rect.height)return;scene.style.setProperty("--tilt-x",((e.clientY-rect.top)/rect.height-.5)*-5+"deg");scene.style.setProperty("--tilt-y",((e.clientX-rect.left)/rect.width-.5)*7+"deg");scene.style.setProperty("--light-x",((e.clientX-rect.left)/rect.width*100)+"%");scene.style.setProperty("--light-y",((e.clientY-rect.top)/rect.height*100)+"%");});
-      scene.addEventListener("pointerleave",function(){scene.style.setProperty("--tilt-x","0deg");scene.style.setProperty("--tilt-y","0deg");});
-    }
-  }
-  if(scene&&typeof IntersectionObserver==="function"){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){scene.classList.toggle("terra-offscreen",!entry.isIntersecting);});});observer.observe(scene);if(typeof MutationObserver==="function"){var cleanup=new MutationObserver(function(){if(!scene.isConnected){observer.disconnect();cleanup.disconnect();}});cleanup.observe(app,{childList:true});}}
+  mountKineticRing($("#terra-orbit-scene"));
+  mountTerraTactile(app);
   $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ selectTerraMarket(b.getAttribute("data-m")); }); });
   function selectTerraMarket(key){
     var items=$$("[data-terra-market]");
