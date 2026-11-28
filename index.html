@@ -832,6 +832,16 @@ html[data-pfm-route="/login"] #app .auth-layout>.card,html[data-pfm-route="/acco
 #app .pfm-compare-vs{position:absolute;z-index:1;left:50%;top:27px;transform:translateX(-50%);background:var(--bg2);width:30px;height:30px;font-size:10px}
 #app .pfm-selected-price{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;margin-top:14px;border-top:1px solid var(--line)}
 #app .pfm-selected-price strong{font-size:19px;text-align:right}
+#app .pfm-compare-pair{align-items:stretch}
+#app .pfm-compare-slot{display:grid;grid-template-rows:40px repeat(5,minmax(54px,auto));gap:8px!important;align-content:start}
+#app .pfm-compare-slot-head{margin:0;min-height:40px}
+#app .pfm-compare-field{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:18px 42px;gap:4px;min-width:0;align-items:center}
+#app .pfm-compare-field .fl{margin:0!important;line-height:1.25;font-weight:650;font-size:12px}
+#app .pfm-compare-field select{width:100%;min-width:0;height:42px;margin:0!important;text-overflow:ellipsis}
+#app .pfm-compare-field select:disabled{opacity:.85;cursor:default}
+#app .pfm-compare-vs{top:50%;transform:translate(-50%,-50%)}
+#app .comparison-table table.dt th:not(:first-child),#app .comparison-table table.dt td:not(:first-child){width:38%;overflow-wrap:anywhere}
+@media(max-width:680px){#app .comparison-table table.dt th:not(:first-child),#app .comparison-table table.dt td:not(:first-child){width:auto}}
 #app .pfm-free-journal-intro{max-width:560px;margin-top:18px;padding:18px}
 @media(max-width:680px){#app .pfm-region-grid,#app .compare-selectors>.pfm-compare-pair{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}#app .pfm-compare-vs{display:none}#app .pfm-region-grid>.pfm-region-empty,#app .pfm-region-grid>.pfm-region-card,#app .compare-selectors>.pfm-compare-pair>.pfm-compare-slot{padding:16px!important}}
 </style>
@@ -1860,12 +1870,21 @@ function catalogVariantLabel(p){
   var price=p.price==null?"Price not verified":String(p.currency||"Currency unconfirmed")+" "+p.price+(p.monthly?" /month":"");
   return [catalogProgram(p),planSizeLabel(p),catalogPlatforms(p).join(", ")||"Platform unconfirmed",price].join(" · ");
 }
+/* Collapse genuinely identical offers for display only; never rewrite source catalog records. */
+function compareOfferKey(p){
+  function norm(v){return String(v==null?"":v).trim().replace(/\s+/g," ").toLowerCase();}
+  return JSON.stringify([norm(catalogProgram(p)),catalogSizeKey(p),p.price==null||p.price===""?null:Number(p.price),norm(p.currency),!!p.monthly,Array.from(new Set(catalogPlatforms(p).map(norm))).sort(),...["target","dailyLoss","maxDD","ddType","minDays","split","payout","coverage","note","activationFee","resetFee","consistency","maxContracts","stage","market","billing","variant","region"].map(function(k){return norm(p[k]);})]);
+}
+function compareOfferList(f){
+  var seen=new Set();
+  return firmPlanList(f).filter(function(p){var key=compareOfferKey(p);if(seen.has(key))return false;seen.add(key);return true;});
+}
 function selectedPlan(f,slot){
-  var list=firmPlanList(f),id=cmpState.planBySlot[slot];
-  var p=list.find(function(p){return p.id===id;})||list[0];return p.coverage==="starting"?Object.assign({},p,{target:null,dailyLoss:null,maxDD:null,ddType:null,minDays:null,split:null,payout:null,platform:null}):p;
+  var list=compareOfferList(f),id=cmpState.planBySlot[slot],original=firmPlanList(f).find(function(p){return p.id===id;});
+  var p=list.find(function(p){return p.id===id;})||(original&&list.find(function(p){return compareOfferKey(p)===compareOfferKey(original);}))||list[0];return p.coverage==="starting"?Object.assign({},p,{target:null,dailyLoss:null,maxDD:null,ddType:null,minDays:null,split:null,payout:null,platform:null}):p;
 }
 function comparePlanMenus(f,i){
-  var list=firmPlanList(f),current=selectedPlan(f,i),program=catalogProgram(current),size=catalogSizeKey(current);
+  var list=compareOfferList(f),current=selectedPlan(f,i),program=catalogProgram(current),size=catalogSizeKey(current);
   var programs=Array.from(new Set(list.map(catalogProgram)));
   var group=list.filter(function(p){return catalogProgram(p)===program;});
   var sizes=Array.from(new Set(group.map(catalogSizeKey))).sort(function(a,b){return a==="unknown"?1:b==="unknown"?-1:Number(a)-Number(b);});
@@ -1874,8 +1893,8 @@ function comparePlanMenus(f,i){
   var platform=cmpState.platformBySlot[i]||"";
   if(platform&&catalogPlatforms(current).indexOf(platform)<0)platform="";
   var filtered=variants.filter(function(p){return !platform||catalogPlatforms(p).indexOf(platform)>=0;});
-  function menu(kind,label,values,selected){return '<label class="fl" for="cmp'+kind+i+'" style="margin-top:8px">'+label+'</label><select id="cmp'+kind+i+'">'+values.map(function(v){return '<option value="'+esc(v[0])+'"'+(String(v[0])===String(selected)?" selected":"")+'>'+esc(v[1])+'</option>';}).join("")+'</select>';}
-  return menu("Program","Account type / program",programs.map(function(v){return [v,v];}),program)+menu("Size","Account size",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}),size)+menu("Platform","Trading platform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(v){return [v,v];})),platform)+menu("Plan","Exact account offer",filtered.map(function(p,j){var price=p.price==null?"Price not verified":String(p.currency||"Currency unconfirmed")+" "+Number(p.price).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+(p.monthly?" /month":"");return [p.id,price+(filtered.length>1?" · Offer "+(j+1):"")+(filtered.length>1&&catalogPlatforms(p).length===1?" · "+catalogPlatforms(p)[0]:"")];}),current.id)+'<div class="pfm-selected-price"><span class="mut small">Selected offer price</span><strong>'+planPriceHTML(current)+'</strong></div>';
+  function menu(kind,label,values,selected){return '<div class="pfm-compare-field"><label class="fl" for="cmp'+kind+i+'">'+label+'</label><select id="cmp'+kind+i+'"'+(values.length===1?' disabled':'')+'>'+values.map(function(v){return '<option value="'+esc(v[0])+'"'+(String(v[0])===String(selected)?" selected":"")+'>'+esc(v[1])+'</option>';}).join("")+'</select></div>';}
+  return menu("Program","Account type / program",programs.map(function(v){return [v,v];}),program)+menu("Size","Account size",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}),size)+menu("Platform","Trading platform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(v){return [v,v];})),platform)+menu("Plan","Exact account offer",filtered.map(function(p,j){var price=p.price==null?"Price not verified":String(p.currency||"Currency unconfirmed")+" "+Number(p.price).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+(p.monthly?" /month":"");return [p.id,filtered.length===1?"Only listed offer":price+" · "+(catalogPlatforms(p).join(", ")||"Platform unconfirmed")+" · Option "+(j+1)];}),current.id);
 }
 function firmAccountExplorer(f){
   var plans=Array.isArray(f.accountPlans)?f.accountPlans.filter(function(p){return p && p.name && p.officialSource;}):[];
@@ -2145,8 +2164,8 @@ function pageCompare(q){
     '<div class="card compare-selectors" style="margin:20px 0 14px"><div class="grid pfm-compare-pair">' +
     [0,1].map(function(i){
       var picked = firm(cmpState.picks[i] || "");
-      var planMenu = picked ? comparePlanMenus(picked,i) : "";
-      return '<div class="field pfm-compare-slot" style="margin:0"><div class="pfm-compare-slot-head"><span>Account '+(i===0?"A":"B")+'</span>'+(picked?avatar(picked,30):"")+'</div><label class="fl" for="cmp' + i + '">Prop firm</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
+      var planMenu = picked ? comparePlanMenus(picked,i) : [["Program","Account type / program"],["Size","Account size"],["Platform","Trading platform"],["Plan","Exact account offer"]].map(function(x){return '<div class="pfm-compare-field"><label class="fl" for="cmp'+x[0]+i+'">'+x[1]+'</label><select id="cmp'+x[0]+i+'" disabled><option>Select a firm first</option></select></div>';}).join("");
+      return '<div class="field pfm-compare-slot" style="margin:0"><div class="pfm-compare-slot-head"><span>Account '+(i===0?"A":"B")+'</span>'+(picked?avatar(picked,30):"")+'</div><div class="pfm-compare-field"><label class="fl" for="cmp' + i + '">Prop firm</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select></div>" + planMenu + "</div>";
     }).join("") +
     '<span class="pfm-versus pfm-compare-vs" aria-hidden="true">VS</span></div></div>' + table +
     '<div class="secttl"><span class="bar"></span><h2>Find a firm to add</h2></div>' +
@@ -2164,7 +2183,7 @@ function pageCompare(q){
     ["Program","Size","Platform","Plan"].forEach(function(kind){
       var el=document.getElementById("cmp"+kind+i);if(!el)return;
       el.addEventListener("change",function(){
-        var f=firm(cmpState.picks[i]),old=selectedPlan(f,i),list=firmPlanList(f),value=this.value;
+        var f=firm(cmpState.picks[i]),old=selectedPlan(f,i),list=compareOfferList(f),value=this.value;
         if(kind==="Program"){list=list.filter(function(p){return catalogProgram(p)===value;});cmpState.platformBySlot[i]="";}
         if(kind==="Size"){list=list.filter(function(p){return catalogProgram(p)===catalogProgram(old)&&catalogSizeKey(p)===value;});cmpState.platformBySlot[i]="";}
         if(kind==="Platform"){list=list.filter(function(p){return catalogProgram(p)===catalogProgram(old)&&catalogSizeKey(p)===catalogSizeKey(old)&&(!value||catalogPlatforms(p).indexOf(value)>=0);});cmpState.platformBySlot[i]=value;}
