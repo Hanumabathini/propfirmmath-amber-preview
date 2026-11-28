@@ -22,6 +22,7 @@ Read https://finotivefunding.com/challenge on 2026-11-28. Seven sizes ($2.5K to 
 
 ## Sale-only list (promote after the Black Friday sale ends)
 Firms whose pages show only Black Friday sale prices on 2026-11-28. Sale prices are not recorded as standing prices; these stay partial until list prices can be read.
+- The Trading Pit (thetradingpit.com): Black Friday offer (code BF40, 40% off, to Nov 30) is live; the CFD/futures challenge pages did not render a readable price table in the browser, so nothing was confirmed. Re-check after Nov 30.
 - Finotive Funding (finotivefunding.com/challenge): 1-Step, 2-Step and Solo FX, sizes $2.5K to $200K. Rules already match the file; only price is blocking.
 
 ## Bitfunded (left partial)
