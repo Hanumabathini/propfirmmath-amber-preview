@@ -177,7 +177,7 @@ function submit(form) {
 }
 
 (async () => {
-  const user = { id: "user-1", email: "3rsj8cxh@mail.grokbot.com", user_metadata: { full_name: "Test Trader", country: "United States" } };
+  const user = { id: "user-1", email: "3rsj8cxh@mail.grokbot.com", app_metadata: { pfm_membership: "pro" }, user_metadata: { full_name: "Test Trader", country: "United States" } };
   const state = freshState(user);
   state.trader_accounts.push({ id: "a1", user_id: user.id, firm: "FTMO", plan: null, account_label: "Main journal", account_size: 0, stage: "evaluation", created_at: "2026-11-01T00:00:00Z" });
   const trades = [
@@ -284,13 +284,14 @@ function submit(form) {
     d.querySelector('[data-jtab="settings"]').click();
     ok("settings is a dedicated side tab", !d.getElementById("journalSettings").hidden && d.getElementById("journalOverview").hidden, "settings");
     d.querySelector('[data-jtab="overview"]').click();
-    const themeButton = d.getElementById("jv14Theme"), motionButton = d.getElementById("jv14Motion"), workspace = d.querySelector(".pfm-journal");
+    const themeButton = d.getElementById("jv14ThemeTop"), workspace = d.querySelector(".pfm-journal");
+    ok("theme in Overview and no manual motion setting", d.getElementById("journalOverview").contains(themeButton) && !d.getElementById("jv14Motion"), "appearance");
+    ok("settings shows current membership and upgrade link", d.getElementById("journalSettings").textContent.includes("Pro") && !!d.querySelector('#journalSettings a[href="/account"]'), "membership");
+    ok("account caps and trusted metadata", w.pfmMembership({user_metadata:{pfm_membership:"elite"}}).limit===1 && w.pfmMembership({app_metadata:{pfm_membership:"pro"}}).limit===10 && w.pfmMembership({app_metadata:{pfm_membership:"elite"}}).limit===25, "limits");
     themeButton.click();
     ok("workspace theme changes without replacing journal data", workspace.classList.contains("jv14-light") && themeButton.getAttribute("aria-pressed") === "true", workspace.className);
     themeButton.click();
-    motionButton.click();
-    ok("workspace motion can be disabled", workspace.classList.contains("jv14-no-motion") && motionButton.getAttribute("aria-pressed") === "true", workspace.className);
-    motionButton.click();
+    ok("motion stays enabled by default", !workspace.classList.contains("jv14-no-motion"), workspace.className);
     const accounts = d.getElementById("journalAccounts");
     const tradesPanel = d.getElementById("journalTrades");
     ok("accounts panel is not inside the trade log", accounts && accounts.parentElement.classList.contains("journal-main") && !tradesPanel.contains(accounts), accounts && accounts.parentElement.className);
