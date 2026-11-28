@@ -224,10 +224,10 @@ function submit(form) {
     }
     ok("FTMO plan is 10k, not a forced 50k", sizesOf("ftmo") === "2-Step:10000", sizesOf("ftmo"));
     ok("FTUK is listed from $9", w.firm("ftuk") && w.firm("ftuk").from === 9, w.firm("ftuk") && w.firm("ftuk").from);
-    ok("Apex stays on the 25k plan", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000", sizesOf("apex-trader-funding"));
-    ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
+    ok("Apex exposes both current evaluation lines", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000/50000/100000/150000 | EOD Trail Std:25000/50000/100000/150000", sizesOf("apex-trader-funding"));
+    ok("FundedNext exposes all Stellar CFD types", ["Stellar 1-Step","Stellar 2-Step","Stellar Lite","Stellar Instant"].every(name=>w.journalFirmCatalog(w.firm("fundednext")).some(p=>p.name===name)), sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
-    ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
+    ok("MFFU lists the Signature sizes", mffu.length === 5 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
     const tradeify = w.journalFirmCatalog(w.firm("tradeify"));
     ok("Tradeify offers Growth, Lightning and Select with distinct sizes", tradeify.length === 3 && tradeify.find(p=>p.name==="Growth").sizes.join()==="25000,50000,100000,150000" && tradeify.find(p=>p.name==="Lightning").sizes.join()==="25000,50000,100000,150000" && tradeify.find(p=>p.name==="Select").sizes.join()==="25000,50000,100000,150000,300000", sizesOf("tradeify"));
     ok("Tradeify platform options are tied to its researched programs", w.journalPlatformChoices(w.firm("tradeify"),"Select",50000).includes("TradingView") && w.journalPlatformChoices(w.firm("tradeify"),"Lightning",100000).includes("Rithmic"), w.journalPlatformChoices(w.firm("tradeify"),"Select",50000));
@@ -238,7 +238,7 @@ function submit(form) {
     const mffuRules = w.journalFirmRules(w.firm("my-funded-futures"), "Signature", 10000);
     ok("MFFU Signature 10k uses the $1,000 drawdown for that size", mffuRules.target === 600 && mffuRules.daily == null && mffuRules.drawdown === 1000 && mffuRules.minDays === 1 && mffuRules.consistency === 50, JSON.stringify(mffuRules));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
-    ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily === 500, JSON.stringify(apexRules));
+    ok("Apex supplemental availability does not infer unverified financial rules", apexRules.drawdown === null && apexRules.target === null && apexRules.daily === null, JSON.stringify(apexRules));
 
     ok("approved journal has six labeled SVG side tabs", d.querySelectorAll(".journal-side [data-jtab] svg").length === 6 && Array.from(d.querySelectorAll(".journal-side [data-jtab]")).every(b=>b.getAttribute("aria-label")), "side navigation");
     ok("approved journal has four primary metrics", d.querySelectorAll(".jv14-overview-top .journal-kpi").length === 4, "metric count");
