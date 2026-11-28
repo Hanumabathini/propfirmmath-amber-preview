@@ -702,7 +702,8 @@ var FIRMS = [
       "Tradovate",
       "NinjaTrader",
       "BlackArrow",
-      "WealthCharts"
+      "WealthCharts",
+      "Hyperprop"
     ],
     "payMethods": [
       "Not listed"
@@ -732,12 +733,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $200; $1,500 buffer; $500 min; $1,000 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-50000",
@@ -755,12 +763,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $250; $2,000 buffer; $500 min; $1,500 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-100000",
@@ -778,12 +793,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $300; $3,000 buffer; $500 min; $2,000 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-150000",
@@ -801,12 +823,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $350; $4,500 buffer; $500 min; $2,500 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-intraday-25000",
@@ -824,12 +853,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $200; $1,500 buffer; $500 min; $1,000 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-intraday-50000",
@@ -847,12 +883,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $250; $2,000 buffer; $500 min; $1,500 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-intraday-100000",
@@ -870,12 +913,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $300; $3,000 buffer; $500 min; $2,000 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-intraday-150000",
@@ -893,12 +943,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $350; $4,500 buffer; $500 min; $2,500 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-static-25000",
@@ -916,12 +973,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $200; $1,500 buffer; $500 min; $1,000 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-static-50000",
@@ -939,12 +1003,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $250; $2,000 buffer; $500 min; $1,500 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-static-100000",
@@ -962,12 +1033,19 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $300; $3,000 buffer; $500 min; $2,000 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
       },
       {
         "id": "top-one-futures-elite-access-static-150000",
@@ -985,12 +1063,145 @@ var FIRMS = [
         "minDays": "1 evaluation day; 30-day window",
         "split": "90%",
         "payout": "5 profitable days of at least $350; $4,500 buffer; $500 min; $2,500 cap per request",
-        "platform": "Plan-specific platform mapping pending",
+        "platform": "Hyperprop",
         "source": "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 35,
         "consistency": "None evaluation; 40% funded",
-        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here."
+        "note": "Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "Confirmed option; other platforms and regional checkout remain unverified.",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ]
+      },
+      {
+        "id": "top-one-futures-x-hyper-50000",
+        "program": "Launchpad X-HYPER",
+        "name": "Launchpad X-HYPER",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "$4,000",
+        "dailyLoss": "$1,000",
+        "maxDD": "$4,000",
+        "ddType": "EOD trailing",
+        "minDays": "None",
+        "consistency": "50%",
+        "activationFee": 0,
+        "resetFee": 69,
+        "split": "90%",
+        "payout": "5 qualifying profitable days; minimum daily profit $250; max payout $5,000",
+        "source": "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+        "note": "30-day evaluation; no activation fee. Reset fee is not purchase price. Official funded drawdown differs; hard breach at daily loss or max drawdown.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+            "target": null,
+            "dailyLoss": "$1,000",
+            "maxDD": "$3,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Five profitable days for payout, not five ordinary trading days; drawdown locks at initial balance + $100."
+          }
+        },
+        "platform": "Hyperprop",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ],
+        "coverage": "partial",
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "top-one-futures-x-hyper-100000",
+        "program": "Launchpad X-HYPER",
+        "name": "Launchpad X-HYPER",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "$8,000",
+        "dailyLoss": "$1,500",
+        "maxDD": "$8,000",
+        "ddType": "EOD trailing",
+        "minDays": "None",
+        "consistency": "50%",
+        "activationFee": 0,
+        "resetFee": 99,
+        "split": "90%",
+        "payout": "5 qualifying profitable days; minimum daily profit $350; max payout $6,000",
+        "source": "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+        "note": "30-day evaluation; no activation fee. Reset fee is not purchase price. Official funded drawdown differs; hard breach at daily loss or max drawdown.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+            "target": null,
+            "dailyLoss": "$1,500",
+            "maxDD": "$4,500",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Five profitable days for payout, not five ordinary trading days; drawdown locks at initial balance + $100."
+          }
+        },
+        "platform": "Hyperprop",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ],
+        "coverage": "partial",
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "top-one-futures-x-hyper-150000",
+        "program": "Launchpad X-HYPER",
+        "name": "Launchpad X-HYPER",
+        "size": 150000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "$12,000",
+        "dailyLoss": "$2,000",
+        "maxDD": "$12,000",
+        "ddType": "EOD trailing",
+        "minDays": "None",
+        "consistency": "50%",
+        "activationFee": 0,
+        "resetFee": 139,
+        "split": "90%",
+        "payout": "5 qualifying profitable days; minimum daily profit $600; max payout $8,000",
+        "source": "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+        "note": "30-day evaluation; no activation fee. Reset fee is not purchase price. Official funded drawdown differs; hard breach at daily loss or max drawdown.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+            "target": null,
+            "dailyLoss": "$2,000",
+            "maxDD": "$6,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Five profitable days for payout, not five ordinary trading days; drawdown locks at initial balance + $100."
+          }
+        },
+        "platform": "Hyperprop",
+        "platformSource": "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.toponefutures.com/en/articles/18536222-launchpad-x-hyper-overview",
+          "https://help.toponefutures.com/en/articles/18535632-hyperprop-platform-overview"
+        ],
+        "coverage": "partial",
+        "verifiedOn": "2026-11-28"
       }
     ]
   },
@@ -2422,8 +2633,11 @@ var FIRMS = [
         "activationFee": 0,
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-intraday-50000",
@@ -2448,8 +2662,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-intraday-100000",
@@ -2474,8 +2691,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-intraday-150000",
@@ -2500,8 +2720,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-eod-25000",
@@ -2526,8 +2749,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-eod-50000",
@@ -2552,8 +2778,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-eod-100000",
@@ -2578,8 +2807,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-momentum-eod-150000",
@@ -2604,8 +2836,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/momentum",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-intraday-25000",
@@ -2630,8 +2865,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-intraday-50000",
@@ -2656,8 +2894,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-intraday-100000",
@@ -2682,8 +2923,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-intraday-150000",
@@ -2708,8 +2952,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-eod-25000",
@@ -2734,8 +2981,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-eod-50000",
@@ -2760,8 +3010,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-eod-100000",
@@ -2786,8 +3039,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-fast-track-eod-150000",
@@ -2812,8 +3068,11 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/help-center/fast-track",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/member/signup",
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-intraday-25000",
@@ -2822,24 +3081,26 @@ var FIRMS = [
         "size": 25000,
         "price": 145,
         "currency": "USD",
-        "monthly": true,
+        "monthly": false,
         "coverage": "partial",
         "target": "$1,500",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "$1,500 trailing",
-        "ddType": "Intraday",
-        "minDays": "Not yet verified",
+        "dailyLoss": "None",
+        "maxDD": "$1,500",
+        "ddType": "Intraday trailing",
+        "minDays": "None",
         "split": "Not yet verified",
         "payout": "Not yet verified",
         "platform": "Not yet verified",
-        "source": "https://bulenox.com/member/signup",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://bulenox.com/accounts-pricing",
+        "verifiedOn": "2026-11-28",
         "activationFee": null,
-        "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
+        "note": "Public default intraday Qualification pricing and limits; access 30 days. EOD risk differs.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-intraday-50000",
@@ -2848,24 +3109,26 @@ var FIRMS = [
         "size": 50000,
         "price": 175,
         "currency": "USD",
-        "monthly": true,
+        "monthly": false,
         "coverage": "partial",
         "target": "$3,000",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "$2,500 trailing",
-        "ddType": "Intraday",
-        "minDays": "Not yet verified",
+        "dailyLoss": "None",
+        "maxDD": "$2,500",
+        "ddType": "Intraday trailing",
+        "minDays": "None",
         "split": "Not yet verified",
         "payout": "Not yet verified",
         "platform": "Not yet verified",
-        "source": "https://bulenox.com/member/signup",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://bulenox.com/accounts-pricing",
+        "verifiedOn": "2026-11-28",
         "activationFee": null,
-        "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
+        "note": "Public default intraday Qualification pricing and limits; access 30 days. EOD risk differs.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-intraday-100000",
@@ -2874,24 +3137,26 @@ var FIRMS = [
         "size": 100000,
         "price": 215,
         "currency": "USD",
-        "monthly": true,
+        "monthly": false,
         "coverage": "partial",
         "target": "$6,000",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "$3,000 trailing",
-        "ddType": "Intraday",
-        "minDays": "Not yet verified",
+        "dailyLoss": "None",
+        "maxDD": "$3,000",
+        "ddType": "Intraday trailing",
+        "minDays": "None",
         "split": "Not yet verified",
         "payout": "Not yet verified",
         "platform": "Not yet verified",
-        "source": "https://bulenox.com/member/signup",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://bulenox.com/accounts-pricing",
+        "verifiedOn": "2026-11-28",
         "activationFee": null,
-        "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
+        "note": "Public default intraday Qualification pricing and limits; access 30 days. EOD risk differs.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-intraday-150000",
@@ -2900,24 +3165,26 @@ var FIRMS = [
         "size": 150000,
         "price": 325,
         "currency": "USD",
-        "monthly": true,
+        "monthly": false,
         "coverage": "partial",
         "target": "$9,000",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "$4,500 trailing",
-        "ddType": "Intraday",
-        "minDays": "Not yet verified",
+        "dailyLoss": "None",
+        "maxDD": "$4,500",
+        "ddType": "Intraday trailing",
+        "minDays": "None",
         "split": "Not yet verified",
         "payout": "Not yet verified",
         "platform": "Not yet verified",
-        "source": "https://bulenox.com/member/signup",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://bulenox.com/accounts-pricing",
+        "verifiedOn": "2026-11-28",
         "activationFee": null,
-        "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
+        "note": "Public default intraday Qualification pricing and limits; access 30 days. EOD risk differs.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-eod-25000",
@@ -2942,8 +3209,10 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-eod-50000",
@@ -2968,8 +3237,10 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-eod-100000",
@@ -2994,8 +3265,10 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       },
       {
         "id": "bulenox-qualification-eod-150000",
@@ -3020,8 +3293,10 @@ var FIRMS = [
         "note": "Variant-specific initial stage rules. Funded payout conditions, platforms and eligibility not reverified. Momentum one-time per help center; Qualification signup states one month.",
         "sources": [
           "https://bulenox.com/member/signup",
-          "https://bulenox.com/member/signup"
-        ]
+          "https://bulenox.com/accounts-pricing"
+        ],
+        "connectionSource": "https://bulenox.com/accounts-pricing",
+        "connectionNote": "Official pricing page confirms Rithmic agreement; exact execution platform still requires verification."
       }
     ]
   },
@@ -3077,7 +3352,8 @@ var FIRMS = [
       "MT4",
       "MT5",
       "cTrader",
-      "Tradovate (Futures)"
+      "Tradovate (Futures)",
+      "Match-Trader"
     ],
     "payMethods": [
       "Not listed"
@@ -3099,17 +3375,279 @@ var FIRMS = [
         "price": 32.99,
         "currency": "USD",
         "monthly": false,
-        "coverage": "starting",
-        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
-        "target": "2-Step 8 then 5",
-        "dailyLoss": "5% (2-Step)",
-        "maxDD": "10% static (2-Step)",
+        "coverage": "partial",
+        "note": "Official guide approximate base prices; no checkout confirmation. Default rules without add-ons. Funded stage daily loss 4%, maximum loss 8%; no mandatory target or trading-day minimum.",
+        "target": "8% then 4%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
         "ddType": "Static",
-        "minDays": "5 per phase",
-        "split": "80 (90 scale-up, 95 add-on)",
-        "payout": "Std first 21d then 14d / 3-Day every 3d / On-Demand anytime",
-        "platform": "MT4, MT5, cTrader, Tradovate (Futures)",
-        "source": "https://fundednext.com/blog/fundednext-cfds-stellar-2-step-explained"
+        "minDays": "2 trading days per phase",
+        "split": "60%, 80% or 90% depending on reward option; optional 95% add-on",
+        "payout": "Checkout-selected cycle; on-demand requires 2% growth and 40% consistency; other cycles have distinct requirements.",
+        "platform": "MT4, MT5, cTrader, Match-Trader",
+        "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+        "consistency": null,
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "8%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Risk limits are defaults; payout option and add-ons change conditions."
+          }
+        },
+        "regionalPlatforms": {
+          "US": [
+            "Match-Trader"
+          ]
+        },
+        "platformSource": "https://fundednext.com/general-rules/cfds/trading-platforms",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "US: Match-Trader only. Other locations subject to eligibility and platform fee.",
+        "sources": [
+          "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+          "https://fundednext.com/general-rules/cfds/trading-platforms",
+          "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards"
+        ],
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "fundednext-stellar-lite-10000",
+        "program": "Stellar Lite",
+        "name": "Stellar Lite",
+        "size": 10000,
+        "price": 59.99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "partial",
+        "note": "Official guide approximate base prices; no checkout confirmation. Default rules without add-ons. Funded stage daily loss 4%, maximum loss 8%; no mandatory target or trading-day minimum.",
+        "target": "8% then 4%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "2 trading days per phase",
+        "split": "60%, 80% or 90% depending on reward option; optional 95% add-on",
+        "payout": "Checkout-selected cycle; on-demand requires 2% growth and 40% consistency; other cycles have distinct requirements.",
+        "platform": "MT4, MT5, cTrader, Match-Trader",
+        "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+        "consistency": null,
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "8%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Risk limits are defaults; payout option and add-ons change conditions."
+          }
+        },
+        "regionalPlatforms": {
+          "US": [
+            "Match-Trader"
+          ]
+        },
+        "platformSource": "https://fundednext.com/general-rules/cfds/trading-platforms",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "US: Match-Trader only. Other locations subject to eligibility and platform fee.",
+        "sources": [
+          "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+          "https://fundednext.com/general-rules/cfds/trading-platforms",
+          "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards"
+        ],
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "fundednext-stellar-lite-25000",
+        "program": "Stellar Lite",
+        "name": "Stellar Lite",
+        "size": 25000,
+        "price": 139.99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "partial",
+        "note": "Official guide approximate base prices; no checkout confirmation. Default rules without add-ons. Funded stage daily loss 4%, maximum loss 8%; no mandatory target or trading-day minimum.",
+        "target": "8% then 4%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "2 trading days per phase",
+        "split": "60%, 80% or 90% depending on reward option; optional 95% add-on",
+        "payout": "Checkout-selected cycle; on-demand requires 2% growth and 40% consistency; other cycles have distinct requirements.",
+        "platform": "MT4, MT5, cTrader, Match-Trader",
+        "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+        "consistency": null,
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "8%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Risk limits are defaults; payout option and add-ons change conditions."
+          }
+        },
+        "regionalPlatforms": {
+          "US": [
+            "Match-Trader"
+          ]
+        },
+        "platformSource": "https://fundednext.com/general-rules/cfds/trading-platforms",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "US: Match-Trader only. Other locations subject to eligibility and platform fee.",
+        "sources": [
+          "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+          "https://fundednext.com/general-rules/cfds/trading-platforms",
+          "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards"
+        ],
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "fundednext-stellar-lite-50000",
+        "program": "Stellar Lite",
+        "name": "Stellar Lite",
+        "size": 50000,
+        "price": 229.99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "partial",
+        "note": "Official guide approximate base prices; no checkout confirmation. Default rules without add-ons. Funded stage daily loss 4%, maximum loss 8%; no mandatory target or trading-day minimum.",
+        "target": "8% then 4%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "2 trading days per phase",
+        "split": "60%, 80% or 90% depending on reward option; optional 95% add-on",
+        "payout": "Checkout-selected cycle; on-demand requires 2% growth and 40% consistency; other cycles have distinct requirements.",
+        "platform": "MT4, MT5, cTrader, Match-Trader",
+        "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+        "consistency": null,
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "8%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Risk limits are defaults; payout option and add-ons change conditions."
+          }
+        },
+        "regionalPlatforms": {
+          "US": [
+            "Match-Trader"
+          ]
+        },
+        "platformSource": "https://fundednext.com/general-rules/cfds/trading-platforms",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "US: Match-Trader only. Other locations subject to eligibility and platform fee.",
+        "sources": [
+          "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+          "https://fundednext.com/general-rules/cfds/trading-platforms",
+          "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards"
+        ],
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "fundednext-stellar-lite-100000",
+        "program": "Stellar Lite",
+        "name": "Stellar Lite",
+        "size": 100000,
+        "price": 399.99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "partial",
+        "note": "Official guide approximate base prices; no checkout confirmation. Default rules without add-ons. Funded stage daily loss 4%, maximum loss 8%; no mandatory target or trading-day minimum.",
+        "target": "8% then 4%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "2 trading days per phase",
+        "split": "60%, 80% or 90% depending on reward option; optional 95% add-on",
+        "payout": "Checkout-selected cycle; on-demand requires 2% growth and 40% consistency; other cycles have distinct requirements.",
+        "platform": "MT4, MT5, cTrader, Match-Trader",
+        "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+        "consistency": null,
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "8%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Risk limits are defaults; payout option and add-ons change conditions."
+          }
+        },
+        "regionalPlatforms": {
+          "US": [
+            "Match-Trader"
+          ]
+        },
+        "platformSource": "https://fundednext.com/general-rules/cfds/trading-platforms",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "US: Match-Trader only. Other locations subject to eligibility and platform fee.",
+        "sources": [
+          "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+          "https://fundednext.com/general-rules/cfds/trading-platforms",
+          "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards"
+        ],
+        "verifiedOn": "2026-11-28"
+      },
+      {
+        "id": "fundednext-stellar-lite-200000",
+        "program": "Stellar Lite",
+        "name": "Stellar Lite",
+        "size": 200000,
+        "price": 798.99,
+        "currency": "USD",
+        "monthly": false,
+        "coverage": "partial",
+        "note": "Official guide approximate base prices; no checkout confirmation. Default rules without add-ons. Funded stage daily loss 4%, maximum loss 8%; no mandatory target or trading-day minimum.",
+        "target": "8% then 4%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "2 trading days per phase",
+        "split": "60%, 80% or 90% depending on reward option; optional 95% add-on",
+        "payout": "Checkout-selected cycle; on-demand requires 2% growth and 40% consistency; other cycles have distinct requirements.",
+        "platform": "MT4, MT5, cTrader, Match-Trader",
+        "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+        "consistency": null,
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "8%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Risk limits are defaults; payout option and add-ons change conditions."
+          }
+        },
+        "regionalPlatforms": {
+          "US": [
+            "Match-Trader"
+          ]
+        },
+        "platformSource": "https://fundednext.com/general-rules/cfds/trading-platforms",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "US: Match-Trader only. Other locations subject to eligibility and platform fee.",
+        "sources": [
+          "https://help.fundednext.com/en/articles/17253939-stellar-lite-account",
+          "https://fundednext.com/general-rules/cfds/trading-platforms",
+          "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards"
+        ],
+        "verifiedOn": "2026-11-28"
       }
     ]
   },
@@ -14966,7 +15504,8 @@ var FIRMS = [
     "verifLabel": "Partially verified",
     "affiliate": "yes, 5-25% tiered (new affiliates start at 10%)",
     "platforms": [
-      "Not stated"
+      "cTrader",
+      "Cleo"
     ],
     "payMethods": [
       "Not listed"
@@ -14996,7 +15535,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15004,8 +15543,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-trailing-10000",
@@ -15023,7 +15566,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15031,8 +15574,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-trailing-20000",
@@ -15050,7 +15597,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15058,8 +15605,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-trailing-50000",
@@ -15077,7 +15628,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15085,8 +15636,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-trailing-100000",
@@ -15104,7 +15659,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15112,8 +15667,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-trailing-150000",
@@ -15131,7 +15690,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15139,8 +15698,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-static-5000",
@@ -15158,7 +15721,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15166,8 +15729,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-static-10000",
@@ -15185,7 +15752,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15193,8 +15760,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-static-20000",
@@ -15212,7 +15783,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15220,8 +15791,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-static-50000",
@@ -15239,7 +15814,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15247,8 +15822,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-static-100000",
@@ -15266,7 +15845,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15274,8 +15853,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-1-static-150000",
@@ -15293,7 +15876,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15301,8 +15884,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-2-static-5000",
@@ -15320,7 +15907,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15328,8 +15915,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-2-static-10000",
@@ -15347,7 +15938,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15355,8 +15946,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-2-static-20000",
@@ -15374,7 +15969,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15382,8 +15977,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-2-static-50000",
@@ -15401,7 +16000,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15409,8 +16008,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-2-static-100000",
@@ -15428,7 +16031,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15436,8 +16039,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-classic-2-static-150000",
@@ -15455,7 +16062,7 @@ var FIRMS = [
         "minDays": "3 trading days each stage and payout",
         "split": "Not yet verified",
         "payout": "Minimum 1%; legacy before Aug 27, 2026 minimum 3%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded for accounts issued after Apr 9, 2026",
@@ -15463,8 +16070,12 @@ var FIRMS = [
         "sources": [
           "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
           "https://help.pipfarm.com/help/articles/7719299-classic-mode-introduction",
-          "https://help.pipfarm.com/articles/8637834-trading-days-guide"
-        ]
+          "https://help.pipfarm.com/articles/8637834-trading-days-guide",
+          "https://help.pipfarm.com/"
+        ],
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed."
       },
       {
         "id": "pipfarm-endurance-1-trailing-pending",
@@ -15482,11 +16093,18 @@ var FIRMS = [
         "minDays": "4 profitable days one-stage; 3 per phase two-stage",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "Not established here",
-        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only."
+        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-endurance-1-static-pending",
@@ -15504,11 +16122,18 @@ var FIRMS = [
         "minDays": "4 profitable days one-stage; 3 per phase two-stage",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "Not established here",
-        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only."
+        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-endurance-2-static-pending",
@@ -15526,11 +16151,18 @@ var FIRMS = [
         "minDays": "4 profitable days one-stage; 3 per phase two-stage",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "Not established here",
-        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only."
+        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-consistency-1-trailing-pending",
@@ -15548,11 +16180,18 @@ var FIRMS = [
         "minDays": "Not established here",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "40%; two-stage purchased before Aug 27, 2026 35%",
-        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only."
+        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-consistency-1-static-pending",
@@ -15570,11 +16209,18 @@ var FIRMS = [
         "minDays": "Not established here",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "40%; two-stage purchased before Aug 27, 2026 35%",
-        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only."
+        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-consistency-2-static-pending",
@@ -15592,11 +16238,18 @@ var FIRMS = [
         "minDays": "Not established here",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "40%; two-stage purchased before Aug 27, 2026 35%",
-        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only."
+        "note": "Official comparison confirms format and mode; largest size 150K, full mode-specific size matrix and fees not independently confirmed. Program-level record only.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/articles/0873123-challenge-mode-comparison",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-one-step-light-pending",
@@ -15614,11 +16267,18 @@ var FIRMS = [
         "minDays": "None evaluation; 4 profitable days funded",
         "split": "Not yet verified",
         "payout": "Weekly default; 1% minimum; cap starts 3% and rises to 6%",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/en/articles/7831815-one-step-light",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 40% funded",
-        "note": "Updated Sep 23, 2026; old article variant has conflicting legacy rules. Size range 5K–150K, checkout fees pending."
+        "note": "Updated Sep 23, 2026; old article variant has conflicting legacy rules. Size range 5K–150K, checkout fees pending.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/en/articles/7831815-one-step-light",
+          "https://help.pipfarm.com/"
+        ]
       },
       {
         "id": "pipfarm-swing-pending",
@@ -15636,11 +16296,44 @@ var FIRMS = [
         "minDays": "None",
         "split": "Not yet verified",
         "payout": "Not yet verified",
-        "platform": "Not yet verified",
+        "platform": "cTrader",
         "source": "https://help.pipfarm.com/en/articles/2145428-swing-account",
         "verifiedOn": "Nov 28, 2026",
         "consistency": "None evaluation; 50% funded",
-        "note": "Size range 5K–150K. Program-level record; purchase matrix not confirmed."
+        "note": "Size range 5K–150K. Program-level record; purchase matrix not confirmed.",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "platformNote": "CFD program family only; exact size and checkout options not reconfirmed.",
+        "sources": [
+          "https://help.pipfarm.com/en/articles/2145428-swing-account",
+          "https://help.pipfarm.com/"
+        ]
+      },
+      {
+        "id": "pipfarm-perpetual-one-stage-pending",
+        "program": "Perpetual Challenges",
+        "name": "Perpetual One-Stage Challenge",
+        "size": null,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": null,
+        "payout": null,
+        "source": "https://help.pipfarm.com/",
+        "note": "Official help center lists perpetual challenge on Cleo. Sizes, prices and risk rules require confirmation.",
+        "platform": "Cleo",
+        "platformSource": "https://help.pipfarm.com/",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.pipfarm.com/"
+        ],
+        "coverage": "partial",
+        "verifiedOn": "2026-11-28"
       }
     ]
   },
@@ -36017,7 +36710,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $2,000; Consistency: 3 days and 40%, cap $3,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 149,
         "resetFee": 49,
@@ -36027,8 +36720,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 2000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-standard-dll-50000",
@@ -36048,7 +36758,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $4,000; Consistency: 3 days and 40%, cap $6,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 149,
         "resetFee": null,
@@ -36058,8 +36768,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 2000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-no-activation-50000",
@@ -36079,7 +36806,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $2,000; Consistency: 3 days and 40%, cap $3,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 0,
         "resetFee": 95,
@@ -36089,8 +36816,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 2000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-no-activation-dll-50000",
@@ -36110,7 +36854,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $4,000; Consistency: 3 days and 40%, cap $6,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 0,
         "resetFee": null,
@@ -36120,8 +36864,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 2000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-standard-100000",
@@ -36141,7 +36902,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $3,000; Consistency: 3 days and 40%, cap $4,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 149,
         "resetFee": 99,
@@ -36151,8 +36912,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 3000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-standard-dll-100000",
@@ -36172,7 +36950,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $6,000; Consistency: 3 days and 40%, cap $8,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 149,
         "resetFee": null,
@@ -36182,8 +36960,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 3000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-no-activation-100000",
@@ -36203,7 +36998,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $3,000; Consistency: 3 days and 40%, cap $4,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 0,
         "resetFee": 149,
@@ -36213,8 +37008,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 3000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-no-activation-dll-100000",
@@ -36234,7 +37046,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $6,000; Consistency: 3 days and 40%, cap $8,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 0,
         "resetFee": null,
@@ -36244,8 +37056,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 3000,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-standard-150000",
@@ -36265,7 +37094,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $5,000; Consistency: 3 days and 40%, cap $6,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 149,
         "resetFee": 199,
@@ -36275,8 +37104,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 4500,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-standard-dll-150000",
@@ -36296,7 +37142,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $10,000; Consistency: 3 days and 40%, cap $12,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 149,
         "resetFee": null,
@@ -36306,8 +37152,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 4500,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-no-activation-150000",
@@ -36327,7 +37190,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $5,000; Consistency: 3 days and 40%, cap $6,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 0,
         "resetFee": 229,
@@ -36337,8 +37200,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 4500,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-no-activation-dll-150000",
@@ -36358,7 +37238,7 @@ var FIRMS = [
         "payout": "Standard: 5 days +$150, cap $10,000; Consistency: 3 days and 40%, cap $12,000; max 50% balance",
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
-        "verifiedOn": "Nov 28, 2026",
+        "verifiedOn": "2026-11-28",
         "consistency": "55% Combine; funded Standard none or Consistency 40%",
         "activationFee": 0,
         "resetFee": null,
@@ -36368,8 +37248,25 @@ var FIRMS = [
           "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
           "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
           "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
-          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep"
-        ]
+          "https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+          "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit"
+        ],
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": "EOD trailing; locks at zero after first payout",
+            "initialMaxDD": 4500,
+            "minDays": null,
+            "consistency": null,
+            "note": "XFA Standard and Consistency paths differ. Standard: 5 winning days of $150 or more; Consistency: 3 trading days and 40% consistency per payout cycle. Optional DLL. Do not use initial MLL as current available drawdown."
+          }
+        }
       },
       {
         "id": "topstep-labs-static-25000",
@@ -36393,7 +37290,13 @@ var FIRMS = [
         "consistency": "55% evaluation; Standard or 40% XFA",
         "activationFee": 0,
         "resetFee": null,
-        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies."
+        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       },
       {
         "id": "topstep-labs-static-50000",
@@ -36417,7 +37320,13 @@ var FIRMS = [
         "consistency": "55% evaluation; Standard or 40% XFA",
         "activationFee": 0,
         "resetFee": null,
-        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies."
+        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       },
       {
         "id": "topstep-labs-static-100000",
@@ -36441,7 +37350,13 @@ var FIRMS = [
         "consistency": "55% evaluation; Standard or 40% XFA",
         "activationFee": 0,
         "resetFee": null,
-        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies."
+        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       },
       {
         "id": "topstep-labs-static-150000",
@@ -36465,7 +37380,13 @@ var FIRMS = [
         "consistency": "55% evaluation; Standard or 40% XFA",
         "activationFee": 0,
         "resetFee": null,
-        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies."
+        "note": "90-day evaluation; 30-day inactivity; no resets or Back2Funded. Available any time per official Labs FAQ. Region eligibility applies.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       },
       {
         "id": "topstep-labs-freedom-250000",
@@ -36488,7 +37409,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "consistency": "55% evaluation; XFA Standard",
         "activationFee": 0,
-        "note": "90-day evaluation, 30-day inactivity, no resets or Back2Funded; available any time per official Labs FAQ."
+        "note": "90-day evaluation, 30-day inactivity, no resets or Back2Funded; available any time per official Labs FAQ.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       },
       {
         "id": "topstep-labs-daily-payouts-eod-50000",
@@ -36511,7 +37438,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "consistency": "55% evaluation; none XFA",
         "activationFee": 0,
-        "note": "Limited Labs drops #010/#011; availability of remaining units not confirmed. Five combined purchases per trader."
+        "note": "Limited Labs drops #010/#011; availability of remaining units not confirmed. Five combined purchases per trader.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       },
       {
         "id": "topstep-labs-daily-payouts-static-50000",
@@ -36534,7 +37467,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "consistency": "55% evaluation; none XFA",
         "activationFee": 0,
-        "note": "Limited Labs drops #010/#011; availability of remaining units not confirmed. Five combined purchases per trader."
+        "note": "Limited Labs drops #010/#011; availability of remaining units not confirmed. Five combined purchases per trader.",
+        "platformSource": "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here",
+        "platformVerifiedOn": "2026-11-28",
+        "sources": [
+          "https://help.topstep.com/en/articles/15520357-topstep-labs",
+          "https://help.topstep.com/en/articles/8284199-new-to-topstep-start-here"
+        ]
       }
     ]
   }

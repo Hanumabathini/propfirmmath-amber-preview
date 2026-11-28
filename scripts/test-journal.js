@@ -247,7 +247,7 @@ function submit(form) {
     ok("FTMO plan is 10k, not a forced 50k", w.journalFirmCatalog(w.firm("ftmo")).some(p=>p.name==="2-Step" && p.sizes.includes(10000)), sizesOf("ftmo"));
     ok("FTUK is listed from $9", w.firm("ftuk") && w.firm("ftuk").from === 9, w.firm("ftuk") && w.firm("ftuk").from);
     ok("Apex stays on the 25k plan", w.journalFirmCatalog(w.firm("apex-trader-funding")).some(p=>p.name==="Intraday Trail Std" && p.sizes.includes(25000)), sizesOf("apex-trader-funding"));
-    ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
+    ok("FundedNext lists the 5k plan", w.journalFirmCatalog(w.firm("fundednext")).some(p=>p.name==="Stellar Lite"&&p.sizes.includes(5000)&&p.sizes.includes(200000)), sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
     ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
     const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
