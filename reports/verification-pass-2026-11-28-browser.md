@@ -51,3 +51,6 @@ toponetrader.com has a Black November sale (up to 80% off, code BLACKFRIDAY) and
 
 ## Pattern worth knowing
 Most firms read in this pass run Black Friday codes through Nov 30. Several show list and sale prices side by side and can be confirmed now; others show sale prices only and should be re-read after the sale ends.
+
+## Blueberry Futures (left partial)
+blueberryfutures.com, read 2026-11-28 with code FUTURES60 (60% off) running. The page shows Accelerated 25K at $110.40 list per month ($44.16 with the code) and Ascent 25K at $139 list ($55.60 with the code). The catalog's Accelerated 25K plan says $129, which does not match the $110.40 the firm record uses as its starting price, so the plan prices need re-checking against the 30-day billing basis. The firm was already partial for US eligibility ("conflicting official checks"), which a public page can't settle. Stays partial.
