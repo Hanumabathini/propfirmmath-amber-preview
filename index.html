@@ -1282,6 +1282,95 @@ header :focus-visible{outline-color:var(--ivory)!important}
 .kinetic-tactile:focus-visible{transform:none}
 @media(prefers-reduced-motion:reduce){.terra-spot-ticket{transition:none!important}}
 </style>
+
+<style>
+/* Terra Capital task-specific product compositions; financial data stays unmodified. */
+#app[data-terra-route=compare] .pagehead{background:var(--forest);border-radius:16px;color:var(--ivory);padding:32px}
+#app[data-terra-route=compare] .pagehead .sub,#app[data-terra-route=compare] .pagehead .crumb,#app[data-terra-route=compare] .pagehead a{color:var(--ivory)}
+#app .compare-selectors{background:var(--sand);border:0;border-radius:12px;padding:24px}
+#app .compare-selectors .field{min-width:0}
+.tc-compare-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin:24px 0 38px}
+.tc-compare-dossier{background:var(--forest);color:var(--ivory);border-radius:12px;padding:24px;min-width:0;animation:terra-enter .35s var(--ease) both}
+.tc-compare-dossier:nth-child(2){background:var(--sand);color:var(--forest)}
+.tc-compare-dossier:nth-child(3){background:#435341}
+.tc-dossier-top{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:650;overflow-wrap:anywhere}
+.tc-compare-dossier a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.tc-compare-dossier>p{font-size:14px;margin:12px 0;min-height:24px}
+.tc-dossier-price{font-size:clamp(25px,3vw,40px);line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.tc-dossier-price *{color:inherit!important}
+.tc-compare-dossier dl{margin:18px 0;display:grid;gap:0}
+.tc-compare-dossier dl>div{border-top:1px solid currentColor;padding:10px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px;font-size:14px}
+.tc-compare-dossier dd{margin:0;text-align:right;overflow-wrap:anywhere}
+.tc-table-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+.tc-table-toolbar h2{font-size:clamp(27px,3vw,40px);margin:0}
+.tc-table-toolbar .pill-tabs{margin:0}
+.comparison-table tr[hidden]{display:none!important}
+#app .comparison-table table.dt th{background:var(--sand);color:var(--forest)}
+#app .comparison-table table.dt td{padding:18px 14px;overflow-wrap:anywhere}
+.tc-payout-stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:32px;background:var(--forest);color:var(--ivory);border-radius:18px;padding:34px;margin-top:24px}
+.tc-payout-main{align-self:center}
+.tc-payout-main>span,.tc-payout-main>p{color:var(--sand);font-size:14px}
+.tc-payout-main>strong{display:block;font-size:clamp(38px,5vw,75px);letter-spacing:-.055em;line-height:1.08;font-variant-numeric:tabular-nums;margin-top:14px;overflow-wrap:anywhere}
+.tc-payout-kpis{display:grid;grid-template-columns:1fr;gap:0;margin-top:28px}
+.tc-payout-kpis>div{border-top:1px solid var(--tc-light-edge);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0}
+.tc-payout-kpis span{color:var(--sand);font-size:14px}.tc-payout-kpis b{font-variant-numeric:tabular-nums;font-size:18px}
+.tc-payout-chart{background:var(--ivory);color:var(--forest);padding:24px;border-radius:12px;min-width:0}
+.tc-payout-chart h2{font-size:clamp(23px,2.5vw,33px);line-height:1.08}.tc-payout-chart>p{font-size:13px;color:var(--muted)}
+.tc-payout-bar{display:grid;grid-template-columns: minmax(0,1fr) auto;gap:6px 12px;align-items:center;width:100%;min-height:60px;padding:9px 8px;border:0;border-bottom:1px solid var(--sand);background:transparent;color:var(--forest);text-align:left;font:inherit;cursor:pointer}
+.tc-payout-bar>span:first-child{font-size:14px;grid-column:1}.tc-payout-bar>strong{grid-column:2;grid-row:1;font-size:14px;font-variant-numeric:tabular-nums}
+.tc-payout-track{grid-column:1/-1;background:var(--panel2);height:8px;border-radius:3px;overflow:hidden}
+.tc-payout-track i{display:block;height:100%;width:var(--payout-width);background:var(--sage);transform-origin:left;animation:terra-grow .8s var(--ease) both}
+.tc-payout-bar[aria-pressed=true]{background:var(--panel2)}.tc-payout-bar[aria-pressed=true] i{background:var(--clay-ink)}
+#tc-payout-detail{padding:16px 8px 0}
+#tc-payout-detail dl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+#tc-payout-detail dt{font-size:12px;color:var(--muted)}#tc-payout-detail dd{margin:0;font-size:15px;font-weight:650;font-variant-numeric:tabular-nums}
+#app[data-terra-route=tracker] table.dt td strong{color:var(--forest)!important}
+.tc-firm-identity{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:22px;background:var(--forest);color:var(--ivory);padding:24px;border-radius:14px;margin:24px 0}
+.tc-firm-logo{background:var(--sand);border-radius:50%;padding:10px;box-shadow:0 5px 0 var(--tc-metal);display:grid;place-items:center}
+.tc-firm-logo .avatar{border-radius:50%;background:var(--ivory)!important}
+.tc-firm-tags{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tc-firm-tags .chip,.tc-firm-tags .snap-note{color:var(--ivory);border-color:var(--sand)}
+.tc-firm-actions{display:flex;gap:8px;flex-wrap:wrap}
+.tc-firm-actions .btn{background:var(--sand);color:var(--forest)}.tc-firm-actions .btn.ghost{background:transparent;color:var(--ivory);border-color:var(--sand)}
+#app .plan-board{padding:26px;background:var(--panel);border:1px solid var(--sand);border-radius:16px;margin:28px 0}
+#app .plan-board .secttl{margin-top:0}
+#app .plan-board .plan-sheet{border-top:1px solid var(--sand);padding-top:18px;animation:terra-enter .25s var(--ease) both}
+#app[data-terra-route=firm] .plan-sheet .kvgrid{background:var(--panel2)}
+#app .pfm-tools-intro.tc-tools-instrument{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--forest);color:var(--ivory);padding:30px;border-radius:14px;margin-bottom:22px}
+.tc-tools-instrument h2{font-size:clamp(30px,4.5vw,58px);line-height:1.03}
+.tc-tools-instrument p{color:var(--sand);max-width:52ch}
+.tc-tool-dial{width:clamp(80px,14vw,150px);color:var(--sand)}
+.tc-tool-dial svg{display:block;width:100%;animation:terra-enter .45s var(--ease)}
+#app .pfm-tool-directory .tool-card{position:relative;min-height:210px!important;border:1px solid var(--sand);border-radius:12px;padding:24px!important}
+#app .pfm-tool-directory .tool-card:nth-child(1),#app .pfm-tool-directory .tool-card:nth-child(5){background:var(--sand)}
+#app .pfm-tool-directory .tool-card.pfm-tool-expanded{background:var(--panel2);grid-column:1/-1;min-height:0!important}
+#app .pfm-tool-directory .tool-card>h3{font-size:24px!important;line-height:1.12}
+#app .pfm-tool-directory .tool-card:focus-visible{outline-offset:4px}
+#app .pfm-tool-directory .tool-card>.card:not([hidden]){padding-top:24px!important}
+#app .pfm-tool-directory .tool-card>.card:not([hidden]) p[id$="Out"]{padding:24px;background:var(--forest);color:var(--ivory)}
+#app .pfm-tool-directory .tool-card>.card:not([hidden]) p[id$="Out"] .mut{color:var(--sand)!important}
+#app .pfm-journal .journal-kpis{grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;border:0}
+#app .pfm-journal .journal-kpis>.journal-kpi{grid-column:span 4;border:1px solid var(--sand)!important;border-radius:10px!important;background:var(--panel)!important;padding:16px!important;min-width:0}
+#app .pfm-journal .journal-kpis>.journal-kpi:first-child{grid-column:span 8;background:var(--forest)!important;color:var(--ivory)!important}
+#app .pfm-journal .journal-kpis>.journal-kpi:first-child .mut,#app .pfm-journal .journal-kpis>.journal-kpi:first-child .journal-kpi-value{color:var(--ivory)!important}
+#app .pfm-journal .journal-mast{background:var(--sand);padding:20px;border-radius:12px;border:0}
+#app .pfm-journal .journal-side{background:var(--panel2)}
+#app .pfm-journal .journal-dashboard-top{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.tc-equity-readout{display:flex;flex-direction:column;gap:5px;margin:16px 0;color:var(--forest)}
+.tc-equity-readout span{font-size:12px;color:var(--muted)}.tc-equity-readout strong{font-size:32px;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.tc-equity-instrument label{display:block;margin:12px 0 6px;font-size:13px;color:var(--muted)}
+.tc-equity-instrument input{width:100%;accent-color:var(--forest);min-height:30px}
+#app .tc-editorial-index{grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:20px!important}
+#app .tc-editorial-index>.card{grid-column:span 4;border:0;border-top:1px solid var(--sand);border-radius:0;padding:24px 0;background:transparent}
+#app .tc-editorial-index>.card:first-child{grid-column:span 8;background:var(--sand);border:0;border-radius:12px;padding:28px}
+#app .tc-editorial-index>.card:nth-child(2){grid-column:span 4;background:var(--forest);color:var(--ivory);border:0;border-radius:12px;padding:24px}
+#app .tc-editorial-index>.card:nth-child(2) .mut,#app .tc-editorial-index>.card:nth-child(2) a,#app .tc-editorial-index>.card:nth-child(2) .chip{color:var(--ivory)}
+#app .tc-editorial-index>.card h3{font-size:clamp(22px,2.4vw,34px);line-height:1.15}
+@media(max-width:1000px){.tc-payout-stage{grid-template-columns:1fr;gap:20px}.tc-payout-kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tc-payout-kpis>div{display:flex;flex-direction:column;align-items:start}.tc-firm-identity{grid-template-columns:auto minmax(0,1fr)}.tc-firm-actions{grid-column:1/-1}.tc-compare-dossier{padding:18px}}
+@media(max-width:820px){#app .pfm-journal .journal-dashboard-top{grid-template-columns:1fr}#app .tc-editorial-index>.card{grid-column:span 6}#app .tc-editorial-index>.card:first-child,#app .tc-editorial-index>.card:nth-child(2){grid-column:span 6}}
+@media(max-width:600px){.tc-payout-stage{padding:16px}.tc-payout-chart{padding:14px}.tc-payout-kpis{grid-template-columns:1fr}.tc-payout-kpis>div{flex-direction:row;justify-content:space-between}.tc-firm-identity{padding:16px;gap:12px}.tc-firm-logo{padding:6px}.tc-firm-logo .avatar{width:52px!important;height:52px!important}#app .plan-board{padding:16px}#app .pfm-tools-intro.tc-tools-instrument{padding:20px}#app .pfm-journal .journal-kpis>.journal-kpi{grid-column:span 6}#app .pfm-journal .journal-kpis>.journal-kpi:first-child{grid-column:1/-1}#app .tc-editorial-index>.card,#app .tc-editorial-index>.card:first-child,#app .tc-editorial-index>.card:nth-child(2){grid-column:1/-1}#app[data-terra-route=compare] .pagehead{padding:20px}}
+@media(prefers-reduced-motion:reduce){.tc-payout-track i,.tc-compare-dossier,.tc-tool-dial svg,#app .plan-board .plan-sheet{animation:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2281,9 +2370,9 @@ function pageFirm(f){
   var facts = [["Official site",'<a href="'+esc(outUrl(f))+'" target="_blank" rel="'+outRel(f)+'">'+esc(f.site.replace(/^https?:\/\//,""))+"</a>"],["Markets",f.markets.map(function(mk){return MARKETS[mk].label}).join(", ")],["US eligibility",esc(cap(presentText(f.us)))],["Entry price",f.from!==null&&f.from!==undefined?(priceHTML(f)+" — "+esc(f.fromPlan||"")):"Not verified"],["Profit target",esc(cap(f.target))],["Max drawdown",esc(cap(f.dd))],["Daily drawdown",esc(cap(f.dailyDD))],["Consistency rule",esc(cap(f.consistencyText))],["Min trading days",esc(cap(f.minDays))],["Payout cycle",esc(cap(f.payoutText))],["Activation fee",esc(cap(f.activation))],["Instant funding",esc(cap(f.instantText))],["Scaling",esc(cap(f.scaling))],["News trading",esc(cap(f.news))],["Overnight / weekend",esc(cap(f.overnight))],["Platforms",esc(listOrDash(f.platforms))],["Payout methods",esc(listOrDash(f.payMethods))],["Affiliate program",esc(cap(f.affiliate))]];
   go(pageHead('<a href="/">Home</a> · <a href="/firms">Prop Firms</a> · <a href="/'+(f.markets[0]||"firms")+'">'+(MARKETS[f.markets[0]]||{label:"Prop firms"}).label+"</a>", esc(f.name), esc(presentText(f.summary)))+
   (f.verifLabel.indexOf("Not verifiable")===0 ? '<div class="notice" style="margin:18px 0"><b>Coverage gap — not verifiable during our Nov 26, 2026 check.</b> This firm\'s official pricing/configurator pages could not be opened on '+SNAPSHOT+' (rate-limited, not retried). No price, target, drawdown or payout figure is presented as verified for this firm, and none has been filled in from comparison sites. What is shown below is only what the firm\'s own public pages and docs did confirm.</div>' : "")+
-  '<div class="card" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px">'+avatar(f,58)+
+  '<div class="tc-firm-identity"><div class="tc-firm-logo">'+avatar(f,78)+'</div><div class="tc-firm-tags">'+
   f.markets.map(function(mk){ return '<span class="chip">'+MARKETS[mk].label+"</span>"; }).join("")+verChip(f)+
-  (f.codes.length? '<span class="chip">'+esc(f.codes[0].detail)+"</span>" : "")+'<span class="snap-note">Last verified '+esc(verifiedDate(f))+'</span></div>'+
+  (f.codes.length? '<span class="chip">'+esc(f.codes[0].detail)+"</span>" : "")+'<span class="snap-note">Last verified '+esc(verifiedDate(f))+'</span></div><div class="tc-firm-actions"><a class="btn" href="/compare?add='+esc(f.slug)+'">Compare firm</a><a class="btn ghost" href="#plan-board">Account plans</a></div></div>'+
   '<div class="kvgrid">'+
   '<div class="kvcell"><div class="k">Rating</div><div class="v'+(f.rating?"":" sm")+'">'+(f.rating?f.rating.toFixed(1):esc(ratingState(f).value))+'</div><div class="snap-note">'+(f.rating? esc(f.rsrc)+(f.reviews?" · "+f.reviews.toLocaleString()+" reviews":"") : esc(ratingShort(f))+" · separate from the rules check")+'</div></div>'+
   '<div class="kvcell"><div class="k">Profit split</div><div class="v sm">'+esc(formatSplit(f.split))+'</div></div>'+
@@ -2519,9 +2608,12 @@ function pageCompare(q){
     ["Platform", function(f){ return esc(selectedPlan(f).platform || listOrDash(f.platforms)); }],
     ["Verified code", function(f){ return f.codes.length ? f.codes.map(function(c){ return esc(c.code) + (c.off ? " (" + c.off + "% off)" : ""); }).join(" · ") : "None verified"; }]
   ];
+  var groups={"all":"All fields","cost":"Price & account","risk":"Risk & targets","payout":"Payout & eligibility"};
+  function rowGroup(label){return ["Account plan","Plan price","Verified code"].indexOf(label)>=0?"cost":["Profit target","Daily loss","Max drawdown","Drawdown type","Min days"].indexOf(label)>=0?"risk":["Profit split","Payout","US eligibility"].indexOf(label)>=0?"payout":"research";}
+  var overview=picks.map(function(f){var p=selectedPlan(f);return '<article class="tc-compare-dossier"><div class="tc-dossier-top">'+avatar(f,48)+'<a href="/firm/'+esc(f.slug)+'">'+esc(f.name)+'</a></div><p>'+esc(planLabel(p))+'</p><div class="tc-dossier-price">'+planPriceHTML(p)+'</div><dl><div><dt>Profit split</dt><dd>'+esc(formatSplit(p.split||f.split))+'</dd></div><div><dt>Max drawdown</dt><dd>'+esc(p.maxDD||f.dd)+'</dd></div><div><dt>Payout</dt><dd>'+esc(p.payout||f.payoutText||"—")+'</dd></div></dl><a href="/firm/'+esc(f.slug)+'">Full research</a></article>';}).join("");
   var table = picks.length
     ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(f){ return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
-      rows.map(function(r){ return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(f){ return "<td>" + r[1](f) + "</td>"; }).join("") + "</tr>"; }).join("") +
+      rows.map(function(r){ return '<tr data-field-group="'+rowGroup(r[0])+'"><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(f){ return "<td>" + r[1](f) + "</td>"; }).join("") + "</tr>"; }).join("") +
       "</tbody></table></div>" + (picks.length < 2 ? '<p class="mut" style="margin-top:12px">Add a second firm to compare them side by side. Three is the maximum.</p>' : "")
     : '<div class="empty-note"><h3>Pick two or three firms</h3><p>Use the selectors, or filter the list below and choose Compare. The table shows only the firms you select.</p></div>';
   go(pageHead('<a href="/">Home</a> · Compare', "Compare prop firms side by side",
@@ -2532,7 +2624,7 @@ function pageCompare(q){
       var planMenu = picked ? '<label class="fl" for="cmpPlan' + i + '" style="margin-top:8px">Plan</label><select id="cmpPlan' + i + '">' + firmPlanList(picked).map(function(p){ var on = selectedPlan(picked).id === p.id; return '<option value="' + esc(p.id) + '"' + (on ? " selected" : "") + ">" + esc(planLabel(p)) + "</option>"; }).join("") + "</select>" : "";
       return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
     }).join("") +
-    "</div></div>" + table +
+    "</div></div>" + (picks.length?'<section class="tc-compare-overview" aria-label="Selected plan summary">'+overview+'</section><div class="tc-table-toolbar"><h2>Compare the details</h2><div class="pill-tabs" id="tc-compare-fields" aria-label="Comparison fields">'+Object.keys(groups).map(function(k){return '<button type="button" data-tc-field="'+k+'" aria-pressed="'+(k==="all") +'" class="'+(k==="all"?"on":"")+'">'+groups[k]+'</button>';}).join("")+'</div></div>':"") + table +
     '<div class="secttl"><span class="bar"></span><h2>Find a firm to add</h2></div>' +
     '<p class="mut small" style="margin-top:-8px">Filter by market, platform, entry price, payout speed and drawdown. Prices stay in each firm\'s own currency.</p>' +
     filterFieldsHTML(cmpFilter, "cmpf") +
@@ -2577,6 +2669,7 @@ function pageCompare(q){
     $$("[data-compare]").forEach(function(b){ b.addEventListener("click", function(){ toggleCompare(b.getAttribute("data-compare")); pageCompare(""); }); });
   }
   paint();
+  $$("#tc-compare-fields button").forEach(function(btn){btn.addEventListener("click",function(){var group=btn.getAttribute("data-tc-field");$$("#tc-compare-fields button").forEach(function(b){b.classList.toggle("on",b===btn);b.setAttribute("aria-pressed",String(b===btn));});$$(".comparison-table [data-field-group]").forEach(function(row){row.hidden=group!=="all"&&row.getAttribute("data-field-group")!==group;});});});
   bindFilters("cmpf", cmpFilter, paint);
   bindCopy();
 }
@@ -2652,14 +2745,12 @@ function pageVs(a,b){
   snapLine("Figures from the "+SNAPSHOT+" snapshot; the ✓ marks the better figure in that row only, not an overall verdict."));
 }
 function pageTracker(){
+  var maxPaid=Math.max(1,Math.max.apply(null,TRACKER.rows.map(function(r){return r.paid||0;})));
+  var payoutBars=TRACKER.rows.map(function(r,i){return '<button type="button" class="tc-payout-bar" data-payout-row="'+i+'" aria-pressed="'+(i===0)+'"><span>'+esc(r.firm)+'</span><span class="tc-payout-track"><i style="--payout-width:'+Math.max(0,(r.paid||0)/maxPaid*100)+'%"></i></span><strong>'+money0(r.paid)+'</strong></button>';}).join("");
   go(pageHead('<a href="/">Home</a> · Payout Tracker', "Prop firm payout tracker — snapshot",
     "On-chain RiseUSD payouts on Arbitrum for firms that pay through Rise. This page is a dated research snapshot (tracker figures: Nov 25, 2026; firm research updated "+SNAPSHOT+"), not a live feed — figures below are exactly as researched, with the caveats the method requires.")+
+  '<section class="tc-payout-stage"><div class="tc-payout-main"><span>Nov 25, 2026 · 7-day snapshot</span><strong>'+money0(TRACKER.d7)+'</strong><p>RiseUSD on Arbitrum · upper estimate, not a live feed.</p><div class="tc-payout-kpis"><div><span>24h paid</span><b>'+money0(TRACKER.h24)+'</b></div><div><span>24h payouts</span><b>'+TRACKER.payouts24.toLocaleString()+'</b></div><div><span>Largest 24h</span><b>'+money0(TRACKER.largest24)+'</b></div></div></div><div class="tc-payout-chart"><h2>30-day payout comparison</h2><p>Choose a firm to inspect the captured figures.</p>'+payoutBars+'<div id="tc-payout-detail" aria-live="polite"></div></div></section>'+
   '<div class="notice" style="margin:20px 0 18px"><b>Read this first:</b> Rise is one payout rail among several. Firms paying mainly by bank transfer, card, Wise or other crypto wallets do not appear — absence does not mean a firm is not paying. Rise wallets can also process salaries, affiliate commissions and operating expenses, so totals are <b>upper estimates</b>, best used to compare firms against each other. The source tracker was also reconnecting some firms after the Rise V2 migration.</div>'+
-  '<div class="statrow">'+
-  '<div class="stat"><span class="ic">'+icon("coins",24)+'</span><span><b>'+money0(TRACKER.h24)+'</b><span>Paid out (24h)</span></span></div>'+
-  '<div class="stat"><span class="ic">'+icon("coins",24)+'</span><span><b>'+money0(TRACKER.d7)+'</b><span>Paid out (7 days)</span></span></div>'+
-  '<div class="stat"><span class="ic">'+icon("chart",24)+'</span><span><b>'+TRACKER.payouts24.toLocaleString()+'</b><span>Payouts (24h)</span></span></div>'+
-  '<div class="stat"><span class="ic">'+icon("trophy",24)+'</span><span><b>'+money0(TRACKER.largest24)+'</b><span>Largest payout (24h)</span></span></div></div>'+
   snapLine("Tracker header figures as crawled in the Nov 25, 2026 tracker snapshot. Paid totals were captured for "+COUNTS.tracked+" of the "+COUNTS.total+" directory firms; the other firms do not pay via the Rise rail this tracker reads.")+
   '<div class="secttl"><span class="bar"></span><h2>Top paying prop firms — last 30 days (snapshot)</h2></div>'+
   '<div class="tblwrap"><table class="dt"><thead><tr><th>#</th><th>Firm</th><th>Paid out</th><th>Payouts</th><th>Avg payout</th><th>Largest</th><th>Last payout</th></tr></thead><tbody>'+
@@ -2668,6 +2759,8 @@ function pageTracker(){
   '<p class="snap-note" style="margin-top:10px">Rows marked “Partial snapshot” had only their 30-day paid total captured in the tracker snapshot — payout count, average, largest and last-payout were not captured for them, so those cells are deliberately blank rather than estimated. Alpha Trader Firm appears in the tracker data but is not one of the 150 firms in this directory, so it has no review page.</p>'+
   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:22px"><div class="card"><h3>How the tracking works</h3><p class="mut" style="margin-top:8px">1 · Wallet matched — each firm Rise payout wallet is identified and confirmed before it is added.<br/>2 · Payouts indexed — every outgoing RiseUSD payment from that wallet is read from Arbitrum (the source tracker refreshes every 15 minutes).<br/>3 · Linked to proof — each payment links to its public Arbiscan record.</p></div>'+
   '<div class="card"><h3>Not tracked in the last 30 days (snapshot)</h3><p class="mut" style="margin-top:8px">The Nov 25, 2026 tracker snapshot listed firms with no payouts tracked in 30 days — including Blueberry Funded ("no payouts tracked yet") and YRM Prop (last payout Oct 2, 2026 in that snapshot) — mostly firms moving to a new Rise wallet after the V2 migration. YRM Prop is not in this directory; Blueberry Funded is in the directory but had no tracked payouts in that snapshot.</p></div></div>');
+  function inspectPayout(i){var row=TRACKER.rows[i],host=$("#tc-payout-detail");if(!row||!host)return;$$("[data-payout-row]").forEach(function(b){b.setAttribute("aria-pressed",String(Number(b.getAttribute("data-payout-row"))===i));});host.innerHTML='<strong>'+esc(row.firm)+'</strong><dl><div><dt>Paid (30d)</dt><dd>'+money0(row.paid)+'</dd></div><div><dt>Payout count</dt><dd>'+(row.payouts==null?"Not captured":row.payouts.toLocaleString())+'</dd></div><div><dt>Average</dt><dd>'+(row.avg==null?"Not captured":money0(row.avg))+'</dd></div><div><dt>Largest</dt><dd>'+(row.largest==null?"Not captured":money0(row.largest))+'</dd></div></dl>'+(row.slug?'<a href="/firm/'+esc(row.slug)+'">Research this firm</a>':'');}
+  $$("[data-payout-row]").forEach(function(b){b.addEventListener("click",function(){inspectPayout(Number(b.getAttribute("data-payout-row")));});});if(TRACKER.rows.length)inspectPayout(0);
   bindCopy();
 }
 var TOOL_CAT = {"Savings Calculator":"calc","Consistency Calculator":"calc","Dollar to Tick Calculator":"calc","Forex Calculator":"calc","Payout Tracker":"data","Trading Journal":"data","Economic Calendar":"data","Affordable Indicators":"copy","TradeSyncer":"copy","Replikanto":"copy","Tradeus / Thor":"copy","Pass Probability Simulator":"calc","Cost to Get Funded":"calc"};
@@ -2676,7 +2769,7 @@ function pageTools(){
   var cards = [["coins","Savings Calculator","Free calculator","Calculate savings with verified discount codes."],["calc","Consistency Calculator","Free calculator","Biggest-day % against any rule."],["target","Dollar to Tick Calculator","Free calculator","NQ, ES, GC, CL tick values."],["coins","Forex Calculator","Free calculator","Pip value by pair and lot size."],["calc","Pass Probability Simulator","Free calculator","Simulate evaluation outcomes using your assumptions."],["coins","Cost to Get Funded","Free calculator","Estimate the expected cost of passing an evaluation."]];
   go(pageHead('<a href="/">Home</a> · Trading Tools', "Trading tools &amp; calculators",
     "Choose one of six interactive calculators. Each stays closed until you click it; only the selected calculator opens.")+
-  '<div class="pfm-tools-shell"><div class="pfm-tools-intro"><div><h2>Select a tool to get started.</h2><p>Calculators stay closed until you choose one. Only the selected calculator opens.</p></div></div>'+
+  '<div class="pfm-tools-shell"><div class="pfm-tools-intro tc-tools-instrument"><div><h2>Six tools.<br>One trading workspace.</h2><p>Open an instrument to calculate with your own assumptions. Only one calculator opens at a time.</p></div><div class="tc-tool-dial" aria-hidden="true"><svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="63" fill="none" stroke="currentColor" stroke-dasharray="2 8" stroke-width="2"/><circle cx="80" cy="80" r="48" fill="none" stroke="currentColor"/><path d="M80 80 111 43" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="80" cy="80" r="7" fill="currentColor"/></svg></div></div>'+
   '<div class="pfm-tool-directory">'+
   cards.map(function(t){ var id=TOOL_ANCHOR[t[1]]; return '<article class="card tool-card pfm-clickable-calculator" data-cat="calc" data-free="1" data-calculator="'+id+'" role="button" tabindex="0" aria-expanded="false" aria-label="Toggle '+t[1]+'"><span class="ic" style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:linear-gradient(160deg,#263e48,#192a33);box-shadow:var(--neu-btn);color:var(--amber);margin-bottom:10px">'+icon(t[0],22)+'</span><span class="chip grey">'+t[2]+'</span><h3 style="margin-top:8px">'+t[1]+'</h3><p class="mut small">'+t[3]+'</p></article>'; }).join("")+
   "</div>"+
@@ -2801,14 +2894,14 @@ function pageCalendar(){
   var host=$("#tvCal");
   var sc=document.createElement("script");
   sc.src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"; sc.async=true;
-  sc.text=JSON.stringify({colorTheme:"dark",isTransparent:true,width:"100%",height:"560",locale:"en",importanceFilter:"-1,0,1",currencyFilter:"USD,EUR,GBP,JPY,AUD,CAD,CHF,NZD"});
+  sc.text=JSON.stringify({colorTheme:"light",isTransparent:true,width:"100%",height:"560",locale:"en",importanceFilter:"-1,0,1",currencyFilter:"USD,EUR,GBP,JPY,AUD,CAD,CHF,NZD"});
   host.appendChild(sc);
 }
 function pageBestForHub(){
   var keys = Object.keys(BESTFOR);
   go(pageHead('<a href="/">Home</a> · Best Prop Firms', "Best prop firms — "+keys.length+" guides",
     "Each guide picks firms from the reviewed set for one need, with the selection note written down. The method matters more than the count, and it is published on the <a href='/methodology'>Methodology</a> page.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
+  '<div class="grid tc-editorial-index" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
   keys.map(function(k){ var b=BESTFOR[k]; return '<article class="card"><h3>'+esc(b.title)+'</h3><p class="mut small">'+esc(presentText(b.note))+'</p><a href="/best-for/'+k+'" style="font-weight:800">See the picks →</a></article>'; }).join("")+
   "</div>");
 }
@@ -2825,7 +2918,7 @@ function pageBestFor(key){
 function pageGuides(){
   go(pageHead('<a href="/">Home</a> · Guides', "Prop trading guides",
     "Deep dives, comparisons and strategy, written for PropFirmMath from our firm data. Snapshot figures inside articles are dated where they appear.")+
-  '<div class="grid research-index" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));margin-top:20px">'+
+  '<div class="grid research-index tc-editorial-index" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));margin-top:20px">'+
   GUIDES.map(function(g){ return '<article class="card"><span class="chip">'+esc(g.tag)+'</span><h3 style="margin-top:10px">'+esc(g.title)+'</h3><p class="mut small">'+esc(g.excerpt)+'</p><a href="/guide/'+g.slug+'" style="font-weight:800">Read article</a></article>'; }).join("")+
   "</div>");
 }
@@ -3362,6 +3455,7 @@ function journalDashboard(rows){
     stat("Max drawdown", money(s.drawdown), "Peak-to-trough decline", s.drawdown > 0 ? "#a33c2e" : null, s.drawdown, "money") +
     "</div>";
   var curve = s.count ? '<svg viewBox="0 0 780 210" class="terra-equity-chart" role="img" aria-label="Equity curve based on recorded trades" style="display:block;width:100%;height:auto"><defs><linearGradient id="pfmEquityFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6b7f5b" stop-opacity=".3"/><stop offset="100%" stop-color="#6b7f5b" stop-opacity="0"/></linearGradient></defs><path d="' + path + ' L768,194 L12,194 Z" fill="url(#pfmEquityFill)"/><path d="' + path + '" class="terra-equity-line" pathLength="100" fill="none" stroke="var(--sage)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>' : '<div class="journal-empty">Log your first trade to start building your equity curve.</div>';
+  if(s.count){curve='<div class="tc-equity-instrument"><div class="tc-equity-readout"><span id="tc-equity-date">Latest recorded trade</span><strong id="tc-equity-value">'+money(s.total)+'</strong></div>'+curve+'<label for="tc-equity-scrub">Inspect equity after each trade</label><input id="tc-equity-scrub" type="range" min="0" max="'+s.count+'" value="'+s.count+'" step="1"></div>';}
   var year = new Date().getFullYear();
   var tiles = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].map(function(m, i){
     var k = year + "-" + String(i + 1).padStart(2, "0"), v = s.months[k], cls = v === undefined ? "none" : v >= 0 ? "gain" : "loss";
@@ -3598,6 +3692,8 @@ function renderJournal(){
     '<div id="journalCalendar" role="tabpanel"' + shown("calendar") + ">" + journalCalendar(rows) + "</div>" +
     '<div id="journalInsights" role="tabpanel"' + shown("insights") + ">" + journalInsights(rows) + "</div>" +
     "</div></section>");
+  var scrub=$("#tc-equity-scrub");
+  if(scrub){var equity=journalStats(rows);scrub.addEventListener("input",function(){var i=Number(scrub.value);$("#tc-equity-value").textContent=money(equity.points[i]);$("#tc-equity-date").textContent=i===0?"Before first trade":String(equity.ordered[i-1].traded_at).slice(0,10)+" · Trade "+i;var chart=$(".terra-equity-chart");if(chart){var marker=chart.querySelector(".tc-equity-marker");if(!marker){marker=document.createElementNS("http://www.w3.org/2000/svg","circle");marker.setAttribute("class","tc-equity-marker");marker.setAttribute("r","5");marker.setAttribute("fill","#c96f4f");chart.appendChild(marker);}var lo=Math.min.apply(null,equity.points),hi=Math.max.apply(null,equity.points);marker.setAttribute("cx",String(12+756*i/Math.max(1,equity.points.length-1)));marker.setAttribute("cy",String(184-158*(equity.points[i]-lo)/Math.max(1,hi-lo)));}});}
   function journalSelectedPlan(){
     var name = $("#newPlan").value;
     if (!name || name === "__custom__") return null;
