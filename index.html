@@ -1486,6 +1486,15 @@ html,body{overflow-x:clip}
 @media(max-width:700px){.tc-fee-visual{grid-template-columns:1fr}.tc-stats-bars{grid-template-columns:1fr}#app[data-terra-route=glossary] #pfm-glossary-list{grid-template-columns:1fr!important}}
 @media(prefers-reduced-motion:reduce){#app *,#app *::before,#app *::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
 </style>
+<style>
+/* One scroll-linked reading progress line, only on long-form research. No moving text. */
+@supports (animation-timeline:scroll()){
+ @media (prefers-reduced-motion:no-preference) and (min-width:40rem){
+  #app:is([data-terra-route=guide],[data-terra-route=methodology],[data-terra-route=privacy],[data-terra-route=terms])::after{content:"";position:fixed;inset:0 auto 0 0;width:3px;background:var(--clay);transform-origin:top;animation:tc-reading-progress linear both;animation-timeline:scroll(root);pointer-events:none;z-index:20}
+  @keyframes tc-reading-progress{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+ }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2130,7 +2139,7 @@ function mountKineticRing(scene){
     if(!drag){
       var target=paused||focused||hover||focusHold>t?0:-.24;
       speed+=(target-speed)*Math.min(1,dt*3.7);
-      if(!paused&&!focused&&!hover&&focusHold<=t)phase+=speed*dt;
+      if(!paused&&!focused&&focusHold<=t&&(!hover||Math.abs(speed)>.02))phase+=speed*dt;
     }
     render();if(!paused&&!focused&&!hover||drag||Math.abs(speed)>.001)frame=requestAnimationFrame(tick);
   }
@@ -3099,7 +3108,7 @@ function pageFaq(){
   '<div class="tc-rules-search"><label for="tc-faq-q">Find an answer</label><input id="tc-faq-q" type="search" placeholder="e.g. payout, drawdown"><p id="tc-faq-count" aria-live="polite"></p></div>'+
   '<div style="max-width:860px">'+faqHTML(FAQS,0)+"</div>"+
   '<div class="card" style="margin-top:22px;max-width:860px"><h3>Figures behind these answers</h3><p class="mut" style="margin-top:8px">'+FIRMS.filter(function(f){ return f.instant; }).length+' of the '+COUNTS.total+' firms sell at least one instant account · '+codesCount()+' discount codes verified on official sites across '+firmsWithCodes().length+' firms · 4 firms price in euros (FTMO global, Core Funded, PineX, BrightFunded) · 4 charge monthly subscriptions (Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero) · payout cycles run from daily/on-demand to quarterly. Source: the '+SNAPSHOT+' official-site research behind every firm page here.</p></div>');
-  var q=$("#tc-faq-q");if(q)q.addEventListener("input",function(){var term=q.value.toLowerCase().trim(),shown=0;$("details.faq").forEach(function(el){var yes=el.textContent.toLowerCase().indexOf(term)>=0;el.hidden=!yes;if(yes)shown++;});$("#tc-faq-count").textContent=shown+" matching questions";});
+  var q=$("#tc-faq-q");if(q)q.addEventListener("input",function(){var term=q.value.toLowerCase().trim(),shown=0;$$("details.faq").forEach(function(el){var yes=el.textContent.toLowerCase().indexOf(term)>=0;el.hidden=!yes;if(yes)shown++;});$("#tc-faq-count").textContent=shown+" matching questions";});
 }
 /* ================= GLOSSARY ================= */
 function pageGlossary(){
@@ -3120,7 +3129,7 @@ function pageRules(){
   list.map(function(f){ return '<tr><td><a href="/firm/'+f.slug+'" style="display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-weight:700">'+avatar(f,30)+' '+esc(f.name)+'</a></td><td>'+esc(f.dd)+'</td><td>'+esc(f.consistencyText)+'</td><td>'+esc(formatSplit(f.split))+'</td><td>'+esc(f.target)+'</td><td>'+esc(f.payoutText)+'</td><td>'+esc(listOrDash(f.platforms))+"</td></tr>"; }).join("")+
   '</tbody></table></div>'+
   '<div class="card" style="margin-top:22px"><h3>The three drawdown types</h3><p class="mut" style="margin-top:8px"><strong style="color:var(--ink)">Static:</strong> the floor never moves. <strong style="color:var(--ink)">EOD trailing:</strong> the floor follows your end-of-day balance up. <strong style="color:var(--ink)">Intraday trailing:</strong> the floor follows your highest open profit and is the easiest to breach. Consistency figures name the program they belong to. Many firms run several programs with different rules, and the firm page carries the full breakdown.</p></div>');
-  var q=$("#tc-rules-q");if(q)q.addEventListener("input",function(){var words=q.value.trim().toLowerCase().split(/\\s+/).filter(Boolean),shown=0;$(".tc-rules-table tbody tr").forEach(function(row){var text=row.textContent.toLowerCase(),yes=words.every(function(w){return text.indexOf(w)>=0;});row.hidden=!yes;if(yes)shown++;});$("#tc-rules-count").textContent=shown+" matching firms";});
+  var q=$("#tc-rules-q");if(q)q.addEventListener("input",function(){var words=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),shown=0;$$(".tc-rules-table tbody tr").forEach(function(row){var text=row.textContent.toLowerCase(),yes=words.every(function(w){return text.indexOf(w)>=0;});row.hidden=!yes;if(yes)shown++;});$("#tc-rules-count").textContent=shown+" matching firms";});
   bindCopy();
 }
 /* ================= STATISTICS ================= */
