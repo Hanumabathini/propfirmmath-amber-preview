@@ -211,6 +211,19 @@ function submit(form) {
       ok("downgrade and restoration preserve stored records "+tier,testState.trader_accounts.length===12&&testState.trades.length===12&&!testState.deletes.length,"data preservation");
       if(tier==="basic")ok("Basic keeps oldest account and removes all-accounts choice",td.getElementById("journalAccountFilter").options.length===1&&td.getElementById("journalAccountFilter").value==="tester-account-00","Basic selection");
     }
+    const cancelPanel=td.getElementById("journalCancelMembership");
+    ok("paid tester has a separate cancellation control",!!cancelPanel&&!cancelPanel.open,"cancel membership");
+    cancelPanel.open=true;
+    td.getElementById("journalKeepMembership").click();
+    ok("keep membership dismisses confirmation without downgrading",!cancelPanel.open&&testState.user.app_metadata.pfm_membership==="elite","keep plan");
+    cancelPanel.open=true;
+    cancelPanel.querySelector("[data-test-cancel]").click();
+    await waitFor(()=>td.querySelector(".pfm-current-tier")?.textContent.startsWith("Basic ·"),"confirmed cancellation");
+    ok("confirmed cancellation switches to Basic",testState.user.app_metadata.pfm_membership==="basic"&&testDom.window.journalState.accounts.length===1&&testDom.window.journalState.allRows.length===1&&!td.getElementById("journalCancelMembership"),"cancelled");
+    ok("cancellation preserves all original records",testState.trader_accounts.length===12&&testState.trades.length===12&&!testState.deletes.length,"preserved");
+    td.querySelector('[data-test-tier="pro"]').click();
+    await waitFor(()=>td.querySelector(".pfm-current-tier")?.textContent.startsWith("Pro ·"),"upgrade after cancellation");
+    ok("upgrade after cancellation restores ten accounts and trades",testDom.window.journalState.accounts.length===10&&testDom.window.journalState.allRows.length===10,"restored");
   }finally{testDom.window.close();}
   const user = { id: "user-1", email: "3rsj8cxh@mail.grokbot.com", app_metadata: { pfm_membership: "pro" }, user_metadata: { full_name: "Test Trader", country: "United States" } };
   const state = freshState(user);
