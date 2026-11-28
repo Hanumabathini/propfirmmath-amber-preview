@@ -294,6 +294,16 @@ function submit(form) {
     const accounts = d.getElementById("journalAccounts");
     const tradesPanel = d.getElementById("journalTrades");
     ok("accounts panel is not inside the trade log", accounts && accounts.parentElement.classList.contains("journal-main") && !tradesPanel.contains(accounts), accounts && accounts.parentElement.className);
+    d.querySelector('[data-jtab="accounts"]').click();
+    ok("accounts tab opens with editor hidden", d.getElementById("journalAccountEditor").hidden && d.getElementById("journalAddAccount").getAttribute("aria-expanded")==="false", "closed by default");
+    d.getElementById("journalAddAccount").click();
+    ok("explicit add opens editor", !d.getElementById("journalAccountEditor").hidden && d.getElementById("journalAddAccount").getAttribute("aria-expanded")==="true", "open");
+    d.getElementById("journalAccountCancel").click();
+    ok("cancel closes add editor", d.getElementById("journalAccountEditor").hidden, "closed");
+    d.getElementById("journalAddAccount").click();
+    d.querySelector('[data-jtab="overview"]').click();
+    d.querySelector('[data-jtab="accounts"]').click();
+    ok("leaving accounts closes editor", d.getElementById("journalAccountEditor").hidden, "closed");
     d.getElementById("journalAddAccount").click();
     ok("add account shows the form", accounts.hidden === false && !accounts.closest("[hidden]") && d.getElementById("journalAccountForm") && d.getElementById("journalHeading").textContent === "Trading accounts", d.getElementById("journalHeading") && d.getElementById("journalHeading").textContent);
 
@@ -334,6 +344,7 @@ function submit(form) {
     platformSelect.value="Hyperprop";platformSelect.dispatchEvent(new w.Event("change"));
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => state.trader_accounts[1] && d.getElementById("journalAccountFilter") && d.getElementById("journalAccountFilter").value === state.trader_accounts[1].id, "new account");
+    ok("successful add closes editor", d.getElementById("journalAccountEditor").hidden, "closed");
     const created = state.trader_accounts[1];
     ok("platform persists with account",created.platform==="Hyperprop",created);
     ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
@@ -460,7 +471,7 @@ function submit(form) {
 
     d.querySelector('[data-jtab="accounts"]').click();
     d.querySelector('[data-edit-account="a1"]').click();
-    ok("account edit shows save and cancel", d.getElementById("journalAccountSave").textContent === "Save changes" && d.getElementById("journalAccountCancel").hidden === false, d.getElementById("journalAccountSave").textContent);
+    ok("account edit shows save and cancel", !d.getElementById("journalAccountEditor").hidden && d.getElementById("journalAccountSave").textContent === "Save changes" && d.getElementById("journalAccountCancel").hidden === false, d.getElementById("journalAccountSave").textContent);
     d.getElementById("newAccountLabel").value = "Renamed journal";
     d.getElementById("newAccountLabel").dataset.auto = "0";
     d.getElementById("newAccountStatus").value = "breached";
@@ -472,6 +483,7 @@ function submit(form) {
     d.querySelector('[data-edit-account="a1"]').click();
     d.getElementById("newAccountLabel").value = "Nope";
     d.getElementById("journalAccountCancel").click();
+    ok("cancel edit closes editor", d.getElementById("journalAccountEditor").hidden, "closed");
     await reloadJournal();
     ok("account cancel does not save", state.trader_accounts.some(a => a.id === "a1" && a.account_label === "Renamed journal"), state.trader_accounts.find(a => a.id === "a1"));
     const tradeCount = state.trades.filter(t => t.account_id === "a1").length;
@@ -521,7 +533,7 @@ function submit(form) {
     const emptyFilter = d.getElementById("journalAccountFilter");
     ok("empty journal asks for the first account and hides the firm catalog", d.getElementById("journalEmptyAdd") && d.body.textContent.includes("Add your first account") && emptyFilter.innerHTML.includes("All my accounts") && !emptyFilter.innerHTML.includes("firm:") && !emptyFilter.innerHTML.includes("+ "), emptyFilter.innerHTML);
     d.getElementById("journalEmptyAdd").click();
-    ok("empty-state button opens the firm catalog", d.getElementById("journalAccountForm") && d.getElementById("newFirm").options.length > 40, d.getElementById("newFirm").options.length);
+    ok("empty-state button opens the firm catalog", !d.getElementById("journalAccountEditor").hidden && d.getElementById("journalAccountForm") && d.getElementById("newFirm").options.length > 40, d.getElementById("newFirm").options.length);
     w.journalState.accounts = savedAccounts;
     w.journalState.allRows = savedTrades;
     w.journalState.tab = "overview";
