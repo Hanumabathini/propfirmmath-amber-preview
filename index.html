@@ -836,6 +836,97 @@ footer{background:var(--panel2);color:var(--forest)}
 @media(max-width:560px){.terra-index{padding:var(--space-4)}.terra-orbit{width:76px}.terra-copy h1{font-size:clamp(40px,10vw,58px)}.terra-workflow-grid a{padding:var(--space-4);min-height:140px}.terra-workflow-grid a strong{font-size:25px}.terra-market{grid-template-columns:minmax(105px,1fr) minmax(0,1fr) 30px;gap:var(--space-2)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
+<style>
+
+/* Hallmark custom / Grid + Atelier. User-pinned Earthy Minimal palette.
+   Composition: contrast between distinct functional spaces, not repeating card effects.
+   Motion: finite entrances and interaction feedback; countdowns reflect stated deadlines. */
+:root{--font-display:"Hanken Grotesk",system-ui,sans-serif;--r:12px;--r-sm:6px;--clay-ink:#853f2a;--forest-deep:#253228}
+h1,h2,h3,h4{font-weight:650;letter-spacing:-.045em}
+.terra-copy h1{font-size:clamp(48px,6vw,88px);font-weight:700;line-height:.98;max-width:13ch}
+.terra-hero{padding-top:var(--space-12);gap:var(--space-8)}
+.terra-index{border-radius:20px;box-shadow:0 14px 36px rgba(46,58,47,.10)}
+.terra-index-head{position:relative}
+.terra-index-head #terra-total{font-weight:650;letter-spacing:-.06em}
+.terra-market{border-radius:4px}
+.terra-market[aria-pressed=true]{box-shadow:inset 3px 0 var(--clay);padding-left:10px}
+.terra-deals-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.5fr);gap:var(--space-6);padding:var(--space-8);margin:var(--space-8) 0;background:var(--sand);border-radius:18px}
+.terra-deals-heading{align-self:center}
+.terra-deals-heading h2{font-size:clamp(32px,4vw,52px);line-height:1.02}
+.terra-deals-heading p{margin:var(--space-3) 0 var(--space-6);color:var(--forest)}
+.terra-feature-offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+.terra-feature-offer{display:flex;flex-direction:column;gap:var(--space-3);background:var(--ivory);color:var(--forest);padding:var(--space-4);border-radius:10px;position:relative;min-width:0;transition:box-shadow .2s var(--ease)}
+.terra-feature-offer:hover{box-shadow:0 8px 20px rgba(46,58,47,.15);text-decoration:none}
+.terra-offer-brand{display:flex;gap:8px;align-items:center;font-weight:650;overflow-wrap:anywhere}
+.terra-feature-offer>strong{font-size:clamp(24px,3vw,42px);font-weight:700;letter-spacing:-.05em;line-height:1.05;color:var(--clay-ink)}
+.terra-offer-detail{font-size:13px;line-height:1.45;color:var(--muted);overflow-wrap:anywhere}
+.terra-offer-link{margin-top:auto;padding-top:var(--space-3);border-top:1px solid var(--sand);font-weight:650}
+.terra-workflow{border:0;padding:var(--space-8) 0}
+.terra-workflow h2{max-width:25ch}
+.terra-workflow-grid{border:0;gap:var(--space-3)}
+.terra-workflow-grid a,.terra-workflow-grid a:first-child,.terra-workflow-grid a:last-child{padding:var(--space-6);border:0;border-radius:10px;background:var(--panel2);position:relative;min-height:174px}
+.terra-workflow-grid a:nth-child(2){background:var(--forest);color:var(--ivory)}
+.terra-workflow-grid a:nth-child(2) span{color:var(--sand)}
+.terra-workflow-grid a:nth-child(3){background:var(--sand)}
+.terra-workflow-grid a:nth-child(4){background:var(--sage);color:var(--ivory)}
+.terra-workflow-grid a:nth-child(4) span{color:var(--ivory)}
+.terra-workflow-grid a strong{font-weight:650;letter-spacing:-.04em}
+.terra-workflow-grid a:hover{outline:2px solid var(--forest);outline-offset:2px}
+.research-rankings{background:var(--panel);padding:var(--space-8);border:1px solid var(--sand);border-radius:16px;margin:var(--space-8) 0}
+[data-terra-route=deals] .pagehead{background:var(--sand);border:0;border-radius:16px;padding:var(--space-8);margin-bottom:var(--space-6)}
+[data-terra-route=deals] #active-deal-count{font-size:64px;line-height:1;color:var(--clay-ink)}
+[data-terra-route=deals] .deal-summary{align-items:center}
+#deal-active-list,#deal-ended-list{gap:var(--space-4)}
+#deal-active-list>.deal-card,#deal-ended-list>.deal-card{grid-column:span 4;border:1px solid var(--sand);background:var(--panel);padding:var(--space-6);border-radius:14px;box-shadow:none;overflow:hidden}
+#deal-active-list>.deal-card{border-top:4px solid var(--clay)}
+#deal-active-list>.deal-card .deal-up{font-size:clamp(30px,3.6vw,49px);line-height:1.02;color:var(--clay-ink);font-weight:700}
+.terra-countdown{font-size:13px;font-variant-numeric:tabular-nums;font-weight:650;color:var(--forest);background:var(--panel2);padding:9px 12px;border-radius:6px;margin:0;letter-spacing:0}
+.deal-ended{opacity:.85}
+#ended-deals{border-top:1px solid var(--sand)}
+.deal-card .code-btn{background:var(--panel2);border-style:dashed;color:var(--forest)}
+.market-landing-grid{gap:var(--space-4);border:0}
+.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n){grid-column:span 4;display:grid;grid-template-columns:1fr auto;background:var(--panel2);border:0;border-radius:14px;padding:var(--space-6);min-height:230px;gap:var(--space-3);align-content:start;transition:background-color .2s ease}
+.market-landing-card:nth-child(odd){padding-left:var(--space-6);border:0}
+.market-landing-card:nth-child(1),.market-landing-card:nth-child(5){background:var(--forest);color:var(--ivory)}
+.market-landing-card:nth-child(1) p,.market-landing-card:nth-child(5) p,.market-landing-card:nth-child(1) .market-cta,.market-landing-card:nth-child(5) .market-cta,.market-landing-card:nth-child(1)>strong,.market-landing-card:nth-child(5)>strong{color:var(--ivory)}
+.market-landing-card:nth-child(3){background:var(--sand)}
+.market-landing-card:nth-child(4){background:var(--sage);color:var(--ivory)}
+.market-landing-card:nth-child(4) p,.market-landing-card:nth-child(4) .market-cta,.market-landing-card:nth-child(4)>strong{color:var(--ivory)}
+.market-landing-card .terra-market-symbol{grid-row:1;grid-column:2;font-size:42px;line-height:1;font-weight:500;align-self:start}
+.market-landing-card h3{grid-row:2;grid-column:1/-1;font-size:26px}
+.market-landing-card>strong{grid-row:1;grid-column:1;font-size:29px;font-variant-numeric:tabular-nums}
+.market-landing-card p{grid-column:1/-1;line-height:1.5}
+.market-landing-card:hover{outline:2px solid var(--clay);outline-offset:3px;background:var(--panel2)}
+.market-landing-card:nth-child(1):hover,.market-landing-card:nth-child(5):hover{background:var(--forest-deep)}
+.market-landing-card:nth-child(4):hover{background:#586e50}
+.firm-grid{gap:var(--space-4)}
+.firm-grid>.firm-card{grid-column:span 6;border:1px solid var(--sand);border-radius:12px;background:var(--panel);padding:var(--space-6)}
+.firm-grid>.firm-card .firm-head{padding-bottom:var(--space-3);border-bottom:1px solid var(--sand)}
+.firm-card .firm-metrics{gap:var(--space-2);grid-template-columns:repeat(4,minmax(0,1fr))}
+.firm-card .firm-metrics>div{padding:var(--space-3) var(--space-2);border:0;background:var(--bg2);border-radius:6px}
+.firm-card .firm-metrics strong{font-size:16px}
+.firm-card [data-compare][aria-pressed=true]{background:var(--forest);color:var(--ivory)}
+[data-terra-route=compare] .pagehead{border:0;background:var(--forest);color:var(--ivory);padding:var(--space-8);border-radius:16px}
+[data-terra-route=compare] .pagehead .sub,[data-terra-route=compare] .pagehead .crumb,[data-terra-route=compare] .pagehead a{color:var(--ivory)}
+#app .compare-selectors{background:var(--sand);padding:var(--space-6);border-radius:12px;border:0}
+#app .comparison-table{background:var(--panel);border:1px solid var(--sand);border-radius:12px}
+#app .comparison-table table.dt td:first-child,#app .comparison-table table.dt th:first-child{background:var(--panel2)}
+[data-terra-route=tools] .pagehead{background:var(--panel2);padding:var(--space-8);border-radius:16px;border:0}
+#app .pfm-tool-directory{border:0;gap:var(--space-4)}
+#app .pfm-tool-directory .tool-card,#app .pfm-tool-directory .tool-card:nth-child(odd){grid-column:span 4;border:1px solid var(--sand);background:var(--panel);border-radius:12px;min-height:190px!important;padding:var(--space-6)!important}
+#app .pfm-tool-directory .tool-card>.ic{background:var(--sand)!important;border-radius:8px!important;width:44px!important;height:44px!important}
+#app .pfm-tool-directory .tool-card.pfm-tool-expanded{grid-column:1/-1;background:var(--panel2);border:1px solid var(--forest)}
+#app .pfm-tool-directory .tool-card>.card:not([hidden]){animation:terra-enter .32s var(--ease) both}
+#app .pfm-tool-directory .tool-card>.card p[id$="Out"]{background:var(--forest);color:var(--ivory);border-radius:8px}
+[data-terra-route=firm] .kvgrid{background:var(--panel2);padding:var(--space-4);border-radius:12px}
+[data-terra-route=firm] .kvcell{background:var(--panel)}
+.pfm-journal .journal-month.gain{background:#e3eddf!important;color:#28623c!important}
+.pfm-journal .journal-month.loss{background:#f3e2dc!important;color:#a33c2e!important}
+@media(max-width:1100px){.terra-deals-stage{grid-template-columns:1fr}.terra-feature-offers{grid-template-columns:repeat(3,minmax(0,1fr))}#deal-active-list>.deal-card,#deal-ended-list>.deal-card,.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n),#app .pfm-tool-directory .tool-card,#app .pfm-tool-directory .tool-card:nth-child(odd){grid-column:span 6}}
+@media(max-width:820px){.terra-workflow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.firm-card .firm-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.terra-hero{gap:var(--space-6)}}
+@media(max-width:680px){.terra-deals-stage,.research-rankings{padding:var(--space-4)}.terra-feature-offers{grid-template-columns:minmax(0,1fr)}.terra-copy h1{font-size:clamp(42px,10vw,60px)}.terra-workflow-grid a,.terra-workflow-grid a:first-child,.terra-workflow-grid a:last-child{padding:var(--space-4);min-height:150px}.terra-workflow-grid a strong{font-size:24px}#deal-active-list>.deal-card,#deal-ended-list>.deal-card,.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n),.firm-grid>.firm-card,#app .pfm-tool-directory .tool-card,#app .pfm-tool-directory .tool-card:nth-child(odd){grid-column:1/-1}.market-landing-card{min-height:0}#app .pfm-tool-directory .tool-card{min-height:150px!important}[data-terra-route=deals] .pagehead,[data-terra-route=compare] .pagehead,[data-terra-route=tools] .pagehead{padding:var(--space-4)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -1259,10 +1350,10 @@ function dealCardHTML(f, code, ended){
   var codeMarkup = expired
     ? '<span class="chip grey">Ended — code no longer promoted</span>'
     : '<button class="code-btn" data-copy="' + esc(c.code) + '" aria-label="Copy code ' + esc(c.code) + '">' + esc(c.code) + (c.off ? '<span class="off">' + c.off + '% off</span>' : '') + '</button>';
-  return '<article class="card deal-card"' + (deadline ? ' data-deadline="' + deadline.toISOString() + '"' : '') + '><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><a href="/firm/' + f.slug + '" style="display:flex;gap:12px;align-items:center;color:var(--ink)">' + avatar(f,44) + '<strong style="font-family:Sora">' + esc(f.name) + '</strong></a>' +
+  return '<article class="card deal-card' + (expired ? ' deal-ended' : '') + '"' + (deadline ? ' data-deadline="' + deadline.toISOString() + '"' : '') + '><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><a href="/firm/' + f.slug + '" style="display:flex;gap:12px;align-items:center;color:var(--ink)">' + avatar(f,44) + '<strong style="font-family:Sora">' + esc(f.name) + '</strong></a>' +
     f.markets.map(function(m){ return '<span class="chip grey">' + MARKETS[m].label + '</span>'; }).join("") + '</div>' +
     '<div class="deal-up">' + esc(dealHeadline(c, expired)) + '</div>' +
-    '<p style="margin:4px 0 0"><strong>' + esc(c.detail) + '</strong></p>' + dealEndBadge(c.detail) +
+    '<p style="margin:4px 0 0"><strong>' + esc(c.detail) + '</strong></p>' + dealEndBadge(c.detail) + (deadline && !expired ? '<p class="terra-countdown" data-terra-deadline="'+deadline.toISOString()+'">Checking time remaining</p>' : '') +
     '<p class="mut small">Last researched ' + SNAPSHOT + '. Confirm the percent and the end date at checkout.</p>' +
     '<p style="display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:12px 0 0">' + codeMarkup +
     '<a class="btn small" href="/firm/' + f.slug + '">' + (expired ? 'View firm' : 'Review offer') + '</a>' +
@@ -1368,7 +1459,7 @@ if (sb){
     refreshAuthPage();
   });
 }
-function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
+function go(html){ app.setAttribute('data-terra-route',(location.pathname.split('/')[1]||'home')); app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
 var ROUTE_DESC={"/":"Compare 150 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices.","/prediction":"Prediction-market prop firms compared: rules, payout rails, prices and verified discount codes."};
 function seoDescription(path,label){
@@ -1466,10 +1557,16 @@ function pageHome(){
     var pct=Math.round(100*n/Math.max(1,COUNTS.total));
     return '<button type="button" class="terra-market" data-terra-market="'+key+'" data-count="'+n+'" aria-pressed="false"><span>'+esc(MARKETS[key].label)+'</span><span class="terra-meter" aria-hidden="true"><span style="--extent:'+pct+'%"></span></span><strong>'+n+'</strong></button>';
   }).join("");
+  var featuredOffers=[];
+  FIRMS.forEach(function(f){(f.allCodes||f.codes||[]).forEach(function(c){if(!dealExpired(c.detail)&&c.off>0)featuredOffers.push({f:f,c:c});});});
+  featuredOffers.sort(function(a,b){return (b.c.off||0)-(a.c.off||0)||a.f.name.localeCompare(b.f.name);});
+  var seenOffers={};var featured=featuredOffers.filter(function(x){if(seenOffers[x.f.slug])return false;seenOffers[x.f.slug]=true;return true;}).slice(0,3);
+  var featuredMarkup=featured.map(function(x){return '<a class="terra-feature-offer" href="/firm/'+esc(x.f.slug)+'"><span class="terra-offer-brand">'+avatar(x.f,38)+'<span>'+esc(x.f.name)+'</span></span><strong>'+esc(dealHeadline(x.c,false))+'</strong><span class="terra-offer-detail">'+esc(x.c.detail)+'</span><span class="terra-offer-link">Review offer <span aria-hidden="true">↗</span></span></a>';}).join("");
   go(
   '<section class="terra-hero"><div class="terra-copy"><h1>Better decisions begin with better numbers.</h1><p>Independent prop firm research. Compare account rules, understand costs and manage your trading journey with '+COUNTS.total+' firms in the directory.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div><p class="terra-method">Rankings follow published rules and ratings, never commission. <a href="/methodology">How we rank</a></p></div>'+
   '<div class="terra-index"><div class="terra-index-head"><div><span>Research directory</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><svg class="terra-orbit" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="43" fill="none" stroke="#d9c9b2" stroke-width="1"/><circle cx="60" cy="60" r="51" fill="none" stroke="#6b7f5b" stroke-width="1" stroke-dasharray="2 5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c96f4f" stroke-width="6" stroke-dasharray="6 30" transform="rotate(-90 60 60)"/><g class="terra-orbit-dot"><circle cx="60" cy="9" r="4" fill="#f8f6ee"/></g></svg></div>'+
   '<div class="terra-market-list">'+marketIndex+'</div><div class="terra-index-foot"><button type="button" id="terra-reset">All markets</button><a id="terra-market-link" href="/firms">Explore directory</a></div><p class="terra-snapshot">Research snapshot: '+SNAPSHOT+'. Markets overlap.</p></div></section>'+
+  '<section class="terra-deals-stage"><div class="terra-deals-heading"><h2>Prop firm deals</h2><p>Published offers from our '+SNAPSHOT+' research. Confirm at checkout.</p><a class="btn" href="/deals">Explore all deals</a></div><div class="terra-feature-offers">'+(featuredMarkup||'<p>No percentage offers in the current research snapshot.</p>')+'</div></section>'+
   '<section class="terra-workflow"><h2>Your trading decisions, in one place.</h2><div class="terra-workflow-grid"><a href="/firms"><span>01</span><strong>Discover</strong><span>Research firms and account programs.</span></a><a href="/compare"><span>02</span><strong>Compare</strong><span>Evaluate account prices and rules.</span></a><a href="/tools"><span>03</span><strong>Calculate</strong><span>Run the numbers before buying.</span></a><a href="/journal"><span>04</span><strong>Track</strong><span>Manage your trading accounts.</span></a></div></section>'+
   '<section class="research-rankings"><div class="section-mast"><div><h2>The highest-rated firms right now</h2><p class="mut">Ranked by verified numeric trader ratings from the '+SNAPSHOT+' research. Firms without a verified numeric rating remain listed in the directory.</p></div><a class="btn ghost small" href="/firms">Explore all firms</a></div>'+
   '<div class="pill-tabs" id="home-tabs">'+["all","futures","forex","crypto","perps","stocks","prediction"].map(function(k){return '<button data-m="'+k+'" class="'+(homeState.topFilter===k?"on":"")+'">'+(k==="all"?"All":MARKETS[k].label)+'</button>';}).join("")+'</div>'+
@@ -1518,7 +1615,7 @@ function pageFirms(){
       ["stocks","STOCKS","Stocks Prop Firms","Equity programs whose own sites name a stocks product. Three firms are in this set.","Explore stocks firms"],
       ["prediction","PREDICTION","Prediction Markets Prop Firms","Event outcomes on live Polymarket prices \u2014 predict results, not price direction. One firm is in this set.","Explore prediction firms"]
     ];
-    go('<section class="market-landing"><h1>Prop firms</h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="market-tag">'+x[1]+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
+    go('<section class="market-landing"><h1>Prop firms</h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="terra-market-symbol" aria-hidden="true">'+({futures:'↗',forex:'⇄',crypto:'◇',perps:'∞',stocks:'▥',prediction:'◎'}[x[0]]||'•')+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
     var browse=document.getElementById("view-all-firms");
     if(browse)browse.addEventListener("click",function(){dirState.view="directory";pageFirms();});
     return;
@@ -2048,27 +2145,18 @@ function pageDeals(){
   bindCopy();
   $$("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
   if (window.pfmDealTimer) clearInterval(window.pfmDealTimer);
-  window.pfmDealTimer = setInterval(function(){
-    if (location.pathname !== "/deals") { clearInterval(window.pfmDealTimer); return; }
-    var cards = Array.prototype.slice.call(document.querySelectorAll("#deal-active-list .deal-card"));
-    var moved = false;
-    cards.forEach(function(card){
-      var date = card.getAttribute("data-deadline");
-      if (date && nowMs() > new Date(date).getTime()){
-        var btn = card.querySelector("[data-copy]"); if (btn) btn.remove();
-        var label = card.querySelector(".deal-up"); if (label) label.textContent = "Ended";
-        var badge = card.querySelector(".deal-deadline .chip"); if (badge) { badge.classList.add("grey"); badge.textContent = "Ended"; }
-        var endedList = document.getElementById("deal-ended-list"); if (endedList) endedList.prepend(card);
-        moved = true;
-      }
+  function updateDealClocks(){
+    var expiredNow=false;
+    $$("#deal-active-list [data-terra-deadline]").forEach(function(el){
+      var remaining=new Date(el.getAttribute("data-terra-deadline")).getTime()-nowMs();
+      if(remaining<=0){expiredNow=true;return;}
+      var secs=Math.ceil(remaining/1000),days=Math.floor(secs/86400),hours=Math.floor(secs%86400/3600),mins=Math.floor(secs%3600/60),ss=secs%60;
+      el.textContent="Time remaining: "+(days?days+"d ":"")+String(hours).padStart(2,"0")+":"+String(mins).padStart(2,"0")+":"+String(ss).padStart(2,"0");
     });
-    if (moved){
-      var left = document.querySelectorAll("#deal-active-list .deal-card").length;
-      var countEl = document.getElementById("active-deal-count"); if (countEl) countEl.textContent = String(left);
-      var summary = document.querySelector("#ended-deals summary");
-      if (summary) summary.textContent = "Ended offers (" + document.querySelectorAll("#deal-ended-list .deal-card").length + ")";
-    }
-  }, 60000);
+    if(expiredNow){var y=window.scrollY||0;pageDeals();window.scrollTo(0,y);}
+  }
+  updateDealClocks();
+  window.pfmDealTimer=setInterval(function(){if(location.pathname!=="/deals"){clearInterval(window.pfmDealTimer);return;}updateDealClocks();},1000);
 }
 
 function pageVs(a,b){
