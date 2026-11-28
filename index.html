@@ -2775,7 +2775,7 @@ function journalDashboard(rows){
   var table = recent.length ? '<div class="journal-table-wrap"><table class="journal-table"><thead><tr><th>Date</th><th>Symbol</th><th>P&amp;L</th><th></th></tr></thead><tbody>' + recent.map(function(r){
     var p = Number(r.pnl) || 0;
     var color = p > 0 ? "#36d993" : p < 0 ? "#ff8585" : "#94a9ba";
-    return '<tr data-dash-row="' + esc(r.id) + '"><td>' + esc(String(r.traded_at).slice(0, 10)) + "</td><td>" + esc(r.symbol || "—") + '</td><td style="color:' + color + '">' + money(p) + '</td><td><button class="btn ghost small" type="button" data-dash-edit="' + esc(r.id) + '">Edit</button> <button class="btn ghost small" type="button" data-del="' + esc(r.id) + '" aria-label="Delete trade">Delete</button></td></tr>';
+    return '<tr data-dash-row="' + esc(r.id) + '"><td>' + esc(String(r.traded_at).slice(0, 10)) + "</td><td>" + esc(String(r.symbol || "—").toUpperCase()) + '</td><td style="color:' + color + '">' + money(p) + '</td><td><button class="btn ghost small" type="button" data-dash-edit="' + esc(r.id) + '">Edit</button> <button class="btn ghost small" type="button" data-del="' + esc(r.id) + '" aria-label="Delete trade">Delete</button></td></tr>';
   }).join("") + '</tbody></table></div><form id="journalDashEdit" hidden novalidate><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:12px"><input id="dashDate" type="date" aria-label="Trade date" /><input id="dashInst" type="text" aria-label="Instrument" maxlength="32" /><input id="dashPnl" type="text" inputmode="decimal" aria-label="P&L" /><input id="dashNote" type="text" aria-label="Note" maxlength="300" /></div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn small" type="submit">Update trade</button><button class="btn ghost small" type="button" id="dashCancel">Cancel</button></div><p class="form-msg" id="dashMsg"></p></form>' : '<p class="mut small">Your latest trades will appear here.</p>';
   var scope = journalState.selected === "all" ? journalState.accounts : journalState.accounts.filter(function(a){ return a.id === journalState.selected; });
   var rules = scope.length ? '<div class="journal-rules"><h3 style="margin:0">Prop rules for this view</h3>' + (scope.length>1?'<label class="mut small" for="journalRuleAccount">Rule account</label><select id="journalRuleAccount" aria-label="Choose account rules">'+scope.map(function(a,i){return '<option value="'+i+'">'+esc(journalAccountLabel(a))+'</option>';}).join("")+'</select>':"") + scope.map(function(a,i){
@@ -2896,7 +2896,7 @@ function journalCsv(rows,accounts){
   var lines=[header.map(function(v){return q(v);}).join(",")];
   rows.slice().sort(function(a,b){return String(b.traded_at).localeCompare(String(a.traded_at))||String(a.id).localeCompare(String(b.id));}).forEach(function(r){
     var a=byId[r.account_id]||{}, p=Number(r.pnl), valid=Number.isFinite(p);
-    var values=[String(r.traded_at).slice(0,10),a.account_label||"",a.firm||"",a.plan||"",a.account_size==null?"":String(Number(a.account_size)),a.platform||"",r.symbol||"",!valid?"":p>0?"Win":p<0?"Loss":"Breakeven",valid?p.toFixed(2):"",r.note||""];
+    var values=[String(r.traded_at).slice(0,10),a.account_label||"",a.firm||"",a.plan||"",a.account_size==null?"":String(Number(a.account_size)),a.platform||"",String(r.symbol||"").toUpperCase(),!valid?"":p>0?"Win":p<0?"Loss":"Breakeven",valid?p.toFixed(2):"",r.note||""];
     lines.push(values.map(function(v,i){return q(v,i===4||i===8);}).join(","));
   });
   return lines.join("\r\n");
@@ -2937,7 +2937,7 @@ function renderJournal(){
   var tradeSummary='<div class="jv14-trade-summary">'+[["Net P&L",money(tradeStats.total)],["Total trades",String(tradeStats.count)],["Win rate",journalWinRateText(tradeStats.count,tradeStats.win,tradeStats.loss)]].map(function(k){return '<div class="card"><span class="mut small">'+esc(k[0])+'</span><strong>'+esc(k[1])+'</strong></div>';}).join("")+'</div>';
   var tradeRows = '<div class="journal-table-wrap"><table class="journal-table jv14-trade-table"><thead><tr><th>Date</th><th>Account</th><th>Instrument</th><th>P&amp;L</th><th>Note</th><th>Actions</th></tr></thead><tbody id="journalRows">' + sortedTrades.map(function(r){
     var v = Number(r.pnl),a=journalState.accounts.find(function(x){return x.id===r.account_id;});
-    return '<tr data-trade-id="'+esc(r.id)+'" data-pnl="'+v+'"><td>'+esc(String(r.traded_at).slice(0,10))+'</td><td>'+esc(a?journalAccountLabel(a):"—")+'</td><td><strong>'+esc(r.symbol||"—")+'</strong></td><td><strong style="color:'+journalPnlColor(v)+'">'+money(v)+'</strong></td><td class="jv14-trade-note">'+esc(r.note||"—")+'</td><td><div class="jv14-trade-actions"><button class="btn ghost small" data-edit="'+esc(r.id)+'" type="button" aria-label="Edit trade">Edit</button><button class="btn ghost small" data-del="'+esc(r.id)+'" type="button" aria-label="Delete trade">Delete</button></div></td></tr>';
+    return '<tr data-trade-id="'+esc(r.id)+'" data-pnl="'+v+'"><td>'+esc(String(r.traded_at).slice(0,10))+'</td><td>'+esc(a?journalAccountLabel(a):"—")+'</td><td><strong>'+esc(String(r.symbol||"—").toUpperCase())+'</strong></td><td><strong style="color:'+journalPnlColor(v)+'">'+money(v)+'</strong></td><td class="jv14-trade-note">'+esc(r.note||"—")+'</td><td><div class="jv14-trade-actions"><button class="btn ghost small" data-edit="'+esc(r.id)+'" type="button" aria-label="Edit trade">Edit</button><button class="btn ghost small" data-del="'+esc(r.id)+'" type="button" aria-label="Delete trade">Delete</button></div></td></tr>';
   }).join("") + '</tbody></table></div><p class="mut small" id="journalTradeEmpty"'+(rows.length?' hidden':'')+'>No matching trades. Log a trade or change your filters.</p>';
   var journalStyle = "<style>" +
     ".pfm-journal{--j-accent:var(--amber);--j-line:var(--line);max-width:1540px;margin:0 auto 48px;display:grid;grid-template-columns:216px minmax(0,1fr);min-height:680px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:none;color:var(--ink)}" +
@@ -3405,7 +3405,7 @@ function renderJournal(){
         dashForm.hidden = false;
         dashForm.dataset.id = row.id;
         $("#dashDate").value = String(row.traded_at).slice(0, 10);
-        $("#dashInst").value = row.symbol || "";
+        $("#dashInst").value = String(row.symbol || "").toUpperCase();
         $("#dashPnl").value = Number(row.pnl);
         $("#dashNote").value = row.note || "";
         $("#dashMsg").textContent = "";
@@ -3421,7 +3421,7 @@ function renderJournal(){
       var symErr = journalSymbolError($("#dashInst").value.trim()); if (symErr) errs.push(symErr);
       var pnlErr = journalPnlError($("#dashPnl").value); if (pnlErr) errs.push(pnlErr);
       if (errs.length) { msg.className = "form-msg err"; msg.textContent = errs.join(" "); return; }
-      var payload = { traded_at: new Date($("#dashDate").value + "T12:00:00").toISOString(), symbol: $("#dashInst").value.trim(), pnl: Number(journalNormalizePnl($("#dashPnl").value)), note: $("#dashNote").value.trim() || null };
+      var payload = { traded_at: new Date($("#dashDate").value + "T12:00:00").toISOString(), symbol: $("#dashInst").value.trim().toUpperCase(), pnl: Number(journalNormalizePnl($("#dashPnl").value)), note: $("#dashNote").value.trim() || null };
       sb.from("trades").update(payload).eq("id", id).eq("user_id", PM_USER.id).select(TRADE_CORE).single().then(function(r){
         if (r.error) { msg.className = "form-msg err"; msg.textContent = r.error.message; toast("Could not update the trade."); return; }
         journalState.tab = "overview";
@@ -3437,7 +3437,8 @@ function renderJournal(){
     out.textContent = n + " / " + JOURNAL_SYMBOL_MAX;
     out.style.color = n > JOURNAL_SYMBOL_MAX ? "#ff8585" : "";
   }
-  $("#jInst").addEventListener("input", journalSymbolCount);
+  $("#jInst").addEventListener("input", function(){var start=this.selectionStart,end=this.selectionEnd;this.value=this.value.toUpperCase();if(start!==null&&end!==null)this.setSelectionRange(start,end);journalSymbolCount();});
+  var dashSymbol=$("#dashInst");if(dashSymbol)dashSymbol.addEventListener("input",function(){var start=this.selectionStart,end=this.selectionEnd;this.value=this.value.toUpperCase();if(start!==null&&end!==null)this.setSelectionRange(start,end);});
   function journalClearTradeForm(){
     delete $("#jForm").dataset.editId;
     $("#jDate").value = journalToday();
@@ -3453,7 +3454,7 @@ function renderJournal(){
   $("#jCancel").addEventListener("click", journalClearTradeForm);
   $("#jForm").addEventListener("submit", function(e){
     e.preventDefault();
-    var inst = $("#jInst").value.trim();
+    var inst = $("#jInst").value.trim().toUpperCase();
     var pnlRaw = $("#jPnl").value;
     var note = $("#jNote").value.trim();
     var d = $("#jDate").value;
@@ -3506,7 +3507,7 @@ function renderJournal(){
       journalApplyTab("trades");
       $("#jAccount").value = row.account_id || (journalState.acct && journalState.acct.id) || "";
       $("#jDate").value = String(row.traded_at).slice(0, 10);
-      $("#jInst").value = row.symbol || "";
+      $("#jInst").value = String(row.symbol || "").toUpperCase();
       $("#jPnl").value = Number(row.pnl);
       $("#jNote").value = row.note || "";
       $("#jForm").dataset.editId = id;
