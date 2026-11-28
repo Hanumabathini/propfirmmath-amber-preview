@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
+/* Hallmark v2.0.0 | custom | editorial workbench | original Obsidian Amber brand */
+/* Critique: repeated glowing gradients and deep shadows obscure hierarchy; use a restrained grid and flat financial surfaces. */
 :root{
   --bg:#0a0705; --bg2:#0e0a06; --panel:#161009; --panel2:#1b130a;
   --ink:#f6ecda; --muted:#b3a184; --faint:#7d6f57;
@@ -277,7 +279,7 @@ legend{font-family:"Sora";font-weight:700;padding:0 8px}
 .opt{display:flex;gap:11px;align-items:center;background:#120d07;border:1px solid rgba(255,176,32,.12);border-radius:12px;padding:13px 15px;margin:8px 0;cursor:pointer;font-weight:600;min-height:52px}
 .opt:hover{border-color:rgba(255,176,32,.45)}
 .progress{height:12px;border-radius:99px;background:#120d07;box-shadow:var(--neu-in);overflow:hidden}
-.progress i{display:block;height:100%;background:linear-gradient(90deg,#ff8a00,#ffd34d);border-radius:99px;transition:width .3s}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#ff8a00,#ffd34d);border-radius:99px;transition:none}
 .copycode{font-family:ui-monospace,Menlo,monospace;background:#0d0906;border:1px dashed rgba(255,176,32,.4);padding:5px 12px;border-radius:9px;font-weight:700;color:var(--gold);letter-spacing:1px}
 </style>
 <style>
@@ -285,7 +287,7 @@ legend{font-family:"Sora";font-weight:700;padding:0 8px}
 /* The page resizes to the device. The page and tables never scroll sideways:
    wide content wraps or stacks instead. The marquee strip fits the screen and
    its rows auto-scroll as animation (opposite directions) inside the strip. */
-html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
+html,body{overflow-x:clip;max-width:100%}
 body{width:100%}
 *,*::before,*::after{min-width:0}
 img,svg,video,iframe{max-width:100%}
@@ -304,7 +306,7 @@ p,h1,h2,h3,h4,li,span,b,strong,td,th,a{overflow-wrap:break-word}
 .toolbar>*{max-width:100%}
 select.sel{min-width:0;max-width:100%}
 input,select,textarea{max-width:100%}
-.toast{max-width:calc(100vw - 24px);text-align:center}
+.toast{max-width:calc(100% - 24px);text-align:center}
 /* --- marquee: strip fits the screen; rows auto-scroll as animation inside it --- */
 .firm-marquee{width:100%;max-width:100%;overflow:hidden}
 .mq{overflow-x:auto !important;overflow-y:hidden !important}
@@ -465,6 +467,131 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.nav-toggle:focus-vis
   header nav.main a,header nav.main .nav-resources summary{width:100%}
   nav.main .nav-resources{width:100%}
   nav.main .nav-resources-menu{position:static;width:100%;min-width:0;box-shadow:none}
+}
+</style>
+<style>
+
+/* Hallmark v2.0.0 | custom editorial workbench | Obsidian Amber */
+:root{
+  --bg:#151310;--bg2:#191713;--panel:#201d18;--panel2:#25211b;
+  --ink:#f1ede4;--muted:#b9ad99;--faint:#a39682;
+  --amber:#e8b45f;--amber2:#d4a051;--gold:#f0c983;
+  --line:#40382e;--surface-hover:#2b261e;--accent-ink:#241a0e;
+  --transparent:transparent;--shadow-dialog:0 12px 36px rgba(0,0,0,.25);
+  --neu-out:none;--neu-in:none;--neu-btn:none;--r:6px;--r-sm:5px;
+  --font-display:"Sora",sans-serif;--font-body:"Manrope",system-ui,sans-serif;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;
+  --space-6:24px;--space-8:32px;--space-12:48px;--space-16:64px;
+  --container:1440px;--gutter:clamp(20px,4vw,64px);--ease:cubic-bezier(.2,.7,.2,1);
+}
+html,body{overflow-x:clip;max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body)}
+h1,h2,h3,h4{font-family:var(--font-display);min-width:0;overflow-wrap:break-word;letter-spacing:-.035em}
+.wrap,.hbar,.fwrap{max-width:var(--container);padding-inline:var(--gutter)}
+header{background:var(--bg);backdrop-filter:none;border-color:var(--line)}
+.hbar{min-height:72px;gap:var(--space-4)}
+.logo-mark{background:var(--panel);box-shadow:none;border-radius:var(--r)}
+.logo b{font-family:var(--font-display);letter-spacing:-.04em}
+.logo small{letter-spacing:0}
+nav.main a,nav.main .nav-resources summary{font-size:14px;border-radius:var(--r);font-weight:650;padding-inline:var(--space-3);transition:background-color .15s var(--ease),color .15s var(--ease)}
+nav.main a:hover,nav.main .nav-resources summary:hover{background:var(--surface-hover)}
+nav.main a.on,nav.main .nav-resources summary.on{background:var(--panel);color:var(--amber);box-shadow:none}
+.signin,nav.main button.nav-signout,.nav-toggle{border-radius:var(--r);box-shadow:none}
+nav.main .nav-resources-menu{background:var(--panel);border-radius:var(--r);box-shadow:var(--shadow-dialog)}
+.card,.stat,.note,.tblwrap,.empty-note,details.faq,.calc-out,fieldset,.notice,.hero-feats,.compare-tray,.firm-marquee{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:none}
+.card{padding:var(--space-6)}
+.card .card,.card .kvcell,.card .firm-metrics div{background:var(--transparent);box-shadow:none}
+.card .kvcell,.card .firm-metrics div{border:0;border-radius:0;border-top:1px solid var(--line)}
+.btn,.pill-tabs button.on,.pickbox button.on,.code-btn.is-copied,.ck,.step-num{background:var(--amber);color:var(--accent-ink);box-shadow:none;border-radius:var(--r);border-color:var(--transparent)}
+.btn{font-weight:800;transition:background-color .15s var(--ease),color .15s var(--ease)}
+.btn:hover{background:var(--gold);filter:none}
+.btn.ghost,.pill-tabs button,.pickbox button{background:var(--transparent);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);box-shadow:none}
+.btn.ghost:hover,.pill-tabs button:hover,.pickbox button:hover{background:var(--surface-hover)}
+.btn.small{border-radius:var(--r-sm)}
+input[type="text"],input[type="number"],input[type="search"],input[type="date"],input[type="email"],input[type="password"],select,textarea{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);box-shadow:none}
+:where(a,button,input,select,textarea,summary,[tabindex],[role="button"]):focus-visible{outline:2px solid var(--gold);outline-offset:3px;transition:none}
+.chip,.market-tag,.fit-chips span,.kicker{background:var(--transparent);color:var(--muted);box-shadow:none;border-radius:var(--r-sm);border:1px solid var(--line);text-transform:none;letter-spacing:0;font-weight:650}
+.kicker{padding:var(--space-1) var(--space-2)}
+table.dt th,.kvcell .k,.firm-metrics span,.fstrip .lbl,nav.main .nav-resources-heading,.market-tag{font-family:var(--font-body);text-transform:none;letter-spacing:0;font-weight:650}
+table.dt th{background:var(--bg2);font-size:13px}
+table.dt th,table.dt td{border-color:var(--line);padding-block:var(--space-4)}
+table.dt tbody tr:hover td{background:var(--surface-hover)}
+.num,.kvcell .v,.stat b,.calc-out .big,.deal-up,.firm-metrics strong{font-variant-numeric:tabular-nums}
+.secttl{margin-block:var(--space-12) var(--space-4);border-bottom:1px solid var(--line);padding-bottom:var(--space-3)}
+.secttl .bar{display:none}
+.secttl h2{font-size:clamp(22px,2.4vw,32px);font-weight:650}
+.pagehead{margin-top:var(--space-12);padding-bottom:var(--space-6);border-bottom:1px solid var(--line)}
+.pagehead h1{font-size:clamp(32px,4.5vw,56px);line-height:1.08;font-weight:700}
+.pagehead .sub,.prose p,.prose ul{max-width:70ch;color:var(--muted)}
+.hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:stretch;gap:var(--space-6);margin-top:var(--space-8);background:var(--transparent);border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;overflow:visible;padding-bottom:var(--space-8)}
+.hero-bg{grid-column:8 / -1;grid-row:1;position:relative;inset:auto;min-height:340px;overflow:clip;border-radius:var(--r)}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero-shade{display:none}
+.hero-in{grid-column:1 / 8;grid-row:1;display:flex;align-items:center;position:relative;padding:var(--space-8) 0;gap:0}
+.hero h1{font-size:clamp(36px,4.7vw,68px);line-height:1.06;letter-spacing:-.06em;font-weight:700;margin:0!important}
+.hero h1 .a,.hero h1 .g{color:inherit;background:none}
+.hero p.sub{font-size:17px;color:var(--muted);max-width:55ch;margin:var(--space-6) 0}
+.hero-cta{gap:var(--space-3)}
+.hero-cta .btn{min-height:48px}
+.firm-marquee{border-radius:0;padding-block:var(--space-2);mask-image:none;-webkit-mask-image:none}
+.mq a,.calc-card,.opt,.kvcell,.firm-metrics div{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);box-shadow:none}
+.mq .av,.avatar,.stat .ic,.calc-card .ic{border-radius:var(--r-sm);box-shadow:none}
+.market-landing{text-align:start;max-width:none;padding:var(--space-12) 0}
+.market-landing h1{font-size:clamp(44px,6vw,80px);margin:0 0 var(--space-4);line-height:1.05}
+.market-landing h1 em{color:inherit}
+.market-intro{margin:0 0 var(--space-12);max-width:65ch}
+.market-landing h2{border-top:1px solid var(--line);padding-top:var(--space-6)}
+.market-landing-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-4);text-align:start}
+.market-landing-card{grid-column:span 4;min-height:0;align-items:flex-start;text-align:start;border-radius:var(--r);padding:var(--space-6);background:var(--panel);gap:var(--space-2);transition:background-color .15s var(--ease),border-color .15s var(--ease)}
+.market-landing-card:nth-child(-n+2){grid-column:span 6}
+.market-landing-card:last-child:nth-child(3n){grid-column:span 4}
+.market-landing-card:hover,.market-landing-card:focus-visible,.firm-card:hover,.deal-card:hover{transform:none;background:var(--surface-hover);border-color:var(--amber);box-shadow:none}
+.market-landing-card h3{font-size:24px;margin:var(--space-2) 0 0}
+.market-landing-card>strong{font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums}
+.market-landing-card p{margin:var(--space-2) 0 var(--space-4);flex:1}
+.market-landing-bottom{margin-top:var(--space-8)}
+.firm-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-4)}
+.firm-grid>.firm-card{grid-column:span 4}
+.firm-card{gap:var(--space-3)}
+.firm-head b{font-size:20px;font-family:var(--font-display)}
+.firm-metrics{gap:var(--space-2)}
+.firm-metrics div{padding:var(--space-2)}
+.firm-metrics strong{font-family:var(--font-display)}
+.home-grid,.detail-grid{gap:var(--space-6)}
+.calc-card .ic,.stat .ic{background:var(--transparent)}
+.calc-card .ic{width:36px;height:36px}
+.progress i{background:var(--amber);transition:none}
+.toast{background:var(--amber);color:var(--accent-ink);max-width:calc(100% - 24px);box-shadow:var(--shadow-dialog);transition:opacity .18s var(--ease),transform .18s var(--ease)}
+footer{background:var(--bg2);border-color:var(--line)}
+.pfm-journal{border-radius:var(--r)!important;box-shadow:none!important}
+.pfm-journal .journal-side-label{letter-spacing:0!important;text-transform:none!important;font-size:12px!important}
+.pfm-journal .journal-tabs [data-jtab]{border-radius:var(--r)!important}
+@media(max-width:1100px){
+  .hero-bg{grid-column:8 / -1;min-height:300px}
+  .firm-grid>.firm-card{grid-column:span 6}
+  .market-landing-card{grid-column:span 6}
+}
+@media(max-width:860px){
+  header nav.main{background:var(--bg);box-shadow:var(--shadow-dialog)}
+  .hero{gap:var(--space-4)}
+  .hero-in{grid-column:1 / -1;grid-row:1;padding:var(--space-4) 0}
+  .hero-bg{grid-column:1 / -1;grid-row:2;min-height:0;aspect-ratio:16/7}
+  .hero-bg img{aspect-ratio:16/7}
+  table.dt td::before{font-family:var(--font-body);letter-spacing:0;text-transform:none}
+}
+@media(max-width:700px){
+  .wrap,.hbar,.fwrap{padding-inline:var(--space-4)}
+  .pagehead{margin-top:var(--space-6)}
+  .card{padding:var(--space-4)}
+  .secttl{margin-top:var(--space-8)}
+  .firm-grid>.firm-card,.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n){grid-column:1 / -1}
+  .firm-grid,.market-landing-grid{grid-template-columns:minmax(0,1fr)}
+  .market-landing{padding:var(--space-6) 0}
+  .hero h1{font-size:clamp(34px,9vw,52px)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
@@ -1094,11 +1221,11 @@ function pageHome(){
   }
   go(
   '<section class="hero"><div class="hero-bg"><img src="/img/hero-960.webp" srcset="/img/hero-480.webp 480w, /img/hero-960.webp 960w, /img/hero-1440.webp 1440w" sizes="(max-width: 700px) 100vw, 960px" width="1440" height="960" alt="Golden geometric bull charging in front of a glowing amber candlestick chart" fetchpriority="high" decoding="async" /></div><div class="hero-shade"></div>'+
-  '<div class="hero-in"><div><span class="kicker">Your prop trading math resource</span>'+
-  '<h1 style="margin-top:18px">Compare prop firms by <span class="a">the math,</span> not the <span class="g">marketing.</span></h1>'+
+  '<div class="hero-in"><div>'+
+  '<h1>Compare prop firms by the math, not the marketing.</h1>'+
   '<p class="sub">Side-by-side rules, prices and payout evidence for '+COUNTS.total+' futures, forex, crypto, perps and stocks firms, each researched on its own official site ('+SNAPSHOT+'). Every figure carries the date it was checked.</p>'+
-  '<div class="hero-cta"><a class="btn" href="/deals">See Current Deals →</a><a class="btn ghost" href="/compare">Compare Firms</a></div>'+
-  '<p class="small mut" style="margin-top:16px">Rankings follow published rules and ratings, never commission. <a href="/methodology" style="font-weight:800">How we rank →</a></p></div>'+
+  '<div class="hero-cta"><a class="btn" href="/deals">See Current Deals</a><a class="btn ghost" href="/compare">Compare Firms</a></div>'+
+  '<p class="small mut" style="margin-top:16px">Rankings follow published rules and ratings, never commission. <a href="/methodology" style="font-weight:800">How we rank</a></p></div>'+
   '</div></section>'+
   '<div class="secttl"><span class="bar"></span><h2>'+COUNTS.total+' Prop Firms in the Directory</h2></div>'+
   '<p class="mut" style="margin:-6px 0 12px">'+COUNTS.total+' prop firms in the directory · all researched on official sites, '+SNAPSHOT+'. Tap any firm to open its full page.</p>'+
@@ -1135,7 +1262,7 @@ function pageFirms(){
       ["stocks","STOCKS","Stocks Prop Firms","Equity programs whose own sites name a stocks product. Three firms are in this set.","Explore stocks firms"],
       ["prediction","PREDICTION","Prediction Markets Prop Firms","Event outcomes on live Polymarket prices \u2014 predict results, not price direction. One firm is in this set.","Explore prediction firms"]
     ];
-    go('<section class="market-landing"><div class="market-eyebrow">All Markets</div><h1>Prop <em>Firms</em></h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="market-tag">'+x[1]+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
+    go('<section class="market-landing"><h1>Prop firms</h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="market-tag">'+x[1]+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
     var browse=document.getElementById("view-all-firms");
     if(browse)browse.addEventListener("click",function(){dirState.view="directory";pageFirms();});
     return;
