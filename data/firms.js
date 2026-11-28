@@ -133,6 +133,53 @@ var FIRMS = [
         "platform": "Tradovate, NinjaTrader, Quantower",
         "source": "https://myfundedfutures.com"
       }
+    ],
+    "journalAccountPlans": [
+      {
+        "name": "Builder",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      },
+      {
+        "name": "Rapid",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      },
+      {
+        "name": "Rapid EOD",
+        "sizes": [
+          25000,
+          50000
+        ],
+        "source": "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      },
+      {
+        "name": "Pro",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      }
     ]
   },
   {
@@ -581,6 +628,45 @@ var FIRMS = [
         "platform": "Tradovate, NinjaTrader",
         "source": "https://tradeify.co"
       }
+    ],
+    "journalAccountPlans": [
+      {
+        "name": "Growth",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      },
+      {
+        "name": "Select",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000,
+          300000
+        ],
+        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      },
+      {
+        "name": "Lightning",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      }
     ]
   },
   {
@@ -670,6 +756,32 @@ var FIRMS = [
         "payout": "5 trading days between payouts",
         "platform": "Rithmic, Tradovate, WealthCharts",
         "source": "https://apextraderfunding.com"
+      }
+    ],
+    "journalAccountPlans": [
+      {
+        "name": "Intraday Trail Std",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
+      },
+      {
+        "name": "EOD Trail",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+        "verifiedOn": "2026-11-28",
+        "coverage": "size-only"
       }
     ]
   },
