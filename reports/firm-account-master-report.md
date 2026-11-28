@@ -1,0 +1,24515 @@
+# PropFirmMath Obsidian Amber — Firm and Account Master Report
+
+Snapshot: 2026-11-28 (repository data, not a new independent verification).
+
+Source: [data/firms.js](https://github.com/Hanumabathini/propfirmmath-amber-preview/blob/main/data/firms.js), blob SHA `3aef8f23a1aba43471da2af91c22df007b2d946e`.
+
+## Coverage and limitations
+
+- Firms: 150
+- Account records: 779
+- Unique account IDs: 779
+- Database coverage labels: {"verified":660,"partial":42,"starting":77}
+- No explicit plans: 26
+- Single record: 75
+- Multiple records: 49
+
+This report reproduces the stored data for audit purposes. A database label does not establish current official verification, completeness, or checkout acceptance. Firm-level rules may have been inherited by account records and must not be assumed to apply to all sizes. All offers are historical or unconfirmed unless separately verified; missing dates, restrictions and prices are not inferred. No deployment or UI validation is implied. Preserve unknowns and update this report with each verified data batch. Steel is excluded.
+
+## Firm index
+
+| # | Firm | Recorded plans | Coverage labels | Firm verification date | Official site |
+|---:|---|---:|---|---|---|
+| 1 | 10FOUR | 12 | verified | Nov 27, 2026 | https://10four.com |
+| 2 | 8FigureTrader | 12 | verified | Nov 27, 2026 | https://8figuretrader.com/ |
+| 3 | AI Prop | 28 | verified | Nov 27, 2026 | https://aiprop.com |
+| 4 | AIFO Global | 0 | Not recorded | Nov 27, 2026 | https://aifo.com |
+| 5 | Alpha Capital | 1 | starting | Nov 27, 2026 | https://alphacapitalgroup.uk |
+| 6 | Alpha Funded | 3 | verified | Nov 27, 2026 | https://alphafunded.com |
+| 7 | Alpha Futures | 1 | starting | Nov 27, 2026 | https://alpha-futures.com |
+| 8 | AlpineFunded | 1 | starting | Nov 27, 2026 | https://alpinefunded.com |
+| 9 | Amadeux | 15 | verified | Nov 27, 2026 | https://amadeux.com |
+| 10 | Apex Trader Funding | 1 | starting | Nov 27, 2026 | https://apextraderfunding.com |
+| 11 | AquaFunded | 1 | starting | Nov 27, 2026 | https://aquafunded.com |
+| 12 | Atlas Funded | 2 | starting | Nov 27, 2026 | https://atlasfunded.com |
+| 13 | Atmos Funded | 1 | starting | Nov 27, 2026 | https://atmosfunded.com |
+| 14 | Audacity Capital | 1 | starting | Nov 27, 2026 | https://audacity.capital |
+| 15 | Axi Select | 1 | starting | Nov 27, 2026 | https://axi.com |
+| 16 | Axis Funded | 12 | verified | Nov 27, 2026 | https://axisfunded.com |
+| 17 | BEM Funding | 9 | verified | Nov 27, 2026 | https://bemfunding.com |
+| 18 | Bitfunded | 1 | starting | Nov 27, 2026 | https://bitfunded.com |
+| 19 | Blue Guardian | 2 | starting | Nov 27, 2026 | https://blueguardian.com |
+| 20 | Blueberry Funded | 1 | starting | Nov 27, 2026 | https://blueberryfunded.com |
+| 21 | Blueberry Futures | 1 | starting | Nov 27, 2026 | https://blueberryfutures.com |
+| 22 | BluSky Trading | 1 | starting | Nov 27, 2026 | https://blusky.pro |
+| 23 | Breakout Prop | 1 | starting | Nov 27, 2026 | https://breakoutprop.com |
+| 24 | BrightFunded | 1 | starting | Nov 27, 2026 | https://brightfunded.com |
+| 25 | Bulenox | 1 | starting | Nov 27, 2026 | https://bulenox.com |
+| 26 | City Traders Imperium | 1 | starting | Nov 27, 2026 | https://citytradersimperium.com |
+| 27 | CK Propfirm | 22 | verified | Nov 27, 2026 | https://ckpropfirm.com/ |
+| 28 | Clarity Traders | 18 | verified | Nov 27, 2026 | https://www.claritytraders.com |
+| 29 | CoinProp | 1 | starting | Nov 27, 2026 | https://coinprop.io |
+| 30 | Core Funded | 1 | starting | Nov 27, 2026 | https://www.corefunded.io |
+| 31 | Crypto Fund Trader | 1 | starting | Nov 27, 2026 | https://cryptofundtrader.com |
+| 32 | Darwinex Zero | 0 | Not recorded | Nov 27, 2026 | https://www.darwinexzero.com |
+| 33 | DayTraders.com | 1 | starting | Nov 27, 2026 | https://daytraders.com |
+| 34 | E8 Perpetuals | 1 | starting | Nov 27, 2026 | https://e8markets.com |
+| 35 | Earn2Trade | 0 | Not recorded | Nov 27, 2026 | https://earn2trade.com |
+| 36 | Elite Trader Funding | 0 | Not recorded | Nov 27, 2026 | https://elitetraderfunding.app |
+| 37 | Epic Future Traders | 23 | verified | Nov 27, 2026 | https://epicfuturetraders.com |
+| 38 | EverFunded | 20 | verified | Nov 27, 2026 | https://everfunded.com |
+| 39 | Finotive Funding | 1 | starting | Nov 27, 2026 | https://finotivefunding.com |
+| 40 | Fintokei | 1 | starting | Nov 27, 2026 | https://fintokei.com |
+| 41 | For Traders | 0 | Not recorded | Nov 27, 2026 | https://fortraders.com |
+| 42 | FTMO | 1 | verified | Nov 27, 2026 | https://ftmo.com |
+| 43 | FTUK | 1 | starting | Nov 27, 2026 | https://ftuk.com |
+| 44 | Funded Academy | 6 | verified | Nov 27, 2026 | https://fundedacademy.com |
+| 45 | Funded Family One | 1 | starting | Nov 27, 2026 | https://fundedfamilyone.com |
+| 46 | Funded Futures Network | 1 | starting | Nov 27, 2026 | https://fundedfuturesnetwork.com |
+| 47 | Funded Trader Markets | 1 | starting | Nov 27, 2026 | https://fundedtradermarkets.com |
+| 48 | Funded Trading Plus | 1 | verified | Nov 27, 2026 | https://www.fundedtradingplus.com |
+| 49 | Funded With Forex | 8 | verified | Nov 27, 2026 | https://fundedwithforex.com |
+| 50 | Funded With Perps | 4 | verified | Nov 27, 2026 | https://fundedwithperps.com |
+| 51 | Funded2 | 29 | verified | Nov 27, 2026 | https://funded2.com |
+| 52 | FundedBull | 0 | Not recorded | Nov 27, 2026 | https://fundedbull.com |
+| 53 | FundedElite | 1 | starting | Nov 27, 2026 | https://fundedelite.com |
+| 54 | FundedFirm | 24 | verified | Nov 27, 2026 | https://fundedfirm.com |
+| 55 | FundedHero | 0 | Not recorded | Nov 27, 2026 | https://fundedhero.com |
+| 56 | FundedHive | 1 | starting | Nov 27, 2026 | https://fundedhive.com |
+| 57 | FundedNext | 1 | starting | Nov 27, 2026 | https://fundednext.com |
+| 58 | FundedSquad | 1 | starting | Nov 27, 2026 | https://fundedsquad.com |
+| 59 | FunderPro | 1 | starting | Nov 27, 2026 | https://funderpro.com |
+| 60 | FundingPips | 1 | starting | Nov 27, 2026 | https://fundingpips.com |
+| 61 | FundingTraders | 1 | starting | Nov 27, 2026 | https://fundingtraders.com |
+| 62 | FundYourFX | 0 | Not recorded | Nov 27, 2026 | https://fundyourfx.com |
+| 63 | FuturesElite | 0 | Not recorded | Nov 27, 2026 | https://futureselite.com |
+| 64 | FXIFY | 1 | starting | Nov 27, 2026 | https://fxify.com |
+| 65 | Get Leveraged | 1 | starting | Nov 27, 2026 | https://getleveraged.com |
+| 66 | GOAT Funded Futures | 1 | verified | Nov 27, 2026 | https://goatfundedfutures.com |
+| 67 | Goat Funded Trader | 1 | starting | Nov 27, 2026 | https://www.goatfundedtrader.com |
+| 68 | Hash Hedge | 1 | starting | Nov 27, 2026 | https://hashhedge.com |
+| 69 | Hola Prime | 1 | starting | Nov 27, 2026 | https://holaprime.com |
+| 70 | Hybrid Funding | 50 | verified | Nov 27, 2026 | https://hybridfunding.co |
+| 71 | HyroTrader | 1 | starting | Nov 27, 2026 | https://www.hyrotrader.com |
+| 72 | IC Funded | 1 | starting | Nov 27, 2026 | https://icfunded.com |
+| 73 | iFunds | 3 | verified | Nov 27, 2026 | https://ifunds.io |
+| 74 | Instant Funding | 0 | Not recorded | Nov 27, 2026 | https://instantfunding.com |
+| 75 | IQ Capital | 1 | starting | Nov 27, 2026 | https://iqcapital.io |
+| 76 | Kraken Prop | 1 | starting | Nov 27, 2026 | https://www.kraken.com/gb/pro/prop |
+| 77 | Lark Funding | 1 | starting | Nov 27, 2026 | https://larkfunding.com |
+| 78 | Leeloo Trading | 0 | Not recorded | Nov 27, 2026 | https://leelootrading.com |
+| 79 | Level2Markets | 0 | Not recorded | Nov 27, 2026 | https://level2markets.com |
+| 80 | LifeUp Trading | 0 | Not recorded | Nov 27, 2026 | https://lifeuptrading.com |
+| 81 | Lux Trading Firm | 8 | verified | Nov 27, 2026 | https://luxtradingfirm.com |
+| 82 | Maven Trading | 1 | starting | Nov 27, 2026 | https://maventrading.com |
+| 83 | Ment Funding | 2 | starting | Nov 27, 2026 | https://mentfunding.com |
+| 84 | Moneta Funded | 0 | Not recorded | Nov 27, 2026 | https://monetafunded.com |
+| 85 | Monevis | 0 | Not recorded | Nov 27, 2026 | https://monevis.com |
+| 86 | Mubite | 1 | starting | Nov 27, 2026 | https://mubite.com |
+| 87 | My Funded Futures | 3 | verified | Nov 27, 2026 | https://myfundedfutures.com |
+| 88 | MyFundedPerps | 4 | verified | Nov 27, 2026 | https://myfundedperps.com |
+| 89 | Nexbitra | 10 | verified | Nov 27, 2026 | https://nexbitra.com |
+| 90 | NexGen Futures Trader | 0 | Not recorded | Nov 27, 2026 | https://nexgenfuturestrader.com |
+| 91 | Next Level Funded | 1 | verified | Nov 27, 2026 | https://www.nextlevelfunded.com |
+| 92 | Nextproptrader | 6 | verified | Nov 27, 2026 | https://nextproptrader.com |
+| 93 | Nordic Funder | 1 | starting | Nov 27, 2026 | https://nordicfunder.com |
+| 94 | Nova Funded | 0 | Not recorded | Nov 27, 2026 | https://novafunded.com |
+| 95 | Novixfund | 14 | verified | Nov 27, 2026 | https://novixfund.com |
+| 96 | NYS Markets | 1 | starting | Nov 27, 2026 | https://nysmarkets.com |
+| 97 | OFP Funding | 0 | Not recorded | Nov 27, 2026 | https://ofpfunding.com |
+| 98 | Olbios Markets Technologies | 4 | verified | Nov 27, 2026 | https://olbiosmarketstechnologies.com |
+| 99 | OneFunded | 1 | starting | Nov 27, 2026 | https://onefunded.com |
+| 100 | OneStopProp | 32 | verified | Nov 27, 2026 | https://onestopprop.com |
+| 101 | OneUp Trader | 10 | verified | Nov 27, 2026 | https://oneuptrader.com |
+| 102 | Phidias Prop Firm | 1 | starting | Nov 27, 2026 | https://phidiaspropfirm.com |
+| 103 | PineX Capital | 1 | starting | Nov 27, 2026 | https://pinexcapital.com |
+| 104 | Pipcy | 26 | verified | Nov 27, 2026 | https://pipcy.com |
+| 105 | PipFarm | 0 | Not recorded | Nov 27, 2026 | https://pipfarm.com |
+| 106 | Prop Hub | 4 | verified | Nov 27, 2026 | https://prop-hub.pro |
+| 107 | Prop Number One | 0 | Not recorded | Nov 27, 2026 | https://propnumberone.com |
+| 108 | PropEd Capital | 1 | starting | Nov 27, 2026 | https://propedcapital.com |
+| 109 | PropLynq | 22 | verified | Nov 27, 2026 | https://proplynq.com |
+| 110 | Propr | 1 | starting | Nov 27, 2026 | https://propr.xyz |
+| 111 | PropShopTrader | 3 | verified | Nov 27, 2026 | https://propshoptrader.com |
+| 112 | PropW | 0 | Not recorded | Nov 27, 2026 | https://propw.com |
+| 113 | Purdia Capital | 1 | starting | Nov 27, 2026 | https://purdia.com |
+| 114 | QATS Prop | 20 | verified | Nov 27, 2026 | https://prop.qats.us |
+| 115 | QT Funded | 0 | Not recorded | Nov 27, 2026 | https://qtfunded.quanttekel.com |
+| 116 | RebelsFunding | 1 | starting | Nov 27, 2026 | https://rebelsfunding.com |
+| 117 | Rev One Trading | 0 | Not recorded | Nov 27, 2026 | https://revonetrading.com |
+| 118 | RZR Funded | 1 | starting | Nov 27, 2026 | https://rzrfunded.com |
+| 119 | SabioTrade | 1 | starting | Nov 27, 2026 | https://sabiotrade.us |
+| 120 | SpiceProp | 23 | verified | Nov 27, 2026 | https://spiceprop.com |
+| 121 | Sway Funded | 1 | starting | Nov 27, 2026 | https://swayfunded.com |
+| 122 | SwissFirmup | 1 | starting | Nov 27, 2026 | https://swissfirmup.com |
+| 123 | Take Profit Trader | 9 | partial | Nov 28, 2026 | https://takeprofittrader.com |
+| 124 | TEFS | 7 | verified | Nov 27, 2026 | https://tefs.com |
+| 125 | The Concept Trading | 0 | Not recorded | Nov 27, 2026 | https://prop.theconcepttrader.com |
+| 126 | The Edge Funder | 4 | verified | Nov 27, 2026 | https://theedgefunder.com |
+| 127 | The Trading Pit | 1 | starting | Nov 27, 2026 | https://thetradingpit.com |
+| 128 | The5ers | 1 | starting | Nov 27, 2026 | https://the5ers.com |
+| 129 | ThinkCapital | 1 | starting | Nov 27, 2026 | https://thinkcapital.com |
+| 130 | Top One Futures | 12 | partial | Nov 28, 2026 | https://toponefutures.com |
+| 131 | Top One Trader | 1 | starting | Nov 27, 2026 | https://www.toponetrader.com |
+| 132 | Trade The Pool | 1 | starting | Nov 27, 2026 | https://tradethepool.com |
+| 133 | TradeDay | 1 | starting | Nov 27, 2026 | https://tradeday.com |
+| 134 | TradeFundrr | 1 | starting | Nov 27, 2026 | https://tradefundrr.com |
+| 135 | Tradeiators | 42 | verified | Nov 27, 2026 | https://tradeiators.com |
+| 136 | Tradeify | 21 | partial | Nov 27, 2026 | https://tradeify.co |
+| 137 | Traders Launch | 1 | starting | Nov 27, 2026 | https://traderslaunch.com |
+| 138 | TraderScale | 20 | verified | Nov 27, 2026 | https://traderscale.com |
+| 139 | TradersYard | 8 | verified | Nov 27, 2026 | https://tradersyard.com |
+| 140 | TX3 Funding | 0 | Not recorded | Nov 27, 2026 | https://tx3funding.com |
+| 141 | UProfit | 1 | starting | Nov 27, 2026 | https://uprofit.com |
+| 142 | Upscale | 1 | starting | Nov 27, 2026 | https://upscale.trade |
+| 143 | Vanta Trading | 8 | verified | Nov 27, 2026 | https://www.vantatrading.io |
+| 144 | VEDEX | 4 | verified | Nov 27, 2026 | https://vedexprop.com |
+| 145 | Venus Funded | 57 | verified | Nov 27, 2026 | https://www.venusfunded.com |
+| 146 | Wall Street Funded | 1 | starting | Nov 27, 2026 | https://wsfunded.com |
+| 147 | WeMasterTrade | 1 | starting | Nov 27, 2026 | https://wemastertrade.com |
+| 148 | WenCrypto | 15 | verified | Nov 27, 2026 | https://wencrypto.com |
+| 149 | Ylos Trading | 0 | Not recorded | Nov 27, 2026 | https://ylostrading.com |
+| 150 | Zenith Funded | 4 | verified | Nov 27, 2026 | https://www.zenitfunding.com |
+
+## Detailed firm records
+
+### 1. 10FOUR
+
+- **slug:** 10four
+- **markets:** futures; perps; crypto; forex; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90% (Daily, 1-Day Pass, Instant); Static 80%; Perpetuals 80%
+- **splitMax:** 90
+- **dd:** Daily $1,000 EOD (4%); 1-Day Pass $1,250 EOD (5%); Instant $1,250 (5%); Static 10K $500 (5%) / 25K $1,000 (4%); Perpetuals 6% static
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** Daily every 24h; Perpetuals on request (min $20 withdrawal); others not stated in catalog
+- **from:** 59
+- **fromCur:** USD
+- **fromPlan:** 1-Stage Perpetuals 5K, one-time
+- **monthly:** false
+- **code:** none published (40% off active promotion, no code; catalog baseRate 40, per-product 35/40)
+- **off:** Not recorded
+- **codes:** {"code":"none published (40% off active promotion, no code; catalog baseRate 40, per-product 35/40)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Daily 50% eval; 1-Day Pass none eval, 30% first / 40% after funded; Instant 15%/20%/25% by variant; Static 35%; Perpetuals none
+- **consNone:** true
+- **target:** Daily 6%; 1-Day Pass 6%; Instant none; Static 10K 10% / 25K 8%; Perpetuals 10%
+- **dailyDD:** Daily none; 1-Day Pass $600 (2.4%); Instant $650 (2.6%); Static none; Perpetuals 3% day-start balance
+- **minDays:** Daily 2; 1-Day Pass 5 profitable days of $100 (funded); Static 5 eval, 8 active funded days; Perpetuals 0
+- **activation:** FREE on all products
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** none (Daily scalingPlan NONE; Perpetuals lifetime payout cap $25,000)
+- **news:** allowed (including Tier 1)
+- **overnight:** not stated (perpetuals trade 24/7)
+- **us:** not stated
+- **site:** https://10four.com
+- **sources:** https://10four.com; https://api.10four.com/products/catalog; https://10four.com/affiliate-terms; https://10four.com/become-affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 12% on new challenge/account purchases, $5 fixed on resets, Master tier +3% on sub-affiliates (one level), 30-day cookie, $100 min payout, bi-weekly
+- **platforms:** 10FOUR Terminal; Tradara
+- **payMethods:** Not listed
+- **deal:** none published (40% off active promotion, no code; catalog baseRate 40, per-product 35/40)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Futures, Perps, Crypto, Forex, Stocks firm. Starts at USD 59 (1-Stage Perpetuals 5K, one-time). Split 90% (Daily, 1-Day Pass, Instant); Static 80%; Perpetuals 80%; payout Daily every 24h; Perpetuals on request (min $20 withdrawal); others not stated in catalog.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 12**
+
+#### Daily — 25000
+
+- **id:** 10four-daily-25000
+- **program:** Daily
+- **name:** Daily
+- **size:** 25000
+- **price:** 69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($1,500)
+- **dailyLoss:** none
+- **maxDD:** 4% EOD ($1,000)
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** 90%
+- **payout:** every 24h
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### 1-Day Pass — 25000
+
+- **id:** 10four-1-day-pass-25000
+- **program:** 1-Day Pass
+- **name:** 1-Day Pass
+- **size:** 25000
+- **price:** 164.29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($1,500)
+- **dailyLoss:** 2.4% ($600)
+- **maxDD:** 5% EOD ($1,250)
+- **ddType:** EOD
+- **minDays:** 5 profitable days of $100 (funded)
+- **split:** 90%
+- **payout:** not stated
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### Instant — 25000
+
+- **id:** 10four-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 258.57
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.6% ($650)
+- **maxDD:** 5% ($1,250)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 90%
+- **payout:** not stated
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### Instant — 25000
+
+- **id:** 10four-instant-25000-2
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 344.29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.6% ($650)
+- **maxDD:** 5% ($1,250)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 90%
+- **payout:** not stated
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### Instant — 25000
+
+- **id:** 10four-instant-25000-3
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 430
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.6% ($650)
+- **maxDD:** 5% ($1,250)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 90%
+- **payout:** not stated
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### Static — 10000
+
+- **id:** 10four-static-10000
+- **program:** Static
+- **name:** Static
+- **size:** 10000
+- **price:** 298.57
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10% ($1,000)
+- **dailyLoss:** none
+- **maxDD:** 5% static ($500)
+- **ddType:** Static
+- **minDays:** 5 eval / 8 active funded days
+- **split:** 80%
+- **payout:** lifetime payout cap $1,000
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### Static — 25000
+
+- **id:** 10four-static-25000
+- **program:** Static
+- **name:** Static
+- **size:** 25000
+- **price:** 398.57
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% ($2,000)
+- **dailyLoss:** none
+- **maxDD:** 4% static ($1,000)
+- **ddType:** Static
+- **minDays:** 5 eval / 8 active funded days
+- **split:** 80%
+- **payout:** lifetime payout cap $1,500
+- **platform:** Tradara
+- **source:** https://api.10four.com/products/catalog
+
+#### Perpetuals 1-Stage — 5000
+
+- **id:** 10four-perpetuals-1-stage-5000
+- **program:** Perpetuals 1-Stage
+- **name:** Perpetuals 1-Stage
+- **size:** 5000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80%
+- **payout:** on request (min $20 withdrawal)
+- **platform:** 10FOUR Terminal
+- **source:** https://api.10four.com/products/catalog
+
+#### Perpetuals 1-Stage — 10000
+
+- **id:** 10four-perpetuals-1-stage-10000
+- **program:** Perpetuals 1-Stage
+- **name:** Perpetuals 1-Stage
+- **size:** 10000
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80%
+- **payout:** on request (min $20 withdrawal)
+- **platform:** 10FOUR Terminal
+- **source:** https://api.10four.com/products/catalog
+
+#### Perpetuals 1-Stage — 15000
+
+- **id:** 10four-perpetuals-1-stage-15000
+- **program:** Perpetuals 1-Stage
+- **name:** Perpetuals 1-Stage
+- **size:** 15000
+- **price:** 164
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80%
+- **payout:** on request (min $20 withdrawal)
+- **platform:** 10FOUR Terminal
+- **source:** https://api.10four.com/products/catalog
+
+#### Perpetuals 1-Stage — 25000
+
+- **id:** 10four-perpetuals-1-stage-25000
+- **program:** Perpetuals 1-Stage
+- **name:** Perpetuals 1-Stage
+- **size:** 25000
+- **price:** 274
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80%
+- **payout:** on request (min $20 withdrawal)
+- **platform:** 10FOUR Terminal
+- **source:** https://api.10four.com/products/catalog
+
+#### Perpetuals 1-Stage — 50000
+
+- **id:** 10four-perpetuals-1-stage-50000
+- **program:** Perpetuals 1-Stage
+- **name:** Perpetuals 1-Stage
+- **size:** 50000
+- **price:** 495
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80%
+- **payout:** on request (min $20 withdrawal)
+- **platform:** 10FOUR Terminal
+- **source:** https://api.10four.com/products/catalog
+
+
+### 2. 8FigureTrader
+
+- **slug:** 8figuretrader
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 95%
+- **splitMax:** 95
+- **dd:** 2-Step 10% (relative) / 1-Step 8% / Instant 8%
+- **ddTypes:** Not recorded
+- **payoutDays:** 14
+- **payoutText:** first reward after 21 days, then every 14 days; fee refunded with 1st reward; min payout 1.5% profit; USDC/BTC
+- **from:** 149
+- **fromCur:** USD
+- **fromPlan:** 2-Step / 1-Step / Instant 25K (one price per size for all 3 programs)
+- **monthly:** false
+- **code:** SUMMER
+- **off:** Not recorded
+- **codes:** {"code":"SUMMER","off":null,"detail":"10% off"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 2-Step 8 then 5 / 1-Step 10 / Instant none
+- **dailyDD:** 2-Step 4.5% / 1-Step 3.5% / Instant 3.5%
+- **minDays:** 5
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $10M (+20% allocation per payout)
+- **news:** allowed (40% news-profit cap)
+- **overnight:** not allowed (no overnight/weekend holding)
+- **us:** yes
+- **site:** https://8figuretrader.com/
+- **sources:** https://8figuretrader.com/; https://8figuretrader.com/assets/js/main.js
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 15% (homepage section; dashboard signup, no standalone program URL)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** SUMMER (10% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto firm. Starts at USD 149 (2-Step / 1-Step / Instant 25K (one price per size for all 3 programs)). Split up to 95%; payout first reward after 21 days, then every 14 days; fee refunded with 1st reward; min payout 1.5% profit; USDC/BTC.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 12**
+
+#### 2-Step — 25000
+
+- **id:** 8figuretrader-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4.5
+- **maxDD:** 10 (relative)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 1-Step — 25000
+
+- **id:** 8figuretrader-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### Instant — 25000
+
+- **id:** 8figuretrader-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 2-Step — 50000
+
+- **id:** 8figuretrader-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 239
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4.5
+- **maxDD:** 10 (relative)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 1-Step — 50000
+
+- **id:** 8figuretrader-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 239
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### Instant — 50000
+
+- **id:** 8figuretrader-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 239
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 2-Step — 100000
+
+- **id:** 8figuretrader-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 399
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4.5
+- **maxDD:** 10 (relative)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 1-Step — 100000
+
+- **id:** 8figuretrader-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 399
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### Instant — 100000
+
+- **id:** 8figuretrader-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 399
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 2-Step — 200000
+
+- **id:** 8figuretrader-2-step-200000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 200000
+- **price:** 799
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4.5
+- **maxDD:** 10 (relative)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### 1-Step — 200000
+
+- **id:** 8figuretrader-1-step-200000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 200000
+- **price:** 799
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+#### Instant — 200000
+
+- **id:** 8figuretrader-instant-200000
+- **program:** Instant
+- **name:** Instant
+- **size:** 200000
+- **price:** 799
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3.5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95
+- **payout:** 21 days first, then 14 days
+- **platform:** not stated
+- **source:** https://8figuretrader.com/
+
+
+### 3. AI Prop
+
+- **slug:** ai-prop
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 100% (hero); up to 95% (payout highlights)%
+- **splitMax:** 95
+- **dd:** 8% (all programs)
+- **ddTypes:** Not recorded
+- **payoutDays:** 1
+- **payoutText:** on demand, processed within 3 business days, blockchain-verified
+- **from:** 19
+- **fromCur:** USD
+- **fromPlan:** Pass First Pay Later 10K initial fee (remaining fee due after passing, amount not stated)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 1-Step 10 / 2-Step 8 then 5 / Instant none / Pass First Pay Later 4
+- **dailyDD:** 5% (all programs)
+- **minDays:** 3
+- **activation:** Pass First Pay Later: initial fee only, remainder after passing (amount not stated)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $5M
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated (only Iran excluded in disclaimer)
+- **site:** https://aiprop.com
+- **sources:** https://aiprop.com; https://aiprop.com/affiliate-program/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 8% (1-20 referrals), 10% (20-50), 15% (50-250); sales-volume tiers 15% ($0-14,999), 18% ($15k-49,999), 21% (>$50k); weekly payouts
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** not stated
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto firm. Starts at USD 19 (Pass First Pay Later 10K initial fee (remaining fee due after passing, amount not stated)). Split up to 100% (hero); up to 95% (payout highlights)%; payout on demand, processed within 3 business days, blockchain-verified.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 28**
+
+#### 1-Step — 10000
+
+- **id:** ai-prop-1-step-10000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 10000
+- **price:** 198
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 10000
+
+- **id:** ai-prop-2-step-10000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 10000
+- **price:** 198
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 10000
+
+- **id:** ai-prop-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 368
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 10000
+
+- **id:** ai-prop-pass-first-pay-later-10000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 10000
+- **price:** 19
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 1-Step — 25000
+
+- **id:** ai-prop-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 388
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 25000
+
+- **id:** ai-prop-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 388
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 25000
+
+- **id:** ai-prop-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 868
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 25000
+
+- **id:** ai-prop-pass-first-pay-later-25000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 25000
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 1-Step — 50000
+
+- **id:** ai-prop-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 688
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 50000
+
+- **id:** ai-prop-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 688
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 50000
+
+- **id:** ai-prop-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 1528
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 50000
+
+- **id:** ai-prop-pass-first-pay-later-50000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 50000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 1-Step — 100000
+
+- **id:** ai-prop-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 988
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 100000
+
+- **id:** ai-prop-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 988
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 100000
+
+- **id:** ai-prop-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 2968
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 100000
+
+- **id:** ai-prop-pass-first-pay-later-100000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 100000
+- **price:** 79
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 1-Step — 200000
+
+- **id:** ai-prop-1-step-200000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 200000
+- **price:** 1988
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 200000
+
+- **id:** ai-prop-2-step-200000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 200000
+- **price:** 1988
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 200000
+
+- **id:** ai-prop-instant-200000
+- **program:** Instant
+- **name:** Instant
+- **size:** 200000
+- **price:** 5668
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 200000
+
+- **id:** ai-prop-pass-first-pay-later-200000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 200000
+- **price:** 119
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 1-Step — 500000
+
+- **id:** ai-prop-1-step-500000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 500000
+- **price:** 3888
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 500000
+
+- **id:** ai-prop-2-step-500000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 500000
+- **price:** 3888
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 500000
+
+- **id:** ai-prop-instant-500000
+- **program:** Instant
+- **name:** Instant
+- **size:** 500000
+- **price:** 13668
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 500000
+
+- **id:** ai-prop-pass-first-pay-later-500000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 500000
+- **price:** 159
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 1-Step — 1000000
+
+- **id:** ai-prop-1-step-1000000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 1000000
+- **price:** 7288
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### 2-Step — 1000000
+
+- **id:** ai-prop-2-step-1000000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 1000000
+- **price:** 7288
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Instant — 1000000
+
+- **id:** ai-prop-instant-1000000
+- **program:** Instant
+- **name:** Instant
+- **size:** 1000000
+- **price:** 26888
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+#### Pass First Pay Later — 1000000
+
+- **id:** ai-prop-pass-first-pay-later-1000000
+- **program:** Pass First Pay Later
+- **name:** Pass First Pay Later
+- **size:** 1000000
+- **price:** 199
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://aiprop.com
+
+
+### 4. AIFO Global
+
+- **slug:** aifo-global
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-95% (default funded 80%, up to 95% via Scaling Plan); Instant 70%
+- **splitMax:** 95
+- **dd:** 1-Step 6% static; 2-Step 10% static; Instant 5% trailing (comparison table says 2% floating loss — site inconsistency); Sprint 2% static (table: 1% max floating / 2% static)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** 1-Step/2-Step 14-day; Instant on-demand; Sprint one-time payout
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** not stated — prices behind checkout configurator
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** Instant under 20%; Sprint 20%; 1-Step/2-Step not stated
+- **consNone:** false
+- **target:** 1-Step 10; 2-Step 8 then 5; Instant none; 24 Hour Sprint 3
+- **dailyDD:** 1-Step 3%; 2-Step 5%; Instant 3%; Sprint not stated
+- **minDays:** 1-Step 2; 2-Step 3; Instant not stated; Sprint 24-hour window
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** Scaling Plan exists (split up to 95%)
+- **news:** allowed on Instant; not stated for others
+- **overnight:** not stated
+- **us:** no
+- **site:** https://aifo.com
+- **sources:** https://aifo.com; https://aifo.com/challenges/; https://aifo.com/challenges/one-step-challenge/; https://aifo.com/challenges/two-step-challenge/; https://aifo.com/challenges/instant-funding/; https://aifo.com/faq/; https://aifo.com/affiliate/; https://aifo.com/affiliate
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** 10-30% lifetime commission (tiers 10/15/20/25/30% by level), on each month's qualified purchases
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: prices behind JS configurator — from=null; no prices on /challenges/ or program pages; Instant max drawdown inconsistent on site (5% trailing program card vs 2% floating loss in comparison table)
+- **summary:** Forex firm. Starts at USD None (not stated — prices behind checkout configurator). Split 80-95% (default funded 80%, up to 95% via Scaling Plan); Instant 70%; payout 1-Step/2-Step 14-day; Instant on-demand; Sprint one-time payout.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 5. Alpha Capital
+
+- **slug:** alpha-capital
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** 22363
+- **ratingNote:** Rating withheld by Trustpilot (breach of guidelines; fake reviews removed). 22,363 reviews on the profile. Checked 27 Nov 2026.
+- **split:** 80 (90% add-on / Direct)
+- **splitMax:** 90
+- **dd:** 6% static (Pro 6%)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** bi-weekly or on-demand
+- **from:** 27
+- **fromCur:** USD
+- **fromPlan:** Alpha Pro 6% 5K
+- **monthly:** false
+- **code:** FUNDED40
+- **off:** 40
+- **codes:** {"code":"FUNDED40","off":40,"detail":"Black Friday: 40% off — ends Nov 30, 2026 (countdown on the firm's homepage on Nov 26, 2026)"}
+- **consistencyText:** on-demand 40 / Direct 15
+- **consNone:** false
+- **target:** Pro 6% 6 then 6
+- **dailyDD:** 3-5% by variant
+- **minDays:** Pro 3 per phase
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** 10-min window on Qualified; Direct 5-min window
+- **overnight:** varies by plan; Direct no weekend
+- **us:** not stated
+- **site:** https://alphacapitalgroup.uk
+- **sources:** https://alphacapitalgroup.uk/resources/alpha-capital-2026-plan-pricing-update; https://alphacapitalgroup.uk; https://www.trustpilot.com/review/alphacapitalgroup.uk
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not verified
+- **platforms:** MT5; cTrader; DXtrade; TradeLocker
+- **payMethods:** Not listed
+- **deal:** 40% off (Black Friday banner; ends Nov 30, 2026)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm with Alpha One, Alpha Pro (6%, 8% and 10% variants), Alpha Swing and Alpha Direct (instant, 90% split). Payout cycle — bi-weekly or on-demand — is chosen at checkout and changes both the price and the consistency rule.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Alpha Pro 6% — 5000
+
+- **id:** alpha-capital-alpha-pro-6-5000
+- **program:** Alpha Pro 6%
+- **name:** Alpha Pro 6%
+- **size:** 5000
+- **price:** 27
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Pro 6% 6 then 6
+- **dailyLoss:** 3-5% by variant
+- **maxDD:** 6% static (Pro 6%)
+- **ddType:** Static
+- **minDays:** Pro 3 per phase
+- **split:** 80 (90% add-on / Direct)
+- **payout:** bi-weekly or on-demand
+- **platform:** MT5, cTrader, DXtrade, TradeLocker
+- **source:** https://alphacapitalgroup.uk/resources/alpha-capital-2026-plan-pricing-update
+
+
+### 6. Alpha Funded
+
+- **slug:** alpha-funded
+- **markets:** futures; forex
+- **rating:** 4.8
+- **rsrc:** Trustpilot
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot 4.8/5 shown on the firm's own homepage. Checked Nov 27, 2026.
+- **split:** 90% futures (100% add-on); up to 100% CFD%
+- **splitMax:** 90
+- **dd:** Flex 5% EOD trailing (100K default view); Daily not stated on official pages read
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** not stated (Winter Challenge program: 5-day funded payout cycle)
+- **from:** 250
+- **fromCur:** USD
+- **fromPlan:** Futures Daily 50K, one-time base price
+- **monthly:** false
+- **code:** FRIDAY26
+- **off:** Not recorded
+- **codes:** {"code":"FRIDAY26","off":null,"detail":"70% off every challenge, ends Nov 27 11:59 PM ET; Mission #002 60% off"}
+- **consistencyText:** Flex 50% eval, none funded
+- **consNone:** true
+- **target:** Futures Flex 6% (100K default view); Daily not stated
+- **dailyDD:** Flex 3% (100K default view); Daily not stated on official pages read
+- **minDays:** not stated
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $4,000,000 max allocation
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://alphafunded.com
+- **sources:** https://alphafunded.com/; https://alphafunded.com/futures; https://alphafunded.com/affiliates
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified on official site
+- **platforms:** TradeSea / WealthCharts
+- **payMethods:** Not listed
+- **deal:** FRIDAY26 (70% off every challenge, ends Nov 27 11:59 PM ET; Mission #002 60% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS configurator (only Daily base prices readable in official FAQ); Flex/Instant Flex/Zero prices, Daily targets/drawdowns, payout cycle, news rule, US eligibility, affiliate % not stated on official pages read
+- **summary:** Futures, Forex firm. Starts at USD 250 (Futures Daily 50K, one-time base price). Split 90% futures (100% add-on); up to 100% CFD%; payout not stated (Winter Challenge program: 5-day funded payout cycle).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 3**
+
+#### Futures Daily — 50000
+
+- **id:** alpha-funded-futures-daily-50000
+- **program:** Futures Daily
+- **name:** Futures Daily
+- **size:** 50000
+- **price:** 250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** TradeSea / WealthCharts
+- **source:** https://alphafunded.com/futures
+
+#### Futures Daily — 100000
+
+- **id:** alpha-funded-futures-daily-100000
+- **program:** Futures Daily
+- **name:** Futures Daily
+- **size:** 100000
+- **price:** 375
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** TradeSea / WealthCharts
+- **source:** https://alphafunded.com/futures
+
+#### Futures Daily — 150000
+
+- **id:** alpha-funded-futures-daily-150000
+- **program:** Futures Daily
+- **name:** Futures Daily
+- **size:** 150000
+- **price:** 625
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** TradeSea / WealthCharts
+- **source:** https://alphafunded.com/futures
+
+
+### 7. Alpha Futures
+
+- **slug:** alpha-futures
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 89
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** true
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US not on restricted list)
+- **site:** https://alpha-futures.com
+- **sources:** https://alpha-futures.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** not verified
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 13 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Futures firm. Starts at $89/mo. Affiliate: not verified. US traders: yes (US not on restricted list).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** alpha-futures-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 89
+- **currency:** USD
+- **monthly:** true
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://alpha-futures.com
+
+
+### 8. AlpineFunded
+
+- **slug:** alpinefunded
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** Base Camp up to 100%; Peak 80% up to 90% with scaling; Alpine Pass fixed reward per +10% profit%
+- **splitMax:** 90
+- **dd:** Peak 8%; Base Camp 5% trailing equity; Alpine Pass no drawdown limit
+- **ddTypes:** Trailing
+- **payoutDays:** Not recorded
+- **payoutText:** Base Camp rewards every Thursday; Peak every 2 weeks (first 21 days after first funded trade); Alpine Pass every Thursday
+- **from:** 69
+- **fromCur:** EUR
+- **fromPlan:** The Peak 2-phase challenge, one-time (30% off)
+- **monthly:** false
+- **code:** none
+- **off:** Not recorded
+- **codes:** {"code":"none","off":null,"detail":"sitewide sale: Base Camp 50% off, Peak 30% off"}
+- **consistencyText:** Peak none; Base Camp 3 min trading days (0.5%+ each)
+- **consNone:** true
+- **target:** Peak 8 then 5; Base Camp none; Alpine Pass none (fixed reward per +10%)
+- **dailyDD:** Peak 4%; Base Camp 3%
+- **minDays:** Peak 5 per phase/funded; Base Camp 3 (0.5%+ each); Alpine Pass 10 days at 0.5%+
+- **activation:** none stated; Alpine Pass $40 processing fee per reward
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** Peak scale to $2M; Base Camp upgrade to Peak after 3 payouts
+- **news:** not stated
+- **overnight:** allowed on The Peak; weekend holding is a paid add-on on other programs
+- **us:** not stated
+- **site:** https://alpinefunded.com
+- **sources:** https://alpinefunded.com; https://alpinefunded.com/affiliate/; https://alpinefunded.com/the-base-camp/; https://alpinefunded.com/the-alpine-pass/; https://alpinefunded.com/the-peak/; https://alpinefunded.com/faqs/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** up to 15% (Explorer 10% 1-49 referrals, Climber 12.5% 50-349, Expert 15% 350+); 5% audience discount code; withdrawals bi-weekly to daily by tier
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none (sitewide sale: Base Camp 50% off, Peak 30% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size price grid is a JS shop widget; only from-prices verified (Peak from 69 EUR, Base Camp from 75 EUR, Alpine Pass from 95 EUR/month); markets not enumerated on readable pages (assumed forex)
+- **summary:** Forex firm. Starts at EUR 69 (The Peak 2-phase challenge, one-time (30% off)). Split Base Camp up to 100%; Peak 80% up to 90% with scaling; Alpine Pass fixed reward per +10% profit%; payout Base Camp rewards every Thursday; Peak every 2 weeks (first 21 days after first funded trade); Alpine Pass every Thursday.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### The Peak 2-phase challenge, one-time (30% off) — Not recorded
+
+- **id:** alpinefunded-entry
+- **program:** The Peak 2-phase challenge, one-time (30% off)
+- **name:** The Peak 2-phase challenge, one-time (30% off)
+- **size:** Not recorded
+- **price:** 69
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Peak 8 then 5; Base Camp none; Alpine Pass none (fixed reward per +10%)
+- **dailyLoss:** Peak 4%; Base Camp 3%
+- **maxDD:** Peak 8%; Base Camp 5% trailing equity; Alpine Pass no drawdown limit
+- **ddType:** Trailing
+- **minDays:** Peak 5 per phase/funded; Base Camp 3 (0.5%+ each); Alpine Pass 10 days at 0.5%+
+- **split:** Base Camp up to 100%; Peak 80% up to 90% with scaling; Alpine Pass fixed reward per +10% profit%
+- **payout:** Base Camp rewards every Thursday; Peak every 2 weeks (first 21 days after first funded trade); Alpine Pass every Thursday
+- **platform:** Not stated
+- **source:** https://alpinefunded.com
+
+
+### 9. Amadeux
+
+- **slug:** amadeux
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** Instant 50%; 1-Step 80%; 2-Step 80%
+- **splitMax:** 80
+- **dd:** Instant 6% static; 1-Step 7% static; 2-Step 8%/10% static
+- **ddTypes:** Static
+- **payoutDays:** Not recorded
+- **payoutText:** 28 days then 14 days (7 days during White Friday promo)
+- **from:** 39
+- **fromCur:** EUR
+- **fromPlan:** 2-Step 5K, one-time
+- **monthly:** false
+- **code:** none
+- **off:** Not recorded
+- **codes:** {"code":"none","off":null,"detail":"White Friday 30% off Nov 26, 40% Nov 27 — sitewide timed sale, no code"}
+- **consistencyText:** none stated
+- **consNone:** true
+- **target:** Instant none; 1-Step 10; 2-Step 8 then 5
+- **dailyDD:** Instant 3%; 1-Step 4%; 2-Step 5%
+- **minDays:** Instant 3 profitable days to withdraw; 1-Step/2-Step 4
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** weekend holding allowed
+- **us:** not stated
+- **site:** https://amadeux.com
+- **sources:** https://amadeux.com; https://amadeux.com/challenges/; https://amadeux.com/prop-firm/; https://amadeux.com/affiliates/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (lifetime commission on every purchase; % not stated); min payout $50, commissions consolidate 30 days after purchase
+- **platforms:** MT4/MT5
+- **payMethods:** Not listed
+- **deal:** none (White Friday 30% off Nov 26, 40% Nov 27 — sitewide timed sale, no code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto, Stocks firm. Starts at EUR 39 (2-Step 5K, one-time). Split Instant 50%; 1-Step 80%; 2-Step 80%; payout 28 days then 14 days (7 days during White Friday promo).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 15**
+
+#### Instant — 5000
+
+- **id:** amadeux-instant-5000
+- **program:** Instant
+- **name:** Instant
+- **size:** 5000
+- **price:** 399
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3 profitable days to withdraw
+- **split:** 50%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### Instant — 15000
+
+- **id:** amadeux-instant-15000
+- **program:** Instant
+- **name:** Instant
+- **size:** 15000
+- **price:** 449
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3 profitable days to withdraw
+- **split:** 50%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### Instant — 25000
+
+- **id:** amadeux-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 649
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3 profitable days to withdraw
+- **split:** 50%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### Instant — 50000
+
+- **id:** amadeux-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 1249
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3 profitable days to withdraw
+- **split:** 50%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 1-Step — 15000
+
+- **id:** amadeux-1-step-15000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 15000
+- **price:** 99
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 7% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 1-Step — 25000
+
+- **id:** amadeux-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 199
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 7% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 1-Step — 50000
+
+- **id:** amadeux-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 299
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 7% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 1-Step — 100000
+
+- **id:** amadeux-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 499
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 7% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 1-Step — 250000
+
+- **id:** amadeux-1-step-250000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 250000
+- **price:** 1249
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 7% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 2-Step — 5000
+
+- **id:** amadeux-2-step-5000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 5000
+- **price:** 39
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 8%/10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 2-Step — 15000
+
+- **id:** amadeux-2-step-15000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 15000
+- **price:** 89
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 8%/10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 2-Step — 25000
+
+- **id:** amadeux-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 179
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 8%/10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 2-Step — 50000
+
+- **id:** amadeux-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 279
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 8%/10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 2-Step — 100000
+
+- **id:** amadeux-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 449
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 8%/10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+#### 2-Step — 250000
+
+- **id:** amadeux-2-step-250000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 250000
+- **price:** 899
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 8%/10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** 28 days then 14 days
+- **platform:** MT4/MT5
+- **source:** https://amadeux.com/challenges/
+
+
+### 10. Apex Trader Funding
+
+- **slug:** apex-trader-funding
+- **markets:** futures
+- **rating:** 4.2
+- **rsrc:** Trustpilot
+- **reviews:** 22000
+- **ratingNote:** Shown on the firm's homepage
+- **split:** 100% of approved payouts
+- **splitMax:** 100
+- **dd:** Intraday or EOD trailing, $1000 (25K)
+- **ddTypes:** Intraday
+- **payoutDays:** 5
+- **payoutText:** 5 trading days between payouts
+- **from:** 167
+- **fromCur:** USD
+- **fromPlan:** Intraday Trail Std 25K list ($16.70 with SAVENOW)
+- **monthly:** false
+- **code:** SAVENOW
+- **off:** 90
+- **codes:** {"code":"SAVENOW","off":90,"detail":"90% off all evaluations — ends Nov 30, 2026 (countdown on the firm's homepage on Nov 26, 2026)"}
+- **consistencyText:** none eval; 50% at payout
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** Intraday none; EOD $500 (25K)
+- **minDays:** none
+- **activation:** Std $89-$149 Intraday / $109-$159 EOD
+- **instant:** true
+- **instantText:** partial (Instant Sim offer; Instant PAs coming soon)
+- **scaling:** Built In Scaling claimed, terms not stated
+- **news:** not stated
+- **overnight:** no
+- **us:** yes
+- **site:** https://apextraderfunding.com
+- **sources:** https://apextraderfunding.com; https://www.trustpilot.com/review/apextraderfunding.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Rithmic; Tradovate; WealthCharts
+- **payMethods:** Not listed
+- **deal:** 90% off all evaluations (homepage banner with countdown; ends Nov 30, 2026)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** List price is shown. With code SAVENOW (90% off) the 25K Intraday Trail Standard was $16.70 on Nov 26, 2026. Instant funding is only partial: a limited-time $50K Instant Sim offer, with 'Instant PAs (coming soon)'.
+- **summary:** US futures firm built around running several accounts at once. Intraday Trail and EOD Trail evaluations, each in Standard and No-Activation-Fee versions. Pays 100% of each approved payout in the sim-funded Performance Account, with a 50% consistency gate at payout.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Intraday Trail Std — 25000
+
+- **id:** apex-trader-funding-intraday-trail-std-25000
+- **program:** Intraday Trail Std
+- **name:** Intraday Trail Std
+- **size:** 25000
+- **price:** 167
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 6
+- **dailyLoss:** Intraday none; EOD $500 (25K)
+- **maxDD:** Intraday or EOD trailing, $1000 (25K)
+- **ddType:** Intraday
+- **minDays:** none
+- **split:** 100% of approved payouts
+- **payout:** 5 trading days between payouts
+- **platform:** Rithmic, Tradovate, WealthCharts
+- **source:** https://apextraderfunding.com
+
+
+### 11. AquaFunded
+
+- **slug:** aquafunded
+- **markets:** forex; futures; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** 1223
+- **ratingNote:** Rating withheld by Trustpilot (breach of guidelines; fake reviews removed). 1,223 reviews on the profile. Checked 27 Nov 2026.
+- **split:** 90 (100% add-on)
+- **splitMax:** 100
+- **dd:** 8% static
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** bi-weekly
+- **from:** 14
+- **fromCur:** USD
+- **fromPlan:** 5K
+- **monthly:** false
+- **code:** BLACKFRIDAY
+- **off:** 40
+- **codes:** {"code":"BLACKFRIDAY","off":40,"detail":"40% off every account, plus buy 2 get a 3rd free (Black Friday weekend). End date not stated on the homepage."}
+- **consistencyText:** 20% (Pro Instant)
+- **consNone:** false
+- **target:** 2-Step 8 then 5
+- **dailyDD:** 4%
+- **minDays:** 5 (Pro Instant); 3 profitable (One-Step)
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $4,000,000
+- **news:** allowed, profit capped 0.5% in +/-5 min window
+- **overnight:** yes, no restrictions
+- **us:** yes (US not on restricted list)
+- **site:** https://aquafunded.com
+- **sources:** https://aquafunded.com/; https://www.aquafunded.com/forex-rules; https://www.trustpilot.com/review/aquafunded.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes
+- **platforms:** MT5; cTrader; Match-Trader; TradeLocker; Tradovate; NinjaTrader
+- **payMethods:** Rise; Crypto
+- **deal:** BLACKFRIDAY — 40% off every account, plus buy 2 get a 3rd free. The homepage calls it a Black Friday weekend offer and does not name an end time.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** CFD, futures and perps firm with Instant, One-Step, Two-Step, Three-Step and Flex models, from a $14 5K account. 90% standard split, 8% static drawdown, bi-weekly payouts, and scaling to $4,000,000.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Starting offer — 5000
+
+- **id:** aquafunded-starting-offer-5000
+- **program:** Starting offer
+- **name:** Starting offer
+- **size:** 5000
+- **price:** 14
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 5 (Pro Instant); 3 profitable (One-Step)
+- **split:** 90 (100% add-on)
+- **payout:** bi-weekly
+- **platform:** MT5, cTrader, Match-Trader, TradeLocker, Tradovate, NinjaTrader
+- **source:** https://aquafunded.com/
+
+
+### 12. Atlas Funded
+
+- **slug:** atlas-funded
+- **markets:** forex; futures
+- **rating:** 3.9
+- **rsrc:** Trustpilot
+- **reviews:** 2294
+- **ratingNote:** Read on Trustpilot. The firm's own site claims 4.8 — this page uses the Trustpilot figure, 3.9
+- **split:** 90 (100% add-on)
+- **splitMax:** 100
+- **dd:** EOD trailing (Futures); 10% static (CFD 2-Step Std)
+- **ddTypes:** Static; EOD
+- **payoutDays:** 1
+- **payoutText:** 24h payout guarantee claimed
+- **from:** 43
+- **fromCur:** USD
+- **fromPlan:** CFD 2-Step Std 5K (Futures Daily 25K $85)
+- **monthly:** false
+- **code:** BLACKFRIDAY
+- **off:** 55
+- **codes:** {"code":"BLACKFRIDAY","off":55,"detail":"55% off. Homepage says limited time; no end date stated."}
+- **consistencyText:** Futures Std 50 eval / 40 funded; CFD Instant 20
+- **consNone:** false
+- **target:** Futures evals 6
+- **dailyDD:** Futures Std $600 (25K) lockout
+- **minDays:** Futures 2; CFD 3 per phase
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** no published plan
+- **news:** Futures no restrictions; CFD funded +/-5 min deduction
+- **overnight:** Futures no; CFD yes
+- **us:** Futures: no country restrictions stated; CFD: MT5 not for US citizens
+- **site:** https://atlasfunded.com
+- **sources:** https://atlasfunded.com; https://docs.atlasfunded.com/trading-rules; https://www.trustpilot.com/review/atlasfunded.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 12.5-22.5%
+- **platforms:** TradeLocker; Match-Trader; MT5; Volumetrica / Tradara / HyperProp (Futures)
+- **payMethods:** Rise; USDT
+- **deal:** BLACKFRIDAY — 55% off. The homepage says limited time and does not name an end date.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** The firm's own site claims a 4.8 rating; Trustpilot shows 3.9/5 (~2,294 reviews). This page uses the Trustpilot figure. CFD note: the firm's terms say MT5 services are not intended for US citizens or residents; TradeLocker/Match-Trader are not restricted that way — confirm with support in writing.
+- **summary:** Two lines under one brand: forex/CFD (to $400K) and CME futures (to $150K), both at a 90% standard split with a claimed 24-hour payout guarantee. This is atlasfunded.com — not myatlasfund.com ('Atlas'), a separate futures-only firm.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 2**
+
+#### CFD 2-Step Std — 5000
+
+- **id:** atlas-funded-cfd-2-step-std-5000
+- **program:** CFD 2-Step Std
+- **name:** CFD 2-Step Std
+- **size:** 5000
+- **price:** 43
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Futures evals 6
+- **dailyLoss:** Futures Std $600 (25K) lockout
+- **maxDD:** EOD trailing (Futures); 10% static (CFD 2-Step Std)
+- **ddType:** Static, EOD
+- **minDays:** Futures 2; CFD 3 per phase
+- **split:** 90 (100% add-on)
+- **payout:** 24h payout guarantee claimed
+- **platform:** TradeLocker, Match-Trader, MT5, Volumetrica / Tradara / HyperProp (Futures)
+- **source:** https://atlasfunded.com
+
+#### Daily — 25000
+
+- **id:** atlas-funded-daily-25000
+- **program:** Daily
+- **name:** Daily
+- **size:** 25000
+- **price:** 85
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Named in the recorded starting-offer line. Not a full catalog.
+- **target:** Futures evals 6
+- **dailyLoss:** Futures Std $600 (25K) lockout
+- **maxDD:** EOD trailing (Futures); 10% static (CFD 2-Step Std)
+- **ddType:** Static, EOD
+- **minDays:** Futures 2; CFD 3 per phase
+- **split:** 90 (100% add-on)
+- **payout:** 24h payout guarantee claimed
+- **platform:** TradeLocker, Match-Trader, MT5, Volumetrica / Tradara / HyperProp (Futures)
+- **source:** https://atlasfunded.com
+
+
+### 13. Atmos Funded
+
+- **slug:** atmos-funded
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** Nova 8% trailing / 2-Step 10% static / Instant 5% trailing
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** 2-Step and Instant every 14 days; Nova on demand after 7 profitable funded days
+- **from:** 5
+- **fromCur:** USD
+- **fromPlan:** 1-Step Nova, $5 to start any size (funded fee $79-$1,029 due after passing)
+- **monthly:** false
+- **code:** WELCOME
+- **off:** Not recorded
+- **codes:** {"code":"WELCOME","off":null,"detail":"35% off first purchase); NOV (12% off 2-Step & Instant, Nov 3-30"}
+- **consistencyText:** Nova none / 2-Step none / Instant 20%
+- **consNone:** true
+- **target:** Nova 5 / 2-Step 10 then 5 / Instant none
+- **dailyDD:** Nova 4% / 2-Step 5% / Instant 3%
+- **minDays:** Nova none in eval; 7 profitable days (0.5%+ each) on funded account per payout; 2-Step not stated on homepage
+- **activation:** Nova funded fee $79 (10K) to $1,029 (200K) after passing; none stated for 2-Step/Instant
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $400K
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://atmosfunded.com
+- **sources:** https://atmosfunded.com; https://help.atmosfunded.com/en/articles/12380559-2-step-standard-challenge; https://help.atmosfunded.com/en/articles/12380563-instant-funding; https://help.atmosfunded.com/en/articles/13959447-nova-challenge; https://atmosfunded.com/promotions/; https://atmosfunded.com/affiliate-program/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, tiered commission ranks (% not stated on affiliate page)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** WELCOME (35% off first purchase); NOV (12% off 2-Step & Instant, Nov 3-30)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 5 (1-Step Nova, $5 to start any size (funded fee $79-$1,029 due after passing)). Split up to 90%; payout 2-Step and Instant every 14 days; Nova on demand after 7 profitable funded days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Nova, $5 to start any size (funded fee $79-$1,029 due after passing) — Not recorded
+
+- **id:** atmos-funded-entry
+- **program:** 1-Step Nova, $5 to start any size (funded fee $79-$1,029 due after passing)
+- **name:** 1-Step Nova, $5 to start any size (funded fee $79-$1,029 due after passing)
+- **size:** Not recorded
+- **price:** 5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Nova 5 / 2-Step 10 then 5 / Instant none
+- **dailyLoss:** Nova 4% / 2-Step 5% / Instant 3%
+- **maxDD:** Nova 8% trailing / 2-Step 10% static / Instant 5% trailing
+- **ddType:** Static
+- **minDays:** Nova none in eval; 7 profitable days (0.5%+ each) on funded account per payout; 2-Step not stated on homepage
+- **split:** up to 90%
+- **payout:** 2-Step and Instant every 14 days; Nova on demand after 7 profitable funded days
+- **platform:** Not stated
+- **source:** https://atmosfunded.com
+
+
+### 14. Audacity Capital
+
+- **slug:** audacity-capital
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 75% start, up to 90% via scaling%
+- **splitMax:** 90
+- **dd:** Ability Challenge 15% then 10% static / Ability One 6% static / FTP 10%
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** bi-weekly, first payout 14 days after first live trade
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** Ability Challenge 5K, one-time, refundable with first payout
+- **monthly:** false
+- **code:** FLASH25
+- **off:** Not recorded
+- **codes:** {"code":"FLASH25","off":null,"detail":"25% off all programs"}
+- **consistencyText:** none (consistency rule removed)
+- **consNone:** true
+- **target:** Ability Challenge 10 then 5 / Ability One 10 / FTP 10% aim
+- **dailyDD:** Ability Challenge 7.5% then 5% / Ability One 3% / FTP 5%
+- **minDays:** Ability Challenge 4 per phase; Ability One none; FTP none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** account doubles to over $2,000,000
+- **news:** allowed, no open/close/add within 3 min of high-impact news
+- **overnight:** allowed
+- **us:** yes via DXTrade where permitted
+- **site:** https://audacity.capital
+- **sources:** https://audacity.capital; https://audacity.capital/funded-trader-program/; https://audacity.capital/two-step-prop-firm-ability-challenge/; https://audacity.capital/trading-guides/how-to-get-your-first-funded-trader-payout/; https://audacity.capital/trading-guides/earn-without-trading-audacity-capital-partnership-programme/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 10% flat recurring, up to 15% (Partnership Programme blog)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FLASH25 (25% off all programs)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 49 (Ability Challenge 5K, one-time, refundable with first payout). Split 75% start, up to 90% via scaling%; payout bi-weekly, first payout 14 days after first live trade.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Ability Challenge 5K, one-time, refundable with first payout — Not recorded
+
+- **id:** audacity-capital-entry
+- **program:** Ability Challenge 5K, one-time, refundable with first payout
+- **name:** Ability Challenge 5K, one-time, refundable with first payout
+- **size:** Not recorded
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Ability Challenge 10 then 5 / Ability One 10 / FTP 10% aim
+- **dailyLoss:** Ability Challenge 7.5% then 5% / Ability One 3% / FTP 5%
+- **maxDD:** Ability Challenge 15% then 10% static / Ability One 6% static / FTP 10%
+- **ddType:** Static
+- **minDays:** Ability Challenge 4 per phase; Ability One none; FTP none
+- **split:** 75% start, up to 90% via scaling%
+- **payout:** bi-weekly, first payout 14 days after first live trade
+- **platform:** Not stated
+- **source:** https://audacity.capital
+
+
+### 15. Axi Select
+
+- **slug:** axi-select
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 0% Seed; 40% Incubation rising to 80% Pro M%
+- **splitMax:** 80
+- **dd:** 10% (per Axi support article)
+- **ddTypes:** Not recorded
+- **payoutDays:** 30
+- **payoutText:** monthly, on the 1st
+- **from:** 0
+- **fromCur:** USD
+- **fromPlan:** Free to join; $500 min live deposit
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Edge Score includes a consistency component; no % stated
+- **consNone:** false
+- **target:** 7% (Seed-Pro 500); 10% (Pro M)
+- **dailyDD:** not stated
+- **minDays:** 30-day min stage duration (Seed to Incubation); min trades per stage in client portal only
+- **activation:** none
+- **instant:** false
+- **instantText:** No
+- **scaling:** to $1,000,000
+- **news:** not stated (unrestrictive trading conditions claimed)
+- **overnight:** not stated
+- **us:** no (US residents not eligible per Axi's own promotion T&Cs; Axi Select only for AxiTrader Ltd clients)
+- **site:** https://axi.com
+- **sources:** https://www.axi.com/select; https://help.axi.com/en-US/axiv2--axicorp-prod/article/8Zjs9f7o-axi-select-; https://www.axi.com/int/blog/education/proprietary-trading-firms; https://www.axi.com/int/blog/education/cheap-prop-firms; https://assets.axitrader.com/pdf/svg/TnC_Q1_FY27_AXI100.pdf
+- **verif:** partial (stage-by-stage requirements table lives in the client portal only; US exclusion per official Axi T&Cs)
+- **verifLabel:** Partially verified
+- **affiliate:** not stated for Axi Select (Axi runs a separate IB program for brokerage)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (stage-by-stage requirements table lives in the client portal only; US exclusion per official Axi T&Cs).
+- **summary:** Forex, Cfd firm. Starts at USD 0 (Free to join; $500 min live deposit). Split 0% Seed; 40% Incubation rising to 80% Pro M%; payout monthly, on the 1st.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Free to join; $500 min live deposit — Not recorded
+
+- **id:** axi-select-entry
+- **program:** Free to join; $500 min live deposit
+- **name:** Free to join; $500 min live deposit
+- **size:** Not recorded
+- **price:** 0
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 7% (Seed-Pro 500); 10% (Pro M)
+- **dailyLoss:** not stated
+- **maxDD:** 10% (per Axi support article)
+- **ddType:** Not recorded
+- **minDays:** 30-day min stage duration (Seed to Incubation); min trades per stage in client portal only
+- **split:** 0% Seed; 40% Incubation rising to 80% Pro M%
+- **payout:** monthly, on the 1st
+- **platform:** Not stated
+- **source:** https://axi.com
+
+
+### 16. Axis Funded
+
+- **slug:** axis-funded
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** INSTANT 50%; PRIME 90%
+- **splitMax:** 90
+- **dd:** INSTANT 7% static; PRIME 10% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** INSTANT bi-weekly withdrawals; PRIME on-demand withdrawals (crypto under 1 hour)
+- **from:** 550
+- **fromCur:** USD
+- **fromPlan:** INSTANT 10K, one-time access fee
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** none (both programs instant funding, no evaluation)
+- **dailyDD:** none (no daily loss limit; static only)
+- **minDays:** INSTANT 5 before first withdrawal; PRIME none
+- **activation:** PRIME programme fee refunded on first approved payout
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** restricted (no open/close/hold within 8 min of medium/high-impact news)
+- **overnight:** overnight holding permitted; INSTANT positions must close before Friday market close (no weekend holding); PRIME weekend holding permitted
+- **us:** not stated
+- **site:** https://axisfunded.com
+- **sources:** https://axisfunded.com; https://axisfunded.com/compare; https://axisfunded.com/affiliate; https://axisfunded.com/products/instant; https://axisfunded.com/products/prime; https://www.axisfunded.com/affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 5-10% revenue share + $5-$10/lot (Starter 5% + $5/lot 1-10 sales/mo; Growth 7.5% + $7.50/lot 11-30; Elite 10% + $10/lot 31+); 14-day payout cycle, 60-day cookie, bi-weekly payouts via USDT/BTC/bank
+- **platforms:** MT5 / Match-Trader / TradingView
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex firm. Starts at USD 550 (INSTANT 10K, one-time access fee). Split INSTANT 50%; PRIME 90%; payout INSTANT bi-weekly withdrawals; PRIME on-demand withdrawals (crypto under 1 hour).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 12**
+
+#### INSTANT — 10000
+
+- **id:** axis-funded-instant-10000
+- **program:** INSTANT
+- **name:** INSTANT
+- **size:** 10000
+- **price:** 550
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 7% static ($700)
+- **ddType:** Static
+- **minDays:** 5 before first withdrawal
+- **split:** 50%
+- **payout:** bi-weekly
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/instant
+
+#### INSTANT — 25000
+
+- **id:** axis-funded-instant-25000
+- **program:** INSTANT
+- **name:** INSTANT
+- **size:** 25000
+- **price:** 1100
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 7% static ($1,400)
+- **ddType:** Static
+- **minDays:** 5 before first withdrawal
+- **split:** 50%
+- **payout:** bi-weekly
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/instant
+
+#### INSTANT — 50000
+
+- **id:** axis-funded-instant-50000
+- **program:** INSTANT
+- **name:** INSTANT
+- **size:** 50000
+- **price:** 2750
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 7% static ($3,500)
+- **ddType:** Static
+- **minDays:** 5 before first withdrawal
+- **split:** 50%
+- **payout:** bi-weekly
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/instant
+
+#### INSTANT — 100000
+
+- **id:** axis-funded-instant-100000
+- **program:** INSTANT
+- **name:** INSTANT
+- **size:** 100000
+- **price:** 5500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 7% static ($7,000)
+- **ddType:** Static
+- **minDays:** 5 before first withdrawal
+- **split:** 50%
+- **payout:** bi-weekly
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/instant
+
+#### INSTANT — 200000
+
+- **id:** axis-funded-instant-200000
+- **program:** INSTANT
+- **name:** INSTANT
+- **size:** 200000
+- **price:** 11000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 7% static ($14,000)
+- **ddType:** Static
+- **minDays:** 5 before first withdrawal
+- **split:** 50%
+- **payout:** bi-weekly
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/instant
+
+#### INSTANT — 400000
+
+- **id:** axis-funded-instant-400000
+- **program:** INSTANT
+- **name:** INSTANT
+- **size:** 400000
+- **price:** 22000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 7% static ($28,000)
+- **ddType:** Static
+- **minDays:** 5 before first withdrawal
+- **split:** 50%
+- **payout:** bi-weekly
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/instant
+
+#### PRIME — 10000
+
+- **id:** axis-funded-prime-10000
+- **program:** PRIME
+- **name:** PRIME
+- **size:** 10000
+- **price:** 1000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10% static ($1,000)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 90%
+- **payout:** on-demand
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/prime
+
+#### PRIME — 25000
+
+- **id:** axis-funded-prime-25000
+- **program:** PRIME
+- **name:** PRIME
+- **size:** 25000
+- **price:** 2000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10% static ($2,500)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 90%
+- **payout:** on-demand
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/prime
+
+#### PRIME — 50000
+
+- **id:** axis-funded-prime-50000
+- **program:** PRIME
+- **name:** PRIME
+- **size:** 50000
+- **price:** 5000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10% static ($5,000)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 90%
+- **payout:** on-demand
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/prime
+
+#### PRIME — 100000
+
+- **id:** axis-funded-prime-100000
+- **program:** PRIME
+- **name:** PRIME
+- **size:** 100000
+- **price:** 10000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10% static ($10,000)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 90%
+- **payout:** on-demand
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/prime
+
+#### PRIME — 200000
+
+- **id:** axis-funded-prime-200000
+- **program:** PRIME
+- **name:** PRIME
+- **size:** 200000
+- **price:** 20000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10% static ($20,000)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 90%
+- **payout:** on-demand
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/prime
+
+#### PRIME — 400000
+
+- **id:** axis-funded-prime-400000
+- **program:** PRIME
+- **name:** PRIME
+- **size:** 400000
+- **price:** 40000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10% static ($40,000)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 90%
+- **payout:** on-demand
+- **platform:** MT5 / Match-Trader / TradingView
+- **source:** https://axisfunded.com/products/prime
+
+
+### 17. BEM Funding
+
+- **slug:** bem-funding
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** One 6% trailing (locks at initial balance); One Only 6% trailing; Classic 9% static; Swing 9% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** One/One Only on demand; Classic/Swing bi-weekly; requests from $150, reviewed within 3 business days; under $1,500 USDC, $1,500+ via Rise; 2% processing fee
+- **from:** 47
+- **fromCur:** USD
+- **fromPlan:** BEM One 5K, one-time (Black Friday sale $28.67 with PAYOUTFRIDAY)
+- **monthly:** false
+- **code:** PAYOUTFRIDAY
+- **off:** Not recorded
+- **codes:** {"code":"PAYOUTFRIDAY","off":null,"detail":"Black Friday: One -30%, One Only -40%, Classic/Swing -20%; 5K from $20 advertised"}
+- **consistencyText:** One none in eval / 35% funded; One Only 30%; Classic/Swing not stated
+- **consNone:** true
+- **target:** One 9; One Only 6; Classic 9 then 4.5; Classic Swing 9 then 4.5
+- **dailyDD:** One 3%; One Only 3%; Classic 4.5%; Swing 4.5%
+- **minDays:** One none; Classic 3 per phase
+- **activation:** none stated (fee-refund add-on free during Black Friday)
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** allowed in eval; restricted on funded (One Only allowed; Classic 4-min window; Swing 8-hour rule + 4-min)
+- **overnight:** One Only allowed; Classic Swing swap-free with overnight/weekend holding; One/Classic crypto only on funded
+- **us:** no
+- **site:** https://bemfunding.com
+- **sources:** https://bemfunding.com; https://bemfunding.com/challenges; https://bemfunding.com/faq; https://bemfunding.com/affiliate
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** recurring lifetime up to 10%, 30-day cookie, commission even if checkout uses a different code
+- **platforms:** MT5 / cTrader / DXtrade
+- **payMethods:** Not listed
+- **deal:** PAYOUTFRIDAY (Black Friday: One -30%, One Only -40%, Classic/Swing -20%; 5K from $20 advertised)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices for One Only/Classic/Swing not published on readable pages (only $100K shown); full price grid is a JS configurator
+- **summary:** Forex firm. Starts at USD 47 (BEM One 5K, one-time (Black Friday sale $28.67 with PAYOUTFRIDAY)). Split 80%; payout One/One Only on demand; Classic/Swing bi-weekly; requests from $150, reviewed within 3 business days; under $1,500 USDC, $1,500+ via Rise; 2% processing fee.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 9**
+
+#### BEM One (1-Step) — 5000
+
+- **id:** bem-funding-bem-one-1-step-5000
+- **program:** BEM One (1-Step)
+- **name:** BEM One (1-Step)
+- **size:** 5000
+- **price:** 47
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing (locks at initial balance)
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM One (1-Step) — 10000
+
+- **id:** bem-funding-bem-one-1-step-10000
+- **program:** BEM One (1-Step)
+- **name:** BEM One (1-Step)
+- **size:** 10000
+- **price:** 89
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing (locks at initial balance)
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM One (1-Step) — 25000
+
+- **id:** bem-funding-bem-one-1-step-25000
+- **program:** BEM One (1-Step)
+- **name:** BEM One (1-Step)
+- **size:** 25000
+- **price:** 194
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing (locks at initial balance)
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM One (1-Step) — 50000
+
+- **id:** bem-funding-bem-one-1-step-50000
+- **program:** BEM One (1-Step)
+- **name:** BEM One (1-Step)
+- **size:** 50000
+- **price:** 285
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing (locks at initial balance)
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM One (1-Step) — 100000
+
+- **id:** bem-funding-bem-one-1-step-100000
+- **program:** BEM One (1-Step)
+- **name:** BEM One (1-Step)
+- **size:** 100000
+- **price:** 520
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing (locks at initial balance)
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM One (1-Step) — 200000
+
+- **id:** bem-funding-bem-one-1-step-200000
+- **program:** BEM One (1-Step)
+- **name:** BEM One (1-Step)
+- **size:** 200000
+- **price:** 790
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing (locks at initial balance)
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM One Only (1-Step) — 100000
+
+- **id:** bem-funding-bem-one-only-1-step-100000
+- **program:** BEM One Only (1-Step)
+- **name:** BEM One Only (1-Step)
+- **size:** 100000
+- **price:** 460
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM Classic (2-Step) — 100000
+
+- **id:** bem-funding-bem-classic-2-step-100000
+- **program:** BEM Classic (2-Step)
+- **name:** BEM Classic (2-Step)
+- **size:** 100000
+- **price:** 519
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9 then 4.5
+- **dailyLoss:** 4.5%
+- **maxDD:** 9% static
+- **ddType:** Static
+- **minDays:** 3 per phase
+- **split:** 80%
+- **payout:** bi-weekly
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+#### BEM Classic Swing (2-Step, swap-free) — 100000
+
+- **id:** bem-funding-bem-classic-swing-2-step-swap-free-100000
+- **program:** BEM Classic Swing (2-Step, swap-free)
+- **name:** BEM Classic Swing (2-Step, swap-free)
+- **size:** 100000
+- **price:** 890
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9 then 4.5
+- **dailyLoss:** 4.5%
+- **maxDD:** 9% static
+- **ddType:** Static
+- **minDays:** 3 per phase
+- **split:** 80%
+- **payout:** bi-weekly
+- **platform:** MT5 / cTrader / DXtrade
+- **source:** https://bemfunding.com/challenges
+
+
+### 18. Bitfunded
+
+- **slug:** bitfunded
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 39
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://bitfunded.com
+- **sources:** https://bitfunded.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15% first purchase + 3% repeat
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 30 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Crypto, Perps firm. Starts at $39. Affiliate: yes, 15% first purchase + 3% repeat. US traders: not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** bitfunded-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://bitfunded.com
+
+
+### 19. Blue Guardian
+
+- **slug:** blue-guardian
+- **markets:** forex; futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot withholds this firm's score (rating unavailable due to a breach of Trustpilot's guidelines; 'Warning' label) — checked Nov 26, 2026
+- **split:** 85 std (90% add-on)
+- **splitMax:** 90
+- **dd:** 8% static (2-Step Std)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** every 14d (7d add-on)
+- **from:** 32
+- **fromCur:** USD
+- **fromPlan:** 2-Step Std 5K list ($463 for 100K)
+- **monthly:** false
+- **code:** BLACK
+- **off:** 35
+- **codes:** {"code":"BLACK","off":35,"detail":"35% off everything. Homepage labels it a 24-hour flash sale — ends Nov 27, 2026"}
+- **consistencyText:** 2-Step Std none / Instant 20
+- **consNone:** true
+- **target:** 2-Step 8 then 4
+- **dailyDD:** 4%
+- **minDays:** 3 profitable days per phase
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (third-party reads cite $4M)
+- **news:** restricted on Instant Std (+/-5 min)
+- **overnight:** not stated
+- **us:** yes, CFD on Match-Trader/TradeLocker only
+- **site:** https://blueguardian.com
+- **sources:** https://blueguardian.com/; https://blueguardian.com/affiliates; https://www.trustpilot.com/review/blueguardian.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 15%
+- **platforms:** MT5; Match-Trader; TradeLocker; Tradovate; NinjaTrader; TradingView; DeepCharts
+- **payMethods:** Crypto; Rise
+- **deal:** BLACK — 35% off everything. The homepage calls it a 24-hour flash sale for Nov 27 only.
+- **tracked:** true
+- **paid30:** 4190000
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Two markets: CFD evaluations and instant accounts to $400K, plus a newer futures model. 2-Step Standard is 85% (90% add-on) with an 8% static drawdown and payouts every 14 days. Note the Guardian Shield: at 2% floating loss on a funded account, trades close and the split drops to 50% permanently.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 2**
+
+#### 2-Step Std — 5000
+
+- **id:** blue-guardian-2-step-std-5000
+- **program:** 2-Step Std
+- **name:** 2-Step Std
+- **size:** 5000
+- **price:** 32
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8% static (2-Step Std)
+- **ddType:** Static
+- **minDays:** 3 profitable days per phase
+- **split:** 85 std (90% add-on)
+- **payout:** every 14d (7d add-on)
+- **platform:** MT5, Match-Trader, TradeLocker, Tradovate, NinjaTrader, TradingView, DeepCharts
+- **source:** https://blueguardian.com/
+
+#### 2-Step Std — 100000
+
+- **id:** blue-guardian-2-step-std-100000
+- **program:** 2-Step Std
+- **name:** 2-Step Std
+- **size:** 100000
+- **price:** 463
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Second size named in the recorded starting-offer line. Not re-checked as its own plan on 27 Nov 2026.
+- **target:** 2-Step 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8% static (2-Step Std)
+- **ddType:** Static
+- **minDays:** 3 profitable days per phase
+- **split:** 85 std (90% add-on)
+- **payout:** every 14d (7d add-on)
+- **platform:** MT5, Match-Trader, TradeLocker, Tradovate, NinjaTrader, TradingView, DeepCharts
+- **source:** https://blueguardian.com/
+
+
+### 20. Blueberry Funded
+
+- **slug:** blueberry-funded
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot rating withheld — breach-of-guidelines notice, fake reviews removed; no score is shown
+- **split:** 80 (85% Flex)
+- **splitMax:** 85
+- **dd:** 6% static (1-Step)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** 14d cycle
+- **from:** 44
+- **fromCur:** USD
+- **fromPlan:** 1-Step 5K
+- **monthly:** false
+- **code:** INSTANTBF
+- **off:** 50
+- **codes:** {"code":"INSTANTBF","off":50,"detail":"50% off Instant Lite"}; {"code":"PRIMEBF","off":40,"detail":"40% off Prime 2-Step"}; {"code":"FLEX30","off":30,"detail":"30% off Flex"}; {"code":"PRIME30","off":30,"detail":"30% off Prime"}; {"code":"BF1","off":25,"detail":"25% off Prime, plus a free reset"}
+- **consistencyText:** none challenges; Instant Lite rule, % not stated
+- **consNone:** true
+- **target:** 1-Step 10 / Flex 12
+- **dailyDD:** 4% (1-Step)
+- **minDays:** 3 per phase
+- **activation:** not clearly published
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** +25% every 3 months to $2,000,000
+- **news:** restricted +/-5 min high-impact
+- **overnight:** overnight yes; weekend yes except Flex
+- **us:** no (US and Australia restricted)
+- **site:** https://blueberryfunded.com
+- **sources:** https://blueberryfunded.com; https://blueberryfunded.com/best-discount-code-invest/; https://www.trustpilot.com/review/blueberryfunded.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 12.5-20% + 10% recurring
+- **platforms:** MT5; TradeLocker
+- **payMethods:** Not listed
+- **deal:** PRIMEBF 40% off Prime 2-Step; INSTANTBF 50% off Instant Lite; BF1 25% off Prime plus a free reset; FLEX30 and PRIME30 still 30% off.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Do not mix with Blueberry Futures (blueberryfutures.com) — a futures firm on a monthly subscription, with different prices and rules.
+- **summary:** Forex/CFD firm (MT5, TradeLocker) with Flex 1-Step, 1-Step and Prime 2-Step challenges plus Instant Elite and Instant Lite. US and Australian residents are restricted. Not Blueberry Futures, the monthly-subscription futures firm.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step — 5000
+
+- **id:** blueberry-funded-1-step-5000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 5000
+- **price:** 44
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step 10 / Flex 12
+- **dailyLoss:** 4% (1-Step)
+- **maxDD:** 6% static (1-Step)
+- **ddType:** Static
+- **minDays:** 3 per phase
+- **split:** 80 (85% Flex)
+- **payout:** 14d cycle
+- **platform:** MT5, TradeLocker
+- **source:** https://blueberryfunded.com
+
+
+### 21. Blueberry Futures
+
+- **slug:** blueberry-futures
+- **markets:** futures
+- **rating:** 3.4
+- **rsrc:** Trustpilot
+- **reviews:** 8
+- **ratingNote:** Verified against Trustpilot — only 8 reviews, so treat the score as thin evidence
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** 4% trailing (EOD Ascent / intraday Accelerated)
+- **ddTypes:** Intraday
+- **payoutDays:** 1
+- **payoutText:** on demand, 5 profitable days $200+
+- **from:** 110.4
+- **fromCur:** USD
+- **fromPlan:** Accelerated 25K per month, monthly subscription
+- **monthly:** true
+- **code:** FUTURES60
+- **off:** 60
+- **codes:** {"code":"FUTURES60","off":60,"detail":"60% off every plan (shown on the firm's site)"}
+- **consistencyText:** none eval; funded 35% Ascent / 20% Accelerated
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** none
+- **minDays:** Ascent 2 / Accelerated 1
+- **activation:** none
+- **instant:** false
+- **instantText:** No
+- **scaling:** max $450K across 3 accounts
+- **news:** restricted +/-3 min high-impact
+- **overnight:** no
+- **us:** UNRESOLVED — conflicting official checks
+- **site:** https://blueberryfutures.com
+- **sources:** https://blueberryfutures.com; https://help.blueberryfutures.com/en/articles/11196038; https://www.trustpilot.com/review/blueberryfutures.com
+- **verif:** partial (US eligibility unresolved)
+- **verifLabel:** Partially verified
+- **affiliate:** none verified
+- **platforms:** BlackArrow
+- **payMethods:** Rise; Crypto (USDT)
+- **deal:** 60% off every plan (shown on the firm's site)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** US eligibility is UNRESOLVED: two checks of the firm's own restricted list disagree (one includes the US, one does not). Re-verify on the live help centre before buying. Separately: this is not Blueberry Funded.
+- **summary:** Futures-only firm (CME via BlackArrow) with two monthly-subscription evaluations: Ascent (EOD trailing) and Accelerated (intraday trailing). 90% split, 6% target, no activation fee, and a 'Road to Live' path after 7 payout cycles. Not Blueberry Funded.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Accelerated — 25000
+
+- **id:** blueberry-futures-accelerated-25000
+- **program:** Accelerated
+- **name:** Accelerated
+- **size:** 25000
+- **price:** 110.4
+- **currency:** USD
+- **monthly:** true
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 6
+- **dailyLoss:** none
+- **maxDD:** 4% trailing (EOD Ascent / intraday Accelerated)
+- **ddType:** Intraday
+- **minDays:** Ascent 2 / Accelerated 1
+- **split:** 90%
+- **payout:** on demand, 5 profitable days $200+
+- **platform:** BlackArrow
+- **source:** https://blueberryfutures.com
+
+
+### 22. BluSky Trading
+
+- **slug:** blusky-trading
+- **markets:** futures; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90 (Instant Sim Funded 80; Direct to Funded 50 first 30 trading days then 80)%
+- **splitMax:** Not recorded
+- **dd:** EOD trailing $2,000 (50K); Propel 25K $1,200 EOD trailing; 150K-300K static $1,000-$5,000
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** daily, Mon-Fri (min $500; 7-day cap $1,500 25K / $2,500 50K / $3,000 100K)
+- **from:** 59
+- **fromCur:** USD
+- **fromPlan:** Launch 50K per 30 days (list; $29.50 with Welcome26)
+- **monthly:** false
+- **code:** Welcome26
+- **off:** Not recorded
+- **codes:** {"code":"Welcome26","off":null,"detail":"50% off first Launch); 30OFF (30% off Propel"}
+- **consistencyText:** Launch 55 eval / 34 Buffer; Propel 55 eval (25K-100K) / 34 Buffer; 300K 21 Buffer; Orbit none
+- **consNone:** true
+- **target:** Launch/Propel 6 (50K $3,000; 25K $1,500)
+- **dailyDD:** none (eval)
+- **minDays:** not stated
+- **activation:** Launch $99 (50K) / $149 (100K) / $179 (200K) due on passing; Propel/Orbit none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** additional contracts/capital if consistently performing; Live Brokerage review at $10,000 total profit
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated (US firm, St. Petersburg, FL)
+- **site:** https://blusky.pro
+- **sources:** https://blusky.pro; https://blusky.pro/how-blusky-compares/; https://help.blusky.pro/en/articles/12434108-billing; https://help.blusky.pro/en/articles/16300862-propel-plans-phases-rules-and-costs; https://help.blusky.pro/en/articles/12434429-payouts
+- **verif:** partial (plan prices live only in JS configurator; list prices confirmed on official compares page)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, tiered (rate not stated)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Welcome26 (50% off first Launch); 30OFF (30% off Propel)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (plan prices live only in JS configurator; list prices confirmed on official compares page).
+- **summary:** Futures, Stocks firm. Starts at USD 59 (Launch 50K per 30 days (list; $29.50 with Welcome26)). Split 90 (Instant Sim Funded 80; Direct to Funded 50 first 30 trading days then 80)%; payout daily, Mon-Fri (min $500; 7-day cap $1,500 25K / $2,500 50K / $3,000 100K).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Launch 50K per 30 days (list; $29.50 with Welcome26) — Not recorded
+
+- **id:** blusky-trading-entry
+- **program:** Launch 50K per 30 days (list; $29.50 with Welcome26)
+- **name:** Launch 50K per 30 days (list; $29.50 with Welcome26)
+- **size:** Not recorded
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Launch/Propel 6 (50K $3,000; 25K $1,500)
+- **dailyLoss:** none (eval)
+- **maxDD:** EOD trailing $2,000 (50K); Propel 25K $1,200 EOD trailing; 150K-300K static $1,000-$5,000
+- **ddType:** EOD
+- **minDays:** not stated
+- **split:** 90 (Instant Sim Funded 80; Direct to Funded 50 first 30 trading days then 80)%
+- **payout:** daily, Mon-Fri (min $500; 7-day cap $1,500 25K / $2,500 50K / $3,000 100K)
+- **platform:** Not stated
+- **source:** https://blusky.pro
+
+
+### 23. Breakout Prop
+
+- **slug:** breakout-prop
+- **markets:** crypto; stocks
+- **rating:** 4.7
+- **rsrc:** Trustpilot
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot 4.7/5 shown on the firm's own homepage. Checked Nov 27, 2026.
+- **split:** 80% standard, 90% with checkout upgrade (+20% fee)%
+- **splitMax:** 90
+- **dd:** Turbo 3% static / Pro 5% static / Classic 6% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on-demand, 24/7 (USDC on Ethereum, $50 minimum after split)
+- **from:** 20
+- **fromCur:** USD
+- **fromPlan:** 1-Step Turbo 5K, one-time
+- **monthly:** false
+- **code:** none verified (affiliate codes give the audience 5% off first order)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (affiliate codes give the audience 5% off first order)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** Turbo 9 / Pro 12 / Classic 10
+- **dailyDD:** 3% all plans
+- **minDays:** 0
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** max allocation $200,000 combined
+- **news:** allowed, no restrictions
+- **overnight:** allowed (hold overnight, weekends, holidays)
+- **us:** not stated (regional restrictions apply)
+- **site:** https://breakoutprop.com
+- **sources:** https://breakoutprop.com; https://breakoutprop.com/pricing; https://www.breakoutprop.com/affiliates/; https://breakoutprop.com/affiliates/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 12-18% on first orders (Starter 12%, Growth 15% at 40 referrals, Pro 18% at 150)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (affiliate codes give the audience 5% off first order)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS configurator (only from-prices readable on homepage); US eligibility detail not stated on official pages read
+- **summary:** Crypto, Stocks firm. Starts at USD 20 (1-Step Turbo 5K, one-time). Split 80% standard, 90% with checkout upgrade (+20% fee)%; payout on-demand, 24/7 (USDC on Ethereum, $50 minimum after split).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Turbo 5K, one-time — Not recorded
+
+- **id:** breakout-prop-entry
+- **program:** 1-Step Turbo 5K, one-time
+- **name:** 1-Step Turbo 5K, one-time
+- **size:** Not recorded
+- **price:** 20
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Turbo 9 / Pro 12 / Classic 10
+- **dailyLoss:** 3% all plans
+- **maxDD:** Turbo 3% static / Pro 5% static / Classic 6% static
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80% standard, 90% with checkout upgrade (+20% fee)%
+- **payout:** on-demand, 24/7 (USDC on Ethereum, $50 minimum after split)
+- **platform:** Not stated
+- **source:** https://breakoutprop.com
+
+
+### 24. BrightFunded
+
+- **slug:** brightfunded
+- **markets:** forex; futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot rating withheld — breach-of-guidelines notice; no score is shown
+- **split:** 80 (90% add-on)
+- **splitMax:** 90
+- **dd:** 8% static (2-Step Bright)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** 14d / on demand (Instant)
+- **from:** 47
+- **fromCur:** EUR
+- **fromPlan:** 2-Step Bright 5K (prices in EUR)
+- **monthly:** false
+- **code:** BF35
+- **off:** 35
+- **codes:** {"code":"BF35","off":35,"detail":"35% off CFD challenges"}; {"code":"FBF50","off":50,"detail":"50% off futures evaluations"}
+- **consistencyText:** none 1-Step/2-Step; 15% Instant
+- **consNone:** true
+- **target:** 2-Step Bright 8 then 5
+- **dailyDD:** 4% (2-Step Bright)
+- **minDays:** none (1-Step); 3 profitable per phase (2-Step)
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** +30% every 4 months to 100% split
+- **news:** no limits eval; funded +/-5 min
+- **overnight:** weekend yes 1-Step/2-Step; no Instant
+- **us:** not stated
+- **site:** https://brightfunded.com
+- **sources:** https://brightfunded.com/; https://brightfunded.com/affiliate; https://www.trustpilot.com/review/brightfunded.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 15%
+- **platforms:** MT5; cTrader; DXtrade
+- **payMethods:** Not listed
+- **deal:** 35% off CFD challenges
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm (plus a futures line sold through its US company). Account balances are in USD but prices are billed in euros. All three CFD plans were revamped on Nov 16, 2026; accounts bought before that keep their original rules.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 2-Step Bright — 5000
+
+- **id:** brightfunded-2-step-bright-5000
+- **program:** 2-Step Bright
+- **name:** 2-Step Bright
+- **size:** 5000
+- **price:** 47
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step Bright 8 then 5
+- **dailyLoss:** 4% (2-Step Bright)
+- **maxDD:** 8% static (2-Step Bright)
+- **ddType:** Static
+- **minDays:** none (1-Step); 3 profitable per phase (2-Step)
+- **split:** 80 (90% add-on)
+- **payout:** 14d / on demand (Instant)
+- **platform:** MT5, cTrader, DXtrade
+- **source:** https://brightfunded.com/
+
+
+### 25. Bulenox
+
+- **slug:** bulenox
+- **markets:** futures
+- **rating:** 4.6
+- **rsrc:** Trustpilot
+- **reviews:** 1841
+- **ratingNote:** Read on trustpilot.com
+- **split:** 100% of first $10K, then 90%
+- **splitMax:** 100
+- **dd:** Intraday or EOD trailing, $1000 (25K Momentum)
+- **ddTypes:** Intraday
+- **payoutDays:** 1
+- **payoutText:** daily (Fast Track/Momentum)
+- **from:** 94
+- **fromCur:** USD
+- **fromPlan:** Momentum 25K, one-time
+- **monthly:** false
+- **code:** BULENOX
+- **off:** Not recorded
+- **codes:** {"code":"BULENOX","off":null,"detail":"Advertised on the official site; percentage not stated"}
+- **consistencyText:** Qualification 40 / Momentum 35 / Fast Track 20-30
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** Option 2 only
+- **minDays:** none to pass Qualification
+- **activation:** Qualification Master $143-$498; Momentum $0; Fast Track $0
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $750,000 claimed
+- **news:** allowed, no blackout
+- **overnight:** no
+- **us:** yes
+- **site:** https://bulenox.com
+- **sources:** https://bulenox.com; https://www.trustpilot.com/review/bulenox.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Not listed
+- **payMethods:** Not listed
+- **deal:** Advertised on the official site; percentage not stated
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** One research read listed Momentum drawdowns for larger sizes as $2,000 / $3,000 / $4,500 where another listed $2,250 / $4,000 / $5,500. The 25K figure ($1,000) agrees in both; treat larger sizes as checkout-verified only.
+- **summary:** US futures firm with three lines — Qualification, Momentum and Fast Track (instant). Traders keep 100% of the first $10,000 of payouts, then 90%. Two drawdown models (intraday or EOD trailing); the choice is locked for the life of the account.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Momentum — 25000
+
+- **id:** bulenox-momentum-25000
+- **program:** Momentum
+- **name:** Momentum
+- **size:** 25000
+- **price:** 94
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 6
+- **dailyLoss:** Option 2 only
+- **maxDD:** Intraday or EOD trailing, $1000 (25K Momentum)
+- **ddType:** Intraday
+- **minDays:** none to pass Qualification
+- **split:** 100% of first $10K, then 90%
+- **payout:** daily (Fast Track/Momentum)
+- **platform:** Not recorded
+- **source:** https://bulenox.com
+
+
+### 26. City Traders Imperium
+
+- **slug:** city-traders-imperium
+- **markets:** forex
+- **rating:** 4.3
+- **rsrc:** Trustpilot
+- **reviews:** 1646
+- **ratingNote:** Trustpilot 4.3/5, 1,646 reviews. Checked 27 Nov 2026.
+- **split:** 80 (up to 100% VIP)
+- **splitMax:** 100
+- **dd:** 5% trailing (1-Step)
+- **ddTypes:** EOD
+- **payoutDays:** 7
+- **payoutText:** first 7d, then monthly
+- **from:** 29
+- **fromCur:** USD
+- **fromPlan:** 1-Step 2.5K one-time
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none to get paid; 20% scaling only
+- **consNone:** true
+- **target:** 1-Step 8 / 2-Step 10 then 5
+- **dailyDD:** 1-Step none; 2-Step 5%
+- **minDays:** 3 profitable days
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $200K per account / $400K total; Instant to $2M/$4M
+- **news:** yes, all programs
+- **overnight:** yes, all programs
+- **us:** yes (US welcome, Match-Trader)
+- **site:** https://citytradersimperium.com
+- **sources:** https://citytradersimperium.com/choosing-your-funding-program/; https://citytradersimperium.com; https://www.trustpilot.com/review/citytradersimperium.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 20%
+- **platforms:** Match-Trader; MT5 (not available to US traders)
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm founded in 2018. 1-Step and 2-Step challenges plus Instant and Direct Funding, with US traders welcome on Match-Trader. Every program allows news trading, overnight and weekend holding, and there is no consistency rule to get paid.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step — 2500
+
+- **id:** city-traders-imperium-1-step-2500
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 2500
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step 8 / 2-Step 10 then 5
+- **dailyLoss:** 1-Step none; 2-Step 5%
+- **maxDD:** 5% trailing (1-Step)
+- **ddType:** EOD
+- **minDays:** 3 profitable days
+- **split:** 80 (up to 100% VIP)
+- **payout:** first 7d, then monthly
+- **platform:** Match-Trader, MT5 (not available to US traders)
+- **source:** https://citytradersimperium.com/choosing-your-funding-program/
+
+
+### 27. CK Propfirm
+
+- **slug:** ck-propfirm
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** 2 Step Plus 8% / 1 Step Plus 6% / 2 Step Flex 8% / Instant 5%
+- **ddTypes:** Not recorded
+- **payoutDays:** 1
+- **payoutText:** on demand once eligible, 48-hour settlement guarantee
+- **from:** 75.2
+- **fromCur:** USD
+- **fromPlan:** 2 Step Plus 10K list price (CK85 code: $11.28)
+- **monthly:** false
+- **code:** CK85
+- **off:** Not recorded
+- **codes:** {"code":"CK85","off":null,"detail":"85% off"}
+- **consistencyText:** 2 Step Plus 50% on payout / 1 Step Plus 30% / 2 Step Flex none / Instant 20%
+- **consNone:** true
+- **target:** 2 Step Plus 10 then 5 / 1 Step Plus 10 / 2 Step Flex 10 then 5 / Instant none
+- **dailyDD:** 2 Step Plus 4% / 1 Step Plus 3% / 2 Step Flex 4% / Instant 3%
+- **minDays:** none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $750K
+- **news:** allowed
+- **overnight:** not stated
+- **us:** yes (US payouts in on-site feed; UK-incorporated, CK Capital Group LTD)
+- **site:** https://ckpropfirm.com/
+- **sources:** https://ckpropfirm.com/; https://ckpropfirm.com/en/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** up to 25%
+- **platforms:** MT5 / TradeLocker
+- **payMethods:** Not listed
+- **deal:** CK85 (85% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex firm. Starts at USD 75.2 (2 Step Plus 10K list price (CK85 code: $11.28)). Split 80%; payout on demand once eligible, 48-hour settlement guarantee.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 22**
+
+#### 2 Step Plus — 10000
+
+- **id:** ck-propfirm-2-step-plus-10000
+- **program:** 2 Step Plus
+- **name:** 2 Step Plus
+- **size:** 10000
+- **price:** 75.2
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Plus — 25000
+
+- **id:** ck-propfirm-2-step-plus-25000
+- **program:** 2 Step Plus
+- **name:** 2 Step Plus
+- **size:** 25000
+- **price:** 312.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Plus — 50000
+
+- **id:** ck-propfirm-2-step-plus-50000
+- **program:** 2 Step Plus
+- **name:** 2 Step Plus
+- **size:** 50000
+- **price:** 475.2
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Plus — 100000
+
+- **id:** ck-propfirm-2-step-plus-100000
+- **program:** 2 Step Plus
+- **name:** 2 Step Plus
+- **size:** 100000
+- **price:** 712.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Plus — 200000
+
+- **id:** ck-propfirm-2-step-plus-200000
+- **program:** 2 Step Plus
+- **name:** 2 Step Plus
+- **size:** 200000
+- **price:** 2796.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Plus — 300000
+
+- **id:** ck-propfirm-2-step-plus-300000
+- **program:** 2 Step Plus
+- **name:** 2 Step Plus
+- **size:** 300000
+- **price:** 3596.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 1 Step Plus — 10000
+
+- **id:** ck-propfirm-1-step-plus-10000
+- **program:** 1 Step Plus
+- **name:** 1 Step Plus
+- **size:** 10000
+- **price:** 112.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 1 Step Plus — 25000
+
+- **id:** ck-propfirm-1-step-plus-25000
+- **program:** 1 Step Plus
+- **name:** 1 Step Plus
+- **size:** 25000
+- **price:** 232.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 1 Step Plus — 50000
+
+- **id:** ck-propfirm-1-step-plus-50000
+- **program:** 1 Step Plus
+- **name:** 1 Step Plus
+- **size:** 50000
+- **price:** 552.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 1 Step Plus — 100000
+
+- **id:** ck-propfirm-1-step-plus-100000
+- **program:** 1 Step Plus
+- **name:** 1 Step Plus
+- **size:** 100000
+- **price:** 919.2
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 1 Step Plus — 200000
+
+- **id:** ck-propfirm-1-step-plus-200000
+- **program:** 1 Step Plus
+- **name:** 1 Step Plus
+- **size:** 200000
+- **price:** 2796.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 1 Step Plus — 300000
+
+- **id:** ck-propfirm-1-step-plus-300000
+- **program:** 1 Step Plus
+- **name:** 1 Step Plus
+- **size:** 300000
+- **price:** 3596.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Flex — 10000
+
+- **id:** ck-propfirm-2-step-flex-10000
+- **program:** 2 Step Flex
+- **name:** 2 Step Flex
+- **size:** 10000
+- **price:** 150.4
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Flex — 25000
+
+- **id:** ck-propfirm-2-step-flex-25000
+- **program:** 2 Step Flex
+- **name:** 2 Step Flex
+- **size:** 25000
+- **price:** 625.6
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Flex — 50000
+
+- **id:** ck-propfirm-2-step-flex-50000
+- **program:** 2 Step Flex
+- **name:** 2 Step Flex
+- **size:** 50000
+- **price:** 950.4
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Flex — 100000
+
+- **id:** ck-propfirm-2-step-flex-100000
+- **program:** 2 Step Flex
+- **name:** 2 Step Flex
+- **size:** 100000
+- **price:** 1505.6
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Flex — 200000
+
+- **id:** ck-propfirm-2-step-flex-200000
+- **program:** 2 Step Flex
+- **name:** 2 Step Flex
+- **size:** 200000
+- **price:** 5593.6
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### 2 Step Flex — 300000
+
+- **id:** ck-propfirm-2-step-flex-300000
+- **program:** 2 Step Flex
+- **name:** 2 Step Flex
+- **size:** 300000
+- **price:** 7193.6
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### Instant — 10000
+
+- **id:** ck-propfirm-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 152.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### Instant — 25000
+
+- **id:** ck-propfirm-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 312.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### Instant — 50000
+
+- **id:** ck-propfirm-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 792.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+#### Instant — 100000
+
+- **id:** ck-propfirm-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 1556.8
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 80
+- **payout:** on demand
+- **platform:** MT5 / TradeLocker
+- **source:** https://ckpropfirm.com/
+
+
+### 28. Clarity Traders
+
+- **slug:** clarity-traders
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 70% first reward, 80% second, 90% after (100% add-on)%
+- **splitMax:** 90
+- **dd:** One Step 6% eval / 10% funded / Two Step 8% eval / 10% funded / Instant 5%
+- **ddTypes:** Not recorded
+- **payoutDays:** 14
+- **payoutText:** every 14 days (7 with Express add-on), 7 trading days before first reward, USDT
+- **from:** 55
+- **fromCur:** USD
+- **fromPlan:** Two Step 5K list price (FALL50 code: 50% off at checkout)
+- **monthly:** false
+- **code:** FALL50
+- **off:** Not recorded
+- **codes:** {"code":"FALL50","off":null,"detail":"50% off, ends Nov 30); BF75 (75% off Nov 27, 24h only"}
+- **consistencyText:** One Step none in eval / 20% funded; Two Step 20% funded; Instant 10%
+- **consNone:** true
+- **target:** One Step 10 / Two Step 8 then 5 / Instant none
+- **dailyDD:** One Step 4% / Two Step 5% / Instant 3%
+- **minDays:** none
+- **activation:** none (Refund Guarantee add-on)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** allowed; weekend holding allowed (weekend trading sessions need add-on)
+- **us:** yes (US payouts in on-site reward feed; Delaware LLC)
+- **site:** https://www.claritytraders.com
+- **sources:** https://www.claritytraders.com; https://www.claritytraders.com/affiliates; https://claritytraders-c.tradetechsolutions.app/checkout/list/products/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (% not published on program page)
+- **platforms:** TradeLocker / MT5
+- **payMethods:** Not listed
+- **deal:** FALL50 (50% off, ends Nov 30); BF75 (75% off Nov 27, 24h only)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto firm. Starts at USD 55 (Two Step 5K list price (FALL50 code: 50% off at checkout)). Split 70% first reward, 80% second, 90% after (100% add-on)%; payout every 14 days (7 with Express add-on), 7 trading days before first reward, USDT.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 18**
+
+#### One Step — 5000
+
+- **id:** clarity-traders-one-step-5000
+- **program:** One Step
+- **name:** One Step
+- **size:** 5000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4
+- **maxDD:** 6 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### One Step — 10000
+
+- **id:** clarity-traders-one-step-10000
+- **program:** One Step
+- **name:** One Step
+- **size:** 10000
+- **price:** 117
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4
+- **maxDD:** 6 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### One Step — 25000
+
+- **id:** clarity-traders-one-step-25000
+- **program:** One Step
+- **name:** One Step
+- **size:** 25000
+- **price:** 177
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4
+- **maxDD:** 6 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### One Step — 50000
+
+- **id:** clarity-traders-one-step-50000
+- **program:** One Step
+- **name:** One Step
+- **size:** 50000
+- **price:** 349
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4
+- **maxDD:** 6 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### One Step — 100000
+
+- **id:** clarity-traders-one-step-100000
+- **program:** One Step
+- **name:** One Step
+- **size:** 100000
+- **price:** 687
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4
+- **maxDD:** 6 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### One Step — 200000
+
+- **id:** clarity-traders-one-step-200000
+- **program:** One Step
+- **name:** One Step
+- **size:** 200000
+- **price:** 1133
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4
+- **maxDD:** 6 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Two Step — 5000
+
+- **id:** clarity-traders-two-step-5000
+- **program:** Two Step
+- **name:** Two Step
+- **size:** 5000
+- **price:** 55
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Two Step — 10000
+
+- **id:** clarity-traders-two-step-10000
+- **program:** Two Step
+- **name:** Two Step
+- **size:** 10000
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Two Step — 25000
+
+- **id:** clarity-traders-two-step-25000
+- **program:** Two Step
+- **name:** Two Step
+- **size:** 25000
+- **price:** 169
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Two Step — 50000
+
+- **id:** clarity-traders-two-step-50000
+- **program:** Two Step
+- **name:** Two Step
+- **size:** 50000
+- **price:** 329
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Two Step — 100000
+
+- **id:** clarity-traders-two-step-100000
+- **program:** Two Step
+- **name:** Two Step
+- **size:** 100000
+- **price:** 599
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Two Step — 200000
+
+- **id:** clarity-traders-two-step-200000
+- **program:** Two Step
+- **name:** Two Step
+- **size:** 200000
+- **price:** 1009
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 8 eval / 10 funded
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Instant — 5000
+
+- **id:** clarity-traders-instant-5000
+- **program:** Instant
+- **name:** Instant
+- **size:** 5000
+- **price:** 95
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Instant — 10000
+
+- **id:** clarity-traders-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 139
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Instant — 25000
+
+- **id:** clarity-traders-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 279
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Instant — 50000
+
+- **id:** clarity-traders-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 415
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Instant — 100000
+
+- **id:** clarity-traders-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 789
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+#### Instant — 200000
+
+- **id:** clarity-traders-instant-200000
+- **program:** Instant
+- **name:** Instant
+- **size:** 200000
+- **price:** 1499
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none
+- **split:** 70 then 80 then 90
+- **payout:** every 14 days
+- **platform:** TradeLocker / MT5
+- **source:** https://www.claritytraders.com
+
+
+### 29. CoinProp
+
+- **slug:** coinprop
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 (up to 95% with Reward Split add-on: Signature 95%, Booster 90%)%
+- **splitMax:** 95
+- **dd:** 6% static (Signature); 3% static (Booster); Instant 3% until first payout
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** daily from day one, USDC, $50 minimum after split, one request/day
+- **from:** 22
+- **fromCur:** USD
+- **fromPlan:** cheapest evaluation, one-time (homepage 'from $22'; size not itemised)
+- **monthly:** false
+- **code:** none verified (affiliates may offer up to 15% off)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (affiliates may offer up to 15% off)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** Signature 10 / Booster 9
+- **dailyDD:** 3%
+- **minDays:** none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** yes (24/7 crypto)
+- **us:** yes (US not on restricted list; worldwide except Afghanistan, Cuba, Iran, Myanmar, North Korea + regions)
+- **site:** https://coinprop.io
+- **sources:** https://coinprop.io/; https://coinprop.io/affiliates; https://help.coinprop.io/en/getting-started/who-can-join-coinprop; https://help.coinprop.io/en/coin-prop-evaluation/what-are-instant-accounts; https://coinprop.io/terms-conditions
+- **verif:** partial (cheapest-plan size not itemised; news/scaling not stated)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15% standard / 20% growth; Refer & Earn 10% store credit
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (affiliates may offer up to 15% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (cheapest-plan size not itemised; news/scaling not stated).
+- **summary:** Crypto, Perps firm. Starts at USD 22 (cheapest evaluation, one-time (homepage 'from $22'; size not itemised)). Split 80 (up to 95% with Reward Split add-on: Signature 95%, Booster 90%)%; payout daily from day one, USDC, $50 minimum after split, one request/day.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### cheapest evaluation, one-time (homepage 'from $22'; size not itemised) — Not recorded
+
+- **id:** coinprop-entry
+- **program:** cheapest evaluation, one-time (homepage 'from $22'; size not itemised)
+- **name:** cheapest evaluation, one-time (homepage 'from $22'; size not itemised)
+- **size:** Not recorded
+- **price:** 22
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Signature 10 / Booster 9
+- **dailyLoss:** 3%
+- **maxDD:** 6% static (Signature); 3% static (Booster); Instant 3% until first payout
+- **ddType:** Static
+- **minDays:** none
+- **split:** 80 (up to 95% with Reward Split add-on: Signature 95%, Booster 90%)%
+- **payout:** daily from day one, USDC, $50 minimum after split, one request/day
+- **platform:** Not stated
+- **source:** https://coinprop.io
+
+
+### 30. Core Funded
+
+- **slug:** core-funded
+- **markets:** forex
+- **rating:** 4.3
+- **rsrc:** Trustpilot
+- **reviews:** 162
+- **ratingNote:** Profile still filed under the former domain swissfunded.io
+- **split:** 80 (95% upgrade)
+- **splitMax:** 95
+- **dd:** 8% static (2-Step)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand
+- **from:** 45
+- **fromCur:** EUR
+- **fromPlan:** 2-Step 5K (prices in EUR)
+- **monthly:** false
+- **code:** WELCOME
+- **off:** 50
+- **codes:** {"code":"WELCOME","off":50,"detail":"50% off your first account (official homepage)"}
+- **consistencyText:** 15% Instant / 30% 1-Step and 2-Step at payout
+- **consNone:** false
+- **target:** 1-Step 10 / 2-Step 10 then 5
+- **dailyDD:** 5% (2-Step)
+- **minDays:** not documented for evals
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** +25% per 12% profit to $10,000,000
+- **news:** allowed eval; funded blocked +/-5 min
+- **overnight:** allowed
+- **us:** yes (US not on restricted list)
+- **site:** https://www.corefunded.io
+- **sources:** https://www.corefunded.io/en/funded-account; https://docs.corefunded.io/legal-information/terms-of-service; https://www.corefunded.io; https://www.trustpilot.com/review/www.corefunded.io
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, $30/referral + 20% lifetime
+- **platforms:** Match-Trader
+- **payMethods:** Bank transfer; Crypto
+- **deal:** 50% off your first account (official homepage)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Formerly 'Swiss Funded' (swissfunded.io now redirects here). Do not mix with FundedCore (fundedcore.uk), a different firm. All prices on the official site are in euros.
+- **summary:** Forex/CFD firm on Match-Trader, formerly called Swiss Funded. Prices are in euros, not dollars. Instant, 1-Step, 2-Step, 2-Step Flex and Pay After Pass programs, payouts on demand, and scaling up to $10,000,000 of total capital. Not FundedCore, a different firm.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 2-Step — 5000
+
+- **id:** core-funded-2-step-5000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 5000
+- **price:** 45
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step 10 / 2-Step 10 then 5
+- **dailyLoss:** 5% (2-Step)
+- **maxDD:** 8% static (2-Step)
+- **ddType:** Static
+- **minDays:** not documented for evals
+- **split:** 80 (95% upgrade)
+- **payout:** on demand
+- **platform:** Match-Trader
+- **source:** https://www.corefunded.io/en/funded-account
+
+
+### 31. Crypto Fund Trader
+
+- **slug:** crypto-fund-trader
+- **markets:** crypto; forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot rating withheld — breach-of-guidelines notice, ~1,113 reviews, no score
+- **split:** 80 (90% add-on)
+- **splitMax:** 90
+- **dd:** 5% (1-Phase) / 10% (2-Phase)
+- **ddTypes:** Static
+- **payoutDays:** 7
+- **payoutText:** 1-Step every 7 traded days
+- **from:** 25
+- **fromCur:** USD
+- **fromPlan:** 1-Step Turbo 5K
+- **monthly:** false
+- **code:** BLACK
+- **off:** 30
+- **codes:** {"code":"BLACK","off":30,"detail":"30% off any evaluation on any platform. End date not stated on the homepage."}
+- **consistencyText:** none std; 40% Break funded
+- **consNone:** true
+- **target:** 1-Phase 12 / 2-Phase 8 then 5
+- **dailyDD:** 3% (1-Phase) / 5% (2-Phase)
+- **minDays:** 0
+- **activation:** none std; Break $138-$328 after passing
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** Instant doubles per 10% profit to $1,280,000
+- **news:** allowed, no restrictions
+- **overnight:** yes (crypto 24/7)
+- **us:** partial — US on Bybit/Match-Trader, MT5 not for US
+- **site:** https://cryptofundtrader.com
+- **sources:** https://cryptofundtrader.com/; https://cryptofundtrader.com/affiliate-terms/; https://www.trustpilot.com/review/cryptofundtrader.com
+- **verif:** partial (1-Phase vs 1-Step conflict)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to $150/referral, 10-15%
+- **platforms:** Bybit; MT5; Match-Trader
+- **payMethods:** Crypto
+- **deal:** BLACK — 30% off any evaluation on any platform. No end date was stated on the homepage.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Internal conflict: the homepage shows a single '1-Phase' program (12% target, 5% max loss), while the firm's FAQ/pricing pages list three 1-Step variants (Classic, Pro, Turbo) with different targets and drawdowns. The two versions do not reconcile — verify at checkout.
+- **summary:** Crypto-first firm (715+ pairs) that also runs forex/CFD, on Bybit, MT5 and Match-Trader. 1-Step and 2-Phase evaluations plus instant accounts. US residents can use Bybit/Match-Trader, but MT5 is not offered to them.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Turbo — 5000
+
+- **id:** crypto-fund-trader-1-step-turbo-5000
+- **program:** 1-Step Turbo
+- **name:** 1-Step Turbo
+- **size:** 5000
+- **price:** 25
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Phase 12 / 2-Phase 8 then 5
+- **dailyLoss:** 3% (1-Phase) / 5% (2-Phase)
+- **maxDD:** 5% (1-Phase) / 10% (2-Phase)
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80 (90% add-on)
+- **payout:** 1-Step every 7 traded days
+- **platform:** Bybit, MT5, Match-Trader
+- **source:** https://cryptofundtrader.com/
+
+
+### 32. Darwinex Zero
+
+- **slug:** darwinex-zero
+- **markets:** forex; futures; crypto
+- **rating:** 4.2
+- **rsrc:** Trustpilot
+- **reviews:** 393
+- **ratingNote:** Read on trustpilot.com on Nov 26, 2026
+- **split:** 15% performance fee to trader
+- **splitMax:** 15
+- **dd:** no fixed max drawdown stated
+- **ddTypes:** Static
+- **payoutDays:** 90
+- **payoutText:** quarterly (monthly option)
+- **from:** 45
+- **fromCur:** EUR
+- **fromPlan:** From €45/month
+- **monthly:** true
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** none
+- **dailyDD:** not stated
+- **minDays:** not verified
+- **activation:** none (subscription only)
+- **instant:** false
+- **instantText:** No
+- **scaling:** via DarwinIA allocations
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://www.darwinexzero.com
+- **sources:** https://www.darwinexzero.com; https://darwinexzero.document360.io/docs/pricing; https://www.trustpilot.com/review/darwinexzero.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes
+- **platforms:** MT4; MT5; TradingView
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** This is not a conventional funded account and the 15% figure is a performance fee paid to the trader, not a profit split. Do not use the Darwinex broker's Trustpilot score (4.1/301) — that is a different entity.
+- **summary:** A different model from every other firm here: no evaluation and no funded account. You pay a monthly subscription, build a track record, and earn a 15% performance fee on investor allocations through DarwinIA. No profit target and no fixed maximum drawdown are stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 33. DayTraders.com
+
+- **slug:** daytraders-com
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 40
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US firm; SSN required)
+- **site:** https://daytraders.com
+- **sources:** https://daytraders.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 20% lifetime recurring
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier A, 18 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Futures firm. Starts at $40. Affiliate: yes, 20% lifetime recurring. US traders: yes (US firm; SSN required).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** daytraders-com-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 40
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://daytraders.com
+
+
+### 34. E8 Perpetuals
+
+- **slug:** e8-perpetuals
+- **markets:** perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot withholds this firm's score (rating unavailable due to a breach of Trustpilot's guidelines; 'Warning' label) — checked Nov 26, 2026
+- **split:** 80% on E8 One; Classic not stated
+- **splitMax:** Not recorded
+- **dd:** 5% static, never trails (e.g. $2,500 on 50K Classic)
+- **ddTypes:** Static
+- **payoutDays:** Not recorded
+- **payoutText:** Daily payouts, $100 minimum (E8 Classic)
+- **from:** 27
+- **fromCur:** USD
+- **fromPlan:** E8 Classic 2K (list price, before code)
+- **monthly:** false
+- **code:** E8BF
+- **off:** 10
+- **codes:** {"code":"E8BF","off":10,"detail":"10% off E8 Classic (30% off E8 One on the compare page), Black Friday; end date not stated"}
+- **consistencyText:** None on E8 Classic; 40% on E8 One
+- **consNone:** true
+- **target:** 8% ($4,000 on 50K Classic)
+- **dailyDD:** 2% daily limit ($1,000 on 50K Classic)
+- **minDays:** not stated
+- **activation:** none stated (E8 One: no activation fee)
+- **instant:** false
+- **instantText:** No
+- **scaling:** Hold up to $100K across Classic accounts
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated (site describes itself as US-based)
+- **site:** https://e8markets.com
+- **sources:** https://trade.e8markets.com/docs/05_markets_and_instruments.html; https://www.trustpilot.com/review/e8markets.com; https://e8markets.com/perpetual-futures?market=perpetual; https://e8markets.com/compare-simfi-funded-accounts; https://e8markets.com
+- **verif:** partial (products beyond E8 Classic and E8 One not read)
+- **verifLabel:** Partially verified
+- **affiliate:** not verified
+- **platforms:** E8 Terminal
+- **payMethods:** Not listed
+- **deal:** E8BF: 10% off E8 Classic, 30% off E8 One (Black Friday)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** 216000
+- **note:** Read from e8markets.com on Nov 26, 2026 (perpetuals page and account configurator). Figures shown are for E8 Classic unless stated. The firm also sells Classic Markets (forex, futures) on MT5, TradeLocker, cTrader and MatchTrader; those were not reviewed here. Trustpilot shows no score for E8.
+- **summary:** Perpetual futures on crypto, stocks, indices and metals traded on the E8 Terminal. E8 Classic starts at $27 for 2K: 8% target, 5% static loss floor that never trails, 2% daily limit, no consistency rule, daily payouts from $100.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### E8 Classic — 2000
+
+- **id:** e8-perpetuals-e8-classic-2000
+- **program:** E8 Classic
+- **name:** E8 Classic
+- **size:** 2000
+- **price:** 27
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 8% ($4,000 on 50K Classic)
+- **dailyLoss:** 2% daily limit ($1,000 on 50K Classic)
+- **maxDD:** 5% static, never trails (e.g. $2,500 on 50K Classic)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** 80% on E8 One; Classic not stated
+- **payout:** Daily payouts, $100 minimum (E8 Classic)
+- **platform:** E8 Terminal
+- **source:** https://trade.e8markets.com/docs/05_markets_and_instruments.html
+
+
+### 35. Earn2Trade
+
+- **slug:** earn2trade
+- **markets:** futures
+- **rating:** 4.5
+- **rsrc:** Trustpilot
+- **reviews:** 5000
+- **ratingNote:** Stated on the firm's own affiliates page ('over 5,000 Trustpilot reviews, TrustScore 4.5')
+- **split:** 80% at/above thresholds, 50% below
+- **splitMax:** 80
+- **dd:** EOD trailing, $1500 (25K)
+- **ddTypes:** EOD
+- **payoutDays:** 7
+- **payoutText:** weekly, Wednesdays
+- **from:** 75
+- **fromCur:** USD
+- **fromPlan:** From $75 (TCP 25K–100K, homepage Black Week price)
+- **monthly:** true
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 30% eval; none funded
+- **consNone:** false
+- **target:** TCP25 7% ($1750)
+- **dailyDD:** $550 (25K), hard fail
+- **minDays:** none
+- **activation:** $139 deducted from first LiveSim withdrawal
+- **instant:** false
+- **instantText:** No
+- **scaling:** TCP growth to $400K
+- **news:** allowed, no restrictions
+- **overnight:** not stated
+- **us:** yes
+- **site:** https://earn2trade.com
+- **sources:** https://earn2trade.com/; https://www.earn2trade.com/affiliates; https://www.trustpilot.com/review/earn2trade.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 20%
+- **platforms:** Not listed
+- **payMethods:** Not listed
+- **deal:** Black Week: up to 70% off, plus reset savings. The code sits behind a Get the Code button and the name was not readable. Countdown points at about Nov 30, 2026.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** US futures firm with monthly-subscription evaluations: Trader Career Path ($25K–$100K) and Gauntlet Mini (to $200K). Passers are forwarded to partner prop firms for LiveSim/Live accounts. The split is 80% on withdrawals at or above set thresholds, 50% below them.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 36. Elite Trader Funding
+
+- **slug:** elite-trader-funding
+- **markets:** futures
+- **rating:** 3.7
+- **rsrc:** Trustpilot
+- **reviews:** 1180
+- **ratingNote:** Trustpilot 3.7/5, 1,180 reviews. Checked 27 Nov 2026.
+- **split:** up to 100% sim
+- **splitMax:** 100
+- **dd:** live trailing, $2000 (1-Step 50K)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** same-day approval; 8 ATDs first cycle
+- **from:** 47
+- **fromCur:** USD
+- **fromPlan:** As low as $47, paid once
+- **monthly:** false
+- **code:** GOBBLE90
+- **off:** 90
+- **codes:** {"code":"GOBBLE90","off":90,"detail":"90% off the first month, 80% the second, 70% after (excludes Fast Track and DTF) — ends Nov 30, 2026, 11:59 PM ET"}
+- **consistencyText:** no P&L consistency; ATD requirement instead
+- **consNone:** false
+- **target:** 1-Step 50K 6% ($3000)
+- **dailyDD:** none on 1-Step; EOD $1100-$2200
+- **minDays:** 5 (1-Step); Fast Track 3
+- **activation:** $87/month or $177-$307 one-time after passing
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to 20 sim accounts; LIVE ELITE path
+- **news:** not stated
+- **overnight:** only Diamond Hands / Direct to Funded
+- **us:** not stated (US firm)
+- **site:** https://elitetraderfunding.app
+- **sources:** https://elitetraderfunding.app/; https://www.trustpilot.com/review/elitetraderfunding.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 15%
+- **platforms:** Rithmic; Tradovate
+- **payMethods:** Rise (ACH / crypto)
+- **deal:** GOBBLE90 — 90% off the first month, 80% the second, 70% after. Excludes Fast Track and DTF. Through Nov 30, 2026, 11:59 PM ET.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** US futures firm with six evaluations — 1-Step, Static, End of Day, Diamond Hands, Fast Track and Direct to Funded (instant). Instead of a P&L consistency rule it uses Active Trading Days: 8 to the first payout, 10 after.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 37. Epic Future Traders
+
+- **slug:** epic-future-traders
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** Instant 90% / 1-Step 90% / 2-Step 85% then 90% / Rapid Pass 90% (funded = Instant controls)%
+- **splitMax:** 90
+- **dd:** Instant 8% static / 1-Step 10% static / 2-Step 10% (P1) / 5% (P2) static / Rapid Pass 8% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** bi-weekly + on-demand (Instant/Rapid funded on-demand after 4 qualifying days; 1-Step from day 7, min $25 + 1% of balance; 2-Step after 5 active days, min $100); Rise/bank wire
+- **from:** 5
+- **fromCur:** USD
+- **fromPlan:** Rapid Pass 5K (displayed price with EFT30 30% off applied; list ~$7)
+- **monthly:** false
+- **code:** EFT30%
+- **off:** Not recorded
+- **codes:** {"code":"EFT30%","off":null,"detail":"30% off till Dec 18"}
+- **consistencyText:** Instant 30% cap; 1-Step/2-Step/Rapid none in eval
+- **consNone:** true
+- **target:** Instant none / 1-Step 12 / 2-Step 8 then 5 / Rapid Pass 8
+- **dailyDD:** Instant 3% / 1-Step 3% / 2-Step 4% (P1) / 3% (P2) / Rapid Pass 2%
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **activation:** Rapid Pass activation after passing: 5K $47.20, 10K $95.20, 25K $183.20, 50K $319.20 (20% below Instant fee)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** max allocation $100K/person
+- **news:** allowed in eval; funded ±5 min window
+- **overnight:** allowed where instrument/platform permit
+- **us:** not stated
+- **site:** https://epicfuturetraders.com
+- **sources:** https://epicfuturetraders.com; https://epicfuturetraders.com/affiliate/; https://epicfuturetraders.com/faq; https://epicfuturetraders.com/rules; https://www.epicfuturetraders.com/affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 10-20% tiers, up to 25% VIP (+5% sub-affiliate override)
+- **platforms:** TradeLocker
+- **payMethods:** Not listed
+- **deal:** EFT30% (30% off till Dec 18)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Missing: plan_table prices are the widget DISPLAYED prices with EFT30 30% off applied (25K Instant list $325 per homepage card); list prices not published per size
+- **summary:** Forex, Crypto firm. Starts at USD 5 (Rapid Pass 5K (displayed price with EFT30 30% off applied; list ~$7)). Split Instant 90% / 1-Step 90% / 2-Step 85% then 90% / Rapid Pass 90% (funded = Instant controls)%; payout bi-weekly + on-demand (Instant/Rapid funded on-demand after 4 qualifying days; 1-Step from day 7, min $25 + 1% of balance; 2-Step after 5 active days, min $100); Rise/bank wire.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 23**
+
+#### Instant — 1000
+
+- **id:** epic-future-traders-instant-1000
+- **program:** Instant
+- **name:** Instant
+- **size:** 1000
+- **price:** 24
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Instant — 2500
+
+- **id:** epic-future-traders-instant-2500
+- **program:** Instant
+- **name:** Instant
+- **size:** 2500
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Instant — 5000
+
+- **id:** epic-future-traders-instant-5000
+- **program:** Instant
+- **name:** Instant
+- **size:** 5000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Instant — 10000
+
+- **id:** epic-future-traders-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 119
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Instant — 25000
+
+- **id:** epic-future-traders-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 229
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Instant — 50000
+
+- **id:** epic-future-traders-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 399
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Instant — 100000
+
+- **id:** epic-future-traders-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 749
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 4 profitable days/cycle (0.25%+/day)
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 1-Step — 2500
+
+- **id:** epic-future-traders-1-step-2500
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 2500
+- **price:** 24
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12
+- **dailyLoss:** 3
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 1-Step — 5000
+
+- **id:** epic-future-traders-1-step-5000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 5000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12
+- **dailyLoss:** 3
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 1-Step — 10000
+
+- **id:** epic-future-traders-1-step-10000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 10000
+- **price:** 69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12
+- **dailyLoss:** 3
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 1-Step — 25000
+
+- **id:** epic-future-traders-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12
+- **dailyLoss:** 3
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 1-Step — 50000
+
+- **id:** epic-future-traders-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 249
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12
+- **dailyLoss:** 3
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 1-Step — 100000
+
+- **id:** epic-future-traders-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 449
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12
+- **dailyLoss:** 3
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 2-Step — 2500
+
+- **id:** epic-future-traders-2-step-2500
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 2500
+- **price:** 19
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4 (P1) / 3 (P2)
+- **maxDD:** 10 (P1) / 5 (P2) static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 85 then 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 2-Step — 5000
+
+- **id:** epic-future-traders-2-step-5000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 5000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4 (P1) / 3 (P2)
+- **maxDD:** 10 (P1) / 5 (P2) static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 85 then 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 2-Step — 10000
+
+- **id:** epic-future-traders-2-step-10000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 10000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4 (P1) / 3 (P2)
+- **maxDD:** 10 (P1) / 5 (P2) static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 85 then 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 2-Step — 25000
+
+- **id:** epic-future-traders-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 119
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4 (P1) / 3 (P2)
+- **maxDD:** 10 (P1) / 5 (P2) static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 85 then 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 2-Step — 50000
+
+- **id:** epic-future-traders-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 199
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4 (P1) / 3 (P2)
+- **maxDD:** 10 (P1) / 5 (P2) static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 85 then 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### 2-Step — 100000
+
+- **id:** epic-future-traders-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 349
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4 (P1) / 3 (P2)
+- **maxDD:** 10 (P1) / 5 (P2) static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 85 then 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Rapid Pass — 5000
+
+- **id:** epic-future-traders-rapid-pass-5000
+- **program:** Rapid Pass
+- **name:** Rapid Pass
+- **size:** 5000
+- **price:** 5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 2
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Rapid Pass — 10000
+
+- **id:** epic-future-traders-rapid-pass-10000
+- **program:** Rapid Pass
+- **name:** Rapid Pass
+- **size:** 10000
+- **price:** 10
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 2
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Rapid Pass — 25000
+
+- **id:** epic-future-traders-rapid-pass-25000
+- **program:** Rapid Pass
+- **name:** Rapid Pass
+- **size:** 25000
+- **price:** 25
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 2
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+#### Rapid Pass — 50000
+
+- **id:** epic-future-traders-rapid-pass-50000
+- **program:** Rapid Pass
+- **name:** Rapid Pass
+- **size:** 50000
+- **price:** 50
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 2
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** Instant 4 profitable days/cycle (0.25%+/day); 1-Step/2-Step/Rapid 0
+- **split:** 90
+- **payout:** bi-weekly + on-demand
+- **platform:** TradeLocker
+- **source:** https://epicfuturetraders.com
+
+
+### 38. EverFunded
+
+- **slug:** everfunded
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% base (100% add-on)%
+- **splitMax:** 80
+- **dd:** 2-Step 10% static / 1-Step 6% static / Instant 6% trailing / Flash 5% static eval / 5% trailing funded
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** 14 days standard (Payout On Demand add-on; not on Flash), min $100, 24h processing ($1,000 extra if late)
+- **from:** 0.99
+- **fromCur:** USD
+- **fromPlan:** Flash 10K today ($0.99 + $86.45 on passing, $87.44 total)
+- **monthly:** false
+- **code:** EVERFUNDED50
+- **off:** Not recorded
+- **codes:** {"code":"EVERFUNDED50","off":null,"detail":"50% off first purchase, 1-Step/2-Step/Instant); EVERFUNDED20 (20% off, already applied to displayed prices"}
+- **consistencyText:** 2-Step none in challenge / 35% funded; 1-Step not stated; Instant 25% funded; Flash 20% funded
+- **consNone:** true
+- **target:** 2-Step 8 then 5 / 1-Step 10 / Instant none / Flash 2
+- **dailyDD:** 2-Step 5% / 1-Step 3% / Instant not stated / Flash 3% eval
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **activation:** Flash balance on passing; others $0
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $200K
+- **news:** allowed; weekend trading allowed
+- **overnight:** weekend trading allowed
+- **us:** not stated
+- **site:** https://everfunded.com
+- **sources:** https://everfunded.com; https://everfunded.com/pricing; https://everfunded.com/partners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 12% starting, up to 25% (4 lifetime tiers, no reset)
+- **platforms:** MT5 / Match-Trader
+- **payMethods:** Not listed
+- **deal:** EVERFUNDED50 (50% off first purchase, 1-Step/2-Step/Instant); EVERFUNDED20 (20% off, already applied to displayed prices)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Missing: plan_table prices are DISPLAYED prices with EVERFUNDED20 20% off applied (2-Step list = displayed / 0.8, confirmed from homepage strikethroughs); Flash rows show the total ($0.99 today + balance on passing)
+- **summary:** Forex, Crypto firm. Starts at USD 0.99 (Flash 10K today ($0.99 + $86.45 on passing, $87.44 total)). Split 80% base (100% add-on)%; payout 14 days standard (Payout On Demand add-on; not on Flash), min $100, 24h processing ($1,000 extra if late).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 20**
+
+#### 2-Step — 5000
+
+- **id:** everfunded-2-step-5000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 5000
+- **price:** 35
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 2-Step — 10000
+
+- **id:** everfunded-2-step-10000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 10000
+- **price:** 70
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 2-Step — 25000
+
+- **id:** everfunded-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 160
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 2-Step — 50000
+
+- **id:** everfunded-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 2-Step — 100000
+
+- **id:** everfunded-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 450
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 2-Step — 200000
+
+- **id:** everfunded-2-step-200000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 200000
+- **price:** 1000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 1-Step — 5000
+
+- **id:** everfunded-1-step-5000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 5000
+- **price:** 45
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static eval / 6 static funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 1-Step — 10000
+
+- **id:** everfunded-1-step-10000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 10000
+- **price:** 85
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static eval / 6 static funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 1-Step — 25000
+
+- **id:** everfunded-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 160
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static eval / 6 static funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 1-Step — 50000
+
+- **id:** everfunded-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 265
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static eval / 6 static funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 1-Step — 100000
+
+- **id:** everfunded-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 439
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static eval / 6 static funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### 1-Step — 200000
+
+- **id:** everfunded-1-step-200000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 200000
+- **price:** 950
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static eval / 6 static funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Instant — 10000
+
+- **id:** everfunded-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 219.2
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** not stated
+- **maxDD:** 6 trailing, locks at starting balance after 6% gain
+- **ddType:** Trailing
+- **minDays:** not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Instant — 25000
+
+- **id:** everfunded-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 399.2
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** not stated
+- **maxDD:** 6 trailing, locks at starting balance after 6% gain
+- **ddType:** Trailing
+- **minDays:** not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Instant — 50000
+
+- **id:** everfunded-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 609.6
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** not stated
+- **maxDD:** 6 trailing, locks at starting balance after 6% gain
+- **ddType:** Trailing
+- **minDays:** not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Flash — 10000
+
+- **id:** everfunded-flash-10000
+- **program:** Flash
+- **name:** Flash
+- **size:** 10000
+- **price:** 87.44
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 2
+- **dailyLoss:** 3
+- **maxDD:** 5 static eval / 5 trailing funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Flash — 25000
+
+- **id:** everfunded-flash-25000
+- **program:** Flash
+- **name:** Flash
+- **size:** 25000
+- **price:** 165.93
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 2
+- **dailyLoss:** 3
+- **maxDD:** 5 static eval / 5 trailing funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Flash — 50000
+
+- **id:** everfunded-flash-50000
+- **program:** Flash
+- **name:** Flash
+- **size:** 50000
+- **price:** 272.69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 2
+- **dailyLoss:** 3
+- **maxDD:** 5 static eval / 5 trailing funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Flash — 100000
+
+- **id:** everfunded-flash-100000
+- **program:** Flash
+- **name:** Flash
+- **size:** 100000
+- **price:** 468.21
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 2
+- **dailyLoss:** 3
+- **maxDD:** 5 static eval / 5 trailing funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+#### Flash — 200000
+
+- **id:** everfunded-flash-200000
+- **program:** Flash
+- **name:** Flash
+- **size:** 200000
+- **price:** 869.28
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 2
+- **dailyLoss:** 3
+- **maxDD:** 5 static eval / 5 trailing funded
+- **ddType:** Static
+- **minDays:** 2-Step 3/phase; 1-Step/Flash 0; Instant not stated
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** MT5 / Match-Trader
+- **source:** https://everfunded.com
+
+
+### 39. Finotive Funding
+
+- **slug:** finotive-funding
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 12.5
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://finotivefunding.com
+- **sources:** https://finotivefunding.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** invitation only (15-25% tiers)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 39 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex firm. Starts at $12.5. Affiliate: invitation only (15-25% tiers). US traders: not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** finotive-funding-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 12.5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://finotivefunding.com
+
+
+### 40. Fintokei
+
+- **slug:** fintokei
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 34
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** no (USA restricted)
+- **site:** https://fintokei.com
+- **sources:** https://fintokei.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, tiered up to 10%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 27 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex firm. Starts at $34. Affiliate: yes, tiered up to 10%. US traders: no (USA restricted).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** fintokei-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 34
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://fintokei.com
+
+
+### 41. For Traders
+
+- **slug:** for-traders
+- **markets:** forex; futures; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot rating withheld — breach-of-guidelines notice. The firm cites Prop Firm Match 4.5/5 (263 reviews) instead
+- **split:** 80 mostly
+- **splitMax:** 80
+- **dd:** 6% trailing (Forex Fast)
+- **ddTypes:** EOD
+- **payoutDays:** 14
+- **payoutText:** every 14d / on demand (Pay After Pass, Futures)
+- **from:** 9
+- **fromCur:** USD
+- **fromPlan:** Pay After Pass entry (standard from $49)
+- **monthly:** false
+- **code:** BLACKFRIDAY
+- **off:** 25
+- **codes:** {"code":"BLACKFRIDAY","off":25,"detail":"25% off everything, plus a free reset on Fast challenges. End date not stated on the homepage."}
+- **consistencyText:** not publicly disclosed
+- **consNone:** false
+- **target:** Forex Fast 9
+- **dailyDD:** 3% (Forex Fast)
+- **minDays:** 3 profitable days
+- **activation:** Pay After Pass only, amount not published
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed eval; funded +/-5 min
+- **overnight:** allowed
+- **us:** yes (US not on restricted list)
+- **site:** https://fortraders.com
+- **sources:** https://fortraders.com/faq; https://help.fortraders.com/en/articles/9259446-list-of-restricted-countries; https://fortraders.com; https://www.trustpilot.com/review/fortraders.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 15% first purchase
+- **platforms:** MT5; cTrader; TradeLocker
+- **payMethods:** Not listed
+- **deal:** BLACKFRIDAY — 25% off everything, plus a free reset on Fast challenges. No end date was stated on the homepage.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** The $9 figure is the Pay After Pass entry fee; the activation fee due after passing is not published on the official site. Standard challenges start at $49.
+- **summary:** Forex, futures and crypto firm, including 24/7 perps. The $9 headline is the Pay After Pass entry fee (the activation fee is due only after passing, and its amount is not published); standard challenges start at $49.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 42. FTMO
+
+- **slug:** ftmo
+- **markets:** forex; futures
+- **rating:** 4.8
+- **rsrc:** Trustpilot
+- **reviews:** Not recorded
+- **ratingNote:** Score shown on the ftmo.com homepage; review count not shown there
+- **split:** 80-90%
+- **splitMax:** 90
+- **dd:** 10% static (2-Step)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** first payout day 14, then on demand
+- **from:** 89
+- **fromCur:** EUR
+- **fromPlan:** 2-Step 10K (1-Step EUR 79); FTMO US USD 99
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 1-Step 50 / Instant 30 / 2-Step none
+- **consNone:** false
+- **target:** 2-Step 10 then 5
+- **dailyDD:** 5% (2-Step)
+- **minDays:** 2-Step 4 per phase
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $2,000,000
+- **news:** restricted on Standard funded; Swing unrestricted
+- **overnight:** restricted on Standard funded; Swing unrestricted
+- **us:** yes via ftmo.oanda.com, except AR/DE/LA/MT/SC
+- **site:** https://ftmo.com
+- **sources:** https://ftmo.com; https://www.trustpilot.com/review/ftmo.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes
+- **platforms:** MT4; MT5; cTrader; TradingView
+- **payMethods:** Not listed
+- **deal:** Black Friday: up to 30% off FTMO Challenges (10K shown at €62, list €89). No code is required on the CFD side.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Global ftmo.com prices are in EUR and US residents cannot buy there — US clients are served by FTMO US at ftmo.oanda.com (USD, 2-Step from $99), except AR, DE, LA, MT, SC. The Instant Account (launched Oct 2026) is a CFD product, not a futures product.
+- **summary:** The longest-running firm in this directory. Main product is forex/CFD (2-Step, 1-Step and, since Oct 2026, an Instant Account), priced in EUR on ftmo.com, plus a separate monthly-subscription FTMO Futures line. US clients are served only through FTMO US at ftmo.oanda.com, in USD, except in AR, DE, LA, MT and SC.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 2-Step — 10000
+
+- **id:** ftmo-2-step-10000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 10000
+- **price:** 89
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** List price. The 27 Nov 2026 homepage showed this 10K challenge at €62 during the Black Friday sale.
+- **target:** 2-Step 10 then 5
+- **dailyLoss:** 5% (2-Step)
+- **maxDD:** 10% static (2-Step)
+- **ddType:** Static
+- **minDays:** 2-Step 4 per phase
+- **split:** 80-90%
+- **payout:** first payout day 14, then on demand
+- **platform:** MT4, MT5, cTrader, TradingView
+- **source:** https://ftmo.com
+
+
+### 43. FTUK
+
+- **slug:** ftuk
+- **markets:** forex; futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 9
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (FAQ: no restrictions)
+- **site:** https://ftuk.com
+- **sources:** https://ftuk.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 10-20% tiered
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier A, 26 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex, Futures firm. Starts at $9. Affiliate: yes, 10-20% tiered. US traders: yes (FAQ: no restrictions).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** ftuk-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 9
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://ftuk.com
+
+
+### 44. Funded Academy
+
+- **slug:** funded-academy
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 1-Step 85%; 2-Step 80%; up to 95% via scaling%
+- **splitMax:** 95
+- **dd:** 10%
+- **ddTypes:** Not recorded
+- **payoutDays:** 1
+- **payoutText:** every 2 weeks; first performance reward on demand; rewards within 12 hours
+- **from:** 49.99
+- **fromCur:** USD
+- **fromPlan:** 2-Step (Swap view) 5K, one-time
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none
+- **consNone:** true
+- **target:** 2-Step 7 then 5; 1-Step not stated on readable pages
+- **dailyDD:** 1-Step 4%; 2-Step 5%
+- **minDays:** 4
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** to $1,000,000
+- **news:** 2-min restriction
+- **overnight:** overnight holding permitted on all challenge accounts; on funded accounts only Pro Flex (1-Step = Standard, no overnight on funded)
+- **us:** no
+- **site:** https://fundedacademy.com
+- **sources:** https://fundedacademy.com; https://fundedacademy.com/faq; https://fundedacademy.com/affiliate
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** up to 20% (tiers 15%/18%/20%)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: homepage price table shown under Swap view; 1-Step/Pro Flex/Swap-Free per-size prices not separately readable; 1-Step profit target not stated
+- **summary:** Forex, Crypto firm. Starts at USD 49.99 (2-Step (Swap view) 5K, one-time). Split 1-Step 85%; 2-Step 80%; up to 95% via scaling%; payout every 2 weeks; first performance reward on demand; rewards within 12 hours.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 6**
+
+#### 2-Step (Swap view) — 5000
+
+- **id:** funded-academy-2-step-swap-view-5000
+- **program:** 2-Step (Swap view)
+- **name:** 2-Step (Swap view)
+- **size:** 5000
+- **price:** 49.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** 80%
+- **payout:** every 2 weeks
+- **platform:** not stated
+- **source:** https://fundedacademy.com
+
+#### 2-Step (Swap view) — 10000
+
+- **id:** funded-academy-2-step-swap-view-10000
+- **program:** 2-Step (Swap view)
+- **name:** 2-Step (Swap view)
+- **size:** 10000
+- **price:** 89.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** 80%
+- **payout:** every 2 weeks
+- **platform:** not stated
+- **source:** https://fundedacademy.com
+
+#### 2-Step (Swap view) — 25000
+
+- **id:** funded-academy-2-step-swap-view-25000
+- **program:** 2-Step (Swap view)
+- **name:** 2-Step (Swap view)
+- **size:** 25000
+- **price:** 209.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** 80%
+- **payout:** every 2 weeks
+- **platform:** not stated
+- **source:** https://fundedacademy.com
+
+#### 2-Step (Swap view) — 50000
+
+- **id:** funded-academy-2-step-swap-view-50000
+- **program:** 2-Step (Swap view)
+- **name:** 2-Step (Swap view)
+- **size:** 50000
+- **price:** 289.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** 80%
+- **payout:** every 2 weeks
+- **platform:** not stated
+- **source:** https://fundedacademy.com
+
+#### 2-Step (Swap view) — 100000
+
+- **id:** funded-academy-2-step-swap-view-100000
+- **program:** 2-Step (Swap view)
+- **name:** 2-Step (Swap view)
+- **size:** 100000
+- **price:** 566.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** 80%
+- **payout:** every 2 weeks
+- **platform:** not stated
+- **source:** https://fundedacademy.com
+
+#### 2-Step (Swap view) — 200000
+
+- **id:** funded-academy-2-step-swap-view-200000
+- **program:** 2-Step (Swap view)
+- **name:** 2-Step (Swap view)
+- **size:** 200000
+- **price:** 1080.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** 80%
+- **payout:** every 2 weeks
+- **platform:** not stated
+- **source:** https://fundedacademy.com
+
+
+### 45. Funded Family One
+
+- **slug:** funded-family-one
+- **markets:** futures; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** EOD trailing $1,000 (25K Prime); Premier+ EOD $750 / intraday $1,000 (25K); Velocity trailing $1,250 (25K); S2F $1,000 EOD trailing (25K)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** every business day; Prime every 3 trading days; Premier+ every 5 trading days; S2F after 7 trading days
+- **from:** 17.9
+- **fromCur:** USD
+- **fromPlan:** Velocity 25K per month with code FFONE (list $179)
+- **monthly:** true
+- **code:** FFONE
+- **off:** Not recorded
+- **codes:** {"code":"FFONE","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Prime none eval / 40 funded; Premier+ none eval (40 funded, accounts from Sep 9 2026); Velocity 40 eval; S2F 25 to get paid
+- **consNone:** true
+- **target:** Prime 25K 5 ($1,250) / 50K 6 ($3,000); Premier+ 25K 6 ($1,500); Velocity 25K 10 ($2,500); S2F none
+- **dailyDD:** none (most plans)
+- **minDays:** Prime 1 / Premier+ 1 (Fast Pass) or 2 / S2F 7 to payout
+- **activation:** $0
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed on most plans
+- **overnight:** not stated
+- **us:** yes (US firm, Temecula CA; US not on restricted list)
+- **site:** https://fundedfamilyone.com
+- **sources:** https://fundedfamilyone.com; https://fundedfamilyone.com/plans; https://fundedfamilyone.com/affiliate/; https://intercom.help/funded-futures-family/en/articles/15657092-prime-evaluation-account; https://intercom.help/funded-futures-family/en/articles/15809232-premier-evaluation; https://intercom.help/funded-futures-family/en/articles/15850710-velocity-evaluation
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 10% Tier 1 / 15% Tier 2 / custom Tier 3
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FFONE
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Futures, Perps firm. Starts at USD 17.9 (Velocity 25K per month with code FFONE (list $179)). Split 90%; payout every business day; Prime every 3 trading days; Premier+ every 5 trading days; S2F after 7 trading days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Velocity 25K per month with code FFONE (list $179) — Not recorded
+
+- **id:** funded-family-one-entry
+- **program:** Velocity 25K per month with code FFONE (list $179)
+- **name:** Velocity 25K per month with code FFONE (list $179)
+- **size:** Not recorded
+- **price:** 17.9
+- **currency:** USD
+- **monthly:** true
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Prime 25K 5 ($1,250) / 50K 6 ($3,000); Premier+ 25K 6 ($1,500); Velocity 25K 10 ($2,500); S2F none
+- **dailyLoss:** none (most plans)
+- **maxDD:** EOD trailing $1,000 (25K Prime); Premier+ EOD $750 / intraday $1,000 (25K); Velocity trailing $1,250 (25K); S2F $1,000 EOD trailing (25K)
+- **ddType:** EOD
+- **minDays:** Prime 1 / Premier+ 1 (Fast Pass) or 2 / S2F 7 to payout
+- **split:** 90%
+- **payout:** every business day; Prime every 3 trading days; Premier+ every 5 trading days; S2F after 7 trading days
+- **platform:** Not stated
+- **source:** https://fundedfamilyone.com
+
+
+### 46. Funded Futures Network
+
+- **slug:** funded-futures-network
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 148
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US not restricted)
+- **site:** https://fundedfuturesnetwork.com
+- **sources:** https://fundedfuturesnetwork.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15% per account purchase
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 20 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Futures firm. Starts at $148. Affiliate: yes, 15% per account purchase. US traders: yes (US not restricted).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** funded-futures-network-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 148
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://fundedfuturesnetwork.com
+
+
+### 47. Funded Trader Markets
+
+- **slug:** funded-trader-markets
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** Nitro 90% of first $10K then 80% / 2-Step Plus 70% (90% with Shield add-on) / Instant 50% scaling to 80%
+- **splitMax:** 90
+- **dd:** Nitro 6% trailing lock / 2-Step Plus 10% static / Instant Standard 5% trailing / Instant Pro 3% trailing / Instant Plus 6% trailing lock
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on-demand
+- **from:** 43
+- **fromCur:** USD
+- **fromPlan:** Instant Pro 5K list
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Nitro eval 50% / funded 45%; 2-Step Plus none; Instant 15%
+- **consNone:** true
+- **target:** Nitro 10 / 2-Step Plus 8 then 5 / Instant none
+- **dailyDD:** Nitro 4% (3% on 300K) / 2-Step Plus 4% / Instant 3%
+- **minDays:** Nitro eval none; 2-Step Plus 3 per phase; funded 5 days (0.5%+) for payout eligibility
+- **activation:** none stated (core programs)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** max allocation $1,000,000 total ($600K evaluations + $400K instant)
+- **news:** allowed
+- **overnight:** allowed (weekend holding allowed)
+- **us:** yes, Match-Trader/TradeLocker only (MT5 and cTrader not available for US residents)
+- **site:** https://fundedtradermarkets.com
+- **sources:** https://fundedtradermarkets.com; https://www.fundedtradermarkets.com/programs; https://www.fundedtradermarkets.com/affiliates; https://fundedtradermarkets.com/faq/is-there-a-requirement-for-a-minimum-number-of-trading-days; https://fundedtradermarkets.com/variations?category=instant&program=instant-pro&accountSize=$5K
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 20%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 43 (Instant Pro 5K list). Split Nitro 90% of first $10K then 80% / 2-Step Plus 70% (90% with Shield add-on) / Instant 50% scaling to 80%; payout on-demand.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Instant Pro 5K list — Not recorded
+
+- **id:** funded-trader-markets-entry
+- **program:** Instant Pro 5K list
+- **name:** Instant Pro 5K list
+- **size:** Not recorded
+- **price:** 43
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Nitro 10 / 2-Step Plus 8 then 5 / Instant none
+- **dailyLoss:** Nitro 4% (3% on 300K) / 2-Step Plus 4% / Instant 3%
+- **maxDD:** Nitro 6% trailing lock / 2-Step Plus 10% static / Instant Standard 5% trailing / Instant Pro 3% trailing / Instant Plus 6% trailing lock
+- **ddType:** Static
+- **minDays:** Nitro eval none; 2-Step Plus 3 per phase; funded 5 days (0.5%+) for payout eligibility
+- **split:** Nitro 90% of first $10K then 80% / 2-Step Plus 70% (90% with Shield add-on) / Instant 50% scaling to 80%
+- **payout:** on-demand
+- **platform:** Not stated
+- **source:** https://fundedtradermarkets.com
+
+
+### 48. Funded Trading Plus
+
+- **slug:** funded-trading-plus
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot withholds this firm's score (rating unavailable due to a breach of Trustpilot's guidelines; 'Warning' label) — checked Nov 26, 2026
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** Max drawdown 6% trailing (1-Step, Instant), 8% static (2-Step), 6% static (Pass Now Pay Later)
+- **ddTypes:** Trailing; Static
+- **payoutDays:** 7
+- **payoutText:** 7-day reward cycle (10 days on 2-Step)
+- **from:** 4
+- **fromCur:** USD
+- **fromPlan:** Pay-later start, 2% target
+- **monthly:** false
+- **code:** BF375
+- **off:** 37.5
+- **codes:** {"code":"BF375","off":37.5,"detail":"37.5% off $5K–$10K accounts"}; {"code":"BF35","off":35,"detail":"35% off $25K–$50K accounts"}; {"code":"BF325","off":32.5,"detail":"32.5% off $100K–$200K accounts"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 10% (1-Step), 7% + 7% (2-Step), 2% (Pass Now Pay Later), none on Instant
+- **dailyDD:** 4% (6% on Instant)
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes — Instant Funding, $4,499 for 100K
+- **scaling:** Scaling plans advertised
+- **news:** allowed
+- **overnight:** weekend holding allowed (not on Instant)
+- **us:** not stated (MT5 unavailable in the USA; Match-Trader offered)
+- **site:** https://www.fundedtradingplus.com
+- **sources:** https://www.fundedtradingplus.com/affiliates; https://www.trustpilot.com/review/fundedtradingplus.com; https://www.fundedtradingplus.com/prop-trading-challenges/compare-challenges; https://www.fundedtradingplus.com
+- **verif:** partial (profit split and smaller-size prices not read)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15% new / 5% repeat
+- **platforms:** MT5; Match-Trader
+- **payMethods:** Not listed
+- **deal:** BF375 37.5% off $5K–$10K, BF35 35% off $25K–$50K, BF325 32.5% off $100K–$200K.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Read from fundedtradingplus.com compare-challenges page on Nov 26, 2026; prices are the $100K list prices. The profit split page is an accordion that did not render its figures, so the split is not stated. Trustpilot shows no score for this firm.
+- **summary:** UK-based forex/CFD firm offering Instant Funding, 1-Step Express, 2-Step Classic and Pass Now Pay Later (start for $4). News trading allowed on every path; 7-day reward cycle.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Express — 100000
+
+- **id:** funded-trading-plus-1-step-express-100000
+- **program:** 1-Step Express
+- **name:** 1-Step Express
+- **size:** 100000
+- **price:** 549
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** List $549. $370.58 with code BF325, checked 27 Nov 2026. A separate pay-later start at $4 is the recorded from-price and is not a sized plan.
+- **target:** 10% (1-Step), 7% + 7% (2-Step), 2% (Pass Now Pay Later), none on Instant
+- **dailyLoss:** 4% (6% on Instant)
+- **maxDD:** Max drawdown 6% trailing (1-Step, Instant), 8% static (2-Step), 6% static (Pass Now Pay Later)
+- **ddType:** Trailing, Static
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** 7-day reward cycle (10 days on 2-Step)
+- **platform:** MT5, Match-Trader
+- **source:** https://www.fundedtradingplus.com/affiliates
+
+
+### 49. Funded With Forex
+
+- **slug:** funded-with-forex
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** 1-Step 6% static / 2-Step 10% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** 5 profitable days to first payout, daily approvals, paid in 24h (or $1,000 extra), min $125, per-request payout cap $250-$2,500 by size
+- **from:** 45
+- **fromCur:** USD
+- **fromPlan:** 2-Step 25K list price (FWF40 code: 40% off)
+- **monthly:** false
+- **code:** FWF40
+- **off:** Not recorded
+- **codes:** {"code":"FWF40","off":null,"detail":"40% off"}
+- **consistencyText:** 1-Step 50% eval / none funded; 2-Step 50% both phases
+- **consNone:** true
+- **target:** 1-Step 10 / 2-Step 8 then 5
+- **dailyDD:** 1-Step 3% / 2-Step 5%
+- **minDays:** 1-Step 2 eval / 0 funded; 2-Step 5/phase
+- **activation:** FREE
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** weekend holding allowed
+- **us:** not stated (180+ countries)
+- **site:** https://fundedwithforex.com
+- **sources:** https://fundedwithforex.com; https://fundedwithforex.com/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 25% lifetime (15% on resets) + $30K milestone bonuses
+- **platforms:** Vera Charts
+- **payMethods:** Not listed
+- **deal:** FWF40 (40% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Missing: Stripe catalog also lists 5K ($99 1-Step / $60 2-Step) and 10K ($150 1-Step / $105 2-Step); homepage widget shows 25K-150K only
+- **summary:** Forex, Crypto firm. Starts at USD 45 (2-Step 25K list price (FWF40 code: 40% off)). Split up to 90%; payout 5 profitable days to first payout, daily approvals, paid in 24h (or $1,000 extra), min $125, per-request payout cap $250-$2,500 by size.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 8**
+
+#### 1-Step — 25000
+
+- **id:** funded-with-forex-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 50
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 1-Step — 50000
+
+- **id:** funded-with-forex-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 92
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 1-Step — 100000
+
+- **id:** funded-with-forex-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 184
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 1-Step — 150000
+
+- **id:** funded-with-forex-1-step-150000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 150000
+- **price:** 382
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 2-Step — 25000
+
+- **id:** funded-with-forex-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 45
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 2-Step — 50000
+
+- **id:** funded-with-forex-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 84
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 2-Step — 100000
+
+- **id:** funded-with-forex-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 165
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+#### 2-Step — 150000
+
+- **id:** funded-with-forex-2-step-150000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 150000
+- **price:** 344
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90
+- **payout:** on demand after 5 profitable days
+- **platform:** Vera Charts
+- **source:** https://fundedwithforex.com
+
+
+### 50. Funded With Perps
+
+- **slug:** funded-with-perps
+- **markets:** perps; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% to 90%
+- **splitMax:** 90
+- **dd:** 6% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** after 5 qualifying days (each +$250 or more), from $125, daily requests, USDC/bank
+- **from:** 50
+- **fromCur:** USD
+- **fromPlan:** 1-Step 25K list price (FWF40 code: $30)
+- **monthly:** false
+- **code:** FWF40
+- **off:** Not recorded
+- **codes:** {"code":"FWF40","off":null,"detail":"40% off"}
+- **consistencyText:** 50% in eval (one day counts up to 50% of target)
+- **consNone:** false
+- **target:** 1-Step 10
+- **dailyDD:** 3%
+- **minDays:** none stated (5 qualifying days to first payout)
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** 24/7 trading, weekend allowed
+- **us:** not stated (sanctioned jurisdictions only)
+- **site:** https://fundedwithperps.com
+- **sources:** https://fundedwithperps.com; https://fundedwithperps.com/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 25% for life (homepage section; dashboard signup, no standalone program URL)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FWF40 (40% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Perps, Crypto, Stocks firm. Starts at USD 50 (1-Step 25K list price (FWF40 code: $30)). Split 80% to 90%; payout after 5 qualifying days (each +$250 or more), from $125, daily requests, USDC/bank.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### 1-Step — 25000
+
+- **id:** funded-with-perps-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 50
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** none stated (5 qualifying days to first payout)
+- **split:** 80 to 90
+- **payout:** on demand after 5 qualifying days
+- **platform:** not stated
+- **source:** https://fundedwithperps.com
+
+#### 1-Step — 50000
+
+- **id:** funded-with-perps-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 92
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** none stated (5 qualifying days to first payout)
+- **split:** 80 to 90
+- **payout:** on demand after 5 qualifying days
+- **platform:** not stated
+- **source:** https://fundedwithperps.com
+
+#### 1-Step — 100000
+
+- **id:** funded-with-perps-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 184
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** none stated (5 qualifying days to first payout)
+- **split:** 80 to 90
+- **payout:** on demand after 5 qualifying days
+- **platform:** not stated
+- **source:** https://fundedwithperps.com
+
+#### 1-Step — 150000
+
+- **id:** funded-with-perps-1-step-150000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 150000
+- **price:** 382
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 static
+- **ddType:** Static
+- **minDays:** none stated (5 qualifying days to first payout)
+- **split:** 80 to 90
+- **payout:** on demand after 5 qualifying days
+- **platform:** not stated
+- **source:** https://fundedwithperps.com
+
+
+### 51. Funded2
+
+- **slug:** funded2
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** Pay After Pass 75% / 1-Step 75% / 2-Step 80% / Instant 65%
+- **splitMax:** 80
+- **dd:** Pay After Pass 15% eval / 6% funded / 1-Step 8% / 2-Step 10% / Instant 6%
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** first cycle 30 days, then 21, then 14 days; min withdrawal $50; 24h processing (clock paused weekends)
+- **from:** 9.99
+- **fromCur:** USD
+- **fromPlan:** Pay After Pass entry fee any size (activation $68-$2,370 due on passing)
+- **monthly:** false
+- **code:** FUNDED45
+- **off:** Not recorded
+- **codes:** {"code":"FUNDED45","off":null,"detail":"45% off, not on the $9.99 entry"}
+- **consistencyText:** Pay After Pass 25% funded; 1-Step/2-Step not stated; Instant 20%
+- **consNone:** false
+- **target:** Pay After Pass 4 / 1-Step 10 / 2-Step 8 then 5 / Instant none
+- **dailyDD:** Pay After Pass 8% / 1-Step none / 2-Step 5% / Instant none
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **activation:** Pay After Pass: $9.99 entry + activation on passing (5K $68, 10K $133, 25K $263, 50K $419, 100K $692, 200K $1,290, 300K $1,690, 500K $2,370)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** max allocation $2M
+- **news:** unrestricted in eval, ±5 min on funded
+- **overnight:** not stated
+- **us:** not stated (US company - INTY MEDIA LLC, Wyoming)
+- **site:** https://funded2.com
+- **sources:** https://funded2.com; https://funded2.com/affiliates; https://www.funded2.com/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 10%/15%/20% tiers
+- **platforms:** MT5
+- **payMethods:** Not listed
+- **deal:** FUNDED45 (45% off, not on the $9.99 entry)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Missing: instruments not enumerated on official site (MT5 platform only stated) - markets recorded as forex; Pay After Pass rows show total price ($9.99 entry + activation)
+- **summary:** Forex firm. Starts at USD 9.99 (Pay After Pass entry fee any size (activation $68-$2,370 due on passing)). Split Pay After Pass 75% / 1-Step 75% / 2-Step 80% / Instant 65%; payout first cycle 30 days, then 21, then 14 days; min withdrawal $50; 24h processing (clock paused weekends).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 29**
+
+#### Pay After Pass — 5000
+
+- **id:** funded2-pay-after-pass-5000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 5000
+- **price:** 77.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 10000
+
+- **id:** funded2-pay-after-pass-10000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 10000
+- **price:** 142.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 25000
+
+- **id:** funded2-pay-after-pass-25000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 25000
+- **price:** 272.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 50000
+
+- **id:** funded2-pay-after-pass-50000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 50000
+- **price:** 428.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 100000
+
+- **id:** funded2-pay-after-pass-100000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 100000
+- **price:** 701.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 200000
+
+- **id:** funded2-pay-after-pass-200000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 200000
+- **price:** 1299.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 300000
+
+- **id:** funded2-pay-after-pass-300000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 300000
+- **price:** 1699.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Pay After Pass — 500000
+
+- **id:** funded2-pay-after-pass-500000
+- **program:** Pay After Pass
+- **name:** Pay After Pass
+- **size:** 500000
+- **price:** 2379.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4
+- **dailyLoss:** 8
+- **maxDD:** 15
+- **ddType:** Not recorded
+- **minDays:** Pay After Pass 0 eval / 5 funded; 1-Step 3 eval; 2-Step 3/phase; Instant 5
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 1-Step — 5000
+
+- **id:** funded2-1-step-5000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 5000
+- **price:** 59.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** none
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 1-Step — 10000
+
+- **id:** funded2-1-step-10000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 10000
+- **price:** 109.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** none
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 1-Step — 25000
+
+- **id:** funded2-1-step-25000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 25000
+- **price:** 209.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** none
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 1-Step — 50000
+
+- **id:** funded2-1-step-50000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 50000
+- **price:** 329.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** none
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 1-Step — 100000
+
+- **id:** funded2-1-step-100000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 100000
+- **price:** 539.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** none
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 1-Step — 200000
+
+- **id:** funded2-1-step-200000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 200000
+- **price:** 999.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** none
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 75
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 5000
+
+- **id:** funded2-2-step-5000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 5000
+- **price:** 49.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 10000
+
+- **id:** funded2-2-step-10000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 10000
+- **price:** 99.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 25000
+
+- **id:** funded2-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 199.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 50000
+
+- **id:** funded2-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 299.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 100000
+
+- **id:** funded2-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 519.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 200000
+
+- **id:** funded2-2-step-200000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 200000
+- **price:** 979.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 300000
+
+- **id:** funded2-2-step-300000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 300000
+- **price:** 1379.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### 2-Step — 500000
+
+- **id:** funded2-2-step-500000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 500000
+- **price:** 1989.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 80
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 5000
+
+- **id:** funded2-instant-5000
+- **program:** Instant
+- **name:** Instant
+- **size:** 5000
+- **price:** 89.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 10000
+
+- **id:** funded2-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 129.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 25000
+
+- **id:** funded2-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 249.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 50000
+
+- **id:** funded2-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 459.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 100000
+
+- **id:** funded2-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 749.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 200000
+
+- **id:** funded2-instant-200000
+- **program:** Instant
+- **name:** Instant
+- **size:** 200000
+- **price:** 1189.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+#### Instant — 300000
+
+- **id:** funded2-instant-300000
+- **program:** Instant
+- **name:** Instant
+- **size:** 300000
+- **price:** 1589.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 65
+- **payout:** first cycle 30 days, then 21, then 14 days
+- **platform:** MT5
+- **source:** https://funded2.com
+
+
+### 52. FundedBull
+
+- **slug:** fundedbull
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** 8%
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** first after 14 days + 5 trading days, then every 7 days
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** not stated — full price grid is a JS configurator; only one price readable (2-Step 25K $189 list / $152 with BULL)
+- **monthly:** false
+- **code:** BULL
+- **off:** Not recorded
+- **codes:** {"code":"BULL","off":null,"detail":"20% off all evaluations); EYE25 (25% off, footer easter egg"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 2-Step 8 then 5; 1-Step/3-Step not stated on readable pages
+- **dailyDD:** 4%
+- **minDays:** 5 (each day 0.5%+ of target)
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** permitted but no trading 5 min before/after news on challenge accounts
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://fundedbull.com
+- **sources:** https://fundedbull.com; https://fundedbull.com/trading-rules; https://fundedbull.com/affiliate
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes (commission % not published)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** BULL (20% off all evaluations); EYE25 (25% off, footer easter egg)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: prices behind JS configurator — from=null; only one price readable (2-Step 25K $189 list / $152 with BULL); 1-Step/3-Step targets not stated on readable pages
+- **summary:** Forex firm. Starts at USD None (not stated — full price grid is a JS configurator; only one price readable (2-Step 25K $189 list / $152 with BULL)). Split 90%; payout first after 14 days + 5 trading days, then every 7 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 53. FundedElite
+
+- **slug:** fundedelite
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 5
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes on Match-Trader
+- **site:** https://fundedelite.com
+- **sources:** https://fundedelite.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 10-14% recurring
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier A, 55 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex firm. Starts at $5. Affiliate: yes, 10-14% recurring. US traders: yes on Match-Trader.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** fundedelite-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://fundedelite.com
+
+
+### 54. FundedFirm
+
+- **slug:** fundedfirm
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 100%
+- **splitMax:** 100
+- **dd:** 1 Step 6% / 2 Step 10% / Instant 5% / Instant Daily 4%
+- **ddTypes:** Not recorded
+- **payoutDays:** 14
+- **payoutText:** within 24h; reward cycle Monthly/BiWeekly-Weekly; fee refunded with 4th reward
+- **from:** 39
+- **fromCur:** USD
+- **fromPlan:** 2 Step 5K
+- **monthly:** false
+- **code:** none seen
+- **off:** Not recorded
+- **codes:** {"code":"none seen","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** under 80% - no single trade above 80% of your profit
+- **consNone:** false
+- **target:** 1 Step 10 / 2 Step 8 then 5 / Instant none / Instant Daily none
+- **dailyDD:** 3% (all programs)
+- **minDays:** 3
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** allowed (overnight & weekend holding allowed)
+- **us:** no (explicitly restricted: USA, Cuba, Iraq, Myanmar, North Korea, Sudan, Iran, Russia, UAE)
+- **site:** https://fundedfirm.com
+- **sources:** https://fundedfirm.com; https://fundedfirm.com/affiliate; https://fundedfirm.com/trader-rules; https://www.fundedfirm.com/affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** up to 10% on every first account purchase (payouts once earnings reach $200)
+- **platforms:** MT5
+- **payMethods:** Not listed
+- **deal:** none seen
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto firm. Starts at USD 39 (2 Step 5K). Split up to 100%; payout within 24h; reward cycle Monthly/BiWeekly-Weekly; fee refunded with 4th reward.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 24**
+
+#### 1 Step — 5000
+
+- **id:** fundedfirm-1-step-5000
+- **program:** 1 Step
+- **name:** 1 Step
+- **size:** 5000
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 1 Step — 10000
+
+- **id:** fundedfirm-1-step-10000
+- **program:** 1 Step
+- **name:** 1 Step
+- **size:** 10000
+- **price:** 89
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 1 Step — 15000
+
+- **id:** fundedfirm-1-step-15000
+- **program:** 1 Step
+- **name:** 1 Step
+- **size:** 15000
+- **price:** 119
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 1 Step — 25000
+
+- **id:** fundedfirm-1-step-25000
+- **program:** 1 Step
+- **name:** 1 Step
+- **size:** 25000
+- **price:** 199
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 1 Step — 50000
+
+- **id:** fundedfirm-1-step-50000
+- **program:** 1 Step
+- **name:** 1 Step
+- **size:** 50000
+- **price:** 299
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 1 Step — 100000
+
+- **id:** fundedfirm-1-step-100000
+- **program:** 1 Step
+- **name:** 1 Step
+- **size:** 100000
+- **price:** 549
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 2 Step — 5000
+
+- **id:** fundedfirm-2-step-5000
+- **program:** 2 Step
+- **name:** 2 Step
+- **size:** 5000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 2 Step — 10000
+
+- **id:** fundedfirm-2-step-10000
+- **program:** 2 Step
+- **name:** 2 Step
+- **size:** 10000
+- **price:** 84
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 2 Step — 15000
+
+- **id:** fundedfirm-2-step-15000
+- **program:** 2 Step
+- **name:** 2 Step
+- **size:** 15000
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 2 Step — 25000
+
+- **id:** fundedfirm-2-step-25000
+- **program:** 2 Step
+- **name:** 2 Step
+- **size:** 25000
+- **price:** 169
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 2 Step — 50000
+
+- **id:** fundedfirm-2-step-50000
+- **program:** 2 Step
+- **name:** 2 Step
+- **size:** 50000
+- **price:** 269
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### 2 Step — 100000
+
+- **id:** fundedfirm-2-step-100000
+- **program:** 2 Step
+- **name:** 2 Step
+- **size:** 100000
+- **price:** 525
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant — 5000
+
+- **id:** fundedfirm-instant-5000
+- **program:** Instant
+- **name:** Instant
+- **size:** 5000
+- **price:** 65
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant — 10000
+
+- **id:** fundedfirm-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 95
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant — 15000
+
+- **id:** fundedfirm-instant-15000
+- **program:** Instant
+- **name:** Instant
+- **size:** 15000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant — 25000
+
+- **id:** fundedfirm-instant-25000
+- **program:** Instant
+- **name:** Instant
+- **size:** 25000
+- **price:** 229
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant — 50000
+
+- **id:** fundedfirm-instant-50000
+- **program:** Instant
+- **name:** Instant
+- **size:** 50000
+- **price:** 349
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant — 100000
+
+- **id:** fundedfirm-instant-100000
+- **program:** Instant
+- **name:** Instant
+- **size:** 100000
+- **price:** 549
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant Daily — 3000
+
+- **id:** fundedfirm-instant-daily-3000
+- **program:** Instant Daily
+- **name:** Instant Daily
+- **size:** 3000
+- **price:** 69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 4
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant Daily — 6000
+
+- **id:** fundedfirm-instant-daily-6000
+- **program:** Instant Daily
+- **name:** Instant Daily
+- **size:** 6000
+- **price:** 92
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 4
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant Daily — 9000
+
+- **id:** fundedfirm-instant-daily-9000
+- **program:** Instant Daily
+- **name:** Instant Daily
+- **size:** 9000
+- **price:** 115
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 4
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant Daily — 12000
+
+- **id:** fundedfirm-instant-daily-12000
+- **program:** Instant Daily
+- **name:** Instant Daily
+- **size:** 12000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 4
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant Daily — 15000
+
+- **id:** fundedfirm-instant-daily-15000
+- **program:** Instant Daily
+- **name:** Instant Daily
+- **size:** 15000
+- **price:** 195
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 4
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+#### Instant Daily — 18000
+
+- **id:** fundedfirm-instant-daily-18000
+- **program:** Instant Daily
+- **name:** Instant Daily
+- **size:** 18000
+- **price:** 249
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 4
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** 100
+- **payout:** within 24h
+- **platform:** MT5
+- **source:** https://fundedfirm.com
+
+
+### 55. FundedHero
+
+- **slug:** fundedhero
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 100% (2-Step Hero from 4th payout)%
+- **splitMax:** 100
+- **dd:** not stated on readable pages
+- **ddTypes:** Not recorded
+- **payoutDays:** 1
+- **payoutText:** every 21/14/10 days depending on challenge and payout number; on-demand processing; 48-hour payout guarantee
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** not stated — full price grid is a JS/WooCommerce configurator; homepage shows one price for the default selection, size/program not attributable
+- **monthly:** false
+- **code:** THANKS
+- **off:** Not recorded
+- **codes:** {"code":"THANKS","off":null,"detail":"homepage shows $20.00 struck through to $7.00 with THANKS for default selection; affiliate page mentions 65% off deals"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated on readable pages
+- **dailyDD:** not stated on readable pages
+- **minDays:** none (pass in as little as 1 day)
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $2M in simulated funds
+- **news:** allowed on all challenges
+- **overnight:** weekend holding allowed on all
+- **us:** not stated
+- **site:** https://fundedhero.com
+- **sources:** https://fundedhero.com; https://fundedhero.com/affiliates/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** 15-25% (Starter 15%, Pro 20%, Elite 25% on every referred challenge + subsequent sales; sub-affiliate override 25% + 10% second level, 2 deep; $20 min payout)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** THANKS (homepage shows $20.00 struck through to $7.00 with THANKS for default selection; affiliate page mentions 65% off deals)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: prices behind JS configurator — from=null; profit targets, drawdowns and consistency not stated on readable pages
+- **summary:** Forex firm. Starts at USD None (not stated — full price grid is a JS/WooCommerce configurator; homepage shows one price for the default selection, size/program not attributable). Split up to 100% (2-Step Hero from 4th payout)%; payout every 21/14/10 days depending on challenge and payout number; on-demand processing; 48-hour payout guarantee.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 56. FundedHive
+
+- **slug:** fundedhive
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% (homepage table, Pay From Profits view); 2-Step Classic and Instant Growth splits not shown on homepage%
+- **splitMax:** 80
+- **dd:** 10% static (Pay From Profits and 2-Step Classic); 6% static (Instant Growth)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand, under 60 seconds via smart contract
+- **from:** 19
+- **fromCur:** USD
+- **fromPlan:** Pay From Profits access fee (funded account from $49)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none
+- **consNone:** true
+- **target:** 10% (Pay From Profits phase 1, homepage table); 2-Step Classic and Instant Growth targets not shown on homepage
+- **dailyDD:** 5% (Pay From Profits and 2-Step Classic); Instant Growth no daily loss limit
+- **minDays:** 3 profitable days
+- **activation:** funded-account fee from $49, payable from profits after passing (Pay From Profits)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** weekend holding allowed in evaluation, not on funded account
+- **us:** not stated
+- **site:** https://fundedhive.com
+- **sources:** https://fundedhive.com; https://fundedhive.com/affiliate
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified on official site
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS model selector (only $19 access fee / funded from $49 readable on homepage); affiliate % and US eligibility not stated on official pages read
+- **summary:** Forex firm. Starts at USD 19 (Pay From Profits access fee (funded account from $49)). Split 80% (homepage table, Pay From Profits view); 2-Step Classic and Instant Growth splits not shown on homepage%; payout on demand, under 60 seconds via smart contract.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Pay From Profits access fee (funded account from $49) — Not recorded
+
+- **id:** fundedhive-entry
+- **program:** Pay From Profits access fee (funded account from $49)
+- **name:** Pay From Profits access fee (funded account from $49)
+- **size:** Not recorded
+- **price:** 19
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 10% (Pay From Profits phase 1, homepage table); 2-Step Classic and Instant Growth targets not shown on homepage
+- **dailyLoss:** 5% (Pay From Profits and 2-Step Classic); Instant Growth no daily loss limit
+- **maxDD:** 10% static (Pay From Profits and 2-Step Classic); 6% static (Instant Growth)
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80% (homepage table, Pay From Profits view); 2-Step Classic and Instant Growth splits not shown on homepage%
+- **payout:** on demand, under 60 seconds via smart contract
+- **platform:** Not stated
+- **source:** https://fundedhive.com
+
+
+### 57. FundedNext
+
+- **slug:** fundednext
+- **markets:** forex; futures
+- **rating:** 4.5
+- **rsrc:** Trustpilot
+- **reviews:** 85011
+- **ratingNote:** Trustpilot 4.5/5, 85,011 reviews. Checked 27 Nov 2026.
+- **split:** 80 (90 scale-up, 95 add-on)
+- **splitMax:** 95
+- **dd:** 10% static (2-Step)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** Std first 21d then 14d / 3-Day every 3d / On-Demand anytime
+- **from:** 32.99
+- **fromCur:** USD
+- **fromPlan:** Stellar Lite 5K
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 2-Step Std none / On-Demand 40 / Flex 40 challenge only
+- **consNone:** false
+- **target:** 2-Step 8 then 5
+- **dailyDD:** 5% (2-Step)
+- **minDays:** 5 per phase
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to 90% split; Instant to $2,000,000
+- **news:** allowed, 40% profit counts in 10-min window
+- **overnight:** Instant allowed; weekend not separately stated
+- **us:** yes (US price list; 15% payout not for US)
+- **site:** https://fundednext.com
+- **sources:** https://fundednext.com/blog/fundednext-cfds-stellar-2-step-explained; https://fundednext.com/partners; https://fundednext.com; https://www.trustpilot.com/review/fundednext.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 8-15%
+- **platforms:** MT4; MT5; cTrader; Tradovate (Futures)
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** true
+- **paid30:** 16690000
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** CFD line (Stellar Lite, 2-Step, 1-Step, Instant) plus a separate Futures Flex line on Tradovate. Payout structure is chosen at checkout for the life of the account: Standard (21 days, then 14), 3-Day, or On-Demand with a 40% best-day rule.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Stellar Lite — 5000
+
+- **id:** fundednext-stellar-lite-5000
+- **program:** Stellar Lite
+- **name:** Stellar Lite
+- **size:** 5000
+- **price:** 32.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step 8 then 5
+- **dailyLoss:** 5% (2-Step)
+- **maxDD:** 10% static (2-Step)
+- **ddType:** Static
+- **minDays:** 5 per phase
+- **split:** 80 (90 scale-up, 95 add-on)
+- **payout:** Std first 21d then 14d / 3-Day every 3d / On-Demand anytime
+- **platform:** MT4, MT5, cTrader, Tradovate (Futures)
+- **source:** https://fundednext.com/blog/fundednext-cfds-stellar-2-step-explained
+
+
+### 58. FundedSquad
+
+- **slug:** fundedsquad
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 100%
+- **splitMax:** 100
+- **dd:** 6-12% static by model; Instant Lite 6% trailing
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** On Demand / Daily / Every 5 Days / Weekly / Biweekly by model; processed within 48h
+- **from:** 69
+- **fromCur:** USD
+- **fromPlan:** Instant Lite / Instant Flex 2.5K, one-time
+- **monthly:** false
+- **code:** BF65
+- **off:** Not recorded
+- **codes:** {"code":"BF65","off":null,"detail":"65% off everything + Buy 1 Get 1, 24h only"}
+- **consistencyText:** none on any model
+- **consNone:** true
+- **target:** 1 Step Lite 8 / 1 Step Flex 9-10 / 2 Step Lite 6 per phase / 2 Step Flex 8-6 / Instant none
+- **dailyDD:** 3-5% by model
+- **minDays:** 1-3 by model
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (max allocation $800K)
+- **news:** allowed on Instant Flex; not stated for other models
+- **overnight:** not stated
+- **us:** not stated (US traders appear in on-site reviews; no eligibility statement read)
+- **site:** https://fundedsquad.com
+- **sources:** https://fundedsquad.com; https://fundedsquad.com/partner; https://intercom.help/fundedsquad/en/
+- **verif:** partial (models, from-price and rules verified on official homepage/FAQ; per-size price list is a JS widget and could not be fully re-read)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 8-15% recurring (Starter 8% to Legendary 15%)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** BF65 (65% off everything + Buy 1 Get 1, 24h only)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (models, from-price and rules verified on official homepage/FAQ; per-size price list is a JS widget and could not be fully re-read).
+- **summary:** Forex, Cfd firm. Starts at USD 69 (Instant Lite / Instant Flex 2.5K, one-time). Split up to 100%; payout On Demand / Daily / Every 5 Days / Weekly / Biweekly by model; processed within 48h.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Instant Lite / Instant Flex 2.5K, one-time — Not recorded
+
+- **id:** fundedsquad-entry
+- **program:** Instant Lite / Instant Flex 2.5K, one-time
+- **name:** Instant Lite / Instant Flex 2.5K, one-time
+- **size:** Not recorded
+- **price:** 69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 1 Step Lite 8 / 1 Step Flex 9-10 / 2 Step Lite 6 per phase / 2 Step Flex 8-6 / Instant none
+- **dailyLoss:** 3-5% by model
+- **maxDD:** 6-12% static by model; Instant Lite 6% trailing
+- **ddType:** Static
+- **minDays:** 1-3 by model
+- **split:** up to 100%
+- **payout:** On Demand / Daily / Every 5 Days / Weekly / Biweekly by model; processed within 48h
+- **platform:** Not stated
+- **source:** https://fundedsquad.com
+
+
+### 59. FunderPro
+
+- **slug:** funderpro
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 29
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** partial (details truncated in status PDF)
+- **site:** https://funderpro.com
+- **sources:** https://funderpro.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 20% (tiered by sales)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 34 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex, Crypto firm. Starts at $29. Affiliate: yes, up to 20% (tiered by sales). US traders: partial (details truncated in status PDF).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** funderpro-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://funderpro.com
+
+
+### 60. FundingPips
+
+- **slug:** fundingpips
+- **markets:** forex
+- **rating:** 4.5
+- **rsrc:** Trustpilot
+- **reviews:** 76765
+- **ratingNote:** Read on trustpilot.com on Nov 26, 2026
+- **split:** 60-100 by cycle
+- **splitMax:** 100
+- **dd:** 10% static (2-Step Std)
+- **ddTypes:** Static
+- **payoutDays:** 7
+- **payoutText:** weekly / bi-weekly / on demand
+- **from:** 29
+- **fromCur:** USD
+- **fromPlan:** 2-Step Pro 5K
+- **monthly:** false
+- **code:** BF22
+- **off:** 22
+- **codes:** {"code":"BF22","off":22,"detail":"22% off all accounts (homepage banner, checked 27 Nov 2026)"}
+- **consistencyText:** evals none; Zero 15%
+- **consNone:** false
+- **target:** 2-Step Std 8 then 5
+- **dailyDD:** 3% or 5% (2-Step Std)
+- **minDays:** 2-Step Std 3 per phase
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $400K total
+- **news:** profit deducted within 5 min of high-impact news (Master)
+- **overnight:** allowed in eval; Zero no weekend holding
+- **us:** not confirmed on fundingpips.com
+- **site:** https://fundingpips.com
+- **sources:** https://fundingpips.com/blog/fundingpips-vs-breakout-challenge-costs; https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard; https://www.trustpilot.com/review/fundingpips.com; https://fundingpips.com
+- **verif:** partial (US eligibility unconfirmed)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 6-10%
+- **platforms:** MT5; cTrader; Match-Trader
+- **payMethods:** Card; Crypto (USDT/USDC); Rise; Bank transfer
+- **deal:** BF22 — 22% off all accounts (homepage banner, checked 27 Nov 2026).
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** US eligibility is NOT confirmed on fundingpips.com. A different domain, fundingpips.net (FundingPips Corp, a different entity), states it does not accept US residents — do not mix the two sites' answers.
+- **summary:** Forex/CFD firm — no futures program was stated on the pages read. 2-Step Standard lets you pick the payout cycle at checkout and the split follows it: weekly 60%, bi-weekly 80%, on demand 100%. Zero is the instant line, at 95% every 14 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 2-Step Pro — 5000
+
+- **id:** fundingpips-2-step-pro-5000
+- **program:** 2-Step Pro
+- **name:** 2-Step Pro
+- **size:** 5000
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step Std 8 then 5
+- **dailyLoss:** 3% or 5% (2-Step Std)
+- **maxDD:** 10% static (2-Step Std)
+- **ddType:** Static
+- **minDays:** 2-Step Std 3 per phase
+- **split:** 60-100 by cycle
+- **payout:** weekly / bi-weekly / on demand
+- **platform:** MT5, cTrader, Match-Trader
+- **source:** https://fundingpips.com/blog/fundingpips-vs-breakout-challenge-costs
+
+
+### 61. FundingTraders
+
+- **slug:** fundingtraders
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-90% default (100% add-on); Instant 90% default%
+- **splitMax:** 90
+- **dd:** 1-Step Pro 10% trailing / 2-Step Pro10 10% static / 2-Step Pro6 6% static / Day & Swing 10% static / Instant 6%
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** 1-Step/2-Step every 21 days (14-day add-on); Instant every 14 days
+- **from:** 59
+- **fromCur:** USD
+- **fromPlan:** 1-Step Pro 5K list, one-time, refundable with qualifying payout
+- **monthly:** false
+- **code:** TRYFT
+- **off:** Not recorded
+- **codes:** {"code":"TRYFT","off":null,"detail":"50% off first challenge); BLACKFRIDAY (75% off every challenge"}
+- **consistencyText:** Instant 15% / 1-Step Pro 50% funded / 2-Step Pro6 and Pro10 none
+- **consNone:** true
+- **target:** 1-Step Pro 10 / 2-Step Pro10 10 then 5 / 2-Step Day & Swing 10 then 5 (8 then 4 under Black Friday rule upgrade) / Instant none
+- **dailyDD:** 1-Step Pro 3% / 2-Step Pro10 5% / Day & Swing 5% / Instant 3%
+- **minDays:** 2-Step 4 per phase; 1-Step none (was 4, per Black Friday rule upgrade); Instant none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $2,000,000
+- **news:** Instant not allowed; evals unrestricted in challenge, funded +/-2 min with 30% news-profit cap
+- **overnight:** allowed on 2-Step Pro10/Swing; Day closes positions daily; Instant not stated
+- **us:** not stated
+- **site:** https://fundingtraders.com
+- **sources:** https://fundingtraders.com/; https://fundingtraders.com/prop-trading-partners; https://fundingtraders.com/help/en/articles/14489635-your-earnings-explained; https://fundingtraders.com/blog/cheapest-prop-firms-2/; https://fundingtraders.com/blog/best-prop-firm-for-gold-xauusd/; https://fundingtraders.com/prop-firm-markets; https://fundingtraders.com/black-friday-2026
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 15-25% on first purchase (Starter 15%, Ambassador 20%, Verified Partner 25%) + 10-15% repeat
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** TRYFT (50% off first challenge); BLACKFRIDAY (75% off every challenge)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 59 (1-Step Pro 5K list, one-time, refundable with qualifying payout). Split 80-90% default (100% add-on); Instant 90% default%; payout 1-Step/2-Step every 21 days (14-day add-on); Instant every 14 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Pro 5K list, one-time, refundable with qualifying payout — Not recorded
+
+- **id:** fundingtraders-entry
+- **program:** 1-Step Pro 5K list, one-time, refundable with qualifying payout
+- **name:** 1-Step Pro 5K list, one-time, refundable with qualifying payout
+- **size:** Not recorded
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 1-Step Pro 10 / 2-Step Pro10 10 then 5 / 2-Step Day & Swing 10 then 5 (8 then 4 under Black Friday rule upgrade) / Instant none
+- **dailyLoss:** 1-Step Pro 3% / 2-Step Pro10 5% / Day & Swing 5% / Instant 3%
+- **maxDD:** 1-Step Pro 10% trailing / 2-Step Pro10 10% static / 2-Step Pro6 6% static / Day & Swing 10% static / Instant 6%
+- **ddType:** Static
+- **minDays:** 2-Step 4 per phase; 1-Step none (was 4, per Black Friday rule upgrade); Instant none
+- **split:** 80-90% default (100% add-on); Instant 90% default%
+- **payout:** 1-Step/2-Step every 21 days (14-day add-on); Instant every 14 days
+- **platform:** Not stated
+- **source:** https://fundingtraders.com
+
+
+### 62. FundYourFX
+
+- **slug:** fundyourfx
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-95%
+- **splitMax:** 95
+- **dd:** 6% static (1-Step Classic / Instant Classic); 8% static (2-Step Classic); 10% static (2-Step Pro)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** weekly, processed within 24h; min payout $150; Instant Classic bi-weekly
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** Black Friday 70% off on-site (no code shown on homepage)
+- **off:** Not recorded
+- **codes:** {"code":"Black Friday 70% off on-site (no code shown on homepage)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none (1-Step Classic); Profit Balance Rule: total profit must be 4x best day to unlock payout
+- **consNone:** true
+- **target:** 1-Step Classic 10 / 2-Step Classic 8 then 5 / 2-Step Pro 6 then 4 / Instant Classic 10 before first payout
+- **dailyDD:** 4% (Classic); 5% (Pro)
+- **minDays:** 5 eval (1-Step Classic); 5 per phase (2-Step Classic)
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** Growth Plan to $6M
+- **news:** allowed, no opens ±5 min high-impact news
+- **overnight:** allowed
+- **us:** yes (only Hong Kong, North Korea, Iran prohibited)
+- **site:** https://fundyourfx.com
+- **sources:** https://fundyourfx.com; https://help.fundyourfx.com; https://help.fundyourfx.com/trading-rules-guide/1-step-evaluation-classic-complete-faq; https://help.fundyourfx.com/trading-rules-guide/general-trading-rules; https://help.fundyourfx.com/affiliate-program
+- **verif:** partial (smallest-size list price not readable in official text fetch; homepage configurator rendered only the 50K Instant Classic default, $829 list / $248.70 with 70% Black Friday sale)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15-35% direct + up to 6% multi-level
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Black Friday 70% off on-site (no code shown on homepage)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (smallest-size list price not readable in official text fetch; homepage configurator rendered only the 50K Instant Classic default, $829 list / $248.70 with 70% Black Friday sale).
+- **summary:** Forex firm. Starts at USD None (Entry plan (name not recorded)). Split 80-95%; payout weekly, processed within 24h; min payout $150; Instant Classic bi-weekly.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 63. FuturesElite
+
+- **slug:** futureselite
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90% (up to 110% via Skills & Quests perks)%
+- **splitMax:** 90
+- **dd:** EOD drawdown (Elite); % not stated on official pages read
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** 24-hour average payout time; payout cap $2,000 on a 50K Elite account
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** 10% discount code via email signup (code itself not shown on site)
+- **off:** Not recorded
+- **codes:** {"code":"10% discount code via email signup (code itself not shown on site)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none once funded (Elite); funded consistency not stated for other programs
+- **consNone:** true
+- **target:** not stated on official pages read
+- **dailyDD:** none (no daily loss limit on Elite)
+- **minDays:** not stated
+- **activation:** $0 (no activation fees on Elite, Prime or Instant)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** stack accounts to $1.5M (10 x 150K Prime, tenth free); 5 x 50K Elite bundle $250K
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://futureselite.com
+- **sources:** https://futureselite.com; https://futureselite.com/become-an-affiliate; https://faq.futureselite.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes (% not stated on official site)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** 10% discount code via email signup (code itself not shown on site)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS pricing configurator — prices behind JS configurator, from=null; Prime/Instant/Nitro targets and drawdowns, US eligibility and affiliate % not stated on official pages read
+- **summary:** Futures firm. Starts at USD None (Entry plan (name not recorded)). Split 90% (up to 110% via Skills & Quests perks)%; payout 24-hour average payout time; payout cap $2,000 on a 50K Elite account.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 64. FXIFY
+
+- **slug:** fxify
+- **markets:** forex; crypto; futures
+- **rating:** 4.3
+- **rsrc:** Trustpilot
+- **reviews:** 6741
+- **ratingNote:** Read on trustpilot.com on Nov 26, 2026
+- **split:** 80 std (90% add-on)
+- **splitMax:** 90
+- **dd:** 5% static (Three Phase)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** Instant bi-weekly
+- **from:** 39
+- **fromCur:** USD
+- **fromPlan:** Three Phase 5K
+- **monthly:** false
+- **code:** BLACK35
+- **off:** 35
+- **codes:** {"code":"BLACK35","off":35,"detail":"35% off all programs except Instant Lite. End date not stated on the homepage."}
+- **consistencyText:** Lightning 30 / Three Phase none
+- **consNone:** false
+- **target:** Three Phase 5% per phase
+- **dailyDD:** Lightning 3%
+- **minDays:** Lightning 5
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** Instant blackout 5 min around news
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://fxify.com
+- **sources:** https://fxify.com/blog/cheapest-path-funded-50k-fxify/; https://www.trustpilot.com/review/fxify.com; https://fxify.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified
+- **platforms:** MT4; MT5; DXtrade; TradingView
+- **payMethods:** Not listed
+- **deal:** BLACK35 — 35% off all programs except Instant Lite. No end date was stated on the homepage.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD evaluations (One, Two and Three Phase) plus separate crypto and futures programs. Three Phase is the cheapest entry at $39 for 5K with a 5% static drawdown; instant funding runs from a $19 Lite account to a $1,749 Standard 50K.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Three Phase — 5000
+
+- **id:** fxify-three-phase-5000
+- **program:** Three Phase
+- **name:** Three Phase
+- **size:** 5000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Three Phase 5% per phase
+- **dailyLoss:** Lightning 3%
+- **maxDD:** 5% static (Three Phase)
+- **ddType:** Static
+- **minDays:** Lightning 5
+- **split:** 80 std (90% add-on)
+- **payout:** Instant bi-weekly
+- **platform:** MT4, MT5, DXtrade, TradingView
+- **source:** https://fxify.com/blog/cheapest-path-funded-50k-fxify/
+
+
+### 65. Get Leveraged
+
+- **slug:** get-leveraged
+- **markets:** forex; crypto
+- **rating:** 4.5
+- **rsrc:** Trustpilot
+- **reviews:** 1330
+- **ratingNote:** Trustpilot 4.5/5, 1,330 reviews. Checked 27 Nov 2026.
+- **split:** 80 (95% add-on)
+- **splitMax:** 95
+- **dd:** 6% trailing
+- **ddTypes:** EOD
+- **payoutDays:** 14
+- **payoutText:** every 14d (5d add-on)
+- **from:** 8.88
+- **fromCur:** USD
+- **fromPlan:** Turbo 10K entry (total $85); cheapest full one-time $29 ONE 10K
+- **monthly:** false
+- **code:** GREEN
+- **off:** 20
+- **codes:** {"code":"GREEN","off":20,"detail":"20% off all programs. End date not stated on the homepage."}
+- **consistencyText:** 20% funded; none eval
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** 3%
+- **minDays:** 3 profitable days funded
+- **activation:** Turbo $76.12-$1089.12 after passing
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** none (official FAQ)
+- **news:** restricted +/-5 min high-impact
+- **overnight:** allowed
+- **us:** no (US on restricted list)
+- **site:** https://getleveraged.com
+- **sources:** https://getleveraged.com; https://www.trustpilot.com/review/getleveraged.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 15-30%
+- **platforms:** MT5; cTrader
+- **payMethods:** Not listed
+- **deal:** GREEN — 20% off all programs. No end date was stated on the homepage.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** $8.88 is an entry fee, not the full price: the Turbo 10K total is $85 ($8.88 now + $76.12 activation after passing). The cheapest full one-time price is $29 (ONE 10K). US traders are not eligible.
+- **summary:** Forex/CFD and crypto firm. The $8.88 headline is an entry fee for Pay After You Pass, not the full price — a Turbo 10K costs $85 in total. US traders are on the restricted list and cannot join.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Turbo — 10000
+
+- **id:** get-leveraged-turbo-10000
+- **program:** Turbo
+- **name:** Turbo
+- **size:** 10000
+- **price:** 8.88
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 6
+- **dailyLoss:** 3%
+- **maxDD:** 6% trailing
+- **ddType:** EOD
+- **minDays:** 3 profitable days funded
+- **split:** 80 (95% add-on)
+- **payout:** every 14d (5d add-on)
+- **platform:** MT5, cTrader
+- **source:** https://getleveraged.com
+
+
+### 66. GOAT Funded Futures
+
+- **slug:** goat-funded-futures
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** 185
+- **ratingNote:** Rating withheld by Trustpilot (breach of guidelines; fake reviews removed). 185 reviews on the profile. Checked 27 Nov 2026.
+- **split:** 90/10
+- **splitMax:** 90
+- **dd:** EOD trailing, 4% (25K/50K)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** twice monthly windows; GOAT Daily 24h
+- **from:** 39
+- **fromCur:** USD
+- **fromPlan:** GOAT Access 50K (+ $99 activation)
+- **monthly:** false
+- **code:** BLACKFRIDAY60
+- **off:** 60
+- **codes:** {"code":"BLACKFRIDAY60","off":60,"detail":"60% off every plan except GOAT Access"}
+- **consistencyText:** GOAT Daily 40 eval / EOD 50 eval / Instant 20 funded
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** EOD none eval / 2.5% funded
+- **minDays:** GOAT Daily 3 / EOD 2 / Flex 2
+- **activation:** 0
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** none
+- **news:** no limit in evals; funded +/-2 min
+- **overnight:** no
+- **us:** yes (US not on restricted list)
+- **site:** https://goatfundedfutures.com
+- **sources:** https://goatfundedfutures.com/goat-access; https://help.goatfundedfutures.com/get-started.html; https://goatfundedfutures.com; https://www.trustpilot.com/review/goatfundedfutures.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** none verified for GFF
+- **platforms:** Tradovate; NinjaTrader; Rithmic; Quantower; TradingView; WealthCharts; DeepCharts; ATAS
+- **payMethods:** Not listed
+- **deal:** 60% off every plan except GOAT Access
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Do not mix with Goat Funded Trader (goatfundedtrader.com), the CFD sister brand — different rules, prices and programs. The $39 GOAT Access price also carries a $99 activation fee after passing ($138 total); the cheapest standard plan is the $138 EOD 50K.
+- **summary:** Futures-only firm (CME group) — a different firm from Goat Funded Trader, the CFD brand. Lines include GOAT Daily (24-hour payouts), Flex, EOD Challenge, 1-Day Pass, Instant Classic/Lite and GOAT Access (50K, $39 plus a $99 activation fee after passing).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### GOAT Access — 50000
+
+- **id:** goat-funded-futures-goat-access-50000
+- **program:** GOAT Access
+- **name:** GOAT Access
+- **size:** 50000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Homepage on 27 Nov 2026: default 90/10 split and $0 activation on all plans. The $39 figure is the recorded GOAT Access price.
+- **target:** 6
+- **dailyLoss:** EOD none eval / 2.5% funded
+- **maxDD:** EOD trailing, 4% (25K/50K)
+- **ddType:** EOD
+- **minDays:** GOAT Daily 3 / EOD 2 / Flex 2
+- **split:** 90/10
+- **payout:** twice monthly windows; GOAT Daily 24h
+- **platform:** Tradovate, NinjaTrader, Rithmic, Quantower, TradingView, WealthCharts, DeepCharts, ATAS
+- **source:** https://goatfundedfutures.com/goat-access
+
+
+### 67. Goat Funded Trader
+
+- **slug:** goat-funded-trader
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** 4388
+- **ratingNote:** Rating withheld by Trustpilot (breach of guidelines; fake reviews removed). 4,388 reviews on the profile. Checked 27 Nov 2026.
+- **split:** 80 (100% add-on)
+- **splitMax:** 100
+- **dd:** 10% static (2-Step)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** bi-weekly 14d
+- **from:** 17
+- **fromCur:** USD
+- **fromPlan:** 2-Step GOAT / Instant HERO 5K
+- **monthly:** false
+- **code:** BLACKFRIDAY55
+- **off:** 55
+- **codes:** {"code":"BLACKFRIDAY55","off":55,"detail":"55% off all accounts (Black Friday banner; no end date stated)"}; {"code":"firstGFT","off":50,"detail":"50% off for new customers (homepage)"}
+- **consistencyText:** none eval; Instant GOAT 15%
+- **consNone:** false
+- **target:** 2-Step 10 then 5
+- **dailyDD:** 5% (2-Step Std)
+- **minDays:** 3 profitable days eval
+- **activation:** Pay Later only, $78-$998 after passing
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $2,000,000
+- **news:** permitted
+- **overnight:** permitted
+- **us:** yes (US not on restricted list)
+- **site:** https://www.goatfundedtrader.com
+- **sources:** https://www.goatfundedtrader.com/blog/goat-funded-trader-vs-the-5ers; https://www.goatfundedtrader.com; https://www.trustpilot.com/review/goatfundedtrader.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes
+- **platforms:** MT5; cTrader; MatchTrader; TradeLocker
+- **payMethods:** Rise; Crypto; Skrill; Bank transfer
+- **deal:** 55% off all accounts (Black Friday banner)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Do not mix with GOAT Funded Futures (goatfundedfutures.com), the futures sister brand — different rules, prices and programs.
+- **summary:** Forex/CFD firm (futures are the separate GOAT Funded Futures brand). 1-Step and 2-Step GOAT evaluations plus Instant HERO, GOAT and PREMIUM lines. 80% split from the first funded payout on every route; news, overnight and weekend holding are permitted.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 2-Step GOAT / Instant HERO — 5000
+
+- **id:** goat-funded-trader-2-step-goat-instant-hero-5000
+- **program:** 2-Step GOAT / Instant HERO
+- **name:** 2-Step GOAT / Instant HERO
+- **size:** 5000
+- **price:** 17
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step 10 then 5
+- **dailyLoss:** 5% (2-Step Std)
+- **maxDD:** 10% static (2-Step)
+- **ddType:** Static
+- **minDays:** 3 profitable days eval
+- **split:** 80 (100% add-on)
+- **payout:** bi-weekly 14d
+- **platform:** MT5, cTrader, MatchTrader, TradeLocker
+- **source:** https://www.goatfundedtrader.com/blog/goat-funded-trader-vs-the-5ers
+
+
+### 68. Hash Hedge
+
+- **slug:** hash-hedge
+- **markets:** crypto; perps; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 79
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://hashhedge.com
+- **sources:** https://hashhedge.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 50-80% revenue share
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier A, 18 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Crypto, Perps, Stocks firm. Starts at $79. Affiliate: yes, 50-80% revenue share. US traders: not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** hash-hedge-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 79
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://hashhedge.com
+
+
+### 69. Hola Prime
+
+- **slug:** hola-prime
+- **markets:** forex; futures; crypto
+- **rating:** 4.6
+- **rsrc:** Trustpilot
+- **reviews:** 4422
+- **ratingNote:** Read on trustpilot.com
+- **split:** 80 (95% monthly cycle)
+- **splitMax:** 95
+- **dd:** 6% static (1-Step Prime)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** bi-weekly / monthly / on-demand
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** 1-Step Prime Forex 5K
+- **monthly:** false
+- **code:** BLACK20
+- **off:** 20
+- **codes:** {"code":"BLACK20","off":20,"detail":"20% off every Fly account (official homepage banner)"}
+- **consistencyText:** none Prime/Pro bi-weekly; 40% on-demand; 20% Direct
+- **consNone:** true
+- **target:** 1-Step Prime 10
+- **dailyDD:** 3% (1-Step Prime)
+- **minDays:** 2 (1-Step Prime)
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $4,000,000
+- **news:** allowed Prime/Pro; restricted Fly challenge
+- **overnight:** allowed Prime/Pro; not allowed Fly
+- **us:** not stated
+- **site:** https://holaprime.com
+- **sources:** https://holaprime.com/; https://www.trustpilot.com/review/holaprime.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes (not confirmed on homepage)
+- **platforms:** MT5; cTrader; TradeLocker; Match-Trader; DXtrade
+- **payMethods:** Not listed
+- **deal:** 20% off every Fly account (official homepage banner)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex and futures firm (plus crypto CFDs) on MT5, cTrader, TradeLocker, Match-Trader and DXtrade. Prime and Pro challenges pay 80% bi-weekly or 95% on a monthly cycle; Direct accounts are instant. Futures fees are monthly, not one-time.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Prime Forex — 5000
+
+- **id:** hola-prime-1-step-prime-forex-5000
+- **program:** 1-Step Prime Forex
+- **name:** 1-Step Prime Forex
+- **size:** 5000
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step Prime 10
+- **dailyLoss:** 3% (1-Step Prime)
+- **maxDD:** 6% static (1-Step Prime)
+- **ddType:** Static
+- **minDays:** 2 (1-Step Prime)
+- **split:** 80 (95% monthly cycle)
+- **payout:** bi-weekly / monthly / on-demand
+- **platform:** MT5, cTrader, TradeLocker, Match-Trader, DXtrade
+- **source:** https://holaprime.com/
+
+
+### 70. Hybrid Funding
+
+- **slug:** hybrid-funding
+- **markets:** forex; futures; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90% (80% default; Futures Live Funded 90%; Crypto 90%)%
+- **splitMax:** 90
+- **dd:** Forex 1-Step 6% / 2-Step 8% / 3-Step 5% / Instant 8% / IF Lite 5% trailing; Crypto 1-Step 6% / 2-Step 9%; Futures 5% trailing (EOD); Equities 3%; Predictive 6% trailing
+- **ddTypes:** EOD
+- **payoutDays:** 14
+- **payoutText:** first payout after 14 days in Funded phase, then every 14 days; min withdrawal $100; Futures pays after each phase (25K: $500/$750/$750/$1,500)
+- **from:** 48
+- **fromCur:** USD
+- **fromPlan:** Forex/Equities 1-Step 5K or Forex 3-Step 5K list price (NOV26: 25% off challenges)
+- **monthly:** false
+- **code:** NOV26
+- **off:** Not recorded
+- **codes:** {"code":"NOV26","off":null,"detail":"40% off Instant & Instant Funding Lite; 25% off other eligible plans, Nov 1-30"}
+- **consistencyText:** 25% (funded phase; IF Lite 25%; Futures 25% per phase)
+- **consNone:** false
+- **target:** Forex 1-Step 10 / 2-Step 10 then 5 / 3-Step 5 per phase / Instant none / IF Lite none; Crypto 1-Step 9 / 2-Step 6 then 9; Futures 9 per phase; Equities 10; Predictive 10
+- **dailyDD:** Forex 2-Step 4% / Instant 5% / IF Lite 3% (EOD); 1-Step/3-Step not stated; Crypto 3% daily cap; Futures not stated; Equities 2.5% (on-site worked example); Predictive 3% (EOD)
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** $1M max customer allocation
+- **news:** not stated
+- **overnight:** Forex: close by Fri 3:45pm EST (weekend-hold add-on); Crypto 24/7 incl. weekends; Futures: no weekend holds (close 15:10 CST weekdays); Equities: no overnight/weekend
+- **us:** not stated (OFAC-sanctioned + certain other jurisdictions restricted; full list on Terms page)
+- **site:** https://hybridfunding.co
+- **sources:** https://hybridfunding.co; https://hybridfunding.co/affiliate; https://hybridfunding.co/predictive-markets; https://www.hybridfunding.co/affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 5%-20% commissions (performance tiers)
+- **platforms:** DXtrade / Volumetrica / TickBlaze; MatchTrader / DXtrade / cTrader; PropX
+- **payMethods:** Not listed
+- **deal:** NOV26 (40% off Instant & Instant Funding Lite; 25% off other eligible plans, Nov 1-30)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Missing: daily DD not stated for Forex 1-Step/3-Step and Futures; news trading not stated; US eligibility not stated (only OFAC + 'certain other jurisdictions'); Equities daily DD 2.5% comes from the on-site worked example only; prediction-market path also offered (not in markets subset)
+- **summary:** Forex, Futures, Crypto, Stocks firm. Starts at USD 48 (Forex/Equities 1-Step 5K or Forex 3-Step 5K list price (NOV26: 25% off challenges)). Split up to 90% (80% default; Futures Live Funded 90%; Crypto 90%)%; payout first payout after 14 days in Funded phase, then every 14 days; min withdrawal $100; Futures pays after each phase (25K: $500/$750/$750/$1,500).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 50**
+
+#### Forex 1-Step — 5000
+
+- **id:** hybrid-funding-forex-1-step-5000
+- **program:** Forex 1-Step
+- **name:** Forex 1-Step
+- **size:** 5000
+- **price:** 48
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** not stated
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 1-Step — 10000
+
+- **id:** hybrid-funding-forex-1-step-10000
+- **program:** Forex 1-Step
+- **name:** Forex 1-Step
+- **size:** 10000
+- **price:** 88
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** not stated
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 1-Step — 25000
+
+- **id:** hybrid-funding-forex-1-step-25000
+- **program:** Forex 1-Step
+- **name:** Forex 1-Step
+- **size:** 25000
+- **price:** 228
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** not stated
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 1-Step — 50000
+
+- **id:** hybrid-funding-forex-1-step-50000
+- **program:** Forex 1-Step
+- **name:** Forex 1-Step
+- **size:** 50000
+- **price:** 428
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** not stated
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 1-Step — 100000
+
+- **id:** hybrid-funding-forex-1-step-100000
+- **program:** Forex 1-Step
+- **name:** Forex 1-Step
+- **size:** 100000
+- **price:** 858
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** not stated
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 2-Step — 5000
+
+- **id:** hybrid-funding-forex-2-step-5000
+- **program:** Forex 2-Step
+- **name:** Forex 2-Step
+- **size:** 5000
+- **price:** 68
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 2-Step — 10000
+
+- **id:** hybrid-funding-forex-2-step-10000
+- **program:** Forex 2-Step
+- **name:** Forex 2-Step
+- **size:** 10000
+- **price:** 118
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 2-Step — 25000
+
+- **id:** hybrid-funding-forex-2-step-25000
+- **program:** Forex 2-Step
+- **name:** Forex 2-Step
+- **size:** 25000
+- **price:** 268
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 2-Step — 50000
+
+- **id:** hybrid-funding-forex-2-step-50000
+- **program:** Forex 2-Step
+- **name:** Forex 2-Step
+- **size:** 50000
+- **price:** 508
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 2-Step — 100000
+
+- **id:** hybrid-funding-forex-2-step-100000
+- **program:** Forex 2-Step
+- **name:** Forex 2-Step
+- **size:** 100000
+- **price:** 1028
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 3-Step — 5000
+
+- **id:** hybrid-funding-forex-3-step-5000
+- **program:** Forex 3-Step
+- **name:** Forex 3-Step
+- **size:** 5000
+- **price:** 48
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 3-Step — 10000
+
+- **id:** hybrid-funding-forex-3-step-10000
+- **program:** Forex 3-Step
+- **name:** Forex 3-Step
+- **size:** 10000
+- **price:** 78
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 3-Step — 25000
+
+- **id:** hybrid-funding-forex-3-step-25000
+- **program:** Forex 3-Step
+- **name:** Forex 3-Step
+- **size:** 25000
+- **price:** 188
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 3-Step — 50000
+
+- **id:** hybrid-funding-forex-3-step-50000
+- **program:** Forex 3-Step
+- **name:** Forex 3-Step
+- **size:** 50000
+- **price:** 338
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex 3-Step — 100000
+
+- **id:** hybrid-funding-forex-3-step-100000
+- **program:** Forex 3-Step
+- **name:** Forex 3-Step
+- **size:** 100000
+- **price:** 728
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant — 5000
+
+- **id:** hybrid-funding-forex-instant-5000
+- **program:** Forex Instant
+- **name:** Forex Instant
+- **size:** 5000
+- **price:** 218
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant — 10000
+
+- **id:** hybrid-funding-forex-instant-10000
+- **program:** Forex Instant
+- **name:** Forex Instant
+- **size:** 10000
+- **price:** 428
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant — 25000
+
+- **id:** hybrid-funding-forex-instant-25000
+- **program:** Forex Instant
+- **name:** Forex Instant
+- **size:** 25000
+- **price:** 1198
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant — 50000
+
+- **id:** hybrid-funding-forex-instant-50000
+- **program:** Forex Instant
+- **name:** Forex Instant
+- **size:** 50000
+- **price:** 2588
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant — 100000
+
+- **id:** hybrid-funding-forex-instant-100000
+- **program:** Forex Instant
+- **name:** Forex Instant
+- **size:** 100000
+- **price:** 5198
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5
+- **maxDD:** 8
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant Lite — 5000
+
+- **id:** hybrid-funding-forex-instant-lite-5000
+- **program:** Forex Instant Lite
+- **name:** Forex Instant Lite
+- **size:** 5000
+- **price:** 70
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant Lite — 10000
+
+- **id:** hybrid-funding-forex-instant-lite-10000
+- **program:** Forex Instant Lite
+- **name:** Forex Instant Lite
+- **size:** 10000
+- **price:** 120
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant Lite — 25000
+
+- **id:** hybrid-funding-forex-instant-lite-25000
+- **program:** Forex Instant Lite
+- **name:** Forex Instant Lite
+- **size:** 25000
+- **price:** 225
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant Lite — 50000
+
+- **id:** hybrid-funding-forex-instant-lite-50000
+- **program:** Forex Instant Lite
+- **name:** Forex Instant Lite
+- **size:** 50000
+- **price:** 350
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Forex Instant Lite — 100000
+
+- **id:** hybrid-funding-forex-instant-lite-100000
+- **program:** Forex Instant Lite
+- **name:** Forex Instant Lite
+- **size:** 100000
+- **price:** 650
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3
+- **maxDD:** 5 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first payout on demand, then every 14 days
+- **platform:** MatchTrader / DXtrade / cTrader
+- **source:** https://hybridfunding.co
+
+#### Crypto 1-Step — 5000
+
+- **id:** hybrid-funding-crypto-1-step-5000
+- **program:** Crypto 1-Step
+- **name:** Crypto 1-Step
+- **size:** 5000
+- **price:** 58
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 1-Step — 10000
+
+- **id:** hybrid-funding-crypto-1-step-10000
+- **program:** Crypto 1-Step
+- **name:** Crypto 1-Step
+- **size:** 10000
+- **price:** 98
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 1-Step — 25000
+
+- **id:** hybrid-funding-crypto-1-step-25000
+- **program:** Crypto 1-Step
+- **name:** Crypto 1-Step
+- **size:** 25000
+- **price:** 258
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 1-Step — 50000
+
+- **id:** hybrid-funding-crypto-1-step-50000
+- **program:** Crypto 1-Step
+- **name:** Crypto 1-Step
+- **size:** 50000
+- **price:** 538
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 1-Step — 100000
+
+- **id:** hybrid-funding-crypto-1-step-100000
+- **program:** Crypto 1-Step
+- **name:** Crypto 1-Step
+- **size:** 100000
+- **price:** 1078
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 6
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 2-Step — 5000
+
+- **id:** hybrid-funding-crypto-2-step-5000
+- **program:** Crypto 2-Step
+- **name:** Crypto 2-Step
+- **size:** 5000
+- **price:** 48
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 9
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 2-Step — 10000
+
+- **id:** hybrid-funding-crypto-2-step-10000
+- **program:** Crypto 2-Step
+- **name:** Crypto 2-Step
+- **size:** 10000
+- **price:** 88
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 9
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 2-Step — 25000
+
+- **id:** hybrid-funding-crypto-2-step-25000
+- **program:** Crypto 2-Step
+- **name:** Crypto 2-Step
+- **size:** 25000
+- **price:** 238
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 9
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 2-Step — 50000
+
+- **id:** hybrid-funding-crypto-2-step-50000
+- **program:** Crypto 2-Step
+- **name:** Crypto 2-Step
+- **size:** 50000
+- **price:** 458
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 9
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Crypto 2-Step — 100000
+
+- **id:** hybrid-funding-crypto-2-step-100000
+- **program:** Crypto 2-Step
+- **name:** Crypto 2-Step
+- **size:** 100000
+- **price:** 938
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 9
+- **dailyLoss:** 3 (daily cap)
+- **maxDD:** 9
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Futures 4-Phase — 25000
+
+- **id:** hybrid-funding-futures-4-phase-25000
+- **program:** Futures 4-Phase
+- **name:** Futures 4-Phase
+- **size:** 25000
+- **price:** 298
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5 trailing (EOD)
+- **ddType:** EOD
+- **minDays:** not stated
+- **split:** 90
+- **payout:** after each phase
+- **platform:** DXtrade / Volumetrica / TickBlaze
+- **source:** https://hybridfunding.co
+
+#### Futures 4-Phase — 50000
+
+- **id:** hybrid-funding-futures-4-phase-50000
+- **program:** Futures 4-Phase
+- **name:** Futures 4-Phase
+- **size:** 50000
+- **price:** 598
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5 trailing (EOD)
+- **ddType:** EOD
+- **minDays:** not stated
+- **split:** 90
+- **payout:** after each phase
+- **platform:** DXtrade / Volumetrica / TickBlaze
+- **source:** https://hybridfunding.co
+
+#### Futures 4-Phase — 100000
+
+- **id:** hybrid-funding-futures-4-phase-100000
+- **program:** Futures 4-Phase
+- **name:** Futures 4-Phase
+- **size:** 100000
+- **price:** 1098
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5 trailing (EOD)
+- **ddType:** EOD
+- **minDays:** not stated
+- **split:** 90
+- **payout:** after each phase
+- **platform:** DXtrade / Volumetrica / TickBlaze
+- **source:** https://hybridfunding.co
+
+#### Futures 4-Phase — 150000
+
+- **id:** hybrid-funding-futures-4-phase-150000
+- **program:** Futures 4-Phase
+- **name:** Futures 4-Phase
+- **size:** 150000
+- **price:** 1758
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9 per phase
+- **dailyLoss:** not stated
+- **maxDD:** 5 trailing (EOD)
+- **ddType:** EOD
+- **minDays:** not stated
+- **split:** 90
+- **payout:** after each phase
+- **platform:** DXtrade / Volumetrica / TickBlaze
+- **source:** https://hybridfunding.co
+
+#### Equities 1-Step — 5000
+
+- **id:** hybrid-funding-equities-1-step-5000
+- **program:** Equities 1-Step
+- **name:** Equities 1-Step
+- **size:** 5000
+- **price:** 48
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 2.5
+- **maxDD:** 3
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** PropX
+- **source:** https://hybridfunding.co
+
+#### Equities 1-Step — 10000
+
+- **id:** hybrid-funding-equities-1-step-10000
+- **program:** Equities 1-Step
+- **name:** Equities 1-Step
+- **size:** 10000
+- **price:** 88
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 2.5
+- **maxDD:** 3
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** PropX
+- **source:** https://hybridfunding.co
+
+#### Equities 1-Step — 25000
+
+- **id:** hybrid-funding-equities-1-step-25000
+- **program:** Equities 1-Step
+- **name:** Equities 1-Step
+- **size:** 25000
+- **price:** 228
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 2.5
+- **maxDD:** 3
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** PropX
+- **source:** https://hybridfunding.co
+
+#### Equities 1-Step — 50000
+
+- **id:** hybrid-funding-equities-1-step-50000
+- **program:** Equities 1-Step
+- **name:** Equities 1-Step
+- **size:** 50000
+- **price:** 428
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 2.5
+- **maxDD:** 3
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** PropX
+- **source:** https://hybridfunding.co
+
+#### Equities 1-Step — 100000
+
+- **id:** hybrid-funding-equities-1-step-100000
+- **program:** Equities 1-Step
+- **name:** Equities 1-Step
+- **size:** 100000
+- **price:** 858
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 2.5
+- **maxDD:** 3
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** PropX
+- **source:** https://hybridfunding.co
+
+#### Equities 1-Step — 200000
+
+- **id:** hybrid-funding-equities-1-step-200000
+- **program:** Equities 1-Step
+- **name:** Equities 1-Step
+- **size:** 200000
+- **price:** 1828
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 2.5
+- **maxDD:** 3
+- **ddType:** Not recorded
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 80
+- **payout:** first after 14 days, then every 14 days
+- **platform:** PropX
+- **source:** https://hybridfunding.co
+
+#### Predictive — 5000
+
+- **id:** hybrid-funding-predictive-5000
+- **program:** Predictive
+- **name:** Predictive
+- **size:** 5000
+- **price:** 98
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Predictive — 10000
+
+- **id:** hybrid-funding-predictive-10000
+- **program:** Predictive
+- **name:** Predictive
+- **size:** 10000
+- **price:** 188
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Predictive — 25000
+
+- **id:** hybrid-funding-predictive-25000
+- **program:** Predictive
+- **name:** Predictive
+- **size:** 25000
+- **price:** 528
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Predictive — 50000
+
+- **id:** hybrid-funding-predictive-50000
+- **program:** Predictive
+- **name:** Predictive
+- **size:** 50000
+- **price:** 988
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+#### Predictive — 100000
+
+- **id:** hybrid-funding-predictive-100000
+- **program:** Predictive
+- **name:** Predictive
+- **size:** 100000
+- **price:** 1888
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3
+- **maxDD:** 6 trailing
+- **ddType:** Trailing
+- **minDays:** none (3 days at 0.5%+ profit to advance / be payout-eligible)
+- **split:** 90
+- **payout:** first after 14 days, then every 14 days
+- **platform:** not stated
+- **source:** https://hybridfunding.co
+
+
+### 71. HyroTrader
+
+- **slug:** hyrotrader
+- **markets:** crypto
+- **rating:** 4
+- **rsrc:** Trustpilot
+- **reviews:** 251
+- **ratingNote:** Read on trustpilot.com
+- **split:** 80 (90% as you scale)
+- **splitMax:** 90
+- **dd:** 5% static (Core)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand
+- **from:** 9
+- **fromCur:** USD
+- **fromPlan:** Hyro Core 2.5K
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 40% of target (Core/One/Two-Step); none Instant
+- **consNone:** false
+- **target:** Core 10 / One-Step 10 / Two-Step 10 then 5
+- **dailyDD:** 3% (Core)
+- **minDays:** Core 4 / One-Step 3
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** split to 90%; scale to $1M claimed
+- **news:** allowed, except news-only strategies
+- **overnight:** yes (crypto 24/7)
+- **us:** not stated
+- **site:** https://www.hyrotrader.com
+- **sources:** https://www.hyrotrader.com/; https://www.hyrotrader.com/affiliates/; https://www.trustpilot.com/review/hyrotrader.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 40%
+- **platforms:** Hyro terminal; Bybit / BloFin via API
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** One figure conflicts between sources: the per-payout cap is 5% of starting balance per the firm, 4% per one tracker. Unresolved.
+- **summary:** Crypto-only firm: 700+ USDT perpetual pairs. Core, One-Step, Two-Step and Instant lines from a $9 Core 2.5K account. One-Step and Two-Step fees are refundable deposits returned with the first payout; Core and Instant fees are not.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Hyro Core — 2500
+
+- **id:** hyrotrader-hyro-core-2500
+- **program:** Hyro Core
+- **name:** Hyro Core
+- **size:** 2500
+- **price:** 9
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Core 10 / One-Step 10 / Two-Step 10 then 5
+- **dailyLoss:** 3% (Core)
+- **maxDD:** 5% static (Core)
+- **ddType:** Static
+- **minDays:** Core 4 / One-Step 3
+- **split:** 80 (90% as you scale)
+- **payout:** on demand
+- **platform:** Hyro terminal, Bybit / BloFin via API
+- **source:** https://www.hyrotrader.com/
+
+
+### 72. IC Funded
+
+- **slug:** ic-funded
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 std, up to 90% with add-ons%
+- **splitMax:** 90
+- **dd:** 10% static (2-Step); 6% static (1-Step); 5% trailing EOD equity (Instant)
+- **ddTypes:** EOD
+- **payoutDays:** 14
+- **payoutText:** bi-weekly (14d cycles); challenge fee refunded after 3rd payout
+- **from:** 74
+- **fromCur:** USD
+- **fromPlan:** 2-Step Professional 5K, one-time
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** not stated on official pricing/FAQ pages
+- **consNone:** false
+- **target:** 2-Step 10 then 5 / 1-Step 10 / Instant none
+- **dailyDD:** 5% (2-Step); 3% (1-Step / Instant)
+- **minDays:** 3 active days per phase (2-Step / 1-Step); 5 profitable days before first payout
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $500,000 total allocation per trader
+- **news:** allowed (2-Step / 1-Step); restricted ±3 min (Instant)
+- **overnight:** no (weekend holding not allowed on any programme)
+- **us:** not stated (FAQ cites restricted jurisdictions without naming them)
+- **site:** https://icfunded.com
+- **sources:** https://icfunded.com; https://icfunded.com/pricing; https://icfunded.com/faqs; https://icfunded.com/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 15% (Bronze 10 / Silver 12.5 / Gold 14 / Platinum 15) + 2% recurring
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 74 (2-Step Professional 5K, one-time). Split 80 std, up to 90% with add-ons%; payout bi-weekly (14d cycles); challenge fee refunded after 3rd payout.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 2-Step Professional 5K, one-time — Not recorded
+
+- **id:** ic-funded-entry
+- **program:** 2-Step Professional 5K, one-time
+- **name:** 2-Step Professional 5K, one-time
+- **size:** Not recorded
+- **price:** 74
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 2-Step 10 then 5 / 1-Step 10 / Instant none
+- **dailyLoss:** 5% (2-Step); 3% (1-Step / Instant)
+- **maxDD:** 10% static (2-Step); 6% static (1-Step); 5% trailing EOD equity (Instant)
+- **ddType:** EOD
+- **minDays:** 3 active days per phase (2-Step / 1-Step); 5 profitable days before first payout
+- **split:** 80 std, up to 90% with add-ons%
+- **payout:** bi-weekly (14d cycles); challenge fee refunded after 3rd payout
+- **platform:** Not stated
+- **source:** https://icfunded.com
+
+
+### 73. iFunds
+
+- **slug:** ifunds
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 50% at 10% max DD, up to 80% (adjustable split vs max DD)%
+- **splitMax:** 80
+- **dd:** 10% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand, 24h (or 10% extra up to $1,000), min $50
+- **from:** 250
+- **fromCur:** USD
+- **fromPlan:** Instant Intern 2.5K
+- **monthly:** false
+- **code:** none seen
+- **off:** Not recorded
+- **codes:** {"code":"none seen","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** none (instant funding, no target)
+- **dailyDD:** none (no daily DD by design)
+- **minDays:** none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $500K via profits (pay price difference at discounted rate)
+- **news:** allowed
+- **overnight:** weekend holding allowed
+- **us:** no (USA, Iran, North Korea, Israel, Myanmar, South Sudan, Sudan)
+- **site:** https://ifunds.io
+- **sources:** https://ifunds.io; https://ifunds.io/affiliates/; https://ifunds.io/promotions/; https://ifunds.io/affiliate/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (% not published on affiliate page)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none seen
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Missing: platform not stated; affiliate commission % not published on affiliate page
+- **summary:** Forex, Crypto, Stocks firm. Starts at USD 250 (Instant Intern 2.5K). Split 50% at 10% max DD, up to 80% (adjustable split vs max DD)%; payout on demand, 24h (or 10% extra up to $1,000), min $50.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 3**
+
+#### Instant — 2500
+
+- **id:** ifunds-instant-2500
+- **program:** Instant
+- **name:** Instant
+- **size:** 2500
+- **price:** 250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 50-80
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://ifunds.io
+
+#### Instant — 5000
+
+- **id:** ifunds-instant-5000
+- **program:** Instant
+- **name:** Instant
+- **size:** 5000
+- **price:** 400
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 50-80
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://ifunds.io
+
+#### Instant — 10000
+
+- **id:** ifunds-instant-10000
+- **program:** Instant
+- **name:** Instant
+- **size:** 10000
+- **price:** 700
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** none
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 50-80
+- **payout:** on demand
+- **platform:** not stated
+- **source:** https://ifunds.io
+
+
+### 74. Instant Funding
+
+- **slug:** instant-funding
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot withholds this firm's score (rating unavailable due to a breach of Trustpilot's guidelines; 'Warning' label) — checked Nov 26, 2026
+- **split:** 80 (90% add-on)
+- **splitMax:** 90
+- **dd:** 10% Smart Drawdown (PRO)
+- **ddTypes:** Static
+- **payoutDays:** 7
+- **payoutText:** PRO first 14d, then every 7d
+- **from:** 44
+- **fromCur:** USD
+- **fromPlan:** PRO 625
+- **monthly:** false
+- **code:** IF30
+- **off:** 30
+- **codes:** {"code":"IF30","off":30,"detail":"30% off Pro & Lite (official site banner)"}
+- **consistencyText:** none PRO; 25% IF Evolve
+- **consNone:** true
+- **target:** PRO none
+- **dailyDD:** PRO none
+- **minDays:** PRO none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** PRO doubles per 10% profit to $1,280,000
+- **news:** PRO not allowed unless add-on
+- **overnight:** overnight yes; weekend PRO add-on only
+- **us:** not stated
+- **site:** https://instantfunding.com
+- **sources:** https://instantfunding.com/; https://www.trustpilot.com/review/instantfunding.com
+- **verif:** partial (prices via re-checks, not widget read)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 17.5% (not confirmed on homepage)
+- **platforms:** MT5; cTrader; Match-Trader
+- **payMethods:** Not listed
+- **deal:** 30% off Pro & Lite (official site banner)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm whose flagship PRO line is instant funding with a 10% 'Smart Drawdown' that locks at 5% once you are 5% in profit. First payout 14 days after the first trade, then every 7 days. Also runs IF Micro, One-Phase, Two-Phase and IF Starter lines.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 75. IQ Capital
+
+- **slug:** iq-capital
+- **markets:** futures; forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90 (Core/Instant); 80 (Rapid)%
+- **splitMax:** Not recorded
+- **dd:** EOD trailing, $3,000 (50K Core) / $5,000 (100K Core, post-Oct 2026; $6,000 on 100K pre-Oct 22, 2026)
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** Core every 10 active days; Rapid 1D daily / 3D every 3 days; Flex every 5 days; within 48h, 3h avg; no minimum
+- **from:** 9
+- **fromCur:** USD
+- **fromPlan:** from $9 lowest entry (official futures page; plan/size behind configurator)
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none in Core challenge; 30% funded (Core/Instant); 40% Rapid 3D
+- **consNone:** true
+- **target:** 6 (futures)
+- **dailyDD:** Core none (1% max position loss instead); Rapid 1D $1,000 (50K) / $1,500 (100K)
+- **minDays:** none to pass (Core); 10 active days before first Core payout
+- **activation:** applies after passing Core (amount not stated in help centre)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to 10 accounts; up to $1,000,000 claimed on futures page (homepage says $200,000 — conflict); IQ Elite top 5% trade real capital
+- **news:** allowed
+- **overnight:** futures no (auto-close 4:45 PM ET); CFD/crypto yes
+- **us:** not stated
+- **site:** https://iqcapital.io
+- **sources:** https://iqcapital.io; https://iqcapital.io/futures; https://support.iqcapital.io/en/articles/14964304-core-futures-challenge; https://support.iqcapital.io/en/articles/16987970-performance-rewards-rapid-futures; https://support.iqcapital.io/en/articles/15001521-prohibited-trading-practices; https://support.iqcapital.io/en/articles/15001540-allowed-trading-practices; https://www.iqcapital.io/become-a-partner
+- **verif:** partial (list prices behind on-site configurator, not readable in text fetch; rules verified via official help centre)
+- **verifLabel:** Partially verified
+- **affiliate:** yes (partner programme; commission % not stated on partner page)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (list prices behind on-site configurator, not readable in text fetch; rules verified via official help centre).
+- **summary:** Futures, Forex, Crypto firm. Starts at USD 9 (from $9 lowest entry (official futures page; plan/size behind configurator)). Split 90 (Core/Instant); 80 (Rapid)%; payout Core every 10 active days; Rapid 1D daily / 3D every 3 days; Flex every 5 days; within 48h, 3h avg; no minimum.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### from $9 lowest entry (official futures page; plan/size behind configurator) — Not recorded
+
+- **id:** iq-capital-entry
+- **program:** from $9 lowest entry (official futures page; plan/size behind configurator)
+- **name:** from $9 lowest entry (official futures page; plan/size behind configurator)
+- **size:** Not recorded
+- **price:** 9
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 6 (futures)
+- **dailyLoss:** Core none (1% max position loss instead); Rapid 1D $1,000 (50K) / $1,500 (100K)
+- **maxDD:** EOD trailing, $3,000 (50K Core) / $5,000 (100K Core, post-Oct 2026; $6,000 on 100K pre-Oct 22, 2026)
+- **ddType:** EOD
+- **minDays:** none to pass (Core); 10 active days before first Core payout
+- **split:** 90 (Core/Instant); 80 (Rapid)%
+- **payout:** Core every 10 active days; Rapid 1D daily / 3D every 3 days; Flex every 5 days; within 48h, 3h avg; no minimum
+- **platform:** Not stated
+- **source:** https://iqcapital.io
+
+
+### 76. Kraken Prop
+
+- **slug:** kraken-prop
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** No Prop-specific Trustpilot score exists. The 3.1/5 (~9,663 reviews) figure is for the Kraken exchange generally, not Kraken Prop
+- **split:** 80 (90% upgrade)
+- **splitMax:** 90
+- **dd:** 3% static (Advanced)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand
+- **from:** 20
+- **fromCur:** USD
+- **fromPlan:** Advanced 5K
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none
+- **consNone:** true
+- **target:** Advanced 9 / Starter 10 / Intermediate 12
+- **dailyDD:** 3% all plans
+- **minDays:** not stated
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** yes
+- **us:** not excluded (India/Canada excluded)
+- **site:** https://www.kraken.com/gb/pro/prop
+- **sources:** https://support.kraken.com/articles/what-is-kraken-prop; https://www.kraken.com/gb/pro/prop; https://www.trustpilot.com/review/kraken.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not stated for Prop
+- **platforms:** Kraken Pro
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Kraken describes Prop as an unregulated service run by Payward Oceanic Ltd. The Trustpilot figure for kraken.com covers the exchange generally; there is no Prop-specific score.
+- **summary:** Kraken's prop service: crypto plus Nasdaq 100, S&P 500, metals and oil perpetuals on Kraken Pro. Starter, Intermediate and Advanced evaluations at 80% (90% upgrade), payouts on demand to a Kraken wallet. Kraken itself describes the service as unregulated, run by Payward Oceanic Ltd.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Advanced — 5000
+
+- **id:** kraken-prop-advanced-5000
+- **program:** Advanced
+- **name:** Advanced
+- **size:** 5000
+- **price:** 20
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Advanced 9 / Starter 10 / Intermediate 12
+- **dailyLoss:** 3% all plans
+- **maxDD:** 3% static (Advanced)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** 80 (90% upgrade)
+- **payout:** on demand
+- **platform:** Kraken Pro
+- **source:** https://support.kraken.com/articles/what-is-kraken-prop
+
+
+### 77. Lark Funding
+
+- **slug:** lark-funding
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 (Instant 90)%
+- **splitMax:** Not recorded
+- **dd:** 7% static (1-Step); 12% static (1-Step Max); 5% static (3-Step)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** bi-weekly (14d)
+- **from:** 99
+- **fromCur:** USD
+- **fromPlan:** 1-Step Max 10K, one-time
+- **monthly:** false
+- **code:** none verified (DOUBLELARK ended Nov 21; Black Friday buy-1-get-3 bundle live, no code)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (DOUBLELARK ended Nov 21; Black Friday buy-1-get-3 bundle live, no code)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** 1-Step 10 / 1-Step Max 12 / 3-Step 5 then 4 then 3
+- **dailyDD:** 5% (1-Step/1-Step Max); none (3-Step)
+- **minDays:** 0
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** Lark Base monthly base reward up to $1,000/mo claimed; no account-size scaling stated
+- **news:** allowed (no news restrictions)
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://larkfunding.com
+- **sources:** https://larkfunding.com/; https://larkfunding.com/1stepmax; https://larkfunding.com/black-friday; https://helpdesk.larkfunding.com/en/articles/17319722-1-step-max-evaluation-details; https://helpdesk.larkfunding.com/en/articles/12853883-1-step-career-evaluation-details; https://helpdesk.larkfunding.com/en/articles/10336809-instant-master-account-details
+- **verif:** partial (3-Step 10K price and Instant prices not captured; US eligibility not stated)
+- **verifLabel:** Partially verified
+- **affiliate:** yes (rate not stated)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (DOUBLELARK ended Nov 21; Black Friday buy-1-get-3 bundle live, no code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (3-Step 10K price and Instant prices not captured; US eligibility not stated).
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 99 (1-Step Max 10K, one-time). Split 80 (Instant 90)%; payout bi-weekly (14d).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step Max 10K, one-time — Not recorded
+
+- **id:** lark-funding-entry
+- **program:** 1-Step Max 10K, one-time
+- **name:** 1-Step Max 10K, one-time
+- **size:** Not recorded
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 1-Step 10 / 1-Step Max 12 / 3-Step 5 then 4 then 3
+- **dailyLoss:** 5% (1-Step/1-Step Max); none (3-Step)
+- **maxDD:** 7% static (1-Step); 12% static (1-Step Max); 5% static (3-Step)
+- **ddType:** Static
+- **minDays:** 0
+- **split:** 80 (Instant 90)%
+- **payout:** bi-weekly (14d)
+- **platform:** Not stated
+- **source:** https://larkfunding.com
+
+
+### 78. Leeloo Trading
+
+- **slug:** leeloo-trading
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://leelootrading.com
+- **sources:** https://leelootrading.com; https://members.leelootrading.com/amember/aff/signup
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified on official site
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: official site in redesign — coming-soon homepage only; no programs, prices, targets, drawdowns, payout terms or affiliate terms readable on the current official site
+- **summary:** Futures firm. Starts at USD None (Entry plan (name not recorded)). Split not stated; payout not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 79. Level2Markets
+
+- **slug:** level2markets
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** not stated - pricing not readable on official site
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://level2markets.com
+- **sources:** https://level2markets.com; https://level2markets.com/prop-firm-usa/trader-affiliate-program/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not stated
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** not stated
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: all pricing, rules, affiliate and eligibility - official site is a JS SPA behind a Cloudflare check; only the homepage hero rendered (Rithmic futures; 4-step path: Start Challenge / Prove Yourself / Sim Funded / Go Live); /pricing and /faq return 404
+- **summary:** Futures firm. Starts at USD None (not stated - pricing not readable on official site). Split not stated; payout not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 80. LifeUp Trading
+
+- **slug:** lifeup-trading
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated — no split published; rewards capped per request by cycle
+- **splitMax:** Not recorded
+- **dd:** EOD trailing (amounts not stated in official text)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** reward request decided within 2 business days
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** none verified (community discount codes mentioned)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (community discount codes mentioned)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none in challenge; 40% on reward account
+- **consNone:** true
+- **target:** not stated in official text
+- **dailyDD:** Basic has daily loss limit (pauses account, resumes next session); Expert none
+- **minDays:** challenge 1; reward account 7 profitable days
+- **activation:** Basic only (amount not stated in official text); Expert none
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (max 5 reward accounts at once)
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US not on restricted list)
+- **site:** https://lifeuptrading.com
+- **sources:** https://lifeuptrading.com; https://guide.lifeuptrading.com; https://guide.lifeuptrading.com/ko/articles/quick-start-8435c85d; https://guide.lifeuptrading.com/ko/articles/restricted-countries-825064e9
+- **verif:** partial (prices, target % and drawdown amounts are image-based on official site/guide and not readable in text fetch)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 10-14% by volume (15% fixed main-partner track)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (community discount codes mentioned)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (prices, target % and drawdown amounts are image-based on official site/guide and not readable in text fetch).
+- **summary:** Futures firm. Starts at USD None (Entry plan (name not recorded)). Split not stated — no split published; rewards capped per request by cycle; payout reward request decided within 2 business days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 81. Lux Trading Firm
+
+- **slug:** lux-trading-firm
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** 6% static (1-Step and Instant)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand (instant withdrawals; Instant pays a one-time payment on reaching the 12% target)
+- **from:** 199
+- **fromCur:** GBP
+- **fromPlan:** 1-Step Evaluation 100K, one-time (100% refund on passing)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** Risk Consistency rule (no % stated)
+- **consNone:** false
+- **target:** 1-Step 10/12/15 by size; Instant 12
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** none stated (1-Step fee 100% refunded on passing evaluation)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $10,000,000 (1-Step; Instant accounts do not scale)
+- **news:** allowed except news bracketing; no stop-loss changes within 30 seconds before/after a news event
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://luxtradingfirm.com
+- **sources:** https://luxtradingfirm.com; https://luxtradingfirm.com/1-step-evaluation/; https://luxtradingfirm.com/instant-funding/; https://luxtradingfirm.com/rules/; https://luxtradingfirm.com/term-of-affiliate/; https://luxtradingfirm.com/affiliate
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 12.5% of first-time fees paid by referrals
+- **platforms:** MatchTrader (any platform via copy)
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: daily drawdown, min trading days, Instant max-loss $ amount and Prediction Markets rules not stated on official pages read; US eligibility not stated
+- **summary:** Forex firm. Starts at GBP 199 (1-Step Evaluation 100K, one-time (100% refund on passing)). Split 80%; payout on demand (instant withdrawals; Instant pays a one-time payment on reaching the 12% target).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 8**
+
+#### 1-Step Evaluation — 100000
+
+- **id:** lux-trading-firm-1-step-evaluation-100000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 100000
+- **price:** 199
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10% ($10,000)
+- **dailyLoss:** not stated
+- **maxDD:** 6% static ($6,000)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MatchTrader (any platform via copy)
+- **source:** https://luxtradingfirm.com/1-step-evaluation/
+
+#### 1-Step Evaluation — 400000
+
+- **id:** lux-trading-firm-1-step-evaluation-400000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 400000
+- **price:** 449
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12% ($48,000)
+- **dailyLoss:** not stated
+- **maxDD:** 6% static ($24,000)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MatchTrader (any platform via copy)
+- **source:** https://luxtradingfirm.com/1-step-evaluation/
+
+#### 1-Step Evaluation — 1000000
+
+- **id:** lux-trading-firm-1-step-evaluation-1000000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 1000000
+- **price:** 699
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 15% ($150,000)
+- **dailyLoss:** not stated
+- **maxDD:** 6% static ($60,000)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** on demand
+- **platform:** MatchTrader (any platform via copy)
+- **source:** https://luxtradingfirm.com/1-step-evaluation/
+
+#### Instant Funding — 100000
+
+- **id:** lux-trading-firm-instant-funding-100000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 100000
+- **price:** 299
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12% (one-time payment $9,600)
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** one-time payment on reaching 12% target
+- **platform:** MatchTrader (any platform via copy)
+- **source:** https://luxtradingfirm.com/instant-funding/
+
+#### Instant Funding — 400000
+
+- **id:** lux-trading-firm-instant-funding-400000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 400000
+- **price:** 499
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12% (one-time payment $38,400)
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** one-time payment on reaching 12% target
+- **platform:** MatchTrader (any platform via copy)
+- **source:** https://luxtradingfirm.com/instant-funding/
+
+#### Prediction Markets — 10000
+
+- **id:** lux-trading-firm-prediction-markets-10000
+- **program:** Prediction Markets
+- **name:** Prediction Markets
+- **size:** 10000
+- **price:** 85
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** not stated
+- **source:** https://luxtradingfirm.com
+
+#### Prediction Markets — 20000
+
+- **id:** lux-trading-firm-prediction-markets-20000
+- **program:** Prediction Markets
+- **name:** Prediction Markets
+- **size:** 20000
+- **price:** 170
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** not stated
+- **source:** https://luxtradingfirm.com
+
+#### Prediction Markets — 50000
+
+- **id:** lux-trading-firm-prediction-markets-50000
+- **program:** Prediction Markets
+- **name:** Prediction Markets
+- **size:** 50000
+- **price:** 350
+- **currency:** GBP
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** not stated
+- **source:** https://luxtradingfirm.com
+
+
+### 82. Maven Trading
+
+- **slug:** maven-trading
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** 5240
+- **ratingNote:** Rating withheld by Trustpilot (breach of guidelines; fake reviews removed). 5,240 reviews on the profile. Checked 27 Nov 2026.
+- **split:** 80 Standard (70% some plans)
+- **splitMax:** 80
+- **dd:** 5% (1-Step)
+- **ddTypes:** Static
+- **payoutDays:** Not recorded
+- **payoutText:** every 10 business days (Standard)
+- **from:** 13
+- **fromCur:** USD
+- **fromPlan:** Standard 3-Step 2K list
+- **monthly:** false
+- **code:** OMO
+- **off:** Not recorded
+- **codes:** {"code":"OMO","off":null,"detail":"40% off Omo challenges, or $10 off the $2K Omo account / $17 off the $5K Omo account (homepage banner and pricing page)"}; {"code":"DIAMOND","off":5,"detail":"5% off Standard, Instant, Static, Minis and 1-Step (checkout links on the homepage)"}
+- **consistencyText:** none Standard; yes Instant (% not stated)
+- **consNone:** false
+- **target:** 1-Step 8 / 2-Step 8 then 5 / 3-Step 3x3
+- **dailyDD:** 3% (1-Step)
+- **minDays:** not stated
+- **activation:** Buy Now Pay Later only ($5 now, $40-$69 after passing)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** restricted +/-2 min Red Folder (Standard)
+- **overnight:** yes
+- **us:** not stated
+- **site:** https://maventrading.com
+- **sources:** https://maventrading.com/pricing; https://maventrading.com/faqs; https://maventrading.com; https://www.trustpilot.com/review/maventrading.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not stated
+- **platforms:** MT5; Match-Trader
+- **payMethods:** Not listed
+- **deal:** 40% off Omo challenges (OMO); 5% off other plans (DIAMOND)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm (plus prediction markets; no futures or options). Standard 1-Step, 2-Step and 3-Step challenges from a $13 2K account, plus Instant and Instant Mini. Funded payouts run every 10 business days on Standard plans.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Standard 3-Step — 2000
+
+- **id:** maven-trading-standard-3-step-2000
+- **program:** Standard 3-Step
+- **name:** Standard 3-Step
+- **size:** 2000
+- **price:** 13
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step 8 / 2-Step 8 then 5 / 3-Step 3x3
+- **dailyLoss:** 3% (1-Step)
+- **maxDD:** 5% (1-Step)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** 80 Standard (70% some plans)
+- **payout:** every 10 business days (Standard)
+- **platform:** MT5, Match-Trader
+- **source:** https://maventrading.com/pricing
+
+
+### 83. Ment Funding
+
+- **slug:** ment-funding
+- **markets:** forex; futures; stocks
+- **rating:** 4.6
+- **rsrc:** Trustpilot
+- **reviews:** 238
+- **ratingNote:** Trustpilot 4.6/5, 238 reviews. Checked 27 Nov 2026.
+- **split:** 75 (90% add-on)
+- **splitMax:** 90
+- **dd:** 6% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** first withdrawal day 1, then every 30d
+- **from:** 220
+- **fromCur:** USD
+- **fromPlan:** Equities 5K (Forex 25K $325 list)
+- **monthly:** false
+- **code:** EXCITEMENT
+- **off:** 40
+- **codes:** {"code":"EXCITEMENT","off":40,"detail":"40% off all evaluations, and all add-ons free — ends Nov 30, 2026"}
+- **consistencyText:** none under $1M; 35% funded over $1M
+- **consNone:** true
+- **target:** 10
+- **dailyDD:** 5%
+- **minDays:** none
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** doubling to $5M cap
+- **news:** allowed, no open within 3 min of news
+- **overnight:** close by 3:45 PM EST Fri; weekend add-on
+- **us:** yes
+- **site:** https://mentfunding.com
+- **sources:** https://mentfunding.com; https://www.trustpilot.com/review/mentfunding.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** cTrader; DXtrade; Match-Trader; Rithmic; ATAS
+- **payMethods:** Not listed
+- **deal:** EXCITEMENT — 40% off all evaluations, and all add-ons free. Ends Nov 30, 2026.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** One research read reports a 33% consistency rule on the futures program, which conflicts with the homepage's 'no consistency' position for accounts under $1M. Unresolved on the firm's own pages.
+- **summary:** US firm running a single 1-step evaluation across forex/CFD, CME futures and S&P 100 equities, up to $2M. 10% target, 6% static drawdown, 75% split (90% add-on), first withdrawal from day 1, then every 30 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 2**
+
+#### Equities — 5000
+
+- **id:** ment-funding-equities-5000
+- **program:** Equities
+- **name:** Equities
+- **size:** 5000
+- **price:** 220
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 10
+- **dailyLoss:** 5%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 75 (90% add-on)
+- **payout:** first withdrawal day 1, then every 30d
+- **platform:** cTrader, DXtrade, Match-Trader, Rithmic, ATAS
+- **source:** https://mentfunding.com
+
+#### Forex — 25000
+
+- **id:** ment-funding-forex-25000
+- **program:** Forex
+- **name:** Forex
+- **size:** 25000
+- **price:** 325
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Named in the recorded starting-offer line. Not a full catalog.
+- **target:** 10
+- **dailyLoss:** 5%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 75 (90% add-on)
+- **payout:** first withdrawal day 1, then every 30d
+- **platform:** cTrader, DXtrade, Match-Trader, Rithmic, ATAS
+- **source:** https://mentfunding.com
+
+
+### 84. Moneta Funded
+
+- **slug:** moneta-funded
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 88% (Instant 60% option; Sprint 100%)%
+- **splitMax:** 88
+- **dd:** Instant 5% trailing lock / Instant Pro 8% trailing lock / Phoenix Instant 6% static / 1-Step Daily 2% static / 1-Step 6% static / 2-Step 8% or 10% static
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** Instant 14 days / Instant Pro on demand then every 14 days / Phoenix Instant every 14 days / 1-Step Daily daily / 1-Step and 2-Step 14 days / Sprint 100% split on payout
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** FRIDAYDROP
+- **off:** Not recorded
+- **codes:** {"code":"FRIDAYDROP","off":null,"detail":"55% off"}
+- **consistencyText:** Instant Funding 15% or 20%; Instant Funding Pro not stated; Phoenix Instant none; 1-Step/2-Step 3 profitable days (0.5%+ each)
+- **consNone:** true
+- **target:** 2-Step 5 then 10 / 1-Step 10 / 1-Step Daily 3 / Instant none / Phoenix Instant 10% scale-up threshold / Sprint 0.3-3% by time/multiplier
+- **dailyDD:** Instant 3% / Instant Pro 4% / Phoenix Instant 3% / 1-Step Daily 1% / 1-Step 3% / 2-Step 4% or 5%
+- **minDays:** 3 profitable days (0.5%+) on 1-Step, 2-Step, Phoenix Instant; 1-Step Daily none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $2,000,000 (Phoenix Instant scales at each 10%)
+- **news:** allowed on Instant Funding Pro and Phoenix Instant; not allowed on Sprint (news, gap, market open/close trading); other programs not stated
+- **overnight:** allowed (hold overnight/over-weekend on all programs)
+- **us:** yes (MatchTrader; MT5 unavailable for USA and Canada)
+- **site:** https://monetafunded.com
+- **sources:** https://monetafunded.com; https://help.monetafunded.com/en/articles/13117507-affiliate-program-at-moneta-funded; https://www.monetafunded.com/affiliate/; https://monetafunded.com/affiliates
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15-22% first order, 6-11% lifetime (tiered by referrals)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FRIDAYDROP (55% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS challenge builder (rules readable, prices not) — prices behind JS configurator, from=null
+- **summary:** Forex firm. Starts at USD None (Entry plan (name not recorded)). Split 88% (Instant 60% option; Sprint 100%)%; payout Instant 14 days / Instant Pro on demand then every 14 days / Phoenix Instant every 14 days / 1-Step Daily daily / 1-Step and 2-Step 14 days / Sprint 100% split on payout.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 85. Monevis
+
+- **slug:** monevis
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 75% starting, up to 90%; 1-Step 85%
+- **splitMax:** 90
+- **dd:** 1-Step 6% overall (other programs not stated on readable official pages)
+- **ddTypes:** Not recorded
+- **payoutDays:** 7
+- **payoutText:** weekly (1-Step, per official blog)
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** 1STEP10
+- **off:** Not recorded
+- **codes:** {"code":"1STEP10","off":null,"detail":"10% off 1-Step Challenge, official blog"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 1-Step 10 (other programs not stated on readable official pages)
+- **dailyDD:** 1-Step 3% (other programs not stated on readable official pages)
+- **minDays:** 1-Step 2 profitable days
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://monevis.com
+- **sources:** https://monevis.com/; https://blog.monevis.com/%f0%9f%9a%80-monevis-launches-the-1-step-challenge-the-fastest-way-to-get-funded-in-2025/; https://blog.monevis.com/monevis-brokers-new-mt5-prop-trading-firm-with-own-mq-license/
+- **verif:** partial (official homepage is JS-only — only a legal disclaimer renders in text fetch; rules verified from official blog only; no prices verifiable on official site)
+- **verifLabel:** Partially verified
+- **affiliate:** not verified on official site
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** 1STEP10 (10% off 1-Step Challenge, official blog)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (official homepage is JS-only — only a legal disclaimer renders in text fetch; rules verified from official blog only; no prices verifiable on official site).
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD None (Entry plan (name not recorded)). Split 75% starting, up to 90%; 1-Step 85%; payout weekly (1-Step, per official blog).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 86. Mubite
+
+- **slug:** mubite
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 19.9
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (FAQ says US traders accepted)
+- **site:** https://mubite.com
+- **sources:** https://mubite.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, commission % not published
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 32 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Crypto, Perps firm. Starts at $19.9. Affiliate: yes, commission % not published. US traders: yes (FAQ says US traders accepted).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** mubite-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 19.9
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://mubite.com
+
+
+### 87. My Funded Futures
+
+- **slug:** my-funded-futures
+- **markets:** futures
+- **rating:** 4.9
+- **rsrc:** Trustpilot
+- **reviews:** 23241
+- **ratingNote:** Trustpilot 4.9/5, 23,241 reviews. Checked 27 Nov 2026.
+- **split:** 80-90%
+- **splitMax:** 90
+- **dd:** EOD trailing, $1000 (25K)
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** Rapid daily / Builder 48h / Pro 14d
+- **from:** 75
+- **fromCur:** USD
+- **fromPlan:** Signature 5K, one-time
+- **monthly:** false
+- **code:** CLUB
+- **off:** 40
+- **codes:** {"code":"CLUB","off":40,"detail":"40% off any plan (firm's own coupons page)"}
+- **consistencyText:** Rapid 50 eval / Rapid EOD 30 / Builder 50 at payout
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** Builder soft pause only
+- **minDays:** Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2
+- **activation:** 0
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** not allowed on funded Rapid/Pro; permitted on Builder
+- **overnight:** no
+- **us:** yes
+- **site:** https://myfundedfutures.com
+- **sources:** https://myfundedfutures.com; https://www.trustpilot.com/review/myfundedfutures.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Tradovate; NinjaTrader; Quantower
+- **payMethods:** Not listed
+- **deal:** 40% off any plan (firm's own coupons page)
+- **tracked:** true
+- **paid30:** 21730000
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Futures-only firm (CME group). Four evaluation lines — Builder, Rapid, Rapid EOD and Pro, $25K–$150K — plus the small static-drawdown Signature accounts. Rapid pays daily; Pro pays every 14 days. No activation fee on any plan.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 3**
+
+#### Signature — 5000
+
+- **id:** my-funded-futures-signature-5000
+- **program:** Signature
+- **name:** Signature
+- **size:** 5000
+- **price:** 75
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** One-time. Homepage Signature prices checked 27 Nov 2026.
+- **target:** 6
+- **dailyLoss:** Builder soft pause only
+- **maxDD:** EOD trailing, $1000 (25K)
+- **ddType:** EOD
+- **minDays:** Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2
+- **split:** 80-90%
+- **payout:** Rapid daily / Builder 48h / Pro 14d
+- **platform:** Tradovate, NinjaTrader, Quantower
+- **source:** https://myfundedfutures.com
+
+#### Signature — 10000
+
+- **id:** my-funded-futures-signature-10000
+- **program:** Signature
+- **name:** Signature
+- **size:** 10000
+- **price:** 140
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6
+- **dailyLoss:** Builder soft pause only
+- **maxDD:** EOD trailing, $1000 (25K)
+- **ddType:** EOD
+- **minDays:** Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2
+- **split:** 80-90%
+- **payout:** Rapid daily / Builder 48h / Pro 14d
+- **platform:** Tradovate, NinjaTrader, Quantower
+- **source:** https://myfundedfutures.com
+
+#### Signature — 20000
+
+- **id:** my-funded-futures-signature-20000
+- **program:** Signature
+- **name:** Signature
+- **size:** 20000
+- **price:** 280
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6
+- **dailyLoss:** Builder soft pause only
+- **maxDD:** EOD trailing, $1000 (25K)
+- **ddType:** EOD
+- **minDays:** Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2
+- **split:** 80-90%
+- **payout:** Rapid daily / Builder 48h / Pro 14d
+- **platform:** Tradovate, NinjaTrader, Quantower
+- **source:** https://myfundedfutures.com
+
+
+### 88. MyFundedPerps
+
+- **slug:** myfundedperps
+- **markets:** crypto; perps; forex; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** Elite 5% static; Select/Signature/Prime not stated on official pages read
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand (Elite); daily, one request per NY calendar day (Select/Signature/Prime)
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** Elite (3% DLL) 5K, one-time list
+- **monthly:** false
+- **code:** PERPS
+- **off:** Not recorded
+- **codes:** {"code":"PERPS","off":null,"detail":"20% off; 25% first purchase; Black Friday 35%/40% first purchase"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** Elite 10; Select/Signature/Prime not stated on official pages read
+- **dailyDD:** Elite 3% (3% DLL); Elite No DLL none; Select/Signature/Prime not stated on official pages read
+- **minDays:** none ($100 available to withdraw, no minimum trading days)
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** up to $300,000 total funded allocation ($100K max per model type)
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (only OFAC-sanctioned jurisdictions excluded)
+- **site:** https://myfundedperps.com
+- **sources:** https://myfundedperps.com; https://docs.myfundedperpetuals.com/guides/affiliate-program; https://docs.myfundedperpetuals.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, rate shown on affiliate dashboard (not published); 20% first-purchase promo
+- **platforms:** MyFundedPerps web platform
+- **payMethods:** Not listed
+- **deal:** PERPS (20% off; 25% first purchase; Black Friday 35%/40% first purchase)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: Select/Signature/Prime and Elite No DLL prices not readable on official homepage (only Elite 3% DLL cards render); news rule and activation fee not stated
+- **summary:** Crypto, Perps, Forex, Stocks firm. Starts at USD 49 (Elite (3% DLL) 5K, one-time list). Split up to 90%; payout on demand (Elite); daily, one request per NY calendar day (Select/Signature/Prime).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### Elite (3% DLL) — 5000
+
+- **id:** myfundedperps-elite-3-dll-5000
+- **program:** Elite (3% DLL)
+- **name:** Elite (3% DLL)
+- **size:** 5000
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** up to 90%
+- **payout:** on demand
+- **platform:** MyFundedPerps web platform
+- **source:** https://myfundedperps.com
+
+#### Elite (3% DLL) — 10000
+
+- **id:** myfundedperps-elite-3-dll-10000
+- **program:** Elite (3% DLL)
+- **name:** Elite (3% DLL)
+- **size:** 10000
+- **price:** 95
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** up to 90%
+- **payout:** on demand
+- **platform:** MyFundedPerps web platform
+- **source:** https://myfundedperps.com
+
+#### Elite (3% DLL) — 25000
+
+- **id:** myfundedperps-elite-3-dll-25000
+- **program:** Elite (3% DLL)
+- **name:** Elite (3% DLL)
+- **size:** 25000
+- **price:** 249
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** up to 90%
+- **payout:** on demand
+- **platform:** MyFundedPerps web platform
+- **source:** https://myfundedperps.com
+
+#### Elite (3% DLL) — 50000
+
+- **id:** myfundedperps-elite-3-dll-50000
+- **program:** Elite (3% DLL)
+- **name:** Elite (3% DLL)
+- **size:** 50000
+- **price:** 495
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** up to 90%
+- **payout:** on demand
+- **platform:** MyFundedPerps web platform
+- **source:** https://myfundedperps.com
+
+
+### 89. Nexbitra
+
+- **slug:** nexbitra
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** Classic 1-Step 8% static / 2-Step 10% static
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** every 14 days, BTC on-chain, min $50, cap 5% of starting balance per payout, lifetime cap $100K, fee refunded on first payout
+- **from:** 50
+- **fromCur:** USD
+- **fromPlan:** 2-Step 5K
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** Classic 1-Step 40%; 2-Step none to pass / 40% on payouts
+- **consNone:** true
+- **target:** Classic 1-Step 8 / 2-Step 8 then 5
+- **dailyDD:** Classic 1-Step 4% / 2-Step 5%
+- **minDays:** 3
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (restricted: Cuba, India, Iran, North Korea, Syria - US not listed)
+- **site:** https://nexbitra.com
+- **sources:** https://nexbitra.com; https://nexbitra.com/partners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 10%/15%/20% by 30-day net sales ($0/$5K/$10K tiers), 30-day cookie, 14-day hold, min payout $50 in BTC, first purchase only
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** not stated
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Crypto, Perps firm. Starts at USD 50 (2-Step 5K). Split 80%; payout every 14 days, BTC on-chain, min $50, cap 5% of starting balance per payout, lifetime cap $100K, fee refunded on first payout.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 10**
+
+#### Classic 1-Step — 5000
+
+- **id:** nexbitra-classic-1-step-5000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 5000
+- **price:** 60
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### Classic 1-Step — 10000
+
+- **id:** nexbitra-classic-1-step-10000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 10000
+- **price:** 110
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### Classic 1-Step — 25000
+
+- **id:** nexbitra-classic-1-step-25000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 25000
+- **price:** 280
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### Classic 1-Step — 50000
+
+- **id:** nexbitra-classic-1-step-50000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 50000
+- **price:** 500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### Classic 1-Step — 100000
+
+- **id:** nexbitra-classic-1-step-100000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 100000
+- **price:** 799
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4
+- **maxDD:** 8 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### 2-Step — 5000
+
+- **id:** nexbitra-2-step-5000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 5000
+- **price:** 50
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### 2-Step — 10000
+
+- **id:** nexbitra-2-step-10000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 10000
+- **price:** 100
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### 2-Step — 25000
+
+- **id:** nexbitra-2-step-25000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 25000
+- **price:** 250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### 2-Step — 50000
+
+- **id:** nexbitra-2-step-50000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 50000
+- **price:** 400
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+#### 2-Step — 100000
+
+- **id:** nexbitra-2-step-100000
+- **program:** 2-Step
+- **name:** 2-Step
+- **size:** 100000
+- **price:** 700
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5
+- **maxDD:** 10 static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://nexbitra.com
+
+
+### 90. NexGen Futures Trader
+
+- **slug:** nexgen-futures-trader
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** not stated - site not launched
+- **monthly:** false
+- **code:** 30% off any Audition plan(s) for mailing-list signup (site not yet launched)
+- **off:** Not recorded
+- **codes:** {"code":"30% off any Audition plan(s) for mailing-list signup (site not yet launched)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://nexgenfuturestrader.com
+- **sources:** https://nexgenfuturestrader.com; https://nexgenfuturestrader.com/affiliate-program/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not stated
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** 30% off any Audition plan(s) for mailing-list signup (site not yet launched)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: site is a coming-soon landing page only; no pricing, rules, payout, affiliate or eligibility details published; 'Instant and Live funding options' and 'Audition plans' mentioned only
+- **summary:** Futures firm. Starts at USD None (not stated - site not launched). Split not stated; payout not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 91. Next Level Funded
+
+- **slug:** next-level-funded
+- **markets:** forex
+- **rating:** 3
+- **rsrc:** Trustpilot
+- **reviews:** 255
+- **ratingNote:** Trustpilot 3/5, 255 reviews. Checked 27 Nov 2026.
+- **split:** 80 std (100% paid add-on)
+- **splitMax:** 100
+- **dd:** 7% static (1-Step)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on-demand
+- **from:** 7.92
+- **fromCur:** USD
+- **fromPlan:** Instant Flex 10K with BOGO60 (list $19.80)
+- **monthly:** false
+- **code:** BOGO60
+- **off:** 60
+- **codes:** {"code":"BOGO60","off":60,"detail":"60% off plus buy 1 get 1 free. Instant Flex 10K is $19.80 list, $7.92 with this code."}
+- **consistencyText:** 15% live (Instant)
+- **consNone:** false
+- **target:** 1-Step 8 / 2-Step 8 then 6
+- **dailyDD:** 3%
+- **minDays:** none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $1,000,000
+- **news:** allowed
+- **overnight:** allowed (Instant Pro weekend is add-on)
+- **us:** not stated
+- **site:** https://www.nextlevelfunded.com
+- **sources:** https://www.nextlevelfunded.com/evaluations; https://www.nextlevelfunded.com; https://www.trustpilot.com/review/nextlevelfunded.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 20%
+- **platforms:** Not listed
+- **payMethods:** Not listed
+- **deal:** BOGO60 — 60% off plus buy 1 get 1 free. Instant Flex 10K is $19.80 list and $7.92 with the code.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm — not a futures firm. Step evaluations and three instant lines (Flex, Pro, Crown) from $5K to $500K, on Match-Trader, Platform 5 and TradeLocker. Cards advertise '100%*' splits; the default is 80%, with 100% only as a paid add-on.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Instant Flex — 10000
+
+- **id:** next-level-funded-instant-flex-10000
+- **program:** Instant Flex
+- **name:** Instant Flex
+- **size:** 10000
+- **price:** 7.92
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** List $19.80. $7.92 with BOGO60, checked 27 Nov 2026.
+- **target:** 1-Step 8 / 2-Step 8 then 6
+- **dailyLoss:** 3%
+- **maxDD:** 7% static (1-Step)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 80 std (100% paid add-on)
+- **payout:** on-demand
+- **platform:** Not recorded
+- **source:** https://www.nextlevelfunded.com/evaluations
+
+
+### 92. Nextproptrader
+
+- **slug:** nextproptrader
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 100%
+- **splitMax:** 100
+- **dd:** trailing: 5% (10K-50K), 3.5% (100K), 3.33% (150K), 2.4% (250K)
+- **ddTypes:** Trailing
+- **payoutDays:** 1
+- **payoutText:** daily; minimum payout $50; processed in 1-3 business days
+- **from:** 109
+- **fromCur:** EUR
+- **fromPlan:** Beginner 10K evaluation, one-time (a 4-instalment figure of EUR 27.25 is also shown)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 30% single trade / 20% single day (funded accounts)
+- **consNone:** false
+- **target:** 6-6.5% (10K 6.5%; 25K-250K 6%)
+- **dailyDD:** not stated
+- **minDays:** 5
+- **activation:** EUR 95/month funded fee once funded (covers all funded accounts combined)
+- **instant:** false
+- **instantText:** No
+- **scaling:** +1 contract per $2,500 profit; max 5 funded accounts per trader
+- **news:** not stated
+- **overnight:** not allowed (positions must close by 3:15 PM CST; trading resumes 5:00 PM CST)
+- **us:** not stated
+- **site:** https://nextproptrader.com
+- **sources:** https://nextproptrader.com; https://nextproptrader.com/en/affiliates; https://nextproptrader.com/en/faq
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 25% commission
+- **platforms:** Rithmic / DXFeed
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Detail: partial (daily drawdown not stated on official pages; split, targets, max drawdown, payout and from-price verified) Missing: daily_drawdown; us_eligible
+- **summary:** Futures firm. Starts at EUR 109 (Beginner 10K evaluation, one-time (a 4-instalment figure of EUR 27.25 is also shown)). Split 100%; payout daily; minimum payout $50; processed in 1-3 business days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 6**
+
+#### Evaluation — 10000
+
+- **id:** nextproptrader-evaluation-10000
+- **program:** Evaluation
+- **name:** Evaluation
+- **size:** 10000
+- **price:** 109
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6.5%
+- **dailyLoss:** not stated
+- **maxDD:** 5% trailing
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 100%
+- **payout:** Daily
+- **platform:** Rithmic / DXFeed
+- **source:** https://nextproptrader.com
+
+#### Evaluation — 25000
+
+- **id:** nextproptrader-evaluation-25000
+- **program:** Evaluation
+- **name:** Evaluation
+- **size:** 25000
+- **price:** 139
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** not stated
+- **maxDD:** 5% trailing
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 100%
+- **payout:** Daily
+- **platform:** Rithmic / DXFeed
+- **source:** https://nextproptrader.com
+
+#### Evaluation — 50000
+
+- **id:** nextproptrader-evaluation-50000
+- **program:** Evaluation
+- **name:** Evaluation
+- **size:** 50000
+- **price:** 169
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** not stated
+- **maxDD:** 5% trailing
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 100%
+- **payout:** Daily
+- **platform:** Rithmic / DXFeed
+- **source:** https://nextproptrader.com
+
+#### Evaluation — 100000
+
+- **id:** nextproptrader-evaluation-100000
+- **program:** Evaluation
+- **name:** Evaluation
+- **size:** 100000
+- **price:** 239
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** not stated
+- **maxDD:** 3.5% trailing
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 100%
+- **payout:** Daily
+- **platform:** Rithmic / DXFeed
+- **source:** https://nextproptrader.com
+
+#### Evaluation — 150000
+
+- **id:** nextproptrader-evaluation-150000
+- **program:** Evaluation
+- **name:** Evaluation
+- **size:** 150000
+- **price:** 299
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** not stated
+- **maxDD:** 3.33% trailing
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 100%
+- **payout:** Daily
+- **platform:** Rithmic / DXFeed
+- **source:** https://nextproptrader.com
+
+#### Evaluation — 250000
+
+- **id:** nextproptrader-evaluation-250000
+- **program:** Evaluation
+- **name:** Evaluation
+- **size:** 250000
+- **price:** 499
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** not stated
+- **maxDD:** 2.4% trailing
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 100%
+- **payout:** Daily
+- **platform:** Rithmic / DXFeed
+- **source:** https://nextproptrader.com
+
+
+### 93. Nordic Funder
+
+- **slug:** nordic-funder
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 25
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://nordicfunder.com
+- **sources:** https://nordicfunder.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** application required
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier C, 60 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex, Crypto, Stocks firm. Starts at $25. Affiliate: application required. US traders: not stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** nordic-funder-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 25
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://nordicfunder.com
+
+
+### 94. Nova Funded
+
+- **slug:** nova-funded
+- **markets:** forex; crypto; futures; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90% (FX/CFD, Crypto, Futures); up to 80% (US Equities)%
+- **splitMax:** 90
+- **dd:** Instant Funding 8% trailing (locks at starting balance); Futures 5% trailing (locks at starting balance); FX/CFD static % not stated on readable pages
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** FX/CFD every 30 days; Crypto every 2 weeks; US Equities every 14 days; Futures per phase after payout request; Instant Funding on request
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** NEW25
+- **off:** Not recorded
+- **codes:** {"code":"NEW25","off":null,"detail":"25% off first purchase"}
+- **consistencyText:** Futures 25%; FX/CFD, Instant, Crypto, Equities not stated on readable pages
+- **consNone:** false
+- **target:** Futures 8% per phase (example: $8,000 on $100K); FX/CFD and Crypto targets not stated on readable official pages; Instant Funding none
+- **dailyDD:** FX/CFD 5%; Instant Funding 5%; Futures no specific daily limit (Max Trailing Loss only); Equities not stated
+- **minDays:** not stated on readable official pages
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (max funding: FX/CFD $400K, Crypto $200K, Futures $150K, Equities $200K)
+- **news:** not allowed to open a position within 3 minutes before or after a News Event
+- **overnight:** FX/CFD flat for weekend (positions closed Friday 3:45pm unless Weekend Hold add-on); Futures positions closed 15:10 CST weekdays
+- **us:** yes (all countries except OFAC-listed, per official FAQ)
+- **site:** https://novafunded.com
+- **sources:** https://novafunded.com; https://novafunded.com/faq/; https://novafunded.com/affiliate-programme/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 10% recurring commission
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** NEW25 (25% off first purchase)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Detail: partial (prices behind JS configurator / app only — no per-size prices readable on official pages; FX/CFD profit target and max-drawdown % not stated in readable FAQ text) Missing: from_price (all per-size prices); plan_table; profit_target_pct (FX/CFD, Crypto); max_drawdown pct (FX/CFD); min_trading_days
+- **summary:** Forex, Crypto, Futures, Stocks firm. Starts at USD None (Entry plan (name not recorded)). Split up to 90% (FX/CFD, Crypto, Futures); up to 80% (US Equities)%; payout FX/CFD every 30 days; Crypto every 2 weeks; US Equities every 14 days; Futures per phase after payout request; Instant Funding on request.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 95. Novixfund
+
+- **slug:** novixfund
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-90% (starts 80%, 85% after 2 payouts, 90% after 4)%
+- **splitMax:** 90
+- **dd:** Two-Step 10% static / One-Step 6% static
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** every 14 days; first payout 14 days after funded account starts; $50 minimum; USDT (TRC20/BEP20)
+- **from:** 19
+- **fromCur:** USD
+- **fromPlan:** Two-Step 1K, one-time
+- **monthly:** false
+- **code:** none verified (coupon codes accepted at checkout; no code shown on official pages)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (coupon codes accepted at checkout; no code shown on official pages)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none (no hidden consistency score)
+- **consNone:** true
+- **target:** Two-Step 10 then 5 / One-Step 10
+- **dailyDD:** Two-Step 5% / One-Step 4%
+- **minDays:** Two-Step 5 per step (0.25%+ realized PnL days); One-Step 3
+- **activation:** none stated (reset 70% of fee, up to 3 times; 90%-split add-on +20%; fee-refund add-on +20%)
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (max account $50,000)
+- **news:** allowed
+- **overnight:** allowed (crypto perpetuals trade 24/7)
+- **us:** not stated
+- **site:** https://novixfund.com
+- **sources:** https://novixfund.com; https://novixfund.com/challenges; https://novixfund.com/partners; https://novixfund.com/rules; https://novixfund.com/faq; https://novixfund.com/payouts; https://www.novixfund.com/partners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 20% from first referral, tiers 20/22/25/30%
+- **platforms:** Novix Trader
+- **payMethods:** Not listed
+- **deal:** none verified (coupon codes accepted at checkout; no code shown on official pages)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Crypto, Perps firm. Starts at USD 19 (Two-Step 1K, one-time). Split 80-90% (starts 80%, 85% after 2 payouts, 90% after 4)%; payout every 14 days; first payout 14 days after funded account starts; $50 minimum; USDT (TRC20/BEP20).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 14**
+
+#### Two-Step — 1000
+
+- **id:** novixfund-two-step-1000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 1000
+- **price:** 19
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### Two-Step — 2000
+
+- **id:** novixfund-two-step-2000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 2000
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### Two-Step — 3000
+
+- **id:** novixfund-two-step-3000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 3000
+- **price:** 35
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### Two-Step — 5000
+
+- **id:** novixfund-two-step-5000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 5000
+- **price:** 55
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### Two-Step — 10000
+
+- **id:** novixfund-two-step-10000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 10000
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### Two-Step — 20000
+
+- **id:** novixfund-two-step-20000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 20000
+- **price:** 189
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### Two-Step — 50000
+
+- **id:** novixfund-two-step-50000
+- **program:** Two-Step
+- **name:** Two-Step
+- **size:** 50000
+- **price:** 399
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5 per step
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 1000
+
+- **id:** novixfund-one-step-1000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 1000
+- **price:** 25
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 2000
+
+- **id:** novixfund-one-step-2000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 2000
+- **price:** 35
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 3000
+
+- **id:** novixfund-one-step-3000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 3000
+- **price:** 45
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 5000
+
+- **id:** novixfund-one-step-5000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 5000
+- **price:** 69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 10000
+
+- **id:** novixfund-one-step-10000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 10000
+- **price:** 129
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 20000
+
+- **id:** novixfund-one-step-20000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 20000
+- **price:** 229
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+#### One-Step — 50000
+
+- **id:** novixfund-one-step-50000
+- **program:** One-Step
+- **name:** One-Step
+- **size:** 50000
+- **price:** 499
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 80-90%
+- **payout:** Every 14 days
+- **platform:** Novix Trader
+- **source:** https://novixfund.com/challenges
+
+
+### 96. NYS Markets
+
+- **slug:** nys-markets
+- **markets:** futures; stocks; forex; crypto
+- **rating:** 3.6
+- **rsrc:** Trustpilot
+- **reviews:** 2988
+- **ratingNote:** Read on the firm's Trustpilot profile
+- **split:** 80/20 (help centre; site claims up to 100%)
+- **splitMax:** 80
+- **dd:** 10% static (2-Step)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand, max 2% of balance per payout
+- **from:** 19
+- **fromCur:** USD
+- **fromPlan:** Flash 10K entry (+ $50 activation)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 2-Step none; Instant 15%
+- **consNone:** false
+- **target:** 2-Step 8 then 5
+- **dailyDD:** 5% (2-Step)
+- **minDays:** none
+- **activation:** Flash only $50-$409
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** invitation-only NYS Live Scale
+- **news:** restricted +/-10 min high-impact
+- **overnight:** permitted
+- **us:** not stated
+- **site:** https://nysmarkets.com
+- **sources:** https://nysmarkets.com/; https://help.nysmarkets.com/en/articles/16089441-cfds-pricing-plans; https://www.trustpilot.com/review/nysmarkets.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes (terms not found)
+- **platforms:** MT5 (CFD); dxFeed (Futures); DeepCharts (Stocks)
+- **payMethods:** Not listed
+- **deal:** Black Friday: the homepage says claim 70% off (One Rule Instant shown at 50%). The code was not visible on the page.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Internal conflict: the firm's help centre states a flat 80/20 split, while the main site advertises 'up to 100%'. This page uses the help-centre figure. Prices also differ between the help-centre table and a newer 'Two Step Classic' list — checkout is the deciding price. The $19 Flash price is an entry fee; a $50 activation fee applies on passing at 10K ($269 at $100K).
+- **summary:** Multi-market firm (futures, stocks, CFDs, crypto) run from Saint Lucia. CFD programs include Instant, One Trade, 2-Step, Flash and One Rule. Payouts are on demand but capped at 2% of the initial balance per request.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Flash — 10000
+
+- **id:** nys-markets-flash-10000
+- **program:** Flash
+- **name:** Flash
+- **size:** 10000
+- **price:** 19
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 2-Step 8 then 5
+- **dailyLoss:** 5% (2-Step)
+- **maxDD:** 10% static (2-Step)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 80/20 (help centre; site claims up to 100%)
+- **payout:** on demand, max 2% of balance per payout
+- **platform:** MT5 (CFD), dxFeed (Futures), DeepCharts (Stocks)
+- **source:** https://nysmarkets.com/
+
+
+### 97. OFP Funding
+
+- **slug:** ofp-funding
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% (up to 100% with add-on; homepage says up to 100%)%
+- **splitMax:** 80
+- **dd:** 6% (Instant Classic, per official promo page)
+- **ddTypes:** Not recorded
+- **payoutDays:** 14
+- **payoutText:** biweekly (Instant, per official promo page); 48 hours payout processing (homepage)
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** OFP90
+- **off:** Not recorded
+- **codes:** {"code":"OFP90","off":null,"detail":"90% off any account, new USA customers only, via official promo page"}
+- **consistencyText:** consistency rule applies on Instant accounts (no % stated on official pages read)
+- **consNone:** false
+- **target:** none (instant funding); challenge targets not stated on official pages read
+- **dailyDD:** 3% (Instant Classic, per official promo page); customizable 3%, 4% or 5%
+- **minDays:** none
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (accounts to $300K instantly, up to $500K)
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (OFP90 promo targets new USA customers)
+- **site:** https://ofpfunding.com
+- **sources:** https://ofpfunding.com; https://ofpfunding.com/join-ofps-affiliate-program; https://ofp90.ofpfunding.com/; https://ofpfunding.com/profit-splits-in-instant-funding-programs
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, CPA from $25 per depositor or revenue share from 10%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** OFP90 (90% off any account, new USA customers only, via official promo page)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS configurator — prices behind JS configurator, from=null; 1-phase/2-phase challenge rules and activation fee not stated on official pages read
+- **summary:** Forex, Crypto firm. Starts at USD None (Entry plan (name not recorded)). Split 80% (up to 100% with add-on; homepage says up to 100%)%; payout biweekly (Instant, per official promo page); 48 hours payout processing (homepage).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 98. Olbios Markets Technologies
+
+- **slug:** olbios-markets-technologies
+- **markets:** forex; futures; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** Futures 4% trailing (end of day, locks after first approved reward)
+- **ddTypes:** Trailing
+- **payoutDays:** Not recorded
+- **payoutText:** on request after passing, identity verification and reward review; no fixed cycle stated
+- **from:** 9.95
+- **fromCur:** USD
+- **fromPlan:** Flex Trader $9.95 to start (activation fee due only if you pass; amount not stated)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none in evaluation; 35% at reward stage
+- **consNone:** true
+- **target:** Futures Evaluation 6%; FX & indices target not stated on readable pages; DIF target not stated
+- **dailyDD:** Futures 2%
+- **minDays:** 2
+- **activation:** Flex activation fee due only if you pass (amount not stated); reset 50% of plan price
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated (some countries restricted; list on Terms page)
+- **site:** https://olbiosmarketstechnologies.com
+- **sources:** https://www.olbiosmarketstechnologies.com/; https://www.olbiosmarketstechnologies.com/futures-evaluation/; https://www.olbiosmarketstechnologies.com/how-evaluations-work/; https://www.olbiosmarketstechnologies.com/affiliates/; https://www.olbiosmarketstechnologies.com/policies/faqs/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 12/15/20% tiers (Silver/Gold/Platinum)
+- **platforms:** BlackArrow
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Detail: partial (Futures per-size prices and rules verified; FX & indices per-size prices not published — only 'from $39.95'; DIF per-size prices not published — only a $100K $595.95 example on the affiliate page; payout cycle not stated) Missing: FX & indices per-size prices; DIF per-size prices; payout_cycle; news_trading; overnight_weekend; us_eligible
+- **summary:** Forex, Futures, Crypto firm. Starts at USD 9.95 (Flex Trader $9.95 to start (activation fee due only if you pass; amount not stated)). Split 90%; payout on request after passing, identity verification and reward review; no fixed cycle stated.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### Futures Evaluation — 25000
+
+- **id:** olbios-markets-technologies-futures-evaluation-25000
+- **program:** Futures Evaluation
+- **name:** Futures Evaluation
+- **size:** 25000
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 4% trailing (EOD)
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** 90%
+- **payout:** On request (reviewed)
+- **platform:** BlackArrow
+- **source:** https://www.olbiosmarketstechnologies.com/futures-evaluation/
+
+#### Futures Evaluation — 50000
+
+- **id:** olbios-markets-technologies-futures-evaluation-50000
+- **program:** Futures Evaluation
+- **name:** Futures Evaluation
+- **size:** 50000
+- **price:** 75
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 4% trailing (EOD)
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** 90%
+- **payout:** On request (reviewed)
+- **platform:** BlackArrow
+- **source:** https://www.olbiosmarketstechnologies.com/futures-evaluation/
+
+#### Futures Evaluation — 100000
+
+- **id:** olbios-markets-technologies-futures-evaluation-100000
+- **program:** Futures Evaluation
+- **name:** Futures Evaluation
+- **size:** 100000
+- **price:** 95
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 4% trailing (EOD)
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** 90%
+- **payout:** On request (reviewed)
+- **platform:** BlackArrow
+- **source:** https://www.olbiosmarketstechnologies.com/futures-evaluation/
+
+#### Futures Evaluation — 150000
+
+- **id:** olbios-markets-technologies-futures-evaluation-150000
+- **program:** Futures Evaluation
+- **name:** Futures Evaluation
+- **size:** 150000
+- **price:** 125
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 4% trailing (EOD)
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** 90%
+- **payout:** On request (reviewed)
+- **platform:** BlackArrow
+- **source:** https://www.olbiosmarketstechnologies.com/futures-evaluation/
+
+
+### 99. OneFunded
+
+- **slug:** onefunded
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot rating withheld — breach-of-guidelines notice; no score is shown
+- **split:** 80 (90% add-on)
+- **splitMax:** 90
+- **dd:** 8% (Value)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** 14d cycle (7d add-on)
+- **from:** 29
+- **fromCur:** USD
+- **fromPlan:** Value 5K
+- **monthly:** false
+- **code:** BLACK40
+- **off:** 40
+- **codes:** {"code":"BLACK40","off":40,"detail":"40% off. End date not stated on the homepage."}; {"code":"BLACK30","off":30,"detail":"30% off. Also shown on the homepage. End date not stated."}
+- **consistencyText:** none eval Core/Value; 50% Flash eval; funded 50/30/15
+- **consNone:** false
+- **target:** Value 8 then 6
+- **dailyDD:** 4% (Value)
+- **minDays:** none stated on homepage
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $1,000,000
+- **news:** allowed, monitored
+- **overnight:** allowed
+- **us:** not stated (MT5 unavailable in USA)
+- **site:** https://onefunded.com
+- **sources:** https://onefunded.com/; https://onefunded.com/blog/prop-trading/prop-firm-black-friday-2026-deals-and-discount-codes/; https://www.trustpilot.com/review/onefunded.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes
+- **platforms:** MT5; cTrader; TradeLocker
+- **payMethods:** Not listed
+- **deal:** BLACK40 — 40% off. BLACK30 is also shown. No end date was stated on the homepage.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Open questions: the plan tables run to $100K while the homepage FAQ says simulated accounts go up to $200K; and the firm's 40% Black Friday code (Nov 26–29) had not been published as a code string when we checked, so no code is listed for this firm.
+- **summary:** Forex/CFD firm with Value, Core, Flash and Instant plans, $5K–$100K in the plan tables. 80% base split, 14-day payout cycle, fee refunded with the third payout (not on Instant). MT5 is not available to clients in the USA or Turkey.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Value — 5000
+
+- **id:** onefunded-value-5000
+- **program:** Value
+- **name:** Value
+- **size:** 5000
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Value 8 then 6
+- **dailyLoss:** 4% (Value)
+- **maxDD:** 8% (Value)
+- **ddType:** Static
+- **minDays:** none stated on homepage
+- **split:** 80 (90% add-on)
+- **payout:** 14d cycle (7d add-on)
+- **platform:** MT5, cTrader, TradeLocker
+- **source:** https://onefunded.com/
+
+
+### 100. OneStopProp
+
+- **slug:** onestopprop
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** Standard 90% (Instant 85%); Pro 100% for first 5 payouts then 90% (Instant Pro 90%)%
+- **splitMax:** 90
+- **dd:** Standard 2-Step 8% static / Standard 1-Step 6% static / Standard Instant 5% / Pro 2-Step 6% / Pro 1-Step 5% / Pro Instant 5%
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** Standard Bi-Weekly; Pro on an interval in days (exact interval not stated in readable data); affiliate page also claims daily trader payouts
+- **from:** 93
+- **fromCur:** USD
+- **fromPlan:** Pro 2-Step 10K, one-time (list price from official pricing data)
+- **monthly:** false
+- **code:** BF50
+- **off:** Not recorded
+- **codes:** {"code":"BF50","off":null,"detail":"50% off); WELCOME (40% off first account"}
+- **consistencyText:** rule applies (details not stated on readable official pages)
+- **consNone:** false
+- **target:** Standard 2-Step 8 then 5 / Standard 1-Step 8 / Standard Instant none / Pro 2-Step 10 then 5 / Pro 1-Step 10 / Pro Instant none
+- **dailyDD:** Standard 2-Step 4% / Standard 1-Step 4% / Standard Instant 2% / Pro 2-Step 4% / Pro 1-Step 3% / Pro Instant 2%
+- **minDays:** Standard 2-Step 4 per phase (6 funded) / Standard 1-Step 3 (6 funded) / Standard Instant 8 / Pro 2-Step 5 then 4 (8 funded) / Pro 1-Step 4 (8 funded) / Pro Instant 8
+- **activation:** none stated (no hidden or activation fees, per homepage)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (max account $300K)
+- **news:** news window applies on funded accounts (details not stated on readable pages)
+- **overnight:** allowed
+- **us:** not stated
+- **site:** https://onestopprop.com
+- **sources:** https://onestopprop.com; https://onestopprop.com/affiliate-program/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 12/15/20% tiers (Silver/Gold/Elite)
+- **platforms:** TradingView-powered
+- **payMethods:** Not listed
+- **deal:** BF50 (50% off); WELCOME (40% off first account)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto, Stocks firm. Starts at USD 93 (Pro 2-Step 10K, one-time (list price from official pricing data)). Split Standard 90% (Instant 85%); Pro 100% for first 5 payouts then 90% (Instant Pro 90%)%; payout Standard Bi-Weekly; Pro on an interval in days (exact interval not stated in readable data); affiliate page also claims daily trader payouts.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 32**
+
+#### Standard 2-Step — 10000
+
+- **id:** onestopprop-standard-2-step-10000
+- **program:** Standard 2-Step
+- **name:** Standard 2-Step
+- **size:** 10000
+- **price:** 110
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 4/4
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 2-Step — 25000
+
+- **id:** onestopprop-standard-2-step-25000
+- **program:** Standard 2-Step
+- **name:** Standard 2-Step
+- **size:** 25000
+- **price:** 242
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 4/4
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 2-Step — 50000
+
+- **id:** onestopprop-standard-2-step-50000
+- **program:** Standard 2-Step
+- **name:** Standard 2-Step
+- **size:** 50000
+- **price:** 329
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 4/4
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 2-Step — 100000
+
+- **id:** onestopprop-standard-2-step-100000
+- **program:** Standard 2-Step
+- **name:** Standard 2-Step
+- **size:** 100000
+- **price:** 542
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 4/4
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 2-Step — 200000
+
+- **id:** onestopprop-standard-2-step-200000
+- **program:** Standard 2-Step
+- **name:** Standard 2-Step
+- **size:** 200000
+- **price:** 1095
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 4/4
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 2-Step — 300000
+
+- **id:** onestopprop-standard-2-step-300000
+- **program:** Standard 2-Step
+- **name:** Standard 2-Step
+- **size:** 300000
+- **price:** 1533
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 4/4
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 1-Step — 10000
+
+- **id:** onestopprop-standard-1-step-10000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 10000
+- **price:** 121
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 1-Step — 25000
+
+- **id:** onestopprop-standard-1-step-25000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 25000
+- **price:** 266
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 1-Step — 50000
+
+- **id:** onestopprop-standard-1-step-50000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 50000
+- **price:** 362
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 1-Step — 100000
+
+- **id:** onestopprop-standard-1-step-100000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 100000
+- **price:** 596
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 1-Step — 200000
+
+- **id:** onestopprop-standard-1-step-200000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 200000
+- **price:** 1205
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard 1-Step — 300000
+
+- **id:** onestopprop-standard-1-step-300000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 300000
+- **price:** 1687
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 3
+- **split:** 90%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard Instant — 25000
+
+- **id:** onestopprop-standard-instant-25000
+- **program:** Standard Instant
+- **name:** Standard Instant
+- **size:** 25000
+- **price:** 450
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 85%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard Instant — 50000
+
+- **id:** onestopprop-standard-instant-50000
+- **program:** Standard Instant
+- **name:** Standard Instant
+- **size:** 50000
+- **price:** 850
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 85%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard Instant — 100000
+
+- **id:** onestopprop-standard-instant-100000
+- **program:** Standard Instant
+- **name:** Standard Instant
+- **size:** 100000
+- **price:** 1500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 85%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Standard Instant — 200000
+
+- **id:** onestopprop-standard-instant-200000
+- **program:** Standard Instant
+- **name:** Standard Instant
+- **size:** 200000
+- **price:** 2000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 85%
+- **payout:** Bi-Weekly
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 2-Step — 10000
+
+- **id:** onestopprop-pro-2-step-10000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 10000
+- **price:** 93
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5/4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 2-Step — 25000
+
+- **id:** onestopprop-pro-2-step-25000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 25000
+- **price:** 205
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5/4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 2-Step — 50000
+
+- **id:** onestopprop-pro-2-step-50000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 50000
+- **price:** 279
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5/4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 2-Step — 100000
+
+- **id:** onestopprop-pro-2-step-100000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 100000
+- **price:** 460
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5/4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 2-Step — 200000
+
+- **id:** onestopprop-pro-2-step-200000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 200000
+- **price:** 930
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5/4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 2-Step — 300000
+
+- **id:** onestopprop-pro-2-step-300000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 300000
+- **price:** 1303
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5/4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 1-Step — 10000
+
+- **id:** onestopprop-pro-1-step-10000
+- **program:** Pro 1-Step
+- **name:** Pro 1-Step
+- **size:** 10000
+- **price:** 103
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 1-Step — 25000
+
+- **id:** onestopprop-pro-1-step-25000
+- **program:** Pro 1-Step
+- **name:** Pro 1-Step
+- **size:** 25000
+- **price:** 226
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 1-Step — 50000
+
+- **id:** onestopprop-pro-1-step-50000
+- **program:** Pro 1-Step
+- **name:** Pro 1-Step
+- **size:** 50000
+- **price:** 307
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 1-Step — 100000
+
+- **id:** onestopprop-pro-1-step-100000
+- **program:** Pro 1-Step
+- **name:** Pro 1-Step
+- **size:** 100000
+- **price:** 506
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 1-Step — 200000
+
+- **id:** onestopprop-pro-1-step-200000
+- **program:** Pro 1-Step
+- **name:** Pro 1-Step
+- **size:** 200000
+- **price:** 1015
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro 1-Step — 300000
+
+- **id:** onestopprop-pro-1-step-300000
+- **program:** Pro 1-Step
+- **name:** Pro 1-Step
+- **size:** 300000
+- **price:** 1430
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 100% first 5 payouts, then 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro Instant — 25000
+
+- **id:** onestopprop-pro-instant-25000
+- **program:** Pro Instant
+- **name:** Pro Instant
+- **size:** 25000
+- **price:** 382
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro Instant — 50000
+
+- **id:** onestopprop-pro-instant-50000
+- **program:** Pro Instant
+- **name:** Pro Instant
+- **size:** 50000
+- **price:** 700
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro Instant — 100000
+
+- **id:** onestopprop-pro-instant-100000
+- **program:** Pro Instant
+- **name:** Pro Instant
+- **size:** 100000
+- **price:** 1275
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+#### Pro Instant — 200000
+
+- **id:** onestopprop-pro-instant-200000
+- **program:** Pro Instant
+- **name:** Pro Instant
+- **size:** 200000
+- **price:** 1700
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 8
+- **split:** 90%
+- **payout:** Pro interval (days)
+- **platform:** TradingView-powered
+- **source:** https://onestopprop.com
+
+
+### 101. OneUp Trader
+
+- **slug:** oneup-trader
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90% (100% of first $10,000 withdrawn)%
+- **splitMax:** 90
+- **dd:** trailing, stops at starting balance: 25K $1,500 (6%) / 50K $2,500 (5%) / 100K $3,500 (3.5%) / 150K $5,000 (3.33%) / 250K $5,500 (2.2%)
+- **ddTypes:** Trailing
+- **payoutDays:** Not recorded
+- **payoutText:** 1 free profit withdrawal per week from day 1
+- **from:** 65
+- **fromCur:** USD
+- **fromPlan:** Standard 25K, $65/mo
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 3 best other trading days must sum to 80%+ of largest day
+- **consNone:** false
+- **target:** 6% all sizes and programs
+- **dailyDD:** none (no daily drawdown)
+- **minDays:** Standard 10; Express 5
+- **activation:** remaining 50% of evaluation fee due on funding (50% paid upfront)
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (max 3 funded accounts; 1 for Express)
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US-based; no restriction stated)
+- **site:** https://oneuptrader.com
+- **sources:** https://oneuptrader.com; https://blog.oneuptrader.com/funded-trading/oneup-trader-affiliate-program-earn-up-to-25-commissions/; https://oneuptrader.com/partner
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 25% lifetime (Platinum 20%, Diamond 25% after $5,000 in referral sales)
+- **platforms:** NinjaTrader + 20+ platforms
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Futures firm. Starts at USD 65 (Standard 25K, $65/mo). Split 90% (100% of first $10,000 withdrawn)%; payout 1 free profit withdrawal per week from day 1.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 10**
+
+#### Standard 1-Step — 25000
+
+- **id:** oneup-trader-standard-1-step-25000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 25000
+- **price:** 65
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($1,500)
+- **dailyLoss:** none
+- **maxDD:** $1,500 trailing (6%)
+- **ddType:** Trailing
+- **minDays:** 10
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Standard 1-Step — 50000
+
+- **id:** oneup-trader-standard-1-step-50000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 50000
+- **price:** 75
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($3,000)
+- **dailyLoss:** none
+- **maxDD:** $2,500 trailing (5%)
+- **ddType:** Trailing
+- **minDays:** 10
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Standard 1-Step — 100000
+
+- **id:** oneup-trader-standard-1-step-100000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 100000
+- **price:** 150
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($6,000)
+- **dailyLoss:** none
+- **maxDD:** $3,500 trailing (3.5%)
+- **ddType:** Trailing
+- **minDays:** 10
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Standard 1-Step — 150000
+
+- **id:** oneup-trader-standard-1-step-150000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 150000
+- **price:** 175
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($9,000)
+- **dailyLoss:** none
+- **maxDD:** $5,000 trailing (3.33%)
+- **ddType:** Trailing
+- **minDays:** 10
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Standard 1-Step — 250000
+
+- **id:** oneup-trader-standard-1-step-250000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 250000
+- **price:** 325
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($15,000)
+- **dailyLoss:** none
+- **maxDD:** $5,500 trailing (2.2%)
+- **ddType:** Trailing
+- **minDays:** 10
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Express 1-Step — 25000
+
+- **id:** oneup-trader-express-1-step-25000
+- **program:** Express 1-Step
+- **name:** Express 1-Step
+- **size:** 25000
+- **price:** 100
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($1,500)
+- **dailyLoss:** none
+- **maxDD:** $1,500 trailing (6%)
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Express 1-Step — 50000
+
+- **id:** oneup-trader-express-1-step-50000
+- **program:** Express 1-Step
+- **name:** Express 1-Step
+- **size:** 50000
+- **price:** 115
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($3,000)
+- **dailyLoss:** none
+- **maxDD:** $2,500 trailing (5%)
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Express 1-Step — 100000
+
+- **id:** oneup-trader-express-1-step-100000
+- **program:** Express 1-Step
+- **name:** Express 1-Step
+- **size:** 100000
+- **price:** 225
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($6,000)
+- **dailyLoss:** none
+- **maxDD:** $3,500 trailing (3.5%)
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Express 1-Step — 150000
+
+- **id:** oneup-trader-express-1-step-150000
+- **program:** Express 1-Step
+- **name:** Express 1-Step
+- **size:** 150000
+- **price:** 265
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($9,000)
+- **dailyLoss:** none
+- **maxDD:** $5,000 trailing (3.33%)
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+#### Express 1-Step — 250000
+
+- **id:** oneup-trader-express-1-step-250000
+- **program:** Express 1-Step
+- **name:** Express 1-Step
+- **size:** 250000
+- **price:** 490
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($15,000)
+- **dailyLoss:** none
+- **maxDD:** $5,500 trailing (2.2%)
+- **ddType:** Trailing
+- **minDays:** 5
+- **split:** 90% (100% of first $10K)
+- **payout:** 1 free withdrawal/week from day 1
+- **platform:** NinjaTrader + 20+ platforms
+- **source:** https://oneuptrader.com
+
+
+### 102. Phidias Prop Firm
+
+- **slug:** phidias-prop-firm
+- **markets:** futures
+- **rating:** 3
+- **rsrc:** Trustpilot
+- **reviews:** 340
+- **ratingNote:** Trustpilot 3/5, 340 reviews. Checked 27 Nov 2026.
+- **split:** 80 (Premium up to 100% from payout 5)
+- **splitMax:** 100
+- **dd:** $500 static (Express 25K)
+- **ddTypes:** Static
+- **payoutDays:** 10
+- **payoutText:** Fundamental every 10 trading days; Premium every 5 days
+- **from:** 277
+- **fromCur:** USD
+- **fromPlan:** Express to Live 25K list ($138.50 with 50% off)
+- **monthly:** false
+- **code:** BLACK90
+- **off:** 90
+- **codes:** {"code":"BLACK90","off":90,"detail":"Up to 90% off — ends Nov 27, 2026, 5 PM ET"}
+- **consistencyText:** none eval; 30% funded (Fundamental/Premium)
+- **consNone:** false
+- **target:** Express 25K $1500
+- **dailyDD:** none
+- **minDays:** Fundamental 3 / Premium 1 / Express 0
+- **activation:** $0 one-time path; $83-$169 monthly path after passing
+- **instant:** false
+- **instantText:** No
+- **scaling:** no plan stated; switch to LIVE after 3 payouts or $75K
+- **news:** allowed
+- **overnight:** Premium yes; Fundamental/Express no
+- **us:** yes (US traders on payout boards)
+- **site:** https://phidiaspropfirm.com
+- **sources:** https://member.phidiaspropfirm.com/?_lang=en; https://phidiaspropfirm.com/education/prop-firm-no-activation-fee; https://phidiaspropfirm.com; https://www.trustpilot.com/review/phidiaspropfirm.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Rithmic; Tradovate; NinjaTrader; TradingView; DeepCharts; R/Trader
+- **payMethods:** Not listed
+- **deal:** BLACK90 — up to 90% off. The homepage says Black Friday ends Nov 27, 2026 at 5 PM ET.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Do not use the $88 from-price seen in secondary sources — that is the monthly-subscription path. The one-time from-price is $277 list. Secondary sources also conflict on the switch to LIVE (3 payouts / $75K vs 5 payouts / $100K).
+- **summary:** Futures-only firm (NQ, ES, YM, MNQ, CL, GC and 70+ instruments) on Rithmic and dxFeed. Express to Live, Fundamental and Premium lines, all 1-phase, with no daily loss limit. Premium's split climbs from 75% to 100% by the fifth payout.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Express to Live — 25000
+
+- **id:** phidias-prop-firm-express-to-live-25000
+- **program:** Express to Live
+- **name:** Express to Live
+- **size:** 25000
+- **price:** 277
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Express 25K $1500
+- **dailyLoss:** none
+- **maxDD:** $500 static (Express 25K)
+- **ddType:** Static
+- **minDays:** Fundamental 3 / Premium 1 / Express 0
+- **split:** 80 (Premium up to 100% from payout 5)
+- **payout:** Fundamental every 10 trading days; Premium every 5 days
+- **platform:** Rithmic, Tradovate, NinjaTrader, TradingView, DeepCharts, R/Trader
+- **source:** https://member.phidiaspropfirm.com/?_lang=en
+
+
+### 103. PineX Capital
+
+- **slug:** pinex-capital
+- **markets:** forex
+- **rating:** 4.1
+- **rsrc:** Trustpilot
+- **reviews:** 150
+- **ratingNote:** Trustpilot 4.1/5, 150 reviews. Checked 27 Nov 2026.
+- **split:** 80 (100% add-on)
+- **splitMax:** 100
+- **dd:** 6% static (1-Step)
+- **ddTypes:** Static
+- **payoutDays:** 21
+- **payoutText:** every 21 exchange days (14d add-on)
+- **from:** 79
+- **fromCur:** EUR
+- **fromPlan:** 1-Step 5K (prices in EUR)
+- **monthly:** false
+- **code:** BLACKFRIDAY
+- **off:** 50
+- **codes:** {"code":"BLACKFRIDAY","off":50,"detail":"50% off every challenge, plus 10% on every payout"}
+- **consistencyText:** none 1-Step; 20% Instant
+- **consNone:** true
+- **target:** 1-Step 9
+- **dailyDD:** 3% static (1-Step)
+- **minDays:** not stated for passing
+- **activation:** Pay Later only (EUR 207-$941 after passing)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $2,000,000
+- **news:** allowed, profit capped 1% in window (from 2 Nov 2026)
+- **overnight:** yes (from 2 Nov 2026)
+- **us:** not stated
+- **site:** https://pinexcapital.com
+- **sources:** https://pinexcapital.com/en/1-step-challenge; https://pinexcapital.com/en/black-friday; https://pinexcapital.com; https://www.trustpilot.com/review/pinexcapital.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** MT5
+- **payMethods:** Not listed
+- **deal:** BLACKFRIDAY — 50% off every challenge, plus 10% on every payout.
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm pricing in euros, not dollars. 1-Step and 2-Step challenges, Instant Funding (to $300K), Instant Funding Elite and Direct Funding. Standard payout cycle is every 21 exchange days; weekend holding has been allowed on every program since Nov 2, 2026.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step — 5000
+
+- **id:** pinex-capital-1-step-5000
+- **program:** 1-Step
+- **name:** 1-Step
+- **size:** 5000
+- **price:** 79
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step 9
+- **dailyLoss:** 3% static (1-Step)
+- **maxDD:** 6% static (1-Step)
+- **ddType:** Static
+- **minDays:** not stated for passing
+- **split:** 80 (100% add-on)
+- **payout:** every 21 exchange days (14d add-on)
+- **platform:** MT5
+- **source:** https://pinexcapital.com/en/1-step-challenge
+
+
+### 104. Pipcy
+
+- **slug:** pipcy
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 100%
+- **splitMax:** 100
+- **dd:** Classic 12% absolute / Mastery 250 pips
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** eligible after 5 trading days; processed within 48 hours of request
+- **from:** 25
+- **fromCur:** USD
+- **fromPlan:** Pips Mastery X3 2.5K, one-time (list price; FEST55 cuts it to $11.25)
+- **monthly:** false
+- **code:** FEST55
+- **off:** Not recorded
+- **codes:** {"code":"FEST55","off":null,"detail":"55% off all challenges"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** Classic 1-Step 18 / Classic 2-Step 12 then 6 / Mastery X2 500 pips / Mastery X3 750 pips
+- **dailyDD:** none (no daily drawdown on any program)
+- **minDays:** 3
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** funded accounts scale up to $5,000,000 (Growth Plan)
+- **news:** allowed
+- **overnight:** not stated
+- **us:** yes (US absent from restricted-countries list; US traders shown in payout testimonials)
+- **site:** https://pipcy.com
+- **sources:** https://pipcy.com; https://pipcy.com/challenges/classic; https://pipcy.com/challenges/pips-mastery; https://pipcy.com/affiliate; https://pipcy.com/faq
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 10-20% first purchase, 7-10%+ recurring (tiered)
+- **platforms:** MT5
+- **payMethods:** Not listed
+- **deal:** FEST55 (55% off all challenges)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto firm. Starts at USD 25 (Pips Mastery X3 2.5K, one-time (list price; FEST55 cuts it to $11.25)). Split up to 100%; payout eligible after 5 trading days; processed within 48 hours of request.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 26**
+
+#### Classic 1-Step — 2500
+
+- **id:** pipcy-classic-1-step-2500
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 2500
+- **price:** 44
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 1-Step — 5000
+
+- **id:** pipcy-classic-1-step-5000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 5000
+- **price:** 77
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 1-Step — 10000
+
+- **id:** pipcy-classic-1-step-10000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 10000
+- **price:** 129
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 1-Step — 25000
+
+- **id:** pipcy-classic-1-step-25000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 25000
+- **price:** 245
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 1-Step — 50000
+
+- **id:** pipcy-classic-1-step-50000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 50000
+- **price:** 389
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 1-Step — 100000
+
+- **id:** pipcy-classic-1-step-100000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 100000
+- **price:** 699
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 1-Step — 200000
+
+- **id:** pipcy-classic-1-step-200000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 200000
+- **price:** 1499
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 18%
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 2500
+
+- **id:** pipcy-classic-2-step-2500
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 2500
+- **price:** 34
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 5000
+
+- **id:** pipcy-classic-2-step-5000
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 5000
+- **price:** 60
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 10000
+
+- **id:** pipcy-classic-2-step-10000
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 10000
+- **price:** 105
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 25000
+
+- **id:** pipcy-classic-2-step-25000
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 25000
+- **price:** 209
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 50000
+
+- **id:** pipcy-classic-2-step-50000
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 50000
+- **price:** 345
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 100000
+
+- **id:** pipcy-classic-2-step-100000
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 100000
+- **price:** 619
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Classic 2-Step — 200000
+
+- **id:** pipcy-classic-2-step-200000
+- **program:** Classic 2-Step
+- **name:** Classic 2-Step
+- **size:** 200000
+- **price:** 1269
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 12 then 6
+- **dailyLoss:** none
+- **maxDD:** 12% absolute
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/classic
+
+#### Pips Mastery X2 — 2500
+
+- **id:** pipcy-pips-mastery-x2-2500
+- **program:** Pips Mastery X2
+- **name:** Pips Mastery X2
+- **size:** 2500
+- **price:** 29
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 500 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X2 — 5000
+
+- **id:** pipcy-pips-mastery-x2-5000
+- **program:** Pips Mastery X2
+- **name:** Pips Mastery X2
+- **size:** 5000
+- **price:** 41
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 500 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X2 — 10000
+
+- **id:** pipcy-pips-mastery-x2-10000
+- **program:** Pips Mastery X2
+- **name:** Pips Mastery X2
+- **size:** 10000
+- **price:** 78
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 500 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X2 — 25000
+
+- **id:** pipcy-pips-mastery-x2-25000
+- **program:** Pips Mastery X2
+- **name:** Pips Mastery X2
+- **size:** 25000
+- **price:** 137
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 500 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X2 — 50000
+
+- **id:** pipcy-pips-mastery-x2-50000
+- **program:** Pips Mastery X2
+- **name:** Pips Mastery X2
+- **size:** 50000
+- **price:** 275
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 500 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X2 — 100000
+
+- **id:** pipcy-pips-mastery-x2-100000
+- **program:** Pips Mastery X2
+- **name:** Pips Mastery X2
+- **size:** 100000
+- **price:** 479
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 500 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X3 — 2500
+
+- **id:** pipcy-pips-mastery-x3-2500
+- **program:** Pips Mastery X3
+- **name:** Pips Mastery X3
+- **size:** 2500
+- **price:** 25
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 750 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X3 — 5000
+
+- **id:** pipcy-pips-mastery-x3-5000
+- **program:** Pips Mastery X3
+- **name:** Pips Mastery X3
+- **size:** 5000
+- **price:** 37
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 750 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X3 — 10000
+
+- **id:** pipcy-pips-mastery-x3-10000
+- **program:** Pips Mastery X3
+- **name:** Pips Mastery X3
+- **size:** 10000
+- **price:** 54
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 750 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X3 — 25000
+
+- **id:** pipcy-pips-mastery-x3-25000
+- **program:** Pips Mastery X3
+- **name:** Pips Mastery X3
+- **size:** 25000
+- **price:** 125
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 750 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X3 — 50000
+
+- **id:** pipcy-pips-mastery-x3-50000
+- **program:** Pips Mastery X3
+- **name:** Pips Mastery X3
+- **size:** 50000
+- **price:** 217
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 750 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+#### Pips Mastery X3 — 100000
+
+- **id:** pipcy-pips-mastery-x3-100000
+- **program:** Pips Mastery X3
+- **name:** Pips Mastery X3
+- **size:** 100000
+- **price:** 449
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 750 pips
+- **dailyLoss:** none
+- **maxDD:** 250 pips
+- **ddType:** Not recorded
+- **minDays:** 3
+- **split:** up to 100%
+- **payout:** Within 48 hours
+- **platform:** MT5
+- **source:** https://pipcy.com/challenges/pips-mastery
+
+
+### 105. PipFarm
+
+- **slug:** pipfarm
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 70% start, up to 99% by Experience Program rank%
+- **splitMax:** 99
+- **dd:** 1-Step 6% static or 8% balance trailing / 2-Step Classic 9% static, Endurance 8% static, Consistency 8% static
+- **ddTypes:** Static
+- **payoutDays:** Not recorded
+- **payoutText:** every 7 days (per homepage tagline)
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** Consistency mode 40% daily score; Classic/Endurance none in challenge, 50% funded
+- **consNone:** true
+- **target:** 1-Step Classic 12 / Endurance 10 / Consistency 9; 2-Step Classic 9 then 6 / Endurance 8 then 5 / Consistency 6 then 6
+- **dailyDD:** 3% all modes and formats
+- **minDays:** Classic 3 trading days per stage; Endurance 4 profitable days (1-step) or 3 per stage (2-step); Consistency 40% daily score
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://pipfarm.com
+- **sources:** https://pipfarm.com/; https://updates.pipfarm.com/help/articles/0873123-challenge-mode-comparison; https://pipfarm.com/affiliate-terms; https://pipfarm.com/affiliates
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 5-25% tiered (new affiliates start at 10%)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: prices shown only at checkout (official help center); Instant and Pay with Profits program prices not stated; US eligibility and news rule not stated on official pages read
+- **summary:** Forex firm. Starts at USD None (Entry plan (name not recorded)). Split 70% start, up to 99% by Experience Program rank%; payout every 7 days (per homepage tagline).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 106. Prop Hub
+
+- **slug:** prop-hub
+- **markets:** prediction
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** 20% from peak
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** one payout every 7 days; caps $1,000 first, $2,000 second, then $5,000 each; paid in USDT/USDC within 72 hours
+- **from:** 30
+- **fromCur:** USD
+- **fromPlan:** 1K challenge, one-time
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** best day at most 30% of counted profit to pass, 40% to withdraw
+- **consNone:** false
+- **target:** 30% (counted trades only)
+- **dailyDD:** 10%
+- **minDays:** not stated (no time limit; at least one trade every 14 days)
+- **activation:** none stated (retake 30% of fee; free $100 welcome account for 3 days)
+- **instant:** false
+- **instantText:** No
+- **scaling:** level up to $50,000 after passing
+- **news:** not applicable (prediction markets; only events resolving within 2 days)
+- **overnight:** not applicable (prediction markets)
+- **us:** not stated (access restricted in certain jurisdictions; which ones not stated on readable pages)
+- **site:** https://prop-hub.pro
+- **sources:** https://prop-hub.pro; https://prop-hub.pro/pricing.md; https://support.prop-hub.pro/challenges/rules/; https://partner.prop-hub.pro/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 40% RevShare for life or up to $200 CPA
+- **platforms:** Polymarket
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Prediction Markets firm. Starts at USD 30 (1K challenge, one-time). Split up to 90%; payout one payout every 7 days; caps $1,000 first, $2,000 second, then $5,000 each; paid in USDT/USDC within 72 hours.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### Polymarket Challenge — 1000
+
+- **id:** prop-hub-polymarket-challenge-1000
+- **program:** Polymarket Challenge
+- **name:** Polymarket Challenge
+- **size:** 1000
+- **price:** 30
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 30%
+- **dailyLoss:** 10%
+- **maxDD:** 20% from peak
+- **ddType:** Not recorded
+- **minDays:** not stated (no time limit; at least one trade every 14 days)
+- **split:** up to 90%
+- **payout:** Every 7 days
+- **platform:** Polymarket
+- **source:** https://prop-hub.pro/pricing.md
+
+#### Polymarket Challenge — 10000
+
+- **id:** prop-hub-polymarket-challenge-10000
+- **program:** Polymarket Challenge
+- **name:** Polymarket Challenge
+- **size:** 10000
+- **price:** 125
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 30%
+- **dailyLoss:** 10%
+- **maxDD:** 20% from peak
+- **ddType:** Not recorded
+- **minDays:** not stated (no time limit; at least one trade every 14 days)
+- **split:** up to 90%
+- **payout:** Every 7 days
+- **platform:** Polymarket
+- **source:** https://prop-hub.pro/pricing.md
+
+#### Polymarket Challenge — 25000
+
+- **id:** prop-hub-polymarket-challenge-25000
+- **program:** Polymarket Challenge
+- **name:** Polymarket Challenge
+- **size:** 25000
+- **price:** 300
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 30%
+- **dailyLoss:** 10%
+- **maxDD:** 20% from peak
+- **ddType:** Not recorded
+- **minDays:** not stated (no time limit; at least one trade every 14 days)
+- **split:** up to 90%
+- **payout:** Every 7 days
+- **platform:** Polymarket
+- **source:** https://prop-hub.pro/pricing.md
+
+#### Polymarket Challenge — 50000
+
+- **id:** prop-hub-polymarket-challenge-50000
+- **program:** Polymarket Challenge
+- **name:** Polymarket Challenge
+- **size:** 50000
+- **price:** 500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 30%
+- **dailyLoss:** 10%
+- **maxDD:** 20% from peak
+- **ddType:** Not recorded
+- **minDays:** not stated (no time limit; at least one trade every 14 days)
+- **split:** up to 90%
+- **payout:** Every 7 days
+- **platform:** Polymarket
+- **source:** https://prop-hub.pro/pricing.md
+
+
+### 107. Prop Number One
+
+- **slug:** prop-number-one
+- **markets:** forex
+- **rating:** 4.6
+- **rsrc:** Trustpilot
+- **reviews:** 3200
+- **ratingNote:** Trustpilot 4.6/5 shown on the firm's own homepage, 3,200+ reviews. Checked Nov 27, 2026.
+- **split:** 100%
+- **splitMax:** 100
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** every 21 calendar days; processed within 24 hours; salary up to $3,000/month after 60 days
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** FIRST
+- **off:** Not recorded
+- **codes:** {"code":"FIRST","off":null,"detail":"20% off first purchase"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** 2-Step targets not stated on readable pages; Instant Funding none (1% minimum profit to withdraw)
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** none stated (2-Step entry fee refunded on passing)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $300,000 virtual capital
+- **news:** allowed
+- **overnight:** allowed (overweek trading)
+- **us:** yes (homepage shows a US flag beside a platform option; no restricted-countries statement read)
+- **site:** https://propnumberone.com
+- **sources:** https://propnumberone.com; https://propnumberone.com/en-us/partner/
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified on official site
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FIRST (20% off first purchase)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Detail: partial (prices behind JS configurator — curl is bot-blocked and subpaths 404; targets, drawdowns and min trading days not readable on official pages) Missing: from_price (all per-size prices); plan_table; profit_target_pct (2-Step); max_drawdown; daily_drawdown; min_trading_days; affiliate_program
+- **summary:** Forex firm. Starts at USD None (Entry plan (name not recorded)). Split 100%; payout every 21 calendar days; processed within 24 hours; salary up to $3,000/month after 60 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 108. PropEd Capital
+
+- **slug:** proped-capital
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 (90% add-on, +20% of base price)%
+- **splitMax:** 90
+- **dd:** EOD $1,000 (25K Standard); Instant $1,250 EOD (25K)
+- **ddTypes:** EOD
+- **payoutDays:** 14
+- **payoutText:** bi-weekly (weekly add-on); min payout $500; caps $1,000 (25K) to $3,300 (150K)
+- **from:** 109
+- **fromCur:** USD
+- **fromPlan:** Standard Eval 25K (list; $43.60 with 60% off)
+- **monthly:** false
+- **code:** none verified (60% off all accounts on-site, no code)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (60% off all accounts on-site, no code)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Standard 40 eval/funded; Instant 20 eval/funded
+- **consNone:** false
+- **target:** 6 (Standard Eval 25K $1,500); Instant none
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** path to live Ironbeam sub-account (up to $10,000) after risk review
+- **news:** not stated
+- **overnight:** weekend holds add-on (default no)
+- **us:** not stated (US firm, Lansing, MI)
+- **site:** https://propedcapital.com
+- **sources:** https://propedcapital.com/; https://propedcapital.com/faq/plan-comparison; https://propedcapital.com/faq/payouts-profit-splits; https://propedcapital.com/plans/instant-funded; https://propedcapital.com/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 20% lifetime revenue share
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (60% off all accounts on-site, no code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Futures firm. Starts at USD 109 (Standard Eval 25K (list; $43.60 with 60% off)). Split 80 (90% add-on, +20% of base price)%; payout bi-weekly (weekly add-on); min payout $500; caps $1,000 (25K) to $3,300 (150K).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Standard Eval 25K (list; $43.60 with 60% off) — Not recorded
+
+- **id:** proped-capital-entry
+- **program:** Standard Eval 25K (list; $43.60 with 60% off)
+- **name:** Standard Eval 25K (list; $43.60 with 60% off)
+- **size:** Not recorded
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 6 (Standard Eval 25K $1,500); Instant none
+- **dailyLoss:** not stated
+- **maxDD:** EOD $1,000 (25K Standard); Instant $1,250 EOD (25K)
+- **ddType:** EOD
+- **minDays:** not stated
+- **split:** 80 (90% add-on, +20% of base price)%
+- **payout:** bi-weekly (weekly add-on); min payout $500; caps $1,000 (25K) to $3,300 (150K)
+- **platform:** Not stated
+- **source:** https://propedcapital.com
+
+
+### 109. PropLynq
+
+- **slug:** proplynq
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-95% (2-Step/1-Step/Base); Rocket 70%
+- **splitMax:** 95
+- **dd:** 2-Step 10% / 1-Step 6% / Base 8% / Rocket 6% trailing
+- **ddTypes:** Trailing
+- **payoutDays:** 14
+- **payoutText:** bi-weekly; processed in 1-3 business days
+- **from:** 32.99
+- **fromCur:** USD
+- **fromPlan:** Base Challenge 5K, one-time
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** 1-Step 50% (best day <=50% of total profit); 2-Step/Base/Rocket none
+- **consNone:** true
+- **target:** 2-Step 8 then 5 / 1-Step 10 / Base 8 then 4 / Rocket none
+- **dailyDD:** 2-Step 5% / 1-Step 3% / Base 4% / Rocket no limit
+- **minDays:** 2-Step 5 / 1-Step 2 / Base 5 / Rocket none
+- **activation:** none stated (Pay Later: 25% upfront on select accounts, rest only after passing; add-ons available: no-min-days, 95% split, 10% max loss, Double Up, swap-free, 150% reward, bi-weekly reward)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $4,000,000 (+40% per qualifying 4-month review cycle)
+- **news:** allowed
+- **overnight:** allowed (weekend holding allowed)
+- **us:** not stated
+- **site:** https://proplynq.com
+- **sources:** https://proplynq.com/trading-accounts; https://proplynq.com/affiliate; https://proplynq.com/payouts; https://proplynq.com/evaluation-rules
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 20% lifetime recurring commission (tiers 10/15/20%)
+- **platforms:** Own broker
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex firm. Starts at USD 32.99 (Base Challenge 5K, one-time). Split 80-95% (2-Step/1-Step/Base); Rocket 70%; payout bi-weekly; processed in 1-3 business days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 22**
+
+#### 2-Step Challenge — 6000
+
+- **id:** proplynq-2-step-challenge-6000
+- **program:** 2-Step Challenge
+- **name:** 2-Step Challenge
+- **size:** 6000
+- **price:** 59.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 2-Step Challenge — 15000
+
+- **id:** proplynq-2-step-challenge-15000
+- **program:** 2-Step Challenge
+- **name:** 2-Step Challenge
+- **size:** 15000
+- **price:** 119.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 2-Step Challenge — 25000
+
+- **id:** proplynq-2-step-challenge-25000
+- **program:** 2-Step Challenge
+- **name:** 2-Step Challenge
+- **size:** 25000
+- **price:** 199.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 2-Step Challenge — 50000
+
+- **id:** proplynq-2-step-challenge-50000
+- **program:** 2-Step Challenge
+- **name:** 2-Step Challenge
+- **size:** 50000
+- **price:** 299.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 2-Step Challenge — 100000
+
+- **id:** proplynq-2-step-challenge-100000
+- **program:** 2-Step Challenge
+- **name:** 2-Step Challenge
+- **size:** 100000
+- **price:** 549.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 2-Step Challenge — 200000
+
+- **id:** proplynq-2-step-challenge-200000
+- **program:** 2-Step Challenge
+- **name:** 2-Step Challenge
+- **size:** 200000
+- **price:** 1099.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 1-Step Challenge — 6000
+
+- **id:** proplynq-1-step-challenge-6000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 6000
+- **price:** 65.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6%
+- **ddType:** Not recorded
+- **minDays:** 2
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 1-Step Challenge — 15000
+
+- **id:** proplynq-1-step-challenge-15000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 15000
+- **price:** 129.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6%
+- **ddType:** Not recorded
+- **minDays:** 2
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 1-Step Challenge — 25000
+
+- **id:** proplynq-1-step-challenge-25000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 25000
+- **price:** 219.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6%
+- **ddType:** Not recorded
+- **minDays:** 2
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 1-Step Challenge — 50000
+
+- **id:** proplynq-1-step-challenge-50000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 50000
+- **price:** 329.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6%
+- **ddType:** Not recorded
+- **minDays:** 2
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 1-Step Challenge — 100000
+
+- **id:** proplynq-1-step-challenge-100000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 100000
+- **price:** 569.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6%
+- **ddType:** Not recorded
+- **minDays:** 2
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### 1-Step Challenge — 200000
+
+- **id:** proplynq-1-step-challenge-200000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 200000
+- **price:** 1099.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6%
+- **ddType:** Not recorded
+- **minDays:** 2
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Base Challenge — 5000
+
+- **id:** proplynq-base-challenge-5000
+- **program:** Base Challenge
+- **name:** Base Challenge
+- **size:** 5000
+- **price:** 32.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Base Challenge — 10000
+
+- **id:** proplynq-base-challenge-10000
+- **program:** Base Challenge
+- **name:** Base Challenge
+- **size:** 10000
+- **price:** 59.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Base Challenge — 25000
+
+- **id:** proplynq-base-challenge-25000
+- **program:** Base Challenge
+- **name:** Base Challenge
+- **size:** 25000
+- **price:** 139.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Base Challenge — 50000
+
+- **id:** proplynq-base-challenge-50000
+- **program:** Base Challenge
+- **name:** Base Challenge
+- **size:** 50000
+- **price:** 229.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Base Challenge — 100000
+
+- **id:** proplynq-base-challenge-100000
+- **program:** Base Challenge
+- **name:** Base Challenge
+- **size:** 100000
+- **price:** 449.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Base Challenge — 200000
+
+- **id:** proplynq-base-challenge-200000
+- **program:** Base Challenge
+- **name:** Base Challenge
+- **size:** 200000
+- **price:** 798.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 4
+- **dailyLoss:** 4%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 80-95%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Rocket (Instant) — 2000
+
+- **id:** proplynq-rocket-instant-2000
+- **program:** Rocket (Instant)
+- **name:** Rocket (Instant)
+- **size:** 2000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** no limit
+- **maxDD:** 6% trailing
+- **ddType:** Trailing
+- **minDays:** 2-Step 5 / 1-Step 2 / Base 5 / Rocket none
+- **split:** 70%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Rocket (Instant) — 5000
+
+- **id:** proplynq-rocket-instant-5000
+- **program:** Rocket (Instant)
+- **name:** Rocket (Instant)
+- **size:** 5000
+- **price:** 149
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** no limit
+- **maxDD:** 6% trailing
+- **ddType:** Trailing
+- **minDays:** 2-Step 5 / 1-Step 2 / Base 5 / Rocket none
+- **split:** 70%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Rocket (Instant) — 10000
+
+- **id:** proplynq-rocket-instant-10000
+- **program:** Rocket (Instant)
+- **name:** Rocket (Instant)
+- **size:** 10000
+- **price:** 299
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** no limit
+- **maxDD:** 6% trailing
+- **ddType:** Trailing
+- **minDays:** 2-Step 5 / 1-Step 2 / Base 5 / Rocket none
+- **split:** 70%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+#### Rocket (Instant) — 20000
+
+- **id:** proplynq-rocket-instant-20000
+- **program:** Rocket (Instant)
+- **name:** Rocket (Instant)
+- **size:** 20000
+- **price:** 599
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** no limit
+- **maxDD:** 6% trailing
+- **ddType:** Trailing
+- **minDays:** 2-Step 5 / 1-Step 2 / Base 5 / Rocket none
+- **split:** 70%
+- **payout:** Bi-Weekly
+- **platform:** Own broker
+- **source:** https://proplynq.com/trading-accounts
+
+
+### 110. Propr
+
+- **slug:** propr
+- **markets:** perps
+- **rating:** 4.4
+- **rsrc:** Trustpilot
+- **reviews:** 68
+- **ratingNote:** Verified against Trustpilot
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** 3% static (Turbo) / 6% (Classic 1-Step)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** on demand, USDC on-chain
+- **from:** 25
+- **fromCur:** USD
+- **fromPlan:** Turbo 1-Step 5K
+- **monthly:** false
+- **code:** BF20
+- **off:** 20
+- **codes:** {"code":"BF20","off":20,"detail":"20% off every challenge — ends Nov 30, 2026, 23:59 UTC (banner on propr.xyz)"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** Turbo 9 / Classic 1-Step 10
+- **dailyDD:** 3% (1-Step) / 5% (2-Step)
+- **minDays:** none
+- **activation:** none
+- **instant:** false
+- **instantText:** No
+- **scaling:** no fixed plan
+- **news:** allowed
+- **overnight:** allowed (24/7)
+- **us:** yes (US not on restricted list)
+- **site:** https://propr.xyz
+- **sources:** https://propr.xyz; https://propr.xyz/rules; https://www.trustpilot.com/review/propr.xyz
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (rates not stated)
+- **platforms:** Hyperliquid
+- **payMethods:** USDC on-chain (Ethereum)
+- **deal:** 20% off every challenge (ends Nov 30, 2026, 23:59 UTC)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** The BF20 code was reported on the firm's channels; it was not confirmed on the propr.xyz homepage on Nov 26, 2026. Confirm at checkout.
+- **summary:** Perpetual futures on Hyperliquid — 140+ crypto, stock, index, commodity and FX perps, trading 24/7. Classic, Turbo and Pro evaluations at a flat 80% split, no consistency rule, payouts on demand in USDC, and every payout published with its transaction hash.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Turbo 1-Step — 5000
+
+- **id:** propr-turbo-1-step-5000
+- **program:** Turbo 1-Step
+- **name:** Turbo 1-Step
+- **size:** 5000
+- **price:** 25
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Turbo 9 / Classic 1-Step 10
+- **dailyLoss:** 3% (1-Step) / 5% (2-Step)
+- **maxDD:** 3% static (Turbo) / 6% (Classic 1-Step)
+- **ddType:** Static
+- **minDays:** none
+- **split:** 80%
+- **payout:** on demand, USDC on-chain
+- **platform:** Hyperliquid
+- **source:** https://propr.xyz
+
+
+### 111. PropShopTrader
+
+- **slug:** propshoptrader
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** $1,000 (4%) EOD trailing on 25K all paths
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** on request after qualifying days (Pro 3 trading days, Flex/Direct 5); minimum $500; 90% share; per-request caps $1,000 first, $1,500 requests 2-5
+- **from:** 79
+- **fromCur:** USD
+- **fromPlan:** Flex 25K, one-time
+- **monthly:** false
+- **code:** BF2026
+- **off:** Not recorded
+- **codes:** {"code":"BF2026","off":null,"detail":"50% off assessments/challenges, 30% off Direct, through Nov 30"}
+- **consistencyText:** Pro none in eval, 40% funded; Flex 40% in eval; Direct 20% funded
+- **consNone:** true
+- **target:** Pro/Flex 6% ($1,500 on 25K); Direct none
+- **dailyDD:** Pro none; Flex 25K none, 50K/100K/150K 2.5% soft breach; Direct 25K none, 50K 2.4%, 100K 2.1%, 150K 2%
+- **minDays:** Pro 1; Flex 3; Direct none
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $1,000,000 combined allocation
+- **news:** prohibited: no opening a position within 3 minutes before or after a news event
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://propshoptrader.com
+- **sources:** https://propshoptrader.com; https://propshoptrader.com/affiliates
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 12% commission
+- **platforms:** Tickblaze or Rithmic
+- **payMethods:** Not listed
+- **deal:** BF2026 (50% off assessments/challenges, 30% off Direct, through Nov 30)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: 50K/100K/150K prices behind JS widget (only 25K cards render); US eligibility and overnight/weekend rule not stated on official pages read
+- **summary:** Futures firm. Starts at USD 79 (Flex 25K, one-time). Split 90%; payout on request after qualifying days (Pro 3 trading days, Flex/Direct 5); minimum $500; 90% share; per-request caps $1,000 first, $1,500 requests 2-5.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 3**
+
+#### Pro — 25000
+
+- **id:** propshoptrader-pro-25000
+- **program:** Pro
+- **name:** Pro
+- **size:** 25000
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** $1,500 (6%)
+- **dailyLoss:** none
+- **maxDD:** $1,000 (4%) EOD trailing
+- **ddType:** EOD
+- **minDays:** 1
+- **split:** 90%
+- **payout:** after 3 trading days; min $500; caps $1,000 then $1,500
+- **platform:** Tickblaze or Rithmic
+- **source:** https://propshoptrader.com
+
+#### Flex — 25000
+
+- **id:** propshoptrader-flex-25000
+- **program:** Flex
+- **name:** Flex
+- **size:** 25000
+- **price:** 79
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** $1,500 (6%)
+- **dailyLoss:** none (25K)
+- **maxDD:** $1,000 (4%) EOD trailing
+- **ddType:** EOD
+- **minDays:** 3
+- **split:** 90%
+- **payout:** after 5 trading days; min $500; caps $1,000 then $1,500
+- **platform:** Tickblaze or Rithmic
+- **source:** https://propshoptrader.com
+
+#### Direct — 25000
+
+- **id:** propshoptrader-direct-25000
+- **program:** Direct
+- **name:** Direct
+- **size:** 25000
+- **price:** 329
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** not applicable (no evaluation)
+- **dailyLoss:** none (25K)
+- **maxDD:** $1,000 (4%) EOD trailing
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 90%
+- **payout:** after 5 trading days; min $500; caps $1,000 then $1,500
+- **platform:** Tickblaze or Rithmic
+- **source:** https://propshoptrader.com
+
+
+### 112. PropW
+
+- **slug:** propw
+- **markets:** crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% default, up to 90% under special incentive programs%
+- **splitMax:** 90
+- **dd:** per-level limits not stated on readable official pages
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** every 7 days; rewards in USDT
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** per-level targets not stated on readable official pages (5 levels: Starter, Intermediate, Advanced, Expert, Master); HourTrader: up to 10x audition fee
+- **dailyDD:** per-level limits not stated on readable official pages
+- **minDays:** 5
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (funded accounts up to 200,000 USDT)
+- **news:** not stated
+- **overnight:** allowed (hold positions overnight; 24/7 trading; up to 5x leverage)
+- **us:** not stated (site states it is not intended for residents of any particular country or jurisdiction)
+- **site:** https://propw.com
+- **sources:** https://propw.com; https://propw.com/en_US/affiliate-program; https://www.propw.com/en_US/affiliate-program
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes (program page exists at /en_US/affiliate-program; commission % not readable — page serves homepage content in text fetch)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Detail: partial (per-level prices, targets and drawdowns behind JS configurator — official backend API WAF-blocks curl; homepage FAQ confirms programs, split, payout cycle and min days only) Missing: from_price (all per-level prices); plan_table; profit_target_pct; max_drawdown; daily_drawdown; affiliate commission %
+- **summary:** Crypto firm. Starts at USD None (Entry plan (name not recorded)). Split 80% default, up to 90% under special incentive programs%; payout every 7 days; rewards in USDT.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 113. Purdia Capital
+
+- **slug:** purdia-capital
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 179
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** true
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US traders completed)
+- **site:** https://purdia.com
+- **sources:** https://purdia.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 7.5-15% tiered recurring
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier C, 8 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Futures firm. Starts at $179/mo. Affiliate: yes, 7.5-15% tiered recurring. US traders: yes (US traders completed).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** purdia-capital-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 179
+- **currency:** USD
+- **monthly:** true
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://purdia.com
+
+
+### 114. QATS Prop
+
+- **slug:** qats-prop
+- **markets:** crypto; perps; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** Standard 3.5% EOD trailing (stops at starting balance) / Small Accounts 3%
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** on request after 5 qualifying winning days ($6.25-$150 net each by size); up to 50% of eligible profit per request; paid in 5-10 business days
+- **from:** 5.6
+- **fromCur:** USD
+- **fromPlan:** Small Accounts 2.5K, first month with activation-fee option ($19 activation due after passing)
+- **monthly:** true
+- **code:** none verified (Black Friday 30% off first payment through Dec 2, no code shown)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (Black Friday 30% off first payment through Dec 2, no code shown)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** 50% (best day <=50% of total net profit)
+- **consNone:** false
+- **target:** Standard 6 / Small Accounts 7
+- **dailyDD:** 2% (breach fails the account)
+- **minDays:** 2
+- **activation:** optional lower-price option with activation fee on pass: Standard $99 (25K) to $199 (200K); Small $19 (2.5K) to $89 (20K)
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (max account $200K)
+- **news:** allowed (no high-impact news entry blackout)
+- **overnight:** allowed (no daily session halt; risk-day rollover is an accounting boundary only)
+- **us:** not stated (supported-countries directory loads via JS; not readable)
+- **site:** https://prop.qats.us
+- **sources:** https://prop.qats.us/challenges; https://prop.qats.us/rules; https://prop.qats.us/faq; https://prop.qats.us/payouts; https://prop.qats.us/affiliates; https://prop.qats.us/supported-countries
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 10-50% partner pools (rate assigned in Partner Portal)
+- **platforms:** TradingView
+- **payMethods:** Not listed
+- **deal:** none verified (Black Friday 30% off first payment through Dec 2, no code shown)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Crypto, Perps, Stocks firm. Starts at USD 5.6 (Small Accounts 2.5K, first month with activation-fee option ($19 activation due after passing)). Split up to 90%; payout on request after 5 qualifying winning days ($6.25-$150 net each by size); up to 50% of eligible profit per request; paid in 5-10 business days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 20**
+
+#### Standard (Monthly) — 25000
+
+- **id:** qats-prop-standard-monthly-25000
+- **program:** Standard (Monthly)
+- **name:** Standard (Monthly)
+- **size:** 25000
+- **price:** 49
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (Monthly) — 50000
+
+- **id:** qats-prop-standard-monthly-50000
+- **program:** Standard (Monthly)
+- **name:** Standard (Monthly)
+- **size:** 50000
+- **price:** 89
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (Monthly) — 100000
+
+- **id:** qats-prop-standard-monthly-100000
+- **program:** Standard (Monthly)
+- **name:** Standard (Monthly)
+- **size:** 100000
+- **price:** 149
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (Monthly) — 150000
+
+- **id:** qats-prop-standard-monthly-150000
+- **program:** Standard (Monthly)
+- **name:** Standard (Monthly)
+- **size:** 150000
+- **price:** 199
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (Monthly) — 200000
+
+- **id:** qats-prop-standard-monthly-200000
+- **program:** Standard (Monthly)
+- **name:** Standard (Monthly)
+- **size:** 200000
+- **price:** 289
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (One-time) — 25000
+
+- **id:** qats-prop-standard-one-time-25000
+- **program:** Standard (One-time)
+- **name:** Standard (One-time)
+- **size:** 25000
+- **price:** 52.5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (One-time) — 50000
+
+- **id:** qats-prop-standard-one-time-50000
+- **program:** Standard (One-time)
+- **name:** Standard (One-time)
+- **size:** 50000
+- **price:** 97.3
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (One-time) — 100000
+
+- **id:** qats-prop-standard-one-time-100000
+- **program:** Standard (One-time)
+- **name:** Standard (One-time)
+- **size:** 100000
+- **price:** 174.3
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (One-time) — 150000
+
+- **id:** qats-prop-standard-one-time-150000
+- **program:** Standard (One-time)
+- **name:** Standard (One-time)
+- **size:** 150000
+- **price:** 209.3
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Standard (One-time) — 200000
+
+- **id:** qats-prop-standard-one-time-200000
+- **program:** Standard (One-time)
+- **name:** Standard (One-time)
+- **size:** 200000
+- **price:** 349.3
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6%
+- **dailyLoss:** 2%
+- **maxDD:** 3.5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (Monthly) — 2500
+
+- **id:** qats-prop-small-accounts-monthly-2500
+- **program:** Small Accounts (Monthly)
+- **name:** Small Accounts (Monthly)
+- **size:** 2500
+- **price:** 8
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (Monthly) — 5000
+
+- **id:** qats-prop-small-accounts-monthly-5000
+- **program:** Small Accounts (Monthly)
+- **name:** Small Accounts (Monthly)
+- **size:** 5000
+- **price:** 15
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (Monthly) — 10000
+
+- **id:** qats-prop-small-accounts-monthly-10000
+- **program:** Small Accounts (Monthly)
+- **name:** Small Accounts (Monthly)
+- **size:** 10000
+- **price:** 28
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (Monthly) — 15000
+
+- **id:** qats-prop-small-accounts-monthly-15000
+- **program:** Small Accounts (Monthly)
+- **name:** Small Accounts (Monthly)
+- **size:** 15000
+- **price:** 41
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (Monthly) — 20000
+
+- **id:** qats-prop-small-accounts-monthly-20000
+- **program:** Small Accounts (Monthly)
+- **name:** Small Accounts (Monthly)
+- **size:** 20000
+- **price:** 54
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (One-time) — 2500
+
+- **id:** qats-prop-small-accounts-one-time-2500
+- **program:** Small Accounts (One-time)
+- **name:** Small Accounts (One-time)
+- **size:** 2500
+- **price:** 8.4
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (One-time) — 5000
+
+- **id:** qats-prop-small-accounts-one-time-5000
+- **program:** Small Accounts (One-time)
+- **name:** Small Accounts (One-time)
+- **size:** 5000
+- **price:** 13.3
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (One-time) — 10000
+
+- **id:** qats-prop-small-accounts-one-time-10000
+- **program:** Small Accounts (One-time)
+- **name:** Small Accounts (One-time)
+- **size:** 10000
+- **price:** 24.5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (One-time) — 15000
+
+- **id:** qats-prop-small-accounts-one-time-15000
+- **program:** Small Accounts (One-time)
+- **name:** Small Accounts (One-time)
+- **size:** 15000
+- **price:** 34.3
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+#### Small Accounts (One-time) — 20000
+
+- **id:** qats-prop-small-accounts-one-time-20000
+- **program:** Small Accounts (One-time)
+- **name:** Small Accounts (One-time)
+- **size:** 20000
+- **price:** 44.1
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7%
+- **dailyLoss:** 2%
+- **maxDD:** 3% static
+- **ddType:** Static
+- **minDays:** 2
+- **split:** up to 90%
+- **payout:** On request (after 5 winning days)
+- **platform:** TradingView
+- **source:** https://prop.qats.us/challenges
+
+
+### 115. QT Funded
+
+- **slug:** qt-funded
+- **markets:** forex
+- **rating:** 3.4
+- **rsrc:** Trustpilot
+- **reviews:** 13422
+- **ratingNote:** Trustpilot 3.4/5, 13,422 reviews. Checked 27 Nov 2026.
+- **split:** 70 (ONE) / 80 (TWO) / 100 (Instant)
+- **splitMax:** 100
+- **dd:** 6% trailing (ONE)
+- **ddTypes:** EOD
+- **payoutDays:** 4
+- **payoutText:** ONE every 4 trading days; TWO/Instant 14d (Instant cycle conflicts 4/7/14d)
+- **from:** 5
+- **fromCur:** USD
+- **fromPlan:** headline 'Starts at $5' (what-is-prop page says from $26 — conflict)
+- **monthly:** false
+- **code:** BLACK75
+- **off:** 75
+- **codes:** {"code":"BLACK75","off":75,"detail":"75% off (Black Friday banner)"}; {"code":"BLACK60","off":60,"detail":"60% off + a free same-size account (Black Friday banner)"}
+- **consistencyText:** ONE/TWO none; Instant 30
+- **consNone:** false
+- **target:** ONE 6 / TWO 8 then 5
+- **dailyDD:** 3% (dated reads of official rules)
+- **minDays:** ONE 0
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $300K total
+- **news:** allowed (ONE)
+- **overnight:** weekend allowed (dated reads)
+- **us:** yes, TradeLocker only (MT5/cTrader barred)
+- **site:** https://qtfunded.quanttekel.com
+- **sources:** https://qtfunded.quanttekel.com/; https://www.trustpilot.com/review/quanttekel.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes
+- **platforms:** MT5; TradeLocker
+- **payMethods:** Crypto (USDC); Wire transfer
+- **deal:** 75% off (Black Friday banner)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Open questions on the firm's own pages: the homepage says prices 'start at $5' while its what-is-prop page says 'from $26'; and QT Instant's payout cycle appears as 4 days on the plan card, 7 days in the FAQ and 14 days in the help centre. Do not treat $5 as the full price without checking checkout.
+- **summary:** Forex/CFD firm (Quant Tekel) on MT5 and TradeLocker; its futures section is marked 'Coming Soon'. QT ONE pays every 4 trading days at 70%, QT TWO at 80%, QT Instant at 100%. Its own pages conflict on the entry price — see the caveat on this page.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 116. RebelsFunding
+
+- **slug:** rebelsfunding
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 75-90% by program (Copper/Bronze 80-90%; Silver/Gold 75-90%; Diamond 75%)%
+- **splitMax:** 90
+- **dd:** Copper/Bronze/Silver 10% / Gold 6% / Diamond 6%
+- **ddTypes:** Not recorded
+- **payoutDays:** 14
+- **payoutText:** bi-weekly (RCF reward cycle)
+- **from:** 9
+- **fromCur:** USD
+- **fromPlan:** Copper 4-Phase $1K ($6 for new users)
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** Copper 5% per phase / Bronze 5% per phase / Silver 8 then 5 / Gold 10 / Diamond 10% per level
+- **dailyDD:** Copper/Bronze/Silver 5% / Gold none in eval, 4% on RCF / Diamond none
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $640,000 max allocation
+- **news:** allowed
+- **overnight:** allowed (weekend holding yes, per homepage FAQ)
+- **us:** yes (listed among best prop firms for US traders on official site)
+- **site:** https://rebelsfunding.com
+- **sources:** https://rebelsfunding.com; https://www.rebelsfunding.com/best-funded-trading-accounts/; https://www.rebelsfunding.com/partnership-program-ads/; https://www.rebelsfunding.com/best-prop-firms-for-us-traders/
+- **verif:** partial (programs, entry price, rules and affiliate verified on official pages; per-size list prices are a JS pricing widget and could not be re-read)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 15-25% (Level 1 15%, Level 2 20%, Level 3 25%, Custom 25%+)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (programs, entry price, rules and affiliate verified on official pages; per-size list prices are a JS pricing widget and could not be re-read).
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 9 (Copper 4-Phase $1K ($6 for new users)). Split 75-90% by program (Copper/Bronze 80-90%; Silver/Gold 75-90%; Diamond 75%)%; payout bi-weekly (RCF reward cycle).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Copper 4-Phase $1K ($6 for new users) — Not recorded
+
+- **id:** rebelsfunding-entry
+- **program:** Copper 4-Phase $1K ($6 for new users)
+- **name:** Copper 4-Phase $1K ($6 for new users)
+- **size:** Not recorded
+- **price:** 9
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Copper 5% per phase / Bronze 5% per phase / Silver 8 then 5 / Gold 10 / Diamond 10% per level
+- **dailyLoss:** Copper/Bronze/Silver 5% / Gold none in eval, 4% on RCF / Diamond none
+- **maxDD:** Copper/Bronze/Silver 10% / Gold 6% / Diamond 6%
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 75-90% by program (Copper/Bronze 80-90%; Silver/Gold 75-90%; Diamond 75%)%
+- **payout:** bi-weekly (RCF reward cycle)
+- **platform:** Not stated
+- **source:** https://rebelsfunding.com
+
+
+### 117. Rev One Trading
+
+- **slug:** rev-one-trading
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90 (set by 6-factor behaviour score)%
+- **splitMax:** Not recorded
+- **dd:** 4% EOD trailing (challenge); 8% funded (split drops past 4%, no breach until 8%)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** anytime once eligible (5 profitable days, $500 min); 50% of profit per period capped $1,000-$3,000 by size
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** none verified (launch pricing referenced, no code shown)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (launch pricing referenced, no code shown)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** challenge best day max 50% of total profit; funded none
+- **consNone:** true
+- **target:** 5
+- **dailyDD:** none
+- **minDays:** 2 (challenge); 5 profitable days before payout
+- **activation:** $0
+- **instant:** false
+- **instantText:** No
+- **scaling:** Rev One Live (real capital) after 5 payouts
+- **news:** allowed
+- **overnight:** overnight allowed (close 4 PM CT, resume 6 PM CT); weekend not allowed (auto-close Fri 4 PM CT)
+- **us:** yes (US firm; traders in 102 countries; no US restriction stated)
+- **site:** https://revonetrading.com
+- **sources:** https://revonetrading.com; https://revonetrading.com/rules
+- **verif:** partial (prices not readable on official site in text fetch; rules page fully verified)
+- **verifLabel:** Partially verified
+- **affiliate:** not stated
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (launch pricing referenced, no code shown)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (prices not readable on official site in text fetch; rules page fully verified).
+- **summary:** Futures firm. Starts at USD None (Entry plan (name not recorded)). Split up to 90 (set by 6-factor behaviour score)%; payout anytime once eligible (5 profitable days, $500 min); 50% of profit per period capped $1,000-$3,000 by size.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 118. RZR Funded
+
+- **slug:** rzr-funded
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 (95% with add-on)%
+- **splitMax:** 95
+- **dd:** Express 6% trailing / Enhanced 10% static / EnhancedX 8% static / Endurance 8% static / Instant 3-6% trailing
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** first reward 14d after first trade, then every 14d (7d with add-on); Instant24 once 24h window ends; 24h reward guarantee (approval or reward doubled up to $1,000)
+- **from:** 13
+- **fromCur:** USD
+- **fromPlan:** Instant24 (smallest size), one-time
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** EnhancedX 35 / Instant Lite 20 / Instant24 15 (single-trade cap) / Express, Enhanced, Endurance, Instant Funding none
+- **consNone:** true
+- **target:** Express 10 / Enhanced 10 then 5 / EnhancedX 8 then 4 / Endurance 6 per stage / Instant none
+- **dailyDD:** Express/Enhanced 5% / EnhancedX/Endurance 4% / Instant24 2% / Instant Lite 3% / Instant Funding 6%
+- **minDays:** Express none / Enhanced 3 profitable days per stage / Endurance 3 per stage / Instant Lite 5 profitable days per payout cycle
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** free step-up to next size to $200K, $400K combined cap (evals only)
+- **news:** allowed in challenge; funded ±3 min red-folder news (Instant24 allowed throughout; Instant Lite/Funding restricted from first trade)
+- **overnight:** weekend allowed on eval challenges; not on Instant (auto-close Fri 23:45); crypto weekend trading allowed
+- **us:** no (US, Germany, Australia restricted per official guide)
+- **site:** https://rzrfunded.com
+- **sources:** https://rzrfunded.com; https://rzrfunded.com/forex; https://rzrfunded.com/blog/how-funded-trading-works-at-rzr-funded/; https://rzrfunded.com/partners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (Silver/Gold/Platinum tiers + multi-level commissions; rates not stated on partners page)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD 13 (Instant24 (smallest size), one-time). Split 80 (95% with add-on)%; payout first reward 14d after first trade, then every 14d (7d with add-on); Instant24 once 24h window ends; 24h reward guarantee (approval or reward doubled up to $1,000).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Instant24 (smallest size), one-time — Not recorded
+
+- **id:** rzr-funded-entry
+- **program:** Instant24 (smallest size), one-time
+- **name:** Instant24 (smallest size), one-time
+- **size:** Not recorded
+- **price:** 13
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Express 10 / Enhanced 10 then 5 / EnhancedX 8 then 4 / Endurance 6 per stage / Instant none
+- **dailyLoss:** Express/Enhanced 5% / EnhancedX/Endurance 4% / Instant24 2% / Instant Lite 3% / Instant Funding 6%
+- **maxDD:** Express 6% trailing / Enhanced 10% static / EnhancedX 8% static / Endurance 8% static / Instant 3-6% trailing
+- **ddType:** Static
+- **minDays:** Express none / Enhanced 3 profitable days per stage / Endurance 3 per stage / Instant Lite 5 profitable days per payout cycle
+- **split:** 80 (95% with add-on)%
+- **payout:** first reward 14d after first trade, then every 14d (7d with add-on); Instant24 once 24h window ends; 24h reward guarantee (approval or reward doubled up to $1,000)
+- **platform:** Not stated
+- **source:** https://rzrfunded.com
+
+
+### 119. SabioTrade
+
+- **slug:** sabiotrade
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-90%
+- **splitMax:** 90
+- **dd:** 6% trailing
+- **ddTypes:** Trailing
+- **payoutDays:** Not recorded
+- **payoutText:** every 7 days; processed within 24h
+- **from:** 10
+- **fromCur:** USD
+- **fromPlan:** Sabio Go 1K, one-time
+- **monthly:** false
+- **code:** BFRETRY
+- **off:** Not recorded
+- **codes:** {"code":"BFRETRY","off":null,"detail":"free second attempt); Black Friday personal codes (no public code"}
+- **consistencyText:** 55% (no single day or single trade over 55% of total profit)
+- **consNone:** false
+- **target:** 10
+- **dailyDD:** 5%
+- **minDays:** none (no time limit; 5-7 comparable-size trades required for payout)
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (no scaling plans per FAQ)
+- **news:** not stated
+- **overnight:** overnight allowed; weekend plan-dependent (close by Fri 3:45 PM EST if not permitted)
+- **us:** yes (Sabio Go plan marketed for US traders; sabiotrade.us is the US site)
+- **site:** https://sabiotrade.us
+- **sources:** https://sabiotrade.us; https://sabiotrade.us/blog/introducing-sabio-go-a-1000-evaluation-account-for-just-10; https://int.sabiotrade.us/options
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated (no affiliate program found on official site)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** BFRETRY (free second attempt); Black Friday personal codes (no public code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto, Equities firm. Starts at USD 10 (Sabio Go 1K, one-time). Split 80-90%; payout every 7 days; processed within 24h.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Sabio Go 1K, one-time — Not recorded
+
+- **id:** sabiotrade-entry
+- **program:** Sabio Go 1K, one-time
+- **name:** Sabio Go 1K, one-time
+- **size:** Not recorded
+- **price:** 10
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 10
+- **dailyLoss:** 5%
+- **maxDD:** 6% trailing
+- **ddType:** Trailing
+- **minDays:** none (no time limit; 5-7 comparable-size trades required for payout)
+- **split:** 80-90%
+- **payout:** every 7 days; processed within 24h
+- **platform:** Not stated
+- **source:** https://sabiotrade.us
+
+
+### 120. SpiceProp
+
+- **slug:** spiceprop
+- **markets:** forex; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80-90% (2-Step Pro 90%, others 80%; Instant Pro first 50% then 80%)%
+- **splitMax:** 90
+- **dd:** 2-Step Pro 11% / 3-Step 7% / 2-Step 11% / 1-Step 11% / Instant 8% / Instant Pro 8% static
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** 2-Step Pro every 7 days; all other programs every 14 days
+- **from:** 18
+- **fromCur:** EUR
+- **fromPlan:** Spice 3-Step 15K, one-time
+- **monthly:** false
+- **code:** none verified (Black November: buy 1 get 2nd free + 5% off, no code shown)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (Black November: buy 1 get 2nd free + 5% off, no code shown)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** not stated (min profitable-days rule applies instead)
+- **consNone:** false
+- **target:** 2-Step Pro 7.5 then 5 / 3-Step 4 then 6 then 6 / 2-Step 7.5 then 5 / 1-Step 10 / Instant none / Instant Pro 8
+- **dailyDD:** 2-Step Pro 5.5% / 3-Step 3% / 2-Step 4.5% / 1-Step 4% / Instant 2.5% / Instant Pro 2.5%
+- **minDays:** 2-Step Pro 3/3/4 profitable days; 3-Step 3/3/3/4; 2-Step 3/3/4; 1-Step 3/4; Instant 7; Instant Pro 3
+- **activation:** none stated (challenge fee 100% refunded on passing)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to €1M (2-Step/1-Step/Instant), €2M (2-Step Pro)
+- **news:** not stated
+- **overnight:** not stated
+- **us:** no (official footer: cannot register citizens of USA, Canada, Japan, Iran, North Korea and others)
+- **site:** https://spiceprop.com
+- **sources:** https://spiceprop.com; https://spiceprop.com/affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 20% lifetime recurring commission
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (Black November: buy 1 get 2nd free + 5% off, no code shown)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Stocks firm. Starts at EUR 18 (Spice 3-Step 15K, one-time). Split 80-90% (2-Step Pro 90%, others 80%; Instant Pro first 50% then 80%)%; payout 2-Step Pro every 7 days; all other programs every 14 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 23**
+
+#### Spice 2-Step Pro — 300000
+
+- **id:** spiceprop-spice-2-step-pro-300000
+- **program:** Spice 2-Step Pro
+- **name:** Spice 2-Step Pro
+- **size:** 300000
+- **price:** 1573
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 5.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 90%
+- **payout:** every 7 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 3-Step — 15000
+
+- **id:** spiceprop-spice-3-step-15000
+- **program:** Spice 3-Step
+- **name:** Spice 3-Step
+- **size:** 15000
+- **price:** 18
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4% then 6% then 6%
+- **dailyLoss:** 3%
+- **maxDD:** 7%
+- **ddType:** Not recorded
+- **minDays:** 3/3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 3-Step — 40000
+
+- **id:** spiceprop-spice-3-step-40000
+- **program:** Spice 3-Step
+- **name:** Spice 3-Step
+- **size:** 40000
+- **price:** 39
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4% then 6% then 6%
+- **dailyLoss:** 3%
+- **maxDD:** 7%
+- **ddType:** Not recorded
+- **minDays:** 3/3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 3-Step — 80000
+
+- **id:** spiceprop-spice-3-step-80000
+- **program:** Spice 3-Step
+- **name:** Spice 3-Step
+- **size:** 80000
+- **price:** 60
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4% then 6% then 6%
+- **dailyLoss:** 3%
+- **maxDD:** 7%
+- **ddType:** Not recorded
+- **minDays:** 3/3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 3-Step — 120000
+
+- **id:** spiceprop-spice-3-step-120000
+- **program:** Spice 3-Step
+- **name:** Spice 3-Step
+- **size:** 120000
+- **price:** 90
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4% then 6% then 6%
+- **dailyLoss:** 3%
+- **maxDD:** 7%
+- **ddType:** Not recorded
+- **minDays:** 3/3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 2-Step — 6000
+
+- **id:** spiceprop-spice-2-step-6000
+- **program:** Spice 2-Step
+- **name:** Spice 2-Step
+- **size:** 6000
+- **price:** 45
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 4.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 2-Step — 10000
+
+- **id:** spiceprop-spice-2-step-10000
+- **program:** Spice 2-Step
+- **name:** Spice 2-Step
+- **size:** 10000
+- **price:** 99
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 4.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 2-Step — 25000
+
+- **id:** spiceprop-spice-2-step-25000
+- **program:** Spice 2-Step
+- **name:** Spice 2-Step
+- **size:** 25000
+- **price:** 166
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 4.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 2-Step — 50000
+
+- **id:** spiceprop-spice-2-step-50000
+- **program:** Spice 2-Step
+- **name:** Spice 2-Step
+- **size:** 50000
+- **price:** 295
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 4.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 2-Step — 100000
+
+- **id:** spiceprop-spice-2-step-100000
+- **program:** Spice 2-Step
+- **name:** Spice 2-Step
+- **size:** 100000
+- **price:** 499
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 4.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 2-Step — 150000
+
+- **id:** spiceprop-spice-2-step-150000
+- **program:** Spice 2-Step
+- **name:** Spice 2-Step
+- **size:** 150000
+- **price:** 715
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 7.5% then 5%
+- **dailyLoss:** 4.5%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 1-Step — 10000
+
+- **id:** spiceprop-spice-1-step-10000
+- **program:** Spice 1-Step
+- **name:** Spice 1-Step
+- **size:** 10000
+- **price:** 129
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 1-Step — 25000
+
+- **id:** spiceprop-spice-1-step-25000
+- **program:** Spice 1-Step
+- **name:** Spice 1-Step
+- **size:** 25000
+- **price:** 219
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 1-Step — 50000
+
+- **id:** spiceprop-spice-1-step-50000
+- **program:** Spice 1-Step
+- **name:** Spice 1-Step
+- **size:** 50000
+- **price:** 389
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice 1-Step — 75000
+
+- **id:** spiceprop-spice-1-step-75000
+- **program:** Spice 1-Step
+- **name:** Spice 1-Step
+- **size:** 75000
+- **price:** 586
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 11%
+- **ddType:** Not recorded
+- **minDays:** 3/4 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant — 1000
+
+- **id:** spiceprop-spice-instant-1000
+- **program:** Spice Instant
+- **name:** Spice Instant
+- **size:** 1000
+- **price:** 40
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.5%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 7 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant — 5000
+
+- **id:** spiceprop-spice-instant-5000
+- **program:** Spice Instant
+- **name:** Spice Instant
+- **size:** 5000
+- **price:** 120
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.5%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 7 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant — 10000
+
+- **id:** spiceprop-spice-instant-10000
+- **program:** Spice Instant
+- **name:** Spice Instant
+- **size:** 10000
+- **price:** 234
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.5%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 7 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant — 20000
+
+- **id:** spiceprop-spice-instant-20000
+- **program:** Spice Instant
+- **name:** Spice Instant
+- **size:** 20000
+- **price:** 422
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.5%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 7 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant — 40000
+
+- **id:** spiceprop-spice-instant-40000
+- **program:** Spice Instant
+- **name:** Spice Instant
+- **size:** 40000
+- **price:** 780
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 2.5%
+- **maxDD:** 8%
+- **ddType:** Not recorded
+- **minDays:** 7 profitable days
+- **split:** 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant Pro — 1000
+
+- **id:** spiceprop-spice-instant-pro-1000
+- **program:** Spice Instant Pro
+- **name:** Spice Instant Pro
+- **size:** 1000
+- **price:** 62
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 2.5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** first 50%, then 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant Pro — 5000
+
+- **id:** spiceprop-spice-instant-pro-5000
+- **program:** Spice Instant Pro
+- **name:** Spice Instant Pro
+- **size:** 5000
+- **price:** 185
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 2.5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** first 50%, then 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+#### Spice Instant Pro — 10000
+
+- **id:** spiceprop-spice-instant-pro-10000
+- **program:** Spice Instant Pro
+- **name:** Spice Instant Pro
+- **size:** 10000
+- **price:** 360
+- **currency:** EUR
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 2.5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** first 50%, then 80%
+- **payout:** every 14 days
+- **platform:** not stated
+- **source:** https://spiceprop.com
+
+
+### 121. Sway Funded
+
+- **slug:** sway-funded
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** 10%/20%
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** rewards paid within 24 hours
+- **from:** 13
+- **fromCur:** USD
+- **fromPlan:** Rapid 1K, one-time (homepage selector default)
+- **monthly:** false
+- **code:** FIRST
+- **off:** Not recorded
+- **codes:** {"code":"FIRST","off":null,"detail":"50% off first challenge"}
+- **consistencyText:** none
+- **consNone:** true
+- **target:** 15%/30% (Phase 1; homepage shows both figures, variants not labelled)
+- **dailyDD:** 5%/10%
+- **minDays:** 4
+- **activation:** none stated (challenge fee refunded on passing)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** allowed
+- **us:** yes (US not on restricted-countries list in official Terms)
+- **site:** https://swayfunded.com
+- **sources:** https://swayfunded.com; https://www.swayfunded.com/affiliates; https://www.swayfunded.com/terms; https://www.swayfunded.com/terms?document=affiliate-terms-and-conditions
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 20% direct (10-tier: 20/10/5/2/1/0.5/0.25/0.1/0.1/0.05%)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FIRST (50% off first challenge)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Crypto, Equities firm. Starts at USD 13 (Rapid 1K, one-time (homepage selector default)). Split up to 90%; payout rewards paid within 24 hours.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Rapid 1K, one-time (homepage selector default) — Not recorded
+
+- **id:** sway-funded-entry
+- **program:** Rapid 1K, one-time (homepage selector default)
+- **name:** Rapid 1K, one-time (homepage selector default)
+- **size:** Not recorded
+- **price:** 13
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 15%/30% (Phase 1; homepage shows both figures, variants not labelled)
+- **dailyLoss:** 5%/10%
+- **maxDD:** 10%/20%
+- **ddType:** Not recorded
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** rewards paid within 24 hours
+- **platform:** Not stated
+- **source:** https://swayfunded.com
+
+
+### 122. SwissFirmup
+
+- **slug:** swissfirmup
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (FAQ addresses US traders)
+- **site:** https://swissfirmup.com
+- **sources:** https://swissfirmup.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, tiered 10-25%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier B, 9 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Futures firm. Starts at $49. Affiliate: yes, tiered 10-25%. US traders: yes (FAQ addresses US traders).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** swissfirmup-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://swissfirmup.com
+
+
+### 123. Take Profit Trader
+
+- **slug:** take-profit-trader
+- **markets:** futures
+- **rating:** 4.4
+- **rsrc:** Trustpilot
+- **reviews:** 11423
+- **ratingNote:** Trustpilot 4.4/5, 11,423 reviews. Checked 27 Nov 2026.
+- **split:** 80/20 PRO; 90/10 PRO+
+- **splitMax:** 90
+- **dd:** trailing, $1000 (25K)
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** daily payouts from day 1 in PRO
+- **from:** 110
+- **fromCur:** USD
+- **fromPlan:** INTRADAY Test 25K per month ($66 with NOFEE40)
+- **monthly:** true
+- **code:** NOFEE40
+- **off:** 40
+- **codes:** {"code":"NOFEE40","off":40,"detail":"40% off Test subscriptions for life + $130 PRO activation fee waived"}
+- **consistencyText:** 50% Test only
+- **consNone:** false
+- **target:** 6% all sizes
+- **dailyDD:** INTRADAY/CLASSIC none; EOD $500 (25K)
+- **minDays:** 3 to pass Test
+- **activation:** $130 PRO, waived with NOFEE40
+- **instant:** false
+- **instantText:** No
+- **scaling:** none
+- **news:** not stated (secondary: flat +/-1 min FOMC/NFP/CPI in PRO)
+- **overnight:** no
+- **us:** not stated (US-based firm)
+- **site:** https://takeprofittrader.com
+- **sources:** https://takeprofittrader.com/blog/plans; https://takeprofittrader.com; https://www.trustpilot.com/review/takeprofittrader.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Tradovate; NinjaTrader; Rithmic
+- **payMethods:** Not listed
+- **deal:** 40% off Test subscriptions for life + $130 PRO activation fee waived
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** US futures firm (Tradovate) with three monthly-subscription Test plans — Intraday, Classic and EOD — repriced on Nov 23, 2026. Pass the Test and PRO pays daily from day one at 80/20; PRO+ (live, by invitation) pays 90/10.
+- **verifiedOn:** Nov 28, 2026
+
+**Account records: 9**
+
+#### INTRADAY Test — 25000
+
+- **id:** take-profit-trader-intraday-test-25000
+- **program:** INTRADAY Test
+- **name:** INTRADAY Test
+- **size:** 25000
+- **price:** 110
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $1,500
+- **dailyLoss:** None
+- **maxDD:** $1,000 trailing
+- **ddType:** Intraday
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $1,000 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 59
+- **fundedResetFee:** 449
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test Intraday, PRO Intraday, PRO+ Intraday. Daily profit cap $10,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### INTRADAY Test — 50000
+
+- **id:** take-profit-trader-intraday-test-50000
+- **program:** INTRADAY Test
+- **name:** INTRADAY Test
+- **size:** 50000
+- **price:** 150
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $3,000
+- **dailyLoss:** None
+- **maxDD:** $2,000 trailing
+- **ddType:** Intraday
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $2,000 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 89
+- **fundedResetFee:** 649
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test Intraday, PRO Intraday, PRO+ Intraday. Daily profit cap $10,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### INTRADAY Test — 150000
+
+- **id:** take-profit-trader-intraday-test-150000
+- **program:** INTRADAY Test
+- **name:** INTRADAY Test
+- **size:** 150000
+- **price:** 360
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $9,000
+- **dailyLoss:** None
+- **maxDD:** $4,500 trailing
+- **ddType:** Intraday
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $4,500 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 199
+- **fundedResetFee:** 1499
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test Intraday, PRO Intraday, PRO+ Intraday. Daily profit cap $10,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### CLASSIC Test — 25000
+
+- **id:** take-profit-trader-classic-test-25000
+- **program:** CLASSIC Test
+- **name:** CLASSIC Test
+- **size:** 25000
+- **price:** 150
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $1,500
+- **dailyLoss:** None
+- **maxDD:** $1,000 trailing
+- **ddType:** EOD
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $1,000 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 79
+- **fundedResetFee:** 449
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test EOD, PRO Intraday, PRO+ EOD. Daily profit cap $10,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### CLASSIC Test — 50000
+
+- **id:** take-profit-trader-classic-test-50000
+- **program:** CLASSIC Test
+- **name:** CLASSIC Test
+- **size:** 50000
+- **price:** 170
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $3,000
+- **dailyLoss:** None
+- **maxDD:** $2,000 trailing
+- **ddType:** EOD
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $2,000 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 99
+- **fundedResetFee:** 649
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test EOD, PRO Intraday, PRO+ EOD. Daily profit cap $10,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### CLASSIC Test — 150000
+
+- **id:** take-profit-trader-classic-test-150000
+- **program:** CLASSIC Test
+- **name:** CLASSIC Test
+- **size:** 150000
+- **price:** 465
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $9,000
+- **dailyLoss:** None
+- **maxDD:** $4,500 trailing
+- **ddType:** EOD
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $4,500 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 249
+- **fundedResetFee:** 1499
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test EOD, PRO Intraday, PRO+ EOD. Daily profit cap $10,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### EOD Test — 25000
+
+- **id:** take-profit-trader-eod-test-25000
+- **program:** EOD Test
+- **name:** EOD Test
+- **size:** 25000
+- **price:** 160
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $1,500
+- **dailyLoss:** $500 (soft above starting balance; hard below)
+- **maxDD:** $1,000 trailing
+- **ddType:** EOD
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $1,000 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 89
+- **fundedResetFee:** 579
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test EOD, PRO EOD, PRO+ EOD. Daily profit cap $5,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### EOD Test — 50000
+
+- **id:** take-profit-trader-eod-test-50000
+- **program:** EOD Test
+- **name:** EOD Test
+- **size:** 50000
+- **price:** 209
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $3,000
+- **dailyLoss:** $1,000 (soft above starting balance; hard below)
+- **maxDD:** $2,000 trailing
+- **ddType:** EOD
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $2,000 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 109
+- **fundedResetFee:** 759
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test EOD, PRO EOD, PRO+ EOD. Daily profit cap $5,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+#### EOD Test — 150000
+
+- **id:** take-profit-trader-eod-test-150000
+- **program:** EOD Test
+- **name:** EOD Test
+- **size:** 150000
+- **price:** 499
+- **currency:** USD
+- **monthly:** true
+- **coverage:** partial
+- **target:** $9,000
+- **dailyLoss:** $2,500 (soft above starting balance; hard below)
+- **maxDD:** $4,500 trailing
+- **ddType:** EOD
+- **minDays:** 3 evaluation trading days
+- **split:** 80% PRO / 90% PRO+
+- **payout:** Daily from first PRO trading day, profits above $4,500 buffer
+- **platform:** Firm-level listing: Tradovate, NinjaTrader, Rithmic; plan mapping not rechecked
+- **source:** https://takeprofittrader.com/blog/plans
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 269
+- **fundedResetFee:** 1699
+- **consistency:** 50% evaluation; none funded
+- **note:** Drawdown stages: Test EOD, PRO EOD, PRO+ EOD. Daily profit cap $5,000. Source advertises NOFEE40, 40% off Test and waived activation; expiration not stated; checkout not tested.
+
+
+### 124. TEFS
+
+- **slug:** tefs
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% (Provider Share)%
+- **splitMax:** 80
+- **dd:** 6% static
+- **ddTypes:** Static
+- **payoutDays:** 30
+- **payoutText:** first Performance Payment 30 days after first simulated position on Provider Account; then monthly
+- **from:** 13
+- **fromCur:** USD
+- **fromPlan:** 1,500 Challenge, one-time (list $19)
+- **monthly:** false
+- **code:** none verified (sale prices shown without a code)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (sale prices shown without a code)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 10%
+- **dailyDD:** 4%
+- **minDays:** 4
+- **activation:** none (evaluation fee 100% refunded with first Performance Payment)
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** allowed (listed as a feature on homepage)
+- **overnight:** not stated
+- **us:** no (USA explicitly listed in the do-not-accept countries on the official pricing page)
+- **site:** https://tefs.com
+- **sources:** https://tefs.com/en/challenges/pricing; https://tefs.com; https://tefs.com/en/affiliate; https://www.tefs.com/en/affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 25% (Bronze-Diamond tiers, 10% base; repeat-purchase commissions)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (sale prices shown without a code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto, Stocks firm. Starts at USD 13 (1,500 Challenge, one-time (list $19)). Split 80% (Provider Share)%; payout first Performance Payment 30 days after first simulated position on Provider Account; then monthly.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 7**
+
+#### 1-Step Challenge — 1500
+
+- **id:** tefs-1-step-challenge-1500
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 1500
+- **price:** 13
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+#### 1-Step Challenge — 5000
+
+- **id:** tefs-1-step-challenge-5000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 5000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+#### 1-Step Challenge — 10000
+
+- **id:** tefs-1-step-challenge-10000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 10000
+- **price:** 69
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+#### 1-Step Challenge — 25000
+
+- **id:** tefs-1-step-challenge-25000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 25000
+- **price:** 139
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+#### 1-Step Challenge — 50000
+
+- **id:** tefs-1-step-challenge-50000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 50000
+- **price:** 219
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+#### 1-Step Challenge — 100000
+
+- **id:** tefs-1-step-challenge-100000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 100000
+- **price:** 349
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+#### 1-Step Challenge — 200000
+
+- **id:** tefs-1-step-challenge-200000
+- **program:** 1-Step Challenge
+- **name:** 1-Step Challenge
+- **size:** 200000
+- **price:** 679
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** 80%
+- **payout:** Monthly (first 30 days after first position)
+- **platform:** not stated
+- **source:** https://tefs.com/en/challenges/pricing
+
+
+### 125. The Concept Trading
+
+- **slug:** the-concept-trading
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 50 (all levels) rising to 90 top level / 90% Lock Rule; Foundation 65/70/85/90 by level%
+- **splitMax:** 90
+- **dd:** static; Foundation 6% (other models vary, % not stated on FAQ page)
+- **ddTypes:** Static
+- **payoutDays:** 7
+- **payoutText:** monthly withdrawals; weekly at top level / 90% Lock; paid on hitting scaling target
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** none verified (Free Retry on selected promo coupons)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (Free Retry on selected promo coupons)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** Foundation 10 then 5 (then 10% per funded level); Traditional 6 / Premier 7 / Xtreme 6 / Empire 10
+- **dailyDD:** not stated on FAQ page
+- **minDays:** Foundation 3 profitable days per stage; other models none stated
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** via levels to higher capital; no cap stated on FAQ page
+- **news:** not stated (EAs, algorithms, scalpers accepted without restriction)
+- **overnight:** not stated
+- **us:** yes (non-MetaQuotes platforms only; USA not permitted on MetaQuotes)
+- **site:** https://prop.theconcepttrader.com
+- **sources:** https://prop.theconcepttrader.com
+- **verif:** partial (official pricing page unreachable — linked tctv2.darylldelfin.com failed DNS on 2026-11-27; prices not verified)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, up to 15%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (Free Retry on selected promo coupons)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (official pricing page unreachable — linked tctv2.darylldelfin.com failed DNS on 2026-11-27; prices not verified).
+- **summary:** Forex, Cfd, Crypto firm. Starts at USD None (Entry plan (name not recorded)). Split 50 (all levels) rising to 90 top level / 90% Lock Rule; Foundation 65/70/85/90 by level%; payout monthly withdrawals; weekly at top level / 90% Lock; paid on hitting scaling target.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 126. The Edge Funder
+
+- **slug:** the-edge-funder
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** 25K 4% ($1,000) / 50K 4% ($2,000) / 100K 3% ($3,000) / 150K 3% ($4,500)
+- **ddTypes:** Not recorded
+- **payoutDays:** 1
+- **payoutText:** on demand once eligible (after 5 trading days + consistency); minimum payout $1,000; processed in 15 minutes or less via Rise; payout caps $1,000 (25K) to $3,500 (150K 4th+)
+- **from:** 227
+- **fromCur:** USD
+- **fromPlan:** Standard V2 25K, one-time
+- **monthly:** false
+- **code:** INSTANT
+- **off:** Not recorded
+- **codes:** {"code":"INSTANT","off":null,"detail":"35% off"}
+- **consistencyText:** 25% (best day <=25% of payout threshold; exceeding it raises the threshold)
+- **consNone:** false
+- **target:** none (instant funded; payout threshold 6% of account: $1,500/$3,000/$6,000/$9,000)
+- **dailyDD:** 2% ($500/$1,000/$2,000/$3,000 by size)
+- **minDays:** 5
+- **activation:** none (one-time price; no subscription, activation fee or recurring billing on Standard V2)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to 5 funded accounts, $750,000 total funding
+- **news:** prohibited during 5 minutes before and after high-impact Red Folder news events (positions must be closed first)
+- **overnight:** not stated
+- **us:** not stated (payout-eligible countries follow Rise's list; no statement on official site)
+- **site:** https://theedgefunder.com
+- **sources:** https://theedgefunder.com; https://theedgefunder.com/become-an-affiliate
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (commission rate set individually on approval; PayPal, monthly payouts)
+- **platforms:** TradingView / Volumetrica / Quantower / DeepCharts / Edgeware
+- **payMethods:** Not listed
+- **deal:** INSTANT (35% off)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Futures firm. Starts at USD 227 (Standard V2 25K, one-time). Split 90%; payout on demand once eligible (after 5 trading days + consistency); minimum payout $1,000; processed in 15 minutes or less via Rise; payout caps $1,000 (25K) to $3,500 (150K 4th+).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### Standard V2 (Instant) — 25000
+
+- **id:** the-edge-funder-standard-v2-instant-25000
+- **program:** Standard V2 (Instant)
+- **name:** Standard V2 (Instant)
+- **size:** 25000
+- **price:** 227
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none (payout threshold $1,500)
+- **dailyLoss:** 2%
+- **maxDD:** 4% ($1,000)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 90%
+- **payout:** On demand after 5 days (min $1,000)
+- **platform:** TradingView / Volumetrica / Quantower / DeepCharts / Edgeware
+- **source:** https://theedgefunder.com
+
+#### Standard V2 (Instant) — 50000
+
+- **id:** the-edge-funder-standard-v2-instant-50000
+- **program:** Standard V2 (Instant)
+- **name:** Standard V2 (Instant)
+- **size:** 50000
+- **price:** 317
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none (payout threshold $3,000)
+- **dailyLoss:** 2%
+- **maxDD:** 4% ($2,000)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 90%
+- **payout:** On demand after 5 days (min $1,000)
+- **platform:** TradingView / Volumetrica / Quantower / DeepCharts / Edgeware
+- **source:** https://theedgefunder.com
+
+#### Standard V2 (Instant) — 100000
+
+- **id:** the-edge-funder-standard-v2-instant-100000
+- **program:** Standard V2 (Instant)
+- **name:** Standard V2 (Instant)
+- **size:** 100000
+- **price:** 427
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none (payout threshold $6,000)
+- **dailyLoss:** 2%
+- **maxDD:** 3% ($3,000)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 90%
+- **payout:** On demand after 5 days (min $1,000)
+- **platform:** TradingView / Volumetrica / Quantower / DeepCharts / Edgeware
+- **source:** https://theedgefunder.com
+
+#### Standard V2 (Instant) — 150000
+
+- **id:** the-edge-funder-standard-v2-instant-150000
+- **program:** Standard V2 (Instant)
+- **name:** Standard V2 (Instant)
+- **size:** 150000
+- **price:** 487
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none (payout threshold $9,000)
+- **dailyLoss:** 2%
+- **maxDD:** 3% ($4,500)
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 90%
+- **payout:** On demand after 5 days (min $1,000)
+- **platform:** TradingView / Volumetrica / Quantower / DeepCharts / Edgeware
+- **source:** https://theedgefunder.com
+
+
+### 127. The Trading Pit
+
+- **slug:** the-trading-pit
+- **markets:** forex; futures; stocks; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 32
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** partial (details truncated in status PDF)
+- **site:** https://thetradingpit.com
+- **sources:** https://thetradingpit.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 10% + MLM 5/3/2%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier A, 23 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Forex, Futures, Stocks, Crypto firm. Starts at $32. Affiliate: yes, 10% + MLM 5/3/2%. US traders: partial (details truncated in status PDF).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** the-trading-pit-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 32
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://thetradingpit.com
+
+
+### 128. The5ers
+
+- **slug:** the5ers
+- **markets:** forex
+- **rating:** 4.7
+- **rsrc:** Trustpilot
+- **reviews:** 45045
+- **ratingNote:** Read on trustpilot.com on Nov 26, 2026
+- **split:** 80 rising to 100%
+- **splitMax:** 100
+- **dd:** 10% (partially verified)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** first 14d, then bi-weekly
+- **from:** 19
+- **fromCur:** USD
+- **fromPlan:** High Stakes 2.5K (100K $405 New / $455 Classic; FAQ example $545 — conflict)
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none published
+- **consNone:** false
+- **target:** High Stakes 10 then 5
+- **dailyDD:** 5% (partially verified)
+- **minDays:** 3 profitable days per phase
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $500,000
+- **news:** no orders 2 min before/after high-impact news
+- **overnight:** allowed
+- **us:** not stated
+- **site:** https://the5ers.com
+- **sources:** https://the5ers.com/high-stakes/; https://www.trustpilot.com/review/the5ers.com; https://the5ers.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified
+- **platforms:** MT5
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Internal conflict on the firm's own pages: the $100K High Stakes account is $405 (New) / $455 (Classic) on the program page, but a payout FAQ example prices it at $545. Re-check at checkout. The 10% max drawdown and 5% daily figures are partially verified.
+- **summary:** Forex/CFD firm known for scaling: the High Stakes split starts at 80% and rises with account growth to 100% plus fixed payouts at the top tiers. First payout 14 days after the funded account starts, then bi-weekly.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### High Stakes — 2500
+
+- **id:** the5ers-high-stakes-2500
+- **program:** High Stakes
+- **name:** High Stakes
+- **size:** 2500
+- **price:** 19
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** High Stakes 10 then 5
+- **dailyLoss:** 5% (partially verified)
+- **maxDD:** 10% (partially verified)
+- **ddType:** Static
+- **minDays:** 3 profitable days per phase
+- **split:** 80 rising to 100%
+- **payout:** first 14d, then bi-weekly
+- **platform:** MT5
+- **source:** https://the5ers.com/high-stakes/
+
+
+### 129. ThinkCapital
+
+- **slug:** thinkcapital
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 (up to 90%)%
+- **splitMax:** 90
+- **dd:** Lightning 6% trailing; Dual Step 7% challenge / 8% funded
+- **ddTypes:** Trailing
+- **payoutDays:** 1
+- **payoutText:** 14d (7d add-on); Bolt 14d std, on-demand add-on
+- **from:** 39
+- **fromCur:** USD
+- **fromPlan:** Bolt instant 2.5K
+- **monthly:** false
+- **code:** none verified
+- **off:** Not recorded
+- **codes:** {"code":"none verified","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** Lightning 10 / Dual Step 9 then 5 / Nexus 7 then 6 then 5
+- **dailyDD:** Lightning 3%; Dual Step 4%
+- **minDays:** 3
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $600K managed (homepage); Lightning page claims scaling to $1,500,000
+- **news:** restricted 4-min window (Lightning); allowed on Dual Step Swing
+- **overnight:** weekend holding on Dual Step Swing; Bolt Weekend Holding add-on
+- **us:** not stated
+- **site:** https://thinkcapital.com
+- **sources:** https://thinkcapital.com/; https://thinkcapital.com/lightning; https://www.thinkcapital.com/dual-step/; https://www.thinkcapital.com/instant-funding/; https://www.thinkcapital.com/partners/
+- **verif:** partial (US eligibility, Nexus sizes, consistency not stated; Dual Step phase-1 target 9% homepage vs 8% review page)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 5-15% tiered (Starter 5% to Master 15%)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (US eligibility, Nexus sizes, consistency not stated; Dual Step phase-1 target 9% homepage vs 8% review page).
+- **summary:** Forex, Cfd firm. Starts at USD 39 (Bolt instant 2.5K). Split 80 (up to 90%)%; payout 14d (7d add-on); Bolt 14d std, on-demand add-on.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Bolt instant 2.5K — Not recorded
+
+- **id:** thinkcapital-entry
+- **program:** Bolt instant 2.5K
+- **name:** Bolt instant 2.5K
+- **size:** Not recorded
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Lightning 10 / Dual Step 9 then 5 / Nexus 7 then 6 then 5
+- **dailyLoss:** Lightning 3%; Dual Step 4%
+- **maxDD:** Lightning 6% trailing; Dual Step 7% challenge / 8% funded
+- **ddType:** Trailing
+- **minDays:** 3
+- **split:** 80 (up to 90%)%
+- **payout:** 14d (7d add-on); Bolt 14d std, on-demand add-on
+- **platform:** Not stated
+- **source:** https://thinkcapital.com
+
+
+### 130. Top One Futures
+
+- **slug:** top-one-futures
+- **markets:** futures
+- **rating:** 4.8
+- **rsrc:** Trustpilot
+- **reviews:** 5595
+- **ratingNote:** Trustpilot 4.8/5, 5,595 reviews. Checked 27 Nov 2026.
+- **split:** 90 sim / 80 live
+- **splitMax:** 90
+- **dd:** EOD trailing
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** Elite Daily daily / Elite Access every 5 profitable days
+- **from:** 39
+- **fromCur:** USD
+- **fromPlan:** Elite Access entry, one-time
+- **monthly:** false
+- **code:** BLACKFRIDAY
+- **off:** Not recorded
+- **codes:** {"code":"BLACKFRIDAY","off":null,"detail":"Black November offers: 55% off Elite Daily, 70% off Ignite bundles, 30% off Instant Sim Funded, 25% off Elite Access activation fees"}
+- **consistencyText:** Elite Daily 40 eval / Elite Access 40 funded / Instant 20 / Ignite 15
+- **consNone:** false
+- **target:** Elite Daily 6 / Elite Access 4
+- **dailyDD:** Elite Daily $500 (25K)
+- **minDays:** Elite Access 1
+- **activation:** Elite Access $139-$359 by size
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes
+- **site:** https://toponefutures.com
+- **sources:** https://toponefutures.com; https://www.trustpilot.com/review/toponefutures.com; https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview; https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview; https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Tradovate; NinjaTrader; BlackArrow; WealthCharts
+- **payMethods:** Not listed
+- **deal:** Black November offers: 55% off Elite Daily, 70% off Ignite bundles, 30% off Instant Sim Funded, 25% off Elite Access activation fees
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** The $39 figure is the Elite Access entry fee. An activation fee of $139–$359 by size is charged after passing.
+- **summary:** US futures firm (CME via Tradovate, NinjaTrader, BlackArrow, WealthCharts). Elite Access has a flat $39 entry fee at every size, with an activation fee after passing; Elite Daily and Instant Sim Funded pay daily or at payout targets.
+- **verifiedOn:** Nov 28, 2026
+
+**Account records: 12**
+
+#### Elite ACCESS — 25000
+
+- **id:** top-one-futures-elite-access-25000
+- **program:** Elite ACCESS
+- **name:** Elite ACCESS
+- **size:** 25000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $1,500 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $500 soft limit
+- **maxDD:** $1,000 evaluation; funded $1,000
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $200; $1,500 buffer; $500 min; $1,000 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS — 50000
+
+- **id:** top-one-futures-elite-access-50000
+- **program:** Elite ACCESS
+- **name:** Elite ACCESS
+- **size:** 50000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $3,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,000 soft limit
+- **maxDD:** $2,000 evaluation; funded $2,000
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $250; $2,000 buffer; $500 min; $1,500 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS — 100000
+
+- **id:** top-one-futures-elite-access-100000
+- **program:** Elite ACCESS
+- **name:** Elite ACCESS
+- **size:** 100000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $6,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,250 soft limit
+- **maxDD:** $3,000 evaluation; funded $3,000
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $300; $3,000 buffer; $500 min; $2,000 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS — 150000
+
+- **id:** top-one-futures-elite-access-150000
+- **program:** Elite ACCESS
+- **name:** Elite ACCESS
+- **size:** 150000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $9,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,750 soft limit
+- **maxDD:** $4,000 evaluation; funded $3,500
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $350; $4,500 buffer; $500 min; $2,500 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/14595016-elite-access-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Intraday — 25000
+
+- **id:** top-one-futures-elite-access-intraday-25000
+- **program:** Elite ACCESS Intraday
+- **name:** Elite ACCESS Intraday
+- **size:** 25000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $1,500 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $500 soft limit
+- **maxDD:** $1,000 evaluation; funded $1,000
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $200; $1,500 buffer; $500 min; $1,000 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Intraday — 50000
+
+- **id:** top-one-futures-elite-access-intraday-50000
+- **program:** Elite ACCESS Intraday
+- **name:** Elite ACCESS Intraday
+- **size:** 50000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $3,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,000 soft limit
+- **maxDD:** $2,000 evaluation; funded $2,000
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $250; $2,000 buffer; $500 min; $1,500 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Intraday — 100000
+
+- **id:** top-one-futures-elite-access-intraday-100000
+- **program:** Elite ACCESS Intraday
+- **name:** Elite ACCESS Intraday
+- **size:** 100000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $6,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,250 soft limit
+- **maxDD:** $3,000 evaluation; funded $3,000
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $300; $3,000 buffer; $500 min; $2,000 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Intraday — 150000
+
+- **id:** top-one-futures-elite-access-intraday-150000
+- **program:** Elite ACCESS Intraday
+- **name:** Elite ACCESS Intraday
+- **size:** 150000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $9,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,750 soft limit
+- **maxDD:** $4,000 evaluation; funded $3,500
+- **ddType:** EOD
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $350; $4,500 buffer; $500 min; $2,500 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17059267-elite-access-intraday-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown Intraday; activation fee varies ($90–$233). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Static — 25000
+
+- **id:** top-one-futures-elite-access-static-25000
+- **program:** Elite ACCESS Static
+- **name:** Elite ACCESS Static
+- **size:** 25000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $1,500 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $500 soft limit
+- **maxDD:** $1,000 evaluation; funded $1,000
+- **ddType:** Static
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $200; $1,500 buffer; $500 min; $1,000 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Static — 50000
+
+- **id:** top-one-futures-elite-access-static-50000
+- **program:** Elite ACCESS Static
+- **name:** Elite ACCESS Static
+- **size:** 50000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $3,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,000 soft limit
+- **maxDD:** $2,000 evaluation; funded $2,000
+- **ddType:** Static
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $250; $2,000 buffer; $500 min; $1,500 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Static — 100000
+
+- **id:** top-one-futures-elite-access-static-100000
+- **program:** Elite ACCESS Static
+- **name:** Elite ACCESS Static
+- **size:** 100000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $6,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,250 soft limit
+- **maxDD:** $3,000 evaluation; funded $3,000
+- **ddType:** Static
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $300; $3,000 buffer; $500 min; $2,000 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+#### Elite ACCESS Static — 150000
+
+- **id:** top-one-futures-elite-access-static-150000
+- **program:** Elite ACCESS Static
+- **name:** Elite ACCESS Static
+- **size:** 150000
+- **price:** 39
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **target:** $9,000 standard evaluation; promotional terms may differ
+- **dailyLoss:** None evaluation; funded $1,750 soft limit
+- **maxDD:** $4,000 evaluation; funded $3,500
+- **ddType:** Static
+- **minDays:** 1 evaluation day; 30-day window
+- **split:** 90%
+- **payout:** 5 profitable days of at least $350; $4,500 buffer; $500 min; $2,500 cap per request
+- **platform:** Plan-specific platform mapping pending
+- **source:** https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 35
+- **consistency:** None evaluation; 40% funded
+- **note:** Funded drawdown EOD; activation fee varies ($139–$359). Standard rules from help center; promotional landing page advertises conflicting temporary targets and account caps, not applied here.
+
+
+### 131. Top One Trader
+
+- **slug:** top-one-trader
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot withholds this firm's score (rating unavailable due to a breach of Trustpilot's guidelines; 'Warning' label) — checked Nov 26, 2026
+- **split:** up to 90% (1-Step) / 100% (2-Step PRO)
+- **splitMax:** 100
+- **dd:** 7% trailing (1-Step)
+- **ddTypes:** EOD
+- **payoutDays:** 14
+- **payoutText:** first 14d, then 14d
+- **from:** 64
+- **fromCur:** USD
+- **fromPlan:** 1-Step FLASH 5K list ($19 with BLACKFRIDAY)
+- **monthly:** false
+- **code:** BLACKFRIDAY
+- **off:** Not recorded
+- **codes:** {"code":"BLACKFRIDAY","off":null,"detail":"Up to 80% off sitewide (official homepage)"}
+- **consistencyText:** none eval; Instant 15%; Nova funded 20%
+- **consNone:** false
+- **target:** 1-Step 10 / 2-Step 8 then 5
+- **dailyDD:** 4% (1-Step/2-Step)
+- **minDays:** 1-Step 3 profitable days
+- **activation:** Nova only $59-$1247
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $600K
+- **news:** allowed on challenges
+- **overnight:** yes (add-on on Instant/Prime)
+- **us:** not stated
+- **site:** https://www.toponetrader.com
+- **sources:** https://www.toponetrader.com/; https://www.trustpilot.com/review/toponetrader.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not verified
+- **platforms:** Match-Trader; MetaTrader; TradeLocker
+- **payMethods:** Not listed
+- **deal:** Up to 80% off sitewide (official homepage)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** Forex/CFD firm (the futures side is the separate Top One Futures brand). 1-Step FLASH, 2-Step PRO, Instant Funding, Instant Prime and Nova lines from $5K to $1M. First payout 14 days after funding, then every 14 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### 1-Step FLASH — 5000
+
+- **id:** top-one-trader-1-step-flash-5000
+- **program:** 1-Step FLASH
+- **name:** 1-Step FLASH
+- **size:** 5000
+- **price:** 64
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 1-Step 10 / 2-Step 8 then 5
+- **dailyLoss:** 4% (1-Step/2-Step)
+- **maxDD:** 7% trailing (1-Step)
+- **ddType:** EOD
+- **minDays:** 1-Step 3 profitable days
+- **split:** up to 90% (1-Step) / 100% (2-Step PRO)
+- **payout:** first 14d, then 14d
+- **platform:** Match-Trader, MetaTrader, TradeLocker
+- **source:** https://www.toponetrader.com/
+
+
+### 132. Trade The Pool
+
+- **slug:** trade-the-pool
+- **markets:** stocks
+- **rating:** 4.5
+- **rsrc:** Trustpilot
+- **reviews:** 1021
+- **ratingNote:** Read on trustpilot.com on Nov 26, 2026
+- **split:** 70/30 (Flex/Max); 80/20 Edge Pro
+- **splitMax:** 80
+- **dd:** 4% static (Flex Day)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** min withdrawal period 14d
+- **from:** 47
+- **fromCur:** USD
+- **fromPlan:** Max Day 5K one-time
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** Flex Day 50 / Max Day 30
+- **consNone:** false
+- **target:** Day 6 / Swing 15 / Edge 6
+- **dailyDD:** Daily Pause 2% (Flex Day) — pause, not loss limit
+- **minDays:** 3 days 0.5%+ (Flex Day cash-out)
+- **activation:** not stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** buying power +5% per 10% profit
+- **news:** not stated (secondary: permitted, earnings restriction)
+- **overnight:** Day no; Swing yes
+- **us:** not stated
+- **site:** https://tradethepool.com
+- **sources:** https://tradethepool.com/the-program/; https://www.trustpilot.com/review/tradethepool.com; https://tradethepool.com
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** not stated
+- **platforms:** Not listed
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Not recorded
+- **summary:** US stocks and ETFs only — over 12,000 symbols, no futures, forex or crypto. Day Trading, Swing Trading and Edge programs. Day accounts are liquidated 10 minutes before the close; Swing accounts may hold overnight and over the weekend.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Max Day — 5000
+
+- **id:** trade-the-pool-max-day-5000
+- **program:** Max Day
+- **name:** Max Day
+- **size:** 5000
+- **price:** 47
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Day 6 / Swing 15 / Edge 6
+- **dailyLoss:** Daily Pause 2% (Flex Day) — pause, not loss limit
+- **maxDD:** 4% static (Flex Day)
+- **ddType:** Static
+- **minDays:** 3 days 0.5%+ (Flex Day cash-out)
+- **split:** 70/30 (Flex/Max); 80/20 Edge Pro
+- **payout:** min withdrawal period 14d
+- **platform:** Not recorded
+- **source:** https://tradethepool.com/the-program/
+
+
+### 133. TradeDay
+
+- **slug:** tradeday
+- **markets:** futures
+- **rating:** 4.6
+- **rsrc:** Trustpilot
+- **reviews:** 1457
+- **ratingNote:** Trustpilot 4.6/5, 1,457 reviews. Checked 27 Nov 2026.
+- **split:** 50/50 below $4K profit, 80/20 above (Quick Pay Sim)
+- **splitMax:** 90
+- **dd:** trailing, $1000 (25K)
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** Quick Pay day-one payouts
+- **from:** 99
+- **fromCur:** USD
+- **fromPlan:** 25K Quick Pay Intraday list ($39 with SALE60)
+- **monthly:** false
+- **code:** SALE60
+- **off:** 60
+- **codes:** {"code":"SALE60","off":60,"detail":"60% off + no activation fee — ends Dec 1, 2026 (official homepage banner)"}
+- **consistencyText:** Quick Pay 30 eval / Fast Pass 45
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** none
+- **minDays:** Quick Pay 5 / Fast Pass 3 (FAQ says none — conflict)
+- **activation:** none
+- **instant:** false
+- **instantText:** No
+- **scaling:** to Funded Live at $10K profit / 5th payout
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (US firm; ~83 barred)
+- **site:** https://tradeday.com
+- **sources:** https://tradeday.com/; https://www.tradeday.com/affiliate-program; https://www.trustpilot.com/review/tradeday.com
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 22.5%
+- **platforms:** Not listed
+- **payMethods:** Not listed
+- **deal:** 60% off + no activation fee — ends Dec 1, 2026 (official homepage banner)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Internal conflict on the firm's own pages: the homepage FAQ says Fast Pass has no minimum trading day requirement, while the plan cards say 'Min Trading Days 3'. Unresolved — check before buying.
+- **summary:** US futures firm (CME) with two programs: Quick Pay (day-one payouts, 50/50 split below $4,000 of current profit, 80/20 above) and Fast Pass (80/20). No activation fee and no subscription since Nov 12, 2026.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Quick Pay Intraday — 25000
+
+- **id:** tradeday-quick-pay-intraday-25000
+- **program:** Quick Pay Intraday
+- **name:** Quick Pay Intraday
+- **size:** 25000
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** 6
+- **dailyLoss:** none
+- **maxDD:** trailing, $1000 (25K)
+- **ddType:** EOD
+- **minDays:** Quick Pay 5 / Fast Pass 3 (FAQ says none — conflict)
+- **split:** 50/50 below $4K profit, 80/20 above (Quick Pay Sim)
+- **payout:** Quick Pay day-one payouts
+- **platform:** Not recorded
+- **source:** https://tradeday.com/
+
+
+### 134. TradeFundrr
+
+- **slug:** tradefundrr
+- **markets:** stocks; futures; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** Stock Pre-Prop $3,000 EOD trailing; Futures Growth Plus 50K $2,000 trailing EOD (futures page states $3,000 - conflict); Crypto 50K $3,000
+- **ddTypes:** EOD
+- **payoutDays:** 7
+- **payoutText:** weekly, processed every Friday; futures weekly via Rise; first payout as fast as 5 days
+- **from:** 199
+- **fromCur:** USD
+- **fromPlan:** Crypto Growth 50K, one-time
+- **monthly:** false
+- **code:** CYBER2026
+- **off:** Not recorded
+- **codes:** {"code":"CYBER2026","off":null,"detail":"30% off Pre-Prop, 40% off Prop, ends Nov 30, 2026"}
+- **consistencyText:** Futures Growth Plus 40% eval + funded; Express 30% funded; stock/options Prop consistency rules apply, % not stated
+- **consNone:** false
+- **target:** Stock Pre-Prop: 5 profitable days $250+ each (no % target); Futures Growth Plus 50K $3,000 (6%); Crypto 50K $4,000 (8%)
+- **dailyDD:** Stock Pre-Prop $1,000 (session pause); Futures Growth Plus 50K $1,000; Crypto 50K none
+- **minDays:** Futures Growth Plus 1 eval / 3 funded; Stock Pre-Prop 5 profitable days (need not be consecutive)
+- **activation:** none (futures Growth Plus); stocks/options carry a $99/month subscription instead
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** stocks/options to $20M+ at Pro level; futures not stated
+- **news:** allowed (futures); not stated (stocks/options)
+- **overnight:** not stated (stocks: intraday only, no swing positions; Mon-Fri 4 AM-4 PM ET)
+- **us:** yes (US-based firm; US-listed stocks/options; US traders in homepage reviews)
+- **site:** https://tradefundrr.com
+- **sources:** https://tradefundrr.com; https://tradefundrr.com/stock-trader-funding/pre-prop/; https://tradefundrr.com/options-trader-funding/; https://bryce.tradefundrr.com/pages/futures; https://bryce.tradefundrr.com/blog/prop-firm-evaluation-what-it-actually-tests; https://tradefundrr.com/blog/funded-trading-for-beginners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated (no affiliate program found on official site)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** CYBER2026 (30% off Pre-Prop, 40% off Prop, ends Nov 30, 2026)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Stocks, Options, Futures, Crypto firm. Starts at USD 199 (Crypto Growth 50K, one-time). Split 80%; payout weekly, processed every Friday; futures weekly via Rise; first payout as fast as 5 days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Crypto Growth 50K, one-time — Not recorded
+
+- **id:** tradefundrr-entry
+- **program:** Crypto Growth 50K, one-time
+- **name:** Crypto Growth 50K, one-time
+- **size:** Not recorded
+- **price:** 199
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Stock Pre-Prop: 5 profitable days $250+ each (no % target); Futures Growth Plus 50K $3,000 (6%); Crypto 50K $4,000 (8%)
+- **dailyLoss:** Stock Pre-Prop $1,000 (session pause); Futures Growth Plus 50K $1,000; Crypto 50K none
+- **maxDD:** Stock Pre-Prop $3,000 EOD trailing; Futures Growth Plus 50K $2,000 trailing EOD (futures page states $3,000 - conflict); Crypto 50K $3,000
+- **ddType:** EOD
+- **minDays:** Futures Growth Plus 1 eval / 3 funded; Stock Pre-Prop 5 profitable days (need not be consecutive)
+- **split:** 80%
+- **payout:** weekly, processed every Friday; futures weekly via Rise; first payout as fast as 5 days
+- **platform:** Not stated
+- **source:** https://tradefundrr.com
+
+
+### 135. Tradeiators
+
+- **slug:** tradeiators
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80% default, 90% with upgrade or Elite package%
+- **splitMax:** 90
+- **dd:** One-Step 6-12% static / Two-Step 6-12% static (funded 10% EOD trailing) / Instant 5-7% EOD trailing
+- **ddTypes:** EOD
+- **payoutDays:** 7
+- **payoutText:** first withdrawal after 10 profitable days in Funded Account, then weekly; processed within 48 hours
+- **from:** 38
+- **fromCur:** USD
+- **fromPlan:** Two-Step Starter 10K, one-time
+- **monthly:** false
+- **code:** none verified (Special Offers -80% shown; Black Friday Instant 100K $99 vs $495 list, no code shown)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (Special Offers -80% shown; Black Friday Instant 100K $99 vs $495 list, no code shown)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** none (no consistency rule on any route)
+- **consNone:** true
+- **target:** One-Step 8-10 / Two-Step 6-10 then 5-7 / Instant none (funded drawdown 5-7% trailing)
+- **dailyDD:** One-Step 3-4% / Two-Step 3-6% by phase / Instant 3-5% (funded 3% One-Step, 5% Two-Step)
+- **minDays:** 5 profitable days per evaluation phase (0.5%+ closed profit); 10 profitable days in Funded Account before first withdrawal
+- **activation:** none stated (fees non-refundable)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** double virtual balance +5pp profit share after 2 months and 20 profitable days (free Scale Up review)
+- **news:** allowed in every phase
+- **overnight:** overnight holding allowed (swaps charged unless swap-free add-on); weekend holding needs add-on
+- **us:** not stated
+- **site:** https://tradeiators.com
+- **sources:** https://tradeiators.com/funded-accounts; https://tradeiators.com/trading-rules; https://tradeiators.com/partners; https://tradeiators.com/payouts; https://www.tradeiators.com/partners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 20% (tiers 15/18/20%)
+- **platforms:** TradingView
+- **payMethods:** Not listed
+- **deal:** none verified (Special Offers -80% shown; Black Friday Instant 100K $99 vs $495 list, no code shown)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto, Stocks firm. Starts at USD 38 (Two-Step Starter 10K, one-time). Split 80% default, 90% with upgrade or Elite package%; payout first withdrawal after 10 profitable days in Funded Account, then weekly; processed within 48 hours.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 42**
+
+#### Two-Step Starter — 10000
+
+- **id:** tradeiators-two-step-starter-10000
+- **program:** Two-Step Starter
+- **name:** Two-Step Starter
+- **size:** 10000
+- **price:** 38
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 7
+- **dailyLoss:** 4% (P1) / 3% (P2)
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Starter — 25000
+
+- **id:** tradeiators-two-step-starter-25000
+- **program:** Two-Step Starter
+- **name:** Two-Step Starter
+- **size:** 25000
+- **price:** 105
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 7
+- **dailyLoss:** 4% (P1) / 3% (P2)
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Starter — 50000
+
+- **id:** tradeiators-two-step-starter-50000
+- **program:** Two-Step Starter
+- **name:** Two-Step Starter
+- **size:** 50000
+- **price:** 155
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 7
+- **dailyLoss:** 4% (P1) / 3% (P2)
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Starter — 100000
+
+- **id:** tradeiators-two-step-starter-100000
+- **program:** Two-Step Starter
+- **name:** Two-Step Starter
+- **size:** 100000
+- **price:** 191
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 7
+- **dailyLoss:** 4% (P1) / 3% (P2)
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Starter — 200000
+
+- **id:** tradeiators-two-step-starter-200000
+- **program:** Two-Step Starter
+- **name:** Two-Step Starter
+- **size:** 200000
+- **price:** 444
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 7
+- **dailyLoss:** 4% (P1) / 3% (P2)
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Pro Trader — 10000
+
+- **id:** tradeiators-two-step-pro-trader-10000
+- **program:** Two-Step Pro Trader
+- **name:** Two-Step Pro Trader
+- **size:** 10000
+- **price:** 88
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Pro Trader — 25000
+
+- **id:** tradeiators-two-step-pro-trader-25000
+- **program:** Two-Step Pro Trader
+- **name:** Two-Step Pro Trader
+- **size:** 25000
+- **price:** 243
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Pro Trader — 50000
+
+- **id:** tradeiators-two-step-pro-trader-50000
+- **program:** Two-Step Pro Trader
+- **name:** Two-Step Pro Trader
+- **size:** 50000
+- **price:** 358
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Pro Trader — 100000
+
+- **id:** tradeiators-two-step-pro-trader-100000
+- **program:** Two-Step Pro Trader
+- **name:** Two-Step Pro Trader
+- **size:** 100000
+- **price:** 441
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Pro Trader — 200000
+
+- **id:** tradeiators-two-step-pro-trader-200000
+- **program:** Two-Step Pro Trader
+- **name:** Two-Step Pro Trader
+- **size:** 200000
+- **price:** 1026
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 5
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Elite — 10000
+
+- **id:** tradeiators-two-step-elite-10000
+- **program:** Two-Step Elite
+- **name:** Two-Step Elite
+- **size:** 10000
+- **price:** 202
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 5
+- **dailyLoss:** 6% (P1) / 4% (P2)
+- **maxDD:** 12% (P1) / 8% (P2) static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Elite — 25000
+
+- **id:** tradeiators-two-step-elite-25000
+- **program:** Two-Step Elite
+- **name:** Two-Step Elite
+- **size:** 25000
+- **price:** 558
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 5
+- **dailyLoss:** 6% (P1) / 4% (P2)
+- **maxDD:** 12% (P1) / 8% (P2) static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Elite — 50000
+
+- **id:** tradeiators-two-step-elite-50000
+- **program:** Two-Step Elite
+- **name:** Two-Step Elite
+- **size:** 50000
+- **price:** 824
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 5
+- **dailyLoss:** 6% (P1) / 4% (P2)
+- **maxDD:** 12% (P1) / 8% (P2) static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Elite — 100000
+
+- **id:** tradeiators-two-step-elite-100000
+- **program:** Two-Step Elite
+- **name:** Two-Step Elite
+- **size:** 100000
+- **price:** 1014
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 5
+- **dailyLoss:** 6% (P1) / 4% (P2)
+- **maxDD:** 12% (P1) / 8% (P2) static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Two-Step Elite — 200000
+
+- **id:** tradeiators-two-step-elite-200000
+- **program:** Two-Step Elite
+- **name:** Two-Step Elite
+- **size:** 200000
+- **price:** 2357
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6 then 5
+- **dailyLoss:** 6% (P1) / 4% (P2)
+- **maxDD:** 12% (P1) / 8% (P2) static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Starter — 10000
+
+- **id:** tradeiators-one-step-starter-10000
+- **program:** One-Step Starter
+- **name:** One-Step Starter
+- **size:** 10000
+- **price:** 68
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Starter — 25000
+
+- **id:** tradeiators-one-step-starter-25000
+- **program:** One-Step Starter
+- **name:** One-Step Starter
+- **size:** 25000
+- **price:** 188
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Starter — 50000
+
+- **id:** tradeiators-one-step-starter-50000
+- **program:** One-Step Starter
+- **name:** One-Step Starter
+- **size:** 50000
+- **price:** 278
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Starter — 100000
+
+- **id:** tradeiators-one-step-starter-100000
+- **program:** One-Step Starter
+- **name:** One-Step Starter
+- **size:** 100000
+- **price:** 342
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Starter — 200000
+
+- **id:** tradeiators-one-step-starter-200000
+- **program:** One-Step Starter
+- **name:** One-Step Starter
+- **size:** 200000
+- **price:** 796
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Pro Trader — 10000
+
+- **id:** tradeiators-one-step-pro-trader-10000
+- **program:** One-Step Pro Trader
+- **name:** One-Step Pro Trader
+- **size:** 10000
+- **price:** 84
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Pro Trader — 25000
+
+- **id:** tradeiators-one-step-pro-trader-25000
+- **program:** One-Step Pro Trader
+- **name:** One-Step Pro Trader
+- **size:** 25000
+- **price:** 230
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Pro Trader — 50000
+
+- **id:** tradeiators-one-step-pro-trader-50000
+- **program:** One-Step Pro Trader
+- **name:** One-Step Pro Trader
+- **size:** 50000
+- **price:** 341
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Pro Trader — 100000
+
+- **id:** tradeiators-one-step-pro-trader-100000
+- **program:** One-Step Pro Trader
+- **name:** One-Step Pro Trader
+- **size:** 100000
+- **price:** 419
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Pro Trader — 200000
+
+- **id:** tradeiators-one-step-pro-trader-200000
+- **program:** One-Step Pro Trader
+- **name:** One-Step Pro Trader
+- **size:** 200000
+- **price:** 974
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Elite — 10000
+
+- **id:** tradeiators-one-step-elite-10000
+- **program:** One-Step Elite
+- **name:** One-Step Elite
+- **size:** 10000
+- **price:** 106
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 12% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Elite — 25000
+
+- **id:** tradeiators-one-step-elite-25000
+- **program:** One-Step Elite
+- **name:** One-Step Elite
+- **size:** 25000
+- **price:** 294
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 12% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Elite — 50000
+
+- **id:** tradeiators-one-step-elite-50000
+- **program:** One-Step Elite
+- **name:** One-Step Elite
+- **size:** 50000
+- **price:** 434
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 12% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Elite — 100000
+
+- **id:** tradeiators-one-step-elite-100000
+- **program:** One-Step Elite
+- **name:** One-Step Elite
+- **size:** 100000
+- **price:** 534
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 12% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### One-Step Elite — 200000
+
+- **id:** tradeiators-one-step-elite-200000
+- **program:** One-Step Elite
+- **name:** One-Step Elite
+- **size:** 200000
+- **price:** 1241
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10
+- **dailyLoss:** 4%
+- **maxDD:** 12% static
+- **ddType:** Static
+- **minDays:** 5
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Starter — 10000
+
+- **id:** tradeiators-instant-funding-starter-10000
+- **program:** Instant Funding Starter
+- **name:** Instant Funding Starter
+- **size:** 10000
+- **price:** 95
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Starter — 25000
+
+- **id:** tradeiators-instant-funding-starter-25000
+- **program:** Instant Funding Starter
+- **name:** Instant Funding Starter
+- **size:** 25000
+- **price:** 264
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Starter — 50000
+
+- **id:** tradeiators-instant-funding-starter-50000
+- **program:** Instant Funding Starter
+- **name:** Instant Funding Starter
+- **size:** 50000
+- **price:** 389
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Starter — 100000
+
+- **id:** tradeiators-instant-funding-starter-100000
+- **program:** Instant Funding Starter
+- **name:** Instant Funding Starter
+- **size:** 100000
+- **price:** 479
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 80%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Pro Trader — 10000
+
+- **id:** tradeiators-instant-funding-pro-trader-10000
+- **program:** Instant Funding Pro Trader
+- **name:** Instant Funding Pro Trader
+- **size:** 10000
+- **price:** 130
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Pro Trader — 25000
+
+- **id:** tradeiators-instant-funding-pro-trader-25000
+- **program:** Instant Funding Pro Trader
+- **name:** Instant Funding Pro Trader
+- **size:** 25000
+- **price:** 358
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Pro Trader — 50000
+
+- **id:** tradeiators-instant-funding-pro-trader-50000
+- **program:** Instant Funding Pro Trader
+- **name:** Instant Funding Pro Trader
+- **size:** 50000
+- **price:** 529
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Pro Trader — 100000
+
+- **id:** tradeiators-instant-funding-pro-trader-100000
+- **program:** Instant Funding Pro Trader
+- **name:** Instant Funding Pro Trader
+- **size:** 100000
+- **price:** 652
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Elite — 10000
+
+- **id:** tradeiators-instant-funding-elite-10000
+- **program:** Instant Funding Elite
+- **name:** Instant Funding Elite
+- **size:** 10000
+- **price:** 286
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5%
+- **maxDD:** 7% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Elite — 25000
+
+- **id:** tradeiators-instant-funding-elite-25000
+- **program:** Instant Funding Elite
+- **name:** Instant Funding Elite
+- **size:** 25000
+- **price:** 786
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5%
+- **maxDD:** 7% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Elite — 50000
+
+- **id:** tradeiators-instant-funding-elite-50000
+- **program:** Instant Funding Elite
+- **name:** Instant Funding Elite
+- **size:** 50000
+- **price:** 1160
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5%
+- **maxDD:** 7% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+#### Instant Funding Elite — 100000
+
+- **id:** tradeiators-instant-funding-elite-100000
+- **program:** Instant Funding Elite
+- **name:** Instant Funding Elite
+- **size:** 100000
+- **price:** 1428
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 5%
+- **maxDD:** 7% EOD trailing
+- **ddType:** EOD
+- **minDays:** 10
+- **split:** 90%
+- **payout:** Weekly after 10 profitable days
+- **platform:** TradingView
+- **source:** https://tradeiators.com/funded-accounts
+
+
+### 136. Tradeify
+
+- **slug:** tradeify
+- **markets:** futures
+- **rating:** 4.6
+- **rsrc:** Trustpilot
+- **reviews:** 7828
+- **ratingNote:** Trustpilot 4.6/5, 7,828 reviews. Checked 27 Nov 2026.
+- **split:** 90 sim / 80 live
+- **splitMax:** 90
+- **dd:** EOD trailing, $1000 (25K)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** Growth after 5 profitable days / Select Daily daily
+- **from:** 99
+- **fromCur:** USD
+- **fromPlan:** Growth 25K, one-time
+- **monthly:** false
+- **code:** NOV
+- **off:** 30
+- **codes:** {"code":"NOV","off":30,"detail":"30% off, and 45% off 25K accounts excluding Miami — ends Nov 30, 2026, 11:59 PM EST"}
+- **consistencyText:** Growth 35 funded / Select 40 eval / Lightning 20-30
+- **consNone:** false
+- **target:** 6
+- **dailyDD:** Growth soft DLL $600 (25K)
+- **minDays:** Growth 1 / Select 3
+- **activation:** none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** no
+- **us:** yes
+- **site:** https://tradeify.co
+- **sources:** https://tradeify.co; https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference; https://www.trustpilot.com/review/tradeify.co
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** not stated
+- **platforms:** Tradovate; NinjaTrader
+- **payMethods:** Not listed
+- **deal:** NOV — 30% off, and 45% off 25K accounts excluding Miami. Ends Nov 30, 2026, 11:59 PM EST.
+- **tracked:** true
+- **paid30:** 53400000
+- **payouts30:** 34376
+- **largest:** 400000
+- **note:** The firm's homepage crawl on Nov 26, 2026 rendered $359 / $251 for every size, which conflicts with its own Pricing Reference ($99 list for Growth 25K). This page uses the documented Pricing Reference; the checkout price is the final word.
+- **summary:** US futures-only firm. Growth, Select and Lightning (instant) lines, $25K–$150K plus a 300K Select. 90% split on sim-funded accounts, 80% on Elite Live. Prices here are the firm's documented Pricing Reference list.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 21**
+
+#### Growth — 25000
+
+- **id:** tradeify-growth-25000
+- **program:** Growth
+- **name:** Growth
+- **size:** 25000
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $60. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** Applies; size-specific amount pending
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 60
+- **activationFee:** 0
+- **consistency:** No evaluation consistency; funded 35%
+
+#### Growth — 50000
+
+- **id:** tradeify-growth-50000
+- **program:** Growth
+- **name:** Growth
+- **size:** 50000
+- **price:** 145
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $95. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** Applies; size-specific amount pending
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 95
+- **activationFee:** 0
+- **consistency:** No evaluation consistency; funded 35%
+
+#### Growth — 100000
+
+- **id:** tradeify-growth-100000
+- **program:** Growth
+- **name:** Growth
+- **size:** 100000
+- **price:** 255
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $169. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** Applies; size-specific amount pending
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 169
+- **activationFee:** 0
+- **consistency:** No evaluation consistency; funded 35%
+
+#### Growth — 150000
+
+- **id:** tradeify-growth-150000
+- **program:** Growth
+- **name:** Growth
+- **size:** 150000
+- **price:** 369
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $229. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** Applies; size-specific amount pending
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 229
+- **activationFee:** 0
+- **consistency:** No evaluation consistency; funded 35%
+
+#### Select 30% — 25000
+
+- **id:** tradeify-select-30-25000
+- **program:** Select
+- **name:** Select 30%
+- **size:** 25000
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $69. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 69
+- **activationFee:** 0
+- **consistency:** 30% evaluation
+
+#### Select 30% — 50000
+
+- **id:** tradeify-select-30-50000
+- **program:** Select
+- **name:** Select 30%
+- **size:** 50000
+- **price:** 145
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $105. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 105
+- **activationFee:** 0
+- **consistency:** 30% evaluation
+
+#### Select 30% — 100000
+
+- **id:** tradeify-select-30-100000
+- **program:** Select
+- **name:** Select 30%
+- **size:** 100000
+- **price:** 229
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $164. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 164
+- **activationFee:** 0
+- **consistency:** 30% evaluation
+
+#### Select 30% — 150000
+
+- **id:** tradeify-select-30-150000
+- **program:** Select
+- **name:** Select 30%
+- **size:** 150000
+- **price:** 319
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $225. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 225
+- **activationFee:** 0
+- **consistency:** 30% evaluation
+
+#### Select 40% — 25000
+
+- **id:** tradeify-select-40-25000
+- **program:** Select
+- **name:** Select 40%
+- **size:** 25000
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $75. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 75
+- **activationFee:** 0
+- **consistency:** 40% evaluation
+
+#### Select 40% — 50000
+
+- **id:** tradeify-select-40-50000
+- **program:** Select
+- **name:** Select 40%
+- **size:** 50000
+- **price:** 174
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $119. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 119
+- **activationFee:** 0
+- **consistency:** 40% evaluation
+
+#### Select 40% — 100000
+
+- **id:** tradeify-select-40-100000
+- **program:** Select
+- **name:** Select 40%
+- **size:** 100000
+- **price:** 265
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $169. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 169
+- **activationFee:** 0
+- **consistency:** 40% evaluation
+
+#### Select 40% — 150000
+
+- **id:** tradeify-select-40-150000
+- **program:** Select
+- **name:** Select 40%
+- **size:** 150000
+- **price:** 369
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $239. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 239
+- **activationFee:** 0
+- **consistency:** 40% evaluation
+
+#### Select 40% — 300000
+
+- **id:** tradeify-select-40-300000
+- **program:** Select
+- **name:** Select 40%
+- **size:** 300000
+- **price:** 570
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: not available. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** Not recorded
+- **activationFee:** 0
+- **consistency:** 40% evaluation
+
+#### Select 50% — 25000
+
+- **id:** tradeify-select-50-25000
+- **program:** Select
+- **name:** Select 50%
+- **size:** 25000
+- **price:** 135
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $90. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 90
+- **activationFee:** 0
+- **consistency:** 50% evaluation
+
+#### Select 50% — 50000
+
+- **id:** tradeify-select-50-50000
+- **program:** Select
+- **name:** Select 50%
+- **size:** 50000
+- **price:** 216
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $152. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 152
+- **activationFee:** 0
+- **consistency:** 50% evaluation
+
+#### Select 50% — 100000
+
+- **id:** tradeify-select-50-100000
+- **program:** Select
+- **name:** Select 50%
+- **size:** 100000
+- **price:** 329
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $230. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 230
+- **activationFee:** 0
+- **consistency:** 50% evaluation
+
+#### Select 50% — 150000
+
+- **id:** tradeify-select-50-150000
+- **program:** Select
+- **name:** Select 50%
+- **size:** 150000
+- **price:** 459
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $319. No activation fee.
+- **target:** Not yet verified
+- **dailyLoss:** None during evaluation
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Daily or Flex after passing
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** 319
+- **activationFee:** 0
+- **consistency:** 50% evaluation
+
+#### Lightning — 25000
+
+- **id:** tradeify-lightning-25000
+- **program:** Lightning
+- **name:** Lightning
+- **size:** 25000
+- **price:** 345
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.
+- **target:** No evaluation
+- **dailyLoss:** Not yet verified
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** Not recorded
+- **activationFee:** 0
+- **consistency:** Progressive 20%, 25%, 30%
+
+#### Lightning — 50000
+
+- **id:** tradeify-lightning-50000
+- **program:** Lightning
+- **name:** Lightning
+- **size:** 50000
+- **price:** 492
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.
+- **target:** No evaluation
+- **dailyLoss:** Not yet verified
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** Not recorded
+- **activationFee:** 0
+- **consistency:** Progressive 20%, 25%, 30%
+
+#### Lightning — 100000
+
+- **id:** tradeify-lightning-100000
+- **program:** Lightning
+- **name:** Lightning
+- **size:** 100000
+- **price:** 660
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.
+- **target:** No evaluation
+- **dailyLoss:** Not yet verified
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** Not recorded
+- **activationFee:** 0
+- **consistency:** Progressive 20%, 25%, 30%
+
+#### Lightning — 150000
+
+- **id:** tradeify-lightning-150000
+- **program:** Lightning
+- **name:** Lightning
+- **size:** 150000
+- **price:** 796
+- **currency:** USD
+- **monthly:** false
+- **coverage:** partial
+- **note:** Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.
+- **target:** No evaluation
+- **dailyLoss:** Not yet verified
+- **maxDD:** Not yet verified
+- **ddType:** Not yet verified
+- **minDays:** Not yet verified
+- **split:** 90% sim funded / 80% Elite Live
+- **payout:** Not yet verified
+- **platform:** Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts
+- **source:** https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference
+- **verifiedOn:** Nov 28, 2026
+- **resetFee:** Not recorded
+- **activationFee:** 0
+- **consistency:** Progressive 20%, 25%, 30%
+
+
+### 137. Traders Launch
+
+- **slug:** traders-launch
+- **markets:** futures; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 60 or 80 (futures std); 90 Premium/Static; 80 crypto; Rapid 60/80/90%
+- **splitMax:** 90
+- **dd:** EOD $1,000 (100K futures); Crypto EOD $200 (5K); Rapid $500 EOD trailing
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** daily (one request per 24h; futures eligible above +1%; crypto any day after buffer)
+- **from:** 20
+- **fromCur:** USD
+- **fromPlan:** Crypto 5K, one-time
+- **monthly:** false
+- **code:** TL30
+- **off:** Not recorded
+- **codes:** {"code":"TL30","off":null,"detail":"30% off, auto-applied"}
+- **consistencyText:** none funded; 40% session profit cap in eval (50% static); crypto best day <25% of profit
+- **consNone:** true
+- **target:** Futures 2 ($2,000/100K); Crypto 5K 4 / 10K 5 / 20K 7.5; Rapid 25K $1,250 (5%)
+- **dailyDD:** none (futures); crypto EOD drawdown resets daily 4pm EST
+- **minDays:** none (futures); 4 (crypto)
+- **activation:** $0
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (max 5 futures + 5 crypto accounts)
+- **news:** not stated
+- **overnight:** not stated (futures hours 6pm-4pm ET; crypto 24/7)
+- **us:** yes (US not on restricted list)
+- **site:** https://traderslaunch.com
+- **sources:** https://traderslaunch.com; https://traderslaunch.com/pricing; https://www.traderslaunch.com/crypto; https://www.traderslaunch.com/faq; https://www.traderslaunch.com/early-access
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 5%
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** TL30 (30% off, auto-applied)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Futures, Crypto firm. Starts at USD 20 (Crypto 5K, one-time). Split 60 or 80 (futures std); 90 Premium/Static; 80 crypto; Rapid 60/80/90%; payout daily (one request per 24h; futures eligible above +1%; crypto any day after buffer).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Crypto 5K, one-time — Not recorded
+
+- **id:** traders-launch-entry
+- **program:** Crypto 5K, one-time
+- **name:** Crypto 5K, one-time
+- **size:** Not recorded
+- **price:** 20
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** Futures 2 ($2,000/100K); Crypto 5K 4 / 10K 5 / 20K 7.5; Rapid 25K $1,250 (5%)
+- **dailyLoss:** none (futures); crypto EOD drawdown resets daily 4pm EST
+- **maxDD:** EOD $1,000 (100K futures); Crypto EOD $200 (5K); Rapid $500 EOD trailing
+- **ddType:** EOD
+- **minDays:** none (futures); 4 (crypto)
+- **split:** 60 or 80 (futures std); 90 Premium/Static; 80 crypto; Rapid 60/80/90%
+- **payout:** daily (one request per 24h; futures eligible above +1%; crypto any day after buffer)
+- **platform:** Not stated
+- **source:** https://traderslaunch.com
+
+
+### 138. TraderScale
+
+- **slug:** traderscale
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** Instant 6% static / Speedy 8% trailing from highest point / Pro 10% static
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** Instant first payout after 14 days (4 profitable days 0.25%+), then every 7 days; Speedy/Pro first payout after 30 days (14 with add-on), then every 14 days; paid within 24h via Rise or USDT
+- **from:** 57
+- **fromCur:** USD
+- **fromPlan:** Pro 2-Step 5K, one-time list
+- **monthly:** false
+- **code:** none verified (sale prices shown on homepage without a code)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (sale prices shown on homepage without a code)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Instant 20% / Speedy 40% / Pro none
+- **consNone:** true
+- **target:** Instant none / Speedy 10 / Pro 8 then 5 (pricing cards; homepage FAQ states 10 then 5)
+- **dailyDD:** Instant 3% / Speedy 4% / Pro 5%
+- **minDays:** Instant 4 / Speedy 1 / Pro 4 per phase (4 funded days of 0.5%+ for payout)
+- **activation:** none stated (Pro fee refunded on first payout)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $600,000
+- **news:** allowed on Speedy and Pro (listed as 'News & Weekend Trading'); Instant not stated
+- **overnight:** allowed on Speedy and Pro (weekend trading listed)
+- **us:** yes (US customers offered Match-Trader)
+- **site:** https://traderscale.com
+- **sources:** https://traderscale.com; https://www.traderscale.com/partners/
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 15-40% tiered (Starter 15%, Growth 20%, Pro 30%, Elite up to 40%)
+- **platforms:** MT5 or Match-Trader
+- **payMethods:** Not listed
+- **deal:** none verified (sale prices shown on homepage without a code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex firm. Starts at USD 57 (Pro 2-Step 5K, one-time list). Split up to 90%; payout Instant first payout after 14 days (4 profitable days 0.25%+), then every 7 days; Speedy/Pro first payout after 30 days (14 with add-on), then every 14 days; paid within 24h via Rise or USDT.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 20**
+
+#### Instant Funding — 10000
+
+- **id:** traderscale-instant-funding-10000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 10000
+- **price:** 179
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 14 days, then every 7 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Instant Funding — 25000
+
+- **id:** traderscale-instant-funding-25000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 25000
+- **price:** 309
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 14 days, then every 7 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Instant Funding — 50000
+
+- **id:** traderscale-instant-funding-50000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 50000
+- **price:** 479
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 14 days, then every 7 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Instant Funding — 100000
+
+- **id:** traderscale-instant-funding-100000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 100000
+- **price:** 779
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 14 days, then every 7 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Instant Funding — 200000
+
+- **id:** traderscale-instant-funding-200000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 200000
+- **price:** 1195
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 14 days, then every 7 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Instant Funding — 400000
+
+- **id:** traderscale-instant-funding-400000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 400000
+- **price:** 1999
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 6% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 14 days, then every 7 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 5000
+
+- **id:** traderscale-speedy-1-step-5000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 5000
+- **price:** 86
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 10000
+
+- **id:** traderscale-speedy-1-step-10000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 10000
+- **price:** 146
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 25000
+
+- **id:** traderscale-speedy-1-step-25000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 25000
+- **price:** 356
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 50000
+
+- **id:** traderscale-speedy-1-step-50000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 50000
+- **price:** 476
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 100000
+
+- **id:** traderscale-speedy-1-step-100000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 100000
+- **price:** 716
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 200000
+
+- **id:** traderscale-speedy-1-step-200000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 200000
+- **price:** 1196
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Speedy 1-Step — 400000
+
+- **id:** traderscale-speedy-1-step-400000
+- **program:** Speedy 1-Step
+- **name:** Speedy 1-Step
+- **size:** 400000
+- **price:** 2296
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 4%
+- **maxDD:** 8% trailing
+- **ddType:** Trailing
+- **minDays:** 1
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 5000
+
+- **id:** traderscale-pro-2-step-5000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 5000
+- **price:** 57
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 10000
+
+- **id:** traderscale-pro-2-step-10000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 10000
+- **price:** 97
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 25000
+
+- **id:** traderscale-pro-2-step-25000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 25000
+- **price:** 197
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 50000
+
+- **id:** traderscale-pro-2-step-50000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 50000
+- **price:** 297
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 100000
+
+- **id:** traderscale-pro-2-step-100000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 100000
+- **price:** 497
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 200000
+
+- **id:** traderscale-pro-2-step-200000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 200000
+- **price:** 957
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+#### Pro 2-Step — 400000
+
+- **id:** traderscale-pro-2-step-400000
+- **program:** Pro 2-Step
+- **name:** Pro 2-Step
+- **size:** 400000
+- **price:** 1897
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% then 5%
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 4
+- **split:** up to 90%
+- **payout:** first after 30 days (14 with add-on), then every 14 days
+- **platform:** MT5 or Match-Trader
+- **source:** https://traderscale.com
+
+
+### 139. TradersYard
+
+- **slug:** tradersyard
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 100% of first $300, 90% above%
+- **splitMax:** 90
+- **dd:** Standard 3% EOD; Premium 4% EOD (no daily loss limit)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** 240h (10 days); rewards processed 1-2 business days after KYC, most within 4-6h of request
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** Standard 1-Step 25K, one-time
+- **monthly:** false
+- **code:** none published (30% Black Friday discount on every purchase, no code)
+- **off:** Not recorded
+- **codes:** {"code":"none published (30% Black Friday discount on every purchase, no code)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Standard 40% eval, funded 5 profitable days (0.3% threshold); Premium 51% eval, 40% funded
+- **consNone:** false
+- **target:** Standard 5%; Premium 6%
+- **dailyDD:** none (EOD max drawdown only)
+- **minDays:** none in eval
+- **activation:** $0, no monthly fee
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated
+- **news:** restricted
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://tradersyard.com
+- **sources:** https://tradersyard.com; https://tradersyard.com/api/v3.0/payments/futures-challenges; https://tradersyard.com/affiliate-program
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 10% flat on every sale, 30-day attribution, withdraw every 30 days
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none published (30% Black Friday discount on every purchase, no code)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Futures firm. Starts at USD 49 (Standard 1-Step 25K, one-time). Split 100% of first $300, 90% above%; payout 240h (10 days); rewards processed 1-2 business days after KYC, most within 4-6h of request.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 8**
+
+#### Standard 1-Step — 25000
+
+- **id:** tradersyard-standard-1-step-25000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 25000
+- **price:** 49
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5% ($1,250)
+- **dailyLoss:** none
+- **maxDD:** 3% EOD ($750)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Standard 1-Step — 50000
+
+- **id:** tradersyard-standard-1-step-50000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 50000
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5% ($2,500)
+- **dailyLoss:** none
+- **maxDD:** 3% EOD ($1,500)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Standard 1-Step — 100000
+
+- **id:** tradersyard-standard-1-step-100000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 100000
+- **price:** 219
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5% ($5,000)
+- **dailyLoss:** none
+- **maxDD:** 3% EOD ($3,000)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Standard 1-Step — 150000
+
+- **id:** tradersyard-standard-1-step-150000
+- **program:** Standard 1-Step
+- **name:** Standard 1-Step
+- **size:** 150000
+- **price:** 339
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 5% ($7,500)
+- **dailyLoss:** none
+- **maxDD:** 3% EOD ($4,500)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Premium 1-Step — 25000
+
+- **id:** tradersyard-premium-1-step-25000
+- **program:** Premium 1-Step
+- **name:** Premium 1-Step
+- **size:** 25000
+- **price:** 109
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($1,500)
+- **dailyLoss:** none
+- **maxDD:** 4% EOD ($1,000)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Premium 1-Step — 50000
+
+- **id:** tradersyard-premium-1-step-50000
+- **program:** Premium 1-Step
+- **name:** Premium 1-Step
+- **size:** 50000
+- **price:** 219
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($3,000)
+- **dailyLoss:** none
+- **maxDD:** 4% EOD ($2,000)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Premium 1-Step — 100000
+
+- **id:** tradersyard-premium-1-step-100000
+- **program:** Premium 1-Step
+- **name:** Premium 1-Step
+- **size:** 100000
+- **price:** 459
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($6,000)
+- **dailyLoss:** none
+- **maxDD:** 4% EOD ($4,000)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+#### Premium 1-Step — 150000
+
+- **id:** tradersyard-premium-1-step-150000
+- **program:** Premium 1-Step
+- **name:** Premium 1-Step
+- **size:** 150000
+- **price:** 699
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($9,000)
+- **dailyLoss:** none
+- **maxDD:** 4% EOD ($6,000)
+- **ddType:** EOD
+- **minDays:** none
+- **split:** 100% of first $300, then 90%
+- **payout:** 240h
+- **platform:** not stated
+- **source:** https://tradersyard.com/api/v3.0/payments/futures-challenges
+
+
+### 140. TX3 Funding
+
+- **slug:** tx3-funding
+- **markets:** forex; futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 1 Phase 85 / Flex 80 / Pro 80 (90% with add-on)%
+- **splitMax:** 90
+- **dd:** 1 Phase 6% trailing / Flex 5% static / Core futures 3-4% EOD trailing
+- **ddTypes:** EOD
+- **payoutDays:** 1
+- **payoutText:** 1 Phase first payout 3d after first trade, then every 3d / Flex first 10d, then every 7d / Pro on-demand after 2% profit
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** BF50
+- **off:** Not recorded
+- **codes:** {"code":"BF50","off":null,"detail":"50% off seen on official checkout links"}
+- **consistencyText:** funded-stage only; % not stated on official FAQ pages (1 Phase rule links out to toptiertrader.com)
+- **consNone:** false
+- **target:** 1 Phase 10 / Flex 10 then 5 / Pro not stated on fetched FAQ pages
+- **dailyDD:** 1 Phase 3% / Flex none in eval, 2.5% funded / Pro not stated on fetched FAQ pages
+- **minDays:** Pro 3 / Core futures 5 eval, 3 funded / 1 Phase not stated on official FAQ pages
+- **activation:** not stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** 1 Phase allowed under specific conditions; Pro add-on only
+- **overnight:** weekend allowed under specific conditions (1 Phase)
+- **us:** yes (US traders accepted; Rise payouts restricted in some US regions per official FAQ)
+- **site:** https://tx3funding.com
+- **sources:** https://tx3funding.com; https://faq.tx3funding.com/help/tx3-funding/introduction-to-the-1-phase-challenge; https://faq.tx3funding.com/help/tx3-funding/rules-and-objectives-1-phase-challenge; https://faq.tx3funding.com/help/tx3-funding/introduction-to-the-pro-challenge; https://faq.tx3funding.com/help/tx3-funding/challenge-rules-objectives-flex-challenge; https://faq.tx3funding.com/help/tx3-funding/payout-requests; https://faq.tx3funding.com/help/tx3-funding/commission-structure-and-tiers; https://app.tx3funding.com/checkout
+- **verif:** partial (forex challenge list prices sit in a JS checkout widget and are not readable in text fetch; official checkout showed Core futures 50K $178.30 / 150K $428.30 with BF50 promo applied)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 10% base rising to 20% Elite (Silver 12.5% / Gold 15% / Diamond 17.5%)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** BF50 (50% off seen on official checkout links)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (forex challenge list prices sit in a JS checkout widget and are not readable in text fetch; official checkout showed Core futures 50K $178.30 / 150K $428.30 with BF50 promo applied).
+- **summary:** Forex, Cfd, Futures firm. Starts at USD None (Entry plan (name not recorded)). Split 1 Phase 85 / Flex 80 / Pro 80 (90% with add-on)%; payout 1 Phase first payout 3d after first trade, then every 3d / Flex first 10d, then every 7d / Pro on-demand after 2% profit.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 141. UProfit
+
+- **slug:** uprofit
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** not stated
+- **splitMax:** Not recorded
+- **dd:** not stated
+- **ddTypes:** Not recorded
+- **payoutDays:** Not recorded
+- **payoutText:** not stated
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not in status PDF)
+- **monthly:** true
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** not stated
+- **dailyDD:** not stated
+- **minDays:** not stated
+- **activation:** not stated
+- **instant:** false
+- **instantText:** not stated
+- **scaling:** not stated
+- **news:** not stated
+- **overnight:** not stated
+- **us:** yes (Delaware LLC; US traders)
+- **site:** https://uprofit.com
+- **sources:** https://uprofit.com
+- **verif:** partial (from status PDF only; split/drawdown/payout not carried in the PDF)
+- **verifLabel:** Partially verified
+- **affiliate:** none found
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from the 100-firm status PDF (Tier C, 12 plans recorded). Split, drawdown, payout cycle, targets and per-size prices were not carried in the PDF and are recorded as not stated — a full official-site pass is still needed for this firm.
+- **summary:** Futures firm. Starts at $49/mo. Affiliate: none found. US traders: yes (Delaware LLC; US traders).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Entry plan (name not in status PDF) — Not recorded
+
+- **id:** uprofit-entry
+- **program:** Entry plan (name not in status PDF)
+- **name:** Entry plan (name not in status PDF)
+- **size:** Not recorded
+- **price:** 49
+- **currency:** USD
+- **monthly:** true
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** not stated
+- **dailyLoss:** not stated
+- **maxDD:** not stated
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** not stated
+- **payout:** not stated
+- **platform:** Not stated
+- **source:** https://uprofit.com
+
+
+### 142. Upscale
+
+- **slug:** upscale
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot rating withheld — breach-of-guidelines notice, 13 reviews, no score
+- **split:** 80 (90% upgrade)
+- **splitMax:** 90
+- **dd:** 10% static (Basic)
+- **ddTypes:** Static
+- **payoutDays:** 14
+- **payoutText:** every 14d
+- **from:** 59
+- **fromCur:** USD
+- **fromPlan:** Basic RWA 5K
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none Basic/Accelerated; 30% Turbo
+- **consNone:** false
+- **target:** Basic 5 then 8
+- **dailyDD:** 5% (Basic)
+- **minDays:** 3 profit days 0.5%+
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** up to $400,000
+- **news:** allowed; close-only 5 min around US macro (stocks/forex)
+- **overnight:** allowed, except late-Friday index positions closed
+- **us:** no (US excluded per Terms of Use)
+- **site:** https://upscale.trade
+- **sources:** https://upscale.trade/; https://docs.upscale.trade/how-upscale-works/account_setup; https://www.trustpilot.com/review/upscale.trade
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 10-15%
+- **platforms:** Own TradingView-based terminal
+- **payMethods:** Not listed
+- **deal:** Not recorded
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Internal conflict on the firm's own site: the Terms of Use exclude US residents while the FAQ says 'available worldwide' — the terms govern. The terms also require passport KYC before withdrawal, despite 'no KYC' marketing.
+- **summary:** Crypto perps and real-world-asset markets (forex, commodities, indices, stocks) on its own TradingView-based terminal. Basic, Accelerated and Turbo (instant) lines, USDT payouts. US residents are excluded under the Terms of Use.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Basic RWA — 5000
+
+- **id:** upscale-basic-rwa-5000
+- **program:** Basic RWA
+- **name:** Basic RWA
+- **size:** 5000
+- **price:** 59
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.
+- **target:** Basic 5 then 8
+- **dailyLoss:** 5% (Basic)
+- **maxDD:** 10% static (Basic)
+- **ddType:** Static
+- **minDays:** 3 profit days 0.5%+
+- **split:** 80 (90% upgrade)
+- **payout:** every 14d
+- **platform:** Own TradingView-based terminal
+- **source:** https://upscale.trade/
+
+
+### 143. Vanta Trading
+
+- **slug:** vanta-trading
+- **markets:** forex; crypto; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 60/40 to 100/0 (chosen at purchase; 100/0 default); Instant 80/20%
+- **splitMax:** 20
+- **dd:** Classic 5% static; Instant 5% or 8% trailing (choice)
+- **ddTypes:** Static
+- **payoutDays:** 7
+- **payoutText:** Weekly rewards
+- **from:** 33
+- **fromCur:** USD
+- **fromPlan:** Classic 5K, 60/40 split, 3% daily
+- **monthly:** false
+- **code:** BF25
+- **off:** Not recorded
+- **codes:** {"code":"BF25","off":null,"detail":"25% off all challenges, ends Nov 29); BF35 (35% off Classic with crypto payment); BF30 (30% off Instant with crypto"}
+- **consistencyText:** none stated (Classic); Pro challenge 1.75 Calmar daily-return consistency
+- **consNone:** true
+- **target:** Classic 10; Instant none
+- **dailyDD:** Classic 3% or 5% (choice); Instant 3%
+- **minDays:** none; trade at least once per 60 days
+- **activation:** none stated
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** auto-promotion to Grow 3x/5x/10x up to $1,000,000, then Pro
+- **news:** allowed
+- **overnight:** allowed
+- **us:** not stated
+- **site:** https://www.vantatrading.io
+- **sources:** https://www.vantatrading.io; https://www.vantatrading.io/pricing; https://www.vantatrading.io/instant-funded; https://www.vantatrading.io/rules; https://www.vantatrading.io/faq; https://www.vantatrading.io/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** 10% first purchase; Partner 15% recurring at 10 paid referrals; Coordinator 5% on network sales (2 levels); payouts monthly NET-15, min $100
+- **platforms:** Vanta Trading Desk (MT5 coming soon)
+- **payMethods:** Not listed
+- **deal:** BF25 (25% off all challenges, ends Nov 29); BF35 (35% off Classic with crypto payment); BF30 (30% off Instant with crypto)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Forex, Crypto, Stocks firm. Starts at USD 33 (Classic 5K, 60/40 split, 3% daily). Split 60/40 to 100/0 (chosen at purchase; 100/0 default); Instant 80/20%; payout Weekly rewards.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 8**
+
+#### Classic 1-Step — 5000
+
+- **id:** vanta-trading-classic-1-step-5000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 5000
+- **price:** 67
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 100/0
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/pricing
+
+#### Classic 1-Step — 10000
+
+- **id:** vanta-trading-classic-1-step-10000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 10000
+- **price:** 127
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 100/0
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/pricing
+
+#### Classic 1-Step — 25000
+
+- **id:** vanta-trading-classic-1-step-25000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 25000
+- **price:** 303
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 100/0
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/pricing
+
+#### Classic 1-Step — 50000
+
+- **id:** vanta-trading-classic-1-step-50000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 50000
+- **price:** 577
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 100/0
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/pricing
+
+#### Classic 1-Step — 100000
+
+- **id:** vanta-trading-classic-1-step-100000
+- **program:** Classic 1-Step
+- **name:** Classic 1-Step
+- **size:** 100000
+- **price:** 1099
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** none
+- **split:** 100/0
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/pricing
+
+#### Instant Funded — 25000
+
+- **id:** vanta-trading-instant-funded-25000
+- **program:** Instant Funded
+- **name:** Instant Funded
+- **size:** 25000
+- **price:** 750
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% trailing
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80/20
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/instant-funded
+
+#### Instant Funded — 50000
+
+- **id:** vanta-trading-instant-funded-50000
+- **program:** Instant Funded
+- **name:** Instant Funded
+- **size:** 50000
+- **price:** 1500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% trailing
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80/20
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/instant-funded
+
+#### Instant Funded — 100000
+
+- **id:** vanta-trading-instant-funded-100000
+- **program:** Instant Funded
+- **name:** Instant Funded
+- **size:** 100000
+- **price:** 2999
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 3%
+- **maxDD:** 5% trailing
+- **ddType:** Trailing
+- **minDays:** none
+- **split:** 80/20
+- **payout:** Weekly
+- **platform:** Vanta Trading Desk (MT5 coming soon)
+- **source:** https://www.vantatrading.io/instant-funded
+
+
+### 144. VEDEX
+
+- **slug:** vedex
+- **markets:** crypto; perps
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 75% first payout, growing to 90% (+5pp every 2 months from first payout)%
+- **splitMax:** 90
+- **dd:** 10% static (from initial balance, never trails)
+- **ddTypes:** Static
+- **payoutDays:** Not recorded
+- **payoutText:** START once a month; CORE every 2 weeks; PRO/PRIME priority on request; payouts in USDT (e.g. TRC-20); KYC required
+- **from:** 77
+- **fromCur:** USDT
+- **fromPlan:** START 5,000 USDT, one-time
+- **monthly:** false
+- **code:** none verified (partners can create up to 20% off codes; no public code on official pages)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (partners can create up to 20% off codes; no public code on official pages)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** 40% evaluation / 35% funded (best day vs total profit from winning days)
+- **consNone:** false
+- **target:** 8% per stage (Stage 1 and Stage 2)
+- **dailyDD:** 5%
+- **minDays:** 3 per stage; 4 on funded account before first payout
+- **activation:** none stated (restart discount 5-20% by tier on PRO/PRIME)
+- **instant:** false
+- **instantText:** No
+- **scaling:** PRO Fast Track +25% balance for 10% total profit; PRIME Easy Growth +30% for 6%; personal allocation up to 2,000,000 USDT
+- **news:** allowed (no news filters, no blackout windows)
+- **overnight:** allowed (positions stay open; nothing force-closed)
+- **us:** no (services not directed at residents of the United States of America, per official footer)
+- **site:** https://vedexprop.com
+- **sources:** https://vedexprop.com/en/evaluation; https://vedexprop.com/trading-rules; https://vedexprop.com/en/partners; https://vedexprop.com/affiliate-terms; https://www.vedexprop.com/en/partners
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, 30% start, up to 50%
+- **platforms:** VEDEX terminal
+- **payMethods:** Not listed
+- **deal:** none verified (partners can create up to 20% off codes; no public code on official pages)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Crypto, Perps firm. Starts at USDT 77 (START 5,000 USDT, one-time). Split 75% first payout, growing to 90% (+5pp every 2 months from first payout)%; payout START once a month; CORE every 2 weeks; PRO/PRIME priority on request; payouts in USDT (e.g. TRC-20); KYC required.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### Evaluation (START) — 5000
+
+- **id:** vedex-evaluation-start-5000
+- **program:** Evaluation (START)
+- **name:** Evaluation (START)
+- **size:** 5000
+- **price:** 77
+- **currency:** USDT
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% per stage
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 3 per stage
+- **split:** 75% growing to 90%
+- **payout:** Monthly
+- **platform:** VEDEX terminal
+- **source:** https://vedexprop.com/en/evaluation
+
+#### Evaluation (CORE) — 10000
+
+- **id:** vedex-evaluation-core-10000
+- **program:** Evaluation (CORE)
+- **name:** Evaluation (CORE)
+- **size:** 10000
+- **price:** 135
+- **currency:** USDT
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% per stage
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 3 per stage
+- **split:** 75% growing to 90%
+- **payout:** Every 2 weeks
+- **platform:** VEDEX terminal
+- **source:** https://vedexprop.com/en/evaluation
+
+#### Evaluation (PRO) — 50000
+
+- **id:** vedex-evaluation-pro-50000
+- **program:** Evaluation (PRO)
+- **name:** Evaluation (PRO)
+- **size:** 50000
+- **price:** 460
+- **currency:** USDT
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% per stage
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 3 per stage
+- **split:** 75% growing to 90%
+- **payout:** On request (priority)
+- **platform:** VEDEX terminal
+- **source:** https://vedexprop.com/en/evaluation
+
+#### Evaluation (PRIME) — 100000
+
+- **id:** vedex-evaluation-prime-100000
+- **program:** Evaluation (PRIME)
+- **name:** Evaluation (PRIME)
+- **size:** 100000
+- **price:** 870
+- **currency:** USDT
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8% per stage
+- **dailyLoss:** 5%
+- **maxDD:** 10% static
+- **ddType:** Static
+- **minDays:** 3 per stage
+- **split:** 75% growing to 90%
+- **payout:** On request (priority)
+- **platform:** VEDEX terminal
+- **source:** https://vedexprop.com/en/evaluation
+
+
+### 145. Venus Funded
+
+- **slug:** venus-funded
+- **markets:** forex; crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 95%
+- **splitMax:** 95
+- **dd:** 15%
+- **ddTypes:** Not recorded
+- **payoutDays:** 14
+- **payoutText:** first payout 14 days from first funded trade, then every 14 days; processed within 1-2 business days; Bank/Crypto; min payout $100 after split
+- **from:** 50
+- **fromCur:** USD
+- **fromPlan:** 2-Step 5K, one-time
+- **monthly:** false
+- **code:** Not recorded
+- **off:** Not recorded
+- **codes:** Not recorded
+- **consistencyText:** none (site: 'No, we do not have any consistency rules or hidden rules')
+- **consNone:** true
+- **target:** 1-Step 8; 2-Step 8 then 5; Instant none
+- **dailyDD:** 7%
+- **minDays:** none in eval; 5 on funded accounts
+- **activation:** none stated (registration fee refunded at first scale-up; homepage advertises 150% fee refund after passing)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** to $5M (15% within 3 months to scale); homepage says up to $10M balance
+- **news:** allowed (funded accounts: max 25% margin risk within 5 min before/after red-folder news)
+- **overnight:** no restrictions on holding overnight or over the weekend
+- **us:** yes
+- **site:** https://www.venusfunded.com
+- **sources:** https://www.venusfunded.com; https://www.venusfunded.com/affiliate-program; https://www.venusfunded.com/faq
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** up to 20% per referral; 30-day payout system; affiliate payouts via Crypto USDT (ERC20/TRC20); tier rewards: free 50K 1-Step at 50 sales, free 100K at 500, free 200K at 1000
+- **platforms:** MT4/MT5
+- **payMethods:** Not listed
+- **deal:** none verified
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full. Replacement for WSFunded, which was already on the live site.
+- **summary:** Forex, Crypto firm. Starts at USD 50 (2-Step 5K, one-time). Split 95%; payout first payout 14 days from first funded trade, then every 14 days; processed within 1-2 business days; Bank/Crypto; min payout $100 after split.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 57**
+
+#### 1-Step Evaluation — 5000
+
+- **id:** venus-funded-1-step-evaluation-5000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 5000
+- **price:** 65
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 10000
+
+- **id:** venus-funded-1-step-evaluation-10000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 10000
+- **price:** 100
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 15000
+
+- **id:** venus-funded-1-step-evaluation-15000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 15000
+- **price:** 150
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 20000
+
+- **id:** venus-funded-1-step-evaluation-20000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 20000
+- **price:** 200
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 25000
+
+- **id:** venus-funded-1-step-evaluation-25000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 25000
+- **price:** 250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 50000
+
+- **id:** venus-funded-1-step-evaluation-50000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 50000
+- **price:** 300
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 100000
+
+- **id:** venus-funded-1-step-evaluation-100000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 100000
+- **price:** 450
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 150000
+
+- **id:** venus-funded-1-step-evaluation-150000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 150000
+- **price:** 600
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 200000
+
+- **id:** venus-funded-1-step-evaluation-200000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 200000
+- **price:** 800
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 250000
+
+- **id:** venus-funded-1-step-evaluation-250000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 250000
+- **price:** 950
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 300000
+
+- **id:** venus-funded-1-step-evaluation-300000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 300000
+- **price:** 1150
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 400000
+
+- **id:** venus-funded-1-step-evaluation-400000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 400000
+- **price:** 1400
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 500000
+
+- **id:** venus-funded-1-step-evaluation-500000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 500000
+- **price:** 1650
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 600000
+
+- **id:** venus-funded-1-step-evaluation-600000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 600000
+- **price:** 2000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 1000000
+
+- **id:** venus-funded-1-step-evaluation-1000000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 1000000
+- **price:** 4000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 2000000
+
+- **id:** venus-funded-1-step-evaluation-2000000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 2000000
+- **price:** 6000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 3000000
+
+- **id:** venus-funded-1-step-evaluation-3000000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 3000000
+- **price:** 8000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 4000000
+
+- **id:** venus-funded-1-step-evaluation-4000000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 4000000
+- **price:** 10000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 1-Step Evaluation — 5000000
+
+- **id:** venus-funded-1-step-evaluation-5000000
+- **program:** 1-Step Evaluation
+- **name:** 1-Step Evaluation
+- **size:** 5000000
+- **price:** 12000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8%
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 5000
+
+- **id:** venus-funded-2-step-evaluation-5000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 5000
+- **price:** 50
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 10000
+
+- **id:** venus-funded-2-step-evaluation-10000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 10000
+- **price:** 85
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 15000
+
+- **id:** venus-funded-2-step-evaluation-15000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 15000
+- **price:** 120
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 20000
+
+- **id:** venus-funded-2-step-evaluation-20000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 20000
+- **price:** 150
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 25000
+
+- **id:** venus-funded-2-step-evaluation-25000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 25000
+- **price:** 180
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 50000
+
+- **id:** venus-funded-2-step-evaluation-50000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 50000
+- **price:** 250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 100000
+
+- **id:** venus-funded-2-step-evaluation-100000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 100000
+- **price:** 400
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 150000
+
+- **id:** venus-funded-2-step-evaluation-150000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 150000
+- **price:** 550
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 200000
+
+- **id:** venus-funded-2-step-evaluation-200000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 200000
+- **price:** 700
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 250000
+
+- **id:** venus-funded-2-step-evaluation-250000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 250000
+- **price:** 850
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 300000
+
+- **id:** venus-funded-2-step-evaluation-300000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 300000
+- **price:** 1000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 400000
+
+- **id:** venus-funded-2-step-evaluation-400000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 400000
+- **price:** 1250
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 500000
+
+- **id:** venus-funded-2-step-evaluation-500000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 500000
+- **price:** 1500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 600000
+
+- **id:** venus-funded-2-step-evaluation-600000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 600000
+- **price:** 1750
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 1000000
+
+- **id:** venus-funded-2-step-evaluation-1000000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 1000000
+- **price:** 2500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 2000000
+
+- **id:** venus-funded-2-step-evaluation-2000000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 2000000
+- **price:** 4000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 3000000
+
+- **id:** venus-funded-2-step-evaluation-3000000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 3000000
+- **price:** 5500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 4000000
+
+- **id:** venus-funded-2-step-evaluation-4000000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 4000000
+- **price:** 7000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### 2-Step Evaluation — 5000000
+
+- **id:** venus-funded-2-step-evaluation-5000000
+- **program:** 2-Step Evaluation
+- **name:** 2-Step Evaluation
+- **size:** 5000000
+- **price:** 8500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 8 then 5
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** none in eval; 5 on funded
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 5000
+
+- **id:** venus-funded-instant-funding-5000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 5000
+- **price:** 200
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 10000
+
+- **id:** venus-funded-instant-funding-10000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 10000
+- **price:** 400
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 15000
+
+- **id:** venus-funded-instant-funding-15000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 15000
+- **price:** 600
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 20000
+
+- **id:** venus-funded-instant-funding-20000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 20000
+- **price:** 800
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 25000
+
+- **id:** venus-funded-instant-funding-25000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 25000
+- **price:** 1000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 50000
+
+- **id:** venus-funded-instant-funding-50000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 50000
+- **price:** 2000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 100000
+
+- **id:** venus-funded-instant-funding-100000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 100000
+- **price:** 3000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 150000
+
+- **id:** venus-funded-instant-funding-150000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 150000
+- **price:** 4500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 200000
+
+- **id:** venus-funded-instant-funding-200000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 200000
+- **price:** 6000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 250000
+
+- **id:** venus-funded-instant-funding-250000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 250000
+- **price:** 7500
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 300000
+
+- **id:** venus-funded-instant-funding-300000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 300000
+- **price:** 9000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 400000
+
+- **id:** venus-funded-instant-funding-400000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 400000
+- **price:** 12000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 500000
+
+- **id:** venus-funded-instant-funding-500000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 500000
+- **price:** 15000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 600000
+
+- **id:** venus-funded-instant-funding-600000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 600000
+- **price:** 18000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 1000000
+
+- **id:** venus-funded-instant-funding-1000000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 1000000
+- **price:** 25000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 2000000
+
+- **id:** venus-funded-instant-funding-2000000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 2000000
+- **price:** 50000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 3000000
+
+- **id:** venus-funded-instant-funding-3000000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 3000000
+- **price:** 75000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 4000000
+
+- **id:** venus-funded-instant-funding-4000000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 4000000
+- **price:** 100000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+#### Instant Funding — 5000000
+
+- **id:** venus-funded-instant-funding-5000000
+- **program:** Instant Funding
+- **name:** Instant Funding
+- **size:** 5000000
+- **price:** 125000
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** none
+- **dailyLoss:** 7%
+- **maxDD:** 15%
+- **ddType:** Not recorded
+- **minDays:** 5
+- **split:** 95%
+- **payout:** first payout 14 days, then every 14 days
+- **platform:** MT4/MT5
+- **source:** https://www.venusfunded.com
+
+
+### 146. Wall Street Funded
+
+- **slug:** wall-street-funded
+- **markets:** forex; stocks
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80 std (PRIME 90%)%
+- **splitMax:** 90
+- **dd:** POWER 6% trailing (funded) / Stellar 12% static / PRIME 3% trailing / FLASH 1% static
+- **ddTypes:** Static
+- **payoutDays:** 30
+- **payoutText:** Stellar first 30d then every 15d; PRIME instant; FLASH first instant (2% cap) then 15d; POWER 3 profitable days 0.5%+ (funded)
+- **from:** 9.99
+- **fromCur:** USD
+- **fromPlan:** POWER 5K initial ($48 funded price billed at funding)
+- **monthly:** false
+- **code:** none verified (Black Friday promo on-site, no code captured)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (Black Friday promo on-site, no code captured)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** POWER 20% funded only / PRIME none / others not stated
+- **consNone:** true
+- **target:** POWER 6 / Stellar 8 then 5 / PRIME 5 / FLASH 2
+- **dailyDD:** POWER 3% / Stellar 4% / PRIME 1% / FLASH 1%
+- **minDays:** 4 (POWER/Stellar/FLASH); PRIME none
+- **activation:** POWER funded price $48-$540 billed at funding (after $9.99 initial)
+- **instant:** false
+- **instantText:** No
+- **scaling:** to $400,000
+- **news:** PRIME: Phase 1 only, not in funded phase; others not stated
+- **overnight:** swing trading allowed
+- **us:** no (US on restricted list in official site footer)
+- **site:** https://wsfunded.com
+- **sources:** https://wsfunded.com; https://wsfunded.com/en/affiliates; https://faq.wsfunded.com/en/articles/16859382-1-phase-wall-street-power; https://faq.wsfunded.com/en/articles/15691317-1-phase-wall-street-stellar; https://faq.wsfunded.com/en/articles/17660303-1-phase-wall-street-prime; https://faq.wsfunded.com/en/articles/17276534-1-phase-wall-street-flash; https://wsfunded.com/en/contact
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes, up to 15% (Beginner 10% / Advance 12.5% / Elite 15%), paid every 14 days
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (Black Friday promo on-site, no code captured)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: full.
+- **summary:** Forex, Cfd, Equities firm. Starts at USD 9.99 (POWER 5K initial ($48 funded price billed at funding)). Split 80 std (PRIME 90%)%; payout Stellar first 30d then every 15d; PRIME instant; FLASH first instant (2% cap) then 15d; POWER 3 profitable days 0.5%+ (funded).
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### POWER 5K initial ($48 funded price billed at funding) — Not recorded
+
+- **id:** wall-street-funded-entry
+- **program:** POWER 5K initial ($48 funded price billed at funding)
+- **name:** POWER 5K initial ($48 funded price billed at funding)
+- **size:** Not recorded
+- **price:** 9.99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** POWER 6 / Stellar 8 then 5 / PRIME 5 / FLASH 2
+- **dailyLoss:** POWER 3% / Stellar 4% / PRIME 1% / FLASH 1%
+- **maxDD:** POWER 6% trailing (funded) / Stellar 12% static / PRIME 3% trailing / FLASH 1% static
+- **ddType:** Static
+- **minDays:** 4 (POWER/Stellar/FLASH); PRIME none
+- **split:** 80 std (PRIME 90%)%
+- **payout:** Stellar first 30d then every 15d; PRIME instant; FLASH first instant (2% cap) then 15d; POWER 3 profitable days 0.5%+ (funded)
+- **platform:** Not stated
+- **source:** https://wsfunded.com
+
+
+### 147. WeMasterTrade
+
+- **slug:** wemastertrade
+- **markets:** forex
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** up to 90%
+- **splitMax:** 90
+- **dd:** 10% static (Instant 51010)
+- **ddTypes:** Static
+- **payoutDays:** 1
+- **payoutText:** daily payouts; avg 6h, typically within 24h
+- **from:** 44
+- **fromCur:** USD
+- **fromPlan:** Instant 51010 5K, one-time (20% off $55 list)
+- **monthly:** false
+- **code:** FRIYAY30
+- **off:** Not recorded
+- **codes:** {"code":"FRIYAY30","off":null,"detail":"up to 30% off, Nov 26-30, 2026"}
+- **consistencyText:** not stated
+- **consNone:** false
+- **target:** 6-10% by package (Instant 51010: 10%)
+- **dailyDD:** 5% (Instant 51010)
+- **minDays:** not stated
+- **activation:** none stated (one-time setup fee = package price)
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated
+- **news:** allowed
+- **overnight:** allowed, no restrictions; swap-free
+- **us:** no (USA listed as not served on official affiliate page; MT5 also excludes USA residents)
+- **site:** https://wemastertrade.com
+- **sources:** https://wemastertrade.com; https://wemastertrade.com/instant/; https://wemastertrade.com/promotions/; https://faq.wemastertrade.com/what-are-the-challenge-programme-fees/; https://wemastertrade.com/ca/affiliate-partners/; https://faq.wemastertrade.com/terms-and-conditions-of-affiliate-partner/
+- **verif:** partial (1-Phase package prices are image-only in the official FAQ and not readable in text; US exclusion confirmed on official site)
+- **verifLabel:** Partially verified
+- **affiliate:** yes, 20% direct (Level 2: 10%, Level 3: 1%; upsell 5% Silver / 7.5% Gold / 10% Platinum)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** FRIYAY30 (up to 30% off, Nov 26-30, 2026)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added 27 Nov 2026 from official-site research (100-firm expansion pass). Verification: partial (1-Phase package prices are image-only in the official FAQ and not readable in text; US exclusion confirmed on official site).
+- **summary:** Forex, Cfd firm. Starts at USD 44 (Instant 51010 5K, one-time (20% off $55 list)). Split up to 90%; payout daily payouts; avg 6h, typically within 24h.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 1**
+
+#### Instant 51010 5K, one-time (20% off $55 list) — Not recorded
+
+- **id:** wemastertrade-entry
+- **program:** Instant 51010 5K, one-time (20% off $55 list)
+- **name:** Instant 51010 5K, one-time (20% off $55 list)
+- **size:** Not recorded
+- **price:** 44
+- **currency:** USD
+- **monthly:** false
+- **coverage:** starting
+- **note:** Recorded starting offer only. Other sizes/program details were not in the source record for this pass.
+- **target:** 6-10% by package (Instant 51010: 10%)
+- **dailyLoss:** 5% (Instant 51010)
+- **maxDD:** 10% static (Instant 51010)
+- **ddType:** Static
+- **minDays:** not stated
+- **split:** up to 90%
+- **payout:** daily payouts; avg 6h, typically within 24h
+- **platform:** Not stated
+- **source:** https://wemastertrade.com
+
+
+### 148. WenCrypto
+
+- **slug:** wencrypto
+- **markets:** crypto
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 80%
+- **splitMax:** 80
+- **dd:** Single 5% static; Double 8% static; BNPL 8% (funded 5%)
+- **ddTypes:** Static
+- **payoutDays:** Not recorded
+- **payoutText:** every 10 business days
+- **from:** 5
+- **fromCur:** USD
+- **fromPlan:** Buy Now Pay Later 5K — $5 now + $69 later
+- **monthly:** false
+- **code:** none published (prices marked '*Price with coupon', no code on site)
+- **off:** Not recorded
+- **codes:** {"code":"none published (prices marked '*Price with coupon', no code on site)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** Single/Double none; BNPL 20% funded
+- **consNone:** true
+- **target:** Single Pass 9; Double Pass 10 then 6; Buy Now Pay Later 4 (Phase 1)
+- **dailyDD:** Single 3%; Double 5%; BNPL none in eval, 3% funded
+- **minDays:** 3 profitable days (Single/Double); BNPL not stated
+- **activation:** none stated
+- **instant:** false
+- **instantText:** No
+- **scaling:** not stated (no scaling program)
+- **news:** allowed (including in eval, no restrictions)
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://wencrypto.com
+- **sources:** https://wencrypto.com; https://wencrypto.com/pricing; https://wencrypto.com/faqs; https://wencrypto.com/affiliates
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes (commission % not published)
+- **platforms:** Match Trader
+- **payMethods:** Not listed
+- **deal:** none published (prices marked '*Price with coupon', no code on site)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Crypto firm. Starts at USD 5 (Buy Now Pay Later 5K — $5 now + $69 later). Split 80%; payout every 10 business days.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 15**
+
+#### Single Pass (1-Step) — 5000
+
+- **id:** wencrypto-single-pass-1-step-5000
+- **program:** Single Pass (1-Step)
+- **name:** Single Pass (1-Step)
+- **size:** 5000
+- **price:** 55
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Single Pass (1-Step) — 10000
+
+- **id:** wencrypto-single-pass-1-step-10000
+- **program:** Single Pass (1-Step)
+- **name:** Single Pass (1-Step)
+- **size:** 10000
+- **price:** 99
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Single Pass (1-Step) — 20000
+
+- **id:** wencrypto-single-pass-1-step-20000
+- **program:** Single Pass (1-Step)
+- **name:** Single Pass (1-Step)
+- **size:** 20000
+- **price:** 195
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Single Pass (1-Step) — 50000
+
+- **id:** wencrypto-single-pass-1-step-50000
+- **program:** Single Pass (1-Step)
+- **name:** Single Pass (1-Step)
+- **size:** 50000
+- **price:** 479
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Single Pass (1-Step) — 100000
+
+- **id:** wencrypto-single-pass-1-step-100000
+- **program:** Single Pass (1-Step)
+- **name:** Single Pass (1-Step)
+- **size:** 100000
+- **price:** 949
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 9%
+- **dailyLoss:** 3%
+- **maxDD:** 5% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Double Pass (2-Step) — 5000
+
+- **id:** wencrypto-double-pass-2-step-5000
+- **program:** Double Pass (2-Step)
+- **name:** Double Pass (2-Step)
+- **size:** 5000
+- **price:** 44
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 6
+- **dailyLoss:** 5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Double Pass (2-Step) — 10000
+
+- **id:** wencrypto-double-pass-2-step-10000
+- **program:** Double Pass (2-Step)
+- **name:** Double Pass (2-Step)
+- **size:** 10000
+- **price:** 79
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 6
+- **dailyLoss:** 5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Double Pass (2-Step) — 20000
+
+- **id:** wencrypto-double-pass-2-step-20000
+- **program:** Double Pass (2-Step)
+- **name:** Double Pass (2-Step)
+- **size:** 20000
+- **price:** 156
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 6
+- **dailyLoss:** 5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Double Pass (2-Step) — 50000
+
+- **id:** wencrypto-double-pass-2-step-50000
+- **program:** Double Pass (2-Step)
+- **name:** Double Pass (2-Step)
+- **size:** 50000
+- **price:** 383
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 6
+- **dailyLoss:** 5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Double Pass (2-Step) — 100000
+
+- **id:** wencrypto-double-pass-2-step-100000
+- **program:** Double Pass (2-Step)
+- **name:** Double Pass (2-Step)
+- **size:** 100000
+- **price:** 759
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 10 then 6
+- **dailyLoss:** 5%
+- **maxDD:** 8% static
+- **ddType:** Static
+- **minDays:** 3 profitable days
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Buy Now Pay Later — 5000
+
+- **id:** wencrypto-buy-now-pay-later-5000
+- **program:** Buy Now Pay Later
+- **name:** Buy Now Pay Later
+- **size:** 5000
+- **price:** 5
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4%
+- **dailyLoss:** none in eval; 3% funded
+- **maxDD:** 8% (funded 5%)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Buy Now Pay Later — 10000
+
+- **id:** wencrypto-buy-now-pay-later-10000
+- **program:** Buy Now Pay Later
+- **name:** Buy Now Pay Later
+- **size:** 10000
+- **price:** 7
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4%
+- **dailyLoss:** none in eval; 3% funded
+- **maxDD:** 8% (funded 5%)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Buy Now Pay Later — 20000
+
+- **id:** wencrypto-buy-now-pay-later-20000
+- **program:** Buy Now Pay Later
+- **name:** Buy Now Pay Later
+- **size:** 20000
+- **price:** 10
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4%
+- **dailyLoss:** none in eval; 3% funded
+- **maxDD:** 8% (funded 5%)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Buy Now Pay Later — 50000
+
+- **id:** wencrypto-buy-now-pay-later-50000
+- **program:** Buy Now Pay Later
+- **name:** Buy Now Pay Later
+- **size:** 50000
+- **price:** 15
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4%
+- **dailyLoss:** none in eval; 3% funded
+- **maxDD:** 8% (funded 5%)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+#### Buy Now Pay Later — 100000
+
+- **id:** wencrypto-buy-now-pay-later-100000
+- **program:** Buy Now Pay Later
+- **name:** Buy Now Pay Later
+- **size:** 100000
+- **price:** 20
+- **currency:** USD
+- **monthly:** false
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 4%
+- **dailyLoss:** none in eval; 3% funded
+- **maxDD:** 8% (funded 5%)
+- **ddType:** Not recorded
+- **minDays:** not stated
+- **split:** 80%
+- **payout:** every 10 business days
+- **platform:** Match Trader
+- **source:** https://wencrypto.com/pricing
+
+
+### 149. Ylos Trading
+
+- **slug:** ylos-trading
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 100% of first $15,000 withdrawn, then 90%
+- **splitMax:** 90
+- **dd:** not stated (EOD in challenge, real-time trailing in funded until profit equals drawdown + $100, then static)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** every 10 traded days (Standard/No Activation); every 5 traded days (Instant Funding); payout in 1 business day
+- **from:** Not recorded
+- **fromCur:** USD
+- **fromPlan:** Entry plan (name not recorded)
+- **monthly:** false
+- **code:** none verified (promo banners: No Activation Fee 80% off, Standard/Instant special price, Challenge reset 30% off — no code shown)
+- **off:** Not recorded
+- **codes:** {"code":"none verified (promo banners: No Activation Fee 80% off, Standard/Instant special price, Challenge reset 30% off — no code shown)","off":null,"detail":"Discount code from official site"}
+- **consistencyText:** 40% funded (no single day over 40% of total profit); Freedom 30%
+- **consNone:** false
+- **target:** not stated on official pages read
+- **dailyDD:** Static Prime $750 daily loss limit (25K); other plans not stated
+- **minDays:** 1 (challenge); 10 traded days with 7 winning days (min $50 net each) for funded payout
+- **activation:** Standard: one-time activation fee after passing (amount not stated on official pages read); No Activation Fee: none
+- **instant:** true
+- **instantText:** Yes
+- **scaling:** not stated (max 20 active accounts per user)
+- **news:** allowed in challenge; prohibited in funded (must close before the event)
+- **overnight:** not stated
+- **us:** not stated
+- **site:** https://ylostrading.com
+- **sources:** https://ylostrading.com; https://help.ylostrading.com/portal/pt/kb/articles/quais-as-regras-da-conta-standard-na-ylos-trading-22-10-2025; https://ylostrading.com/affiliates
+- **verif:** partial
+- **verifLabel:** Partially verified
+- **affiliate:** yes (% not stated on official site)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** none verified (promo banners: No Activation Fee 80% off, Standard/Instant special price, Challenge reset 30% off — no code shown)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: partial. Missing: per-size prices behind JS configurator/portal (no prices in official homepage HTML); profit targets and max-loss $ amounts not stated on official pages read; affiliate % and US eligibility not stated
+- **summary:** Futures firm. Starts at USD None (Entry plan (name not recorded)). Split 100% of first $15,000 withdrawn, then 90%; payout every 10 traded days (Standard/No Activation); every 5 traded days (Instant Funding); payout in 1 business day.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 0**
+
+No explicit account records. Official program and size research required.
+
+### 150. Zenith Funded
+
+- **slug:** zenith-funded
+- **markets:** futures
+- **rating:** Not recorded
+- **rsrc:** Not recorded
+- **reviews:** Not recorded
+- **ratingNote:** Trustpilot pending — to be added from owner-supplied figures.
+- **split:** 90%
+- **splitMax:** 90
+- **dd:** Classic trailing $2,500/$5,000/$7,500 (5%/3.3%/2.5%); Expert EOD $2,000 (4%)
+- **ddTypes:** EOD
+- **payoutDays:** Not recorded
+- **payoutText:** requests only 1st-4th and 16th-20th of month; validation <=5 business days, payment <=15 days after validation; min payout Classic $500, Expert $800; max payout Classic $1,600/$2,750/$3,500, Expert $2,000
+- **from:** 49
+- **fromCur:** USD
+- **fromPlan:** Expert 50K, $49/month + $149 activation fee
+- **monthly:** true
+- **code:** SAVE70
+- **off:** Not recorded
+- **codes:** {"code":"SAVE70","off":null,"detail":"70% off, limited promo"}
+- **consistencyText:** Classic none in challenge, 30% funded; Expert challenge best day <=50% of total profit, funded best day <=40% of cycle profit
+- **consNone:** true
+- **target:** Classic 6% (50K $3,000 / 150K $9,000 / 300K $20,000); Expert 6% ($3,000)
+- **dailyDD:** Classic none by design (trailing only); Expert $1,000 (soft in challenge, hard on funded)
+- **minDays:** Classic challenge 2, funded 7 (each funded day min profit $150/$450/$650); Expert challenge 2, funded 5 (each >=$150 profit)
+- **activation:** $149 (all sizes, one-time, covers CME data feeds); Expert also available $115/mo all-in (activation included); funded reset $649 (max 1 time)
+- **instant:** false
+- **instantText:** No
+- **scaling:** Phase 3 live proprietary account after consistent payouts
+- **news:** not stated
+- **overnight:** NOT allowed — intraday only; holding overnight is a rule violation = account closure
+- **us:** not stated
+- **site:** https://www.zenitfunding.com
+- **sources:** https://www.zenitfunding.com/en/index; https://www.zenitfunding.com/en/contactus
+- **verif:** full
+- **verifLabel:** Fully verified
+- **affiliate:** yes via contact page (FAQ: 'highest commission rate in the market... Please contact us'; % not stated)
+- **platforms:** Not stated
+- **payMethods:** Not listed
+- **deal:** SAVE70 (70% off, limited promo)
+- **tracked:** false
+- **paid30:** Not recorded
+- **payouts30:** Not recorded
+- **largest:** Not recorded
+- **note:** Added Nov 27, 2026 from official-site research (150-firm expansion pass). Verification: full.
+- **summary:** Futures firm. Starts at USD 49 (Expert 50K, $49/month + $149 activation fee). Split 90%; payout requests only 1st-4th and 16th-20th of month; validation <=5 business days, payment <=15 days after validation; min payout Classic $500, Expert $800; max payout Classic $1,600/$2,750/$3,500, Expert $2,000.
+- **verifiedOn:** Nov 27, 2026
+
+**Account records: 4**
+
+#### Classic — 50000
+
+- **id:** zenith-funded-classic-50000
+- **program:** Classic
+- **name:** Classic
+- **size:** 50000
+- **price:** 165
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($3,000)
+- **dailyLoss:** none
+- **maxDD:** 5% trailing ($2,500)
+- **ddType:** Trailing
+- **minDays:** 2 challenge / 7 funded
+- **split:** 90%
+- **payout:** 1st-4th and 16th-20th of month
+- **platform:** not stated
+- **source:** https://www.zenitfunding.com/en/index
+
+#### Classic — 150000
+
+- **id:** zenith-funded-classic-150000
+- **program:** Classic
+- **name:** Classic
+- **size:** 150000
+- **price:** 399
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($9,000)
+- **dailyLoss:** none
+- **maxDD:** 3.3% trailing ($5,000)
+- **ddType:** Trailing
+- **minDays:** 2 challenge / 7 funded
+- **split:** 90%
+- **payout:** 1st-4th and 16th-20th of month
+- **platform:** not stated
+- **source:** https://www.zenitfunding.com/en/index
+
+#### Classic — 300000
+
+- **id:** zenith-funded-classic-300000
+- **program:** Classic
+- **name:** Classic
+- **size:** 300000
+- **price:** 659
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6.7% ($20,000)
+- **dailyLoss:** none
+- **maxDD:** 2.5% trailing ($7,500)
+- **ddType:** Trailing
+- **minDays:** 2 challenge / 7 funded
+- **split:** 90%
+- **payout:** 1st-4th and 16th-20th of month
+- **platform:** not stated
+- **source:** https://www.zenitfunding.com/en/index
+
+#### Expert — 50000
+
+- **id:** zenith-funded-expert-50000
+- **program:** Expert
+- **name:** Expert
+- **size:** 50000
+- **price:** 49
+- **currency:** USD
+- **monthly:** true
+- **coverage:** verified
+- **note:** Not recorded
+- **target:** 6% ($3,000)
+- **dailyLoss:** 2% ($1,000)
+- **maxDD:** 4% EOD ($2,000)
+- **ddType:** EOD
+- **minDays:** 2 challenge / 5 funded
+- **split:** 90%
+- **payout:** 1st-4th and 16th-20th of month
+- **platform:** not stated
+- **source:** https://www.zenitfunding.com/en/index
+
