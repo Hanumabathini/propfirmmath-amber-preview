@@ -2496,7 +2496,8 @@ function journalPlatformChoices(firm, plan, size){
     });
     return result;
   }
-  var perPlan=clean(exact.map(function(p){return p.platforms || p.platform;}));
+  var reviewed = exact.filter(function(p){return p.platformSource && p.verifiedOn;});
+  var perPlan=clean((reviewed.length ? reviewed : exact).map(function(p){return p.platforms || p.platform;}));
   return perPlan.length ? perPlan : clean([firm.platforms]);
 }
 function journalToday(){
