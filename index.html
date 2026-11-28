@@ -758,6 +758,32 @@ nav.main a.on,nav.main .nav-resources summary.on{box-shadow:inset 0 -2px var(--a
 @media(max-width:860px){.hbar{display:flex}.research-hero{padding-block:var(--space-8)}.research-intro,.research-index-panel{grid-column:1/-1}.research-intro h1{max-width:20ch}.research-catalog .mq-track{grid-template-columns:repeat(2,minmax(0,1fr))}#app .detail-grid{grid-template-columns:minmax(0,1fr)}#app .compare-selectors .field:not(:first-child){border-left:0;padding-left:0}.firm-card .firm-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.research-hero{gap:var(--space-6)}.research-index-panel{padding:var(--space-4)}.section-mast{flex-direction:column;gap:var(--space-3)}.research-catalog .mq-track{grid-template-columns:minmax(0,1fr)}.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n){grid-column:1/-1;border-right:0;padding:var(--space-6) 0}.firm-grid>.firm-card,#deal-active-list>.deal-card,#deal-ended-list>.deal-card,#app .pfm-tool-directory .tool-card,#app .research-index>.card,#app .research-index>.card:first-child{grid-column:1/-1}#app .pfm-tool-directory .tool-card:nth-child(odd){border-right:0}.index-market{grid-template-columns:minmax(100px,1fr) minmax(0,1fr) 32px 12px;gap:var(--space-2)}}
 </style>
+
+<style id="pfm-purposeful-motion">
+/* Purposeful motion — editorial research desk. No dependency or palette changes. */
+:root{--pfm-ease-out:cubic-bezier(.22,.72,.23,1);--pfm-fast:160ms;--pfm-medium:320ms}
+#app .index-arrow{transition:transform var(--pfm-fast) var(--pfm-ease-out),color var(--pfm-fast) ease}
+#app .index-market:is(:hover,:focus-visible) .index-arrow{transform:translate(2px,-2px);color:var(--amber)}
+#app .index-market:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+#app .pill-tabs button,#app .journal-tabs [data-jtab],#app .compare-selectors select{transition:background-color var(--pfm-fast) ease,border-color var(--pfm-fast) ease,color var(--pfm-fast) ease}
+#app .pfm-clickable-calculator:not(.pfm-tool-expanded):focus-visible{outline:2px solid var(--amber);outline-offset:-3px}
+#app .comparison-table td{transition:background-color var(--pfm-fast) ease}
+#app .comparison-table tr:focus-within td:not(:first-child){background:var(--bg2)}
+#app .journal-rule-track>div,#app .journal-bar>div{transform-origin:left center}
+#app .research-intro .hero-cta a{transition:background-color var(--pfm-fast) ease,filter var(--pfm-fast) ease,transform var(--pfm-fast) var(--pfm-ease-out)}
+@media(hover:hover) and (pointer:fine){
+  #app .research-intro .hero-cta a:hover{transform:translateY(-2px)}
+  #app .index-market:hover{background:color-mix(in srgb,var(--amber) 5%,transparent)}
+  #app .pfm-clickable-calculator:not(.pfm-tool-expanded):hover{background:var(--bg2)}
+  #app .firm-card:hover .firm-head a,#app .deal-card:hover .deal-up{color:var(--amber)}
+  .logo-mark{transition:transform 360ms var(--pfm-ease-out)}
+  .logo:hover .logo-mark{transform:perspective(220px) rotateY(-17deg) rotateX(8deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  #app .index-arrow,#app .hero-cta a,.logo-mark{transform:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -3581,6 +3607,107 @@ route();
   window.requestAnimationFrame(tick);
 })();
 
+</script>
+
+<script>
+/* Progressive enhancement: native WAAPI + IntersectionObserver.
+   Server HTML and financial values remain complete and unmodified. */
+(function(){
+  "use strict";
+  var app=document.getElementById("app");
+  if(!app || !window.Element || !Element.prototype.animate || !window.matchMedia || !window.IntersectionObserver || !window.MutationObserver) return;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
+  var seen=new WeakSet(), pending=new Set(), active=new Map(), outputs=new Set(), frame=0;
+  var ease="cubic-bezier(.22,.72,.23,1)";
+  function visible(el){return el.isConnected && !el.closest("[hidden], details:not([open])") && el.getClientRects().length>0;}
+  function play(el,keys,duration,delay){
+    if(reduce.matches || document.hidden || !visible(el)) return;
+    var prior=active.get(el); if(prior) prior.cancel();
+    var a=el.animate(keys,{duration:duration,delay:delay||0,easing:ease,fill:"backwards"});
+    active.set(el,a);
+    a.onfinish=a.oncancel=function(){if(active.get(el)===a)active.delete(el);};
+  }
+  function enter(el){
+    if(reduce.matches || !visible(el)) return;
+    var delay=Number(el.getAttribute("data-pfm-motion-delay")||0);
+    if(el.matches(".index-track>span")){
+      play(el,[{transform:"scaleX(0.05)"},{transform:el.style.transform||"scaleX(1)"}],540,delay);
+    }else if(el.matches(".journal-rule-track>div,.journal-bar>div")){
+      play(el,[{transform:"scaleX(.08)"},{transform:"scaleX(1)"}],420,delay);
+    }else if(el.matches("svg[aria-label='Equity curve based on recorded trades']")){
+      play(el,[{clipPath:"inset(0 60% 0 0)",opacity:.82},{clipPath:"inset(0 0 0 0)",opacity:1}],480,0);
+    }else if(el.matches(".comparison-table,.tblwrap,.journal-kpis")){
+      play(el,[{opacity:.84},{opacity:1}],220,delay);
+    }else{
+      play(el,[{opacity:.76,transform:"translateY(8px)"},{opacity:1,transform:"translateY(0)"}],320,delay);
+    }
+  }
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      observer.unobserve(e.target);pending.delete(e.target);
+      if(!reduce.matches && visible(e.target)){seen.add(e.target);enter(e.target);}
+    });
+  },{threshold:.01});
+  function watch(el,delay){
+    if(!el || seen.has(el)||pending.has(el)||!visible(el)||reduce.matches)return;
+    if(delay)el.setAttribute("data-pfm-motion-delay",String(delay));
+    pending.add(el);observer.observe(el);
+  }
+  function group(root,selector,limit,step){
+    Array.prototype.slice.call(root.querySelectorAll(selector),0,limit).forEach(function(el,i){watch(el,Math.min(i*step,160));});
+  }
+  function scan(){
+    frame=0;
+    if(reduce.matches){outputs.clear();return;}
+    pending.forEach(function(el){if(!el.isConnected||!visible(el)){observer.unobserve(el);pending.delete(el);}});
+    // Headline, introductory copy and index reveal once for each mounted page.
+    group(app,".research-intro h1,.research-lede,.research-intro .hero-cta,.research-note,.pagehead h1,.market-landing>h1",6,42);
+    group(app,".research-index-panel",1,0);
+    group(app,".index-track>span",6,32);
+    group(app,".section-mast,.market-landing-card,.research-index>.card",14,24);
+    group(app,".firm-grid>.firm-card,#deal-active-list>.deal-card",10,18);
+    group(app,".pfm-tool-directory>.tool-card:not(.pfm-tool-expanded)",6,32);
+    group(app,".pfm-tool-expanded>.card:not([hidden])",1,0);
+    group(app,".comparison-table,.statrow,.compare-tray,#home-top>.tblwrap,#dtable>.tblwrap",5,0);
+    group(app,".journal-kpis,.journal-dashboard-top>.card,.journal-dashboard-bottom>.card,.pfm-journal [role=\"tabpanel\"]:not(#journalOverview):not([hidden])",10,18);
+    group(app,".journal-rule-track>div,.journal-bar>div",14,18);
+    group(app,"svg[aria-label='Equity curve based on recorded trades']",1,0);
+    group(app,".plan-sheet,.auth-layout,.deal-summary",3,0);
+    // Output text is always the exact final calculation. Only the surface
+    // responds to updates; never interpolate a financial result or error.
+    outputs.forEach(function(el){
+      if(!visible(el)||active.has(el))return;
+      play(el,[{boxShadow:"inset 0 0 0 1px var(--amber)"},{boxShadow:"inset 0 0 0 1px transparent"}],200,0);
+    });
+    outputs.clear();
+  }
+  function schedule(){if(!frame && !reduce.matches)frame=window.requestAnimationFrame(scan);}
+  var mo=new MutationObserver(function(records){
+    var changed=false;
+    records.forEach(function(r){
+      var t=r.target.nodeType===1?r.target:r.target.parentElement;
+      if(!t)return;
+      var result=t.closest(".pfm-tool-directory p[id$='Out']");
+      if(result){outputs.add(result);changed=true;return;}
+      // Ignore existing journal count-up text mutations, timers and table-label writes.
+      if(r.type==="attributes" || Array.prototype.some.call(r.addedNodes,function(n){return n.nodeType===1;}) || Array.prototype.some.call(r.removedNodes,function(n){return n.nodeType===1;}))changed=true;
+    });
+    if(changed)schedule();
+  });
+  mo.observe(app,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:["hidden","open"]});
+  function preference(){
+    if(reduce.matches){
+      if(frame)window.cancelAnimationFrame(frame);frame=0;
+      observer.disconnect();pending.clear();outputs.clear();
+      active.forEach(function(a){a.cancel();});active.clear();
+    }else schedule();
+  }
+  if(reduce.addEventListener)reduce.addEventListener("change",preference);
+  else if(reduce.addListener)reduce.addListener(preference);
+  document.addEventListener("visibilitychange",function(){if(!document.hidden)schedule();});
+  schedule();
+})();
 </script>
 </body>
 </html>
