@@ -294,6 +294,7 @@ function submit(form) {
     d.getElementById("journalCancelProfile").click();
     ok("profile cancel closes editor",d.getElementById("journalProfileEditor").hidden,"cancel profile");
     ok("one membership section in Settings",d.querySelectorAll("#journalSettings #memberships").length===1,"membership scope");
+    ok("private workspace identity only in Settings",!d.querySelector(".journal-side .journal-account")&&d.querySelector("#journalSettings .pfm-journal-profile").textContent.includes("Private workspace"),"sidebar identity");
     ok("settings owns journal membership upgrades", d.getElementById("journalSettings").textContent.includes("Pro") && d.getElementById("journalSettings").textContent.includes("Journal memberships & upgrades") && !d.querySelector('#journalSettings #memberships a[href="/account"]'), "membership");
     ok("all membership prices visible without expanding",Array.from(d.querySelectorAll("#memberships .pfm-member-price")).map(x=>x.textContent).join("|")==="Free|$9.99|$19.99","prices");
     d.querySelector('[data-jtab="overview"]').click();
