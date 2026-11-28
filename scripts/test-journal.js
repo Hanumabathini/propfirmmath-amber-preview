@@ -109,6 +109,10 @@ function install(window, state) {
         },
         rpc(name,args){
           try {
+            if(name==="journal_current_membership"){
+              if(!state.user)throw Error("Not signed in");
+              return Promise.resolve({data:{tier:state.user.app_metadata?.pfm_membership||"basic",tester:state.user.app_metadata?.pfm_membership_tester===true},error:null});
+            }
             if(name==="journal_set_test_tier"){
               if(!state.user?.app_metadata?.pfm_membership_tester||!["basic","pro","elite"].includes(args.p_tier))throw Error("Membership test selection not permitted");
               state.user={...state.user,app_metadata:{...state.user.app_metadata,pfm_membership:args.p_tier}};
