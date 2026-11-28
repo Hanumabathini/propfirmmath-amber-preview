@@ -591,6 +591,18 @@ function submit(form) {
     w.journalState.tab = "overview";
     w.renderJournal();
 
+    // Exercise the actual back-link destination and re-entry route without
+    // performing a full navigation (which jsdom does not implement).
+    const backToFirms = d.querySelector("#mainnav .pfm-back-firms");
+    ok("Journal has workspace-scoped shell", d.documentElement.hasAttribute("data-pfm-journal-workspace") && backToFirms?.getAttribute("href") === "/firms", "workspace shell");
+    w.history.pushState({}, "", backToFirms.getAttribute("href"));
+    w.route();
+    ok("Back to firms restores public site navigation", w.location.pathname === "/firms" && !d.documentElement.hasAttribute("data-pfm-journal-workspace") && !d.querySelector("#mainnav .pfm-back-firms") && ["/","/global","/compare","/firms","/deals","/tools","/journal"].every(href=>Array.from(d.querySelectorAll("#mainnav a")).some(a=>a.getAttribute("href")===href)) && !d.querySelector(".pfm-journal"), "restored public shell");
+    w.history.pushState({}, "", "/journal");
+    w.route();
+    await waitFor(()=>d.getElementById("journalAddAccount"), "Journal re-entry");
+    ok("Re-entering Journal restores compact workspace navigation", d.documentElement.hasAttribute("data-pfm-journal-workspace") && d.querySelectorAll("#mainnav a").length === 1 && d.querySelector("#mainnav a").getAttribute("href") === "/firms" && !!d.querySelector(".pfm-journal"), "restored private shell");
+
     w.history.pushState({}, "", "/account");
     w.route();
     ok("memberships are not rendered on the general account page", !d.querySelector("#memberships"), "account membership scope");
