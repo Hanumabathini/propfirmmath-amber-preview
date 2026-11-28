@@ -910,6 +910,20 @@ html:not([data-pfm-route="/journal"]) .pfm-command-head :is(input,button){border
 @media(max-width:1050px){#app .pfm-journal .pfm-member-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}}
 @media(max-width:600px){#app .pfm-journal .pfm-member-grid{grid-template-columns:1fr}#app .pfm-journal .pfm-member-current-mini{display:none}#app .pfm-journal #memberships{padding:14px!important}#app .pfm-journal #journalViewMemberships{font-size:11px;padding-inline:8px}}
 </style>
+<style id="pfm-journal-profile-settings">
+#app .pfm-journal .pfm-journal-profile{padding:20px!important;margin:0 0 16px!important;min-width:0}
+#app .pfm-journal .pfm-profile-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#app .pfm-journal .pfm-profile-heading h3{font-size:clamp(19px,2.4vw,23px);margin:0 0 5px}
+#app .pfm-journal .pfm-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;margin:18px 0 0}
+#app .pfm-journal .pfm-profile-grid>div{min-width:0}
+#app .pfm-journal .pfm-profile-grid dt{font-size:12px;color:var(--muted);margin:0 0 5px}
+#app .pfm-journal .pfm-profile-grid dd{font-size:14px;font-weight:600;color:var(--ink);margin:0;overflow-wrap:anywhere}
+#app .pfm-journal #journalProfileEditor{border-top:1px solid var(--line);margin-top:18px}
+#app .pfm-journal #journalProfileEditor[hidden]{display:none!important}
+#app .pfm-journal .pfm-profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+#app .pfm-journal #journalProfileMsg:empty{display:none}
+@media(max-width:600px){#app .pfm-journal .pfm-journal-profile{padding:14px!important}#app .pfm-journal .pfm-profile-grid{grid-template-columns:1fr;gap:12px}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2531,6 +2545,12 @@ function pfmMembership(user){
   return PFM_MEMBERSHIPS.find(function(p){return p.id===id;})||PFM_MEMBERSHIPS[0];
 }
 function pfmFreeJournalIntro(){return '<div class="card pfm-free-journal-intro"><h3>Free trading journal, included</h3><p class="mut" style="margin-top:8px">Every registered user can track one trading account, log trades, view analytics and export CSV. Optional Journal upgrades are available in Settings when billing launches. The public directory, comparisons, calculators and trackers do not require a paid plan.</p></div>';}
+function journalProfileCard(user){
+  var meta=user.user_metadata||{}, joined=user.created_at?new Date(user.created_at):null;
+  var joinedLabel=joined&&Number.isFinite(joined.getTime())?joined.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric",timeZone:"UTC"}):"Not available";
+  var verified=user.email_confirmed_at?"Verified":user.email_confirmed_at===null?"Not verified":"Not available";
+  return '<section class="card pfm-journal-profile" aria-labelledby="journalProfileHeading"><div class="pfm-profile-heading"><div><h3 id="journalProfileHeading">Personal details</h3><p class="mut small">Your private PropFirmMath profile.</p></div><button type="button" class="btn ghost small" id="journalEditProfile" aria-controls="journalProfileEditor" aria-expanded="false">Edit profile</button></div><dl class="pfm-profile-grid">'+[["Full name",meta.full_name||"Not provided"],["Email address",user.email||"Not provided"],["Country",meta.country||"Not provided"],["Email verification",verified],["Member since",joinedLabel],["Account type","Free PropFirmMath account"]].map(function(x){return '<div><dt>'+esc(x[0])+'</dt><dd>'+esc(String(x[1]))+'</dd></div>';}).join("")+'</dl><form id="journalProfileEditor" hidden><div class="pfm-profile-grid"><div class="field"><label class="fl" for="journalProfileName">Full name</label><input id="journalProfileName" autocomplete="name" maxlength="100" required value="'+esc(String(meta.full_name||""))+'"></div><div class="field"><label class="fl" for="journalProfileCountry">Country</label><input id="journalProfileCountry" autocomplete="country-name" maxlength="100" value="'+esc(String(meta.country||""))+'"></div></div><div class="pfm-profile-actions"><button class="btn small" type="submit">Save profile</button><button class="btn ghost small" type="button" id="journalCancelProfile">Cancel</button></div></form><p class="form-msg" id="journalProfileMsg" role="status" aria-live="polite"></p></section>';
+}
 function pfmMembershipCards(user, accountCount){
   if(!user||typeof accountCount!=="number")return "";
   var current=pfmMembership(user);
@@ -3141,7 +3161,7 @@ function journalTabCopy(tab){
     trades: ["Trade log", "Add, edit and review the trades in this view."],
     calendar: ["Trading calendar", "Move between months to see each day's realized P&L."],
     insights: ["Performance analytics", "Understand the numbers behind your trading."],
-    settings: ["Workspace settings", "Manage your Journal membership, pricing and private data."]
+    settings: ["Workspace settings", "Manage your personal details, Journal membership and private data."]
   })[tab] || ["Trading Dashboard", "Performance, consistency and trading decisions in one place."];
 }
 function journalPanelId(tab){ return "journal" + tab.charAt(0).toUpperCase() + tab.slice(1); }
@@ -3320,12 +3340,29 @@ function renderJournal(){
     tradeRows + "</div></div>" +
     '<div id="journalCalendar" role="tabpanel"' + shown("calendar") + ">" + journalCalendar(rows) + "</div>" +
     '<div id="journalInsights" role="tabpanel"' + shown("insights") + ">" + journalInsights(rows) + "</div>" +
-    '<div id="journalSettings" role="tabpanel"' + shown("settings") + '>'+pfmMembershipCards(PM_USER,journalState.accounts.length)+'<div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export all trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
+    '<div id="journalSettings" role="tabpanel"' + shown("settings") + '>'+journalProfileCard(PM_USER)+pfmMembershipCards(PM_USER,journalState.accounts.length)+'<div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export all trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
     "</div></section>");
   app.querySelectorAll("[data-jtab]").forEach(function(btn){
     btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
   });
   $("#journalViewMemberships").addEventListener("click",function(){journalApplyTab("settings");var h=$("#journalMembershipHeading");if(h){h.focus();if(h.scrollIntoView)h.scrollIntoView({block:"nearest"});}});
+  var profileEditor=$("#journalProfileEditor"),profileButton=$("#journalEditProfile");
+  function closeProfile(){profileEditor.hidden=true;profileButton.setAttribute("aria-expanded","false");profileEditor.reset();}
+  profileButton.addEventListener("click",function(){var open=profileEditor.hidden;if(open){profileEditor.hidden=false;profileButton.setAttribute("aria-expanded","true");$("#journalProfileName").focus();}else closeProfile();});
+  $("#journalCancelProfile").addEventListener("click",closeProfile);
+  profileEditor.addEventListener("submit",function(e){
+    e.preventDefault();var msg=$("#journalProfileMsg"),button=profileEditor.querySelector('button[type="submit"]'),name=$("#journalProfileName").value.trim(),country=$("#journalProfileCountry").value.trim(),uid=PM_USER&&PM_USER.id;
+    if(!name||name.length>100||country.length>100){msg.className="form-msg err";msg.textContent="Enter a name and a country of up to 100 characters.";return;}
+    if(!sb||!sb.auth||!uid){msg.className="form-msg err";msg.textContent="Please sign in again.";return;}
+    button.disabled=true;msg.className="form-msg";msg.textContent="Saving profile…";
+    sb.auth.updateUser({data:{full_name:name,country:country}}).then(function(result){
+      if(result.error)throw result.error;
+      if(!PM_USER||PM_USER.id!==uid)return;
+      if(!result.data||!result.data.user||result.data.user.id!==uid)throw Error("Profile update could not be confirmed.");
+      PM_USER=result.data.user;
+      if(location.pathname.replace(/\/$/,"")==="/journal"&&profileEditor.isConnected){journalState.tab="settings";renderJournal();var status=$("#journalProfileMsg");if(status){status.className="form-msg ok";status.textContent="Profile saved.";}}
+    }).catch(function(){if(profileEditor.isConnected){msg.className="form-msg err";msg.textContent="Could not save profile. Please try again.";}}).finally(function(){button.disabled=false;});
+  });
   function journalSelectedPlan(){
     var name = $("#newPlan").value;
     if (!name || name === "__custom__") return null;
