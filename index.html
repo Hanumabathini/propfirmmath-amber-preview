@@ -1444,7 +1444,7 @@ function pageFirms(){
     var count = document.getElementById("dcount");
     if (count) count.textContent = list.length + " of " + FIRMS.length + " firms. Entry prices stay in each firm's currency. Each card shows the date that firm was last checked.";
     var tray = document.getElementById("dcompare");
-    if (tray) tray.innerHTML = chosen.length ? '<div class="compare-tray"><strong>Comparing ' + chosen.length + ' of 3</strong>' + chosen.map(function(f){ return '<span class="chip grey">' + esc(f.name) + '</span>'; }).join("") + '<a class="btn small" href="/compare">Open side by side</a></div>' : "";
+    if (tray) tray.innerHTML = chosen.length ? '<div class="compare-tray"><strong>Comparing ' + chosen.length + ' of 2</strong>' + chosen.map(function(f){ return '<span class="chip grey">' + esc(f.name) + '</span>'; }).join("") + '<a class="btn small" href="/compare">Open side by side</a></div>' : "";
     var box = document.getElementById("dtable");
     if (!list.length) {
       box.innerHTML = emptyBrowseHTML("dir");
@@ -1546,8 +1546,8 @@ function planBoardHTML(f){
   var groups = [];
   plans.forEach(function(p){
     var g = null;
-    for (var i = 0; i < groups.length; i++) if (groups[i].program === p.program) g = groups[i];
-    if (!g) { g = { program: p.program, plans: [] }; groups.push(g); }
+    for (var i = 0; i < groups.length; i++) if (groups[i].program === catalogProgram(p)) g = groups[i];
+    if (!g) { g = { program: catalogProgram(p), plans: [] }; groups.push(g); }
     g.plans.push(p);
   });
   return '<section class="plan-board" id="plan-board" aria-label="Account plans">' +
@@ -1564,17 +1564,17 @@ function bindPlanBoard(f){
   var plans = firmPlanList(f);
   var current = plans[0].id;
   function programOf(id){
-    for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return plans[i].program;
-    return plans[0].program;
+    for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return catalogProgram(plans[i]);
+    return catalogProgram(plans[0]);
   }
   function paint(){
     var program = programOf(current);
-    var sizes = plans.filter(function(p){ return p.program === program; });
+    var sizes = plans.filter(function(p){ return catalogProgram(p) === program; });
     if (!sizes.some(function(p){ return p.id === current; })) current = sizes[0].id;
     var sizeBox = document.getElementById("plan-sizes");
     sizeBox.innerHTML = sizes.length > 1 ? sizes.map(function(p){
       var on = p.id === current;
-      return '<button type="button" data-plan="' + esc(p.id) + '" class="' + (on ? "on" : "") + '" aria-pressed="' + on + '">' + esc(p.size ? planSizeLabel(p) : "Size not listed") + "</button>";
+      return '<button type="button" data-plan="' + esc(p.id) + '" class="' + (on ? "on" : "") + '" aria-pressed="' + on + '">' + esc(sizes.filter(function(v){return catalogSizeKey(v)===catalogSizeKey(p);}).length>1?catalogVariantLabel(p):planSizeLabel(p)) + "</button>";
     }).join("") : "";
     var chosen = plans[0];
     for (var i = 0; i < plans.length; i++) if (plans[i].id === current) chosen = plans[i];
@@ -1593,17 +1593,38 @@ function bindPlanBoard(f){
         tabs[i].classList.toggle("on", on);
         tabs[i].setAttribute("aria-selected", on ? "true" : "false");
       }
-      for (var j = 0; j < plans.length; j++) if (plans[j].program === program) { current = plans[j].id; break; }
+      for (var j = 0; j < plans.length; j++) if (catalogProgram(plans[j]) === program) { current = plans[j].id; break; }
       paint();
     });
   }
   paint();
 }
-function selectedPlan(f){
-  var list = firmPlanList(f);
-  var id = cmpState.planBySlug && cmpState.planBySlug[f.slug];
-  for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
-  return list[0];
+function catalogProgram(p){return String(p.name||p.program||"Unconfirmed program");}
+function catalogSizeKey(p){return p.size==null?"unknown":String(p.size);}
+function catalogPlatforms(p){
+  var raw=p&&p.platform;if(!raw)return [];
+  return (Array.isArray(raw)?raw:String(raw).split(/,\s*/)).map(function(v){return String(v).trim();}).filter(function(v){return v&&v!=="—"&&!/not (yet )?verified|pending|not confirmed|not stated|not listed|unknown|unconfirmed/i.test(v);});
+}
+function catalogVariantLabel(p){
+  var price=p.price==null?"Price not verified":String(p.currency||"Currency unconfirmed")+" "+p.price+(p.monthly?" /month":"");
+  return [catalogProgram(p),planSizeLabel(p),catalogPlatforms(p).join(", ")||"Platform unconfirmed",price].join(" · ");
+}
+function selectedPlan(f,slot){
+  var list=firmPlanList(f),id=cmpState.planBySlot[slot];
+  return list.find(function(p){return p.id===id;})||list[0];
+}
+function comparePlanMenus(f,i){
+  var list=firmPlanList(f),current=selectedPlan(f,i),program=catalogProgram(current),size=catalogSizeKey(current);
+  var programs=Array.from(new Set(list.map(catalogProgram)));
+  var group=list.filter(function(p){return catalogProgram(p)===program;});
+  var sizes=Array.from(new Set(group.map(catalogSizeKey))).sort(function(a,b){return a==="unknown"?1:b==="unknown"?-1:Number(a)-Number(b);});
+  var variants=group.filter(function(p){return catalogSizeKey(p)===size;});
+  var platforms=Array.from(new Set(variants.flatMap(catalogPlatforms))).sort();
+  var platform=cmpState.platformBySlot[i]||"";
+  if(platform&&catalogPlatforms(current).indexOf(platform)<0)platform="";
+  var filtered=variants.filter(function(p){return !platform||catalogPlatforms(p).indexOf(platform)>=0;});
+  function menu(kind,label,values,selected){return '<label class="fl" for="cmp'+kind+i+'" style="margin-top:8px">'+label+'</label><select id="cmp'+kind+i+'">'+values.map(function(v){return '<option value="'+esc(v[0])+'"'+(String(v[0])===String(selected)?" selected":"")+'>'+esc(v[1])+'</option>';}).join("")+'</select>';}
+  return menu("Program","Account type / program",programs.map(function(v){return [v,v];}),program)+menu("Size","Account size",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}),size)+menu("Platform","Trading platform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(v){return [v,v];})),platform)+menu("Plan","Exact account offer",filtered.map(function(p){return [p.id,catalogVariantLabel(p)];}),current.id);
 }
 function firmAccountExplorer(f){
   var plans=Array.isArray(f.accountPlans)?f.accountPlans.filter(function(p){return p && p.name && p.officialSource;}):[];
@@ -1783,25 +1804,28 @@ function ensurePicks(){
     if (!raw) return;
     var arr = JSON.parse(raw);
     if (!Array.isArray(arr)) return;
-    var next = [0,1,2].map(function(i){ var s = arr[i]; return (typeof s === "string" && firm(s)) ? s : ""; });
+    var next = [0,1].map(function(i){ var s = arr[i]; return (typeof s === "string" && firm(s)) ? s : ""; });
     if (next.some(Boolean)) cmpState.picks = next;
+    var slots=JSON.parse(sessionStorage.getItem("pfm-compare-slots")||"null");
+    if(slots&&Array.isArray(slots.plans)){cmpState.planBySlot=slots.plans.slice(0,2);cmpState.platformBySlot=Array.isArray(slots.platforms)?slots.platforms.slice(0,2):[];}
+    else cmpState.planBySlot=next.map(function(slug){return cmpState.planBySlug[slug]||"";});
   } catch (e) {}
 }
 function rememberPicks(){
   try {
-    sessionStorage.setItem("pfm-compare", JSON.stringify([cmpState.picks[0] || "", cmpState.picks[1] || "", cmpState.picks[2] || ""]));
-    sessionStorage.setItem("pfm-compare-plans", JSON.stringify(cmpState.planBySlug || {}));
+    sessionStorage.setItem("pfm-compare", JSON.stringify([cmpState.picks[0] || "", cmpState.picks[1] || ""]));
+    sessionStorage.setItem("pfm-compare-slots",JSON.stringify({plans:cmpState.planBySlot,platforms:cmpState.platformBySlot}));
   } catch (e) {}
 }
 function toggleCompare(slug){
   ensurePicks();
   var i = cmpState.picks.indexOf(slug);
-  if (i >= 0) cmpState.picks[i] = "";
+  if (i >= 0) {cmpState.picks[i] = "";cmpState.planBySlot[i]="";cmpState.platformBySlot[i]="";}
   else {
     var slot = -1;
-    for (var n = 0; n < 3; n++) if (!cmpState.picks[n]) { slot = n; break; }
-    if (slot < 0) { cmpState.picks[2] = slug; toast("Compare holds 3 firms. The third slot was replaced."); }
-    else cmpState.picks[slot] = slug;
+    for (var n = 0; n < 2; n++) if (!cmpState.picks[n]) { slot = n; break; }
+    if (slot < 0) {slot=1;toast("The second comparison account was replaced.");}
+    cmpState.picks[slot]=slug;cmpState.planBySlot[slot]="";cmpState.platformBySlot[slot]="";
   }
   rememberPicks();
 }
@@ -1830,61 +1854,47 @@ function dealHeadline(c, expired){
   return "Code";
 }
 
-var cmpState = { picks:["my-funded-futures","ftmo","tradeify"], planBySlug:{} };
+var cmpState = { picks:["my-funded-futures","ftmo"], planBySlug:{}, planBySlot:[],platformBySlot:[] };
 var dealState = { market:"all" };
 function pageCompare(q){
   ensurePicks();
-  if (q){
-    var added = /(?:^|&)add=([a-z0-9-]+)/.exec(q);
-    if (added && firm(added[1])){
-      var slug = added[1];
-      var rest = cmpState.picks.filter(function(s){ return s && s !== slug; });
-      cmpState.picks = [slug, rest[0] || "", rest[1] || ""];
-    }
-    var wanted = /(?:^|&)plan=([a-z0-9-]+)/.exec(q);
-    if (wanted) {
-      FIRMS.forEach(function(f){
-        firmPlanList(f).forEach(function(p){
-          if (p.id === wanted[1]) {
-            if (!cmpState.planBySlug) cmpState.planBySlug = {};
-            cmpState.planBySlug[f.slug] = p.id;
-            if (cmpState.picks.indexOf(f.slug) < 0) cmpState.picks[0] = f.slug;
-          }
-        });
-      });
+  if(q){
+    var params=new URLSearchParams(q),slug=params.get("add"),wanted=params.get("plan"),f=firm(slug);
+    if(f){var previous=cmpState.picks[0];if(previous!==slug){cmpState.picks[1]=previous||cmpState.picks[1]||"";cmpState.planBySlot[1]=cmpState.planBySlot[0]||"";cmpState.platformBySlot[1]=cmpState.platformBySlot[0]||"";cmpState.picks[0]=slug;cmpState.planBySlot[0]="";cmpState.platformBySlot[0]="";}
+      if(wanted&&firmPlanList(f).some(function(p){return p.id===wanted;})){cmpState.planBySlot[0]=wanted;cmpState.platformBySlot[0]="";}
     }
   }
   rememberPicks();
-  var picks = cmpState.picks.map(firm).filter(Boolean);
+  var picks = cmpState.picks.map(function(slug,i){return {firm:firm(slug),slot:i};}).filter(function(x){return !!x.firm;});
   var rows = [
     ["Rating", function(f){ return f.rating ? f.rating.toFixed(1) + " (" + esc(f.rsrc || "") + (f.reviews ? " · " + f.reviews.toLocaleString() + " reviews" : "") + ")" : esc(ratingState(f).value); }],
     ["Rules check", function(f){ return esc(rulesLabel(f)); }],
     ["Last verified", function(f){ return esc(verifiedDate(f)); }],
     ["Markets", function(f){ return f.markets.map(function(mk){ return MARKETS[mk].label; }).join(", "); }],
     ["US eligibility", function(f){ return esc(cap(presentText(f.us))); }],
-    ["Account plan", function(f){ var p = selectedPlan(f); return esc(planLabel(p)) + '<div class="snap-note">' + esc(planCoverageNote(p)) + "</div>"; }],
-    ["Plan price", function(f){ return planPriceHTML(selectedPlan(f)); }],
-    ["Profit split", function(f){ var p=selectedPlan(f); return esc(p.split?formatSplit(p.split):"Not confirmed for this plan"); }],
-    ["Profit target", function(f){ return esc(selectedPlan(f).target || "—"); }],
-    ["Daily loss", function(f){ return esc(selectedPlan(f).dailyLoss || "—"); }],
-    ["Max drawdown", function(f){ return esc(selectedPlan(f).maxDD || "Not confirmed for this plan"); }],
-    ["Drawdown type", function(f){ return esc(selectedPlan(f).ddType || "—"); }],
-    ["Min days", function(f){ return esc(selectedPlan(f).minDays || "—"); }],
-    ["Payout", function(f){ return esc(selectedPlan(f).payout || "Not confirmed for this plan"); }],
-    ["Platform", function(f){ return esc(selectedPlan(f).platform || "Not confirmed for this plan"); }],
+    ["Account plan", function(f,i){ var p = selectedPlan(f,i); return esc(planLabel(p)) + '<div class="snap-note">' + esc(planCoverageNote(p)) + "</div>"; }],
+    ["Plan price", function(f,i){ return planPriceHTML(selectedPlan(f,i)); }],
+    ["Profit split", function(f,i){ var p=selectedPlan(f,i); return esc(p.split?formatSplit(p.split):"Not confirmed for this plan"); }],
+    ["Profit target", function(f,i){ return esc(selectedPlan(f,i).target || "—"); }],
+    ["Daily loss", function(f,i){ return esc(selectedPlan(f,i).dailyLoss || "—"); }],
+    ["Max drawdown", function(f,i){ return esc(selectedPlan(f,i).maxDD || "Not confirmed for this plan"); }],
+    ["Drawdown type", function(f,i){ return esc(selectedPlan(f,i).ddType || "—"); }],
+    ["Min days", function(f,i){ return esc(selectedPlan(f,i).minDays || "—"); }],
+    ["Payout", function(f,i){ return esc(selectedPlan(f,i).payout || "Not confirmed for this plan"); }],
+    ["Platform", function(f,i){ return esc(selectedPlan(f,i).platform || "Not confirmed for this plan"); }],
     ["Firm-level promotions", function(f){ var codes=activeCodes(f); return codes.length ? codes.map(function(c){ return esc(c.code) + (c.off ? " (" + c.off + "% off)" : ""); }).join(" · ")+" — plan eligibility not confirmed" : "None current in catalog"; }]
   ];
   var table = picks.length
-    ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(f){ return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
-      rows.map(function(r){ return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(f){ return "<td>" + r[1](f) + "</td>"; }).join("") + "</tr>"; }).join("") +
-      "</tbody></table></div>" + (picks.length < 2 ? '<p class="mut" style="margin-top:12px">Add a second firm to compare them side by side. Three is the maximum.</p>' : "")
-    : '<div class="empty-note"><h3>Pick two or three firms</h3><p>Use the selectors, or filter the list below and choose Compare. The table shows only the firms you select.</p></div>';
+    ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(x){var f=x.firm;return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
+      rows.map(function(r){ return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(x){ return "<td>" + r[1](x.firm,x.slot) + "</td>"; }).join("") + "</tr>"; }).join("") +
+      "</tbody></table></div>" + (picks.length < 2 ? '<p class="mut" style="margin-top:12px">Add a second firm to compare them side by side. Two accounts can be compared.</p>' : "")
+    : '<div class="empty-note"><h3>Pick two accounts</h3><p>Use the selectors, or filter the list below and choose Compare. You can select different accounts from the same firm.</p></div>';
   go(pageHead('<a href="/">Home</a> · Compare', "Compare prop firms side by side",
-    "Choose up to 3 firms, then the plan inside each one. A missing size was not in the verified catalog.") +
+    "Select two accounts independently: firm, account type, size, platform and exact offer. Missing fields stay unconfirmed.") +
     '<div class="card compare-selectors" style="margin:20px 0 14px"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">' +
-    [0,1,2].map(function(i){
+    [0,1].map(function(i){
       var picked = firm(cmpState.picks[i] || "");
-      var planMenu = picked ? '<label class="fl" for="cmpPlan' + i + '" style="margin-top:8px">Plan</label><select id="cmpPlan' + i + '">' + firmPlanList(picked).map(function(p){ var on = selectedPlan(picked).id === p.id; return '<option value="' + esc(p.id) + '"' + (on ? " selected" : "") + ">" + esc(planLabel(p)) + "</option>"; }).join("") + "</select>" : "";
+      var planMenu = picked ? comparePlanMenus(picked,i) : "";
       return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
     }).join("") +
     "</div></div>" + table +
@@ -1895,24 +1905,21 @@ function pageCompare(q){
     '<div class="secttl"><span class="bar"></span><h2>Head-to-head pages</h2></div><div style="display:flex;gap:9px;flex-wrap:wrap">' +
     '<a class="btn small ghost" href="/vs/fxify-vs-fundingpips">FXIFY vs FundingPips</a>'+'<a class="btn small ghost" href="/vs/ftmo-vs-fundingpips">FTMO vs FundingPips</a>'+'<a class="btn small ghost" href="/vs/my-funded-futures-vs-top-one-futures">My Funded Futures vs Top One Futures</a>'+''+'<a class="btn small ghost" href="/vs/apex-trader-funding-vs-tradeify">Apex Trader Funding vs Tradeify</a>'+'<a class="btn small ghost" href="/vs/fundednext-vs-fundingpips">FundedNext vs FundingPips</a>'+'<a class="btn small ghost" href="/vs/ftmo-vs-the5ers">FTMO vs The5ers</a>'+'<a class="btn small ghost" href="/vs/fundednext-vs-the5ers">FundedNext vs The5ers</a>'+'<a class="btn small ghost" href="/vs/fxify-vs-the5ers">FXIFY vs The5ers</a>'+''+'<a class="btn small ghost" href="/vs/tradeify-vs-take-profit-trader">Tradeify vs Take Profit Trader</a>'+'<a class="btn small ghost" href="/vs/bulenox-vs-apex-trader-funding">Bulenox vs Apex Trader Funding</a>'+'<a class="btn small ghost" href="/vs/ftmo-vs-fundednext">FTMO vs FundedNext</a>'+'<a class="btn small ghost" href="/vs/alpha-capital-vs-fundednext">Alpha Capital vs FundedNext</a>' +
     '</div>' +
-    '<p class="snap-note" style="margin-top:14px">Prices compare each firm\'s verified entry plan, in the currency the firm itself charges. Euro prices stay in euros, and monthly subscriptions are marked /month.</p>');
-  [0,1,2].forEach(function(i){
-    var sel = document.getElementById("cmp" + i);
-    if (sel) sel.addEventListener("change", function(e){
-      var prev = cmpState.picks[i];
-      cmpState.picks[i] = e.target.value;
-      if (prev && prev !== e.target.value && cmpState.planBySlug) delete cmpState.planBySlug[prev];
-      rememberPicks();
-      pageCompare("");
-    });
-    var planSel = document.getElementById("cmpPlan" + i);
-    if (planSel) planSel.addEventListener("change", function(e){
-      var slug = cmpState.picks[i];
-      if (!slug) return;
-      if (!cmpState.planBySlug) cmpState.planBySlug = {};
-      cmpState.planBySlug[slug] = e.target.value;
-      rememberPicks();
-      pageCompare("");
+    '<p class="snap-note" style="margin-top:14px">Prices use the selected exact catalog record in its recorded currency. Missing prices stay unverified. Euro prices stay in euros, and monthly subscriptions are marked /month.</p>');
+  [0,1].forEach(function(i){
+    var sel=document.getElementById("cmp"+i);
+    if(sel)sel.addEventListener("change",function(){cmpState.picks[i]=this.value;cmpState.planBySlot[i]="";cmpState.platformBySlot[i]="";rememberPicks();pageCompare("");});
+    ["Program","Size","Platform","Plan"].forEach(function(kind){
+      var el=document.getElementById("cmp"+kind+i);if(!el)return;
+      el.addEventListener("change",function(){
+        var f=firm(cmpState.picks[i]),old=selectedPlan(f,i),list=firmPlanList(f),value=this.value;
+        if(kind==="Program"){list=list.filter(function(p){return catalogProgram(p)===value;});cmpState.platformBySlot[i]="";}
+        if(kind==="Size"){list=list.filter(function(p){return catalogProgram(p)===catalogProgram(old)&&catalogSizeKey(p)===value;});cmpState.platformBySlot[i]="";}
+        if(kind==="Platform"){list=list.filter(function(p){return catalogProgram(p)===catalogProgram(old)&&catalogSizeKey(p)===catalogSizeKey(old)&&(!value||catalogPlatforms(p).indexOf(value)>=0);});cmpState.platformBySlot[i]=value;}
+        if(kind==="Plan"){list=list.filter(function(p){return p.id===value;});}
+        var chosen=list.find(function(p){return p.id===old.id;})||list[0];if(chosen)cmpState.planBySlot[i]=chosen.id;
+        rememberPicks();pageCompare("");
+      });
     });
   });
   function paint(){
@@ -2926,11 +2933,11 @@ function renderJournal(){
     }).join("") + '</div>' +
     '<div id="journalAccountEditor" hidden><h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm" aria-labelledby="journalAccountFormTitle"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><input id="jv14FirmSearch" type="search" placeholder="Search all prop firms" aria-label="Search available prop firms" autocomplete="off" style="margin-bottom:8px"><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
     '<div class="field"><label class="fl" for="newPlan">Program / plan</label><select id="newPlan"></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
-    '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
+
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
     '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
     '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded (unspecified)</option><option value="sim_funded">Sim funded</option><option value="live_funded">Live funded</option><option value="personal">Personal</option></select></div>' +
-    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div></div>' +
+    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div</div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel">Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>' +
     '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move records and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var sortedTrades=rows.slice().sort(function(a,b){return String(b.traded_at).localeCompare(String(a.traded_at))||String(a.id).localeCompare(String(b.id));});
@@ -3063,7 +3070,7 @@ function renderJournal(){
       select.style.display = "none";
       manual.style.display = "block";
       manual.required = true;
-      if (pref) manual.value = String(pref);
+      manual.value = pref ? String(pref) : "";
       if (note) note.textContent = plan ? "This plan has no size in the research. Enter the size on your account." : "Choose a firm to see the sizes its plan offers.";
       return;
     }
