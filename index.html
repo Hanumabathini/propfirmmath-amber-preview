@@ -1196,7 +1196,7 @@ function faqHTML(list,start){
 }
 /* ================= nav ================= */
 var NAV = [
-  ["/","Home"],["/firms","Prop Firms"],["/deals","Deals"],["/compare","Compare"],
+  ["/","Home"],["/global","Global Tracker"],["/compare","Compare"],["/firms","Prop Firms"],["/deals","Deals"],
   ["/tools","Calculators"],["/tracker","Payout Tracker"]
 ];
 var RESOURCE_NAV = [
@@ -1292,7 +1292,7 @@ if (sb){
 }
 function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
-var ROUTE_DESC={"/":"Compare 150 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices.","/prediction":"Prediction-market prop firms compared: rules, payout rails, prices and verified discount codes."};
+var ROUTE_DESC={"/":"Compare 150 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare two independent account offers by firm, program, size, platform, price and plan-specific rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/global":"Country-first prop firm eligibility using dated official policies, including residency and citizenship conditions. Coverage gaps remain explicit.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices.","/prediction":"Prediction-market prop firms compared: rules, payout rails, prices and verified discount codes."};
 function seoDescription(path,label){
   if(ROUTE_DESC[path]) return ROUTE_DESC[path];
   var fm=path.match(/^\/firm\/([^/]+)$/); if(fm&&typeof firm==="function"){var f=firm(fm[1]); if(f) return f.name+" review: "+(f.split?"profit split "+f.split+", ":"")+(f.from!==null?"from "+(f.fromCur==="EUR"?"€":"$")+f.from+". ":"")+"Rules, drawdown and payouts researched on the firm's own site, "+SNAPSHOT+".";}
@@ -1341,6 +1341,7 @@ function route(){
     if (parts[0]==="compare") return pageCompare(q);
     if (parts[0]==="vs" && parts[1]) { var p=parts[1].split("-vs-"); return pageVs(p[0],p[1]); }
     if (parts[0]==="deals") return pageDeals();
+    if (parts[0]==="global") return pageGlobalTracker();
     if (parts[0]==="tracker" || parts[0]==="payouts") return pageTracker();
     if (parts[0]==="quiz") { if (typeof history!=="undefined" && history.replaceState) history.replaceState(null,"","/firms"); return pageFirms(); }
     if (parts[0]==="tools" || parts[0]==="calculators") return pageTools();
@@ -1997,6 +1998,50 @@ function pageVs(a,b){
   rows.map(function(r){ var va=r[2](fa), vb=r[2](fb); return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.6px;text-transform:uppercase">'+r[0]+"</td><td>"+r[1](fa)+(va>vb?' <span style="color:#a9dc7d" aria-label="better">✓</span>':"")+"</td><td>"+r[1](fb)+(vb>va?' <span style="color:#a9dc7d" aria-label="better">✓</span>':"")+"</td></tr>"; }).join("")+
   '</tbody></table></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn small" href="/firm/'+fa.slug+'">'+esc(fa.name)+' review</a><a class="btn small ghost" href="/firm/'+fb.slug+'">'+esc(fb.name)+' review</a><a class="btn small ghost" href="/compare">Compare 3 firms</a></div>'+
   snapLine("Figures from the "+SNAPSHOT+" snapshot; the ✓ marks the better figure in that row only, not an overall verdict."));
+}
+/* Region policy records: exact ISO codes transcribed from official policy pages.
+   Absence from a documented complete restriction list means not prohibited by that policy, never guaranteed onboarding. */
+var PFM_REGION_POLICIES=[
+  {slug:"topstep",checked:"2026-11-28",source:"https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",basis:"citizenship and residency",
+   restricted:"AF DZ AD AO BY BF MM BI KH CI CU CD ET GN HT IR IQ KE XK KG LA LB LY MO ML MA MZ NA NI KP PK RU SN RS SO SS SD SY TR UA UZ VE YE ZW".split(" "),
+   simulatedOnly:"AL BO BA VG CM CF DE GH HK IS KW LR MK MC MN ME NP PG TT VN".split(" "),
+   note:"New-account restrictions updated 17 Nov 2026. Restricted citizenship with eligible permanent residence may require individual review. Regional, entity and travel restrictions also apply; consult the official policy."},
+  {slug:"tradeify",checked:"2026-11-28",source:"https://help.tradeify.co/en/articles/10495888-rules-restricted-countries",basis:"permanent residency",
+   restricted:"AF AL DZ AD AO AQ AZ BS BB BY BA BW BG MM BI KH CF CU CI CD EC ET GH IS ID IR IQ IL JM KZ XK KG LA LB LR LY MO MY MU MN ME MA NI KP PK PA PS PG RU SO SS LK SD SY TJ TT TN TR UG UA VE VN YE ZW".split(" "),
+   capped:"ES IT BR CO".split(" "),note:"Futures policy only. Residency determines country restrictions; onboarding, live account approval and additional regional conditions still apply."}
+];
+var pfmRegionState={residence:"",citizenship:""};
+function pfmRegionEligibility(p,residence,citizenship){
+  if(!residence)return {status:"pending",message:"Select permanent residence."};
+  if(!p.checked||nowMs()-Date.parse(p.checked+"T00:00:00Z")>=30*86400000)return {status:"pending",message:"Official policy needs a fresh check."};
+  if(p.restricted.indexOf(residence)>=0)return {status:"restricted",message:"New accounts restricted by published residence policy."};
+  if(p.slug==="topstep"){
+    if(!citizenship)return {status:"pending",message:"Citizenship is required to assess this policy."};
+    if(p.restricted.indexOf(citizenship)>=0)return {status:"pending",message:"Restricted citizenship; individual permanent-residency review may be required."};
+    if(p.simulatedOnly.indexOf(residence)>=0||p.simulatedOnly.indexOf(citizenship)>=0)return {status:"conditional",message:"Trading Combine and Express Funded access; no ordinary Live Funded access under this policy."};
+  }
+  if(p.capped&&p.capped.indexOf(residence)>=0)return {status:"conditional",message:"Not prohibited by country policy; up to 3 simulated funded accounts under current regional restriction."};
+  return {status:"eligible",message:"Not prohibited by the published country policy; individual eligibility checks still apply."};
+}
+function pageGlobalTracker(){
+  var codes="AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW".split(" ");
+  var names=typeof Intl.DisplayNames==="function"?new Intl.DisplayNames(["en"],{type:"region"}):null;
+  var options=codes.map(function(c){return {code:c,name:names?names.of(c):c};}).sort(function(a,b){return a.name.localeCompare(b.name);});
+  function countryOptions(value){return '<option value="">Select a country or territory</option>'+options.map(function(o){return '<option value="'+o.code+'"'+(o.code===value?" selected":"")+'>'+esc(o.name)+'</option>';}).join("");}
+  go(pageHead('<a href="/">Home</a> · Global Tracker',"Global prop firm tracker","Check country policy before exploring account programs. This preview includes only official policies that have been checked and structured; no unverified country eligibility or regional pricing is inferred.")+
+    '<div class="card" style="margin:20px 0"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px"><div class="field"><label class="fl" for="regionResidence">Permanent residence</label><select id="regionResidence">'+countryOptions(pfmRegionState.residence)+'</select></div><div class="field"><label class="fl" for="regionCitizenship">Citizenship (where required)</label><select id="regionCitizenship">'+countryOptions(pfmRegionState.citizenship)+'</select></div></div><p class="mut small">Residency and citizenship can have different effects. Multiple citizenships, special territories and KYC exceptions require checking the firm directly.</p></div><div id="regionCoverage"></div><div id="regionResults" class="firm-grid"></div><div class="notice" style="margin-top:20px">Catalog prices and platform menus are general account research unless a region-specific offer is verified. Regional price and currency are not inferred from residence. <a href="/tracker">See the separate payout tracker ↗</a></div>');
+  function draw(){
+    var eligible=[],pending=0,restricted=0;
+    PFM_REGION_POLICIES.forEach(function(p){var f=firm(p.slug),r=pfmRegionEligibility(p,pfmRegionState.residence,pfmRegionState.citizenship);if(!f)return;if(r.status==="eligible"||r.status==="conditional")eligible.push({f:f,p:p,r:r});else if(r.status==="restricted")restricted++;else pending++;});
+    $("#regionCoverage").innerHTML='<p class="snap-note" style="margin:0 0 12px">'+(pfmRegionState.residence?eligible.length+" policy-matched firm(s) · "+restricted+" excluded by verified restriction · "+pending+" require more information":"Select your residence to check the verified policies.")+' · '+(FIRMS.length-PFM_REGION_POLICIES.length)+' directory firms not yet covered by this structured lookup.</p>';
+    $("#regionResults").innerHTML=eligible.length?eligible.map(function(x){
+      var count=(x.f.plans||[]).length;
+      return '<article class="card"><div class="firm-head">'+avatar(x.f,42)+'<h3>'+esc(x.f.name)+'</h3></div><p style="margin:12px 0"><strong>'+esc(x.r.message)+'</strong></p><p class="mut small">'+esc(x.p.note)+'</p><p class="mut small" style="margin:10px 0">Account catalog: '+count+' records · Regional offer price: not verified</p><p class="snap-note">Policy checked '+esc(x.p.checked)+' · <a href="'+esc(x.p.source)+'" target="_blank" rel="noopener noreferrer">Official policy ↗</a></p><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"><a class="btn small" href="/firm/'+esc(x.f.slug)+'">Explore general account catalog</a><a class="btn ghost small" href="/compare?add='+esc(x.f.slug)+'">Compare catalog offers</a></div></article>';
+    }).join(""):'<div class="empty-note"><h3>'+(!pfmRegionState.residence?"Choose a country first":"No confirmed policy match for this selection")+'</h3><p>'+(!pfmRegionState.residence?"Only policy-matched firms will appear.":"This is a coverage limit, not a claim that no firms operate in your country. Review official eligibility sources before purchase.")+'</p></div>';
+  }
+  $("#regionResidence").addEventListener("change",function(){pfmRegionState.residence=this.value;draw();});
+  $("#regionCitizenship").addEventListener("change",function(){pfmRegionState.citizenship=this.value;draw();});
+  draw();
 }
 function pageTracker(){
   go(pageHead('<a href="/">Home</a> · Payout Tracker', "Prop firm payout tracker — snapshot",
