@@ -611,7 +611,7 @@ footer{background:var(--bg2);border-color:var(--line)}
 #app .browser-tools{margin-block:var(--space-4)}
 #app .filterbar label{font-weight:600}
 #app .compare-selectors{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:var(--space-6) 0;background:var(--transparent)}
-#app .compare-selectors>.grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:var(--space-6)!important}
+#app .compare-selectors>.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:var(--space-6)!important}
 #app .compare-selectors .field{border-left:1px solid var(--line);padding-left:var(--space-4)}
 #app .comparison-table table.dt{table-layout:fixed}
 #app .comparison-table table.dt th:first-child,#app .comparison-table table.dt td:first-child{width:24%;background:var(--bg2);font-size:13px!important;font-weight:650!important;text-transform:none!important;letter-spacing:0!important}
@@ -816,6 +816,24 @@ html[data-pfm-route="/login"] #app .auth-layout>.card,html[data-pfm-route="/acco
 @keyframes pfmCheck{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
 @media(max-width:760px){.pfm-research-story{grid-template-columns:1fr}.pfm-globe{max-width:180px}.pfm-brand-run a{padding:6px 16px}.pfm-search-trigger kbd{display:none}.pfm-compare-kicker{margin-top:15px}}
 @media(prefers-reduced-motion:reduce){html #app.pfm-page-enter,#app .pfm-kinetic span,.pfm-brand-track,.pfm-globe-arc,.pfm-story-card.pfm-story-visible,#app .compare-selectors>.grid>.field,.pfm-command[open],.pfm-auth-success,.pfm-auth-success::before{animation:none!important;transform:none!important;opacity:1!important;clip-path:none!important}.pfm-morph{transition:none!important}.pfm-brand-viewport{overflow:auto;mask-image:none}.pfm-brand-run[aria-hidden="true"]{display:none}#deal-active-list>.deal-card::after,#app .pfm-memberships .pfm-tier-elite::after{display:none!important}}
+</style>
+<style id="pfm-layout-corrections">
+#app .pfm-region-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:12px;align-items:start}
+#app .pfm-region-grid>.pfm-region-empty{grid-column:1/-1;width:100%;min-width:0;min-height:0;padding:24px 28px;overflow-wrap:normal;word-break:normal}
+#app .pfm-region-empty h3{margin:0 0 8px;font-size:20px}
+#app .pfm-region-empty p{margin:0;max-width:72ch}
+#app .pfm-region-grid>.pfm-region-card{min-width:0;overflow-wrap:break-word;padding:20px}
+#app .pfm-region-card .firm-head{display:flex;align-items:center;gap:10px}
+#app .pfm-region-tools #regionCoverage{flex:1;min-width:min(100%,220px)}
+#app .pfm-region-tools #regionCoverage p{margin:0!important}
+#app .compare-selectors>.pfm-compare-pair{position:relative;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:36px!important}
+#app .compare-selectors>.pfm-compare-pair>.pfm-compare-slot{width:100%;margin:0!important;padding:20px!important;border:1px solid var(--line);border-radius:9px;min-width:0}
+#app .pfm-compare-slot-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;min-height:34px;font-size:12px;letter-spacing:.09em;font-weight:750;color:var(--amber)}
+#app .pfm-compare-vs{position:absolute;z-index:1;left:50%;top:27px;transform:translateX(-50%);background:var(--bg2);width:30px;height:30px;font-size:10px}
+#app .pfm-selected-price{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;margin-top:14px;border-top:1px solid var(--line)}
+#app .pfm-selected-price strong{font-size:19px;text-align:right}
+#app .pfm-free-journal-intro{max-width:560px;margin-top:18px;padding:18px}
+@media(max-width:680px){#app .pfm-region-grid,#app .compare-selectors>.pfm-compare-pair{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}#app .pfm-compare-vs{display:none}#app .pfm-region-grid>.pfm-region-empty,#app .pfm-region-grid>.pfm-region-card,#app .compare-selectors>.pfm-compare-pair>.pfm-compare-slot{padding:16px!important}}
 </style>
 </head>
 <body>
@@ -1280,7 +1298,7 @@ function renderNav(route){
     html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Account</a>';
     html += '<button type="button" class="nav-signout" id="navSignOut">Sign out</button>';
   } else {
-    html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
+    html += '<a href="/journal"'+(route==="/journal"?' class="on"':"")+' >Free Journal</a><a href="/login" class="'+(route==="/login"?"on":"")+'">Log in</a><a href="/account" class="signin'+(route==="/account"?" on":"")+'">Create free account</a>';
   }
   if(!/^\/journal(?:\/|$)/.test(route))html+='<button type="button" class="btn ghost small pfm-search-trigger" id="pfmSearchTrigger" aria-haspopup="dialog">⌕ Search <kbd>Ctrl K</kbd></button>';
   $("#mainnav").innerHTML = html;
@@ -1727,7 +1745,7 @@ function comparePlanMenus(f,i){
   if(platform&&catalogPlatforms(current).indexOf(platform)<0)platform="";
   var filtered=variants.filter(function(p){return !platform||catalogPlatforms(p).indexOf(platform)>=0;});
   function menu(kind,label,values,selected){return '<label class="fl" for="cmp'+kind+i+'" style="margin-top:8px">'+label+'</label><select id="cmp'+kind+i+'">'+values.map(function(v){return '<option value="'+esc(v[0])+'"'+(String(v[0])===String(selected)?" selected":"")+'>'+esc(v[1])+'</option>';}).join("")+'</select>';}
-  return menu("Program","Account type / program",programs.map(function(v){return [v,v];}),program)+menu("Size","Account size",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}),size)+menu("Platform","Trading platform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(v){return [v,v];})),platform)+menu("Plan","Exact account offer",filtered.map(function(p){return [p.id,catalogVariantLabel(p)];}),current.id);
+  return menu("Program","Account type / program",programs.map(function(v){return [v,v];}),program)+menu("Size","Account size",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}),size)+menu("Platform","Trading platform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(v){return [v,v];})),platform)+menu("Plan","Exact account offer",filtered.map(function(p,j){var price=p.price==null?"Price not verified":String(p.currency||"Currency unconfirmed")+" "+Number(p.price).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+(p.monthly?" /month":"");return [p.id,price+(filtered.length>1?" · Offer "+(j+1):"")+(filtered.length>1&&catalogPlatforms(p).length===1?" · "+catalogPlatforms(p)[0]:"")];}),current.id)+'<div class="pfm-selected-price"><span class="mut small">Selected offer price</span><strong>'+planPriceHTML(current)+'</strong></div>';
 }
 function firmAccountExplorer(f){
   var plans=Array.isArray(f.accountPlans)?f.accountPlans.filter(function(p){return p && p.name && p.officialSource;}):[];
@@ -1994,13 +2012,13 @@ function pageCompare(q){
     : '<div class="empty-note"><h3>Pick two accounts</h3><p>Use the selectors, or filter the list below and choose Compare. You can select different accounts from the same firm.</p></div>';
   go(pageHead('<a href="/">Home</a> · Compare', "Compare prop firms side by side",
     "Select two accounts independently: firm, account type, size, platform and exact offer. Missing fields stay unconfirmed.") +
-    '<div class="pfm-compare-kicker"><span>ACCOUNT A</span><span class="pfm-versus">VS</span><span>ACCOUNT B</span></div><div class="card compare-selectors" style="margin:20px 0 14px"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">' +
+    '<div class="card compare-selectors" style="margin:20px 0 14px"><div class="grid pfm-compare-pair">' +
     [0,1].map(function(i){
       var picked = firm(cmpState.picks[i] || "");
       var planMenu = picked ? comparePlanMenus(picked,i) : "";
-      return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
+      return '<div class="field pfm-compare-slot" style="margin:0"><div class="pfm-compare-slot-head"><span>ACCOUNT '+(i===0?"A":"B")+'</span>'+(picked?avatar(picked,30):"")+'</div><label class="fl" for="cmp' + i + '">Prop firm</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
     }).join("") +
-    "</div></div>" + table +
+    '<span class="pfm-versus pfm-compare-vs" aria-hidden="true">VS</span></div></div>' + table +
     '<div class="secttl"><span class="bar"></span><h2>Find a firm to add</h2></div>' +
     '<p class="mut small" style="margin-top:-8px">Filter by market, platform, entry price, payout speed and drawdown. Prices stay in each firm\'s own currency.</p>' +
     filterFieldsHTML(cmpFilter, "cmpf") +
@@ -2131,7 +2149,7 @@ function pageGlobalTracker(){
   var options=codes.map(function(c){return {code:c,name:names?names.of(c):c};}).sort(function(a,b){return a.name.localeCompare(b.name);});
   function countryOptions(value){return '<option value="">Select a country or territory</option>'+options.map(function(o){return '<option value="'+o.code+'"'+(o.code===value?" selected":"")+'>'+esc(o.name)+'</option>';}).join("");}
   go(pageHead('<a href="/">Home</a> · Global Tracker',"Global prop firm tracker","Check country policy before exploring account programs. Only structured official policies are included. Unverified eligibility and regional pricing are not inferred.")+
-    '<div class="card" style="margin:20px 0"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px"><div class="field"><label class="fl" for="regionResidence">Permanent residence</label><select id="regionResidence">'+countryOptions(pfmRegionState.residence)+'</select></div><div class="field"><label class="fl" for="regionCitizenship">Citizenship (where required)</label><select id="regionCitizenship">'+countryOptions(pfmRegionState.citizenship)+'</select></div></div><p class="mut small">Residency and citizenship can have different effects. Multiple citizenships, special territories and KYC exceptions require checking the firm directly.</p></div>'+pfmGlobe()+'<div class="pfm-region-tools"><div id="regionCoverage"></div><div class="pfm-morph"><button type="button" aria-label="Expand firm search" aria-expanded="false">⌕</button><input id="regionQuery" type="search" placeholder="Search matched firms" aria-label="Search matched firms" tabindex="-1"></div></div><div id="regionResults" class="firm-grid"></div><div class="notice" style="margin-top:20px">Catalog prices and platform menus are general account research unless a region-specific offer is verified. Regional price and currency are not inferred from residence. <a href="/tracker">See the separate payout tracker ↗</a></div>');
+    '<div class="card" style="margin:20px 0"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px"><div class="field"><label class="fl" for="regionResidence">Permanent residence</label><select id="regionResidence">'+countryOptions(pfmRegionState.residence)+'</select></div><div class="field"><label class="fl" for="regionCitizenship">Citizenship (where required)</label><select id="regionCitizenship">'+countryOptions(pfmRegionState.citizenship)+'</select></div></div><p class="mut small">Residency and citizenship can have different effects. Multiple citizenships, special territories and KYC exceptions require checking the firm directly.</p></div>'+pfmGlobe()+'<div class="pfm-region-tools"><div id="regionCoverage"></div><div class="pfm-morph"><button type="button" aria-label="Expand firm search" aria-expanded="false">⌕</button><input id="regionQuery" type="search" placeholder="Search matched firms" aria-label="Search matched firms" tabindex="-1"></div></div><div id="regionResults" class="pfm-region-grid"></div><div class="notice" style="margin-top:20px">Catalog prices and platform menus are general account research unless a region-specific offer is verified. Regional price and currency are not inferred from residence. <a href="/tracker">See the separate payout tracker ↗</a></div>');
   function draw(){
     var eligible=[],pending=0,restricted=0;var query=$("#regionQuery").value.trim().toLowerCase();
     PFM_REGION_POLICIES.forEach(function(p){var f=firm(p.slug),r=pfmRegionEligibility(p,pfmRegionState.residence,pfmRegionState.citizenship);if(!f)return;if(r.status==="eligible"||r.status==="conditional")eligible.push({f:f,p:p,r:r});else if(r.status==="restricted")restricted++;else pending++;});
@@ -2139,8 +2157,8 @@ function pageGlobalTracker(){
     var visible=eligible.filter(function(x){return x.f.name.toLowerCase().indexOf(query)>=0;});
     $("#regionResults").innerHTML=visible.length?visible.map(function(x){
       var count=(x.f.plans||[]).length;
-      return '<article class="card"><div class="firm-head">'+avatar(x.f,42)+'<h3>'+esc(x.f.name)+'</h3></div><p style="margin:12px 0"><strong>'+esc(x.r.message)+'</strong></p><p class="mut small">'+esc(x.p.note)+'</p><p class="mut small" style="margin:10px 0">Account catalog: '+count+' records · Regional offer price: not verified</p><p class="snap-note">Policy checked '+esc(x.p.checked)+' · <a href="'+esc(x.p.source)+'" target="_blank" rel="noopener noreferrer">Official policy ↗</a></p><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"><a class="btn small" href="/firm/'+esc(x.f.slug)+'">Explore general account catalog</a><a class="btn ghost small" href="/compare?add='+esc(x.f.slug)+'">Compare catalog offers</a></div></article>';
-    }).join(""):'<div class="empty-note"><h3>'+(!pfmRegionState.residence?"Choose a country first":"No confirmed policy match for this selection")+'</h3><p>'+(!pfmRegionState.residence?"Only policy-matched firms will appear.":"This is a coverage limit, not a claim that no firms operate in your country. Review official eligibility sources before purchase.")+'</p></div>';
+      return '<article class="card pfm-region-card"><div class="firm-head">'+avatar(x.f,42)+'<h3>'+esc(x.f.name)+'</h3></div><p style="margin:12px 0"><strong>'+esc(x.r.message)+'</strong></p><p class="mut small">'+esc(x.p.note)+'</p><p class="mut small" style="margin:10px 0">Account catalog: '+count+' records · Regional offer price: not verified</p><p class="snap-note">Policy checked '+esc(x.p.checked)+' · <a href="'+esc(x.p.source)+'" target="_blank" rel="noopener noreferrer">Official policy ↗</a></p><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"><a class="btn small" href="/firm/'+esc(x.f.slug)+'">Explore general account catalog</a><a class="btn ghost small" href="/compare?add='+esc(x.f.slug)+'">Compare catalog offers</a></div></article>';
+    }).join(""):'<div class="empty-note pfm-region-empty"><h3>'+(!pfmRegionState.residence?"Choose a country first":query&&eligible.length?"No matching firms":"No confirmed policy match for this selection")+'</h3><p>'+(!pfmRegionState.residence?"Select your permanent residence above to see firms covered by verified country policies.":query&&eligible.length?"Try a different firm name or clear the search.":"This is a coverage limit, not a claim that no firms operate in your country. Review official eligibility sources before purchase.")+'</p></div>';
   }
   $("#regionResidence").addEventListener("change",function(){pfmRegionState.residence=this.value;draw();});
   $("#regionCitizenship").addEventListener("change",function(){pfmRegionState.citizenship=this.value;draw();});
@@ -2434,10 +2452,12 @@ function pfmMembership(user){
   var id=user && user.app_metadata && user.app_metadata.pfm_membership;
   return PFM_MEMBERSHIPS.find(function(p){return p.id===id;})||PFM_MEMBERSHIPS[0];
 }
+function pfmFreeJournalIntro(){return '<div class="card pfm-free-journal-intro"><h3>Free trading journal, included</h3><p class="mut" style="margin-top:8px">Every registered user can track one trading account, log trades, view analytics and export CSV. Optional Journal upgrades are available in Settings when billing launches. The public directory, comparisons, calculators and trackers do not require a paid plan.</p></div>';}
 function pfmMembershipCards(user, accountCount){
+  if(!user||typeof accountCount!=="number")return "";
   var current=pfmMembership(user);
   var inJournal=typeof accountCount==="number";
-  return '<section class="card pfm-memberships" id="memberships" style="'+(inJournal?'margin-top:0':'margin-top:20px;max-width:1000px')+'"><h2>'+(inJournal?'Membership &amp; upgrades':'Memberships')+'</h2><p class="mut small">'+(user?'Current plan: <strong>'+esc(current.name)+'</strong>'+(inJournal?' · '+accountCount+' of '+current.limit+' accounts used':'')+'.':'Choose the account capacity that fits your trading.')+' Paid upgrades are not available until billing launches.'+(inJournal?' Existing accounts remain accessible.':'')+'</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin-top:14px">'+PFM_MEMBERSHIPS.map(function(p){var active=!!user&&p.id===current.id;return '<details class="card pfm-membership-card pfm-tier-'+p.id+'" style="'+(active?'border-color:var(--amber);':'')+'"><summary style="cursor:pointer"><strong style="font-size:20px">'+esc(p.name)+'</strong><p style="font-size:22px;font-weight:700;margin:8px 0">'+esc(p.price)+'</p><p class="mut small">Up to '+p.limit+' trading '+(p.limit===1?'account':'accounts')+'</p><span class="mut small">'+(active?'Current plan · View details':'View plan details')+'</span></summary><div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?'Track multiple accounts across prop firms.':'Track one trading account.')+'</p>'+(active?'<p><strong>Current membership</strong></p>':p.id==="basic"&&!user?'<a class="btn ghost small" href="/account">Sign up free</a>':'<p class="mut small">'+(p.id==="basic"?'Free plan. Membership changes are not available yet.':'Paid upgrades coming soon. No payment will be collected.')+'</p>')+'</div></details>';}).join("")+'</div>'+(inJournal?'<p style="margin-top:14px"><a class="btn ghost small" href="/account">Manage membership</a></p>':'')+'</section>';
+  return '<section class="card pfm-memberships" id="memberships" style="'+(inJournal?'margin-top:0':'margin-top:20px;max-width:1000px')+'"><h2>'+(inJournal?'Journal membership &amp; upgrades':'Journal memberships')+'</h2><p class="mut small">'+(user?'Current plan: <strong>'+esc(current.name)+'</strong>'+(inJournal?' · '+accountCount+' of '+current.limit+' accounts used':'')+'.':'Choose the account capacity that fits your trading.')+' Journal Basic is free for every registered user. Optional paid upgrades apply only to the Journal and are not available until billing launches.'+(inJournal?' Existing accounts remain accessible.':'')+'</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin-top:14px">'+PFM_MEMBERSHIPS.map(function(p){var active=!!user&&p.id===current.id;return '<details class="card pfm-membership-card pfm-tier-'+p.id+'" style="'+(active?'border-color:var(--amber);':'')+'"><summary style="cursor:pointer"><strong style="font-size:20px">'+esc(p.name)+'</strong><p style="font-size:22px;font-weight:700;margin:8px 0">'+esc(p.price)+'</p><p class="mut small">Up to '+p.limit+' trading '+(p.limit===1?'account':'accounts')+'</p><span class="mut small">'+(active?'Current plan · View details':'View plan details')+'</span></summary><div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?'Track multiple accounts across prop firms.':'Track one trading account.')+'</p>'+(active?'<p><strong>Current membership</strong></p>':p.id==="basic"&&!user?'<a class="btn ghost small" href="/account">Sign up free</a>':'<p class="mut small">'+(p.id==="basic"?'Free plan. Membership changes are not available yet.':'Paid upgrades coming soon. No payment will be collected.')+'</p>')+'</div></details>';}).join("")+'</div>'+(inJournal?'<p class="mut small" style="margin-top:14px">No subscription is required for the public PropFirmMath tools.</p>':'')+'</section>';
 }
 function pageAccount(){
   if (sb && !authReady) { authChecking("Your account"); return; }
@@ -2451,25 +2471,25 @@ function pageAccount(){
       '<p class="mut small" style="margin:14px 0 0">Email</p><p style="margin:4px 0 0;font-weight:800">'+esc(PM_USER.email||"")+'</p>'+
       (country ? '<p class="mut small" style="margin:8px 0 0">'+esc(country)+'</p>' : '')+
       '<p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/journal">Open journal</a> <button class="btn ghost" type="button" id="accountSignOut">Sign out</button></p>'+
-      '</div></div>'+pfmMembershipCards(PM_USER));
+      '</div></div><p class="mut small" style="margin-top:16px">Your PropFirmMath account is free. Journal upgrades are managed only inside Journal Settings.</p>');
     $("#accountSignOut").addEventListener("click", signOutAndLeave);
     return;
   }
   var locale = (navigator.language || "en-US");
   var region = locale.indexOf("-")>0 ? locale.split("-")[1].toUpperCase() : "";
   var countryGuess = region==="US" ? "United States" : (region==="GB" ? "United Kingdom" : (region==="IN" ? "India" : (region==="AU" ? "Australia" : "")));
-  go(pageHead('<a href="/">Home</a> · Account', "Create your free account", "Sign up free. Takes under a minute; no card.")+
+  go(pageHead('<a href="/">Home</a> · Account', "Create your free account", "Use PropFirmMath’s public research tools without a subscription. A free account unlocks your private trading journal — no card required.")+
   '<div class="auth-layout" style="max-width:560px;margin-top:20px">'+(sb?"":authUnavailable())+
-  '<div class="card"><div class="pfm-signup-steps" id="pfmSignupSteps" aria-label="Registration progress"><span class="current" aria-current="step"><b>1</b> Create account</span><span><b>2</b> Verify email</span><span><b>3</b> Open workspace</span></div><form id="regForm"><div class="field"><label class="fl" for="regName">Full name</label><input type="text" id="regName" autocomplete="name" /></div>'+
+  '<div class="card"><div class="pfm-signup-steps" id="pfmSignupSteps" aria-label="Registration progress"><span class="current" aria-current="step"><b>1</b> Create account</span><span><b>2</b> Verify email</span><span><b>3</b> Open free journal</span></div><form id="regForm"><div class="field"><label class="fl" for="regName">Full name</label><input type="text" id="regName" autocomplete="name" /></div>'+
   '<div class="field"><label class="fl" for="regCountry">Country (pre-filled from your browser locale: '+esc(locale)+')</label><input type="text" id="regCountry" value="'+esc(countryGuess)+'" autocomplete="country-name" /></div>'+
   '<div class="field"><label class="fl" for="regEmail">Email</label><input type="email" id="regEmail" autocomplete="email" /></div>'+
   '<div class="field"><label class="fl" for="regPass">Password</label><input type="password" id="regPass" autocomplete="new-password" /></div>'+
   '<div class="field"><label class="fl" for="regPass2">Confirm password</label><input type="password" id="regPass2" autocomplete="new-password" /></div>'+
   '<label class="checkline"><input type="checkbox" id="regTerms" /> <span>I agree to the <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</span></label>'+
   '<label class="checkline"><input type="checkbox" id="regNews" /> <span>Send me new deals (optional).</span></label>'+
-  '<button class="btn" type="submit" style="width:100%">Sign up free</button>'+
+  '<button class="btn" type="submit" style="width:100%">Create free account</button>'+
   '<p class="form-msg" id="regMsg"></p></form>'+
-  '<p class="mut small" style="margin-top:14px">Already a member? <a href="/login"><strong>Log in</strong></a></p></div></div>'+pfmMembershipCards(null));
+  '<p class="mut small" style="margin-top:14px">Already have an account? <a href="/login"><strong>Log in</strong></a></p></div></div>'+pfmFreeJournalIntro());
   $("#regForm").addEventListener("submit", function(e){ e.preventDefault();
     var msg=$("#regMsg"); var em=$("#regEmail").value.trim();
     var p1=$("#regPass").value, p2=$("#regPass2").value;
@@ -2493,7 +2513,7 @@ function pageAccount(){
 function pageLogin(){
   if (sb && !authReady) { authChecking("Log in"); return; }
   if (PM_USER) { history.replaceState({},"","/journal"); return route(); }
-  go(pageHead('<a href="/">Home</a> · Account', "Log in", "Welcome back.")+
+  go(pageHead('<a href="/">Home</a> · Account', "Log in", "Welcome back. Sign in to your free PropFirmMath account and private trading journal.")+
   '<div class="auth-layout" style="max-width:480px;margin-top:20px">'+(sb?"":authUnavailable())+
   '<div class="card"><form id="loginForm"><div class="field"><label class="fl" for="liEmail">Email</label><input type="email" id="liEmail" autocomplete="email" /></div>'+
   '<div class="field"><label class="fl" for="liPass">Password</label><input type="password" id="liPass" autocomplete="current-password" /></div>'+
@@ -2501,7 +2521,7 @@ function pageLogin(){
   '<p class="form-msg" id="liMsg"></p></form>'+
   '<p style="margin-top:12px"><button class="btn ghost small" id="forgotBtn" type="button">Forgot password?</button></p>'+
   '<p class="form-msg" id="forgotMsg"></p>'+
-  '<p class="mut small" style="margin-top:14px">New here? <a href="/account"><strong>Sign up free</strong></a></p></div></div>'+pfmMembershipCards(null));
+  '<p class="mut small" style="margin-top:14px">New here? <a href="/account"><strong>Create a free account</strong></a></p></div></div>'+pfmFreeJournalIntro());
   $("#loginForm").addEventListener("submit", function(e){ e.preventDefault();
     var msg=$("#liMsg"); var em=$("#liEmail").value.trim();
     function err(t){ msg.className="form-msg err"; msg.textContent=t; }
@@ -2766,10 +2786,10 @@ function journalStats(rows){
 }
 function pageJournal(){
   var head = pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.");
-  if (!sb) { go(head + '<div style="margin-top:20px">' + authUnavailable() + '</div>'); return; }
+  if (!sb) { go(head + '<div style="margin-top:20px">' + authUnavailable() + '</div>'+pfmFreeJournalIntro()); return; }
   if (!authReady) { go(head + '<div class="card" style="margin-top:20px"><p class="mut">Checking your session…</p></div>'); return; }
   if (!PM_USER) {
-    go(head + '<div class="card" style="margin-top:20px;max-width:560px"><h3>Log in to use your journal</h3><p class="mut" style="margin-top:8px">The journal saves your trades to your free account so they are there next time.</p><p style="margin-top:14px"><a class="btn" href="/account">Sign up free</a> <a class="btn ghost" href="/login">Log in</a></p></div>');
+    go(head + '<div class="card" style="margin-top:20px;max-width:560px"><h3>Your free trading journal</h3><p class="mut" style="margin-top:8px">Create a free account to start tracking one trading account, log trades, view analytics and export CSV. Optional upgrades are managed inside the Journal.</p><p style="margin-top:14px"><a class="btn" href="/account">Create free account</a> <a class="btn ghost" href="/login">Log in</a></p></div>');
     return;
   }
   go(head + '<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');
