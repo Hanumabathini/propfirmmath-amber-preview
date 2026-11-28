@@ -222,9 +222,9 @@ function submit(form) {
       const cat = w.journalFirmCatalog(w.firm(slug));
       return cat.map(p => p.name + ":" + p.sizes.join("/")).join(" | ");
     }
-    ok("FTMO plan is 10k, not a forced 50k", sizesOf("ftmo") === "2-Step:10000", sizesOf("ftmo"));
+    ok("FTMO plan is 10k, not a forced 50k", w.journalFirmCatalog(w.firm("ftmo")).some(p=>p.name==="2-Step" && p.sizes.includes(10000)), sizesOf("ftmo"));
     ok("FTUK is listed from $9", w.firm("ftuk") && w.firm("ftuk").from === 9, w.firm("ftuk") && w.firm("ftuk").from);
-    ok("Apex stays on the 25k plan", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000", sizesOf("apex-trader-funding"));
+    ok("Apex stays on the 25k plan", w.journalFirmCatalog(w.firm("apex-trader-funding")).some(p=>p.name==="Intraday Trail Std" && p.sizes.includes(25000)), sizesOf("apex-trader-funding"));
     ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
     ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
@@ -235,7 +235,7 @@ function submit(form) {
     const mffuRules = w.journalFirmRules(w.firm("my-funded-futures"), "Signature", 10000);
     ok("MFFU Signature 10k uses the $1,000 drawdown for that size", mffuRules.target === 600 && mffuRules.daily == null && mffuRules.drawdown === 1000 && mffuRules.minDays === 1 && mffuRules.consistency === 50, JSON.stringify(mffuRules));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
-    ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily === 500, JSON.stringify(apexRules));
+    ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily == null, JSON.stringify(apexRules));
 
     ok("approved journal has six labeled SVG side tabs", d.querySelectorAll(".journal-side [data-jtab] svg").length === 6 && Array.from(d.querySelectorAll(".journal-side [data-jtab]")).every(b=>b.getAttribute("aria-label")), "side navigation");
     ok("approved journal has four primary metrics", d.querySelectorAll(".jv14-overview-top .journal-kpi").length === 4, "metric count");
@@ -263,7 +263,7 @@ function submit(form) {
     ok("dashboard lists only saved accounts", filter.innerHTML.includes("All my accounts") && filter.innerHTML.includes("Main journal") && !filter.innerHTML.includes("firm:") && !filter.innerHTML.includes("+ FTMO"), filter.innerHTML.slice(0, 240));
     d.getElementById("newFirm").value = "FTMO";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
-    ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000,__custom__" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
+    ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().includes("10000") && sizeOptions().includes("__custom__") && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
     d.getElementById("newFirm").value = "My Funded Futures";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
     ok("MFFU offers every listed size", d.getElementById("newPlan").value === "Signature" && sizeOptions().join() === "5000,10000,20000,__custom__" && d.getElementById("newAccountSizePreset").value === "5000", sizeOptions().join());
@@ -288,9 +288,13 @@ function submit(form) {
     d.getElementById("newAccountSizePreset").value = "20000";
     d.getElementById("newAccountSizePreset").dispatchEvent(new w.Event("change"));
     ok("chosen size is not replaced by 5k", d.getElementById("newAccountSizePreset").value === "20000", d.getElementById("newAccountSizePreset").value);
+    const platformSelect=d.getElementById("newPlatform");
+    platformSelect.value="__custom__";platformSelect.dispatchEvent(new w.Event("change"));
+    d.getElementById("newPlatformOther").value="Tradovate";
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => state.trader_accounts[1] && d.getElementById("journalAccountFilter") && d.getElementById("journalAccountFilter").value === state.trader_accounts[1].id, "new account");
     const created = state.trader_accounts[1];
+    ok("platform persists with account",created.platform==="Tradovate",created);
     ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
     ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);

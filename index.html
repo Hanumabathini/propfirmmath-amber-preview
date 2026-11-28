@@ -2339,7 +2339,7 @@ function pageReset(){
 var JOURNAL_PNL_MAX = 1000000;
 var JOURNAL_SYMBOL_MAX = 32;
 var TRADE_CORE = "id,account_id,traded_at,pnl,symbol,note";
-var ACCOUNT_COLS = "id,firm,plan,account_label,account_size,stage,status,created_at";
+var ACCOUNT_COLS = "id,firm,plan,account_label,account_size,stage,status,created_at,platform";
 var journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
 function journalFetchTrades(){
   return sb.from("trades").select(TRADE_CORE).eq("user_id", PM_USER.id).order("traded_at", {ascending:false}).limit(1000);
@@ -2462,6 +2462,20 @@ function journalNormalizeStructured(list){
   plans.forEach(function(p){ p.sizes.sort(function(a, b){ return a - b; }); });
   return plans;
 }
+/* Account platform choices are plan-and-size-specific. Unknowns stay manual. */
+function journalPlatforms(firm, plan, size){
+  if(!firm || !plan || !size) return [];
+  var exact=(firm.plans||[]).filter(function(p){return (p.name||p.program)===plan && Number(p.size)===Number(size);});
+  var values=[];
+  exact.forEach(function(p){
+    var raw=p.platform;
+    if(!raw || /not (yet )?verified|pending|not confirmed|not stated|unknown|unconfirmed/i.test(String(raw)))return;
+    (Array.isArray(raw)?raw:String(raw).split(/,\s*/)).forEach(function(v){
+      v=String(v).trim();if(v && v!=="—" && values.indexOf(v)<0)values.push(v);
+    });
+  });
+  return values.sort();
+}
 function journalFirmCatalog(firm){
   if (!firm) return [];
   if (Array.isArray(firm.plans) && firm.plans.length) return journalNormalizeStructured(firm.plans);
@@ -2565,7 +2579,8 @@ function journalFirmRules(firm, plan, size){
       return !plan || n.toLowerCase() === String(plan).toLowerCase();
     });
     var sized = named.filter(function(p){ return size && Number(p.size) === Number(size); });
-    rec = (sized.length ? sized[0] : named[0]) || null;
+    rec = sized.length === 1 ? sized[0] : null;
+    if (listed.length && !rec) return null;
   }
   function clause(text){
     text = String(text || "");
@@ -2585,7 +2600,8 @@ function journalFirmRules(firm, plan, size){
       if (size && Math.round(parseFloat(m[2]) * 1000) === Math.round(Number(size))) return amt;
       if (any == null) any = amt;
     }
-    return null;
+    var plain = /^\s*\$([\d,]+(?:\.\d+)?)(?:\s|$)/.exec(String(text || ""));
+    return plain ? Number(plain[1].replace(/,/g, "")) : null;
   }
   function percentMoney(text){
     text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
@@ -2616,6 +2632,7 @@ function journalFirmRules(firm, plan, size){
   var ddText = (rec && rec.maxDD) || clause(firm.dd);
   var dayText = (rec && rec.minDays) || clause(firm.minDays);
   var consText = (rec && rec.consistency) || clause(firm.consistencyText);
+  if (/no evaluation consistency/i.test(consText)) consText = "";
   var plainDollar = /\$([\d,]+(?:\.\d+)?)/.exec(String(ddText || ""));
   return {
     target: dollars(targetText) || percentMoney(targetText),
@@ -2873,12 +2890,13 @@ function renderJournal(){
   }
   var accountsPanel = '<div class="card jv14-accounts"><h3>Trading accounts</h3><p class="mut small">Each funded account is stored on its own. Trades belong to one account, and the menu above can show that account or all of them together. No API keys or broker login.</p>' +
     '<div class="jv14-account-grid">' + journalState.accounts.map(function(a){
-      return '<div class="journal-account-row' + (a.id === journalState.selected ? " jv14-selected" : "") + '"><div><strong>' + esc(a.account_label || a.firm || 'Account') + '</strong><div class="jv14-account-size">' + (Number(a.account_size)>0 ? money(Number(a.account_size)) : '—') + '</div><p class="mut small">' + esc([a.firm,a.plan].filter(Boolean).join(' · ')) + '</p><p class="mut small">' + esc(journalStatusLabel(a.stage || "evaluation")) + " · " + esc(journalStatusLabel(a.status || "active")) + '</p></div><span style="display:flex;gap:6px"><button class="btn ghost small" type="button" data-edit-account="' + esc(a.id) + '">Edit</button><button class="btn ghost small" type="button" data-delete-account="' + esc(a.id) + '">Delete</button><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></span></div>';
+      return '<div class="journal-account-row' + (a.id === journalState.selected ? " jv14-selected" : "") + '"><div><strong>' + esc(a.account_label || a.firm || 'Account') + '</strong><div class="jv14-account-size">' + (Number(a.account_size)>0 ? money(Number(a.account_size)) : '—') + '</div><p class="mut small">' + esc([a.firm,a.plan,a.platform].filter(Boolean).join(' · ')) + '</p><p class="mut small">' + esc(journalStatusLabel(a.stage || "evaluation")) + " · " + esc(journalStatusLabel(a.status || "active")) + '</p></div><span style="display:flex;gap:6px"><button class="btn ghost small" type="button" data-edit-account="' + esc(a.id) + '">Edit</button><button class="btn ghost small" type="button" data-delete-account="' + esc(a.id) + '">Delete</button><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></span></div>';
     }).join("") + '</div>' +
     '<h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><input id="jv14FirmSearch" type="search" placeholder="Search all prop firms" aria-label="Search available prop firms" autocomplete="off" style="margin-bottom:8px"><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
     '<div class="field"><label class="fl" for="newPlan">Program / plan</label><select id="newPlan"></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
     '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
+    '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
     '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded</option><option value="personal">Personal</option></select></div>' +
     '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div></div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel" hidden>Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form>' +
@@ -2972,7 +2990,7 @@ function renderJournal(){
     tradeRows + "</div></div>" +
     '<div id="journalCalendar" role="tabpanel"' + shown("calendar") + ">" + journalCalendar(rows) + "</div>" +
     '<div id="journalInsights" role="tabpanel"' + shown("insights") + ">" + journalInsights(rows) + "</div>" +
-    '<div id="journalSettings" role="tabpanel"' + shown("settings") + '><div class="card"><h3>Appearance</h3><div class="jv14-settingsrow"><div><strong>Color theme</strong><p class="mut small">Switch between light and dark mode.</p></div><button class="btn ghost small" id="jv14Theme" type="button" aria-pressed="false">Light mode</button></div><div class="jv14-settingsrow"><div><strong>Interface motion</strong><p class="mut small">Disable optional transitions and chart reveals.</p></div><button class="btn ghost small" id="jv14Motion" type="button" aria-pressed="false">Reduce motion</button></div></div><div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
+    '<div id="journalSettings" role="tabpanel"' + shown("settings") + '><div class="card"><h3>Appearance</h3><div class="jv14-settingsrow"><div><strong>Color theme</strong><p class="mut small">Switch between light and dark mode.</p></div><button class="btn ghost small" id="jv14Theme" type="button" aria-pressed="false">Light mode</button></div><div class="jv14-settingsrow"><div><strong>Interface motion</strong><p class="mut small">Disable optional transitions and chart reveals.</p></div><button class="btn ghost small" id="jv14Motion" type="button" aria-pressed="false">Reduce motion</button></div></div><div class="card jv14-settingscard"><h3>Memberships</h3><p class="mut small">Planned account limits and monthly pricing. Billing is not available yet; existing journal access is unchanged.</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px"><div class="card"><h3>Basic</h3><p>Free · 1 account</p></div><div class="card"><h3>Pro</h3><p>$9.99/month · 10 accounts</p></div><div class="card"><h3>Elite</h3><p>$19.99/month · 25 accounts</p></div></div></div><div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
     "</div></section>");
   function journalSelectedPlan(){
     var name = $("#newPlan").value;
@@ -2981,6 +2999,20 @@ function renderJournal(){
     var catalog = journalFirmCatalog(firm);
     for (var i = 0; i < catalog.length; i++) if (catalog[i].name === name) return catalog[i];
     return { name: name, sizes: [] };
+  }
+  function journalFillPlatforms(preferred){
+    var firm=FIRMS.find(function(f){return f.name===$("#newFirm").value;});
+    var select=$("#newPlatform"), other=$("#newPlatformOther");
+    var plan=$("#newPlan").value, size=Number($("#newAccountSize").value);
+    var choices=journalPlatforms(firm,plan,size);
+    select.innerHTML="";
+    function option(v,label){var o=document.createElement("option");o.value=v;o.textContent=label;select.appendChild(o);}
+    option("","Not specified");
+    choices.forEach(function(p){option(p,p);});
+    option("__custom__","Other / enter platform");
+    select.value=preferred ? (choices.indexOf(preferred)>=0?preferred:"__custom__") : "";
+    other.value=select.value==="__custom__"?preferred||"":"";
+    other.style.display=select.value==="__custom__"?"block":"none";
   }
   function journalFillSizes(plan, preferredSize){
     var select = $("#newAccountSizePreset"), manual = $("#newAccountSize"), note = $("#journalSizeNote");
@@ -3064,6 +3096,7 @@ function renderJournal(){
     if (!other) $("#newFirmOther").value = $("#newFirmOther").value;
     var firm = other ? null : FIRMS.find(function(f){ return f.name === $("#newFirm").value; });
     journalFillPlans(firm, preferred || null);
+    journalFillPlatforms(preferred && preferred.platform);
     if (!keepLabel) journalSyncLabel();
   }
   function journalResetAccountForm(){
@@ -3140,11 +3173,14 @@ function renderJournal(){
     $("#newPlanOther").style.display = custom ? "block" : "none";
     if (!custom) $("#newPlanOther").value = "";
     journalFillSizes(journalSelectedPlan(), null);
+    journalFillPlatforms(null);
     journalSyncLabel();
   });
   $("#newAccountSizePreset").addEventListener("change", function(){
     var custom=this.value==="__custom__", input=$("#newAccountSize");input.style.display=custom?"block":"none";input.required=custom;if(custom){input.value="";input.focus();}else if(this.value)input.value=this.value;
+    journalFillPlatforms(null);
   });
+  $("#newPlatform").addEventListener("change",function(){var o=$("#newPlatformOther");o.style.display=this.value==="__custom__"?"block":"none";if(this.value!=="__custom__")o.value="";});
   $("#newAccountLabel").addEventListener("input", function(){ this.dataset.auto = "0"; });
   $("#journalAccountCancel").addEventListener("click", journalResetAccountForm);
   journalApplyFirm(null, true);
@@ -3161,7 +3197,7 @@ function renderJournal(){
       $("#newFirm").value = known ? row.firm : "__other__";
       $("#jv14FirmSearch").value="";journalFilterFirmOptions();
       $("#newFirmOther").value = known ? "" : (row.firm || "");
-      journalApplyFirm({ plan: row.plan || "", size: Number(row.account_size) }, true);
+      journalApplyFirm({ plan: row.plan || "", size: Number(row.account_size), platform: row.platform || "" }, true);
       $("#newAccountLabel").value = row.account_label || "";
       $("#newAccountLabel").dataset.auto = "0";
       $("#newAccountStage").value = row.stage || "evaluation";
@@ -3315,7 +3351,8 @@ function renderJournal(){
     var saveBtn = $("#journalAccountSave");
     saveBtn.disabled = true;
     var editId = $("#journalAccountForm").dataset.editId;
-    var payload = { firm: firm, plan: plan || null, account_label: label, account_size: size, stage: stage, status: status };
+    var platform = $("#newPlatform").value === "__custom__" ? $("#newPlatformOther").value.trim() : $("#newPlatform").value;
+    var payload = { firm: firm, plan: plan || null, account_label: label, account_size: size, stage: stage, status: status, platform: platform || null };
     var query = editId
       ? sb.from("trader_accounts").update(payload).eq("id", editId).eq("user_id", PM_USER.id)
       : sb.from("trader_accounts").insert(Object.assign({ user_id: PM_USER.id }, payload));
