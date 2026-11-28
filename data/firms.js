@@ -547,7 +547,86 @@ var FIRMS = [
     "affiliate": "not stated",
     "platforms": [
       "Tradovate",
-      "NinjaTrader"
+      "NinjaTrader",
+      "TradingView",
+      "Rithmic",
+      "Tradesea",
+      "Quantower",
+      "Sierra Chart",
+      "R|Trader",
+      "WealthCharts"
+    ],
+    "accountPlans": [
+      {
+        "name": "Growth",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "TradingView",
+          "Rithmic",
+          "Tradesea",
+          "Quantower",
+          "Sierra Chart",
+          "R|Trader",
+          "WealthCharts"
+        ],
+        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "verifiedOn": "Nov 28, 2026"
+      },
+      {
+        "name": "Lightning",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "TradingView",
+          "Rithmic",
+          "Tradesea",
+          "Quantower",
+          "Sierra Chart",
+          "R|Trader",
+          "WealthCharts"
+        ],
+        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "verifiedOn": "Nov 28, 2026"
+      },
+      {
+        "name": "Select",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000,
+          300000
+        ],
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "TradingView",
+          "Rithmic",
+          "Tradesea",
+          "Quantower",
+          "Sierra Chart",
+          "R|Trader",
+          "WealthCharts"
+        ],
+        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "verifiedOn": "Nov 28, 2026"
+      }
     ],
     "payMethods": [
       "Not listed"
