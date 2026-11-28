@@ -1410,6 +1410,17 @@ header :focus-visible{outline-color:var(--ivory)!important}
 @media(max-width:950px){.tc-advanced-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.tc-firm-search>div{flex-direction:column}.tc-start-links{grid-template-columns:1fr}.tc-start-links>a,.tc-start-links>a:first-child{border-right:0;border-bottom:1px solid var(--sand);padding:12px 0;min-height:56px}.tc-start-links>a:last-child{border-bottom:0}#app .filterbar{grid-template-columns:repeat(2,minmax(0,1fr))}#app .filterbar>.field.grow{grid-column:1/-1}.tc-advanced-grid{grid-template-columns:1fr}}
 </style>
+<style>
+@media(max-width:1180px){
+ header .hbar{display:flex;align-items:center;justify-content:space-between}
+ header .nav-toggle{display:flex;align-items:center;gap:8px;min-height:44px}
+ header nav.main{display:none;position:absolute;left:0;right:0;top:100%;margin:0;padding:12px 16px 18px;background:var(--forest);border-bottom:1px solid var(--sand);max-height:70dvh;overflow:auto;flex-direction:column;align-items:stretch;gap:4px;z-index:80}
+ header.nav-open nav.main{display:flex}
+ header nav.main>a,header nav.main .nav-resources summary{width:100%;min-height:44px}
+ header nav.main .nav-resources{width:100%}
+ header nav.main .nav-resources-menu{position:static;width:100%;min-width:0;box-shadow:none}
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2507,8 +2518,8 @@ function firmQueryMatch(f, st){
     if (st.price === "150p" && !(n >= 150)) return false;
   }
   if (st.payout && st.payout !== "all"){
-    if (st.payout === "unk") return f.payoutDays == null;
-    if (f.payoutDays == null) return false;
+    if (st.payout === "unk" && f.payoutDays != null) return false;
+    if (st.payout !== "unk" && f.payoutDays == null) return false;
     if (st.payout === "1" && !(f.payoutDays <= 1)) return false;
     if (st.payout === "7" && !(f.payoutDays <= 7)) return false;
     if (st.payout === "14" && !(f.payoutDays <= 14)) return false;
