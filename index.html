@@ -2876,7 +2876,7 @@ function renderJournal(){
     '<div class="jv14-account-grid">' + journalState.accounts.map(function(a){
       return '<div class="journal-account-row' + (a.id === journalState.selected ? " jv14-selected" : "") + '"><div><strong>' + esc(a.account_label || a.firm || 'Account') + '</strong><div class="jv14-account-size">' + (Number(a.account_size)>0 ? money(Number(a.account_size)) : '—') + '</div><p class="mut small">' + esc([a.firm,a.plan].filter(Boolean).join(' · ')) + '</p><p class="mut small">' + esc(journalStatusLabel(a.stage || "evaluation")) + " · " + esc(journalStatusLabel(a.status || "active")) + '</p></div><span style="display:flex;gap:6px"><button class="btn ghost small" type="button" data-edit-account="' + esc(a.id) + '">Edit</button><button class="btn ghost small" type="button" data-delete-account="' + esc(a.id) + '">Delete</button><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></span></div>';
     }).join("") + '</div>' +
-    '<h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
+    '<h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><input id="jv14FirmSearch" type="search" placeholder="Search all prop firms" aria-label="Search available prop firms" autocomplete="off" style="margin-bottom:8px"><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
     '<div class="field"><label class="fl" for="newPlan">Program / plan</label><select id="newPlan"></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
     '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
@@ -3006,9 +3006,10 @@ function renderJournal(){
       select.appendChild(option);
     });
     var chosen = pref && sizes.indexOf(pref) >= 0 ? pref : sizes[0];
+    var customSize=document.createElement("option");customSize.value="__custom__";customSize.textContent="Other / enter account size";select.appendChild(customSize);
     select.value = String(chosen);
     manual.value = String(chosen);
-    if (note) note.textContent = savedExtra ? "The saved size is kept even though this plan's listed sizes are different." : "Only sizes named for this plan are listed.";
+    if (note) note.textContent = savedExtra ? "The saved size is kept even though this plan's listed sizes are different." : "Listed sizes come from directory research; choose Other for a manually recorded size.";
   }
   function journalFillPlans(firm, preferred){
     var select = $("#newPlan");
@@ -3040,6 +3041,7 @@ function renderJournal(){
       extra.textContent = planName + " (saved)";
       select.appendChild(extra);
     }
+    var manualPlan=document.createElement("option");manualPlan.value="__custom__";manualPlan.textContent="Other / enter plan manually";select.appendChild(manualPlan);
     select.value = planName && (known || planName) ? planName : catalog[0].name;
     $("#newPlanOther").style.display = "none";
     $("#newPlanOther").value = "";
@@ -3070,6 +3072,7 @@ function renderJournal(){
     $("#journalAccountSave").textContent = "Save account";
     $("#journalAccountCancel").hidden = true;
     $("#newFirm").value = "";
+    if($("#jv14FirmSearch")){$("#jv14FirmSearch").value="";journalFilterFirmOptions();}
     $("#newFirmOther").value = "";
     $("#newAccountLabel").value = "";
     delete $("#newAccountLabel").dataset.auto;
@@ -3112,7 +3115,19 @@ function renderJournal(){
       renderJournal();
     });
   });
+  var jFirmSearch=$("#jv14FirmSearch");
+  function journalFilterFirmOptions(){
+    var q=jFirmSearch.value.trim().toLowerCase(), sel=$("#newFirm"), count=0;
+    Array.prototype.forEach.call(sel.options,function(o){
+      var special=!o.value||o.value==="__other__", match=special||o.value.toLowerCase().indexOf(q)>=0;
+      o.hidden=!match&&o.value!==sel.value;
+      if(!special&&match)count++;
+    });
+    $("#journalFirmCount").textContent=q ? count+" matching listed firms. Clear search for the complete directory." : FIRMS.length+" listed firms. Plan and size follow the account recorded for that firm.";
+  }
+  jFirmSearch.addEventListener("input",journalFilterFirmOptions);
   $("#newFirm").addEventListener("change", function(){
+    journalFilterFirmOptions();
     if (this.value !== "__other__") $("#newFirmOther").value = "";
     journalApplyFirm(null, false);
   });
@@ -3124,7 +3139,7 @@ function renderJournal(){
     journalSyncLabel();
   });
   $("#newAccountSizePreset").addEventListener("change", function(){
-    if (this.value && this.value !== "__custom__") $("#newAccountSize").value = this.value;
+    var custom=this.value==="__custom__", input=$("#newAccountSize");input.style.display=custom?"block":"none";input.required=custom;if(custom){input.value="";input.focus();}else if(this.value)input.value=this.value;
   });
   $("#newAccountLabel").addEventListener("input", function(){ this.dataset.auto = "0"; });
   $("#journalAccountCancel").addEventListener("click", journalResetAccountForm);
@@ -3140,6 +3155,7 @@ function renderJournal(){
       $("#journalAccountCancel").hidden = false;
       var known = FIRMS.some(function(f){ return f.name === row.firm; });
       $("#newFirm").value = known ? row.firm : "__other__";
+      $("#jv14FirmSearch").value="";journalFilterFirmOptions();
       $("#newFirmOther").value = known ? "" : (row.firm || "");
       journalApplyFirm({ plan: row.plan || "", size: Number(row.account_size) }, true);
       $("#newAccountLabel").value = row.account_label || "";
@@ -3280,12 +3296,12 @@ function renderJournal(){
         if (offered.indexOf(n) < 0 && n > 0) offered.push(n);
       });
     }
-    if (!firm || !label || !Number.isFinite(size) || size < 0 || size > 1000000000) {
+    if (!firm || !label || (!listed && !$("#newAccountSize").value.trim()) || !Number.isFinite(size) || size < 0 || size > 1000000000) {
       msg.textContent = "Choose a firm and account name. Account size must be a number from 0 up.";
       msg.className = "form-msg err";
       return;
     }
-    if (offered.length && offered.indexOf(size) < 0) {
+    if (listed && offered.length && offered.indexOf(size) < 0) {
       msg.textContent = "Choose a size this plan offers.";
       msg.className = "form-msg err";
       return;
