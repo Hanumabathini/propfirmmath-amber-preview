@@ -66,3 +66,6 @@ maventrading.com lists Standard 1-, 2- and 3-Step, Instant, Static 1-Step, Buy N
 
 ## Trade The Pool (left partial)
 tradethepool.com shows Flex and Max evaluations for Day Trade and Swing at $5K-$200K buying power, but no prices or full rules on the public pages read (homepage, /the-program/). The purchase flow at hub.tradethepool.com redirects to sign-in. Pricing can't be confirmed from public pages; stays partial.
+
+## Lark Funding (left partial)
+larkfunding.com runs a Black Friday "Buy 1, Get 3" bundle (Nov 17-30) and adds "BF" size tabs to the Instant, 1-Step, 1-Step Max and 3-Step cards. The card fees (for example 10K: Instant $400, 1-Step $200, 1-Step Max $99, 3-Step $105) are shown without a list/sale split, so it isn't clear they are standing prices. Rules read: Instant 8% trailing, 5% daily, 90% reward, on-demand first payout; 1-Step 10% target, 7% max, 5% daily; 1-Step Max 12% target, 12% max, 5% daily, 3 free restarts; 3-Step 5/4/3% targets, 5% max, no daily limit. Re-read after Nov 30.
