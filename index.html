@@ -2579,6 +2579,9 @@ function journalMotionOn(){
 function journalFirmRules(firm, plan, size){
   if (!firm) return null;
   var listed = firm.plans || firm.accountPlans || [];
+  // A supplemental journal program confirms availability, not rules for every size.
+  var supplemental = Array.isArray(firm.accountPlans) && firm.accountPlans.some(function(p){return (p.name || p.program) === plan && Array.isArray(p.sizes) && p.sizes.indexOf(Number(size)) >= 0;});
+  if (supplemental && !listed.some(function(p){return (p.name || p.program) === plan && Number(p.size) === Number(size) && p.coverage === "verified";})) return {target:null,daily:null,drawdown:null,minDays:null,consistency:null};
   var rec = null;
   if (Array.isArray(listed)) {
     var named = listed.filter(function(p){
@@ -3030,7 +3033,7 @@ function renderJournal(){
       select.style.display = "none";
       manual.style.display = "block";
       manual.required = true;
-      if (pref) manual.value = String(pref);
+      manual.value = pref ? String(pref) : "";
       if (note) note.textContent = plan ? "This plan has no size in the research. Enter the size on your account." : "Choose a firm to see the sizes its plan offers.";
       return;
     }
@@ -3358,6 +3361,10 @@ function renderJournal(){
     saveBtn.disabled = true;
     var editId = $("#journalAccountForm").dataset.editId;
     var platform = $("#newAccountPlatform").value==="__custom__" ? $("#newAccountPlatformOther").value.trim() : $("#newAccountPlatform").value;
+    if ($("#newAccountPlatform").value==="__custom__" && !platform) {
+      msg.textContent="Enter your platform or leave the selection blank.";
+      msg.className="form-msg err";saveBtn.disabled=false;return;
+    }
     var payload = { firm: firm, plan: plan || null, account_label: label, account_size: size, stage: stage, status: status, platform:platform || null };
     var query = editId
       ? sb.from("trader_accounts").update(payload).eq("id", editId).eq("user_id", PM_USER.id)
