@@ -2159,7 +2159,7 @@ function pageDeals(){
     '<p class="mut small" style="margin-top:18px">Where an offer names a clock time, that timezone is used. A date alone is treated as 11:59 PM Eastern. Codes are the firms\' published promotions.</p>');
   bindCopy();
   var allOffers=$("#pfmAllOffers");if(allOffers)allOffers.addEventListener("click",function(){dealState.market="all";pageDeals();});
-  $("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
+  $$("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
   if (window.pfmDealTimer) clearInterval(window.pfmDealTimer);
   window.pfmDealTimer = setInterval(function(){
     if (location.pathname !== "/deals") { clearInterval(window.pfmDealTimer); return; }
