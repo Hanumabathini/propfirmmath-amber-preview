@@ -23,6 +23,9 @@ run("/deals",(d)=>{
  if(items.length>1){const pos=d.querySelector("#terra-ticket-position");assert.equal(pos.textContent,"1 / "+items.length);d.querySelector("#terra-ticket-next").click();assert.equal(pos.textContent,"2 / "+items.length);assert.equal(items[1].dataset.slot,"0");d.querySelector("#terra-ticket-prev").click();assert.equal(items[0].dataset.slot,"0");}
  const pause=d.querySelector("#terra-clock-toggle");assert(pause);pause.click();assert.equal(pause.getAttribute("aria-pressed"),"true");pause.click();assert.equal(pause.getAttribute("aria-pressed"),"false");
 });
+run("/tracker",(d)=>{const bars=[...d.querySelectorAll("[data-payout-row]")];assert(bars.length>0);assert(d.querySelector("#tc-payout-detail").textContent.length>0);if(bars.length>1){bars[1].click();assert.equal(bars[1].getAttribute("aria-pressed"),"true");assert.equal(bars[0].getAttribute("aria-pressed"),"false");assert(d.querySelector("#tc-payout-detail").textContent.includes(bars[1].querySelector("span").textContent));}});
+run("/compare?add=tradeify",(d)=>{assert(d.querySelector(".tc-compare-dossier"));const risk=d.querySelector("[data-tc-field=risk]");assert(risk);risk.click();const rows=[...d.querySelectorAll(".comparison-table [data-field-group]")];assert(rows.length>0);assert(rows.every(row=>row.hidden===(row.dataset.fieldGroup!=="risk")));d.querySelector("[data-tc-field=all]").click();assert(rows.every(row=>!row.hidden));});
+run("/firm/tradeify",(d)=>{assert(d.querySelector(".tc-firm-identity"));assert(d.querySelector("#plan-board"));});
 run("/tools",(d)=>{
  const cards=[...d.querySelectorAll(".pfm-clickable-calculator")];assert.equal(cards.length,6);assert.equal(d.querySelectorAll(".pfm-tool-expanded").length,0);
  cards[1].click();assert.equal(cards[1].getAttribute("aria-expanded"),"true");assert(cards[1].querySelector(".card[id^=calc-]:not([hidden])"));
