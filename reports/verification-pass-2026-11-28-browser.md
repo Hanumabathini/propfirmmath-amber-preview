@@ -30,3 +30,6 @@ The public site (bitfunded.com) has no prices or rules. Its Challenges buttons g
 
 ## FundedElite (left partial)
 fundedelite.com advertises a $5 start, sizes up to $400K, up to 95% split, instant accounts and a custom-challenge builder ("custom accounts created: 8,452"). Prices and rules depend on the builder's settings, so there is no fixed plan table to confirm against. The catalog stays as is, partial, until a fixed list of standard plans is published.
+
+## Blue Guardian (in progress, still partial)
+Futures matrix read on 2026-11-28 via URL parameters (blueguardian.com/?market=futures&plan=<elite|reserve|zero|direct>&size=<25k|50k|100k|150k>): all 16 plan/size combinations list standard price, sale price (code BLACK, 30-35% off), targets, drawdown, DLL, consistency, payout caps. Still to do: the CFD (forex) matrix, and Reserve/Zero option variants (DLL on/off, drawdown type, consistency, each with a price delta). The firm stays partial until both markets are covered.
