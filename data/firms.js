@@ -8500,7 +8500,52 @@ var FIRMS = [
         "platform": "Not stated",
         "source": "https://propedcapital.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Standard Eval",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "platforms": [
+          "Nexus Connect",
+          "Onyx (TradingView charting)"
+        ],
+        "source": "https://www.propedcapital.com/plans",
+        "platformSource": "https://propedcapital.com/",
+        "verifiedOn": "2026-11-28",
+        "coverage": "verified-availability",
+        "note": "Published account choices; live account allocation differs."
+      },
+      {
+        "name": "Instant Funding",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "platforms": [
+          "Nexus Connect",
+          "Onyx (TradingView charting)"
+        ],
+        "source": "https://www.propedcapital.com/plans",
+        "platformSource": "https://propedcapital.com/",
+        "verifiedOn": "2026-11-28",
+        "coverage": "verified-availability",
+        "note": "Published account choices; live account allocation differs."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://www.propedcapital.com/plans",
+      "platformSource": "https://propedcapital.com/",
+      "note": "Published account choices; live account allocation differs."
+    }
   },
   {
     "slug": "coinprop",
@@ -9618,7 +9663,86 @@ var FIRMS = [
         "platform": "NinjaTrader + 20+ platforms",
         "source": "https://oneuptrader.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Evaluation",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000,
+          250000
+        ],
+        "platforms": [
+          "NinjaTrader",
+          "R|Trader",
+          "R|Trader Pro",
+          "QST",
+          "QScalp",
+          "Scalp Tool",
+          "Sierra Chart",
+          "Track’n Trade",
+          "Trade Navigator",
+          "MotiveWave",
+          "Volfix",
+          "AgenaTrader",
+          "Bookmap",
+          "InsideEdge Trader",
+          "Investor/RT",
+          "Jigsaw Trading",
+          "Photon",
+          "Medved Trader"
+        ],
+        "source": "https://www.oneuptrader.com/",
+        "platformSource": "https://help.oneuptrader.com/article/380-supported-platforms",
+        "verifiedOn": "2026-11-28",
+        "coverage": "verified-availability",
+        "note": "Current public names; existing legacy records retained."
+      },
+      {
+        "name": "Pro Evaluation",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000,
+          250000
+        ],
+        "platforms": [
+          "NinjaTrader",
+          "R|Trader",
+          "R|Trader Pro",
+          "QST",
+          "QScalp",
+          "Scalp Tool",
+          "Sierra Chart",
+          "Track’n Trade",
+          "Trade Navigator",
+          "MotiveWave",
+          "Volfix",
+          "AgenaTrader",
+          "Bookmap",
+          "InsideEdge Trader",
+          "Investor/RT",
+          "Jigsaw Trading",
+          "Photon",
+          "Medved Trader"
+        ],
+        "source": "https://www.oneuptrader.com/",
+        "platformSource": "https://help.oneuptrader.com/article/380-supported-platforms",
+        "verifiedOn": "2026-11-28",
+        "coverage": "verified-availability",
+        "note": "Current public names; existing legacy records retained."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://www.oneuptrader.com/",
+      "platformSource": "https://help.oneuptrader.com/article/380-supported-platforms",
+      "note": "Current public names; existing legacy records retained."
+    }
   },
   {
     "slug": "spiceprop",
