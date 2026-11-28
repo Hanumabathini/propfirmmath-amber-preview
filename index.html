@@ -1106,7 +1106,7 @@ function verChip(f){
 
 function codesCount(){ var n=0; FIRMS.forEach(function(f){ n+=f.codes.length; }); return n; }
 function firmsWithCodes(){ return FIRMS.filter(function(f){ return f.codes.length; }); }
-function codeBtn(f){ if (!f.code) return '<span class="mut">—</span>'; return '<button class="code-btn" data-copy="'+esc(f.code)+'" aria-label="Copy code '+esc(f.code)+'">'+esc(f.code)+(f.off?'<span class="off">'+f.off+'% off</span>':'')+'</button>'; }
+function codeBtn(f){var c=activeCodes(f)[0];if(!c||!c.code)return '<span class="mut">—</span>';return '<button class="code-btn" data-copy="'+esc(c.code)+'" aria-label="Copy code '+esc(c.code)+'">'+esc(c.code)+(c.off?'<span class="off">'+c.off+'% off</span>':'')+'</button>';}
 function snapLine(txt){ return '<p class="snap-note" style="margin-top:14px"><b>Snapshot:</b> '+txt+'</p>'; }
 function dirCount(key){ return FIRMS.filter(function(f){ return f.markets.indexOf(key)>=0; }).length; }
 function marketStats(key){
@@ -1487,7 +1487,7 @@ function firmPlanList(f){
     name: "Starting offer",
     size: null,
     price: f.from,
-    currency: f.fromCur || "USD",
+    currency: f.fromCur || null,
     monthly: !!f.monthly,
     target: null,
     dailyLoss: null,
@@ -1505,11 +1505,11 @@ function firmPlanList(f){
 function planSizeLabel(p){
   if (!p || p.size == null) return "Size not listed";
   var n = p.size / 1000;
-  return (Math.round(n * 10) / 10).toString().replace(/\.0$/, "") + "K";
+  return Number(p.size)<1000?Number(p.size).toLocaleString("en-US"):(Math.round(n * 1000) / 1000).toString().replace(/\.0$/, "") + "K";
 }
 function planLabel(p){ return (p.name||p.program||"Unconfirmed program") + (p.size ? " " + planSizeLabel(p) : " — size unconfirmed"); }
 function planPriceHTML(p){
-  if (!p || p.price == null || p.price === "") return '<span class="mut">Price not verified</span>';
+  if (!p || p.price == null || p.price === "" || !Number.isFinite(Number(p.price))) return '<span class="mut">Price not verified</span>';
   var sym = p.currency === "EUR" ? "€" : p.currency === "USD" ? "$" : esc(p.currency || "Currency unconfirmed")+" ";
   var num = Number(p.price).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return sym + num + (p.monthly ? '<span class="mut small"> /month</span>' : "");
@@ -2019,6 +2019,7 @@ function pageTracker(){
 }
 var TOOL_CAT = {"Savings Calculator":"calc","Consistency Calculator":"calc","Dollar to Tick Calculator":"calc","Forex Calculator":"calc","Payout Tracker":"data","Trading Journal":"data","Economic Calendar":"data","Affordable Indicators":"copy","TradeSyncer":"copy","Replikanto":"copy","Tradeus / Thor":"copy","Pass Probability Simulator":"calc","Cost to Get Funded":"calc"};
 var TOOL_ANCHOR = {"Savings Calculator":"calc-savings","Consistency Calculator":"calc-consistency","Dollar to Tick Calculator":"calc-tick","Forex Calculator":"calc-fx","Pass Probability Simulator":"calc-sim","Cost to Get Funded":"calc-cost"};
+function savingsCodes(f){return activeCodes(f).filter(function(c){return c.code&&Number.isFinite(Number(c.off))&&Number(c.off)>0&&Number(c.off)<=100;});}
 function pageTools(){
   var cards = [["coins","Savings Calculator","Free calculator","Calculate savings with verified discount codes."],["calc","Consistency Calculator","Free calculator","Biggest-day % against any rule."],["target","Dollar to Tick Calculator","Free calculator","NQ, ES, GC, CL tick values."],["coins","Forex Calculator","Free calculator","Pip value by pair and lot size."],["calc","Pass Probability Simulator","Free calculator","Simulate evaluation outcomes using your assumptions."],["coins","Cost to Get Funded","Free calculator","Estimate the expected cost of passing an evaluation."]];
   go(pageHead('<a href="/">Home</a> · Trading Tools', "Trading tools &amp; calculators",
@@ -2029,7 +2030,7 @@ function pageTools(){
   "</div>"+
   '<section class="pfm-calculator-workspace" id="pfm-calculator-section" hidden><div class="pfm-calculator-heading"><div><h2 id="pfm-active-calculator-title">Selected calculator</h2><p>Adjust inputs to calculate instantly.</p></div><button type="button" id="pfm-close-calculator" class="pfm-calculator-close">✕ Close</button></div>'+
   '<div class="pfm-calculator-grid">'+
-  '<div class="card" id="calc-savings"><h3>Savings Calculator</h3><p class="pfm-calc-help">Estimate checkout price after a percentage discount. Example: $200 with 20% off becomes $160.</p><div class="field" style="margin-top:14px"><label class="fl" for="savFirm">Firm — verified percentage code</label><select id="savFirm">'+FIRMS.filter(function(f){ return f.off && f.from!==null; }).sort(function(a,b){ return b.off-a.off; }).map(function(f){ return '<option value="'+f.slug+'">'+esc(f.name)+" — "+f.code+" ("+f.off+"% off)</option>"; }).join("")+'</select></div><div class="field"><label class="fl" for="savPrice">Price before code</label><input type="number" id="savPrice" min="0" step="0.01" /></div><p id="savOut" style="font-weight:700"></p><p class="snap-note" style="margin-top:8px">Pre-filled with the firm\'s researched entry price; change the price to price a larger account at the same code. Firms whose verified code is not a percentage (BULENOX, BLACKFRIDAY, OMO) are on the <a href="/deals">Deals page</a> instead.</p></div>'+
+  '<div class="card" id="calc-savings"><h3>Savings Calculator</h3><p class="pfm-calc-help">Estimate a discount on a specific account offer, subject to checkout eligibility.</p><div class="field" style="margin-top:14px"><label class="fl" for="savFirm">Prop firm</label><select id="savFirm">'+FIRMS.filter(function(f){return savingsCodes(f).length;}).slice().sort(function(a,b){return a.name.localeCompare(b.name);}).map(function(f){return '<option value="'+esc(f.slug)+'">'+esc(f.name)+'</option>';}).join("")+'</select></div><div class="field"><label class="fl" for="savProgram">Account type / program</label><select id="savProgram"></select></div><div class="field"><label class="fl" for="savSize">Account size</label><select id="savSize"></select></div><div class="field"><label class="fl" for="savPlatform">Trading platform</label><select id="savPlatform"></select></div><div class="field"><label class="fl" for="savOffer">Exact account offer</label><select id="savOffer"></select></div><div class="field"><label class="fl" for="savCode">Published percentage code</label><select id="savCode"></select></div><div class="field"><label class="fl" for="savPrice">Price before code</label><input type="number" id="savPrice" min="0" step="0.01" /></div><p class="mut small" id="savCurrency"></p><p id="savOut" style="font-weight:700"></p><p class="snap-note" style="margin-top:8px">An offer with no verified price requires a manual checkout price. The result is hypothetical, not confirmation that a code applies to the selected account. Expired codes are excluded.</p></div>'+
   '<div class="card" id="calc-consistency"><h3>Consistency Calculator</h3><p class="pfm-calc-help">Check whether your biggest profit day is within the firm limit. Example: $1,500 ÷ $4,000 = 37.5%.</p><div class="field" style="margin-top:14px"><label class="fl" for="consTotal">Total profit ($)</label><input type="number" id="consTotal" value="4000" min="0" /></div><div class="field"><label class="fl" for="consBig">Biggest single-day profit ($)</label><input type="number" id="consBig" value="1500" min="0" /></div><div class="field"><label class="fl" for="consRule">Maximum biggest-day share (%)</label><input type="number" id="consRule" value="40" min="1" max="100" /></div><p id="consOut" style="font-weight:700"></p></div>'+
   '<div class="card" id="calc-tick"><h3>Dollar to Tick Calculator</h3><p class="pfm-calc-help">Convert a dollar target or risk into futures ticks. Example: $100 on 1 NQ contract equals 20 ticks.</p><div class="field" style="margin-top:14px"><label class="fl" for="tickInst">Instrument</label><select id="tickInst"><option value="5">NQ — $5.00 per tick</option><option value="12.5">ES — $12.50 per tick</option><option value="10">GC (gold) — $10.00 per tick</option><option value="10">CL (oil) — $10.00 per tick</option></select></div><div class="field"><label class="fl" for="tickDollars">Target profit or risk amount ($)</label><input type="number" id="tickDollars" value="500" min="0" /></div><div class="field"><label class="fl" for="tickContracts">Contracts</label><input type="number" id="tickContracts" value="1" min="1" /></div><p id="tickOut" style="font-weight:700"></p></div>'+
   '<div class="card" id="calc-fx"><h3>Forex Pip Calculator</h3><p class="pfm-calc-help">Estimate the dollar value of a pip move. Negative pips show the opposite move; trade direction is not modeled.</p><div class="field" style="margin-top:14px"><label class="fl" for="fxPair">Pair</label><select id="fxPair"><option value="10">EUR/USD — $10.00 per pip (1 lot)</option><option value="10">GBP/USD — $10.00 per pip (1 lot)</option><option value="10">AUD/USD — $10.00 per pip (1 lot)</option><option value="jpy">USD/JPY — calculated from exchange rate</option></select></div><div class="field" id="fxRateWrap" style="display:none"><label class="fl" for="fxRate">USD/JPY rate (JPY per USD)</label><input type="number" id="fxRate" value="150" min="0.0001" step="0.01" /><p class="mut small">Enter the current exchange rate manually.</p></div><div class="field"><label class="fl" for="fxLots">Position size (lots)</label><input type="number" id="fxLots" value="1" min="0" step="0.01" /></div><div class="field"><label class="fl" for="fxPips">Price move in pips (+ or −)</label><input type="number" id="fxPips" value="25" /></div><p id="fxOut" style="font-weight:700"></p></div>'+
@@ -2061,11 +2062,47 @@ function pageTools(){
   ["consTotal","consBig","consRule"].forEach(function(id){ $("#"+id).addEventListener("input",cons); });
   ["tickInst","tickDollars","tickContracts"].forEach(function(id){ $("#"+id).addEventListener("input",tick);$("#"+id).addEventListener("change",tick); });
   ["fxPair","fxLots","fxPips","fxRate"].forEach(function(id){ $("#"+id).addEventListener("input",fx);$("#"+id).addEventListener("change",fx); });
-  function savFirmObj(){ var f=firm($("#savFirm").value); if (f) return f; return FIRMS.filter(function(x){ return x.off && x.from!==null; }).sort(function(a,b){ return b.off-a.off; })[0]; }
-  function sav(){ var f=savFirmObj(); var p=calcNumber("savPrice"); if(!Number.isFinite(p)||p<0){calcError("savOut","Enter a valid non-negative price.");return;} var sym=f.fromCur==="EUR"?"€":"$"; var fmt=function(n){ return sym+Number(n).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); }; var pay=Math.round(p*(1-f.off/100)*100)/100; $("#savOut").innerHTML = "With code <span style='color:var(--gold)'>"+esc(f.code)+"</span> ("+f.off+"% off): you pay <span style='color:#a9dc7d'>"+fmt(pay)+"</span> — you save "+fmt(Math.round((p-pay)*100)/100)+"."; }
-  var savF=$("#savFirm"); savF.addEventListener("change", function(){ var f=savFirmObj(); $("#savPrice").value=f.from; sav(); });
-  $("#savPrice").value = savFirmObj().from;
-  $("#savPrice").addEventListener("input", sav);
+  function savFirmObj(){return firm($("#savFirm").value);}
+  function savOptionMenu(id,items,wanted){
+    var e=$("#"+id);e.innerHTML=items.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[1])+'</option>';}).join("");
+    if(items.some(function(x){return String(x[0])===String(wanted);}))e.value=String(wanted);
+  }
+  function savPlan(){var f=savFirmObj();return f&&firmPlanList(f).find(function(p){return p.id===$("#savOffer").value;});}
+  function savSyncPrice(){var p=savPlan();$("#savPrice").value=p&&p.price!=null&&p.price!==""&&Number.isFinite(Number(p.price))?String(p.price):"";$("#savCurrency").textContent=p?("Recorded currency: "+(p.currency||"unconfirmed")+(p.monthly?" · monthly":"")+(p.price==null?" · price unconfirmed":"")):"No account offer selected";sav();}
+  function savFillOffers(resetPlatform){
+    var f=savFirmObj(),program=$("#savProgram").value,size=$("#savSize").value,old=$("#savOffer").value;
+    var records=f?firmPlanList(f).filter(function(p){return catalogProgram(p)===program&&catalogSizeKey(p)===size;}):[];
+    var platforms=Array.from(new Set(records.flatMap(catalogPlatforms))).sort();
+    savOptionMenu("savPlatform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(p){return [p,p];})),resetPlatform?"":$("#savPlatform").value);
+    var platform=$("#savPlatform").value;if(platform)records=records.filter(function(p){return catalogPlatforms(p).indexOf(platform)>=0;});
+    savOptionMenu("savOffer",records.map(function(p){return [p.id,catalogVariantLabel(p)];}),old);savSyncPrice();
+  }
+  function savFillSizes(){
+    var f=savFirmObj(),program=$("#savProgram").value,records=f?firmPlanList(f).filter(function(p){return catalogProgram(p)===program;}):[];
+    var sizes=Array.from(new Set(records.map(catalogSizeKey))).sort(function(a,b){return a==="unknown"?1:b==="unknown"?-1:Number(a)-Number(b);});
+    savOptionMenu("savSize",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}));savFillOffers(true);
+  }
+  function savFillFirm(){
+    var f=savFirmObj(),records=f?firmPlanList(f):[],programs=Array.from(new Set(records.map(catalogProgram)));
+    savOptionMenu("savProgram",programs.map(function(p){return [p,p];}));
+    savOptionMenu("savCode",f?savingsCodes(f).map(function(c){return [c.code,c.code+" ("+c.off+"% off)"];}):[]);savFillSizes();
+  }
+  function sav(){
+    var f=savFirmObj(),p=savPlan(),c=f&&savingsCodes(f).find(function(x){return x.code===$("#savCode").value;});
+    if(!p||!c){calcError("savOut","Choose an account and a non-expired published percentage code.");return;}
+    var v=calcNumber("savPrice");if(!Number.isFinite(v)||v<0){calcError("savOut","Enter a valid non-negative price from checkout.");return;}
+    var sym=p.currency==="EUR"?"€":p.currency==="USD"?"$":p.currency?p.currency+" ":"";var fmt=function(n){return esc(sym)+Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});};
+    var pay=Math.round(v*(1-Number(c.off)/100)*100)/100;
+    $("#savOut").innerHTML="If code <span style='color:var(--gold)'>"+esc(c.code)+"</span> applies ("+c.off+"% off): estimated price <span style='color:#a9dc7d'>"+fmt(pay)+"</span> — estimated saving "+fmt(Math.round((v-pay)*100)/100)+(p.currency?".":" (currency unconfirmed).");
+  }
+  $("#savFirm").addEventListener("change",savFillFirm);
+  $("#savProgram").addEventListener("change",savFillSizes);
+  $("#savSize").addEventListener("change",function(){savFillOffers(true);});
+  $("#savPlatform").addEventListener("change",function(){savFillOffers(false);});
+  $("#savOffer").addEventListener("change",savSyncPrice);
+  $("#savCode").addEventListener("change",sav);
+  $("#savPrice").addEventListener("input",sav);
+  savFillFirm();
   function sim(){
     var w=calcNumber("simWin"),rr=calcNumber("simRR"),rk=calcNumber("simRisk"),tg=calcNumber("simTarget"),dd=calcNumber("simDD"),n=calcNumber("simTrades");
     if(![w,rr,rk,tg,dd,n].every(Number.isFinite)||w<=0||w>=100||rr<=0||rk<=0||tg<=0||dd<=0||!Number.isInteger(n)||n<1||n>2000){calcError("simOut","Enter a win rate between 0 and 100, positive reward:risk, risk, target and drawdown, and a whole number of trades up to 2,000.");return;}
@@ -3131,7 +3168,7 @@ function renderJournal(){
     var firm = $("#newFirm").value === "__other__" ? $("#newFirmOther").value.trim() : $("#newFirm").value;
     var plan = $("#newPlan").value === "__custom__" ? $("#newPlanOther").value.trim() : $("#newPlan").value;
     if (!firm) return;
-    input.value = plan ? firm + " " + plan : firm + " Account";
+    var size=Number($("#newAccountSize").value);input.value = (plan ? firm + " " + plan : firm + " Account")+(size>0?" "+planSizeLabel({size:size}):"");
     input.dataset.auto = "1";
   }
   function journalApplyFirm(preferred, keepLabel){
@@ -3228,8 +3265,9 @@ function renderJournal(){
   });
   $("#newAccountSizePreset").addEventListener("change", function(){
     var custom=this.value==="__custom__", input=$("#newAccountSize");input.style.display=custom?"block":"none";input.required=custom;if(custom){input.value="";input.focus();}else if(this.value)input.value=this.value;
-    journalFillPlatforms(null);
+    journalFillPlatforms(null);journalSyncLabel();
   });
+  $("#newAccountSize").addEventListener("input",journalSyncLabel);
   $("#newPlatform").addEventListener("change",function(){var o=$("#newPlatformOther");o.style.display=this.value==="__custom__"?"block":"none";if(this.value!=="__custom__")o.value="";});
   $("#newAccountLabel").addEventListener("input", function(){ this.dataset.auto = "0"; });
   $("#journalAccountCancel").addEventListener("click", function(){ journalResetAccountForm(); $("#journalAddAccount").focus(); });
