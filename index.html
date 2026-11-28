@@ -758,6 +758,65 @@ nav.main a.on,nav.main .nav-resources summary.on{box-shadow:inset 0 -2px var(--a
 @media(max-width:860px){.hbar{display:flex}.research-hero{padding-block:var(--space-8)}.research-intro,.research-index-panel{grid-column:1/-1}.research-intro h1{max-width:20ch}.research-catalog .mq-track{grid-template-columns:repeat(2,minmax(0,1fr))}#app .detail-grid{grid-template-columns:minmax(0,1fr)}#app .compare-selectors .field:not(:first-child){border-left:0;padding-left:0}.firm-card .firm-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.research-hero{gap:var(--space-6)}.research-index-panel{padding:var(--space-4)}.section-mast{flex-direction:column;gap:var(--space-3)}.research-catalog .mq-track{grid-template-columns:minmax(0,1fr)}.market-landing-card,.market-landing-card:nth-child(-n+2),.market-landing-card:last-child:nth-child(3n){grid-column:1/-1;border-right:0;padding:var(--space-6) 0}.firm-grid>.firm-card,#deal-active-list>.deal-card,#deal-ended-list>.deal-card,#app .pfm-tool-directory .tool-card,#app .research-index>.card,#app .research-index>.card:first-child{grid-column:1/-1}#app .pfm-tool-directory .tool-card:nth-child(odd){border-right:0}.index-market{grid-template-columns:minmax(100px,1fr) minmax(0,1fr) 32px 12px;gap:var(--space-2)}}
 </style>
+<style id="pfm-selected-motion">
+html:not([data-pfm-route="/journal"]) #app.pfm-page-enter{animation:pfmPageEnter .32s cubic-bezier(.2,.75,.2,1) both}
+#app .pfm-kinetic span{display:block;animation:pfmKinetic .72s cubic-bezier(.2,.75,.2,1) both}
+#app .pfm-kinetic span:nth-child(2){animation-delay:.09s}#app .pfm-kinetic span:nth-child(3){animation-delay:.18s;color:var(--amber)}
+.pfm-brand-strip{margin:24px 0 28px;border-block:1px solid var(--line);padding:12px 0}
+.pfm-brand-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.pfm-brand-viewport{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.pfm-brand-track,.pfm-brand-run{display:flex;width:max-content;align-items:center;flex:none}
+.pfm-brand-track{animation:pfmBrandMove 34s linear infinite}
+.pfm-brand-run a{display:flex;align-items:center;gap:10px;padding:7px 23px;white-space:nowrap;color:var(--ink);font-weight:750}
+.pfm-brand-strip:hover .pfm-brand-track,.pfm-brand-strip:focus-within .pfm-brand-track,.pfm-motion-paused .pfm-brand-track{animation-play-state:paused}
+.pfm-research-story{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 38px}
+.pfm-story-card{padding:20px!important;border:1px solid var(--line);min-width:0}
+.pfm-story-card.pfm-story-visible{animation:pfmStoryReveal .65s cubic-bezier(.2,.75,.2,1) both}
+.pfm-story-card:nth-child(2){animation-delay:.08s}.pfm-story-card:nth-child(3){animation-delay:.16s}
+.pfm-story-index{font-size:12px;color:var(--amber);font-weight:800;letter-spacing:.12em}
+.pfm-story-card h3{font-size:clamp(17px,2vw,22px);margin:10px 0}.pfm-story-card a{display:inline-block;margin-top:13px;font-weight:700}
+.pfm-compare-kicker{display:flex;align-items:center;justify-content:space-between;max-width:850px;margin:22px auto 0;font-size:11px;letter-spacing:.11em;font-weight:750;color:var(--mut)}
+.pfm-versus{display:grid;place-items:center;border:1px solid var(--amber);border-radius:50%;width:35px;height:35px;color:var(--amber);letter-spacing:0}
+#app .compare-selectors>.grid>.field{padding:15px;border:1px solid var(--line);border-radius:9px;min-width:0;animation:pfmStoryReveal .42s both}
+#app .compare-selectors>.grid>.field:nth-child(2){animation-delay:.08s}#app .compare-selectors select{width:100%;min-width:0;text-overflow:ellipsis}
+.pfm-globe-wrap{text-align:center;margin:12px auto 22px}.pfm-globe{display:block;width:100%;max-width:215px;margin:auto;height:auto}
+.pfm-globe-arc{stroke-dasharray:11 7;animation:pfmArc 2.5s linear infinite}.pfm-globe-arc:nth-child(2){animation-delay:-.8s}.pfm-globe-arc:nth-child(3){animation-delay:-1.4s}
+.pfm-region-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pfm-morph{display:flex;align-items:center;overflow:hidden;width:42px;max-width:100%;height:42px;border:1px solid var(--line);border-radius:24px;background:var(--surface);transition:width .28s,border-radius .25s}
+.pfm-morph.open{width:100%;border-radius:7px}.pfm-region-tools .pfm-morph.open{width:min(100%,280px)}
+.pfm-morph button{height:40px;width:40px;flex:0 0 40px;border:0;background:transparent;color:var(--amber);font-size:23px;display:grid;place-items:center;cursor:pointer}
+.pfm-morph input{border:0!important;min-width:0;flex:1;width:100%;opacity:0;padding:7px!important;background:transparent!important;box-shadow:none!important}.pfm-morph.open input{opacity:1}
+.pfm-morph:focus-within{outline:1px solid var(--amber)}
+.pfm-search-trigger{display:inline-flex!important;align-items:center;gap:5px;white-space:nowrap}.pfm-search-trigger kbd{font:inherit;font-size:10px;opacity:.7}
+.pfm-command{width:min(560px,calc(100vw - 28px));max-height:min(68vh,620px);margin:12vh auto auto;padding:0;border:1px solid var(--amber);border-radius:12px;background:var(--panel);color:var(--ink);box-shadow:0 25px 70px #0008;overflow:auto}
+.pfm-command::backdrop{background:#071218aa;backdrop-filter:blur(5px)}.pfm-command[open]{animation:pfmPageEnter .18s both}
+.pfm-command-head{display:flex;align-items:center;gap:10px;padding:12px;border-bottom:1px solid var(--line);color:var(--amber);position:sticky;top:0;background:var(--panel);z-index:1}
+.pfm-command-head input{min-width:0;flex:1;border:0;background:transparent!important;box-shadow:none!important;padding:10px;color:var(--ink)}
+.pfm-command-results a{display:flex;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
+.pfm-command-results a:hover,.pfm-command-results a:focus-visible{background:rgba(167,227,207,.09);color:var(--amber)}.pfm-command-results small{color:var(--mut);white-space:nowrap}
+#deal-active-list>.deal-card{position:relative;overflow:hidden}
+#deal-active-list>.deal-card:hover::after,#deal-active-list>.deal-card:focus-within::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(167,227,207,.12) 48%,transparent 68%);animation:pfmSweep 1s ease-out both}
+html[data-pfm-route="/login"] #app .auth-layout,html[data-pfm-route="/account"] #app .auth-layout,html[data-pfm-route="/reset"] #app .auth-layout{position:relative;isolation:isolate}
+html[data-pfm-route="/login"] #app .auth-layout::before,html[data-pfm-route="/account"] #app .auth-layout::before,html[data-pfm-route="/reset"] #app .auth-layout::before{content:"";position:absolute;inset:-20px;z-index:-1;background:radial-gradient(ellipse at 20% 20%,rgba(117,186,169,.16),transparent 64%),radial-gradient(ellipse at 90% 80%,rgba(94,134,165,.11),transparent 65%);filter:blur(16px);pointer-events:none}
+html[data-pfm-route="/login"] #app .auth-layout>.card,html[data-pfm-route="/account"] #app .auth-layout>.card,html[data-pfm-route="/reset"] #app .auth-layout>.card{background:linear-gradient(135deg,rgba(61,92,93,.22),rgba(20,35,43,.7)),var(--panel);border:1px solid rgba(167,227,207,.25);backdrop-filter:blur(14px);border-radius:13px;padding:clamp(18px,3vw,28px)}
+#app .pfm-memberships .pfm-membership-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(117,186,169,.08),transparent 65%),var(--panel);border-radius:10px}
+#app .pfm-memberships .pfm-membership-card summary{padding:6px 2px;min-height:100px}#app .pfm-memberships .pfm-membership-card:hover{border-color:var(--amber)}
+#app .pfm-memberships .pfm-tier-elite{background:linear-gradient(135deg,rgba(117,186,169,.18),rgba(153,143,190,.08) 52%,transparent),var(--panel);border-color:rgba(167,227,207,.45)}
+#app .pfm-memberships .pfm-tier-elite:hover::after,#app .pfm-memberships .pfm-tier-elite:focus-within::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 28%,rgba(170,255,225,.13) 45%,rgba(181,169,241,.12) 55%,transparent 72%);animation:pfmSweep 1.3s both;pointer-events:none}
+.pfm-signup-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.pfm-signup-steps span{font-size:11px;color:var(--mut);line-height:1.4}.pfm-signup-steps b{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;border:1px solid var(--line);margin-bottom:7px}
+.pfm-signup-steps .current,.pfm-signup-steps .done{color:var(--amber);font-weight:700}.pfm-signup-steps .current b,.pfm-signup-steps .done b{border-color:var(--amber);background:rgba(117,186,169,.15);transition:background .3s}
+.pfm-auth-success{animation:pfmStoryReveal .4s both}.pfm-auth-success::before{content:"✓";display:inline-grid;place-items:center;border:1px solid currentColor;border-radius:50%;width:23px;height:23px;margin-right:7px;animation:pfmCheck .45s cubic-bezier(.2,1.6,.6,1) both}
+@keyframes pfmPageEnter{from{opacity:.65;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes pfmKinetic{from{opacity:0;transform:translateY(15px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
+@keyframes pfmBrandMove{to{transform:translateX(-50%)}}
+@keyframes pfmStoryReveal{from{opacity:.3;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pfmArc{to{stroke-dashoffset:-36}}
+@keyframes pfmSweep{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
+@keyframes pfmCheck{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+@media(max-width:760px){.pfm-research-story{grid-template-columns:1fr}.pfm-globe{max-width:180px}.pfm-brand-run a{padding:6px 16px}.pfm-search-trigger kbd{display:none}.pfm-compare-kicker{margin-top:15px}}
+@media(prefers-reduced-motion:reduce){html #app.pfm-page-enter,#app .pfm-kinetic span,.pfm-brand-track,.pfm-globe-arc,.pfm-story-card.pfm-story-visible,#app .compare-selectors>.grid>.field,.pfm-command[open],.pfm-auth-success,.pfm-auth-success::before{animation:none!important;transform:none!important;opacity:1!important;clip-path:none!important}.pfm-morph{transition:none!important}.pfm-brand-viewport{overflow:auto;mask-image:none}.pfm-brand-run[aria-hidden="true"]{display:none}#deal-active-list>.deal-card::after,#app .pfm-memberships .pfm-tier-elite::after{display:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -1106,7 +1165,7 @@ function verChip(f){
 
 function codesCount(){ var n=0; FIRMS.forEach(function(f){ n+=f.codes.length; }); return n; }
 function firmsWithCodes(){ return FIRMS.filter(function(f){ return f.codes.length; }); }
-function codeBtn(f){ if (!f.code) return '<span class="mut">—</span>'; return '<button class="code-btn" data-copy="'+esc(f.code)+'" aria-label="Copy code '+esc(f.code)+'">'+esc(f.code)+(f.off?'<span class="off">'+f.off+'% off</span>':'')+'</button>'; }
+function codeBtn(f){var c=activeCodes(f)[0];if(!c||!c.code)return '<span class="mut">—</span>';return '<button class="code-btn" data-copy="'+esc(c.code)+'" aria-label="Copy code '+esc(c.code)+'">'+esc(c.code)+(c.off?'<span class="off">'+c.off+'% off</span>':'')+'</button>';}
 function snapLine(txt){ return '<p class="snap-note" style="margin-top:14px"><b>Snapshot:</b> '+txt+'</p>'; }
 function dirCount(key){ return FIRMS.filter(function(f){ return f.markets.indexOf(key)>=0; }).length; }
 function marketStats(key){
@@ -1196,7 +1255,7 @@ function faqHTML(list,start){
 }
 /* ================= nav ================= */
 var NAV = [
-  ["/","Home"],["/firms","Prop Firms"],["/deals","Deals"],["/compare","Compare"],
+  ["/","Home"],["/global","Global Tracker"],["/compare","Compare"],["/firms","Prop Firms"],["/deals","Deals"],
   ["/tools","Calculators"],["/tracker","Payout Tracker"]
 ];
 var RESOURCE_NAV = [
@@ -1223,7 +1282,9 @@ function renderNav(route){
   } else {
     html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Sign In</a>';
   }
+  if(!/^\/journal(?:\/|$)/.test(route))html+='<button type="button" class="btn ghost small pfm-search-trigger" id="pfmSearchTrigger" aria-haspopup="dialog">⌕ Search <kbd>Ctrl K</kbd></button>';
   $("#mainnav").innerHTML = html;
+  var trigger=$("#pfmSearchTrigger");if(trigger)trigger.addEventListener("click",pfmOpenSearch);
   var navOut = document.getElementById("navSignOut");
   if (navOut) navOut.addEventListener("click", function(){ signOutAndLeave(); });
 }
@@ -1290,9 +1351,47 @@ if (sb){
     refreshAuthPage();
   });
 }
-function go(html){ app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
+function pfmBrandMarquee(){
+  var brands=["topstep","tradeify","ftmo","apex-trader-funding","fundednext","my-funded-futures","tradeday"].map(firm).filter(Boolean);
+  function row(hidden){return '<div class="pfm-brand-run"'+(hidden?' aria-hidden="true"':'')+'>'+brands.map(function(f){return '<a href="/firm/'+esc(f.slug)+'"'+(hidden?' tabindex="-1"':'')+'>'+avatar(f,30)+'<span>'+esc(f.name)+'</span></a>';}).join("")+'</div>';}
+  return '<section class="pfm-brand-strip" aria-label="Selected directory firms"><div class="pfm-brand-caption"><span class="mut small">Explore listed firms · no endorsement implied</span><button class="btn ghost small" type="button" data-pfm-marquee aria-pressed="false">Pause motion</button></div><div class="pfm-brand-viewport"><div class="pfm-brand-track">'+row(false)+row(true)+'</div></div></section>';
+}
+function pfmResearchStory(){
+  return '<section class="pfm-research-story" aria-label="Research workflow">'+[["01","Find eligible firms","Start with country policy and trading market.","/global","Explore Global Tracker"],["02","Compare exact accounts","See program, size, platform, price and rules side by side.","/compare","Compare accounts"],["03","Calculate the numbers","Check risk, consistency, trading costs and savings.","/tools","Open calculators"]].map(function(x){return '<article class="card pfm-story-card"><span class="pfm-story-index">'+x[0]+'</span><h3>'+x[1]+'</h3><p class="mut small">'+x[2]+'</p><a href="'+x[3]+'">'+x[4]+' ↗</a></article>';}).join("")+'</section>';
+}
+function pfmGlobe(){
+  return '<div class="pfm-globe-wrap"><svg viewBox="0 0 280 280" class="pfm-globe" aria-hidden="true"><defs><radialGradient id="pfmSphere"><stop stop-color="#456d65"/><stop offset="100%" stop-color="#142831"/></radialGradient></defs><circle cx="140" cy="140" r="122" fill="none" stroke="#52716c" stroke-dasharray="3 7"/><circle cx="140" cy="140" r="105" fill="url(#pfmSphere)" stroke="#7eb8a5"/><g fill="none" stroke="#527972" opacity=".65"><ellipse cx="140" cy="140" rx="70" ry="105"/><ellipse cx="140" cy="140" rx="30" ry="105"/><ellipse cx="140" cy="140" rx="105" ry="70"/><ellipse cx="140" cy="140" rx="105" ry="32"/><path d="M35 140H245M140 35V245"/></g><g fill="#8cc1af" opacity=".25"><path d="M51 89l31-16 23 10 12 20-15 23-18 6-10 24-18-21-9-25zM97 153l26 7 16 21-8 30-13 20-13-27zM147 85l24-13 35 6 28 24-13 24-29-7-20 16-15-19zM151 140l26 1 17 20-14 40-18 13-13-31zM202 190l25-6 13 18-17 14-22-9z"/></g><g fill="none" stroke="#a7e3cf" stroke-width="1.7"><path class="pfm-globe-arc" d="M74 109Q130 13 184 108"/><path class="pfm-globe-arc" d="M74 109Q172 37 217 197"/><path class="pfm-globe-arc" d="M184 108Q242 143 217 197"/></g><g fill="#d8fff0"><circle cx="74" cy="109" r="3"/><circle cx="184" cy="108" r="3"/><circle cx="217" cy="197" r="3"/></g></svg><p class="mut small">Illustrative globe · not an eligibility map</p></div>';
+}
+var pfmStoryObserver=null;
+function pfmMotionEnhance(){
+  if(pfmStoryObserver)pfmStoryObserver.disconnect();
+  var stories=app.querySelectorAll(".pfm-story-card");
+  if(stories.length&&typeof IntersectionObserver==="function"){pfmStoryObserver=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("pfm-story-visible");pfmStoryObserver.unobserve(e.target);}});},{threshold:.15});stories.forEach(function(el){pfmStoryObserver.observe(el);});}
+  app.querySelectorAll("[data-pfm-marquee]").forEach(function(b){b.addEventListener("click",function(){var paused=b.closest(".pfm-brand-strip").classList.toggle("pfm-motion-paused");b.setAttribute("aria-pressed",String(paused));b.textContent=paused?"Resume motion":"Pause motion";});});
+  app.querySelectorAll(".pfm-morph").forEach(function(w){var b=w.querySelector("button"),i=w.querySelector("input");b.addEventListener("click",function(){var open=w.classList.toggle("open");b.setAttribute("aria-expanded",String(open));i.tabIndex=open?0:-1;if(open)i.focus();else{i.value="";i.dispatchEvent(new Event("input"));}});});
+}
+function pfmOpenSearch(){
+  if(/^\/journal(?:\/|$)/.test(location.pathname))return;
+  var existing=document.getElementById("pfmCommand");if(existing){existing.querySelector("input").focus();return;}
+  var previous=document.activeElement,d=document.createElement("dialog");d.id="pfmCommand";d.className="pfm-command";d.setAttribute("aria-label","Search PropFirmMath");
+  d.innerHTML='<div class="pfm-command-head"><span aria-hidden="true">⌕</span><input type="search" aria-label="Search firms, programs and pages" placeholder="Search firms, programs, calculators…" autocomplete="off"><button class="btn ghost small" type="button" aria-label="Close search">Esc</button></div><div id="pfmCommandResults" class="pfm-command-results"></div>';
+  document.body.appendChild(d);var input=d.querySelector("input"),results=d.querySelector("#pfmCommandResults"),close=d.querySelector("button");
+  var items=NAV.concat(RESOURCE_NAV,[["/login","Log in"],["/account","Account and memberships"]]).map(function(n){return {href:n[0],name:n[1],type:"Page",search:n[1].toLowerCase()};});
+  FIRMS.forEach(function(f){items.push({href:"/firm/"+f.slug,name:f.name,type:"Firm",search:f.name.toLowerCase()});(f.plans||[]).forEach(function(p){var name=f.name+" · "+planLabel(p);items.push({href:"/compare?add="+encodeURIComponent(f.slug)+"&plan="+encodeURIComponent(p.id),name:name,type:"Account",search:(name+" "+(p.platform||"")).toLowerCase()});});});
+  function paint(){var q=input.value.trim().toLowerCase(),words=q.split(/\s+/);var found=items.filter(function(x){return q?words.every(function(w){return x.search.indexOf(w)>=0;}):x.type==="Page";}).slice(0,12);results.innerHTML=found.length?found.map(function(x){return '<a href="'+esc(x.href)+'"><span>'+esc(x.name)+'</span><small>'+esc(x.type)+' ↗</small></a>';}).join(""):'<p class="mut small" style="padding:16px">No matching results.</p>';}
+  function clean(){d.remove();if(previous&&previous.isConnected)previous.focus();}
+  function shut(){if(d.open&&typeof d.close==="function")d.close();else clean();}
+  close.addEventListener("click",shut);d.addEventListener("close",clean);
+  input.addEventListener("input",paint);input.addEventListener("keydown",function(e){if(e.key==="Enter"){var a=results.querySelector("a");if(a){e.preventDefault();a.click();}}if(e.key==="ArrowDown"){var a=results.querySelector("a");if(a){e.preventDefault();a.focus();}}});d.addEventListener("keydown",function(e){if(e.key==="Escape"){e.preventDefault();shut();}});
+  paint();if(typeof d.showModal==="function")d.showModal();else d.setAttribute("open","");input.focus();
+}
+document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&String(e.key).toLowerCase()==="k"&&!/^\/journal(?:\/|$)/.test(location.pathname)){e.preventDefault();pfmOpenSearch();}});
+function pfmSignupStep(n){var bar=document.getElementById("pfmSignupSteps");if(bar)Array.prototype.forEach.call(bar.children,function(el,i){el.classList.toggle("current",i===n-1);el.classList.toggle("done",i<n-1);if(i===n-1)el.setAttribute("aria-current","step");else el.removeAttribute("aria-current");});}
+function pfmAuthSuccess(el,message){el.className="form-msg ok pfm-auth-success";el.setAttribute("role","status");el.textContent=message;}
 
-var ROUTE_DESC={"/":"Compare 150 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices.","/prediction":"Prediction-market prop firms compared: rules, payout rails, prices and verified discount codes."};
+function go(html){ app.innerHTML=html;window.scrollTo(0,0);bindCopy();if(!/^\/journal(?:\/|$)/.test(location.pathname)){app.classList.remove("pfm-page-enter");void app.offsetWidth;app.classList.add("pfm-page-enter");pfmMotionEnhance();}else app.classList.remove("pfm-page-enter"); }
+
+var ROUTE_DESC={"/":"Compare 150 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare two independent account offers by firm, program, size, platform, price and plan-specific rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/global":"Country-first prop firm eligibility using dated official policies, including residency and citizenship conditions. Coverage gaps remain explicit.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices.","/prediction":"Prediction-market prop firms compared: rules, payout rails, prices and verified discount codes."};
 function seoDescription(path,label){
   if(ROUTE_DESC[path]) return ROUTE_DESC[path];
   var fm=path.match(/^\/firm\/([^/]+)$/); if(fm&&typeof firm==="function"){var f=firm(fm[1]); if(f) return f.name+" review: "+(f.split?"profit split "+f.split+", ":"")+(f.from!==null?"from "+(f.fromCur==="EUR"?"€":"$")+f.from+". ":"")+"Rules, drawdown and payouts researched on the firm's own site, "+SNAPSHOT+".";}
@@ -1328,6 +1427,7 @@ function updateSeo(path){
 }
 function route(){
   var raw = location.pathname || "/";
+  document.documentElement.setAttribute("data-pfm-route",raw.replace(/\/$/,"")||"/");
   var q = location.search.replace(/^\?/, "");
   var h = raw;
   var parts = h.split("/").filter(Boolean);
@@ -1341,6 +1441,7 @@ function route(){
     if (parts[0]==="compare") return pageCompare(q);
     if (parts[0]==="vs" && parts[1]) { var p=parts[1].split("-vs-"); return pageVs(p[0],p[1]); }
     if (parts[0]==="deals") return pageDeals();
+    if (parts[0]==="global") return pageGlobalTracker();
     if (parts[0]==="tracker" || parts[0]==="payouts") return pageTracker();
     if (parts[0]==="quiz") { if (typeof history!=="undefined" && history.replaceState) history.replaceState(null,"","/firms"); return pageFirms(); }
     if (parts[0]==="tools" || parts[0]==="calculators") return pageTools();
@@ -1389,11 +1490,12 @@ function pageHome(){
     return '<a class="index-market" href="/'+key+'"><span>'+esc(MARKETS[key].label)+'</span><span class="index-track" aria-hidden="true"><span style="transform:scaleX('+(pct/100)+')"></span></span><strong>'+n+'</strong><span class="index-arrow" aria-hidden="true">↗</span></a>';
   }).join("");
   go(
-  '<section class="research-hero"><div class="research-intro"><h1>Compare prop firms by the math, not the marketing.</h1>'+
+  '<section class="research-hero"><div class="research-intro"><h1 class="pfm-kinetic"><span>Compare prop firms</span> <span>by the math,</span> <span>not the marketing.</span></h1>'+
   '<p class="research-lede">Side-by-side rules, prices and payout evidence for '+COUNTS.total+' firms, researched on their official websites. Every figure is dated.</p>'+
   '<div class="hero-cta"><a class="btn" href="/compare">Compare firms</a><a class="btn ghost" href="/deals">See current deals</a></div>'+
   '<p class="research-note">Rankings follow published rules and ratings, never commission. <a href="/methodology">How we rank</a></p></div>'+
   '<div class="research-index-panel"><div class="index-mast"><div><span class="mut small">Firms in the directory</span><strong class="index-total">'+COUNTS.total+'</strong></div><a href="/firms">Full directory</a></div><div class="index-market-list">'+marketIndex+'</div><p class="snap-note">Research snapshot: '+SNAPSHOT+'. Markets overlap.</p></div></section>'+
+  pfmBrandMarquee()+pfmResearchStory()+
   '<section class="research-rankings"><div class="section-mast"><div><h2>The highest-rated firms right now</h2><p class="mut">Ranked by verified numeric trader ratings from the '+SNAPSHOT+' research. Firms without a verified numeric rating remain listed in the directory.</p></div><a class="btn ghost small" href="/firms">Explore all firms</a></div>'+
   '<div class="pill-tabs" id="home-tabs">'+["all","futures","forex","crypto","perps"].map(function(k){return '<button data-m="'+k+'" class="'+(homeState.topFilter===k?"on":"")+'">'+(k==="all"?"All":MARKETS[k].label)+'</button>';}).join("")+'</div>'+
   '<div id="home-top"></div><div id="home-more"></div>'+snapLine("Prices and ratings checked "+SNAPSHOT+".")+'</section>'+
@@ -1444,7 +1546,7 @@ function pageFirms(){
     var count = document.getElementById("dcount");
     if (count) count.textContent = list.length + " of " + FIRMS.length + " firms. Entry prices stay in each firm's currency. Each card shows the date that firm was last checked.";
     var tray = document.getElementById("dcompare");
-    if (tray) tray.innerHTML = chosen.length ? '<div class="compare-tray"><strong>Comparing ' + chosen.length + ' of 3</strong>' + chosen.map(function(f){ return '<span class="chip grey">' + esc(f.name) + '</span>'; }).join("") + '<a class="btn small" href="/compare">Open side by side</a></div>' : "";
+    if (tray) tray.innerHTML = chosen.length ? '<div class="compare-tray"><strong>Comparing ' + chosen.length + ' of 2</strong>' + chosen.map(function(f){ return '<span class="chip grey">' + esc(f.name) + '</span>'; }).join("") + '<a class="btn small" href="/compare">Open side by side</a></div>' : "";
     var box = document.getElementById("dtable");
     if (!list.length) {
       box.innerHTML = emptyBrowseHTML("dir");
@@ -1487,7 +1589,7 @@ function firmPlanList(f){
     name: "Starting offer",
     size: null,
     price: f.from,
-    currency: f.fromCur || "USD",
+    currency: f.fromCur || null,
     monthly: !!f.monthly,
     target: null,
     dailyLoss: null,
@@ -1505,11 +1607,11 @@ function firmPlanList(f){
 function planSizeLabel(p){
   if (!p || p.size == null) return "Size not listed";
   var n = p.size / 1000;
-  return (Math.round(n * 10) / 10).toString().replace(/\.0$/, "") + "K";
+  return Number(p.size)<1000?Number(p.size).toLocaleString("en-US"):(Math.round(n * 1000) / 1000).toString().replace(/\.0$/, "") + "K";
 }
 function planLabel(p){ return (p.name||p.program||"Unconfirmed program") + (p.size ? " " + planSizeLabel(p) : " — size unconfirmed"); }
 function planPriceHTML(p){
-  if (!p || p.price == null || p.price === "") return '<span class="mut">Price not verified</span>';
+  if (!p || p.price == null || p.price === "" || !Number.isFinite(Number(p.price))) return '<span class="mut">Price not verified</span>';
   var sym = p.currency === "EUR" ? "€" : p.currency === "USD" ? "$" : esc(p.currency || "Currency unconfirmed")+" ";
   var num = Number(p.price).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return sym + num + (p.monthly ? '<span class="mut small"> /month</span>' : "");
@@ -1524,6 +1626,7 @@ function planFact(label, html){
   return '<div class="kvcell"><div class="k">' + label + '</div><div class="v sm">' + html + "</div></div>";
 }
 function planSheetHTML(f, p){
+  if(p.coverage==="starting")p=Object.assign({},p,{target:null,dailyLoss:null,maxDD:null,ddType:null,minDays:null,split:null,payout:null,platform:null});
   return '<div class="plan-sheet"><p class="snap-note">' + esc(planCoverageNote(p)) + (p.note ? " " + esc(p.note) : "") + "</p>" +
     '<div class="kvgrid">' +
     planFact("Price", planPriceHTML(p)) +
@@ -1546,8 +1649,8 @@ function planBoardHTML(f){
   var groups = [];
   plans.forEach(function(p){
     var g = null;
-    for (var i = 0; i < groups.length; i++) if (groups[i].program === p.program) g = groups[i];
-    if (!g) { g = { program: p.program, plans: [] }; groups.push(g); }
+    for (var i = 0; i < groups.length; i++) if (groups[i].program === catalogProgram(p)) g = groups[i];
+    if (!g) { g = { program: catalogProgram(p), plans: [] }; groups.push(g); }
     g.plans.push(p);
   });
   return '<section class="plan-board" id="plan-board" aria-label="Account plans">' +
@@ -1564,17 +1667,17 @@ function bindPlanBoard(f){
   var plans = firmPlanList(f);
   var current = plans[0].id;
   function programOf(id){
-    for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return plans[i].program;
-    return plans[0].program;
+    for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return catalogProgram(plans[i]);
+    return catalogProgram(plans[0]);
   }
   function paint(){
     var program = programOf(current);
-    var sizes = plans.filter(function(p){ return p.program === program; });
+    var sizes = plans.filter(function(p){ return catalogProgram(p) === program; });
     if (!sizes.some(function(p){ return p.id === current; })) current = sizes[0].id;
     var sizeBox = document.getElementById("plan-sizes");
     sizeBox.innerHTML = sizes.length > 1 ? sizes.map(function(p){
       var on = p.id === current;
-      return '<button type="button" data-plan="' + esc(p.id) + '" class="' + (on ? "on" : "") + '" aria-pressed="' + on + '">' + esc(p.size ? planSizeLabel(p) : "Size not listed") + "</button>";
+      return '<button type="button" data-plan="' + esc(p.id) + '" class="' + (on ? "on" : "") + '" aria-pressed="' + on + '">' + esc(sizes.filter(function(v){return catalogSizeKey(v)===catalogSizeKey(p);}).length>1?catalogVariantLabel(p):planSizeLabel(p)) + "</button>";
     }).join("") : "";
     var chosen = plans[0];
     for (var i = 0; i < plans.length; i++) if (plans[i].id === current) chosen = plans[i];
@@ -1593,17 +1696,38 @@ function bindPlanBoard(f){
         tabs[i].classList.toggle("on", on);
         tabs[i].setAttribute("aria-selected", on ? "true" : "false");
       }
-      for (var j = 0; j < plans.length; j++) if (plans[j].program === program) { current = plans[j].id; break; }
+      for (var j = 0; j < plans.length; j++) if (catalogProgram(plans[j]) === program) { current = plans[j].id; break; }
       paint();
     });
   }
   paint();
 }
-function selectedPlan(f){
-  var list = firmPlanList(f);
-  var id = cmpState.planBySlug && cmpState.planBySlug[f.slug];
-  for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
-  return list[0];
+function catalogProgram(p){return String(p.name||p.program||"Unconfirmed program");}
+function catalogSizeKey(p){return p.size==null?"unknown":String(p.size);}
+function catalogPlatforms(p){
+  var raw=p&&p.coverage!=="starting"&&p.platform;if(!raw)return [];
+  return (Array.isArray(raw)?raw:String(raw).split(/,\s*/)).map(function(v){return String(v).trim();}).filter(function(v){return v&&v!=="—"&&!/not (yet )?verified|pending|not confirmed|not stated|not listed|unknown|unconfirmed/i.test(v);});
+}
+function catalogVariantLabel(p){
+  var price=p.price==null?"Price not verified":String(p.currency||"Currency unconfirmed")+" "+p.price+(p.monthly?" /month":"");
+  return [catalogProgram(p),planSizeLabel(p),catalogPlatforms(p).join(", ")||"Platform unconfirmed",price].join(" · ");
+}
+function selectedPlan(f,slot){
+  var list=firmPlanList(f),id=cmpState.planBySlot[slot];
+  var p=list.find(function(p){return p.id===id;})||list[0];return p.coverage==="starting"?Object.assign({},p,{target:null,dailyLoss:null,maxDD:null,ddType:null,minDays:null,split:null,payout:null,platform:null}):p;
+}
+function comparePlanMenus(f,i){
+  var list=firmPlanList(f),current=selectedPlan(f,i),program=catalogProgram(current),size=catalogSizeKey(current);
+  var programs=Array.from(new Set(list.map(catalogProgram)));
+  var group=list.filter(function(p){return catalogProgram(p)===program;});
+  var sizes=Array.from(new Set(group.map(catalogSizeKey))).sort(function(a,b){return a==="unknown"?1:b==="unknown"?-1:Number(a)-Number(b);});
+  var variants=group.filter(function(p){return catalogSizeKey(p)===size;});
+  var platforms=Array.from(new Set(variants.flatMap(catalogPlatforms))).sort();
+  var platform=cmpState.platformBySlot[i]||"";
+  if(platform&&catalogPlatforms(current).indexOf(platform)<0)platform="";
+  var filtered=variants.filter(function(p){return !platform||catalogPlatforms(p).indexOf(platform)>=0;});
+  function menu(kind,label,values,selected){return '<label class="fl" for="cmp'+kind+i+'" style="margin-top:8px">'+label+'</label><select id="cmp'+kind+i+'">'+values.map(function(v){return '<option value="'+esc(v[0])+'"'+(String(v[0])===String(selected)?" selected":"")+'>'+esc(v[1])+'</option>';}).join("")+'</select>';}
+  return menu("Program","Account type / program",programs.map(function(v){return [v,v];}),program)+menu("Size","Account size",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}),size)+menu("Platform","Trading platform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(v){return [v,v];})),platform)+menu("Plan","Exact account offer",filtered.map(function(p){return [p.id,catalogVariantLabel(p)];}),current.id);
 }
 function firmAccountExplorer(f){
   var plans=Array.isArray(f.accountPlans)?f.accountPlans.filter(function(p){return p && p.name && p.officialSource;}):[];
@@ -1743,7 +1867,7 @@ function filterFieldsHTML(st, id){
     return '<div class="field"><label class="fl" for="'+id+'-'+key+'">'+label+'</label><select id="'+id+'-'+key+'">'+options.map(function(o){ return opt(o[0], o[1], st[key]); }).join("")+'</select></div>';
   }
   return '<div class="filterbar" id="'+id+'-filters">'+
-    '<div class="field grow"><label class="fl" for="'+id+'-q">Search</label><input type="search" id="'+id+'-q" value="'+esc(st.q||"")+'" placeholder="Firm or platform" autocomplete="off"></div>'+
+    '<div class="field grow"><label class="fl" for="'+id+'-q">Search</label><div class="pfm-morph'+(st.q?' open':'')+'"><button type="button" aria-label="Expand firm search" aria-expanded="'+(st.q?'true':'false')+'">⌕</button><input type="search" id="'+id+'-q" value="'+esc(st.q||"")+'" placeholder="Firm or platform" autocomplete="off" tabindex="'+(st.q?'0':'-1')+'"></div></div>'+
     sel("market","Market",[["all","All markets"],["futures","Futures"],["forex","Forex"],["crypto","Crypto"],["perps","Perps"],["stocks","Stocks"],["prediction","Prediction Markets"]])+
     sel("platform","Platform",[["all","Any platform"],["MT5","MT5"],["MT4","MT4"],["cTrader","cTrader"],["NinjaTrader","NinjaTrader"],["Tradovate","Tradovate"],["TradingView","TradingView"],["Match-Trader","Match-Trader"],["TradeLocker","TradeLocker"],["Rithmic","Rithmic"],["Other","Other"],["Not listed","Not listed"]])+
     sel("price","Entry price",[["all","Any price"],["u30","Under 30"],["30-75","30 – 75"],["75-150","75 – 150"],["150p","150 and up"]])+
@@ -1783,25 +1907,28 @@ function ensurePicks(){
     if (!raw) return;
     var arr = JSON.parse(raw);
     if (!Array.isArray(arr)) return;
-    var next = [0,1,2].map(function(i){ var s = arr[i]; return (typeof s === "string" && firm(s)) ? s : ""; });
+    var next = [0,1].map(function(i){ var s = arr[i]; return (typeof s === "string" && firm(s)) ? s : ""; });
     if (next.some(Boolean)) cmpState.picks = next;
+    var slots=JSON.parse(sessionStorage.getItem("pfm-compare-slots")||"null");
+    if(slots&&Array.isArray(slots.plans)){cmpState.planBySlot=slots.plans.slice(0,2);cmpState.platformBySlot=Array.isArray(slots.platforms)?slots.platforms.slice(0,2):[];}
+    else cmpState.planBySlot=next.map(function(slug){return cmpState.planBySlug[slug]||"";});
   } catch (e) {}
 }
 function rememberPicks(){
   try {
-    sessionStorage.setItem("pfm-compare", JSON.stringify([cmpState.picks[0] || "", cmpState.picks[1] || "", cmpState.picks[2] || ""]));
-    sessionStorage.setItem("pfm-compare-plans", JSON.stringify(cmpState.planBySlug || {}));
+    sessionStorage.setItem("pfm-compare", JSON.stringify([cmpState.picks[0] || "", cmpState.picks[1] || ""]));
+    sessionStorage.setItem("pfm-compare-slots",JSON.stringify({plans:cmpState.planBySlot,platforms:cmpState.platformBySlot}));
   } catch (e) {}
 }
 function toggleCompare(slug){
   ensurePicks();
   var i = cmpState.picks.indexOf(slug);
-  if (i >= 0) cmpState.picks[i] = "";
+  if (i >= 0) {cmpState.picks[i] = "";cmpState.planBySlot[i]="";cmpState.platformBySlot[i]="";}
   else {
     var slot = -1;
-    for (var n = 0; n < 3; n++) if (!cmpState.picks[n]) { slot = n; break; }
-    if (slot < 0) { cmpState.picks[2] = slug; toast("Compare holds 3 firms. The third slot was replaced."); }
-    else cmpState.picks[slot] = slug;
+    for (var n = 0; n < 2; n++) if (!cmpState.picks[n]) { slot = n; break; }
+    if (slot < 0) {slot=1;toast("The second comparison account was replaced.");}
+    cmpState.picks[slot]=slug;cmpState.planBySlot[slot]="";cmpState.platformBySlot[slot]="";
   }
   rememberPicks();
 }
@@ -1830,61 +1957,47 @@ function dealHeadline(c, expired){
   return "Code";
 }
 
-var cmpState = { picks:["my-funded-futures","ftmo","tradeify"], planBySlug:{} };
+var cmpState = { picks:["my-funded-futures","ftmo"], planBySlug:{}, planBySlot:[],platformBySlot:[] };
 var dealState = { market:"all" };
 function pageCompare(q){
   ensurePicks();
-  if (q){
-    var added = /(?:^|&)add=([a-z0-9-]+)/.exec(q);
-    if (added && firm(added[1])){
-      var slug = added[1];
-      var rest = cmpState.picks.filter(function(s){ return s && s !== slug; });
-      cmpState.picks = [slug, rest[0] || "", rest[1] || ""];
-    }
-    var wanted = /(?:^|&)plan=([a-z0-9-]+)/.exec(q);
-    if (wanted) {
-      FIRMS.forEach(function(f){
-        firmPlanList(f).forEach(function(p){
-          if (p.id === wanted[1]) {
-            if (!cmpState.planBySlug) cmpState.planBySlug = {};
-            cmpState.planBySlug[f.slug] = p.id;
-            if (cmpState.picks.indexOf(f.slug) < 0) cmpState.picks[0] = f.slug;
-          }
-        });
-      });
+  if(q){
+    var params=new URLSearchParams(q),slug=params.get("add"),wanted=params.get("plan"),f=firm(slug);
+    if(f){var previous=cmpState.picks[0];if(previous!==slug){cmpState.picks[1]=previous||cmpState.picks[1]||"";cmpState.planBySlot[1]=cmpState.planBySlot[0]||"";cmpState.platformBySlot[1]=cmpState.platformBySlot[0]||"";cmpState.picks[0]=slug;cmpState.planBySlot[0]="";cmpState.platformBySlot[0]="";}
+      if(wanted&&firmPlanList(f).some(function(p){return p.id===wanted;})){cmpState.planBySlot[0]=wanted;cmpState.platformBySlot[0]="";}
     }
   }
   rememberPicks();
-  var picks = cmpState.picks.map(firm).filter(Boolean);
+  var picks = cmpState.picks.map(function(slug,i){return {firm:firm(slug),slot:i};}).filter(function(x){return !!x.firm;});
   var rows = [
     ["Rating", function(f){ return f.rating ? f.rating.toFixed(1) + " (" + esc(f.rsrc || "") + (f.reviews ? " · " + f.reviews.toLocaleString() + " reviews" : "") + ")" : esc(ratingState(f).value); }],
     ["Rules check", function(f){ return esc(rulesLabel(f)); }],
     ["Last verified", function(f){ return esc(verifiedDate(f)); }],
     ["Markets", function(f){ return f.markets.map(function(mk){ return MARKETS[mk].label; }).join(", "); }],
     ["US eligibility", function(f){ return esc(cap(presentText(f.us))); }],
-    ["Account plan", function(f){ var p = selectedPlan(f); return esc(planLabel(p)) + '<div class="snap-note">' + esc(planCoverageNote(p)) + "</div>"; }],
-    ["Plan price", function(f){ return planPriceHTML(selectedPlan(f)); }],
-    ["Profit split", function(f){ var p=selectedPlan(f); return esc(p.split?formatSplit(p.split):"Not confirmed for this plan"); }],
-    ["Profit target", function(f){ return esc(selectedPlan(f).target || "—"); }],
-    ["Daily loss", function(f){ return esc(selectedPlan(f).dailyLoss || "—"); }],
-    ["Max drawdown", function(f){ return esc(selectedPlan(f).maxDD || "Not confirmed for this plan"); }],
-    ["Drawdown type", function(f){ return esc(selectedPlan(f).ddType || "—"); }],
-    ["Min days", function(f){ return esc(selectedPlan(f).minDays || "—"); }],
-    ["Payout", function(f){ return esc(selectedPlan(f).payout || "Not confirmed for this plan"); }],
-    ["Platform", function(f){ return esc(selectedPlan(f).platform || "Not confirmed for this plan"); }],
+    ["Account plan", function(f,i){ var p = selectedPlan(f,i); return esc(planLabel(p)) + '<div class="snap-note">' + esc(planCoverageNote(p)) + "</div>"; }],
+    ["Plan price", function(f,i){ return planPriceHTML(selectedPlan(f,i)); }],
+    ["Profit split", function(f,i){ var p=selectedPlan(f,i); return esc(p.split?formatSplit(p.split):"Not confirmed for this plan"); }],
+    ["Profit target", function(f,i){ return esc(selectedPlan(f,i).target || "—"); }],
+    ["Daily loss", function(f,i){ return esc(selectedPlan(f,i).dailyLoss || "—"); }],
+    ["Max drawdown", function(f,i){ return esc(selectedPlan(f,i).maxDD || "Not confirmed for this plan"); }],
+    ["Drawdown type", function(f,i){ return esc(selectedPlan(f,i).ddType || "—"); }],
+    ["Min days", function(f,i){ return esc(selectedPlan(f,i).minDays || "—"); }],
+    ["Payout", function(f,i){ return esc(selectedPlan(f,i).payout || "Not confirmed for this plan"); }],
+    ["Platform", function(f,i){ return esc(selectedPlan(f,i).platform || "Not confirmed for this plan"); }],
     ["Firm-level promotions", function(f){ var codes=activeCodes(f); return codes.length ? codes.map(function(c){ return esc(c.code) + (c.off ? " (" + c.off + "% off)" : ""); }).join(" · ")+" — plan eligibility not confirmed" : "None current in catalog"; }]
   ];
   var table = picks.length
-    ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(f){ return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
-      rows.map(function(r){ return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(f){ return "<td>" + r[1](f) + "</td>"; }).join("") + "</tr>"; }).join("") +
-      "</tbody></table></div>" + (picks.length < 2 ? '<p class="mut" style="margin-top:12px">Add a second firm to compare them side by side. Three is the maximum.</p>' : "")
-    : '<div class="empty-note"><h3>Pick two or three firms</h3><p>Use the selectors, or filter the list below and choose Compare. The table shows only the firms you select.</p></div>';
+    ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(x){var f=x.firm;return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
+      rows.map(function(r){ return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(x){ return "<td>" + r[1](x.firm,x.slot) + "</td>"; }).join("") + "</tr>"; }).join("") +
+      "</tbody></table></div>" + (picks.length < 2 ? '<p class="mut" style="margin-top:12px">Add a second firm to compare them side by side. Two accounts can be compared.</p>' : "")
+    : '<div class="empty-note"><h3>Pick two accounts</h3><p>Use the selectors, or filter the list below and choose Compare. You can select different accounts from the same firm.</p></div>';
   go(pageHead('<a href="/">Home</a> · Compare', "Compare prop firms side by side",
-    "Choose up to 3 firms, then the plan inside each one. A missing size was not in the verified catalog.") +
-    '<div class="card compare-selectors" style="margin:20px 0 14px"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">' +
-    [0,1,2].map(function(i){
+    "Select two accounts independently: firm, account type, size, platform and exact offer. Missing fields stay unconfirmed.") +
+    '<div class="pfm-compare-kicker"><span>ACCOUNT A</span><span class="pfm-versus">VS</span><span>ACCOUNT B</span></div><div class="card compare-selectors" style="margin:20px 0 14px"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">' +
+    [0,1].map(function(i){
       var picked = firm(cmpState.picks[i] || "");
-      var planMenu = picked ? '<label class="fl" for="cmpPlan' + i + '" style="margin-top:8px">Plan</label><select id="cmpPlan' + i + '">' + firmPlanList(picked).map(function(p){ var on = selectedPlan(picked).id === p.id; return '<option value="' + esc(p.id) + '"' + (on ? " selected" : "") + ">" + esc(planLabel(p)) + "</option>"; }).join("") + "</select>" : "";
+      var planMenu = picked ? comparePlanMenus(picked,i) : "";
       return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
     }).join("") +
     "</div></div>" + table +
@@ -1895,24 +2008,21 @@ function pageCompare(q){
     '<div class="secttl"><span class="bar"></span><h2>Head-to-head pages</h2></div><div style="display:flex;gap:9px;flex-wrap:wrap">' +
     '<a class="btn small ghost" href="/vs/fxify-vs-fundingpips">FXIFY vs FundingPips</a>'+'<a class="btn small ghost" href="/vs/ftmo-vs-fundingpips">FTMO vs FundingPips</a>'+'<a class="btn small ghost" href="/vs/my-funded-futures-vs-top-one-futures">My Funded Futures vs Top One Futures</a>'+''+'<a class="btn small ghost" href="/vs/apex-trader-funding-vs-tradeify">Apex Trader Funding vs Tradeify</a>'+'<a class="btn small ghost" href="/vs/fundednext-vs-fundingpips">FundedNext vs FundingPips</a>'+'<a class="btn small ghost" href="/vs/ftmo-vs-the5ers">FTMO vs The5ers</a>'+'<a class="btn small ghost" href="/vs/fundednext-vs-the5ers">FundedNext vs The5ers</a>'+'<a class="btn small ghost" href="/vs/fxify-vs-the5ers">FXIFY vs The5ers</a>'+''+'<a class="btn small ghost" href="/vs/tradeify-vs-take-profit-trader">Tradeify vs Take Profit Trader</a>'+'<a class="btn small ghost" href="/vs/bulenox-vs-apex-trader-funding">Bulenox vs Apex Trader Funding</a>'+'<a class="btn small ghost" href="/vs/ftmo-vs-fundednext">FTMO vs FundedNext</a>'+'<a class="btn small ghost" href="/vs/alpha-capital-vs-fundednext">Alpha Capital vs FundedNext</a>' +
     '</div>' +
-    '<p class="snap-note" style="margin-top:14px">Prices compare each firm\'s verified entry plan, in the currency the firm itself charges. Euro prices stay in euros, and monthly subscriptions are marked /month.</p>');
-  [0,1,2].forEach(function(i){
-    var sel = document.getElementById("cmp" + i);
-    if (sel) sel.addEventListener("change", function(e){
-      var prev = cmpState.picks[i];
-      cmpState.picks[i] = e.target.value;
-      if (prev && prev !== e.target.value && cmpState.planBySlug) delete cmpState.planBySlug[prev];
-      rememberPicks();
-      pageCompare("");
-    });
-    var planSel = document.getElementById("cmpPlan" + i);
-    if (planSel) planSel.addEventListener("change", function(e){
-      var slug = cmpState.picks[i];
-      if (!slug) return;
-      if (!cmpState.planBySlug) cmpState.planBySlug = {};
-      cmpState.planBySlug[slug] = e.target.value;
-      rememberPicks();
-      pageCompare("");
+    '<p class="snap-note" style="margin-top:14px">Prices use the selected exact catalog record in its recorded currency. Missing prices stay unverified. Euro prices stay in euros, and monthly subscriptions are marked /month.</p>');
+  [0,1].forEach(function(i){
+    var sel=document.getElementById("cmp"+i);
+    if(sel)sel.addEventListener("change",function(){cmpState.picks[i]=this.value;cmpState.planBySlot[i]="";cmpState.platformBySlot[i]="";rememberPicks();pageCompare("");});
+    ["Program","Size","Platform","Plan"].forEach(function(kind){
+      var el=document.getElementById("cmp"+kind+i);if(!el)return;
+      el.addEventListener("change",function(){
+        var f=firm(cmpState.picks[i]),old=selectedPlan(f,i),list=firmPlanList(f),value=this.value;
+        if(kind==="Program"){list=list.filter(function(p){return catalogProgram(p)===value;});cmpState.platformBySlot[i]="";}
+        if(kind==="Size"){list=list.filter(function(p){return catalogProgram(p)===catalogProgram(old)&&catalogSizeKey(p)===value;});cmpState.platformBySlot[i]="";}
+        if(kind==="Platform"){list=list.filter(function(p){return catalogProgram(p)===catalogProgram(old)&&catalogSizeKey(p)===catalogSizeKey(old)&&(!value||catalogPlatforms(p).indexOf(value)>=0);});cmpState.platformBySlot[i]=value;}
+        if(kind==="Plan"){list=list.filter(function(p){return p.id===value;});}
+        var chosen=list.find(function(p){return p.id===old.id;})||list[0];if(chosen)cmpState.planBySlot[i]=chosen.id;
+        rememberPicks();pageCompare("");
+      });
     });
   });
   function paint(){
@@ -1991,6 +2101,52 @@ function pageVs(a,b){
   '</tbody></table></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn small" href="/firm/'+fa.slug+'">'+esc(fa.name)+' review</a><a class="btn small ghost" href="/firm/'+fb.slug+'">'+esc(fb.name)+' review</a><a class="btn small ghost" href="/compare">Compare 3 firms</a></div>'+
   snapLine("Figures from the "+SNAPSHOT+" snapshot; the ✓ marks the better figure in that row only, not an overall verdict."));
 }
+/* Region policy records: exact ISO codes transcribed from official policy pages.
+   Absence from a documented complete restriction list means not prohibited by that policy, never guaranteed onboarding. */
+var PFM_REGION_POLICIES=[
+  {slug:"topstep",checked:"2026-11-28",source:"https://help.topstep.com/en/articles/8284116-am-i-eligible-to-trade-with-topstep",basis:"citizenship and residency",
+   restricted:"AF DZ AD AO BY BF MM BI KH CI CU CD ET GN HT IR IQ KE XK KG LA LB LY MO ML MA MZ NA NI NG KP PK RU SN RS SO SS SD SY TR UA UZ VE YE ZW".split(" "),
+   simulatedOnly:"AL BO BA VG CM CF DE GH HK IS KW LR MK MC MN ME NP PG TT VN".split(" "),
+   note:"New-account restrictions updated 17 Nov 2026. Restricted citizenship with eligible permanent residence may require individual review. Regional, entity and travel restrictions also apply; consult the official policy."},
+  {slug:"tradeify",checked:"2026-11-28",source:"https://help.tradeify.co/en/articles/10495888-rules-restricted-countries",basis:"permanent residency",
+   restricted:"AF AL DZ AD AO AQ AZ BS BB BY BA BW BG MM BI KH CF CU CI CD EC ET GH IS ID IR IQ IL JM KZ XK KG LA LB LR LY MO MY MU MN ME MA NI KP PK PA PS PG RU SO SS LK SD SY TJ TT TN TR UG UA VE VN YE ZW".split(" "),
+   capped:"ES IT BR CO".split(" "),note:"Futures policy only. Residency determines country restrictions; onboarding, live account approval and additional regional conditions still apply."}
+];
+var pfmRegionState={residence:"",citizenship:""};
+function pfmRegionEligibility(p,residence,citizenship){
+  if(!residence)return {status:"pending",message:"Select permanent residence."};
+  if(!p.checked||nowMs()-Date.parse(p.checked+"T00:00:00Z")>=30*86400000)return {status:"pending",message:"Official policy needs a fresh check."};
+  if(p.restricted.indexOf(residence)>=0)return {status:"restricted",message:"New accounts restricted by published residence policy."};
+  if(p.slug==="topstep"){
+    if(!citizenship)return {status:"pending",message:"Citizenship is required to assess this policy."};
+    if(p.restricted.indexOf(citizenship)>=0)return {status:"pending",message:"Restricted citizenship; individual permanent-residency review may be required."};
+    if(p.simulatedOnly.indexOf(residence)>=0||p.simulatedOnly.indexOf(citizenship)>=0)return {status:"conditional",message:"Trading Combine and Express Funded access; no ordinary Live Funded access under this policy."};
+  }
+  if(p.capped&&p.capped.indexOf(residence)>=0)return {status:"conditional",message:"Not prohibited by country policy; up to 3 simulated funded accounts under current regional restriction."};
+  return {status:"eligible",message:"Not prohibited by the published country policy; individual eligibility checks still apply."};
+}
+function pageGlobalTracker(){
+  var codes="AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW".split(" ");
+  var names=typeof Intl.DisplayNames==="function"?new Intl.DisplayNames(["en"],{type:"region"}):null;
+  var options=codes.map(function(c){return {code:c,name:names?names.of(c):c};}).sort(function(a,b){return a.name.localeCompare(b.name);});
+  function countryOptions(value){return '<option value="">Select a country or territory</option>'+options.map(function(o){return '<option value="'+o.code+'"'+(o.code===value?" selected":"")+'>'+esc(o.name)+'</option>';}).join("");}
+  go(pageHead('<a href="/">Home</a> · Global Tracker',"Global prop firm tracker","Check country policy before exploring account programs. Only structured official policies are included. Unverified eligibility and regional pricing are not inferred.")+
+    '<div class="card" style="margin:20px 0"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px"><div class="field"><label class="fl" for="regionResidence">Permanent residence</label><select id="regionResidence">'+countryOptions(pfmRegionState.residence)+'</select></div><div class="field"><label class="fl" for="regionCitizenship">Citizenship (where required)</label><select id="regionCitizenship">'+countryOptions(pfmRegionState.citizenship)+'</select></div></div><p class="mut small">Residency and citizenship can have different effects. Multiple citizenships, special territories and KYC exceptions require checking the firm directly.</p></div>'+pfmGlobe()+'<div class="pfm-region-tools"><div id="regionCoverage"></div><div class="pfm-morph"><button type="button" aria-label="Expand firm search" aria-expanded="false">⌕</button><input id="regionQuery" type="search" placeholder="Search matched firms" aria-label="Search matched firms" tabindex="-1"></div></div><div id="regionResults" class="firm-grid"></div><div class="notice" style="margin-top:20px">Catalog prices and platform menus are general account research unless a region-specific offer is verified. Regional price and currency are not inferred from residence. <a href="/tracker">See the separate payout tracker ↗</a></div>');
+  function draw(){
+    var eligible=[],pending=0,restricted=0;var query=$("#regionQuery").value.trim().toLowerCase();
+    PFM_REGION_POLICIES.forEach(function(p){var f=firm(p.slug),r=pfmRegionEligibility(p,pfmRegionState.residence,pfmRegionState.citizenship);if(!f)return;if(r.status==="eligible"||r.status==="conditional")eligible.push({f:f,p:p,r:r});else if(r.status==="restricted")restricted++;else pending++;});
+    $("#regionCoverage").innerHTML='<p class="snap-note" style="margin:0 0 12px">'+(pfmRegionState.residence?eligible.length+" policy-matched firm(s) · "+restricted+" excluded by verified restriction · "+pending+" require more information":"Select your residence to check the verified policies.")+' · '+(FIRMS.length-PFM_REGION_POLICIES.length)+' directory firms not yet covered by this structured lookup.</p>';
+    var visible=eligible.filter(function(x){return x.f.name.toLowerCase().indexOf(query)>=0;});
+    $("#regionResults").innerHTML=visible.length?visible.map(function(x){
+      var count=(x.f.plans||[]).length;
+      return '<article class="card"><div class="firm-head">'+avatar(x.f,42)+'<h3>'+esc(x.f.name)+'</h3></div><p style="margin:12px 0"><strong>'+esc(x.r.message)+'</strong></p><p class="mut small">'+esc(x.p.note)+'</p><p class="mut small" style="margin:10px 0">Account catalog: '+count+' records · Regional offer price: not verified</p><p class="snap-note">Policy checked '+esc(x.p.checked)+' · <a href="'+esc(x.p.source)+'" target="_blank" rel="noopener noreferrer">Official policy ↗</a></p><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"><a class="btn small" href="/firm/'+esc(x.f.slug)+'">Explore general account catalog</a><a class="btn ghost small" href="/compare?add='+esc(x.f.slug)+'">Compare catalog offers</a></div></article>';
+    }).join(""):'<div class="empty-note"><h3>'+(!pfmRegionState.residence?"Choose a country first":"No confirmed policy match for this selection")+'</h3><p>'+(!pfmRegionState.residence?"Only policy-matched firms will appear.":"This is a coverage limit, not a claim that no firms operate in your country. Review official eligibility sources before purchase.")+'</p></div>';
+  }
+  $("#regionResidence").addEventListener("change",function(){pfmRegionState.residence=this.value;draw();});
+  $("#regionCitizenship").addEventListener("change",function(){pfmRegionState.citizenship=this.value;draw();});
+  $("#regionQuery").addEventListener("input",draw);
+  draw();
+}
 function pageTracker(){
   go(pageHead('<a href="/">Home</a> · Payout Tracker', "Prop firm payout tracker — snapshot",
     "On-chain RiseUSD payouts on Arbitrum for firms that pay through Rise. This page is a dated research snapshot (tracker figures: Nov 25, 2026; firm research updated "+SNAPSHOT+"), not a live feed — figures below are exactly as researched, with the caveats the method requires.")+
@@ -2012,6 +2168,7 @@ function pageTracker(){
 }
 var TOOL_CAT = {"Savings Calculator":"calc","Consistency Calculator":"calc","Dollar to Tick Calculator":"calc","Forex Calculator":"calc","Payout Tracker":"data","Trading Journal":"data","Economic Calendar":"data","Affordable Indicators":"copy","TradeSyncer":"copy","Replikanto":"copy","Tradeus / Thor":"copy","Pass Probability Simulator":"calc","Cost to Get Funded":"calc"};
 var TOOL_ANCHOR = {"Savings Calculator":"calc-savings","Consistency Calculator":"calc-consistency","Dollar to Tick Calculator":"calc-tick","Forex Calculator":"calc-fx","Pass Probability Simulator":"calc-sim","Cost to Get Funded":"calc-cost"};
+function savingsCodes(f){return activeCodes(f).filter(function(c){return c.code&&Number.isFinite(Number(c.off))&&Number(c.off)>0&&Number(c.off)<=100;});}
 function pageTools(){
   var cards = [["coins","Savings Calculator","Free calculator","Calculate savings with verified discount codes."],["calc","Consistency Calculator","Free calculator","Biggest-day % against any rule."],["target","Dollar to Tick Calculator","Free calculator","NQ, ES, GC, CL tick values."],["coins","Forex Calculator","Free calculator","Pip value by pair and lot size."],["calc","Pass Probability Simulator","Free calculator","Simulate evaluation outcomes using your assumptions."],["coins","Cost to Get Funded","Free calculator","Estimate the expected cost of passing an evaluation."]];
   go(pageHead('<a href="/">Home</a> · Trading Tools', "Trading tools &amp; calculators",
@@ -2022,7 +2179,7 @@ function pageTools(){
   "</div>"+
   '<section class="pfm-calculator-workspace" id="pfm-calculator-section" hidden><div class="pfm-calculator-heading"><div><h2 id="pfm-active-calculator-title">Selected calculator</h2><p>Adjust inputs to calculate instantly.</p></div><button type="button" id="pfm-close-calculator" class="pfm-calculator-close">✕ Close</button></div>'+
   '<div class="pfm-calculator-grid">'+
-  '<div class="card" id="calc-savings"><h3>Savings Calculator</h3><p class="pfm-calc-help">Estimate checkout price after a percentage discount. Example: $200 with 20% off becomes $160.</p><div class="field" style="margin-top:14px"><label class="fl" for="savFirm">Firm — verified percentage code</label><select id="savFirm">'+FIRMS.filter(function(f){ return f.off && f.from!==null; }).sort(function(a,b){ return b.off-a.off; }).map(function(f){ return '<option value="'+f.slug+'">'+esc(f.name)+" — "+f.code+" ("+f.off+"% off)</option>"; }).join("")+'</select></div><div class="field"><label class="fl" for="savPrice">Price before code</label><input type="number" id="savPrice" min="0" step="0.01" /></div><p id="savOut" style="font-weight:700"></p><p class="snap-note" style="margin-top:8px">Pre-filled with the firm\'s researched entry price; change the price to price a larger account at the same code. Firms whose verified code is not a percentage (BULENOX, BLACKFRIDAY, OMO) are on the <a href="/deals">Deals page</a> instead.</p></div>'+
+  '<div class="card" id="calc-savings"><h3>Savings Calculator</h3><p class="pfm-calc-help">Estimate a discount on a specific account offer, subject to checkout eligibility.</p><div class="field" style="margin-top:14px"><label class="fl" for="savFirm">Prop firm</label><select id="savFirm">'+FIRMS.filter(function(f){return savingsCodes(f).length;}).slice().sort(function(a,b){return a.name.localeCompare(b.name);}).map(function(f){return '<option value="'+esc(f.slug)+'">'+esc(f.name)+'</option>';}).join("")+'</select></div><div class="field"><label class="fl" for="savProgram">Account type / program</label><select id="savProgram"></select></div><div class="field"><label class="fl" for="savSize">Account size</label><select id="savSize"></select></div><div class="field"><label class="fl" for="savPlatform">Trading platform</label><select id="savPlatform"></select></div><div class="field"><label class="fl" for="savOffer">Exact account offer</label><select id="savOffer"></select></div><div class="field"><label class="fl" for="savCode">Published percentage code</label><select id="savCode"></select></div><div class="field"><label class="fl" for="savPrice">Price before code</label><input type="number" id="savPrice" min="0" step="0.01" /></div><p class="mut small" id="savCurrency"></p><p id="savOut" style="font-weight:700"></p><p class="snap-note" style="margin-top:8px">An offer with no verified price requires a manual checkout price. The result is hypothetical, not confirmation that a code applies to the selected account. Expired codes are excluded.</p></div>'+
   '<div class="card" id="calc-consistency"><h3>Consistency Calculator</h3><p class="pfm-calc-help">Check whether your biggest profit day is within the firm limit. Example: $1,500 ÷ $4,000 = 37.5%.</p><div class="field" style="margin-top:14px"><label class="fl" for="consTotal">Total profit ($)</label><input type="number" id="consTotal" value="4000" min="0" /></div><div class="field"><label class="fl" for="consBig">Biggest single-day profit ($)</label><input type="number" id="consBig" value="1500" min="0" /></div><div class="field"><label class="fl" for="consRule">Maximum biggest-day share (%)</label><input type="number" id="consRule" value="40" min="1" max="100" /></div><p id="consOut" style="font-weight:700"></p></div>'+
   '<div class="card" id="calc-tick"><h3>Dollar to Tick Calculator</h3><p class="pfm-calc-help">Convert a dollar target or risk into futures ticks. Example: $100 on 1 NQ contract equals 20 ticks.</p><div class="field" style="margin-top:14px"><label class="fl" for="tickInst">Instrument</label><select id="tickInst"><option value="5">NQ — $5.00 per tick</option><option value="12.5">ES — $12.50 per tick</option><option value="10">GC (gold) — $10.00 per tick</option><option value="10">CL (oil) — $10.00 per tick</option></select></div><div class="field"><label class="fl" for="tickDollars">Target profit or risk amount ($)</label><input type="number" id="tickDollars" value="500" min="0" /></div><div class="field"><label class="fl" for="tickContracts">Contracts</label><input type="number" id="tickContracts" value="1" min="1" /></div><p id="tickOut" style="font-weight:700"></p></div>'+
   '<div class="card" id="calc-fx"><h3>Forex Pip Calculator</h3><p class="pfm-calc-help">Estimate the dollar value of a pip move. Negative pips show the opposite move; trade direction is not modeled.</p><div class="field" style="margin-top:14px"><label class="fl" for="fxPair">Pair</label><select id="fxPair"><option value="10">EUR/USD — $10.00 per pip (1 lot)</option><option value="10">GBP/USD — $10.00 per pip (1 lot)</option><option value="10">AUD/USD — $10.00 per pip (1 lot)</option><option value="jpy">USD/JPY — calculated from exchange rate</option></select></div><div class="field" id="fxRateWrap" style="display:none"><label class="fl" for="fxRate">USD/JPY rate (JPY per USD)</label><input type="number" id="fxRate" value="150" min="0.0001" step="0.01" /><p class="mut small">Enter the current exchange rate manually.</p></div><div class="field"><label class="fl" for="fxLots">Position size (lots)</label><input type="number" id="fxLots" value="1" min="0" step="0.01" /></div><div class="field"><label class="fl" for="fxPips">Price move in pips (+ or −)</label><input type="number" id="fxPips" value="25" /></div><p id="fxOut" style="font-weight:700"></p></div>'+
@@ -2054,11 +2211,47 @@ function pageTools(){
   ["consTotal","consBig","consRule"].forEach(function(id){ $("#"+id).addEventListener("input",cons); });
   ["tickInst","tickDollars","tickContracts"].forEach(function(id){ $("#"+id).addEventListener("input",tick);$("#"+id).addEventListener("change",tick); });
   ["fxPair","fxLots","fxPips","fxRate"].forEach(function(id){ $("#"+id).addEventListener("input",fx);$("#"+id).addEventListener("change",fx); });
-  function savFirmObj(){ var f=firm($("#savFirm").value); if (f) return f; return FIRMS.filter(function(x){ return x.off && x.from!==null; }).sort(function(a,b){ return b.off-a.off; })[0]; }
-  function sav(){ var f=savFirmObj(); var p=calcNumber("savPrice"); if(!Number.isFinite(p)||p<0){calcError("savOut","Enter a valid non-negative price.");return;} var sym=f.fromCur==="EUR"?"€":"$"; var fmt=function(n){ return sym+Number(n).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2}); }; var pay=Math.round(p*(1-f.off/100)*100)/100; $("#savOut").innerHTML = "With code <span style='color:var(--gold)'>"+esc(f.code)+"</span> ("+f.off+"% off): you pay <span style='color:#a9dc7d'>"+fmt(pay)+"</span> — you save "+fmt(Math.round((p-pay)*100)/100)+"."; }
-  var savF=$("#savFirm"); savF.addEventListener("change", function(){ var f=savFirmObj(); $("#savPrice").value=f.from; sav(); });
-  $("#savPrice").value = savFirmObj().from;
-  $("#savPrice").addEventListener("input", sav);
+  function savFirmObj(){return firm($("#savFirm").value);}
+  function savOptionMenu(id,items,wanted){
+    var e=$("#"+id);e.innerHTML=items.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[1])+'</option>';}).join("");
+    if(items.some(function(x){return String(x[0])===String(wanted);}))e.value=String(wanted);
+  }
+  function savPlan(){var f=savFirmObj();return f&&firmPlanList(f).find(function(p){return p.id===$("#savOffer").value;});}
+  function savSyncPrice(){var p=savPlan();$("#savPrice").value=p&&p.price!=null&&p.price!==""&&Number.isFinite(Number(p.price))?String(p.price):"";$("#savCurrency").textContent=p?("Recorded currency: "+(p.currency||"unconfirmed")+(p.monthly?" · monthly":"")+(p.price==null?" · price unconfirmed":"")):"No account offer selected";sav();}
+  function savFillOffers(resetPlatform){
+    var f=savFirmObj(),program=$("#savProgram").value,size=$("#savSize").value,old=$("#savOffer").value;
+    var records=f?firmPlanList(f).filter(function(p){return catalogProgram(p)===program&&catalogSizeKey(p)===size;}):[];
+    var platforms=Array.from(new Set(records.flatMap(catalogPlatforms))).sort();
+    savOptionMenu("savPlatform",[["",platforms.length?"All listed platforms":"Platform not verified"]].concat(platforms.map(function(p){return [p,p];})),resetPlatform?"":$("#savPlatform").value);
+    var platform=$("#savPlatform").value;if(platform)records=records.filter(function(p){return catalogPlatforms(p).indexOf(platform)>=0;});
+    savOptionMenu("savOffer",records.map(function(p){return [p.id,catalogVariantLabel(p)];}),old);savSyncPrice();
+  }
+  function savFillSizes(){
+    var f=savFirmObj(),program=$("#savProgram").value,records=f?firmPlanList(f).filter(function(p){return catalogProgram(p)===program;}):[];
+    var sizes=Array.from(new Set(records.map(catalogSizeKey))).sort(function(a,b){return a==="unknown"?1:b==="unknown"?-1:Number(a)-Number(b);});
+    savOptionMenu("savSize",sizes.map(function(v){return [v,v==="unknown"?"Size not verified":planSizeLabel({size:Number(v)})];}));savFillOffers(true);
+  }
+  function savFillFirm(){
+    var f=savFirmObj(),records=f?firmPlanList(f):[],programs=Array.from(new Set(records.map(catalogProgram)));
+    savOptionMenu("savProgram",programs.map(function(p){return [p,p];}));
+    savOptionMenu("savCode",f?savingsCodes(f).map(function(c){return [c.code,c.code+" ("+c.off+"% off)"];}):[]);savFillSizes();
+  }
+  function sav(){
+    var f=savFirmObj(),p=savPlan(),c=f&&savingsCodes(f).find(function(x){return x.code===$("#savCode").value;});
+    if(!p||!c){calcError("savOut","Choose an account and a non-expired published percentage code.");return;}
+    var v=calcNumber("savPrice");if(!Number.isFinite(v)||v<0){calcError("savOut","Enter a valid non-negative price from checkout.");return;}
+    var sym=p.currency==="EUR"?"€":p.currency==="USD"?"$":p.currency?p.currency+" ":"";var fmt=function(n){return esc(sym)+Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});};
+    var pay=Math.round(v*(1-Number(c.off)/100)*100)/100;
+    $("#savOut").innerHTML="If code <span style='color:var(--gold)'>"+esc(c.code)+"</span> applies ("+c.off+"% off): estimated price <span style='color:#a9dc7d'>"+fmt(pay)+"</span> — estimated saving "+fmt(Math.round((v-pay)*100)/100)+(p.currency?".":" (currency unconfirmed).");
+  }
+  $("#savFirm").addEventListener("change",savFillFirm);
+  $("#savProgram").addEventListener("change",savFillSizes);
+  $("#savSize").addEventListener("change",function(){savFillOffers(true);});
+  $("#savPlatform").addEventListener("change",function(){savFillOffers(false);});
+  $("#savOffer").addEventListener("change",savSyncPrice);
+  $("#savCode").addEventListener("change",sav);
+  $("#savPrice").addEventListener("input",sav);
+  savFillFirm();
   function sim(){
     var w=calcNumber("simWin"),rr=calcNumber("simRR"),rk=calcNumber("simRisk"),tg=calcNumber("simTarget"),dd=calcNumber("simDD"),n=calcNumber("simTrades");
     if(![w,rr,rk,tg,dd,n].every(Number.isFinite)||w<=0||w>=100||rr<=0||rk<=0||tg<=0||dd<=0||!Number.isInteger(n)||n<1||n>2000){calcError("simOut","Enter a win rate between 0 and 100, positive reward:risk, risk, target and drawdown, and a whole number of trades up to 2,000.");return;}
@@ -2244,7 +2437,7 @@ function pfmMembership(user){
 function pfmMembershipCards(user, accountCount){
   var current=pfmMembership(user);
   var inJournal=typeof accountCount==="number";
-  return '<section class="card" id="memberships" style="'+(inJournal?'margin-top:0':'margin-top:20px;max-width:1000px')+'"><h2>'+(inJournal?'Membership &amp; upgrades':'Memberships')+'</h2><p class="mut small">'+(user?'Current plan: <strong>'+esc(current.name)+'</strong>'+(inJournal?' · '+accountCount+' of '+current.limit+' accounts used':'')+'.':'Choose the account capacity that fits your trading.')+' Paid upgrades are not available until billing launches.'+(inJournal?' Existing accounts remain accessible.':'')+'</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin-top:14px">'+PFM_MEMBERSHIPS.map(function(p){var active=!!user&&p.id===current.id;return '<details class="card pfm-membership-card" style="'+(active?'border-color:var(--amber);':'')+'"><summary style="cursor:pointer"><strong style="font-size:20px">'+esc(p.name)+'</strong><p style="font-size:22px;font-weight:700;margin:8px 0">'+esc(p.price)+'</p><p class="mut small">Up to '+p.limit+' trading '+(p.limit===1?'account':'accounts')+'</p><span class="mut small">'+(active?'Current plan · View details':'View plan details')+'</span></summary><div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?'Track multiple accounts across prop firms.':'Track one trading account.')+'</p>'+(active?'<p><strong>Current membership</strong></p>':p.id==="basic"&&!user?'<a class="btn ghost small" href="/account">Sign up free</a>':'<p class="mut small">'+(p.id==="basic"?'Free plan. Membership changes are not available yet.':'Paid upgrades coming soon. No payment will be collected.')+'</p>')+'</div></details>';}).join("")+'</div>'+(inJournal?'<p style="margin-top:14px"><a class="btn ghost small" href="/account">Manage membership</a></p>':'')+'</section>';
+  return '<section class="card pfm-memberships" id="memberships" style="'+(inJournal?'margin-top:0':'margin-top:20px;max-width:1000px')+'"><h2>'+(inJournal?'Membership &amp; upgrades':'Memberships')+'</h2><p class="mut small">'+(user?'Current plan: <strong>'+esc(current.name)+'</strong>'+(inJournal?' · '+accountCount+' of '+current.limit+' accounts used':'')+'.':'Choose the account capacity that fits your trading.')+' Paid upgrades are not available until billing launches.'+(inJournal?' Existing accounts remain accessible.':'')+'</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin-top:14px">'+PFM_MEMBERSHIPS.map(function(p){var active=!!user&&p.id===current.id;return '<details class="card pfm-membership-card pfm-tier-'+p.id+'" style="'+(active?'border-color:var(--amber);':'')+'"><summary style="cursor:pointer"><strong style="font-size:20px">'+esc(p.name)+'</strong><p style="font-size:22px;font-weight:700;margin:8px 0">'+esc(p.price)+'</p><p class="mut small">Up to '+p.limit+' trading '+(p.limit===1?'account':'accounts')+'</p><span class="mut small">'+(active?'Current plan · View details':'View plan details')+'</span></summary><div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?'Track multiple accounts across prop firms.':'Track one trading account.')+'</p>'+(active?'<p><strong>Current membership</strong></p>':p.id==="basic"&&!user?'<a class="btn ghost small" href="/account">Sign up free</a>':'<p class="mut small">'+(p.id==="basic"?'Free plan. Membership changes are not available yet.':'Paid upgrades coming soon. No payment will be collected.')+'</p>')+'</div></details>';}).join("")+'</div>'+(inJournal?'<p style="margin-top:14px"><a class="btn ghost small" href="/account">Manage membership</a></p>':'')+'</section>';
 }
 function pageAccount(){
   if (sb && !authReady) { authChecking("Your account"); return; }
@@ -2267,7 +2460,7 @@ function pageAccount(){
   var countryGuess = region==="US" ? "United States" : (region==="GB" ? "United Kingdom" : (region==="IN" ? "India" : (region==="AU" ? "Australia" : "")));
   go(pageHead('<a href="/">Home</a> · Account', "Create your free account", "Sign up free. Takes under a minute; no card.")+
   '<div class="auth-layout" style="max-width:560px;margin-top:20px">'+(sb?"":authUnavailable())+
-  '<div class="card"><form id="regForm"><div class="field"><label class="fl" for="regName">Full name</label><input type="text" id="regName" autocomplete="name" /></div>'+
+  '<div class="card"><div class="pfm-signup-steps" id="pfmSignupSteps" aria-label="Registration progress"><span class="current" aria-current="step"><b>1</b> Create account</span><span><b>2</b> Verify email</span><span><b>3</b> Open workspace</span></div><form id="regForm"><div class="field"><label class="fl" for="regName">Full name</label><input type="text" id="regName" autocomplete="name" /></div>'+
   '<div class="field"><label class="fl" for="regCountry">Country (pre-filled from your browser locale: '+esc(locale)+')</label><input type="text" id="regCountry" value="'+esc(countryGuess)+'" autocomplete="country-name" /></div>'+
   '<div class="field"><label class="fl" for="regEmail">Email</label><input type="email" id="regEmail" autocomplete="email" /></div>'+
   '<div class="field"><label class="fl" for="regPass">Password</label><input type="password" id="regPass" autocomplete="new-password" /></div>'+
@@ -2291,9 +2484,9 @@ function pageAccount(){
     sb.auth.signUp({email:em,password:p1,options:{emailRedirectTo:authRedirectTo("/login"),data:{full_name:$("#regName").value.trim(),country:$("#regCountry").value.trim(),deals_opt_in:$("#regNews").checked}}}).then(function(r){
       btn.disabled=false;
       if (r.error) return err(r.error.message);
-      if (r.data && r.data.session){ toast("Account created"); history.pushState({},"","/journal"); route(); return; }
+      if (r.data && r.data.session){ history.pushState({},"","/journal"); route(); toast("✓ Account created"); return; }
       if (r.data && r.data.user && r.data.user.identities && r.data.user.identities.length===0) return err("An account with this email already exists. Try logging in instead.");
-      msg.className="form-msg ok"; msg.textContent="Almost done — we sent a confirmation link to "+em+". Open it on this device and it will bring you back here, signed in.";
+      pfmSignupStep(2);pfmAuthSuccess(msg,"Almost done — confirmation link sent to "+em+". Open it on this device to verify your email.");
     }).catch(function(){ btn.disabled=false; err("Could not reach the sign-in service. Please try again."); });
   });
 }
@@ -2318,7 +2511,7 @@ function pageLogin(){
     msg.className="form-msg"; msg.textContent="Signing in…";
     sb.auth.signInWithPassword({email:em,password:$("#liPass").value}).then(function(r){
       if (r.error) return err(r.error.message==="Email not confirmed" ? "Please confirm your email first — check your inbox for the link." : "Wrong email or password.");
-      history.pushState({},"","/journal"); route();
+      if(location.pathname!=="/journal"){history.pushState({},"","/journal");route();}toast("✓ Signed in successfully");
     }).catch(function(){ err("Could not reach the sign-in service. Please try again."); });
   });
   $("#forgotBtn").addEventListener("click", function(){
@@ -2327,7 +2520,7 @@ function pageLogin(){
     if (!sb){ m.className="form-msg err"; m.textContent="The sign-in service is unavailable right now."; return; }
     sb.auth.resetPasswordForEmail(em,{redirectTo:authRedirectTo("/reset")}).then(function(r){
       if (r.error){ m.className="form-msg err"; m.textContent=r.error.message; return; }
-      m.className="form-msg ok"; m.textContent="If an account exists for that email, a reset link is on its way.";
+      pfmAuthSuccess(m,"If an account exists for that email, a reset link is on its way.");
     });
   });
 }
@@ -2343,7 +2536,7 @@ function pageReset(){
     if (!sb || !PM_USER) return err("This reset link has expired or was already used. Request a new one from the login page.");
     sb.auth.updateUser({password:pw}).then(function(r){
       if (r.error) return err(r.error.message);
-      toast("Password updated"); history.pushState({},"","/journal"); route();
+      history.pushState({},"","/journal"); route();toast("✓ Password updated");
     });
   });
 }
@@ -2488,7 +2681,7 @@ function journalPlatforms(firm, plan, size){
   var exact=(firm.plans||[]).filter(function(p){return (p.name||p.program)===plan && Number(p.size)===Number(size);});
   var values=[];
   exact.forEach(function(p){
-    var raw=p.platform;
+    var raw=p.coverage==="starting"?null:p.platform;
     if(!raw || /not (yet )?verified|pending|not confirmed|not stated|unknown|unconfirmed/i.test(String(raw)))return;
     (Array.isArray(raw)?raw:String(raw).split(/,\s*/)).forEach(function(v){
       v=String(v).trim();if(v && v!=="—" && values.indexOf(v)<0)values.push(v);
@@ -2599,7 +2792,7 @@ function journalFirmRules(firm, plan, size, stage){
     matches=(firm.plans||[]).filter(function(p){return /^Trading Combine —/.test(p.name||"")&&Number(p.size)===Number(size);});
     alias=matches.length>0;
   }
-  if(!matches.length || (matches.length!==1 && !alias))return null;
+  if(!matches.length || (matches.length!==1 && !alias) || matches.some(function(p){return p.coverage==="starting";}))return null;
   var planRecord=matches[0], rec=planRecord;
   if(alias){
     var common={};
@@ -2926,11 +3119,11 @@ function renderJournal(){
     }).join("") + '</div>' +
     '<div id="journalAccountEditor" hidden><h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm" aria-labelledby="journalAccountFormTitle"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><input id="jv14FirmSearch" type="search" placeholder="Search all prop firms" aria-label="Search available prop firms" autocomplete="off" style="margin-bottom:8px"><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
     '<div class="field"><label class="fl" for="newPlan">Program / plan</label><select id="newPlan"></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
-    '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
+
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
     '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
     '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded (unspecified)</option><option value="sim_funded">Sim funded</option><option value="live_funded">Live funded</option><option value="personal">Personal</option></select></div>' +
-    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div></div>' +
+    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div</div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel">Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>' +
     '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move records and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var sortedTrades=rows.slice().sort(function(a,b){return String(b.traded_at).localeCompare(String(a.traded_at))||String(a.id).localeCompare(String(b.id));});
@@ -3063,7 +3256,7 @@ function renderJournal(){
       select.style.display = "none";
       manual.style.display = "block";
       manual.required = true;
-      if (pref) manual.value = String(pref);
+      manual.value = pref ? String(pref) : "";
       if (note) note.textContent = plan ? "This plan has no size in the research. Enter the size on your account." : "Choose a firm to see the sizes its plan offers.";
       return;
     }
@@ -3124,7 +3317,7 @@ function renderJournal(){
     var firm = $("#newFirm").value === "__other__" ? $("#newFirmOther").value.trim() : $("#newFirm").value;
     var plan = $("#newPlan").value === "__custom__" ? $("#newPlanOther").value.trim() : $("#newPlan").value;
     if (!firm) return;
-    input.value = plan ? firm + " " + plan : firm + " Account";
+    var size=Number($("#newAccountSize").value);input.value = (plan ? firm + " " + plan : firm + " Account")+(size>0?" "+planSizeLabel({size:size}):"");
     input.dataset.auto = "1";
   }
   function journalApplyFirm(preferred, keepLabel){
@@ -3221,8 +3414,9 @@ function renderJournal(){
   });
   $("#newAccountSizePreset").addEventListener("change", function(){
     var custom=this.value==="__custom__", input=$("#newAccountSize");input.style.display=custom?"block":"none";input.required=custom;if(custom){input.value="";input.focus();}else if(this.value)input.value=this.value;
-    journalFillPlatforms(null);
+    journalFillPlatforms(null);journalSyncLabel();
   });
+  $("#newAccountSize").addEventListener("input",journalSyncLabel);
   $("#newPlatform").addEventListener("change",function(){var o=$("#newPlatformOther");o.style.display=this.value==="__custom__"?"block":"none";if(this.value!=="__custom__")o.value="";});
   $("#newAccountLabel").addEventListener("input", function(){ this.dataset.auto = "0"; });
   $("#journalAccountCancel").addEventListener("click", function(){ journalResetAccountForm(); $("#journalAddAccount").focus(); });
