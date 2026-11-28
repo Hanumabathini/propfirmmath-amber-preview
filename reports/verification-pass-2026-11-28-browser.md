@@ -69,3 +69,6 @@ tradethepool.com shows Flex and Max evaluations for Day Trade and Swing at $5K-$
 
 ## Lark Funding (left partial)
 larkfunding.com runs a Black Friday "Buy 1, Get 3" bundle (Nov 17-30) and adds "BF" size tabs to the Instant, 1-Step, 1-Step Max and 3-Step cards. The card fees (for example 10K: Instant $400, 1-Step $200, 1-Step Max $99, 3-Step $105) are shown without a list/sale split, so it isn't clear they are standing prices. Rules read: Instant 8% trailing, 5% daily, 90% reward, on-demand first payout; 1-Step 10% target, 7% max, 5% daily; 1-Step Max 12% target, 12% max, 5% daily, 3 free restarts; 3-Step 5/4/3% targets, 5% max, no daily limit. Re-read after Nov 30.
+
+### ThinkCapital: fully verified
+Read the official homepage on 28 Nov 2026. The firm now sells One Step, Two Step Intraday, Two Step Swing, Three Step and Instant Funding at 5K to 100K (25 plans). The old Lightning, Dual Step, Nexus and Bolt names are gone. The split calculator shows 80% base and 90% with the add-on. The homepage says "Global Presence (Incl. USA)"; only the ThinkMarkets broker-account payout is not for US residents. No sale code was shown, so these are list prices.
