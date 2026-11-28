@@ -1217,6 +1217,22 @@ header :focus-visible{outline-color:var(--ivory)!important}
 @media(max-width:600px){.terra-discover-head{align-items:start;flex-direction:column}.terra-market-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.terra-rail-cell:nth-child(n){padding:16px 12px;border-right:1px solid var(--sand);border-top:1px solid var(--sand)}.terra-rail-cell:nth-child(odd){padding-left:0}.terra-rail-cell:nth-child(even){border-right:0}.terra-rail-cell:nth-child(-n+2){border-top:0}.terra-workbench-tools{grid-template-columns:1fr}.terra-workbench-item:first-child{grid-row:auto;min-height:190px}.terra-workbench-item{min-height:164px}.terra-hall-mast{grid-template-columns:1fr;gap:24px}.terra-market-hall .market-landing-card,.terra-market-hall .market-landing-card:nth-child(n){grid-template-columns:64px minmax(0,1fr);gap:8px 16px;padding:18px 0}.terra-market-hall .market-landing-card h3{grid-row:1}.terra-market-hall .market-landing-card>strong{grid-row:2}.terra-market-hall .market-landing-card p{grid-column:2;grid-row:3}.terra-market-hall .market-landing-card .market-cta{grid-column:2;grid-row:4}.terra-offers-editorial .terra-feature-offer>strong{font-size:27px}}
 @media(prefers-reduced-motion:reduce){.terra-cinematic .terra-medallion,.terra-cinematic .terra-coin-object{animation:none!important}.terra-rail-art,.terra-tool-art i{transition:none!important}}
 </style>
+
+<style>
+/* Touch devices retain kinetic objects, with a visible stop control. */
+@media(max-width:860px){
+ .terra-cinematic .terra-orbit-layer{padding:18px 6px 12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--sand) var(--tc-stage)}
+ .terra-cinematic .terra-medallion{min-height:120px;flex:0 0 108px;width:108px}
+ .terra-cinematic .terra-coin-object{animation:terra-medal-spin 7.5s linear infinite;animation-delay:var(--phase);width:86px;height:86px;transform-style:preserve-3d}
+ .terra-cinematic .terra-motion-toggle{display:block;position:relative;order:3;left:auto;bottom:auto;transform:none;margin:0 auto}
+ .terra-cinematic .terra-coin-name{font-size:12px}
+}
+@media(max-width:860px) and (hover:none){
+ .terra-cinematic .terra-3d-scene:hover .terra-coin-object{animation-play-state:running}
+ .terra-cinematic .terra-3d-scene.terra-orbit-paused .terra-coin-object,.terra-cinematic .terra-3d-scene.terra-offscreen .terra-coin-object,.terra-cinematic .terra-3d-scene:focus-within .terra-coin-object{animation-play-state:paused}
+}
+@media(prefers-reduced-motion:reduce){.terra-cinematic .terra-coin-object,.terra-cinematic .terra-medallion{animation:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
