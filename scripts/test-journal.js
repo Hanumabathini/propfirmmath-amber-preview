@@ -353,6 +353,11 @@ function submit(form) {
     ok("trade log has ordered table and three summary metrics",d.querySelectorAll(".jv14-trade-table th").length===6&&d.querySelectorAll(".jv14-trade-summary>.card").length===3,"trade layout");
     const csv=w.journalCsv([{id:"1",account_id:"a",traded_at:"2026-11-01",pnl:-12.5,symbol:"NQ",note:'=1+1'},{id:"2",account_id:"a",traded_at:"2026-11-02",pnl:10,symbol:"ES",note:'a,"b"'}],[{id:"a",account_label:"Main",firm:"FTMO",plan:"2-Step",account_size:10000,platform:"MT5"}]);
     ok("CSV headers, ordering, negative PnL, quoting and formula defense",csv.startsWith('"Date","Account","Firm","Program","Account size","Platform","Instrument","Outcome","PnL","Note"')&&csv.indexOf("2026-11-02")<csv.indexOf("2026-11-01")&&csv.includes('"-12.50"')&&csv.includes('"a,""b"""')&&csv.includes("\"'=1+1\""),csv);
+    const datedCsv=w.journalCsv([{id:"d1",account_id:"a",traded_at:"2026-11-28T18:00:00.000Z",pnl:50,symbol:"GC"},{id:"d2",account_id:"a",traded_at:"2026-11-27T18:00:00.000Z",pnl:-20,symbol:"NQ"}],[{id:"a",account_label:"Main",firm:"FTMO",plan:"2-Step"}]);
+    const dateLines=datedCsv.split("\r\n");
+    ok("Excel-compatible export includes an ISO trade date in the first column of every row",dateLines.length===3&&dateLines[0].startsWith('"Date",')&&dateLines[1].startsWith('"2026-11-28",')&&dateLines[2].startsWith('"2026-11-27",'),datedCsv);
+    ok("empty export still includes the Date column",w.journalCsv([],[]).startsWith('"Date",'),"header");
+
     ok("trade filters support account and breakeven",w.journalTradeMatches({symbol:"NQ",pnl:0,traded_at:"2026-11-01"},"main","flat",{account_label:"Main"})&&!w.journalTradeMatches({pnl:0},"","wins",null),"filters");
     ok("account caps and trusted metadata", w.pfmMembership({user_metadata:{pfm_membership:"elite"}}).limit===1 && w.pfmMembership({app_metadata:{pfm_membership:"pro"}}).limit===10 && w.pfmMembership({app_metadata:{pfm_membership:"elite"}}).limit===25, "limits");
     themeButton.click();
