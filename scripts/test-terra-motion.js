@@ -11,12 +11,13 @@ function run(route,fn,reduced=false){
  try{fn(dom.window.document,dom.window);assert.deepEqual(errors,[],"runtime errors "+route);}finally{dom.window.close();}
 }
 run("/",(d,w)=>{
- const coins=[...d.querySelectorAll(".terra-medallion")];assert(coins.length>=6,"firm medallions missing");assert(coins.every(c=>c.querySelector(".terra-coin-front")&&c.querySelector(".terra-coin-back")&&c.querySelector(".terra-coin-rim")),"dimensional coin faces missing");assert.equal(new Set(coins.map(c=>c.getAttribute("href"))).size,coins.length);assert(coins.every(c=>c.getAttribute("href").startsWith("/firm/")));
- const pause=d.querySelector("#terra-motion-toggle");pause.click();assert.equal(pause.getAttribute("aria-pressed"),"true");assert(d.querySelector("#terra-orbit-scene").classList.contains("terra-orbit-paused"));pause.click();assert.equal(pause.getAttribute("aria-pressed"),"false");
- const market=d.querySelector("[data-terra-market=futures]");market.click();assert.equal(d.querySelector("#terra-total").textContent,market.dataset.count);assert.equal(d.querySelector("#terra-market-link").getAttribute("href"),"/futures");assert(d.querySelector("#home-tabs [data-m=futures]").classList.contains("on"));assert.equal(market.getAttribute("aria-pressed"),"true");
- d.querySelector("#terra-reset").click();assert.equal(d.querySelector("#terra-market-link").getAttribute("href"),"/firms");assert(d.querySelector("#home-tabs [data-m=all]").classList.contains("on"));
+ const hero=d.querySelector(".hero");assert(hero&&hero.querySelector(".hero-bg img[src='/img/hero-960.webp']"),"original hero missing");
+ const rows=[...d.querySelectorAll("#tc-original-marquee .mq")];assert.equal(rows.length,2);
+ const firmLinks=[...d.querySelectorAll("#tc-original-marquee a:not([aria-hidden])")];assert(firmLinks.length>100);assert.equal(new Set(firmLinks.map(a=>a.href)).size,firmLinks.length);
+ const pause=d.querySelector("#tc-marquee-pause");pause.click();assert.equal(pause.getAttribute("aria-pressed"),"true");pause.click();assert.equal(pause.getAttribute("aria-pressed"),"false");
+ d.querySelector("#home-tabs [data-m=futures]").click();assert(d.querySelector("#home-tabs [data-m=futures]").classList.contains("on"));d.querySelector("#home-tabs [data-m=all]").click();assert(d.querySelector("#home-tabs [data-m=all]").classList.contains("on"));
 });
-run("/",(d)=>assert(d.querySelector("#terra-motion-toggle").disabled),true);
+run("/",(d)=>assert(d.querySelector("#tc-marquee-pause").disabled),true);
 run("/",(d)=>{const form=d.querySelector(".tc-firm-search");assert.equal(form.getAttribute("action"),"/firms");assert.equal(form.querySelector("[name=view]").value,"directory");assert(d.querySelector("#mainnav a[href='/firms?view=plans']"));assert(d.querySelector("#mainnav a[href='/journal']"));assert(d.querySelector("#mainnav a[href='/login']"));});
 run("/firms?view=directory&q=tradeify",(d)=>{assert.equal(d.querySelector("#dir-q").value,"tradeify");const cards=[...d.querySelectorAll("#dtable .firm-card")];assert(cards.length>0);assert(cards.every(c=>c.querySelector(".firm-head").textContent.toLowerCase().includes("tradeify")));assert(!d.querySelector(".tc-advanced-filters").open);assert(d.querySelector("#dir-platform"));assert(d.querySelector(".tc-view-switch a[href='/firms?view=plans']"));});
 run("/firms",(d)=>{const markets=[...d.querySelectorAll(".market-landing-card")];assert.equal(markets.length,6);assert(markets.every(m=>m.querySelector(".terra-market-object svg")),"market artwork missing");});
