@@ -23,3 +23,6 @@ Read https://finotivefunding.com/challenge on 2026-11-28. Seven sizes ($2.5K to 
 ## Sale-only list (promote after the Black Friday sale ends)
 Firms whose pages show only Black Friday sale prices on 2026-11-28. Sale prices are not recorded as standing prices; these stay partial until list prices can be read.
 - Finotive Funding (finotivefunding.com/challenge): 1-Step, 2-Step and Solo FX, sizes $2.5K to $200K. Rules already match the file; only price is blocking.
+
+## Bitfunded (left partial)
+The public site (bitfunded.com) has no prices or rules. Its Challenges buttons go to trader.bitfunded.com/client/challenge/, which redirects to a sign-in page. Pricing and rules are only visible after creating an account, so they can't be confirmed from public official pages. Stays partial; needs the firm's help-centre or rules pages, or an account the user chooses to create.
