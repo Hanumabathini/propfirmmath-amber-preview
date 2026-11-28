@@ -81,3 +81,6 @@ The pricing widget is an iframe from rf-zone.rebelsfunding.com, and opening it d
 
 ### FundingPips: still partial
 The official terms say services are not offered in FATF and EU/UN sanctioned countries, Vietnam and the UAE. The list is "including", and the US is not named either way, so US eligibility stays open.
+
+### BluSky Trading: fully verified
+Clicked through every mode and balance in the homepage configurator (15 plans): Launch 50K/100K/200K static at $59/$69/$79 per 30 days plus $99/$149/$179 on passing, Propel 25K-300K at list $150-$320 (30OFF shown), Orbit 50K-200K at $199-$419 one-time, and Instant $3.5K $749 and 50K $599. The help-centre country list does not include the US (the firm clears through a US FCM), and the platform article lists Volumetrica, Rithmic, Tradovate, TradingView and others.
