@@ -9324,14 +9324,15 @@ var FIRMS = [
     "scaling": "invitation-only NYS Live Scale",
     "news": "restricted +/-10 min high-impact",
     "overnight": "permitted",
-    "us": "not stated",
+    "us": "No. The official site lists the United States, Russia, the UAE and FATF-listed or sanctioned jurisdictions as excluded.",
     "site": "https://nysmarkets.com",
     "sources": [
       "https://nysmarkets.com/",
       "https://help.nysmarkets.com/en/articles/16089441-cfds-pricing-plans",
-      "https://www.trustpilot.com/review/nysmarkets.com"
+      "https://www.trustpilot.com/review/nysmarkets.com",
+      "https://nysmarkets.com/pricing"
     ],
-    "verif": "partial",
+    "verif": "partial (full CFD, futures, stocks and crypto size matrices not read)",
     "verifLabel": "Partially verified",
     "affiliate": "yes (terms not found)",
     "platforms": [
@@ -9347,9 +9348,9 @@ var FIRMS = [
     "paid30": null,
     "payouts30": null,
     "largest": null,
-    "note": "Internal conflict: the firm's help centre states a flat 80/20 split, while the main site advertises 'up to 100%'. This page uses the help-centre figure. Prices also differ between the help-centre table and a newer 'Two Step Classic' list — checkout is the deciding price. The $19 Flash price is an entry fee; a $50 activation fee applies on passing at 10K ($269 at $100K).",
+    "note": "28 Nov 2026: homepage and pricing page read. Country exclusions confirmed on the official site. Pricing page shows list prices with code BLACK (70% off) applied at checkout, for example CFD 2-Step 5K list $176 (sale $52), 100K $1,956 (sale $586); 4 markets x 6 products still to be read in full.",
     "summary": "Multi-market firm (futures, stocks, CFDs, crypto) run from Saint Lucia. CFD programs include Instant, One Trade, 2-Step, Flash and One Rule. Payouts are on demand but capped at 2% of the initial balance per request.",
-    "verifiedOn": "Nov 27, 2026",
+    "verifiedOn": "Nov 28, 2026",
     "plans": [
       {
         "id": "nys-markets-flash-10000",
