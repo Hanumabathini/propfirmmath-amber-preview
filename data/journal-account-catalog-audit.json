@@ -1,0 +1,3144 @@
+{
+  "date": "2026-11-28",
+  "scope": "All 150 directory firms received an official-site lookup attempt; this is an initial review, not full program verification. Only evidenced account menus are added. Incomplete data permits manual journal entry. Access errors, missing rendered content and unconfirmed responses are marked limited.",
+  "counts": {
+    "official_program_research_partial": 14,
+    "official_website_lookup_only": 115,
+    "official_lookup_limited_or_unconfirmed": 21
+  },
+  "firmCount": 150,
+  "firms": [
+    {
+      "firm": "My Funded Futures",
+      "slug": "my-funded-futures",
+      "officialWebsite": "https://myfundedfutures.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Signature",
+          "sizes": [
+            5000,
+            10000,
+            20000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Hyperprop",
+            "Tradovate",
+            "TradingView",
+            "Quantower",
+            "Volumetrica",
+            "DeepChart/DeepDom",
+            "ATAS"
+          ],
+          "source": "https://myfundedfutures.com/",
+          "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Builder",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Hyperprop",
+            "Tradovate",
+            "TradingView",
+            "Quantower",
+            "Volumetrica",
+            "DeepChart/DeepDom",
+            "ATAS"
+          ],
+          "source": "https://myfundedfutures.com/",
+          "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Rapid",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Hyperprop",
+            "Tradovate",
+            "TradingView",
+            "Quantower",
+            "Volumetrica",
+            "DeepChart/DeepDom",
+            "ATAS"
+          ],
+          "source": "https://myfundedfutures.com/",
+          "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Rapid EOD",
+          "sizes": [
+            25000,
+            50000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Hyperprop",
+            "Tradovate",
+            "TradingView",
+            "Quantower",
+            "Volumetrica",
+            "DeepChart/DeepDom",
+            "ATAS"
+          ],
+          "source": "https://myfundedfutures.com/",
+          "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Pro",
+          "sizes": [
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Hyperprop",
+            "Tradovate",
+            "TradingView",
+            "Quantower",
+            "Volumetrica",
+            "DeepChart/DeepDom",
+            "ATAS"
+          ],
+          "source": "https://myfundedfutures.com/",
+          "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 3,
+      "existingFirmPlatforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Quantower"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Next Level Funded",
+      "slug": "next-level-funded",
+      "officialWebsite": "https://www.nextlevelfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not listed"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FTMO",
+      "slug": "ftmo",
+      "officialWebsite": "https://ftmo.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "2-Step",
+          "sizes": [
+            10000,
+            25000,
+            50000,
+            100000,
+            200000
+          ],
+          "platforms": [
+            "MT4",
+            "MT5",
+            "cTrader",
+            "TradingView"
+          ],
+          "source": "https://ftmo.com/en/2-step-challenge/",
+          "platformSource": "https://ftmo.com/en/faq/which-platforms-can-i-use-for-trading/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "1-Step",
+          "sizes": [
+            10000,
+            25000,
+            50000,
+            100000,
+            200000
+          ],
+          "platforms": [
+            "MT4",
+            "MT5",
+            "cTrader",
+            "TradingView"
+          ],
+          "source": "https://promo.ftmo.com/new-1-step-challenge/",
+          "platformSource": "https://ftmo.com/en/faq/which-platforms-can-i-use-for-trading/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Instant",
+          "sizes": [
+            5000,
+            10000,
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "MT4",
+            "MT5",
+            "cTrader",
+            "TradingView"
+          ],
+          "source": "https://ftmo.com/en/instant-account/",
+          "platformSource": "https://ftmo.com/en/faq/which-platforms-can-i-use-for-trading/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Futures Growth",
+          "sizes": [
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Tradovate",
+            "TradingView"
+          ],
+          "source": "https://ftmo.com/en/futures/comparison-table/",
+          "platformSource": "https://ftmo.com/en/futures/faq/ftr-which-platforms-can-i-use-for-trading/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Futures Pro",
+          "sizes": [
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Tradovate",
+            "TradingView"
+          ],
+          "source": "https://ftmo.com/en/futures/comparison-table/",
+          "platformSource": "https://ftmo.com/en/futures/faq/ftr-which-platforms-can-i-use-for-trading/",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT4",
+        "MT5",
+        "cTrader",
+        "TradingView"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Top One Futures",
+      "slug": "top-one-futures",
+      "officialWebsite": "https://toponefutures.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Elite",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Elite Daily",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Elite ACCESS",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Elite ACCESS Intraday",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Elite ACCESS Static",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Instant Sim Funded",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Ignite",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "X-Daily Spark",
+          "sizes": [
+            50000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "X-Ultra",
+          "sizes": [
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "X-HYPER",
+          "sizes": [],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "BlackArrow",
+            "WealthCharts",
+            "Hyperprop"
+          ],
+          "source": "https://help.toponefutures.com/en/",
+          "platformSource": "https://help.toponefutures.com/en/",
+          "coverage": "type-only"
+        }
+      ],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "BlackArrow",
+        "WealthCharts"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Ment Funding",
+      "slug": "ment-funding",
+      "officialWebsite": "https://mentfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 2,
+      "existingFirmPlatforms": [
+        "cTrader",
+        "DXtrade",
+        "Match-Trader",
+        "Rithmic",
+        "ATAS"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Tradeify",
+      "slug": "tradeify",
+      "officialWebsite": "https://tradeify.co",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Growth",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "TradingView",
+            "Rithmic",
+            "Tradesea",
+            "Quantower",
+            "Sierra Chart",
+            "R|Trader",
+            "WealthCharts"
+          ],
+          "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        },
+        {
+          "name": "Lightning",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "TradingView",
+            "Rithmic",
+            "Tradesea",
+            "Quantower",
+            "Sierra Chart",
+            "R|Trader",
+            "WealthCharts"
+          ],
+          "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        },
+        {
+          "name": "Select",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000,
+            300000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "TradingView",
+            "Rithmic",
+            "Tradesea",
+            "Quantower",
+            "Sierra Chart",
+            "R|Trader",
+            "WealthCharts"
+          ],
+          "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView",
+        "Rithmic",
+        "Tradesea",
+        "Quantower",
+        "Sierra Chart",
+        "R|Trader",
+        "WealthCharts"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Apex Trader Funding",
+      "slug": "apex-trader-funding",
+      "officialWebsite": "https://apextraderfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Intraday Trail Std",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Rithmic",
+            "Tradovate",
+            "WealthCharts"
+          ],
+          "source": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+          "platformSource": "https://apextraderfunding.com/help-center/getting-started/creating-your-account/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "EOD Trail Std",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Rithmic",
+            "Tradovate",
+            "WealthCharts"
+          ],
+          "source": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+          "platformSource": "https://apextraderfunding.com/help-center/getting-started/creating-your-account/",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Rithmic",
+        "Tradovate",
+        "WealthCharts"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Bulenox",
+      "slug": "bulenox",
+      "officialWebsite": "https://bulenox.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Qualification",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Rithmic",
+            "NinjaTrader",
+            "Tradovate"
+          ],
+          "source": "https://bulenox.com/accounts-pricing",
+          "platformSource": "https://bulenox.com/help-center/connection",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Fast Track",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Rithmic",
+            "NinjaTrader",
+            "Tradovate"
+          ],
+          "source": "https://bulenox.com/accounts-pricing",
+          "platformSource": "https://bulenox.com/help-center/connection",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Momentum",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Rithmic",
+            "NinjaTrader",
+            "Tradovate"
+          ],
+          "source": "https://bulenox.com/accounts-pricing",
+          "platformSource": "https://bulenox.com/help-center/connection",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not listed"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedNext",
+      "slug": "fundednext",
+      "officialWebsite": "https://fundednext.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Stellar 1-Step",
+          "sizes": [
+            6000,
+            15000,
+            25000,
+            50000,
+            100000,
+            200000
+          ],
+          "platforms": [
+            "Match-Trader",
+            "MT4 (outside US)",
+            "MT5 (outside US)",
+            "cTrader (outside US)"
+          ],
+          "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+          "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Stellar 2-Step",
+          "sizes": [
+            6000,
+            15000,
+            25000,
+            50000,
+            100000,
+            200000
+          ],
+          "platforms": [
+            "Match-Trader",
+            "MT4 (outside US)",
+            "MT5 (outside US)",
+            "cTrader (outside US)"
+          ],
+          "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+          "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Stellar Lite",
+          "sizes": [
+            5000,
+            10000,
+            25000,
+            50000,
+            100000,
+            200000
+          ],
+          "platforms": [
+            "Match-Trader",
+            "MT4 (outside US)",
+            "MT5 (outside US)",
+            "cTrader (outside US)"
+          ],
+          "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+          "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Stellar Instant",
+          "sizes": [
+            2000,
+            5000,
+            10000,
+            20000
+          ],
+          "platforms": [
+            "Match-Trader",
+            "MT4 (outside US)",
+            "MT5 (outside US)",
+            "cTrader (outside US)"
+          ],
+          "source": "https://help.fundednext.com/en/articles/11641117-what-are-the-available-account-sizes-for-the-stellar-instant-account",
+          "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT4",
+        "MT5",
+        "cTrader",
+        "Tradovate (Futures)"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundingPips",
+      "slug": "fundingpips",
+      "officialWebsite": "https://fundingpips.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "2-Step Pro",
+          "sizes": [
+            5000,
+            10000,
+            25000,
+            50000,
+            100000,
+            200000
+          ],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "2-Step Standard",
+          "sizes": [
+            5000,
+            10000,
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "2-Step Lite",
+          "sizes": [
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "1-Step Flex",
+          "sizes": [],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "type-only"
+        },
+        {
+          "name": "2-Step Flex",
+          "sizes": [],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "type-only"
+        },
+        {
+          "name": "1-Step Labs",
+          "sizes": [],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/53187088949777-1-Step-Labs",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "type-only"
+        },
+        {
+          "name": "1-Step Lite",
+          "sizes": [],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "type-only"
+        },
+        {
+          "name": "Zero",
+          "sizes": [],
+          "platforms": [
+            "MT5",
+            "cTrader",
+            "Match-Trader"
+          ],
+          "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+          "coverage": "type-only"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FXIFY",
+      "slug": "fxify",
+      "officialWebsite": "https://fxify.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT4",
+        "MT5",
+        "DXtrade",
+        "TradingView"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Goat Funded Trader",
+      "slug": "goat-funded-trader",
+      "officialWebsite": "https://www.goatfundedtrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "MatchTrader",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "E8 Perpetuals",
+      "slug": "e8-perpetuals",
+      "officialWebsite": "https://e8markets.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "E8 Terminal"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "The5ers",
+      "slug": "the5ers",
+      "officialWebsite": "https://the5ers.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "High Stakes",
+          "sizes": [
+            2500,
+            5000,
+            10000,
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "MT5"
+          ],
+          "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "High Stakes New",
+          "sizes": [
+            2500,
+            5000,
+            10000,
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "MT5"
+          ],
+          "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Hyper Growth",
+          "sizes": [
+            5000,
+            10000,
+            20000
+          ],
+          "platforms": [
+            "MT5"
+          ],
+          "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Bootcamp",
+          "sizes": [
+            20000,
+            100000,
+            250000
+          ],
+          "platforms": [
+            "MT5"
+          ],
+          "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "ProGrowth",
+          "sizes": [
+            5000,
+            10000,
+            20000
+          ],
+          "platforms": [
+            "MT5"
+          ],
+          "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Alpha Capital",
+      "slug": "alpha-capital",
+      "officialWebsite": "https://alphacapitalgroup.uk",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "DXtrade",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded Trading Plus",
+      "slug": "funded-trading-plus",
+      "officialWebsite": "https://www.fundedtradingplus.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Blue Guardian",
+      "slug": "blue-guardian",
+      "officialWebsite": "https://blueguardian.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 2,
+      "existingFirmPlatforms": [
+        "MT5",
+        "Match-Trader",
+        "TradeLocker",
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView",
+        "DeepCharts"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "AquaFunded",
+      "slug": "aquafunded",
+      "officialWebsite": "https://aquafunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "Match-Trader",
+        "TradeLocker",
+        "Tradovate",
+        "NinjaTrader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "TradeDay",
+      "slug": "tradeday",
+      "officialWebsite": "https://tradeday.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not listed"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "QT Funded",
+      "slug": "qt-funded",
+      "officialWebsite": "https://qtfunded.quanttekel.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "MT5",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Earn2Trade",
+      "slug": "earn2trade",
+      "officialWebsite": "https://earn2trade.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Gauntlet Mini",
+          "sizes": [
+            50000,
+            100000,
+            150000,
+            200000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Finamark",
+            "R|Trader",
+            "R|Trader Pro",
+            "Tradovate",
+            "TradingView",
+            "BlackArrow One",
+            "DeepCharts",
+            "Quantower",
+            "ATAS",
+            "Inside Edge Trader",
+            "Investor RT",
+            "Motive Wave",
+            "MultiCharts",
+            "Bookmap",
+            "Photon",
+            "QScalp",
+            "QSI - Quick Screen Trading",
+            "ScalpTool",
+            "Trade Navigator",
+            "Volfix.net",
+            "Jigsaw Trading",
+            "ATAS Order Flow Trading",
+            "Sierra Chart"
+          ],
+          "source": "https://klaviyo.earn2trade.com/gauntlet-mini",
+          "platformSource": "https://help.earn2trade.com/en/articles/2090521-what-platforms-can-i-use-for-the-gauntlet-mini-trader-career-path",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Trader Career Path",
+          "sizes": [
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "Finamark",
+            "R|Trader",
+            "R|Trader Pro",
+            "Tradovate",
+            "TradingView",
+            "BlackArrow One",
+            "DeepCharts",
+            "Quantower",
+            "ATAS",
+            "Inside Edge Trader",
+            "Investor RT",
+            "Motive Wave",
+            "MultiCharts",
+            "Bookmap",
+            "Photon",
+            "QScalp",
+            "QSI - Quick Screen Trading",
+            "ScalpTool",
+            "Trade Navigator",
+            "Volfix.net",
+            "Jigsaw Trading",
+            "ATAS Order Flow Trading",
+            "Sierra Chart"
+          ],
+          "source": "https://help.earn2trade.com/en/articles/5452472-what-is-the-withdrawal-policy",
+          "platformSource": "https://help.earn2trade.com/en/articles/2090521-what-platforms-can-i-use-for-the-gauntlet-mini-trader-career-path",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not listed"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Elite Trader Funding",
+      "slug": "elite-trader-funding",
+      "officialWebsite": "https://elitetraderfunding.app",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Rithmic",
+        "Tradovate"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "NYS Markets",
+      "slug": "nys-markets",
+      "officialWebsite": "https://nysmarkets.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5 (CFD)",
+        "dxFeed (Futures)",
+        "DeepCharts (Stocks)"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Top One Trader",
+      "slug": "top-one-trader",
+      "officialWebsite": "https://www.toponetrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Match-Trader",
+        "MetaTrader",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Blueberry Futures",
+      "slug": "blueberry-futures",
+      "officialWebsite": "https://blueberryfutures.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "BlackArrow"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Get Leveraged",
+      "slug": "get-leveraged",
+      "officialWebsite": "https://getleveraged.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "GOAT Funded Futures",
+      "slug": "goat-funded-futures",
+      "officialWebsite": "https://goatfundedfutures.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Rithmic",
+        "Quantower",
+        "TradingView",
+        "WealthCharts",
+        "DeepCharts",
+        "ATAS"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Atlas Funded",
+      "slug": "atlas-funded",
+      "officialWebsite": "https://atlasfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 2,
+      "existingFirmPlatforms": [
+        "TradeLocker",
+        "Match-Trader",
+        "MT5",
+        "Volumetrica / Tradara / HyperProp (Futures)"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Blueberry Funded",
+      "slug": "blueberry-funded",
+      "officialWebsite": "https://blueberryfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Core Funded",
+      "slug": "core-funded",
+      "officialWebsite": "https://www.corefunded.io",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "For Traders",
+      "slug": "for-traders",
+      "officialWebsite": "https://fortraders.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Propr",
+      "slug": "propr",
+      "officialWebsite": "https://propr.xyz",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Hyperliquid"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Crypto Fund Trader",
+      "slug": "crypto-fund-trader",
+      "officialWebsite": "https://cryptofundtrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Bybit",
+        "MT5",
+        "Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Upscale",
+      "slug": "upscale",
+      "officialWebsite": "https://upscale.trade",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Own TradingView-based terminal"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "HyroTrader",
+      "slug": "hyrotrader",
+      "officialWebsite": "https://www.hyrotrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Hyro terminal",
+        "Bybit / BloFin via API"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Kraken Prop",
+      "slug": "kraken-prop",
+      "officialWebsite": "https://www.kraken.com/gb/pro/prop",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Kraken Pro"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Hola Prime",
+      "slug": "hola-prime",
+      "officialWebsite": "https://holaprime.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "TradeLocker",
+        "Match-Trader",
+        "DXtrade"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Instant Funding",
+      "slug": "instant-funding",
+      "officialWebsite": "https://instantfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "OneFunded",
+      "slug": "onefunded",
+      "officialWebsite": "https://onefunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "BrightFunded",
+      "slug": "brightfunded",
+      "officialWebsite": "https://brightfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "cTrader",
+        "DXtrade"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Darwinex Zero",
+      "slug": "darwinex-zero",
+      "officialWebsite": "https://www.darwinexzero.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "MT4",
+        "MT5",
+        "TradingView"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "City Traders Imperium",
+      "slug": "city-traders-imperium",
+      "officialWebsite": "https://citytradersimperium.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Match-Trader",
+        "MT5 (not available to US traders)"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Maven Trading",
+      "slug": "maven-trading",
+      "officialWebsite": "https://maventrading.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5",
+        "Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "PineX Capital",
+      "slug": "pinex-capital",
+      "officialWebsite": "https://pinexcapital.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Trade The Pool",
+      "slug": "trade-the-pool",
+      "officialWebsite": "https://tradethepool.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not listed"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Phidias Prop Firm",
+      "slug": "phidias-prop-firm",
+      "officialWebsite": "https://phidiaspropfirm.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Rithmic",
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView",
+        "DeepCharts",
+        "R/Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Take Profit Trader",
+      "slug": "take-profit-trader",
+      "officialWebsite": "https://takeprofittrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "INTRADAY Test",
+          "sizes": [
+            25000,
+            50000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "Rithmic",
+            "TradingView"
+          ],
+          "source": "https://takeprofittrader.com/blog/plans",
+          "platformSource": "https://takeprofittrader.com/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "CLASSIC",
+          "sizes": [
+            25000,
+            50000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "Rithmic",
+            "TradingView"
+          ],
+          "source": "https://takeprofittrader.com/blog/plans",
+          "platformSource": "https://takeprofittrader.com/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "EOD",
+          "sizes": [
+            25000,
+            50000,
+            150000
+          ],
+          "platforms": [
+            "Tradovate",
+            "NinjaTrader",
+            "Rithmic",
+            "TradingView"
+          ],
+          "source": "https://takeprofittrader.com/blog/plans",
+          "platformSource": "https://takeprofittrader.com/",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Rithmic"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Alpha Futures",
+      "slug": "alpha-futures",
+      "officialWebsite": "https://alpha-futures.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Zero",
+          "sizes": [
+            25000,
+            50000,
+            100000
+          ],
+          "platforms": [
+            "AlphaTrader",
+            "TradingView",
+            "WealthCharts",
+            "Deepchart",
+            "Quantower"
+          ],
+          "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+          "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Standard",
+          "sizes": [
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "AlphaTrader",
+            "TradingView",
+            "WealthCharts",
+            "Deepchart",
+            "Quantower"
+          ],
+          "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+          "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Advanced",
+          "sizes": [
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "AlphaTrader",
+            "TradingView",
+            "WealthCharts",
+            "Deepchart",
+            "Quantower"
+          ],
+          "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+          "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "DayTraders.com",
+      "slug": "daytraders-com",
+      "officialWebsite": "https://daytraders.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded Futures Network",
+      "slug": "funded-futures-network",
+      "officialWebsite": "https://fundedfuturesnetwork.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Purdia Capital",
+      "slug": "purdia-capital",
+      "officialWebsite": "https://purdia.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "SwissFirmup",
+      "slug": "swissfirmup",
+      "officialWebsite": "https://swissfirmup.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "UProfit",
+      "slug": "uprofit",
+      "officialWebsite": "https://uprofit.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FunderPro",
+      "slug": "funderpro",
+      "officialWebsite": "https://funderpro.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Fintokei",
+      "slug": "fintokei",
+      "officialWebsite": "https://fintokei.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FTUK",
+      "slug": "ftuk",
+      "officialWebsite": "https://ftuk.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Nordic Funder",
+      "slug": "nordic-funder",
+      "officialWebsite": "https://nordicfunder.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Finotive Funding",
+      "slug": "finotive-funding",
+      "officialWebsite": "https://finotivefunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedElite",
+      "slug": "fundedelite",
+      "officialWebsite": "https://fundedelite.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Mubite",
+      "slug": "mubite",
+      "officialWebsite": "https://mubite.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Hash Hedge",
+      "slug": "hash-hedge",
+      "officialWebsite": "https://hashhedge.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Bitfunded",
+      "slug": "bitfunded",
+      "officialWebsite": "https://bitfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "The Trading Pit",
+      "slug": "the-trading-pit",
+      "officialWebsite": "https://thetradingpit.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Atmos Funded",
+      "slug": "atmos-funded",
+      "officialWebsite": "https://atmosfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Audacity Capital",
+      "slug": "audacity-capital",
+      "officialWebsite": "https://audacity.capital",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedSquad",
+      "slug": "fundedsquad",
+      "officialWebsite": "https://fundedsquad.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded Trader Markets",
+      "slug": "funded-trader-markets",
+      "officialWebsite": "https://fundedtradermarkets.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundingTraders",
+      "slug": "fundingtraders",
+      "officialWebsite": "https://fundingtraders.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Monevis",
+      "slug": "monevis",
+      "officialWebsite": "https://monevis.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "RebelsFunding",
+      "slug": "rebelsfunding",
+      "officialWebsite": "https://rebelsfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "SabioTrade",
+      "slug": "sabiotrade",
+      "officialWebsite": "https://sabiotrade.us",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Sway Funded",
+      "slug": "sway-funded",
+      "officialWebsite": "https://swayfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "TX3 Funding",
+      "slug": "tx3-funding",
+      "officialWebsite": "https://tx3funding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "TradeFundrr",
+      "slug": "tradefundrr",
+      "officialWebsite": "https://tradefundrr.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Wall Street Funded",
+      "slug": "wall-street-funded",
+      "officialWebsite": "https://wsfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "WeMasterTrade",
+      "slug": "wemastertrade",
+      "officialWebsite": "https://wemastertrade.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Axi Select",
+      "slug": "axi-select",
+      "officialWebsite": "https://axi.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "BluSky Trading",
+      "slug": "blusky-trading",
+      "officialWebsite": "https://blusky.pro",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Lark Funding",
+      "slug": "lark-funding",
+      "officialWebsite": "https://larkfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "ThinkCapital",
+      "slug": "thinkcapital",
+      "officialWebsite": "https://thinkcapital.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Traders Launch",
+      "slug": "traders-launch",
+      "officialWebsite": "https://traderslaunch.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded Family One",
+      "slug": "funded-family-one",
+      "officialWebsite": "https://fundedfamilyone.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "PropEd Capital",
+      "slug": "proped-capital",
+      "officialWebsite": "https://propedcapital.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Standard Eval",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Nexus Connect",
+            "Onyx (TradingView charting)"
+          ],
+          "source": "https://www.propedcapital.com/plans",
+          "platformSource": "https://propedcapital.com/",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Instant Funding",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000
+          ],
+          "platforms": [
+            "Nexus Connect",
+            "Onyx (TradingView charting)"
+          ],
+          "source": "https://www.propedcapital.com/plans",
+          "platformSource": "https://propedcapital.com/",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "CoinProp",
+      "slug": "coinprop",
+      "officialWebsite": "https://coinprop.io",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundYourFX",
+      "slug": "fundyourfx",
+      "officialWebsite": "https://fundyourfx.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "IC Funded",
+      "slug": "ic-funded",
+      "officialWebsite": "https://icfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "RZR Funded",
+      "slug": "rzr-funded",
+      "officialWebsite": "https://rzrfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Rev One Trading",
+      "slug": "rev-one-trading",
+      "officialWebsite": "https://revonetrading.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "IQ Capital",
+      "slug": "iq-capital",
+      "officialWebsite": "https://iqcapital.io",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "The Concept Trading",
+      "slug": "the-concept-trading",
+      "officialWebsite": "https://prop.theconcepttrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "LifeUp Trading",
+      "slug": "lifeup-trading",
+      "officialWebsite": "https://lifeuptrading.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Breakout Prop",
+      "slug": "breakout-prop",
+      "officialWebsite": "https://breakoutprop.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Leeloo Trading",
+      "slug": "leeloo-trading",
+      "officialWebsite": "https://leelootrading.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "PipFarm",
+      "slug": "pipfarm",
+      "officialWebsite": "https://pipfarm.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "OneUp Trader",
+      "slug": "oneup-trader",
+      "officialWebsite": "https://oneuptrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_program_research_partial",
+      "programsAddedOrReviewed": [
+        {
+          "name": "Evaluation",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000,
+            250000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "R|Trader",
+            "R|Trader Pro",
+            "QST",
+            "QScalp",
+            "Scalp Tool",
+            "Sierra Chart",
+            "Track’n Trade",
+            "Trade Navigator",
+            "MotiveWave",
+            "Volfix",
+            "AgenaTrader",
+            "Bookmap",
+            "InsideEdge Trader",
+            "Investor/RT",
+            "Jigsaw Trading",
+            "Photon",
+            "Medved Trader"
+          ],
+          "source": "https://www.oneuptrader.com/",
+          "platformSource": "https://help.oneuptrader.com/article/380-supported-platforms",
+          "coverage": "verified-availability"
+        },
+        {
+          "name": "Pro Evaluation",
+          "sizes": [
+            25000,
+            50000,
+            100000,
+            150000,
+            250000
+          ],
+          "platforms": [
+            "NinjaTrader",
+            "R|Trader",
+            "R|Trader Pro",
+            "QST",
+            "QScalp",
+            "Scalp Tool",
+            "Sierra Chart",
+            "Track’n Trade",
+            "Trade Navigator",
+            "MotiveWave",
+            "Volfix",
+            "AgenaTrader",
+            "Bookmap",
+            "InsideEdge Trader",
+            "Investor/RT",
+            "Jigsaw Trading",
+            "Photon",
+            "Medved Trader"
+          ],
+          "source": "https://www.oneuptrader.com/",
+          "platformSource": "https://help.oneuptrader.com/article/380-supported-platforms",
+          "coverage": "verified-availability"
+        }
+      ],
+      "existingPricingRows": 10,
+      "existingFirmPlatforms": [
+        "NinjaTrader + 20+ platforms"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "SpiceProp",
+      "slug": "spiceprop",
+      "officialWebsite": "https://spiceprop.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 23,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Lux Trading Firm",
+      "slug": "lux-trading-firm",
+      "officialWebsite": "https://luxtradingfirm.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 8,
+      "existingFirmPlatforms": [
+        "MatchTrader (any platform via copy)"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Ylos Trading",
+      "slug": "ylos-trading",
+      "officialWebsite": "https://ylostrading.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "MyFundedPerps",
+      "slug": "myfundedperps",
+      "officialWebsite": "https://myfundedperps.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "MyFundedPerps web platform"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "TraderScale",
+      "slug": "traderscale",
+      "officialWebsite": "https://traderscale.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 20,
+      "existingFirmPlatforms": [
+        "MT5 or Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedHive",
+      "slug": "fundedhive",
+      "officialWebsite": "https://fundedhive.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Moneta Funded",
+      "slug": "moneta-funded",
+      "officialWebsite": "https://monetafunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "PropShopTrader",
+      "slug": "propshoptrader",
+      "officialWebsite": "https://propshoptrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 3,
+      "existingFirmPlatforms": [
+        "Tickblaze or Rithmic"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "OFP Funding",
+      "slug": "ofp-funding",
+      "officialWebsite": "https://ofpfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FuturesElite",
+      "slug": "futureselite",
+      "officialWebsite": "https://futureselite.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Alpha Funded",
+      "slug": "alpha-funded",
+      "officialWebsite": "https://alphafunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 3,
+      "existingFirmPlatforms": [
+        "TradeSea / WealthCharts"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Vanta Trading",
+      "slug": "vanta-trading",
+      "officialWebsite": "https://www.vantatrading.io",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 8,
+      "existingFirmPlatforms": [
+        "Vanta Trading Desk (MT5 coming soon)"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "TradersYard",
+      "slug": "tradersyard",
+      "officialWebsite": "https://tradersyard.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 8,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "WenCrypto",
+      "slug": "wencrypto",
+      "officialWebsite": "https://wencrypto.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 15,
+      "existingFirmPlatforms": [
+        "Match Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "AlpineFunded",
+      "slug": "alpinefunded",
+      "officialWebsite": "https://alpinefunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 1,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Amadeux",
+      "slug": "amadeux",
+      "officialWebsite": "https://amadeux.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 15,
+      "existingFirmPlatforms": [
+        "MT4/MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "10FOUR",
+      "slug": "10four",
+      "officialWebsite": "https://10four.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 12,
+      "existingFirmPlatforms": [
+        "10FOUR Terminal",
+        "Tradara"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "AIFO Global",
+      "slug": "aifo-global",
+      "officialWebsite": "https://aifo.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Axis Funded",
+      "slug": "axis-funded",
+      "officialWebsite": "https://axisfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 12,
+      "existingFirmPlatforms": [
+        "MT5 / Match-Trader / TradingView"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "BEM Funding",
+      "slug": "bem-funding",
+      "officialWebsite": "https://bemfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 9,
+      "existingFirmPlatforms": [
+        "MT5 / cTrader / DXtrade"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedBull",
+      "slug": "fundedbull",
+      "officialWebsite": "https://fundedbull.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded Academy",
+      "slug": "funded-academy",
+      "officialWebsite": "https://fundedacademy.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 6,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedHero",
+      "slug": "fundedhero",
+      "officialWebsite": "https://fundedhero.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Zenith Funded",
+      "slug": "zenith-funded",
+      "officialWebsite": "https://www.zenitfunding.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Venus Funded",
+      "slug": "venus-funded",
+      "officialWebsite": "https://www.venusfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 57,
+      "existingFirmPlatforms": [
+        "MT4/MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "8FigureTrader",
+      "slug": "8figuretrader",
+      "officialWebsite": "https://8figuretrader.com/",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 12,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "AI Prop",
+      "slug": "ai-prop",
+      "officialWebsite": "https://aiprop.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 28,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "CK Propfirm",
+      "slug": "ck-propfirm",
+      "officialWebsite": "https://ckpropfirm.com/",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 22,
+      "existingFirmPlatforms": [
+        "MT5 / TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Clarity Traders",
+      "slug": "clarity-traders",
+      "officialWebsite": "https://www.claritytraders.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 18,
+      "existingFirmPlatforms": [
+        "TradeLocker / MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Epic Future Traders",
+      "slug": "epic-future-traders",
+      "officialWebsite": "https://epicfuturetraders.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 23,
+      "existingFirmPlatforms": [
+        "TradeLocker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "EverFunded",
+      "slug": "everfunded",
+      "officialWebsite": "https://everfunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 20,
+      "existingFirmPlatforms": [
+        "MT5 / Match-Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded With Forex",
+      "slug": "funded-with-forex",
+      "officialWebsite": "https://fundedwithforex.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 8,
+      "existingFirmPlatforms": [
+        "Vera Charts"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded With Perps",
+      "slug": "funded-with-perps",
+      "officialWebsite": "https://fundedwithperps.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Funded2",
+      "slug": "funded2",
+      "officialWebsite": "https://funded2.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 29,
+      "existingFirmPlatforms": [
+        "MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "FundedFirm",
+      "slug": "fundedfirm",
+      "officialWebsite": "https://fundedfirm.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 24,
+      "existingFirmPlatforms": [
+        "MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Hybrid Funding",
+      "slug": "hybrid-funding",
+      "officialWebsite": "https://hybridfunding.co",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 50,
+      "existingFirmPlatforms": [
+        "DXtrade / Volumetrica / TickBlaze",
+        "MatchTrader / DXtrade / cTrader",
+        "PropX"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "iFunds",
+      "slug": "ifunds",
+      "officialWebsite": "https://ifunds.io",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 3,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Level2Markets",
+      "slug": "level2markets",
+      "officialWebsite": "https://level2markets.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Nexbitra",
+      "slug": "nexbitra",
+      "officialWebsite": "https://nexbitra.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 10,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "NexGen Futures Trader",
+      "slug": "nexgen-futures-trader",
+      "officialWebsite": "https://nexgenfuturestrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Nextproptrader",
+      "slug": "nextproptrader",
+      "officialWebsite": "https://nextproptrader.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 6,
+      "existingFirmPlatforms": [
+        "Rithmic / DXFeed"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Nova Funded",
+      "slug": "nova-funded",
+      "officialWebsite": "https://novafunded.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Novixfund",
+      "slug": "novixfund",
+      "officialWebsite": "https://novixfund.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 14,
+      "existingFirmPlatforms": [
+        "Novix Trader"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Olbios Markets Technologies",
+      "slug": "olbios-markets-technologies",
+      "officialWebsite": "https://olbiosmarketstechnologies.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "BlackArrow"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "OneStopProp",
+      "slug": "onestopprop",
+      "officialWebsite": "https://onestopprop.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 32,
+      "existingFirmPlatforms": [
+        "TradingView-powered"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Pipcy",
+      "slug": "pipcy",
+      "officialWebsite": "https://pipcy.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 26,
+      "existingFirmPlatforms": [
+        "MT5"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Prop Number One",
+      "slug": "prop-number-one",
+      "officialWebsite": "https://propnumberone.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "PropLynq",
+      "slug": "proplynq",
+      "officialWebsite": "https://proplynq.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 22,
+      "existingFirmPlatforms": [
+        "Own broker"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "PropW",
+      "slug": "propw",
+      "officialWebsite": "https://propw.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 0,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "QATS Prop",
+      "slug": "qats-prop",
+      "officialWebsite": "https://prop.qats.us",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 20,
+      "existingFirmPlatforms": [
+        "TradingView"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "TEFS",
+      "slug": "tefs",
+      "officialWebsite": "https://tefs.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 7,
+      "existingFirmPlatforms": [
+        "Not stated"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "The Edge Funder",
+      "slug": "the-edge-funder",
+      "officialWebsite": "https://theedgefunder.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "TradingView / Volumetrica / Quantower / DeepCharts / Edgeware"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Tradeiators",
+      "slug": "tradeiators",
+      "officialWebsite": "https://tradeiators.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_lookup_limited_or_unconfirmed",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 42,
+      "existingFirmPlatforms": [
+        "TradingView"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "VEDEX",
+      "slug": "vedex",
+      "officialWebsite": "https://vedexprop.com",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "VEDEX terminal"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    },
+    {
+      "firm": "Prop Hub",
+      "slug": "prop-hub",
+      "officialWebsite": "https://prop-hub.pro",
+      "reviewDate": "2026-11-28",
+      "reviewStatus": "official_website_lookup_only",
+      "programsAddedOrReviewed": [],
+      "existingPricingRows": 4,
+      "existingFirmPlatforms": [
+        "Polymarket"
+      ],
+      "remaining": "Confirm all current and legacy program-specific sizes, currencies, platform compatibility, stage and region restrictions; existing pricing data is not independently reverified by this audit."
+    }
+  ]
+}
