@@ -2835,6 +2835,11 @@ function journalTabCopy(tab){
 function journalPanelId(tab){ return "journal" + tab.charAt(0).toUpperCase() + tab.slice(1); }
 function journalApplyTab(tab){
   journalState.tab = tab;
+  if(tab !== "accounts"){
+    var editor = document.getElementById("journalAccountEditor"), add = document.getElementById("journalAddAccount");
+    if(editor) editor.hidden = true;
+    if(add) add.setAttribute("aria-expanded","false");
+  }
   ["overview","accounts","trades","calendar","insights","settings"].forEach(function(t){
     var el = document.getElementById(journalPanelId(t));
     if (el) el.hidden = t !== tab;
@@ -2883,14 +2888,14 @@ function renderJournal(){
     '<div class="jv14-account-grid">' + journalState.accounts.map(function(a){
       return '<div class="journal-account-row' + (a.id === journalState.selected ? " jv14-selected" : "") + '"><div><strong>' + esc(a.account_label || a.firm || 'Account') + '</strong><div class="jv14-account-size">' + (Number(a.account_size)>0 ? money(Number(a.account_size)) : '—') + '</div><p class="mut small">' + esc([a.firm,a.plan,a.platform].filter(Boolean).join(' · ')) + '</p><p class="mut small">' + esc(journalStatusLabel(a.stage || "evaluation")) + " · " + esc(journalStatusLabel(a.status || "active")) + '</p></div><span style="display:flex;gap:6px"><button class="btn ghost small" type="button" data-edit-account="' + esc(a.id) + '">Edit</button><button class="btn ghost small" type="button" data-delete-account="' + esc(a.id) + '">Delete</button><button class="btn ghost small" type="button" data-select-account="' + esc(a.id) + '">View</button></span></div>';
     }).join("") + '</div>' +
-    '<h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><input id="jv14FirmSearch" type="search" placeholder="Search all prop firms" aria-label="Search available prop firms" autocomplete="off" style="margin-bottom:8px"><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
+    '<div id="journalAccountEditor" hidden><h3 style="margin-top:20px" id="journalAccountFormTitle">Add account</h3><form id="journalAccountForm" aria-labelledby="journalAccountFormTitle"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px"><div class="field"><label class="fl" for="newFirm">Firm / broker</label><input id="jv14FirmSearch" type="search" placeholder="Search all prop firms" aria-label="Search available prop firms" autocomplete="off" style="margin-bottom:8px"><select id="newFirm" required aria-describedby="journalFirmCount"><option value="">Choose from all ' + FIRMS.length + " listed prop firms</option>" + firmOptions + '<option value="__other__">Other / add a firm not listed</option></select><span class="mut small" id="journalFirmCount">Plan and size follow the account recorded for that firm.</span><input id="newFirmOther" maxlength="80" placeholder="Enter firm or broker name" style="display:none;margin-top:8px" aria-label="Other firm name"></div>' +
     '<div class="field"><label class="fl" for="newPlan">Program / plan</label><select id="newPlan"></select><input id="newPlanOther" maxlength="100" placeholder="Enter account plan / type" style="display:none;margin-top:8px" aria-label="Custom account plan"></div>' +
     '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
     '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
     '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded (unspecified)</option><option value="sim_funded">Sim funded</option><option value="live_funded">Live funded</option><option value="personal">Personal</option></select></div>' +
     '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div></div>' +
-    '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel" hidden>Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel">Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>' +
     '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move records and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var tradeRows = rows.length ? '<div id="journalRows" style="margin-top:10px">' + rows.map(function(r){
     var v = Number(r.pnl);
@@ -2949,7 +2954,7 @@ function renderJournal(){
     ".pfm-journal .journal-account-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:14px 0}" +
     ".pfm-journal #journalAccountForm select,.pfm-journal #journalAccountForm input,.pfm-journal #jForm select,.pfm-journal #jForm input{width:100%;min-width:0;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:43px}" +
     ".pfm-journal #journalFirmCount{display:block;margin-top:7px;line-height:1.45}" +
-    '.pfm-journal [role="tabpanel"][hidden]{display:none!important}' +
+    '.pfm-journal [role="tabpanel"][hidden],.pfm-journal #journalAccountEditor[hidden]{display:none!important}' +
     '.pfm-journal .journal-dialog{position:fixed;inset:0;z-index:80;background:var(--dialog-scrim);display:flex;align-items:center;justify-content:center;padding:18px}' +
     '.pfm-journal .journal-dialog[hidden]{display:none!important}' +
     '.pfm-journal .journal-dialog-card{max-width:480px;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--ink)}' +
@@ -2965,7 +2970,7 @@ function renderJournal(){
     journalStyle + '<section class="pfm-journal' + (journalLightMode ? ' jv14-light' : '') + (journalReduceMotion ? ' jv14-no-motion' : '') + '" aria-label="Private trading journal"><div class="jv14-header"><div class="journal-brand"><svg aria-hidden="true" viewBox="0 0 28 28"><path d="M14 3L26 24H20L14 13L8 24H2Z" fill="currentColor"/><path d="M14 17L18 24H10Z" fill="var(--amber)"/></svg>PropFirm<span>Math</span></div><div class="jv14-header-actions"><button class="btn ghost small" id="jv14ThemeTop" type="button" aria-label="Switch color theme" title="Switch color theme">☼</button><button class="btn small" id="journalQuickAdd" type="button">+ Log trade</button></div></div><aside class="journal-side"><div class="journal-side-label">Workspace</div>' +
     '<nav class="journal-tabs" role="tablist" aria-label="Journal sections"><span class="jv14-navmark" aria-hidden="true"></span>' +
     tabBtn("overview", "Overview") + tabBtn("accounts", "Accounts") + tabBtn("trades", "Trades") + tabBtn("calendar", "Calendar") + tabBtn("insights", "Analytics") + tabBtn("settings", "Settings") +
-    '</nav><div class="journal-account"><strong>Private workspace</strong>' + esc(PM_USER.email) + '</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Your trading accounts"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All my accounts</option>' + savedOptions + '</select><button class="btn ghost small" id="journalAddAccount" type="button">+ Add account</button></div></header>' +
+    '</nav><div class="journal-account"><strong>Private workspace</strong>' + esc(PM_USER.email) + '</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Your trading accounts"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All my accounts</option>' + savedOptions + '</select><button class="btn ghost small" id="journalAddAccount" type="button" aria-controls="journalAccountEditor" aria-expanded="false">+ Add account</button></div></header>' +
     '<div id="journalOverview" role="tabpanel"' + shown("overview") + ">" + (hasAccounts ? journalDashboard(rows) : '<div class="card journal-empty"><h3>Add your first account</h3><p>The dashboard uses only accounts you add. Choose the firm, plan, and size in the form.</p><button class="btn" type="button" id="journalEmptyAdd">Add your first account</button></div>') + "</div>" +
     '<div id="journalAccounts" role="tabpanel"' + shown("accounts") + ">" + accountsPanel + "</div>" +
     '<div id="journalTrades" role="tabpanel"' + shown("trades") + ">" +
@@ -3091,12 +3096,17 @@ function renderJournal(){
     journalFillPlatforms(preferred && preferred.platform);
     if (!keepLabel) journalSyncLabel();
   }
+  function journalSetAccountEditor(open){
+    $("#journalAccountEditor").hidden = !open;
+    $("#journalAddAccount").setAttribute("aria-expanded",String(open));
+  }
   function journalResetAccountForm(){
     var form = $("#journalAccountForm");
     if (form) delete form.dataset.editId;
     $("#journalAccountFormTitle").textContent = "Add account";
     $("#journalAccountSave").textContent = "Save account";
-    $("#journalAccountCancel").hidden = true;
+    $("#journalAccountCancel").hidden = false;
+    journalSetAccountEditor(false);
     $("#newFirm").value = "";
     if($("#jv14FirmSearch")){$("#jv14FirmSearch").value="";journalFilterFirmOptions();}
     $("#newFirmOther").value = "";
@@ -3115,6 +3125,7 @@ function renderJournal(){
       $("#newFirm").value = prefillFirm === "__other__" ? "__other__" : prefillFirm;
       journalApplyFirm(null, false);
     }
+    journalSetAccountEditor(true);
     var form = $("#journalAccountForm");
     if (form && form.scrollIntoView) form.scrollIntoView({behavior:"smooth", block:"center"});
     var focusEl = prefillFirm ? $("#newAccountLabel") : $("#newFirm");
@@ -3174,13 +3185,15 @@ function renderJournal(){
   });
   $("#newPlatform").addEventListener("change",function(){var o=$("#newPlatformOther");o.style.display=this.value==="__custom__"?"block":"none";if(this.value!=="__custom__")o.value="";});
   $("#newAccountLabel").addEventListener("input", function(){ this.dataset.auto = "0"; });
-  $("#journalAccountCancel").addEventListener("click", journalResetAccountForm);
+  $("#journalAccountCancel").addEventListener("click", function(){ journalResetAccountForm(); $("#journalAddAccount").focus(); });
   journalApplyFirm(null, true);
   app.querySelectorAll("[data-edit-account]").forEach(function(b){
     b.addEventListener("click", function(){
       var row = journalState.accounts.filter(function(a){ return a.id === b.getAttribute("data-edit-account"); })[0];
       if (!row) return;
       journalApplyTab("accounts");
+      journalResetAccountForm();
+      journalSetAccountEditor(true);
       $("#journalAccountForm").dataset.editId = row.id;
       $("#journalAccountFormTitle").textContent = "Edit account";
       $("#journalAccountSave").textContent = "Save changes";
@@ -3320,7 +3333,7 @@ function renderJournal(){
     });
   });
   var quick = $("#journalQuickAdd");
-  if (quick) quick.addEventListener("click", function(){ if(!hasAccounts){openAccounts();return;} journalApplyTab("trades"); var inst = $("#jInst"); if (inst) inst.focus(); });
+  if (quick) quick.addEventListener("click", function(){ if(!hasAccounts){journalApplyTab("accounts");$("#journalAddAccount").focus();return;} journalApplyTab("trades"); var inst = $("#jInst"); if (inst) inst.focus(); });
   var viewTrades=$("#jv14ViewTrades");if(viewTrades)viewTrades.addEventListener("click",function(){journalApplyTab("trades");});
   app.querySelectorAll("[data-jtab]").forEach(function(btn){
     btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
