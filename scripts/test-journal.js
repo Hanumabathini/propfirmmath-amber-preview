@@ -228,6 +228,9 @@ function submit(form) {
     ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
     ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
+    const tradeify = w.journalFirmCatalog(w.firm("tradeify"));
+    ok("Tradeify offers Growth, Lightning and Select with distinct sizes", tradeify.length === 3 && tradeify.find(p=>p.name==="Growth").sizes.join()==="25000,50000,100000,150000" && tradeify.find(p=>p.name==="Lightning").sizes.join()==="25000,50000,100000,150000" && tradeify.find(p=>p.name==="Select").sizes.join()==="25000,50000,100000,150000,300000", sizesOf("tradeify"));
+    ok("Tradeify platform options are tied to its researched programs", w.journalPlatformChoices(w.firm("tradeify"),"Select",50000).includes("TradingView") && w.journalPlatformChoices(w.firm("tradeify"),"Lightning",100000).includes("Rithmic"), w.journalPlatformChoices(w.firm("tradeify"),"Select",50000));
     const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
     ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
     const ftmoRules = w.journalFirmRules(w.firm("ftmo"), "2-Step", 10000);
@@ -261,6 +264,15 @@ function submit(form) {
     }
     const filter = d.getElementById("journalAccountFilter");
     ok("dashboard lists only saved accounts", filter.innerHTML.includes("All my accounts") && filter.innerHTML.includes("Main journal") && !filter.innerHTML.includes("firm:") && !filter.innerHTML.includes("+ FTMO"), filter.innerHTML.slice(0, 240));
+    d.getElementById("newFirm").value = "Tradeify";
+    d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
+    const tradeifyPlan = d.getElementById("newPlan");
+    ok("Tradeify program dropdown is complete", ["Growth","Lightning","Select"].every(p=>Array.from(tradeifyPlan.options).some(o=>o.value===p)), tradeifyPlan.innerHTML);
+    tradeifyPlan.value="Select"; tradeifyPlan.dispatchEvent(new w.Event("change"));
+    ok("Select includes 300K", sizeOptions().join()==="25000,50000,100000,150000,300000,__custom__", sizeOptions());
+    tradeifyPlan.value="Lightning"; tradeifyPlan.dispatchEvent(new w.Event("change"));
+    ok("Lightning excludes 300K", sizeOptions().join()==="25000,50000,100000,150000,__custom__", sizeOptions());
+    ok("platform dropdown populated", Array.from(d.getElementById("newAccountPlatform").options).some(o=>o.value==="WealthCharts"), "Tradeify platform");
     d.getElementById("newFirm").value = "FTMO";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
     ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000,__custom__" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
@@ -288,9 +300,13 @@ function submit(form) {
     d.getElementById("newAccountSizePreset").value = "20000";
     d.getElementById("newAccountSizePreset").dispatchEvent(new w.Event("change"));
     ok("chosen size is not replaced by 5k", d.getElementById("newAccountSizePreset").value === "20000", d.getElementById("newAccountSizePreset").value);
+    const platformSelect=d.getElementById("newAccountPlatform");
+    platformSelect.value="__custom__";platformSelect.dispatchEvent(new w.Event("change"));
+    d.getElementById("newAccountPlatformOther").value="Test custom platform";
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => state.trader_accounts[1] && d.getElementById("journalAccountFilter") && d.getElementById("journalAccountFilter").value === state.trader_accounts[1].id, "new account");
     const created = state.trader_accounts[1];
+    ok("manual platform is persisted", created.platform==="Test custom platform", created.platform);
     ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
     ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);
@@ -300,6 +316,7 @@ function submit(form) {
     w.journalState.tab = "accounts";
     w.renderJournal();
     d.querySelector('[data-edit-account="' + created.id + '"]').click();
+    ok("editing preserves custom platform", d.getElementById("newAccountPlatform").value==="__custom__" && d.getElementById("newAccountPlatformOther").value==="Test custom platform", "platform edit");
     ok("editing keeps a saved size the plan does not list", d.getElementById("newAccountSizePreset").value === "42000" && sizeOptions().indexOf("42000") >= 0 && sizeOptions().indexOf("5000") >= 0, sizeOptions().join());
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => Number(state.trader_accounts.find(a => a.id === created.id).account_size) === 42000 && state.inserts.filter(x => x.table === "trader_accounts").length === 1, "edited account");
