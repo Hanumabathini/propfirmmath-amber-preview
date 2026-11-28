@@ -2,23 +2,22 @@
 
 {
   "firms": 151,
-  "records": 1190,
+  "records": 1236,
   "counts": {
-    "partial": 854,
-    "starting": 71,
+    "partial": 901,
+    "starting": 70,
     "verified": 265
   },
-  "platformEvidence": 91,
-  "stageRules": 24,
-  "missingPrice": 239,
-  "missingSize": 91
+  "missingPrice": 276,
+  "missingSize": 91,
+  "platformEvidence": 101,
+  "stageRules": 68
 }
 
-91 distinct records touched in five firms. New rows: FundedNext Stellar Lite five additional sizes; Top One Futures X-HYPER three sizes; PipFarm perpetual challenge program-only. All new records remain partial. Topstep XFA payout paths not interchangeable; no current drawdown inferred from initial drawdown. Bulenox Rithmic connection is not execution platform verification. PipFarm older cTrader-only guide is superseded for perpetuals; no sizes/prices inferred. FundedNext approximate prices and base conditions only; US Match-Trader limitation recorded, not yet enforced in UI. Top One Futures Hyperprop confirmed option, other options unverified. Official sources saved per record. Existing record IDs preserved. Full 151-firm external verification is still incomplete.
+Current pass: 47 plan records updated across FundingPips, FXIFY and The5ers. FundingPips eight model families; pricing remains checkout-dependent. FXIFY seven published 2-Phase Pro sizes, dated source prices, not current checkout confirmation. The5ers Hyper Growth and Bootcamp expanded; High Stakes New/Classic exact tier pricing and limits require more work because official pages conflict. Bootcamp advertised Pro sizes differ from evaluation balance; do not use for automated target dollars until exact evaluation balance verified. All updated rows are partial, not purchase-certified. Existing 151 firm limit retained. Full external verification incomplete.
 
-## Remaining inventory (coverage labels, not independent verification)
-
-| Firm | records | verified | partial | starting | no price | no size | platform evidence | stage rules |
+## Remaining inventory
+| Firm | Records | Verified label | Partial | Starting | No price | No size | Platform evidence | Stage rules |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | My Funded Futures | 3 | 0 | 3 | 0 | 0 | 0 | 3 | 3 |
 | Next Level Funded | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
@@ -29,11 +28,11 @@
 | Apex Trader Funding | 16 | 0 | 16 | 0 | 15 | 0 | 0 | 0 |
 | Bulenox | 24 | 0 | 24 | 0 | 0 | 0 | 0 | 0 |
 | FundedNext | 6 | 0 | 6 | 0 | 0 | 0 | 6 | 6 |
-| FundingPips | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
-| FXIFY | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| FundingPips | 34 | 0 | 34 | 0 | 34 | 0 | 7 | 34 |
+| FXIFY | 8 | 0 | 7 | 1 | 0 | 0 | 0 | 7 |
 | Goat Funded Trader | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | E8 Perpetuals | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
-| The5ers | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| The5ers | 7 | 0 | 6 | 1 | 3 | 0 | 3 | 3 |
 | Alpha Capital | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | Funded Trading Plus | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | Blue Guardian | 2 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |

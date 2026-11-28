@@ -3729,22 +3729,1299 @@ var FIRMS = [
         "program": "2-Step Pro",
         "name": "2-Step Pro",
         "size": 5000,
-        "price": 29,
+        "price": null,
         "currency": "USD",
         "monthly": false,
-        "coverage": "starting",
-        "note": "Recorded starting offer from the firm's research record. Other sizes were not re-checked on 27 Nov 2026.",
-        "target": "2-Step Std 8 then 5",
-        "dailyLoss": "3% or 5% (2-Step Std)",
-        "maxDD": "10% static (2-Step Std)",
+        "coverage": "partial",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "target": "6% then 6%",
+        "dailyLoss": "3%",
+        "maxDD": "6%",
         "ddType": "Static",
-        "minDays": "2-Step Std 3 per phase",
-        "split": "60-100 by cycle",
-        "payout": "weekly / bi-weekly / on demand",
-        "platform": "MT5, cTrader, Match-Trader",
-        "source": "https://fundingpips.com/blog/fundingpips-vs-breakout-challenge-costs"
+        "minDays": "None",
+        "split": null,
+        "payout": null,
+        "platform": null,
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "verifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-pro-10000",
+        "name": "2-Step Pro",
+        "program": "2-Step Pro",
+        "size": 10000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 6%",
+        "dailyLoss": "3%",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": null,
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-pro-25000",
+        "name": "2-Step Pro",
+        "program": "2-Step Pro",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 6%",
+        "dailyLoss": "3%",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": null,
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-pro-50000",
+        "name": "2-Step Pro",
+        "program": "2-Step Pro",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 6%",
+        "dailyLoss": "3%",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": null,
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-pro-100000",
+        "name": "2-Step Pro",
+        "program": "2-Step Pro",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 6%",
+        "dailyLoss": "3%",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": null,
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-pro-200000",
+        "name": "2-Step Pro",
+        "program": "2-Step Pro",
+        "size": 200000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 6%",
+        "dailyLoss": "3%",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": null,
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-standard-5000",
+        "name": "2-Step Standard",
+        "program": "2-Step Standard",
+        "size": 5000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "8% then 5%",
+        "dailyLoss": "3% or 5%",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 per phase; none with 3% add-on",
+        "split": "60% / 80% / 100%",
+        "payout": "Weekly, biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+            "target": null,
+            "dailyLoss": "3% or 5%",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-standard-10000",
+        "name": "2-Step Standard",
+        "program": "2-Step Standard",
+        "size": 10000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "8% then 5%",
+        "dailyLoss": "3% or 5%",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 per phase; none with 3% add-on",
+        "split": "60% / 80% / 100%",
+        "payout": "Weekly, biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+            "target": null,
+            "dailyLoss": "3% or 5%",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-standard-25000",
+        "name": "2-Step Standard",
+        "program": "2-Step Standard",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "8% then 5%",
+        "dailyLoss": "3% or 5%",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 per phase; none with 3% add-on",
+        "split": "60% / 80% / 100%",
+        "payout": "Weekly, biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+            "target": null,
+            "dailyLoss": "3% or 5%",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-standard-50000",
+        "name": "2-Step Standard",
+        "program": "2-Step Standard",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "8% then 5%",
+        "dailyLoss": "3% or 5%",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 per phase; none with 3% add-on",
+        "split": "60% / 80% / 100%",
+        "payout": "Weekly, biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+            "target": null,
+            "dailyLoss": "3% or 5%",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-standard-100000",
+        "name": "2-Step Standard",
+        "program": "2-Step Standard",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "8% then 5%",
+        "dailyLoss": "3% or 5%",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 per phase; none with 3% add-on",
+        "split": "60% / 80% / 100%",
+        "payout": "Weekly, biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+            "target": null,
+            "dailyLoss": "3% or 5%",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-flex-5000",
+        "name": "2-Step Flex",
+        "program": "2-Step Flex",
+        "size": 5000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "1 or 3 profitable days depending on split",
+        "split": "80% or 95%",
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-flex-10000",
+        "name": "2-Step Flex",
+        "program": "2-Step Flex",
+        "size": 10000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "1 or 3 profitable days depending on split",
+        "split": "80% or 95%",
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-flex-25000",
+        "name": "2-Step Flex",
+        "program": "2-Step Flex",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "1 or 3 profitable days depending on split",
+        "split": "80% or 95%",
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-flex-50000",
+        "name": "2-Step Flex",
+        "program": "2-Step Flex",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "1 or 3 profitable days depending on split",
+        "split": "80% or 95%",
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-flex-100000",
+        "name": "2-Step Flex",
+        "program": "2-Step Flex",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "1 or 3 profitable days depending on split",
+        "split": "80% or 95%",
+        "payout": null,
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+            "target": null,
+            "dailyLoss": "4%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-flex-5000",
+        "name": "1-Step Flex",
+        "program": "1-Step Flex",
+        "size": 5000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "12%",
+        "dailyLoss": "2% or 3%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% or 100%",
+        "payout": "Biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+            "target": null,
+            "dailyLoss": "2% or 3%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-flex-10000",
+        "name": "1-Step Flex",
+        "program": "1-Step Flex",
+        "size": 10000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "12%",
+        "dailyLoss": "2% or 3%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% or 100%",
+        "payout": "Biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+            "target": null,
+            "dailyLoss": "2% or 3%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-flex-25000",
+        "name": "1-Step Flex",
+        "program": "1-Step Flex",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "12%",
+        "dailyLoss": "2% or 3%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% or 100%",
+        "payout": "Biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+            "target": null,
+            "dailyLoss": "2% or 3%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-flex-50000",
+        "name": "1-Step Flex",
+        "program": "1-Step Flex",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "12%",
+        "dailyLoss": "2% or 3%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% or 100%",
+        "payout": "Biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+            "target": null,
+            "dailyLoss": "2% or 3%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-flex-100000",
+        "name": "1-Step Flex",
+        "program": "1-Step Flex",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "12%",
+        "dailyLoss": "2% or 3%",
+        "maxDD": "12%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% or 100%",
+        "payout": "Biweekly or on demand",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+            "target": null,
+            "dailyLoss": "2% or 3%",
+            "maxDD": "12%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-labs-100000",
+        "name": "1-Step Labs",
+        "program": "1-Step Labs",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "5%",
+        "dailyLoss": "1%",
+        "maxDD": "3%",
+        "ddType": "EOD trailing",
+        "minDays": "None",
+        "split": "85%",
+        "payout": "Daily after 3% profit",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53187088949777-1-Step-Labs",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53187088949777-1-Step-Labs",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53187088949777-1-Step-Labs",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "3%",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53187088949777-1-Step-Labs",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-lite-25000",
+        "name": "1-Step Lite",
+        "program": "1-Step Lite",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "1%",
+        "maxDD": "2%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80%",
+        "payout": "Daily when profit reaches 1%",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "2%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-lite-50000",
+        "name": "1-Step Lite",
+        "program": "1-Step Lite",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "1%",
+        "maxDD": "2%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80%",
+        "payout": "Daily when profit reaches 1%",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "2%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-1-step-lite-100000",
+        "name": "1-Step Lite",
+        "program": "1-Step Lite",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "1%",
+        "maxDD": "2%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80%",
+        "payout": "Daily when profit reaches 1%",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "2%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-lite-25000",
+        "name": "2-Step Lite",
+        "program": "2-Step Lite",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 3%",
+        "dailyLoss": "1%",
+        "maxDD": "2%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80%",
+        "payout": "Daily when profit reaches 1%",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "2%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-lite-50000",
+        "name": "2-Step Lite",
+        "program": "2-Step Lite",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 3%",
+        "dailyLoss": "1%",
+        "maxDD": "2%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80%",
+        "payout": "Daily when profit reaches 1%",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "2%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-2-step-lite-100000",
+        "name": "2-Step Lite",
+        "program": "2-Step Lite",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% then 3%",
+        "dailyLoss": "1%",
+        "maxDD": "2%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80%",
+        "payout": "Daily when profit reaches 1%",
+        "platform": "MT5, Match-Trader, cTrader",
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "platformVerifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+            "target": null,
+            "dailyLoss": "1%",
+            "maxDD": "2%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ]
+      },
+      {
+        "id": "fundingpips-zero-5000",
+        "name": "Zero",
+        "program": "Zero",
+        "size": 5000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": "3%",
+        "maxDD": "5%",
+        "ddType": "Intraday equity trailing",
+        "minDays": null,
+        "split": "95%",
+        "payout": "Biweekly; 7 qualifying days in rolling 30 days",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "5%",
+            "ddType": "Intraday equity trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ],
+        "accessType": "instant",
+        "openRiskLimit": "1%",
+        "profitableDayRequirement": "7 per rolling 30 days, each at least 0.25%"
+      },
+      {
+        "id": "fundingpips-zero-10000",
+        "name": "Zero",
+        "program": "Zero",
+        "size": 10000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": "3%",
+        "maxDD": "5%",
+        "ddType": "Intraday equity trailing",
+        "minDays": null,
+        "split": "95%",
+        "payout": "Biweekly; 7 qualifying days in rolling 30 days",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "5%",
+            "ddType": "Intraday equity trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ],
+        "accessType": "instant",
+        "openRiskLimit": "1%",
+        "profitableDayRequirement": "7 per rolling 30 days, each at least 0.25%"
+      },
+      {
+        "id": "fundingpips-zero-25000",
+        "name": "Zero",
+        "program": "Zero",
+        "size": 25000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": "3%",
+        "maxDD": "5%",
+        "ddType": "Intraday equity trailing",
+        "minDays": null,
+        "split": "95%",
+        "payout": "Biweekly; 7 qualifying days in rolling 30 days",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "5%",
+            "ddType": "Intraday equity trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ],
+        "accessType": "instant",
+        "openRiskLimit": "1%",
+        "profitableDayRequirement": "7 per rolling 30 days, each at least 0.25%"
+      },
+      {
+        "id": "fundingpips-zero-50000",
+        "name": "Zero",
+        "program": "Zero",
+        "size": 50000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": "3%",
+        "maxDD": "5%",
+        "ddType": "Intraday equity trailing",
+        "minDays": null,
+        "split": "95%",
+        "payout": "Biweekly; 7 qualifying days in rolling 30 days",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "5%",
+            "ddType": "Intraday equity trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ],
+        "accessType": "instant",
+        "openRiskLimit": "1%",
+        "profitableDayRequirement": "7 per rolling 30 days, each at least 0.25%"
+      },
+      {
+        "id": "fundingpips-zero-100000",
+        "name": "Zero",
+        "program": "Zero",
+        "size": 100000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": "3%",
+        "maxDD": "5%",
+        "ddType": "Intraday equity trailing",
+        "minDays": null,
+        "split": "95%",
+        "payout": "Biweekly; 7 qualifying days in rolling 30 days",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "5%",
+            "ddType": "Intraday equity trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ],
+        "accessType": "instant",
+        "openRiskLimit": "1%",
+        "profitableDayRequirement": "7 per rolling 30 days, each at least 0.25%"
+      },
+      {
+        "id": "fundingpips-zero-200000",
+        "name": "Zero",
+        "program": "Zero",
+        "size": 200000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": null,
+        "dailyLoss": "3%",
+        "maxDD": "5%",
+        "ddType": "Intraday equity trailing",
+        "minDays": null,
+        "split": "95%",
+        "payout": "Biweekly; 7 qualifying days in rolling 30 days",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "verifiedOn": "2026-11-28",
+        "note": "Official program rules, sizes and funded-stage loss structure; checkout price, regional availability and remaining conditions not verified. Daily loss is based on daily opening balance or equity, not a fixed initial-balance percentage. Zero requires no evaluation.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+            "target": null,
+            "dailyLoss": "3%",
+            "maxDD": "5%",
+            "ddType": "Intraday equity trailing",
+            "minDays": null,
+            "consistency": null,
+            "note": "Additional payout, news, holding and configuration conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+          "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started"
+        ],
+        "accessType": "instant",
+        "openRiskLimit": "1%",
+        "profitableDayRequirement": "7 per rolling 30 days, each at least 0.25%"
       }
-    ]
+    ],
+    "restrictedCountries": [
+      "IR",
+      "VN",
+      "AE"
+    ],
+    "eligibilitySource": "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started",
+    "eligibilityVerifiedOn": "2026-11-28"
   },
   {
     "slug": "fxify",
@@ -3837,6 +5114,272 @@ var FIRMS = [
         "payout": "Instant bi-weekly",
         "platform": "MT4, MT5, DXtrade, TradingView",
         "source": "https://fxify.com/blog/cheapest-path-funded-50k-fxify/"
+      },
+      {
+        "id": "fxify-2-phase-pro-10000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 10000,
+        "price": 129,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
+      },
+      {
+        "id": "fxify-2-phase-pro-25000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 25000,
+        "price": 225,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
+      },
+      {
+        "id": "fxify-2-phase-pro-50000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 50000,
+        "price": 375,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
+      },
+      {
+        "id": "fxify-2-phase-pro-100000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 100000,
+        "price": 599,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
+      },
+      {
+        "id": "fxify-2-phase-pro-150000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 150000,
+        "price": 849,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
+      },
+      {
+        "id": "fxify-2-phase-pro-200000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 200000,
+        "price": 1099,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
+      },
+      {
+        "id": "fxify-2-phase-pro-250000",
+        "name": "2-Phase Pro",
+        "program": "2-Phase Pro",
+        "size": 250000,
+        "price": 1350,
+        "currency": "USD",
+        "monthly": false,
+        "target": "4% then 8%",
+        "dailyLoss": "4%",
+        "maxDD": "8%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase",
+        "split": "80%",
+        "payout": "Every 10 days; first two requests capped at 5% or $8,000",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "note": "Published April 2026 program pricing, not current checkout quote. 0.5% profitable-day threshold; $4,000 daily profit cap; platform and regional checkout remain pending.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://fxify.com/blog/introducing-fxify-2-phase-pro/",
+            "target": null,
+            "dailyLoss": null,
+            "maxDD": null,
+            "ddType": null,
+            "minDays": null,
+            "consistency": null,
+            "dailyProfitCap": 4000,
+            "note": "Three qualifying days per payout cycle; exact funded risk terms require confirmation."
+          }
+        },
+        "sources": [
+          "https://fxify.com/blog/introducing-fxify-2-phase-pro/"
+        ]
       }
     ]
   },
@@ -4112,6 +5655,207 @@ var FIRMS = [
         "payout": "first 14d, then bi-weekly",
         "platform": "MT5",
         "source": "https://the5ers.com/high-stakes/"
+      },
+      {
+        "id": "the5ers-hyper-growth-5000",
+        "name": "Hyper Growth",
+        "program": "Hyper Growth",
+        "size": 5000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10%",
+        "dailyLoss": "3% soft daily pause",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "50% initially; scaling dependent",
+        "payout": "14 days after Pro account; every 14 days thereafter",
+        "platform": "MT5 Hedge",
+        "coverage": "partial",
+        "source": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "platformVerifiedOn": "2026-11-28",
+        "notes": "Nonrefundable fee; current checkout price not confirmed.",
+        "sources": [
+          "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+            "target": null,
+            "dailyLoss": "3% soft daily pause",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Pro-stage account type and exact execution environment require confirmation."
+          }
+        }
+      },
+      {
+        "id": "the5ers-hyper-growth-10000",
+        "name": "Hyper Growth",
+        "program": "Hyper Growth",
+        "size": 10000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10%",
+        "dailyLoss": "3% soft daily pause",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "50% initially; scaling dependent",
+        "payout": "14 days after Pro account; every 14 days thereafter",
+        "platform": "MT5 Hedge",
+        "coverage": "partial",
+        "source": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "platformVerifiedOn": "2026-11-28",
+        "notes": "Nonrefundable fee; current checkout price not confirmed.",
+        "sources": [
+          "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+            "target": null,
+            "dailyLoss": "3% soft daily pause",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Pro-stage account type and exact execution environment require confirmation."
+          }
+        }
+      },
+      {
+        "id": "the5ers-hyper-growth-20000",
+        "name": "Hyper Growth",
+        "program": "Hyper Growth",
+        "size": 20000,
+        "price": null,
+        "currency": "USD",
+        "monthly": false,
+        "target": "10%",
+        "dailyLoss": "3% soft daily pause",
+        "maxDD": "6%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "50% initially; scaling dependent",
+        "payout": "14 days after Pro account; every 14 days thereafter",
+        "platform": "MT5 Hedge",
+        "coverage": "partial",
+        "source": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "platformVerifiedOn": "2026-11-28",
+        "notes": "Nonrefundable fee; current checkout price not confirmed.",
+        "sources": [
+          "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+          "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+          "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+            "target": null,
+            "dailyLoss": "3% soft daily pause",
+            "maxDD": "6%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": null,
+            "note": "Pro-stage account type and exact execution environment require confirmation."
+          }
+        }
+      },
+      {
+        "id": "the5ers-bootcamp-20000",
+        "name": "Bootcamp",
+        "program": "Bootcamp",
+        "size": 20000,
+        "price": 22,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% each of three phases",
+        "dailyLoss": "None in evaluation",
+        "maxDD": "5%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "50% initially; scaling dependent",
+        "payout": "First request 14 days after Pro account; biweekly",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
+        "verifiedOn": "2026-11-28",
+        "activationFee": 50,
+        "note": "Advertised Pro account size; evaluation balances may differ. Fee payable in two installments. Exact phase balances and platform checkout not verified.",
+        "sources": [
+          "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
+          "https://the5ers.com/faqs/how-does-the-bootcamp-program-work/",
+          "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
+        ]
+      },
+      {
+        "id": "the5ers-bootcamp-100000",
+        "name": "Bootcamp",
+        "program": "Bootcamp",
+        "size": 100000,
+        "price": 95,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% each of three phases",
+        "dailyLoss": "None in evaluation",
+        "maxDD": "5%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "50% initially; scaling dependent",
+        "payout": "First request 14 days after Pro account; biweekly",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
+        "verifiedOn": "2026-11-28",
+        "activationFee": 205,
+        "note": "Advertised Pro account size; evaluation balances may differ. Fee payable in two installments. Exact phase balances and platform checkout not verified.",
+        "sources": [
+          "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
+          "https://the5ers.com/faqs/how-does-the-bootcamp-program-work/",
+          "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
+        ]
+      },
+      {
+        "id": "the5ers-bootcamp-250000",
+        "name": "Bootcamp",
+        "program": "Bootcamp",
+        "size": 250000,
+        "price": 225,
+        "currency": "USD",
+        "monthly": false,
+        "target": "6% each of three phases",
+        "dailyLoss": "None in evaluation",
+        "maxDD": "5%",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "50% initially; scaling dependent",
+        "payout": "First request 14 days after Pro account; biweekly",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
+        "verifiedOn": "2026-11-28",
+        "activationFee": 350,
+        "note": "Advertised Pro account size; evaluation balances may differ. Fee payable in two installments. Exact phase balances and platform checkout not verified.",
+        "sources": [
+          "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
+          "https://the5ers.com/faqs/how-does-the-bootcamp-program-work/",
+          "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
+        ]
       }
     ]
   },
