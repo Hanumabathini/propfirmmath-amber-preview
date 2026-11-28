@@ -72,3 +72,6 @@ larkfunding.com runs a Black Friday "Buy 1, Get 3" bundle (Nov 17-30) and adds "
 
 ### ThinkCapital: fully verified
 Read the official homepage on 28 Nov 2026. The firm now sells One Step, Two Step Intraday, Two Step Swing, Three Step and Instant Funding at 5K to 100K (25 plans). The old Lightning, Dual Step, Nexus and Bolt names are gone. The split calculator shows 80% base and 90% with the add-on. The homepage says "Global Presence (Incl. USA)"; only the ThinkMarkets broker-account payout is not for US residents. No sale code was shown, so these are list prices.
+
+### Topstep: fully verified
+Re-read the official help centre on 28 Nov 2026. All 19 plan prices and rules match: the Trading Combine pricing article (Standard $49/$99/$199 a month, No Activation Fee $95/$149/$229, $10/$20/$30 off with a DLL, $149 Standard activation), the Labs article (static 25K/50K/100K/150K at $75/$149/$199/$279, $250K Freedom $499, $50K Daily Payouts+ $119 EOD and $149 static, all one-time), and the eligibility article with the country list updated Nov 17, 2026. That clears the earlier "country mapping pending" reason.
