@@ -286,7 +286,7 @@ function submit(form) {
     d.querySelector('[data-jtab="overview"]').click();
     const themeButton = d.getElementById("jv14ThemeTop"), workspace = d.querySelector(".pfm-journal");
     ok("theme in Overview and no manual motion setting", d.getElementById("journalOverview").contains(themeButton) && !d.getElementById("jv14Motion"), "appearance");
-    ok("settings shows current membership and upgrade link", d.getElementById("journalSettings").textContent.includes("Pro") && !!d.querySelector('#journalSettings a[href="/account"]'), "membership");
+    ok("settings owns journal membership upgrades", d.getElementById("journalSettings").textContent.includes("Pro") && d.getElementById("journalSettings").textContent.includes("Journal membership & upgrades") && !d.querySelector('#journalSettings #memberships a[href="/account"]'), "membership");
     const membershipCards=d.querySelectorAll("#journalSettings .pfm-membership-card");
     ok("three memberships have clickable plan summaries",membershipCards.length===3&&Array.from(membershipCards).every(c=>!!c.querySelector("summary")&&!c.open),"membership cards");
     ok("trade log has ordered table and three summary metrics",d.querySelectorAll(".jv14-trade-table th").length===6&&d.querySelectorAll(".jv14-trade-summary>.card").length===3,"trade layout");
@@ -354,8 +354,8 @@ function submit(form) {
     ok("successful add closes editor", d.getElementById("journalAccountEditor").hidden, "closed");
     const created = state.trader_accounts[1];
     ok("platform persists with account",created.platform==="Hyperprop",created);
-    ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
-    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
+    ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature 20K", created);
+    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature 20K · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);
     ok("new account dashboard is empty", d.getElementById("journalOverview").textContent.includes("0 recorded trades"), "overview");
     const live = w.journalState.accounts.find(a => a.id === created.id);
@@ -557,15 +557,17 @@ function submit(form) {
 
     w.history.pushState({}, "", "/account");
     w.route();
+    ok("memberships are not rendered on the general account page", !d.querySelector("#memberships"), "account membership scope");
     ok("logged-in account page", d.getElementById("accountSignOut") && d.body.textContent.includes("3rsj8cxh@mail.grokbot.com") && d.body.textContent.includes("Test Trader") && !d.getElementById("regForm"), d.querySelector("h1") && d.querySelector("h1").textContent);
     const nav = d.getElementById("mainnav").textContent;
     ok("nav shows account and sign out", nav.includes("Account") && nav.includes("Sign out") && nav.includes("My Journal") && !nav.includes("Sign In"), nav);
 
     d.getElementById("navSignOut").click();
-    await waitFor(() => w.location.pathname === "/" && d.getElementById("mainnav").textContent.includes("Sign In"), "signed out");
-    ok("signed out nav", !d.getElementById("navSignOut") && d.getElementById("mainnav").textContent.includes("Sign In"), d.getElementById("mainnav").textContent);
+    await waitFor(() => w.location.pathname === "/" && d.getElementById("mainnav").textContent.includes("Log in"), "signed out");
+    ok("signed out nav", !d.getElementById("navSignOut") && d.getElementById("mainnav").textContent.includes("Log in"), d.getElementById("mainnav").textContent);
     w.history.pushState({}, "", "/account");
     w.route();
+    ok("free registration offers the journal without pricing cards", !d.querySelector("#memberships") && !!d.querySelector(".pfm-free-journal-intro"), "free signup");
     ok("logged-out account page is signup", !!d.getElementById("regForm") && !d.getElementById("accountSignOut"), d.querySelector("h1") && d.querySelector("h1").textContent);
     d.getElementById("regName").value = "Test Trader";
     d.getElementById("regEmail").value = "trader@example.com";

@@ -73,6 +73,15 @@ function ok(name,cond,got){ if(cond){pass++;} else {fail++;console.log('FAIL',na
  await cp.selectOption('#cmp0','leeloo-trading');await cp.selectOption('#cmpProgram0','Express');await cp.selectOption('#cmpPlatform0','Tradovate');
  const leeloo=await cp.evaluate(()=>selectedPlan(firm('leeloo-trading'),0).id);
  ok('platform-specific unknown-size offer stays exact',leeloo==='leeloo-trading-express-tradovate-pending',leeloo);
+ await cp.setViewportSize({width:1440,height:900});
+ const compareLayout=await cp.evaluate(()=>{const a=document.querySelectorAll('.pfm-compare-slot'),p=document.querySelector('.pfm-compare-pair').getBoundingClientRect();return a.length===2&&Math.abs(a[0].getBoundingClientRect().width-a[1].getBoundingClientRect().width)<2&&Math.abs(a[1].getBoundingClientRect().right-p.right)<3;});
+ ok('comparison fills exactly two equal columns on desktop',compareLayout,compareLayout);
+ await cp.setViewportSize({width:390,height:844});
+ const mobileLayout=await cp.evaluate(()=>{const a=document.querySelectorAll('.pfm-compare-slot');return Math.abs(a[0].getBoundingClientRect().left-a[1].getBoundingClientRect().left)<2&&a[1].getBoundingClientRect().top>=a[0].getBoundingClientRect().bottom;});
+ ok('comparison stacks on narrow screens',mobileLayout,mobileLayout);
+ await cp.goto(base+'/global',{waitUntil:'domcontentloaded'});await cp.waitForSelector('#regionResults .pfm-region-empty');
+ const regionLayout=await cp.evaluate(()=>{const p=document.querySelector('#regionResults').getBoundingClientRect(),e=document.querySelector('.pfm-region-empty').getBoundingClientRect();return Math.abs(e.width-p.width)<3&&e.width>250;});
+ ok('region empty state spans full grid',regionLayout,regionLayout);
  await cp.close();
  await b.close();srv.close();console.log(pass+' passed, '+fail+' failed');process.exit(fail?1:0);
 })();
