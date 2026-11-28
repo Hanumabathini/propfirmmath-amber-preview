@@ -42,10 +42,12 @@ function ok(name,cond,got){ if(cond){pass++;} else {fail++;console.log('FAIL',na
  await set(p,'fxRate',150);await set(p,'fxLots',0);t=await txt(p,'fxOut');ok('fx zero lots rejected',/positive lot size/.test(t),t);
  /* Savings */
  await tile(p,'calc-savings');
- const f=await p.evaluate(()=>{const x=firm(document.getElementById('savFirm').value);return{off:x.off,code:x.code}});
- await set(p,'savPrice',100);t=await txt(p,'savOut');const exp=(100*(1-f.off/100)).toFixed(2);ok('savings default firm math',t.includes('$'+exp)&&t.includes(f.code),t+' exp '+exp);
+ const f=await p.evaluate(()=>{const x=firm(document.getElementById('savFirm').value),c=savingsCodes(x).find(c=>c.code===document.getElementById('savCode').value),o=firmPlanList(x).find(p=>p.id===document.getElementById('savOffer').value);return{off:c.off,code:c.code,currency:o.currency}});
+ await set(p,'savPrice',100);t=await txt(p,'savOut');const exp=(100*(1-f.off/100)).toFixed(2);ok('savings selected offer math',t.includes(exp)&&t.includes(f.code)&&t.includes('If code'),t+' exp '+exp);
  await set(p,'savPrice',-1);t=await txt(p,'savOut');ok('savings negative rejected',/non-negative/.test(t),t);
- const listed=await p.$$eval('#savFirm option',o=>o.length);const wanted=await p.evaluate(()=>FIRMS.filter(f=>f.off&&f.from!==null).length);ok('savings lists only live-code firms',listed===wanted,listed+' vs '+wanted);
+ const listed=await p.$$eval('#savFirm option',o=>o.length);const wanted=await p.evaluate(()=>FIRMS.filter(f=>savingsCodes(f).length).length);ok('savings lists non-expired percentage-code firms',listed===wanted,listed+' vs '+wanted);
+ const exact=await p.evaluate(()=>{const f=firm(document.getElementById('savFirm').value),record=firmPlanList(f).find(p=>p.id===document.getElementById('savOffer').value);return !!record&&catalogProgram(record)===document.getElementById('savProgram').value&&catalogSizeKey(record)===document.getElementById('savSize').value});
+ ok('savings record belongs to selected firm, program and size',exact,exact);
  /* Cost to get funded */
  await tile(p,'calc-cost');
  await set(p,'cstFee',150);await set(p,'cstPass',20);await set(p,'cstAct',0);await set(p,'cstPay',1500);await set(p,'cstSurv',40);t=await txt(p,'cstOut');
@@ -62,5 +64,15 @@ function ok(name,cond,got){ if(cond){pass++;} else {fail++;console.log('FAIL',na
  await set(p,'simTrades',3000);t=await txt(p,'simOut');ok('sim 3000 trades rejected',/up to 2,000/.test(t),t);
  await p.close();
  p=await open(0);await tile(p,'calc-sim');await set(p,'simTrades',1);await set(p,'simTarget',50);t=await txt(p,'simOut');ok('sim runs out of trades',/Ran out of trades: 100\.0%/.test(t),t);await p.close();
+ const cp=await ctx.newPage();await cp.goto(base+'/compare',{waitUntil:'domcontentloaded'});await cp.waitForSelector('#cmp0');
+ await cp.selectOption('#cmp0','tradeify');await cp.selectOption('#cmp1','tradeify');
+ await cp.selectOption('#cmpProgram0','Growth');await cp.selectOption('#cmpSize0','50000');
+ await cp.selectOption('#cmpProgram1','Select 30%');await cp.selectOption('#cmpSize1','50000');
+ const independent=await cp.evaluate(()=>({a:selectedPlan(firm('tradeify'),0).id,b:selectedPlan(firm('tradeify'),1).id,slots:document.querySelectorAll('.compare-selectors .cmp').length}));
+ ok('same firm different programs remain independent',independent.a==='tradeify-growth-50000'&&independent.b==='tradeify-select-30-50000'&&independent.slots===2,independent);
+ await cp.selectOption('#cmp0','leeloo-trading');await cp.selectOption('#cmpProgram0','Express');await cp.selectOption('#cmpPlatform0','Tradovate');
+ const leeloo=await cp.evaluate(()=>selectedPlan(firm('leeloo-trading'),0).id);
+ ok('platform-specific unknown-size offer stays exact',leeloo==='leeloo-trading-express-tradovate-pending',leeloo);
+ await cp.close();
  await b.close();srv.close();console.log(pass+' passed, '+fail+' failed');process.exit(fail?1:0);
 })();
