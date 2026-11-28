@@ -327,6 +327,7 @@ function submit(form) {
     ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily == null, JSON.stringify(apexRules));
 
     ok("approved journal has six labeled SVG side tabs", d.querySelectorAll(".journal-side [data-jtab] svg").length === 6 && Array.from(d.querySelectorAll(".journal-side [data-jtab]")).every(b=>b.getAttribute("aria-label")), "side navigation");
+    ok("all six Journal tabs live inside a sticky sidebar",d.querySelectorAll(".journal-side-sticky [data-jtab]").length===6&&Array.from(d.querySelectorAll("style")).some(s=>s.textContent.includes(".journal-side-sticky{position:sticky;top:var(--journal-sticky-top)")),"sticky structure");
     const sideTabs=Array.from(d.querySelectorAll(".journal-tabs [data-jtab]"));
     for(const tab of sideTabs){
       tab.click();
@@ -644,6 +645,24 @@ function submit(form) {
     w.route();
     await waitFor(()=>d.getElementById("journalAddAccount"), "Journal re-entry");
     ok("Re-entering Journal restores compact workspace navigation", d.documentElement.hasAttribute("data-pfm-journal-workspace") && d.querySelectorAll("#mainnav a").length === 1 && d.querySelector("#mainnav a").getAttribute("href") === "/firms" && !!d.querySelector(".pfm-journal"), "restored private shell");
+    w.history.pushState({}, "", "/compare");
+    w.route();
+    ok("Compare always renders two aligned sets of five fields",Array.from(d.querySelectorAll(".pfm-compare-slot")).length===2&&Array.from(d.querySelectorAll(".pfm-compare-slot")).every(s=>s.querySelectorAll(".pfm-compare-field").length===5),"aligned selectors");
+    const uniqueMenus=all.every(f=>{
+      const plans=w.compareOfferList(f);
+      if(new Set(plans.map(w.compareOfferKey)).size!==plans.length)return false;
+      w.cmpState.planBySlot[0]=plans[0].id;
+      w.cmpState.platformBySlot[0]="";
+      const box=d.createElement("div");box.innerHTML=w.comparePlanMenus(f,0);
+      return Array.from(box.querySelectorAll("select")).every(s=>new Set(Array.from(s.options).map(o=>o.value)).size===s.options.length);
+    });
+    ok("Every firm has unique comparison menu choices",uniqueMenus,"all "+all.length+" firms");
+    const dup={id:"a",name:"Growth",size:50000,price:145,currency:"USD",platform:["Tradovate"],maxDD:"2000"};
+    ok("Identical offers collapse while different rules or prices remain",w.compareOfferList({slug:"fixture",plans:[dup,{...dup,id:"b"},{...dup,id:"c",maxDD:"1500"},{...dup,id:"d",price:150}]}).length===3,"duplicate handling");
+    w.history.pushState({}, "", "/journal");
+    w.route();
+    await waitFor(()=>d.getElementById("journalAddAccount"),"Journal after compare test");
+
 
     w.history.pushState({}, "", "/account");
     w.route();
