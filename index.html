@@ -784,7 +784,7 @@ nav.main a.on,nav.main .nav-resources summary.on{box-shadow:inset 0 -2px var(--a
       <p class="tiny mut">Operated by <span id="footer-operator">PropFirmMath</span></p>
     </div>
     <div><h4>Markets</h4>
-      <a href="/futures">Futures — All Firms</a><a href="/forex">Forex — All Firms</a><a href="/crypto">Crypto — All Firms</a><a href="/perps">Perps — All Firms</a><a href="/firms">All 150 Firms</a>
+      <a href="/futures">Futures — All Firms</a><a href="/forex">Forex — All Firms</a><a href="/crypto">Crypto — All Firms</a><a href="/perps">Perps — All Firms</a><a href="/firms">All Firms</a>
     </div>
     <div><h4>Guides</h4>
       <a href="/guides">All Articles</a><a href="/best-for">Best Prop Firms</a><a href="/best-for/beginners">Best for Beginners</a><a href="/best-for/scalpers">Best for Scalpers</a><a href="/best-for/swing">Best for Swing Traders</a><a href="/guide/how-prop-firms-work">How Prop Firms Actually Work</a>
@@ -1515,9 +1515,10 @@ function planPriceHTML(p){
   return sym + num + (p.monthly ? '<span class="mut small"> /month</span>' : "");
 }
 function planCoverageNote(p){
-  if (p.coverage === "verified" && p.price != null) return "Checked on the firm's site, 27 Nov 2026.";
-  if (p.coverage === "verified") return "Rules checked on the firm's site, 27 Nov 2026. The price for this size was not listed.";
-  return "Recorded starting offer. Other account sizes are not in the verified catalog yet.";
+  var date=p.verifiedOn ? " Recorded check: "+String(p.verifiedOn)+"." : "";
+  if(p.coverage==="verified")return "Catalog marked verified; confirm the current checkout and applicable rules."+date;
+  if(p.coverage==="partial")return "Partial research — some account details, checkout prices or eligibility are not confirmed."+date;
+  return "Starting information only; the full account catalog is not verified."+date;
 }
 function planFact(label, html){
   return '<div class="kvcell"><div class="k">' + label + '</div><div class="v sm">' + html + "</div></div>";
@@ -1980,7 +1981,7 @@ function pageDeals(){
 
 function pageVs(a,b){
   var fa=firm(a), fb=firm(b);
-  if (!fa||!fb) return page404("Matchup not available", "One of these firms is not in the 150-firm directory researched on "+SNAPSHOT+".");
+  if (!fa||!fb) return page404("Matchup not available", "One of these firms is not in the firm directory researched on "+SNAPSHOT+".");
   var rows=[["Rating",function(f){return f.rating?f.rating.toFixed(1):esc(ratingState(f).value)},function(f){return f.rating||0}],["Profit split (max)",function(f){return esc(formatSplit(f.split))},function(f){return f.splitMax||0}],["From price",function(f){return priceHTML(f)},function(f){return f.from===null?-1:100000-f.from}],["Payout cycle",function(f){return esc(f.payoutText)},function(f){return f.payoutDays===null?-1:100-f.payoutDays}],["Consistency rule",function(f){return esc(f.consistencyText)},function(f){return 0}],["Verified code",function(f){return f.code?esc(f.code):"None verified"},function(f){return f.off||0}],["Drawdown",function(f){return esc(f.dd)},function(f){return 0}]];
   go(pageHead('<a href="/">Home</a> · <a href="/compare">Compare</a>', esc(fa.name)+" vs "+esc(fb.name),
     "Quick answer: on snapshot ratings, "+(((fa.rating||0)>=(fb.rating||0))?esc(fa.name):esc(fb.name))+" edges this matchup; on entry price, "+((fa.from!==null&&(fb.from===null||fa.from<fb.from))?esc(fa.name):esc(fb.name))+" is cheaper. The right pick depends on drawdown type and payout speed — the table has the numbers. Updated "+SNAPSHOT+" · researched snapshot.")+
@@ -2003,7 +2004,7 @@ function pageTracker(){
   '<div class="tblwrap"><table class="dt"><thead><tr><th>#</th><th>Firm</th><th>Paid out</th><th>Payouts</th><th>Avg payout</th><th>Largest</th><th>Last payout</th></tr></thead><tbody>'+
   TRACKER.rows.map(function(r,i){ return "<tr><td class='num mut'>"+(i+1)+"</td><td>"+(r.slug?'<a href="/firm/'+r.slug+'" style="color:var(--ink);font-weight:700">'+esc(r.firm)+"</a>":"<strong>"+esc(r.firm)+"</strong>")+"</td><td><strong style='color:#a9dc7d'>"+money0(r.paid)+"</strong></td><td class='num'>"+(r.payouts?r.payouts.toLocaleString():"—")+"</td><td class='num'>"+(r.avg?money0(r.avg):"—")+"</td><td class='num'>"+(r.largest?money0(r.largest):"—")+"</td><td>"+(r.last||"Partial snapshot")+"</td></tr>"; }).join("")+
   "</tbody></table></div>"+
-  '<p class="snap-note" style="margin-top:10px">Rows marked “Partial snapshot” had only their 30-day paid total captured in the tracker snapshot — payout count, average, largest and last-payout were not captured for them, so those cells are deliberately blank rather than estimated. Alpha Trader Firm appears in the tracker data but is not one of the 150 firms in this directory, so it has no review page.</p>'+
+  '<p class="snap-note" style="margin-top:10px">Rows marked “Partial snapshot” had only their 30-day paid total captured in the tracker snapshot — payout count, average, largest and last-payout were not captured for them, so those cells are deliberately blank rather than estimated. Alpha Trader Firm appears in the tracker data but is not one of the firms in this directory, so it has no review page.</p>'+
   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:22px"><div class="card"><h3>How the tracking works</h3><p class="mut" style="margin-top:8px">1 · Wallet matched — each firm Rise payout wallet is identified and confirmed before it is added.<br/>2 · Payouts indexed — every outgoing RiseUSD payment from that wallet is read from Arbitrum (the source tracker refreshes every 15 minutes).<br/>3 · Linked to proof — each payment links to its public Arbiscan record.</p></div>'+
   '<div class="card"><h3>Not tracked in the last 30 days (snapshot)</h3><p class="mut" style="margin-top:8px">The Nov 25, 2026 tracker snapshot listed firms with no payouts tracked in 30 days — including Blueberry Funded ("no payouts tracked yet") and YRM Prop (last payout Oct 2, 2026 in that snapshot) — mostly firms moving to a new Rise wallet after the V2 migration. YRM Prop is not in this directory; Blueberry Funded is in the directory but had no tracked payouts in that snapshot.</p></div></div>');
   bindCopy();
@@ -2132,7 +2133,7 @@ function pageCalendar(){
   CAL_EVENTS.map(function(e){ return '<tr><td>'+esc(e[0])+'</td><td>'+esc(e[1])+'</td><td class="num">'+esc(e[2])+'</td><td>'+esc(e[3])+'</td><td style="font-weight:700">'+esc(e[4])+'</td><td>'+(e[5]==="High"?'<span class="chip" style="color:#ff9d7a">High</span>':'<span class="chip grey">Medium</span>')+'</td><td class="mut">'+esc(e[6])+'</td></tr>'; }).join("")+
   '</tbody></table></div>'+
   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:18px">'+
-  '<div class="card"><h3>News-trading rules differ by firm</h3><p class="mut" style="margin-top:8px">Some firms ban trading around red-folder news on funded accounts, some only on specific plans, and some allow it fully. The <a href="/rules">Rules page</a> compares all 150 firms side by side, and every firm page carries its exact news-trading wording.</p></div>'+
+  '<div class="card"><h3>News-trading rules differ by firm</h3><p class="mut" style="margin-top:8px">Some firms ban trading around red-folder news on funded accounts, some only on specific plans, and some allow it fully. The <a href="/rules">Rules page</a> compares all listed firms side by side, and every firm page carries its exact news-trading wording.</p></div>'+
   '<div class="card"><h3>Protect the account first</h3><p class="mut" style="margin-top:8px">A single CPI spike can travel further than a full daily drawdown. Size down or stand aside — run your numbers in the <a href="/tools">Consistency Calculator</a> before the release, not after.</p></div></div>');
   var host=$("#tvCal");
   var sc=document.createElement("script");
@@ -2584,6 +2585,7 @@ function journalFirmRules(firm, plan, size, stage){
   });
   if(matches.length!==1)return null;
   var planRecord=matches[0], rec=planRecord;
+  if((!stage || stage==="evaluation") && (planRecord.evaluationBalanceVerified===false || planRecord.accessType==="instant"))return null;
   if(stage && stage!=="evaluation"){rec=planRecord.stageRules && planRecord.stageRules[stage];if(!rec || !rec.source)return null;}
   function clean(v){return String(v==null?"":v).trim();}
   function moneyRule(v, allowPhases){
@@ -3525,7 +3527,7 @@ function page404(title, sub){
     }
   }
   go(pageHead('<a href="/">Home</a>', title || "Page not found", sub || "That address doesn't match any page on PropFirmMath. The link may be old, or the page may have moved when the directory was rebuilt.") +
-  '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px"><a class="btn" href="/">Go to the homepage</a><a class="btn ghost" href="/firms">Browse all 150 firms</a><a class="btn ghost" href="/compare">Compare firms</a></div>');
+  '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px"><a class="btn" href="/">Go to the homepage</a><a class="btn ghost" href="/firms">Browse all firms</a><a class="btn ghost" href="/compare">Compare firms</a></div>');
 }
 
 /* ================= init ================= */

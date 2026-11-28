@@ -5796,12 +5796,14 @@ var FIRMS = [
         "source": "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
         "verifiedOn": "2026-11-28",
         "activationFee": 50,
-        "note": "Advertised Pro account size; evaluation balances may differ. Fee payable in two installments. Exact phase balances and platform checkout not verified.",
+        "note": "Advertised Pro account size; evaluation balances differ. Fee payable in two installments. Journal must not calculate evaluation thresholds from the Pro balance.",
         "sources": [
           "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
           "https://the5ers.com/faqs/how-does-the-bootcamp-program-work/",
           "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
-        ]
+        ],
+        "evaluationBalanceVerified": false,
+        "evaluationRulesNote": "6% target and 5% maximum loss per evaluation phase; actual starting balance for each phase needs verification."
       },
       {
         "id": "the5ers-bootcamp-100000",
@@ -5823,12 +5825,14 @@ var FIRMS = [
         "source": "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
         "verifiedOn": "2026-11-28",
         "activationFee": 205,
-        "note": "Advertised Pro account size; evaluation balances may differ. Fee payable in two installments. Exact phase balances and platform checkout not verified.",
+        "note": "Advertised Pro account size; evaluation balances differ. Fee payable in two installments. Journal must not calculate evaluation thresholds from the Pro balance.",
         "sources": [
           "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
           "https://the5ers.com/faqs/how-does-the-bootcamp-program-work/",
           "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
-        ]
+        ],
+        "evaluationBalanceVerified": false,
+        "evaluationRulesNote": "6% target and 5% maximum loss per evaluation phase; actual starting balance for each phase needs verification."
       },
       {
         "id": "the5ers-bootcamp-250000",
@@ -5850,12 +5854,14 @@ var FIRMS = [
         "source": "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
         "verifiedOn": "2026-11-28",
         "activationFee": 350,
-        "note": "Advertised Pro account size; evaluation balances may differ. Fee payable in two installments. Exact phase balances and platform checkout not verified.",
+        "note": "Advertised Pro account size; evaluation balances differ. Fee payable in two installments. Journal must not calculate evaluation thresholds from the Pro balance.",
         "sources": [
           "https://the5ers.com/faqs/how-much-does-the-bootcamp-cost-in-total-and-how-much-is-it-to-start/",
           "https://the5ers.com/faqs/how-does-the-bootcamp-program-work/",
           "https://the5ers.com/challenge-programs-bootcamp-high-stakes-hyper-growth-explained/"
-        ]
+        ],
+        "evaluationBalanceVerified": false,
+        "evaluationRulesNote": "6% target and 5% maximum loss per evaluation phase; actual starting balance for each phase needs verification."
       }
     ]
   },
