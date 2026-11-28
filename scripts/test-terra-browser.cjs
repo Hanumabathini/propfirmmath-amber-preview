@@ -55,6 +55,13 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator("#terra-total").textContent(),await market.getAttribute("data-count"));
     await page.locator("#terra-reset").click();
    }
+   if(route==="/compare"){
+    const risk=page.locator("[data-tc-field=risk]");await risk.click();
+    const select=page.locator("#cmp0");const options=await select.locator("option").evaluateAll(nodes=>nodes.map(o=>o.value).filter(Boolean));
+    const occupied=await page.locator(".cmp").evaluateAll(nodes=>nodes.map(n=>n.value));
+    const candidate=options.find(v=>!occupied.includes(v));assert(candidate);await select.selectOption(candidate);
+    assert.equal(await risk.getAttribute("aria-pressed"),"true");assert.equal(await page.evaluate(()=>document.activeElement.id),"cmp0");
+   }
    if(route==="/tracker"){const bars=page.locator("[data-payout-row]");assert(await bars.count()>1);await bars.nth(1).click();assert.equal(await bars.nth(1).getAttribute("aria-pressed"),"true");}
    if(route==="/firms?view=plans"){const tiles=page.locator(".tc-account-tile");assert(await tiles.count()>0);await page.locator("#pc-q").fill("tradeify");assert(await tiles.count()>0);}
    if(route==="/rules"){await page.locator("#tc-rules-q").fill("tradeify");assert(await page.locator(".tc-rules-table tbody tr:not([hidden])").count()>0);}
@@ -70,6 +77,8 @@ const server=http.createServer((req,res)=>{
  await reduced.goto(base,{waitUntil:"domcontentloaded"});await reduced.locator("#terra-motion-toggle").waitFor();
  assert(await reduced.locator("#terra-motion-toggle").isDisabled());
  const reducedScene=reduced.locator("#terra-orbit-scene");const reducedAngle=await reducedScene.getAttribute("data-ring-angle");await reduced.waitForTimeout(400);assert.equal(await reducedScene.getAttribute("data-ring-angle"),reducedAngle);
+ const reducedHeader=await reduced.locator("header").evaluate(el=>getComputedStyle(el).viewTransitionName||"none");
+ assert(["tc-navigation","none"].includes(reducedHeader));
  await reduced.close();
  console.log("PASS: Chromium desktop, mobile, route overflow, orbit motion, deals, calculators and reduced motion");
  }finally{await browser.close();server.close();}
