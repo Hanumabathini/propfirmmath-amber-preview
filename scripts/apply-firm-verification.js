@@ -202,8 +202,23 @@ let touched = 0;
 for (const row of report) {
   const f = bySlug[row.slug];
   if (!f) throw new Error("Unknown slug " + row.slug);
-  f.verifiedOn = "Nov 27, 2026";
+  f.verifiedOn = row.verifiedOn || "Nov 27, 2026";
   const status = row.field_status || {};
+  // Generic patch mode: row.firm sets firm-level fields, row.plans upserts plan records by id.
+  // Existing plan IDs are never removed, so journal history keeps resolving.
+  if (row.firm) {
+    Object.assign(f, row.firm);
+    touched++;
+  }
+  if (Array.isArray(row.plans)) {
+    f.plans = f.plans || [];
+    for (const p of row.plans) {
+      if (!p.id) throw new Error("Plan without id for " + row.slug);
+      const cur = f.plans.find((x) => x.id === p.id);
+      if (cur) Object.assign(cur, p);
+      else f.plans.push(p);
+    }
+  }
   (row.sources || []).forEach((url) => addSource(f, url));
   if (row.official_url) addSource(f, row.official_url);
 
