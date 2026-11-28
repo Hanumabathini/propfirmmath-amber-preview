@@ -38,6 +38,7 @@ function install(window, state) {
       eq(col, val) { q.filters.push([col, val]); return b; },
       order(col, opts) { q.orderCol = col; q.asc = !(opts && opts.ascending === false); return b; },
       limit() { return b; },
+      range(start,end) { q.range=[start,end]; return b; },
       insert(row) { q.op = "insert"; q.payload = Object.assign({}, row); return b; },
       update(row) { q.op = "update"; q.payload = Object.assign({}, row); return b; },
       delete() { q.op = "delete"; return b; },
@@ -56,7 +57,7 @@ function install(window, state) {
       if (q.op === "select") {
         const list = matching().slice();
         if (q.orderCol) list.sort((a, c) => String(a[q.orderCol]).localeCompare(String(c[q.orderCol])) * (q.asc ? 1 : -1));
-        return list;
+        return q.range ? list.slice(q.range[0],q.range[1]+1) : list;
       }
       if (q.op === "insert") {
         const row = Object.assign({ id: state.nextId() }, q.payload);
@@ -233,7 +234,11 @@ function submit(form) {
     const ftmoRules = w.journalFirmRules(w.firm("ftmo"), "2-Step", 10000);
     ok("FTMO 2-Step 10k fills target, daily loss, drawdown and days", ftmoRules.target === 1000 && ftmoRules.daily === 500 && ftmoRules.drawdown === 1000 && ftmoRules.minDays === 4 && ftmoRules.consistency == null, JSON.stringify(ftmoRules));
     const mffuRules = w.journalFirmRules(w.firm("my-funded-futures"), "Signature", 10000);
-    ok("MFFU Signature 10k uses the $1,000 drawdown for that size", mffuRules.target === 600 && mffuRules.daily == null && mffuRules.drawdown === 1000 && mffuRules.minDays === 1 && mffuRules.consistency === 50, JSON.stringify(mffuRules));
+    ok("MFFU Signature 10k uses $500 static loss and $1,000 target", mffuRules.target === 1000 && mffuRules.daily == null && mffuRules.drawdown === 500 && mffuRules.minDays == null && mffuRules.consistency == null, JSON.stringify(mffuRules));
+    ok("unknown size never inherits another account's rules",w.journalFirmRules(w.firm("my-funded-futures"),"Signature",42000)===null,"unknown size");
+    ok("funded accounts never show evaluation limits",w.journalFirmRules(w.firm("my-funded-futures"),"Signature",10000,"funded")===null,"funded stage");
+    const ambiguous=w.journalFirmRules({plans:[{name:"Test",size:10000,target:"Not yet verified",maxDD:"EOD trailing, $1000 (25K)",dailyLoss:"Applies; pending",minDays:"No minimum trading days",consistency:"No evaluation consistency; funded 35%"}]},"Test",10000);
+    ok("unknown and wrong-size rules stay unknown",ambiguous.target===null&&ambiguous.drawdown===null&&ambiguous.daily===null&&ambiguous.minDays===null&&ambiguous.consistency===null,JSON.stringify(ambiguous));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
     ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily == null, JSON.stringify(apexRules));
 

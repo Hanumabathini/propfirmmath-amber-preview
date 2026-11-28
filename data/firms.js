@@ -51,7 +51,8 @@ var FIRMS = [
     "site": "https://myfundedfutures.com",
     "sources": [
       "https://myfundedfutures.com",
-      "https://www.trustpilot.com/review/myfundedfutures.com"
+      "https://www.trustpilot.com/review/myfundedfutures.com",
+      "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide"
     ],
     "verif": "full",
     "verifLabel": "Fully verified",
@@ -81,17 +82,24 @@ var FIRMS = [
         "price": 75,
         "currency": "USD",
         "monthly": false,
-        "coverage": "verified",
-        "note": "One-time. Homepage Signature prices checked 27 Nov 2026.",
-        "target": "6",
-        "dailyLoss": "Builder soft pause only",
-        "maxDD": "EOD trailing, $1000 (25K)",
-        "ddType": "EOD",
-        "minDays": "Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2",
-        "split": "80-90%",
-        "payout": "Rapid daily / Builder 48h / Pro 14d",
+        "coverage": "partial",
+        "note": "Official Signature guide confirms size-specific evaluation and sim-funded rules. Platform mapping and regional checkout not rechecked. Legacy other-program rules removed.",
+        "target": "$500",
+        "dailyLoss": "None",
+        "maxDD": "$250",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% sim funded / 90% live",
+        "payout": "Sim funded anytime with positions closed; minimum $100 before split",
         "platform": "Tradovate, NinjaTrader, Quantower",
-        "source": "https://myfundedfutures.com"
+        "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+        "consistency": "None",
+        "activationFee": 0,
+        "sources": [
+          "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+          "https://myfundedfutures.com/plans/signature"
+        ],
+        "verifiedOn": "Nov 28, 2026"
       },
       {
         "id": "my-funded-futures-signature-10000",
@@ -101,17 +109,24 @@ var FIRMS = [
         "price": 140,
         "currency": "USD",
         "monthly": false,
-        "coverage": "verified",
-        "note": null,
-        "target": "6",
-        "dailyLoss": "Builder soft pause only",
-        "maxDD": "EOD trailing, $1000 (25K)",
-        "ddType": "EOD",
-        "minDays": "Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2",
-        "split": "80-90%",
-        "payout": "Rapid daily / Builder 48h / Pro 14d",
+        "coverage": "partial",
+        "note": "Official Signature guide confirms size-specific evaluation and sim-funded rules. Platform mapping and regional checkout not rechecked. Legacy other-program rules removed.",
+        "target": "$1,000",
+        "dailyLoss": "None",
+        "maxDD": "$500",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% sim funded / 90% live",
+        "payout": "Sim funded anytime with positions closed; minimum $250 before split",
         "platform": "Tradovate, NinjaTrader, Quantower",
-        "source": "https://myfundedfutures.com"
+        "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+        "consistency": "None",
+        "activationFee": 0,
+        "sources": [
+          "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+          "https://myfundedfutures.com/plans/signature"
+        ],
+        "verifiedOn": "Nov 28, 2026"
       },
       {
         "id": "my-funded-futures-signature-20000",
@@ -121,17 +136,24 @@ var FIRMS = [
         "price": 280,
         "currency": "USD",
         "monthly": false,
-        "coverage": "verified",
-        "note": null,
-        "target": "6",
-        "dailyLoss": "Builder soft pause only",
-        "maxDD": "EOD trailing, $1000 (25K)",
-        "ddType": "EOD",
-        "minDays": "Builder 1 / Rapid 2 / Rapid EOD 4 / Pro 2",
-        "split": "80-90%",
-        "payout": "Rapid daily / Builder 48h / Pro 14d",
+        "coverage": "partial",
+        "note": "Official Signature guide confirms size-specific evaluation and sim-funded rules. Platform mapping and regional checkout not rechecked. Legacy other-program rules removed.",
+        "target": "$2,000",
+        "dailyLoss": "None",
+        "maxDD": "$1,000",
+        "ddType": "Static",
+        "minDays": "None",
+        "split": "80% sim funded / 90% live",
+        "payout": "Sim funded anytime with positions closed; minimum $250 before split",
         "platform": "Tradovate, NinjaTrader, Quantower",
-        "source": "https://myfundedfutures.com"
+        "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+        "consistency": "None",
+        "activationFee": 0,
+        "sources": [
+          "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+          "https://myfundedfutures.com/plans/signature"
+        ],
+        "verifiedOn": "Nov 28, 2026"
       }
     ]
   },

@@ -2342,7 +2342,15 @@ var TRADE_CORE = "id,account_id,traded_at,pnl,symbol,note";
 var ACCOUNT_COLS = "id,firm,plan,account_label,account_size,stage,status,created_at,platform";
 var journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
 function journalFetchTrades(){
-  return sb.from("trades").select(TRADE_CORE).eq("user_id", PM_USER.id).order("traded_at", {ascending:false}).limit(1000);
+  var userId=PM_USER.id, rows=[], page=500;
+  function fetchPage(offset){
+    return sb.from("trades").select(TRADE_CORE).eq("user_id",userId).order("traded_at",{ascending:false}).order("id",{ascending:false}).range(offset,offset+page-1).then(function(r){
+      if(r.error)return r;
+      var chunk=r.data||[];rows=rows.concat(chunk);
+      return chunk.length===page?fetchPage(offset+page):{data:rows,error:null};
+    });
+  }
+  return fetchPage(0);
 }
 function journalLoad(){
   return sb.from("trader_accounts").select(ACCOUNT_COLS).eq("user_id", PM_USER.id).order("created_at").then(function(r){
@@ -2569,82 +2577,43 @@ function journalMotionOn(){
   var q = window.matchMedia("(prefers-reduced-motion: reduce)");
   return !!(q && q.media && !q.matches);
 }
-function journalFirmRules(firm, plan, size){
-  if (!firm) return null;
-  var listed = firm.plans || firm.accountPlans || [];
-  var rec = null;
-  if (Array.isArray(listed)) {
-    var named = listed.filter(function(p){
-      var n = String((p && (p.name || p.program)) || "");
-      return !plan || n.toLowerCase() === String(plan).toLowerCase();
-    });
-    var sized = named.filter(function(p){ return size && Number(p.size) === Number(size); });
-    rec = sized.length === 1 ? sized[0] : null;
-    if (listed.length && !rec) return null;
+function journalFirmRules(firm, plan, size, stage){
+  if (!firm || !plan || !Number.isFinite(Number(size)) || Number(size)<=0 || (stage && stage!=="evaluation")) return null;
+  var matches=(firm.plans || firm.accountPlans || []).filter(function(p){
+    return String(p.name||p.program||"").toLowerCase()===String(plan).toLowerCase() && Number(p.size)===Number(size);
+  });
+  if(matches.length!==1)return null;
+  var rec=matches[0];
+  function clean(v){return String(v==null?"":v).trim();}
+  function moneyRule(v, allowPhases){
+    var s=clean(v);
+    if(!s || /not (yet )?verified|unknown|pending|not stated|not listed|none|soft pause|no evaluation|no daily|no minimum|unconfirmed/i.test(s))return null;
+    if(allowPhases) s=s.split(/\s+then\s+/i)[0];
+    var tagged=Array.from(s.matchAll(/\$([\d,]+(?:\.\d+)?)\s*\((\d+(?:\.\d+)?)K\)/gi));
+    if(tagged.length){var match=tagged.filter(function(x){return Number(x[2])*1000===Number(size);});return match.length===1?Number(match[0][1].replace(/,/g,"")):null;}
+    if(/[\/;]|\bor\b|\band\b|\bthen\b|\d\s*[-–]\s*\d/i.test(s))return null;
+    var d=/^\$([\d,]+(?:\.\d+)?)(?:\s*(?:static|trailing|EOD|intraday|soft daily stop))?$/i.exec(s);
+    if(d)return Number(d[1].replace(/,/g,""));
+    var p=/^(\d+(?:\.\d+)?)%(?:\s*(?:static|trailing|EOD|intraday))?$/i.exec(s);
+    return p && Number(p[1])<=100?Number(size)*Number(p[1])/100:null;
   }
-  function clause(text){
-    text = String(text || "");
-    if (!text) return "";
-    var parts = text.split(/\s*[\/;]\s*/);
-    if (plan) {
-      var hits = parts.filter(function(p){ return p.toLowerCase().indexOf(String(plan).toLowerCase()) >= 0; });
-      if (hits.length) return hits.join("; ");
-      if (parts.length > 1) return text;
-    }
-    return /not stated/i.test(text) ? "" : text;
+  function days(v){
+    var s=clean(v);if(!s || /none|no minimum|unknown|pending|not (yet )?verified|not stated|\/|\bor\b/i.test(s))return null;
+    var m=/^(\d+)\s*(?:evaluation |trading )?days?\b/i.exec(s);
+    return m?Number(m[1]):null;
   }
-  function dollars(text){
-    var re = /\$([\d,]+(?:\.\d+)?)\s*\((\d+(?:\.\d+)?)K\)/gi, m, any = null;
-    while ((m = re.exec(String(text || "")))) {
-      var amt = Number(m[1].replace(/,/g, ""));
-      if (size && Math.round(parseFloat(m[2]) * 1000) === Math.round(Number(size))) return amt;
-      if (any == null) any = amt;
-    }
-    var plain = /^\s*\$([\d,]+(?:\.\d+)?)(?:\s|$)/.exec(String(text || ""));
-    return plain ? Number(plain[1].replace(/,/g, "")) : null;
+  function consistency(v){
+    var s=clean(v);if(/no evaluation consistency|none eval/i.test(s))return null;
+    s=s.split(";")[0].trim();
+    if(!s || /none|unknown|pending|not (yet )?verified|funded|payout|\/|\bor\b/i.test(s))return null;
+    var m=/^(\d+(?:\.\d+)?)%\s*(?:Combine|evaluation|eval)?$/i.exec(s);
+    return m&&Number(m[1])<=100?Number(m[1]):null;
   }
-  function percentMoney(text){
-    text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
-    if (!text || /none|not stated|soft pause/i.test(text)) return null;
-    var pct = /(\d+(?:\.\d+)?)\s*%/.exec(text);
-    if (pct && size) return Number(size) * parseFloat(pct[1]) / 100;
-    var bare = /(\d+(?:\.\d+)?)/.exec(text);
-    if (bare && size && !/\$/.test(text)) return Number(size) * parseFloat(bare[1]) / 100;
-    return null;
-  }
-  function days(text){
-    text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
-    if (!text || /none|not stated/i.test(text)) return null;
-    var m = /(\d+)/.exec(text);
-    return m ? Number(m[1]) : null;
-  }
-  function cap(text){
-    text = String(text || "").replace(/\d+\s*-\s*step/ig, "");
-    if (!text || /not stated/i.test(text)) return null;
-    if (/none/i.test(text) && !/\d/.test(text)) return null;
-    var pct = /(\d+(?:\.\d+)?)\s*%/.exec(text);
-    if (pct) return parseFloat(pct[1]);
-    var n = /(\d+(?:\.\d+)?)/.exec(text);
-    return n ? parseFloat(n[1]) : null;
-  }
-  var targetText = (rec && rec.target) || clause(firm.target);
-  var dailyText = (rec && rec.dailyLoss) || clause(firm.dailyDD);
-  var ddText = (rec && rec.maxDD) || clause(firm.dd);
-  var dayText = (rec && rec.minDays) || clause(firm.minDays);
-  var consText = (rec && rec.consistency) || clause(firm.consistencyText);
-  if (/no evaluation consistency/i.test(consText)) consText = "";
-  var plainDollar = /\$([\d,]+(?:\.\d+)?)/.exec(String(ddText || ""));
-  return {
-    target: dollars(targetText) || percentMoney(targetText),
-    daily: dollars(dailyText) || percentMoney(dailyText),
-    drawdown: dollars(ddText) || percentMoney(ddText) || (plainDollar ? Number(plainDollar[1].replace(/,/g, "")) : null),
-    minDays: days(dayText),
-    consistency: cap(consText)
-  };
+  return {target:moneyRule(rec.target,true),daily:moneyRule(rec.dailyLoss,false),drawdown:moneyRule(rec.maxDD,false),minDays:days(rec.minDays),consistency:consistency(rec.consistency),ddType:clean(rec.ddType),coverage:rec.coverage||"partial"};
 }
 function journalRuleCard(account, rows){
   var firm = FIRMS.filter(function(f){ return f.name === account.firm; })[0];
-  var rules = journalFirmRules(firm, account.plan, Number(account.account_size));
+  var rules = journalFirmRules(firm, account.plan, Number(account.account_size), account.stage || "evaluation");
   var stats = journalStats(rows);
   var days = {};
   var today = journalToday();
@@ -2666,13 +2635,13 @@ function journalRuleCard(account, rows){
     if (unit === "days") shown = used + " / " + limit + " days";
     return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>' + shown + '</strong></div><div class="journal-rule-track"><div style="width:' + pct.toFixed(1) + '%;background:' + (over ? "#ff7474" : "#a7e3cf") + '"></div></div></div>';
   }
-  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">This firm is not in the directory, so plan limits are not filled in.</p></div>';
+  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">No uniquely matched evaluation rules for this account, size or stage. Funded and personal accounts require separate rules.</p></div>';
   return '<div class="card"><h3>' + esc(account.account_label || "Account") + '</h3><p class="mut small">' + esc(account.firm || "Account") + (account.plan ? " · " + esc(account.plan) : "") + (Number(account.account_size) > 0 ? " · " + money(account.account_size) : "") + '</p>' +
     bar("Profit target", Math.max(0, stats.total), rules.target, "$") +
     bar("Daily loss", todayPnl < 0 ? -todayPnl : 0, rules.daily, "$") +
-    bar("Max drawdown", stats.drawdown, rules.drawdown, "$") +
+    bar(/static/i.test(rules.ddType) ? "Recorded static loss" : "Recorded peak-to-trough drawdown", /static/i.test(rules.ddType) ? Math.max(0,-Math.min.apply(null,stats.points)) : stats.drawdown, rules.drawdown, "$") +
     bar("Minimum days", dayCount, rules.minDays, "days") +
-    bar("Consistency", bestShare, rules.consistency, "%") + "</div>";
+    bar("Consistency", bestShare, rules.consistency, "%") + '<p class="mut small">Estimates from manually logged closed trades only; not a live breach or payout check. Multi-phase targets show phase one only. '+(rules.coverage==="verified"?"Catalog marked verified.":"Catalog partially verified.")+'</p></div>';
 }
 function journalAnimateKpis(){
   if (!journalMotionOn() || journalReduceMotion) return;
@@ -2707,11 +2676,8 @@ function journalV14Feature(rows){
   var stage=a ? journalStatusLabel(a.stage || "evaluation") : "Portfolio overview";
   var size=a && Number(a.account_size)>0 ? money(Number(a.account_size)) : money(total);
   var firm=a && FIRMS.find(function(f){return f.name===a.firm;});
-  // A target is displayed only for a unique, explicitly matched evaluation plan/size.
-  var matches=firm && Array.isArray(firm.plans) ? firm.plans.filter(function(p){return (p.name||p.program)===a.plan && Number(p.size)===Number(a.account_size) && p.coverage==="verified";}) : [];
-  var raw=matches.length===1 ? String(matches[0].target||"").trim() : "";
-  var dollars=/^\$([\d,]+(?:\.\d+)?)$/.exec(raw), percent=/^(\d+(?:\.\d+)?)%$/.exec(raw);
-  var target=a && (a.stage||"evaluation")==="evaluation" ? (dollars ? Number(dollars[1].replace(/,/g,"")) : percent ? Number(a.account_size)*Number(percent[1])/100 : 0) : 0;
+  var rules=a && journalFirmRules(firm,a.plan,Number(a.account_size),a.stage||"evaluation");
+  var target=rules && rules.target>0 ? rules.target : 0;
   var pct=target>0 ? Math.min(100,Math.max(0,total/target*100)) : 0;
   var detail=target>0 ? '<div class="jv14-progress-label"><span>Recorded profit / plan target</span><strong>'+pct.toFixed(0)+'%</strong></div><div class="jv14-progress" role="progressbar" aria-label="Recorded profit toward target" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct.toFixed(0)+'"><i style="width:'+pct.toFixed(2)+'%"></i></div><div class="jv14-progress-label"><span>'+money(total)+' / '+money(target)+'</span><strong>'+money(Math.max(0,target-total))+' remaining</strong></div><p class="jv14-foot">Based on recorded trades and directory plan notes; not official payout eligibility.</p>' : '<div class="jv14-progress-label"><span>Recorded net P&amp;L</span><strong>'+money(total)+'</strong></div><p class="jv14-foot">'+(a ? "No unambiguous evaluation target for this plan and size." : journalState.accounts.length+" linked manual accounts · Select one to see plan details.")+'</p>';
   return '<article class="jv14-feature"><span class="jv14-tag">'+esc(stage)+'</span><div class="jv14-amount">'+esc(size)+'</div><h3>'+esc(title)+'</h3><p class="jv14-firm">'+esc(a ? [a.firm,a.plan].filter(Boolean).join(" · ") : "Combined realized trading performance")+'</p>'+detail+'</article>';
