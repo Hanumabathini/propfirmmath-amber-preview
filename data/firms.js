@@ -133,7 +133,112 @@ var FIRMS = [
         "platform": "Tradovate, NinjaTrader, Quantower",
         "source": "https://myfundedfutures.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Signature",
+        "sizes": [
+          5000,
+          10000,
+          20000
+        ],
+        "source": "https://myfundedfutures.com/",
+        "platforms": [
+          "Tradovate",
+          "Quantower",
+          "DeepChart",
+          "Hyperprop"
+        ],
+        "platformSource": "https://myfundedfutures.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
+      },
+      {
+        "name": "Builder",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://myfundedfutures.com/",
+        "platforms": [
+          "Tradovate",
+          "Quantower",
+          "DeepChart",
+          "Hyperprop"
+        ],
+        "platformSource": "https://myfundedfutures.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
+      },
+      {
+        "name": "Rapid",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://myfundedfutures.com/",
+        "platforms": [
+          "Tradovate",
+          "Quantower",
+          "DeepChart",
+          "Hyperprop"
+        ],
+        "platformSource": "https://myfundedfutures.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
+      },
+      {
+        "name": "Rapid EOD",
+        "sizes": [
+          25000,
+          50000
+        ],
+        "source": "https://myfundedfutures.com/",
+        "platforms": [
+          "Tradovate",
+          "Quantower",
+          "DeepChart",
+          "Hyperprop"
+        ],
+        "platformSource": "https://myfundedfutures.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
+      },
+      {
+        "name": "Pro",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://myfundedfutures.com/",
+        "platforms": [
+          "Tradovate",
+          "Quantower",
+          "DeepChart",
+          "Hyperprop"
+        ],
+        "platformSource": "https://myfundedfutures.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://myfundedfutures.com/",
+      "platformSource": "https://myfundedfutures.com/",
+      "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
+    }
   },
   {
     "slug": "next-level-funded",
@@ -750,7 +855,54 @@ var FIRMS = [
         "platform": "Rithmic, Tradovate, WealthCharts",
         "source": "https://apextraderfunding.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Intraday Trail Std",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+        "platforms": [
+          "Rithmic",
+          "Tradovate",
+          "WealthCharts"
+        ],
+        "platformSource": "https://apextraderfunding.com/help-center/getting-started/creating-your-account/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Current EOD and intraday evaluations. Legacy sizes are not advertised as newly available."
+      },
+      {
+        "name": "EOD Trail Std",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+        "platforms": [
+          "Rithmic",
+          "Tradovate",
+          "WealthCharts"
+        ],
+        "platformSource": "https://apextraderfunding.com/help-center/getting-started/creating-your-account/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Current EOD and intraday evaluations. Legacy sizes are not advertised as newly available."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://apextraderfunding.com/help-center/additional-helpful-items/position-sizing-evaluation/",
+      "platformSource": "https://apextraderfunding.com/help-center/getting-started/creating-your-account/",
+      "note": "Current EOD and intraday evaluations. Legacy sizes are not advertised as newly available."
+    }
   },
   {
     "slug": "bulenox",
@@ -926,7 +1078,102 @@ var FIRMS = [
         "platform": "MT4, MT5, cTrader, Tradovate (Futures)",
         "source": "https://fundednext.com/blog/fundednext-cfds-stellar-2-step-explained"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Stellar 1-Step",
+        "sizes": [
+          6000,
+          15000,
+          25000,
+          50000,
+          100000,
+          200000
+        ],
+        "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+        "platforms": [
+          "Match-Trader",
+          "MT4 (outside US)",
+          "MT5 (outside US)",
+          "cTrader (outside US)"
+        ],
+        "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD account list verified; US new accounts Match-Trader only. Futures products require separate research."
+      },
+      {
+        "name": "Stellar 2-Step",
+        "sizes": [
+          6000,
+          15000,
+          25000,
+          50000,
+          100000,
+          200000
+        ],
+        "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+        "platforms": [
+          "Match-Trader",
+          "MT4 (outside US)",
+          "MT5 (outside US)",
+          "cTrader (outside US)"
+        ],
+        "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD account list verified; US new accounts Match-Trader only. Futures products require separate research."
+      },
+      {
+        "name": "Stellar Lite",
+        "sizes": [
+          5000,
+          10000,
+          25000,
+          50000,
+          100000,
+          200000
+        ],
+        "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+        "platforms": [
+          "Match-Trader",
+          "MT4 (outside US)",
+          "MT5 (outside US)",
+          "cTrader (outside US)"
+        ],
+        "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD account list verified; US new accounts Match-Trader only. Futures products require separate research."
+      },
+      {
+        "name": "Stellar Instant",
+        "sizes": [
+          2000,
+          5000,
+          10000,
+          20000
+        ],
+        "source": "https://help.fundednext.com/en/articles/11641117-what-are-the-available-account-sizes-for-the-stellar-instant-account",
+        "platforms": [
+          "Match-Trader",
+          "MT4 (outside US)",
+          "MT5 (outside US)",
+          "cTrader (outside US)"
+        ],
+        "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD account list verified; US new accounts Match-Trader only. Futures products require separate research."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://help.fundednext.com/en/articles/12673271-usa-client-guide-at-fundednext-cfd-accounts-platforms-rewards",
+      "platformSource": "https://help.fundednext.com/en/articles/8019808-which-platforms-can-i-use-for-trading-at-fundednext",
+      "note": "CFD account list verified; US new accounts Match-Trader only. Futures products require separate research."
+    }
   },
   {
     "slug": "fundingpips",
@@ -1021,7 +1268,145 @@ var FIRMS = [
         "platform": "MT5, cTrader, Match-Trader",
         "source": "https://fundingpips.com/blog/fundingpips-vs-breakout-challenge-costs"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "2-Step Pro",
+        "sizes": [
+          5000,
+          10000,
+          25000,
+          50000,
+          100000,
+          200000
+        ],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502027344017-2-Step-Pro-Model",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "2-Step Standard",
+        "sizes": [
+          5000,
+          10000,
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501809112081-2-Step-Standard",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "2-Step Lite",
+        "sizes": [
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459248360721-2-Step-Lite",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "1-Step Flex",
+        "sizes": [],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34501697434385-1-Step-Flex",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "type-only",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "2-Step Flex",
+        "sizes": [],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/47835196271249-2-Step-Flex",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "type-only",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "1-Step Labs",
+        "sizes": [],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53187088949777-1-Step-Labs",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "type-only",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "1-Step Lite",
+        "sizes": [],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/53459210586769-1-Step-Lite",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "type-only",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      },
+      {
+        "name": "Zero",
+        "sizes": [],
+        "source": "https://help.fundingpips.com/hc/en-us/articles/34502157694865-FundingPips-Zero",
+        "platforms": [
+          "MT5",
+          "cTrader",
+          "Match-Trader"
+        ],
+        "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "type-only",
+        "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://help.fundingpips.com/hc/en-us/articles/44390730743825-Get-Started",
+      "platformSource": "https://help.fundingpips.com/hc/en-us/articles/43468639481105-Account-Workspace",
+      "note": "Exact sizes still unverified for five models; manually enter size when no sourced size available."
+    }
   },
   {
     "slug": "fxify",
@@ -2021,7 +2406,95 @@ var FIRMS = [
     "largest": null,
     "note": null,
     "summary": "US futures firm with monthly-subscription evaluations: Trader Career Path ($25K–$100K) and Gauntlet Mini (to $200K). Passers are forwarded to partner prop firms for LiveSim/Live accounts. The split is 80% on withdrawals at or above set thresholds, 50% below them.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "accountPlans": [
+      {
+        "name": "Gauntlet Mini",
+        "sizes": [
+          50000,
+          100000,
+          150000,
+          200000
+        ],
+        "source": "https://klaviyo.earn2trade.com/gauntlet-mini",
+        "platforms": [
+          "NinjaTrader",
+          "Finamark",
+          "R|Trader",
+          "R|Trader Pro",
+          "Tradovate",
+          "TradingView",
+          "BlackArrow One",
+          "DeepCharts",
+          "Quantower",
+          "ATAS",
+          "Inside Edge Trader",
+          "Investor RT",
+          "Motive Wave",
+          "MultiCharts",
+          "Bookmap",
+          "Photon",
+          "QScalp",
+          "QSI - Quick Screen Trading",
+          "ScalpTool",
+          "Trade Navigator",
+          "Volfix.net",
+          "Jigsaw Trading",
+          "ATAS Order Flow Trading",
+          "Sierra Chart"
+        ],
+        "platformSource": "https://help.earn2trade.com/en/articles/2090521-what-platforms-can-i-use-for-the-gauntlet-mini-trader-career-path",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Account availability; financial rules not inferred."
+      },
+      {
+        "name": "Trader Career Path",
+        "sizes": [
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://help.earn2trade.com/en/articles/5452472-what-is-the-withdrawal-policy",
+        "platforms": [
+          "NinjaTrader",
+          "Finamark",
+          "R|Trader",
+          "R|Trader Pro",
+          "Tradovate",
+          "TradingView",
+          "BlackArrow One",
+          "DeepCharts",
+          "Quantower",
+          "ATAS",
+          "Inside Edge Trader",
+          "Investor RT",
+          "Motive Wave",
+          "MultiCharts",
+          "Bookmap",
+          "Photon",
+          "QScalp",
+          "QSI - Quick Screen Trading",
+          "ScalpTool",
+          "Trade Navigator",
+          "Volfix.net",
+          "Jigsaw Trading",
+          "ATAS Order Flow Trading",
+          "Sierra Chart"
+        ],
+        "platformSource": "https://help.earn2trade.com/en/articles/2090521-what-platforms-can-i-use-for-the-gauntlet-mini-trader-career-path",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Account availability; financial rules not inferred."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://help.earn2trade.com/en/articles/3224507-what-is-the-maximum-drawdown-on-the-trader-career-path-and-the-gauntlet-mini-challenges",
+      "platformSource": "https://help.earn2trade.com/en/articles/2090521-what-platforms-can-i-use-for-the-gauntlet-mini-trader-career-path",
+      "note": "Public programs and sizes checked; regional, stage and connection compatibility may vary."
+    }
   },
   {
     "slug": "elite-trader-funding",
@@ -4323,7 +4796,73 @@ var FIRMS = [
         "platform": "Tradovate, NinjaTrader, Rithmic",
         "source": "https://takeprofittrader.com/blog/plans"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "INTRADAY Test",
+        "sizes": [
+          25000,
+          50000,
+          150000
+        ],
+        "source": "https://takeprofittrader.com/blog/plans",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "Rithmic",
+          "TradingView"
+        ],
+        "platformSource": "https://takeprofittrader.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "New lineup effective Nov 23 2026. Legacy sizes 75K/100K may be entered manually."
+      },
+      {
+        "name": "CLASSIC",
+        "sizes": [
+          25000,
+          50000,
+          150000
+        ],
+        "source": "https://takeprofittrader.com/blog/plans",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "Rithmic",
+          "TradingView"
+        ],
+        "platformSource": "https://takeprofittrader.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "New lineup effective Nov 23 2026. Legacy sizes 75K/100K may be entered manually."
+      },
+      {
+        "name": "EOD",
+        "sizes": [
+          25000,
+          50000,
+          150000
+        ],
+        "source": "https://takeprofittrader.com/blog/plans",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "Rithmic",
+          "TradingView"
+        ],
+        "platformSource": "https://takeprofittrader.com/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "New lineup effective Nov 23 2026. Legacy sizes 75K/100K may be entered manually."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://takeprofittrader.com/blog/plans",
+      "platformSource": "https://takeprofittrader.com/",
+      "note": "New lineup effective Nov 23 2026. Legacy sizes 75K/100K may be entered manually."
+    }
   },
   {
     "slug": "alpha-futures",
@@ -4402,7 +4941,76 @@ var FIRMS = [
         "platform": "Not stated",
         "source": "https://alpha-futures.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Zero",
+        "sizes": [
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+        "platforms": [
+          "AlphaTrader",
+          "TradingView",
+          "WealthCharts",
+          "Deepchart",
+          "Quantower"
+        ],
+        "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Account availability; financial rules not inferred."
+      },
+      {
+        "name": "Standard",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+        "platforms": [
+          "AlphaTrader",
+          "TradingView",
+          "WealthCharts",
+          "Deepchart",
+          "Quantower"
+        ],
+        "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Account availability; financial rules not inferred."
+      },
+      {
+        "name": "Advanced",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+        "platforms": [
+          "AlphaTrader",
+          "TradingView",
+          "WealthCharts",
+          "Deepchart",
+          "Quantower"
+        ],
+        "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Account availability; financial rules not inferred."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://help.alpha-futures.com/en/articles/9492068-monthly-subscription",
+      "platformSource": "https://help.alpha-futures.com/en/articles/10525305-trading-platforms",
+      "note": "Public programs and sizes checked; regional, stage and connection compatibility may vary."
+    }
   },
   {
     "slug": "daytraders-com",
