@@ -1709,7 +1709,7 @@ function pageHome(){
       scene.addEventListener("pointerleave",function(){scene.style.setProperty("--tilt-x","0deg");scene.style.setProperty("--tilt-y","0deg");});
     }
   }
-  $("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ selectTerraMarket(b.getAttribute("data-m")); }); });
+  $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ selectTerraMarket(b.getAttribute("data-m")); }); });
   function selectTerraMarket(key){
     var items=$$("[data-terra-market]");
     var chosen=items.filter(function(el){return el.getAttribute("data-terra-market")===key;})[0];
@@ -1720,7 +1720,7 @@ function pageHome(){
     if(link){link.href=chosen?"/"+key:"/firms";link.textContent=chosen?"Explore "+MARKETS[key].label:"Explore directory";}
     var selectedKey=chosen?key:"all";
     homeState.topFilter=selectedKey;homeState.topShow=5;
-    $("#home-tabs button").forEach(function(el){el.classList.toggle("on",el.getAttribute("data-m")===selectedKey);});
+    $$("#home-tabs button").forEach(function(el){el.classList.toggle("on",el.getAttribute("data-m")===selectedKey);});
     draw();
   }
   $$("[data-terra-market]").forEach(function(el){el.addEventListener("click",function(){selectTerraMarket(el.getAttribute("data-terra-market"));});});
@@ -2274,7 +2274,7 @@ function pageDeals(){
   bindCopy();
   var deck=$("#terra-ticket-deck"),prev=$("#terra-ticket-prev"),next=$("#terra-ticket-next"),position=$("#terra-ticket-position");
   if(deck&&prev&&next){
-    var spotIndex=0,items=$(".terra-spot-ticket",deck);
+    var spotIndex=0,items=$$(".terra-spot-ticket",deck);
     function showSpot(){items.forEach(function(el,i){var d=(i-spotIndex+items.length)%items.length;var slot=d===0?0:d===1?1:d===items.length-1?-1:2;el.setAttribute("data-slot",String(slot));el.tabIndex=slot===0?0:-1;el.setAttribute("aria-hidden",slot===0?"false":"true");});if(position)position.textContent=(spotIndex+1)+" / "+items.length;prev.disabled=next.disabled=items.length<2;}
     prev.addEventListener("click",function(){spotIndex=(spotIndex-1+items.length)%items.length;showSpot();});
     next.addEventListener("click",function(){spotIndex=(spotIndex+1)%items.length;showSpot();});
@@ -2429,7 +2429,7 @@ function pageTools(){
   closeCalculator();
   var toolRoot=$(".pfm-tool-directory");
   if(toolRoot)toolRoot.addEventListener("input",function(e){var panel=e.target.closest(".card[id^=calc-]");if(!panel)return;var out=panel.querySelector("[id$=Out]");if(out){out.classList.remove("terra-result-change");void out.offsetWidth;out.classList.add("terra-result-change");}});
-  $(".pfm-clickable-calculator").forEach(function(card){
+  $$(".pfm-clickable-calculator").forEach(function(card){
     function activate(){openCalculator(card.getAttribute("data-calculator"),card);}
     card.addEventListener("click",function(e){if(e.target.closest("input,select,textarea,button,a,label") || e.target.closest(".card[id^=calc-]"))return;activate();});
     card.addEventListener("keydown",function(e){if(e.target!==card)return;if(e.key==="Enter"||e.key===" "){e.preventDefault();activate();}});
