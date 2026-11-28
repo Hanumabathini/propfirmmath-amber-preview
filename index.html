@@ -1032,6 +1032,62 @@ h1,h2,h3,h4{font-weight:650;letter-spacing:-.045em}
 .terra-spot-ticket:not([data-slot]){position:relative;opacity:1;transform:none}
 .terra-spot-ticket:not([data-slot]):not(:first-child){display:none}
 </style>
+
+<style>
+/* Hallmark custom: Terra Capital / crafted kinetic financial research.
+   Preserve the five supplied brand colors, use tinted material neutrals for contrast.
+   Product-derived objects, bounded motion, real counts and actual offer records only. */
+:root{
+ --terra-metal-dark:#8d7b61;--terra-metal-light:#f2e4cd;--terra-metal-mid:#c0ab8b;
+ --terra-ink-soft:#435341;--terra-scene-deep:#1f2d23;--terra-scene-lit:#435342;
+ --terra-matte:rgba(248,246,238,.08);--terra-light-pool:rgba(217,201,178,.17);
+ --terra-edge-light:rgba(248,246,238,.36);--terra-physical-shadow:rgba(16,25,17,.32);
+ --terra-paper-light:#fffcf4;--terra-light-x:50%;--terra-light-y:35%;
+}
+.terra-hero{gap:clamp(24px,4vw,48px);padding-top:clamp(24px,5vw,64px)}
+.terra-copy{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:8px 48px}
+.terra-copy h1{font-size:clamp(46px,5.5vw,84px);letter-spacing:-.048em;line-height:1.01;max-width:15ch;text-wrap:balance}
+.terra-copy>p{font-size:18px;line-height:1.6}
+.terra-3d-scene{--rx:clamp(280px,36vw,480px);--light-x:50%;--light-y:35%;background:radial-gradient(ellipse at var(--light-x) var(--light-y),var(--terra-scene-lit),var(--terra-scene-deep) 74%);border:1px solid var(--terra-edge);border-radius:24px;box-shadow:0 22px 52px var(--terra-shadow);perspective:1350px}
+.terra-3d-scene:before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 79px,var(--terra-matte) 79px 80px),repeating-linear-gradient(0deg,transparent 0 79px,var(--terra-matte) 79px 80px);mask-image:radial-gradient(ellipse,transparent 10%,var(--terra-dark) 90%);opacity:.4}
+.terra-stage-caption{position:absolute;inset:18px 24px auto;display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:0;color:var(--sand);pointer-events:none}
+.terra-orbit-track{border-color:var(--terra-edge-light);box-shadow:none;transform:translate(-50%,-50%) rotateX(14deg)}
+.terra-orbit-track-secondary{width:calc(var(--rx)*1.72);height:calc(var(--ry)*1.72);transform:translate(-50%,-50%) rotateX(14deg) rotateZ(-8deg);border-style:dashed;opacity:.42}
+.terra-coin-object{display:block;position:relative;width:96px;height:96px;transform-style:preserve-3d;animation:terra-medal-spin 8s linear infinite;animation-delay:var(--phase);flex:none}
+.terra-coin-rim{position:absolute;inset:0;transform:translateZ(-2px);border-radius:50%;background:repeating-conic-gradient(var(--terra-metal-dark) 0deg 2deg,var(--terra-metal-light) 2deg 4deg);box-shadow:0 3px 0 var(--terra-metal-dark),0 6px 0 var(--terra-metal-mid),0 10px 22px var(--terra-physical-shadow)}
+.terra-coin-object .terra-coin-face{position:absolute;inset:0;width:100%;height:100%;border:2px solid var(--terra-metal-dark);background:linear-gradient(138deg,var(--terra-metal-light),var(--sand) 45%,var(--terra-metal-mid));box-shadow:inset 0 0 0 4px var(--terra-metal-light),inset 0 0 0 6px var(--terra-metal-dark);animation:none;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:none}
+.terra-coin-object .terra-coin-front{transform:translateZ(5px)}
+.terra-coin-object .terra-coin-back{transform:rotateY(180deg) translateZ(5px);font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--forest);letter-spacing:-.05em}
+.terra-coin-object .avatar{width:62px!important;height:62px!important;background:var(--ivory)!important}
+.terra-coin-name{padding:4px 7px;background:var(--terra-scene-deep);border:1px solid var(--terra-edge-light);border-radius:4px;text-shadow:none;font-weight:600}
+.terra-3d-scene:hover .terra-coin-object,.terra-3d-scene:focus-within .terra-coin-object,.terra-orbit-paused .terra-coin-object,.terra-offscreen .terra-coin-object,.terra-offscreen .terra-medallion{animation-play-state:paused}
+.terra-medallion:hover .terra-coin-name,.terra-medallion:focus-visible .terra-coin-name{background:var(--ivory);color:var(--forest)}
+.terra-3d-scene .terra-index{background:var(--terra-scene-deep);border:1px solid var(--terra-edge-light);box-shadow:0 0 0 7px var(--terra-matte),0 24px 54px var(--terra-physical-shadow);width:min(410px,100%);border-radius:18px}
+.terra-3d-scene .terra-index-head #terra-total{font-size:62px;letter-spacing:-.06em}
+.terra-3d-scene .terra-market{min-height:42px}
+.terra-3d-scene .terra-market[aria-pressed=true]{background:var(--terra-ink-soft)}
+.terra-market-object{width:88px;height:88px;border:1px solid var(--terra-metal-dark);background:linear-gradient(135deg,var(--terra-metal-light),var(--sand));box-shadow:0 6px 0 var(--terra-metal-dark),0 12px 18px var(--terra-shadow);transform:rotateY(-14deg) rotateX(9deg)}
+.terra-market-object svg{width:54%;height:54%;color:var(--forest)}
+.market-landing-card{min-height:250px;align-content:space-between}
+.market-landing-card:nth-child(1){grid-column:span 7}.market-landing-card:nth-child(2){grid-column:span 5}
+.market-landing-card:nth-child(3),.market-landing-card:nth-child(4),.market-landing-card:nth-child(5),.market-landing-card:nth-child(6){grid-column:span 6}
+.market-landing-card h3{font-size:clamp(25px,3vw,38px);line-height:1.05}
+.terra-ticket-stage{background:var(--terra-scene-deep);border:1px solid var(--terra-edge-light);box-shadow:0 16px 32px var(--terra-shadow);min-height:400px}
+.terra-spot-ticket{background:var(--terra-paper-light);border:1px solid var(--terra-metal-mid);box-shadow:0 6px 0 var(--terra-metal-dark),0 18px 28px var(--terra-physical-shadow)}
+.terra-spot-ticket[data-slot="0"]{transform:translate3d(0,0,45px) rotateZ(-2deg) rotateY(-4deg)}
+.terra-spot-ticket[data-slot="-1"]{transform:translate3d(-30%,-12px,-58px) rotateZ(-13deg) rotateY(15deg)}
+.terra-spot-ticket[data-slot="1"]{transform:translate3d(30%,12px,-58px) rotateZ(13deg) rotateY(-15deg)}
+.terra-spot-ticket>strong{font-size:clamp(38px,5vw,66px);font-variant-numeric:tabular-nums}
+.terra-feature-offer{border:1px solid var(--terra-metal-mid);box-shadow:0 4px 0 var(--terra-metal-mid)}
+.terra-feature-offer>strong{font-variant-numeric:tabular-nums}
+.terra-workflow-grid a{min-height:190px}
+.terra-workflow-grid a strong{font-size:clamp(25px,3vw,36px)}
+@keyframes terra-medal-spin{from{transform:rotateY(0deg) rotateX(12deg)}to{transform:rotateY(360deg) rotateX(12deg)}}
+@media(max-width:1049px){.terra-3d-scene{--rx:clamp(220px,35vw,360px)}.terra-coin-object{width:76px;height:76px}.terra-coin-object .avatar{width:48px!important;height:48px!important}}
+@media(max-width:820px){.terra-copy{display:flex;gap:16px}.terra-stage-caption{position:relative;inset:auto;order:0;width:100%;font-size:12px;flex-wrap:wrap}.terra-orbit-track-secondary{display:none}.terra-coin-object{animation:none;transform:rotateY(-12deg)}.terra-coin-object .terra-coin-front{transform:translateZ(4px)}.terra-coin-name{background:transparent;border:0}.terra-3d-scene{background:var(--terra-scene-deep);border-radius:16px}.terra-3d-scene:before{display:none}.terra-3d-scene .terra-index{width:100%;max-width:520px}.terra-ticket-stage{min-height:0}.market-landing-card:nth-child(n){grid-column:span 6}.terra-market-object{width:64px;height:64px}}
+@media(max-width:680px){.market-landing-card:nth-child(n){grid-column:1/-1}.terra-copy h1{font-size:clamp(39px,10vw,57px)}.terra-stage-caption span:last-child{display:none}.terra-spot-ticket[data-slot="-1"]{transform:translate3d(-15%,0,-40px) rotateZ(-8deg)}.terra-spot-ticket[data-slot="1"]{transform:translate3d(15%,0,-40px) rotateZ(8deg)}.terra-3d-scene .terra-index-head #terra-total{font-size:48px}}
+@media(prefers-reduced-motion:reduce){.terra-coin-object{animation:none!important;transform:rotateY(-12deg)}.terra-3d-scene{background:var(--terra-scene-deep)}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -1675,11 +1731,11 @@ function pageHome(){
   FIRMS.filter(function(f){return !usedOrbit[f.slug];}).sort(function(a,b){return (b.rating||0)-(a.rating||0)||a.name.localeCompare(b.name);}).slice(0,Math.max(0,8-orbitFirms.length)).forEach(function(f){orbitFirms.push(f);});
   var orbitMarkup=orbitFirms.map(function(f,i){
     var phase=2*Math.PI*(orbitFirms.length-i)/orbitFirms.length;
-    return '<a class="terra-medallion" href="/firm/'+esc(f.slug)+'" aria-label="Research '+esc(f.name)+'" style="--phase:'+(-24*i/orbitFirms.length).toFixed(3)+'s;--ox:'+Math.cos(phase).toFixed(4)+';--oy:'+Math.sin(phase).toFixed(4)+'"><span class="terra-coin-face">'+avatar(f,58)+'</span><span class="terra-coin-name">'+esc(f.name)+'</span></a>';
+    return '<a class="terra-medallion" href="/firm/'+esc(f.slug)+'" aria-label="Research '+esc(f.name)+'" style="--phase:'+(-24*i/orbitFirms.length).toFixed(3)+'s;--ox:'+Math.cos(phase).toFixed(4)+';--oy:'+Math.sin(phase).toFixed(4)+'"><span class="terra-coin-object" aria-hidden="true"><span class="terra-coin-rim"></span><span class="terra-coin-face terra-coin-front">'+avatar(f,58)+'</span><span class="terra-coin-face terra-coin-back">'+esc(initials(f.name))+'</span></span><span class="terra-coin-name">'+esc(f.name)+'</span></a>';
   }).join("");
   go(
   '<section class="terra-hero"><div class="terra-copy"><h1>Better decisions begin with better numbers.</h1><p>Independent prop firm research. Compare account rules, understand costs and manage your trading journey with '+COUNTS.total+' firms in the directory.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div><p class="terra-method">Rankings follow published rules and ratings, never commission. <a href="/methodology">How we rank</a></p></div>'+
-  '<div class="terra-3d-scene" id="terra-orbit-scene"><div class="terra-orbit-track" aria-hidden="true"></div><div class="terra-orbit-layer">'+orbitMarkup+'</div><div class="terra-index"><div class="terra-index-head"><div><span>Research directory</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><svg class="terra-orbit" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="43" fill="none" stroke="#d9c9b2" stroke-width="1"/><circle cx="60" cy="60" r="51" fill="none" stroke="#6b7f5b" stroke-width="1" stroke-dasharray="2 5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c96f4f" stroke-width="6" stroke-dasharray="6 30" transform="rotate(-90 60 60)"/><g class="terra-orbit-dot"><circle cx="60" cy="9" r="4" fill="#f8f6ee"/></g></svg></div>'+
+  '<div class="terra-3d-scene" id="terra-orbit-scene"><div class="terra-orbit-track" aria-hidden="true"></div><div class="terra-orbit-track terra-orbit-track-secondary" aria-hidden="true"></div><div class="terra-stage-caption"><span>Explore the prop firm universe</span><span>Research snapshot: '+SNAPSHOT+'</span></div><div class="terra-orbit-layer">'+orbitMarkup+'</div><div class="terra-index"><div class="terra-index-head"><div><span>Research directory</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><svg class="terra-orbit" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="43" fill="none" stroke="#d9c9b2" stroke-width="1"/><circle cx="60" cy="60" r="51" fill="none" stroke="#6b7f5b" stroke-width="1" stroke-dasharray="2 5"/><circle cx="60" cy="60" r="34" fill="none" stroke="#c96f4f" stroke-width="6" stroke-dasharray="6 30" transform="rotate(-90 60 60)"/><g class="terra-orbit-dot"><circle cx="60" cy="9" r="4" fill="#f8f6ee"/></g></svg></div>'+
   '<div class="terra-market-list">'+marketIndex+'</div><div class="terra-index-foot"><button type="button" id="terra-reset">All markets</button><a id="terra-market-link" href="/firms">Explore directory</a></div><p class="terra-snapshot">Research snapshot: '+SNAPSHOT+'. Markets overlap.</p></div><button type="button" id="terra-motion-toggle" class="terra-motion-toggle" aria-pressed="false">Pause motion</button></div></section>'+
   '<section class="terra-deals-stage"><div class="terra-deals-heading"><h2>Prop firm deals</h2><p>Published offers from our '+SNAPSHOT+' research. Confirm at checkout.</p><a class="btn" href="/deals">Explore all deals</a></div><div class="terra-feature-offers">'+(featuredMarkup||'<p>No percentage offers in the current research snapshot.</p>')+'</div></section>'+
   '<section class="terra-workflow"><h2>Your trading decisions, in one place.</h2><div class="terra-workflow-grid"><a href="/firms"><span>01</span><strong>Discover</strong><span>Research firms and account programs.</span></a><a href="/compare"><span>02</span><strong>Compare</strong><span>Evaluate account prices and rules.</span></a><a href="/tools"><span>03</span><strong>Calculate</strong><span>Run the numbers before buying.</span></a><a href="/journal"><span>04</span><strong>Track</strong><span>Manage your trading accounts.</span></a></div></section>'+
@@ -1705,10 +1761,11 @@ function pageHome(){
     if(reduceMotion){scene.classList.add("terra-orbit-paused");motion.textContent="Motion reduced";motion.disabled=true;}
     else {
       motion.addEventListener("click",function(){var paused=scene.classList.toggle("terra-orbit-paused");motion.setAttribute("aria-pressed",String(paused));motion.textContent=paused?"Resume motion":"Pause motion";});
-      scene.addEventListener("pointermove",function(e){if(e.pointerType==="touch")return;var rect=scene.getBoundingClientRect();if(!rect.width||!rect.height)return;scene.style.setProperty("--tilt-x",((e.clientY-rect.top)/rect.height-.5)*-5+"deg");scene.style.setProperty("--tilt-y",((e.clientX-rect.left)/rect.width-.5)*7+"deg");});
+      scene.addEventListener("pointermove",function(e){if(e.pointerType==="touch")return;var rect=scene.getBoundingClientRect();if(!rect.width||!rect.height)return;scene.style.setProperty("--tilt-x",((e.clientY-rect.top)/rect.height-.5)*-5+"deg");scene.style.setProperty("--tilt-y",((e.clientX-rect.left)/rect.width-.5)*7+"deg");scene.style.setProperty("--light-x",((e.clientX-rect.left)/rect.width*100)+"%");scene.style.setProperty("--light-y",((e.clientY-rect.top)/rect.height*100)+"%");});
       scene.addEventListener("pointerleave",function(){scene.style.setProperty("--tilt-x","0deg");scene.style.setProperty("--tilt-y","0deg");});
     }
   }
+  if(scene&&typeof IntersectionObserver==="function"){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){scene.classList.toggle("terra-offscreen",!entry.isIntersecting);});});observer.observe(scene);if(typeof MutationObserver==="function"){var cleanup=new MutationObserver(function(){if(!scene.isConnected){observer.disconnect();cleanup.disconnect();}});cleanup.observe(app,{childList:true});}}
   $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ selectTerraMarket(b.getAttribute("data-m")); }); });
   function selectTerraMarket(key){
     var items=$$("[data-terra-market]");
@@ -1729,6 +1786,19 @@ function pageHome(){
 }
 /* ================= FIRMS DIRECTORY ================= */
 var dirState = { q:"", market:"all", view:"markets", platform:"all", price:"all", payout:"all", dd:"all", sort:"name", layout:"cards" };
+
+function terraMarketArt(key){
+  var shapes={
+    futures:'<path d="M13 49V31M23 53V20M33 39V12M43 49V24M53 35V10"/><rect x="9" y="35" width="8" height="9"/><rect x="19" y="26" width="8" height="15"/><rect x="29" y="18" width="8" height="13"/><rect x="39" y="30" width="8" height="12"/><rect x="49" y="15" width="8" height="13"/>',
+    forex:'<circle cx="22" cy="32" r="15"/><circle cx="44" cy="32" r="15"/><path d="M13 12H47l-5-5M51 52H17l5 5M19 27h8m-4-4v16m15-12h9m-8 6h8"/>',
+    crypto:'<path d="M32 5 53 32 32 59 11 32Z M32 5v54M11 32l21 9 21-9M11 32l21-9 21 9"/>',
+    perps:'<path d="M32 32c-10-16-25-17-25-3s16 18 25 3 25-17 25-3-16 18-25 3Z"/>',
+    stocks:'<path d="M9 54h46M13 49V36h10v13M27 49V26h10v23M41 49V15h10v34M12 23l14-8 12 2L53 5"/>',
+    prediction:'<circle cx="32" cy="32" r="25"/><circle cx="32" cy="32" r="16"/><circle cx="32" cy="32" r="7"/><path d="M32 32 54 10"/>'
+  };
+  return '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(shapes[key]||shapes.stocks)+'</svg>';
+}
+
 function pageFirms(){
   ensurePicks();
   if (dirState.view!=="directory") {
@@ -1740,7 +1810,7 @@ function pageFirms(){
       ["stocks","STOCKS","Stocks Prop Firms","Equity programs whose own sites name a stocks product. Three firms are in this set.","Explore stocks firms"],
       ["prediction","PREDICTION","Prediction Markets Prop Firms","Event outcomes on live Polymarket prices \u2014 predict results, not price direction. One firm is in this set.","Explore prediction firms"]
     ];
-    go('<section class="market-landing"><h1>Prop firms</h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="terra-market-symbol terra-market-object" aria-hidden="true">'+({futures:'↗',forex:'⇄',crypto:'◇',perps:'∞',stocks:'▥',prediction:'◎'}[x[0]]||'•')+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
+    go('<section class="market-landing"><h1>Prop firms</h1><p class="market-intro">Explore prop firms by the markets you trade. Our research directory currently covers <strong>'+COUNTS.total+' firms</strong>, with firm-specific rules, costs and payout information. Research snapshot: '+SNAPSHOT+'.</p><h2>Pick your market</h2><p class="market-subtitle">Each market has its own directory, comparison tools and available deals.</p><div class="market-landing-grid">'+featuredMarkets.map(function(x){return '<a class="market-landing-card market-'+x[0]+'" href="/'+x[0]+'"><span class="terra-market-symbol terra-market-object" aria-hidden="true">'+terraMarketArt(x[0])+'</span><h3>'+x[2]+'</h3><strong>'+dirCount(x[0])+' firms</strong><p>'+x[3]+'</p><span class="market-cta">'+x[4]+' →</span></a>';}).join('')+'</div><div class="market-landing-bottom"><p>Looking for every firm in one place, including other supported markets?</p><button type="button" id="view-all-firms" class="btn">Browse full directory ('+COUNTS.total+' firms)</button></div></section>');
     var browse=document.getElementById("view-all-firms");
     if(browse)browse.addEventListener("click",function(){dirState.view="directory";pageFirms();});
     return;
