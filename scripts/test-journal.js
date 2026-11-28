@@ -36,6 +36,7 @@ function install(window, state) {
     const b = {
       select(c) { q.cols = c; return b; },
       eq(col, val) { q.filters.push([col, val]); return b; },
+      in(col, vals) { q.filters.push([col, vals]); return b; },
       order(col, opts) { q.orderCol = col; q.asc = !(opts && opts.ascending === false); return b; },
       limit() { return b; },
       range(start,end) { q.range=[start,end]; return b; },
@@ -51,7 +52,7 @@ function install(window, state) {
       }
     };
     function matching() {
-      return state[table].filter(row => q.filters.every(([c, v]) => row[c] === v));
+      return state[table].filter(row => q.filters.every(([c, v]) => Array.isArray(v) ? v.includes(row[c]) : row[c] === v));
     }
     function run() {
       if (q.op === "select") {
@@ -188,7 +189,13 @@ function submit(form) {
 
 (async () => {
   const tester={id:"tester-1",email:"tester@example.com",app_metadata:{pfm_membership:"elite",pfm_membership_tester:true},user_metadata:{full_name:"Test User"}};
-  const testState=freshState(tester), testDom=load("https://propfirmmath-amber-preview.pages.dev/journal",testState),td=testDom.window.document;
+  const testState=freshState(tester);
+  for(let i=0;i<12;i++){
+    const id="tester-account-"+String(i).padStart(2,"0");
+    testState.trader_accounts.push({id,user_id:tester.id,firm:"FTMO",plan:"2-Step",account_label:"Tester "+i,account_size:10000,stage:"evaluation",created_at:"2026-11-"+String(i+1).padStart(2,"0")+"T00:00:00Z"});
+    testState.trades.push({id:"tester-trade-"+i,user_id:tester.id,account_id:id,traded_at:"2026-11-20",pnl:i+1,symbol:"NQ"});
+  }
+  const testDom=load("https://propfirmmath-amber-preview.pages.dev/journal",testState),td=testDom.window.document;
   try{
     await waitFor(()=>td.getElementById("journalViewMemberships"),"tester journal");
     td.getElementById("journalViewMemberships").click();
@@ -198,6 +205,11 @@ function submit(form) {
       button.click();
       await waitFor(()=>td.querySelector('.pfm-current-tier')?.textContent.toLowerCase().startsWith(tier+" ·"),"test switch "+tier);
       ok("test switch refreshes account limit "+tier,td.querySelector(".pfm-member-usage").textContent.includes("of "+limit)&&testState.user.app_metadata.pfm_membership===tier,"membership limit");
+      const count=Math.min(12,limit), jw=testDom.window;
+      ok("tier only exposes its allowed accounts "+tier,jw.journalState.accounts.length===count&&td.querySelectorAll("[data-edit-account]").length===count&&td.getElementById("jAccount").options.length===count,"visible accounts");
+      ok("tier only loads accessible trades "+tier,jw.journalState.allRows.length===count&&jw.journalState.allRows.every(row=>jw.journalState.accounts.some(a=>a.id===row.account_id)),"visible trades");
+      ok("downgrade and restoration preserve stored records "+tier,testState.trader_accounts.length===12&&testState.trades.length===12&&!testState.deletes.length,"data preservation");
+      if(tier==="basic")ok("Basic keeps oldest account and removes all-accounts choice",td.getElementById("journalAccountFilter").options.length===1&&td.getElementById("journalAccountFilter").value==="tester-account-00","Basic selection");
     }
   }finally{testDom.window.close();}
   const user = { id: "user-1", email: "3rsj8cxh@mail.grokbot.com", app_metadata: { pfm_membership: "pro" }, user_metadata: { full_name: "Test Trader", country: "United States" } };
