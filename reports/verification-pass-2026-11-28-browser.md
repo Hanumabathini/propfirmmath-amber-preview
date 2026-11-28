@@ -39,3 +39,18 @@ e8markets.com/perpetual-futures?market=perpetual, read 2026-11-28. E8 Classic si
 
 ## Hola Prime (left partial)
 holaprime.com carries Forex (1-Step Prime, 2-Step Prime, 2-Step Pro, Direct), Futures (1-Step Prime, Direct) and Fly "Proving Ground" challenges, with BLACK20 (20% off Fly challenges) running. Each product has its own size/price table and rulebook. Not read in this pass; stays partial.
+
+## Funded Trading Plus (14 plans added, firm still partial)
+List fees (before Black Friday codes BF375/BF35/BF325) read from the official 1-Step Express (10K-200K), 2-Step Classic (10K-100K) and Instant Funding (5K-100K) pages. Still missing: the Pass Now Pay Later program page (no standalone URL found), the Instant Funding consistency rule and the country list.
+
+## NYS Markets (US eligibility corrected, firm still partial)
+The official site excludes the United States, Russia, the UAE and FATF-listed or sanctioned jurisdictions; the catalog said "not stated" and now says no. The pricing page shows list prices with code BLACK (70% off) at checkout across CFDs, futures, stocks and crypto, six products each; those matrices are not read yet.
+
+## Top One Trader (left partial)
+toponetrader.com has a Black November sale (up to 80% off, code BLACKFRIDAY) and a product tree of One-Step, Two-Step, Instant Funding, Nova, Magnum and Instant Prime, each with platform and size choices. List prices are visible next to sale prices (for example Instant 500K $3,495 list, $2,097 with the code), but the matrix has not been read. Stays partial.
+
+## Pattern worth knowing
+Most firms read in this pass run Black Friday codes through Nov 30. Several show list and sale prices side by side and can be confirmed now; others show sale prices only and should be re-read after the sale ends.
+
+## Blueberry Futures (left partial)
+blueberryfutures.com, read 2026-11-28 with code FUTURES60 (60% off) running. The page shows Accelerated 25K at $110.40 list per month ($44.16 with the code) and Ascent 25K at $139 list ($55.60 with the code). The catalog's Accelerated 25K plan says $129, which does not match the $110.40 the firm record uses as its starting price, so the plan prices need re-checking against the 30-day billing basis. The firm was already partial for US eligibility ("conflicting official checks"), which a public page can't settle. Stays partial.
