@@ -222,7 +222,7 @@ function submit(form) {
       const cat = w.journalFirmCatalog(w.firm(slug));
       return cat.map(p => p.name + ":" + p.sizes.join("/")).join(" | ");
     }
-    ok("FTMO plan is 10k, not a forced 50k", sizesOf("ftmo") === "2-Step:10000", sizesOf("ftmo"));
+    ok("FTMO includes CFD and futures account programs", ["2-Step","1-Step","Instant","Futures Growth","Futures Pro"].every(p=>w.journalFirmCatalog(w.firm("ftmo")).some(x=>x.name===p)), sizesOf("ftmo"));
     ok("FTUK is listed from $9", w.firm("ftuk") && w.firm("ftuk").from === 9, w.firm("ftuk") && w.firm("ftuk").from);
     ok("Apex exposes both current evaluation lines", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000/50000/100000/150000 | EOD Trail Std:25000/50000/100000/150000", sizesOf("apex-trader-funding"));
     ok("FundedNext exposes all Stellar CFD types", ["Stellar 1-Step","Stellar 2-Step","Stellar Lite","Stellar Instant"].every(name=>w.journalFirmCatalog(w.firm("fundednext")).some(p=>p.name===name)), sizesOf("fundednext"));
@@ -275,7 +275,7 @@ function submit(form) {
     ok("platform dropdown populated", Array.from(d.getElementById("newAccountPlatform").options).some(o=>o.value==="WealthCharts"), "Tradeify platform");
     d.getElementById("newFirm").value = "FTMO";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
-    ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000,__custom__" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
+    ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000,25000,50000,100000,200000,__custom__" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
     d.getElementById("newFirm").value = "My Funded Futures";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
     ok("MFFU offers every listed size", d.getElementById("newPlan").value === "Signature" && sizeOptions().join() === "5000,10000,20000,__custom__" && d.getElementById("newAccountSizePreset").value === "5000", sizeOptions().join());
