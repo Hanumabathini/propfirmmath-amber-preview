@@ -2565,7 +2565,9 @@ function journalFirmRules(firm, plan, size){
       return !plan || n.toLowerCase() === String(plan).toLowerCase();
     });
     var sized = named.filter(function(p){ return size && Number(p.size) === Number(size); });
-    rec = (sized.length ? sized[0] : named[0]) || null;
+    // Never borrow another account size or an ambiguous pricing variant.
+    if (listed.length && (sized.length !== 1 || !plan || !size)) return {target:null,daily:null,drawdown:null,minDays:null,consistency:null};
+    rec = sized[0] || null;
   }
   function clause(text){
     text = String(text || "");
@@ -2616,10 +2618,15 @@ function journalFirmRules(firm, plan, size){
   var ddText = (rec && rec.maxDD) || clause(firm.dd);
   var dayText = (rec && rec.minDays) || clause(firm.minDays);
   var consText = (rec && rec.consistency) || clause(firm.consistencyText);
+  function exactMoney(text){
+    text = String(text || "").trim();
+    var m = /^\$([\d,]+(?:\.\d+)?)(?:\s*\([^)]*\))?$/.exec(text);
+    return m ? Number(m[1].replace(/,/g, "")) : null;
+  }
   var plainDollar = /\$([\d,]+(?:\.\d+)?)/.exec(String(ddText || ""));
   return {
-    target: dollars(targetText) || percentMoney(targetText),
-    daily: dollars(dailyText) || percentMoney(dailyText),
+    target: exactMoney(targetText) || dollars(targetText) || percentMoney(targetText),
+    daily: exactMoney(dailyText) || dollars(dailyText) || percentMoney(dailyText),
     drawdown: dollars(ddText) || percentMoney(ddText) || (plainDollar ? Number(plainDollar[1].replace(/,/g, "")) : null),
     minDays: days(dayText),
     consistency: cap(consText)
