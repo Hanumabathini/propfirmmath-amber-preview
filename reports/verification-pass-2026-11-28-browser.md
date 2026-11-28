@@ -63,3 +63,6 @@ Flash, Core, Value and Instant at 5K-100K (Instant has no 100K), list prices bef
 
 ## Maven Trading (left partial)
 maventrading.com lists Standard 1-, 2- and 3-Step, Instant, Static 1-Step, Buy Now Pay Later, Omo 2-Step and Mini, each with its own sizes. A Black Friday "double the size for the same price" offer on Omo changes the size labels shown today. Not read in full; stays partial.
+
+## Trade The Pool (left partial)
+tradethepool.com shows Flex and Max evaluations for Day Trade and Swing at $5K-$200K buying power, but no prices or full rules on the public pages read (homepage, /the-program/). The purchase flow at hub.tradethepool.com redirects to sign-in. Pricing can't be confirmed from public pages; stays partial.
