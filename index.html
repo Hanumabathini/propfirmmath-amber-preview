@@ -3623,7 +3623,7 @@ route();
   function play(el,keys,duration,delay){
     if(reduce.matches || document.hidden || !visible(el)) return;
     var prior=active.get(el); if(prior) prior.cancel();
-    var a=el.animate(keys,{duration:duration,delay:delay||0,easing:ease,fill:"none"});
+    var a=el.animate(keys,{duration:duration,delay:delay||0,easing:ease,fill:"backwards"});
     active.set(el,a);
     a.onfinish=a.oncancel=function(){if(active.get(el)===a)active.delete(el);};
   }
@@ -3670,15 +3670,15 @@ route();
     group(app,".pfm-tool-directory>.tool-card:not(.pfm-tool-expanded)",6,32);
     group(app,".pfm-tool-expanded>.card:not([hidden])",1,0);
     group(app,".comparison-table,.statrow,.compare-tray,#home-top>.tblwrap,#dtable>.tblwrap",5,0);
-    group(app,".journal-kpis,.journal-dashboard-top>.card,.journal-dashboard-bottom>.card,.journal-panel:not([hidden])",10,18);
+    group(app,".journal-kpis,.journal-dashboard-top>.card,.journal-dashboard-bottom>.card,.pfm-journal [role=\"tabpanel\"]:not(#journalOverview):not([hidden])",10,18);
     group(app,".journal-rule-track>div,.journal-bar>div",14,18);
     group(app,"svg[aria-label='Equity curve based on recorded trades']",1,0);
     group(app,".plan-sheet,.auth-layout,.deal-summary",3,0);
     // Output text is always the exact final calculation. Only the surface
     // responds to updates; never interpolate a financial result or error.
     outputs.forEach(function(el){
-      if(!visible(el))return;
-      play(el,[{opacity:.83},{opacity:1}],180,0);
+      if(!visible(el)||active.has(el))return;
+      play(el,[{boxShadow:"inset 0 0 0 1px var(--amber)"},{boxShadow:"inset 0 0 0 1px transparent"}],200,0);
     });
     outputs.clear();
   }
