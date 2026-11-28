@@ -1,0 +1,3 @@
+# Journal basic rules — 2026-11-28
+
+All firms now show five basic rule rows and a separate expandable general firm reference. Conditional and explicit no-rule texts are displayed rather than discarded when the numeric parser cannot safely interpret them. Topstep legacy Trading Combine name uses only common core plan values, not optional DLL. Tradeify Growth, Select and Lightning plan rules refreshed using official help pages; purchase-date variants and funded payout conditions kept conditional. 21 Tradeify plan records updated. Catalog size 151 firms, 1271 records. Full external verification still incomplete; no live account risk certification. No changes to user data or billing.

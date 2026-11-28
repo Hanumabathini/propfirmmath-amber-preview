@@ -2584,8 +2584,24 @@ function journalFirmRules(firm, plan, size, stage){
   var matches=(firm.plans || firm.accountPlans || []).filter(function(p){
     return String(p.name||p.program||"").toLowerCase()===String(plan).toLowerCase() && Number(p.size)===Number(size);
   });
-  if(matches.length!==1)return null;
+  var alias=false;
+  if(!matches.length && firm.slug==="topstep" && /^(?:topstep\s+)?trading combine$/i.test(String(plan).trim())){
+    matches=(firm.plans||[]).filter(function(p){return /^Trading Combine —/.test(p.name||"")&&Number(p.size)===Number(size);});
+    alias=matches.length>0;
+  }
+  if(!matches.length || (matches.length!==1 && !alias))return null;
   var planRecord=matches[0], rec=planRecord;
+  if(alias){
+    var common={};
+    ["target","dailyLoss","maxDD","ddType","minDays","consistency","split","payout","source","coverage"].forEach(function(k){
+      var vals=matches.map(function(p){return p[k];});
+      common[k]=vals.every(function(v){return v===vals[0];})?vals[0]:null;
+    });
+    common.dailyLoss="Optional DLL — select exact Combine variant to monitor";
+    common.stageRules=planRecord.stageRules;
+    common.note="Legacy Trading Combine name: common core rules only. Edit account to select exact plan.";
+    planRecord=rec=common;
+  }
   if((!stage || stage==="evaluation") && (planRecord.evaluationBalanceVerified===false || planRecord.accessType==="instant"))return null;
   if(stage && stage!=="evaluation"){rec=planRecord.stageRules && planRecord.stageRules[stage];if(!rec || !rec.source)return null;}
   function clean(v){return String(v==null?"":v).trim();}
@@ -2613,7 +2629,7 @@ function journalFirmRules(firm, plan, size, stage){
     var m=/^(\d+(?:\.\d+)?)%\s*(?:Combine|evaluation|eval)?$/i.exec(s);
     return m&&Number(m[1])<=100?Number(m[1]):null;
   }
-  return {target:moneyRule(rec.target,true),daily:moneyRule(rec.dailyLoss,false),drawdown:moneyRule(rec.maxDD,false),minDays:days(rec.minDays),consistency:consistency(rec.consistency),ddType:clean(rec.ddType),coverage:rec.coverage||planRecord.coverage||"partial",dailyProfitCap:Number.isFinite(rec.dailyProfitCap)?rec.dailyProfitCap:null};
+  return {target:moneyRule(rec.target,true),daily:moneyRule(rec.dailyLoss,false),drawdown:moneyRule(rec.maxDD,false),minDays:days(rec.minDays),consistency:consistency(rec.consistency),ddType:clean(rec.ddType),coverage:rec.coverage||planRecord.coverage||"partial",dailyProfitCap:Number.isFinite(rec.dailyProfitCap)?rec.dailyProfitCap:null,raw:{target:rec.target,daily:rec.dailyLoss,drawdown:rec.maxDD,minDays:rec.minDays,consistency:rec.consistency},payout:rec.payout,source:rec.source||planRecord.source,note:rec.note||"",alias:alias};
 }
 function journalRuleCard(account, rows){
   var firm = FIRMS.filter(function(f){ return f.name === account.firm; })[0];
@@ -2631,21 +2647,26 @@ function journalRuleCard(account, rows){
   var best = 0;
   Object.keys(days).forEach(function(d){ if (days[d] > best) best = days[d]; });
   var bestShare = stats.total > 0 ? (100 * best / stats.total) : 0;
-  function bar(label, used, limit, unit){
-    if (limit == null) return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>Not in the plan notes</strong></div></div>';
+  function bar(label, used, limit, unit, raw){
+    if(limit==null){
+      var note=raw==null||raw===""||/^(?:not (?:yet )?verified|unknown|not stated|not listed|—)$/i.test(String(raw).trim())?"Not confirmed for this account":String(raw);
+      return '<div class="journal-rule"><div class="journal-rule-top"><span>'+esc(label)+'</span><strong>'+esc(note)+'</strong></div></div>';
+    }
     var pct = limit > 0 ? Math.max(0, Math.min(100, 100 * used / limit)) : 0;
     var over = used > limit;
     var shown = unit === "%" ? used.toFixed(0) + "% / " + limit.toFixed(0) + "%" : money(used) + " / " + money(limit);
     if (unit === "days") shown = used + " / " + limit + " days";
     return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>' + shown + '</strong></div><div class="journal-rule-track"><div style="width:' + pct.toFixed(1) + '%;background:' + (over ? "#ff7474" : "#a7e3cf") + '"></div></div></div>';
   }
-  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">No independently specified rules for this account, size and stage.</p></div>';
+  function basic(label,v){return '<div class="journal-rule"><div class="journal-rule-top"><span>'+esc(label)+'</span><strong>'+esc(v==null||v===""?"Not confirmed":v)+'</strong></div></div>';}
+  var general=firm?'<details class="mut small" style="margin-top:10px"><summary>General firm rules — not account-specific</summary>'+basic("Published profit target",firm.target)+basic("Published daily loss",firm.dailyDD)+basic("Published drawdown",firm.dd)+basic("Published minimum days",firm.minDays)+basic("Published consistency",firm.consistencyText)+basic("Payout policy",firm.payoutText)+basic("Profit split",firm.split)+basic("News trading",firm.news)+basic("Overnight holding",firm.overnight)+'<p><a href="'+esc(firm.site)+'" target="_blank" rel="noopener noreferrer">Official firm website</a></p></details>':"";
+  if (!rules) return '<div class="card"><h3>'+esc(account.account_label||account.firm||"Account")+'</h3><p class="mut small">'+esc([account.firm,account.plan,journalStatusLabel(account.stage||"evaluation")].filter(Boolean).join(" · "))+'</p>'+["Profit target","Daily loss","Max drawdown","Minimum days","Consistency"].map(function(k){return basic(k,"Not confirmed for this account");}).join("")+'<p class="mut small">Select the exact program, size and stage in Accounts. General published rules are reference only.</p>'+general+'</div>';
   return '<div class="card"><h3>' + esc(account.account_label || "Account") + '</h3><p class="mut small">' + esc(account.firm || "Account") + (account.plan ? " · " + esc(account.plan) : "") + (Number(account.account_size) > 0 ? " · " + money(account.account_size) : "") + '</p>' +
-    bar("Profit target", Math.max(0, stats.total), rules.target, "$") +
-    bar("Daily loss", todayPnl < 0 ? -todayPnl : 0, rules.daily, "$") +
-    bar(/static/i.test(rules.ddType) ? "Recorded static loss" : "Recorded peak-to-trough drawdown", /static/i.test(rules.ddType) ? Math.max(0,-Math.min.apply(null,stats.points)) : stats.drawdown, rules.drawdown, "$") +
-    bar("Minimum days", dayCount, rules.minDays, "days") +
-    bar("Consistency", bestShare, rules.consistency, "%") + '<p class="mut small">Estimates from manually logged closed trades only; not a live breach or payout check. Multi-phase targets show phase one only. Record each trading stage separately; historical payouts, withdrawals and open positions are not included. '+(rules.coverage==="verified"?"Catalog marked verified.":"Catalog partially verified.")+'</p></div>';
+    bar("Profit target", Math.max(0, stats.total), rules.target, "$",rules.raw.target) +
+    bar("Daily loss", todayPnl < 0 ? -todayPnl : 0, rules.daily, "$",rules.raw.daily) +
+    bar(/static/i.test(rules.ddType) ? "Recorded static loss" : "Recorded peak-to-trough drawdown", /static/i.test(rules.ddType) ? Math.max(0,-Math.min.apply(null,stats.points)) : stats.drawdown, rules.drawdown, "$",rules.raw.drawdown) +
+    bar("Minimum days", dayCount, rules.minDays, "days",rules.raw.minDays) +
+    bar("Consistency", bestShare, rules.consistency, "%",rules.raw.consistency) + basic("Drawdown type",rules.ddType) + (rules.payout?basic("Payout policy",rules.payout):"") + (rules.alias?'<p class="mut small">'+esc(rules.note)+'</p>':"") + (rules.source?'<p class="mut small"><a href="'+esc(rules.source)+'" target="_blank" rel="noopener noreferrer">Account rule source</a></p>':"") + general + '<p class="mut small">Estimates from manually logged closed trades only; not a live breach or payout check. Multi-phase targets show phase one only. Record each trading stage separately; historical payouts, withdrawals and open positions are not included. '+(rules.coverage==="verified"?"Catalog marked verified.":"Catalog partially verified.")+'</p></div>';
 }
 function journalAnimateKpis(){
   if (!journalMotionOn() || journalReduceMotion) return;

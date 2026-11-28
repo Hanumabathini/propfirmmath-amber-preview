@@ -1397,25 +1397,42 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $60. No activation fee.",
-        "target": "Not yet verified",
-        "dailyLoss": "Applies; size-specific amount pending",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "target": "$1,500",
+        "dailyLoss": "$600 soft daily stop",
+        "maxDD": "$1,000",
+        "ddType": "EOD trailing",
+        "minDays": "1 trading day",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 60,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%",
+        "consistency": "None in evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+          "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit",
+          "https://help.tradeify.co/en/articles/10495897-rules-trailing-max-drawdowns"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+            "target": null,
+            "dailyLoss": "$600 initial; changes after 6% profit (legacy rules differ)",
+            "maxDD": "$1,000",
+            "ddType": "EOD trailing; funded lock applies",
+            "minDays": "5 qualifying profitable days per payout cycle",
+            "consistency": "35% per payout cycle",
+            "payout": "Minimum balance $26,500; 5 days each above $100; 90% trader share; legacy thresholds may differ.",
+            "note": "Payout-cycle metrics need payout history and current firm balance; do not treat all journal history as a payout cycle."
+          }
+        }
       },
       {
         "id": "tradeify-growth-50000",
@@ -1427,25 +1444,42 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $95. No activation fee.",
-        "target": "Not yet verified",
-        "dailyLoss": "Applies; size-specific amount pending",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "target": "$3,000",
+        "dailyLoss": "$1,250 soft daily stop",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": "1 trading day",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 95,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%",
+        "consistency": "None in evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+          "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit",
+          "https://help.tradeify.co/en/articles/10495897-rules-trailing-max-drawdowns"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+            "target": null,
+            "dailyLoss": "$1,250 initial; changes after 6% profit (legacy rules differ)",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing; funded lock applies",
+            "minDays": "5 qualifying profitable days per payout cycle",
+            "consistency": "35% per payout cycle",
+            "payout": "Minimum balance $53,000; 5 days each above $150; 90% trader share; legacy thresholds may differ.",
+            "note": "Payout-cycle metrics need payout history and current firm balance; do not treat all journal history as a payout cycle."
+          }
+        }
       },
       {
         "id": "tradeify-growth-100000",
@@ -1457,25 +1491,42 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $169. No activation fee.",
-        "target": "Not yet verified",
-        "dailyLoss": "Applies; size-specific amount pending",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "target": "$6,000",
+        "dailyLoss": "$2,500 soft daily stop",
+        "maxDD": "$3,500",
+        "ddType": "EOD trailing",
+        "minDays": "1 trading day",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 169,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%",
+        "consistency": "None in evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+          "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit",
+          "https://help.tradeify.co/en/articles/10495897-rules-trailing-max-drawdowns"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+            "target": null,
+            "dailyLoss": "$2,500 initial; changes after 6% profit (legacy rules differ)",
+            "maxDD": "$3,500",
+            "ddType": "EOD trailing; funded lock applies",
+            "minDays": "5 qualifying profitable days per payout cycle",
+            "consistency": "35% per payout cycle",
+            "payout": "Minimum balance $104,500; 5 days each above $200; 90% trader share; legacy thresholds may differ.",
+            "note": "Payout-cycle metrics need payout history and current firm balance; do not treat all journal history as a payout cycle."
+          }
+        }
       },
       {
         "id": "tradeify-growth-150000",
@@ -1487,25 +1538,42 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. No evaluation consistency; funded 35%. Reset: $229. No activation fee.",
-        "target": "Not yet verified",
-        "dailyLoss": "Applies; size-specific amount pending",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "target": "$9,000",
+        "dailyLoss": "$3,750 soft daily stop",
+        "maxDD": "$5,000",
+        "ddType": "EOD trailing",
+        "minDays": "1 trading day",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 229,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%",
+        "consistency": "None in evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+          "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit",
+          "https://help.tradeify.co/en/articles/10495897-rules-trailing-max-drawdowns"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/11083796-growth-funded-account-payout-policy",
+            "target": null,
+            "dailyLoss": "$3,750 initial; changes after 6% profit (legacy rules differ)",
+            "maxDD": "$5,000",
+            "ddType": "EOD trailing; funded lock applies",
+            "minDays": "5 qualifying profitable days per payout cycle",
+            "consistency": "35% per payout cycle",
+            "payout": "Minimum balance $156,500; 5 days each above $250; 90% trader share; legacy thresholds may differ.",
+            "note": "Payout-cycle metrics need payout history and current firm balance; do not treat all journal history as a payout cycle."
+          }
+        }
       },
       {
         "id": "tradeify-select-30-25000",
@@ -1517,16 +1585,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $69. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$1,500",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$1,000",
+        "ddType": "EOD trailing",
+        "minDays": "4 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 69,
         "activationFee": 0,
         "consistency": "30% evaluation",
@@ -1534,8 +1602,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $500 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-30-50000",
@@ -1547,16 +1628,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $105. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$3,000 current; $2,500 legacy",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": "4 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 105,
         "activationFee": 0,
         "consistency": "30% evaluation",
@@ -1564,8 +1645,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,000 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-30-100000",
@@ -1577,16 +1671,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $164. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$6,000",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": "4 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 164,
         "activationFee": 0,
         "consistency": "30% evaluation",
@@ -1594,8 +1688,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,250 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-30-150000",
@@ -1607,16 +1714,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 30% evaluation. Reset: $225. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$9,000",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$4,500",
+        "ddType": "EOD trailing",
+        "minDays": "4 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 225,
         "activationFee": 0,
         "consistency": "30% evaluation",
@@ -1624,8 +1731,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,750 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-40-25000",
@@ -1637,16 +1757,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $75. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$1,500",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$1,000",
+        "ddType": "EOD trailing",
+        "minDays": "3 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 75,
         "activationFee": 0,
         "consistency": "40% evaluation",
@@ -1654,8 +1774,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $500 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-40-50000",
@@ -1667,16 +1800,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $119. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$3,000 current; $2,500 legacy",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": "3 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 119,
         "activationFee": 0,
         "consistency": "40% evaluation",
@@ -1684,8 +1817,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,000 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-40-100000",
@@ -1697,16 +1843,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $169. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$6,000",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": "3 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 169,
         "activationFee": 0,
         "consistency": "40% evaluation",
@@ -1714,8 +1860,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,250 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-40-150000",
@@ -1727,16 +1886,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: $239. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$9,000",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$4,500",
+        "ddType": "EOD trailing",
+        "minDays": "3 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 239,
         "activationFee": 0,
         "consistency": "40% evaluation",
@@ -1744,8 +1903,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,750 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-40-300000",
@@ -1756,17 +1928,17 @@ var FIRMS = [
         "currency": "USD",
         "monthly": false,
         "coverage": "partial",
-        "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 40% evaluation. Reset: not available. No activation fee.",
-        "target": "Not yet verified",
-        "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "note": "V1 and V2 rules persist by purchase date; current V2 published price $570; checkout not verified.",
+        "target": "$14,000",
+        "dailyLoss": "$4,000 V2; none V1",
+        "maxDD": "$8,000 V2 / $6,000 V1",
+        "ddType": "EOD trailing",
+        "minDays": "3 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/17845238-300k-select-account-permanent-plan",
+        "verifiedOn": "2026-11-28",
         "resetFee": null,
         "activationFee": 0,
         "consistency": "40% evaluation",
@@ -1774,8 +1946,22 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/16497699-300k-select-account",
+          "https://help.tradeify.co/en/articles/17845238-300k-select-account-permanent-plan"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/16497699-300k-select-account",
+            "target": null,
+            "dailyLoss": "Depends on V1/V2 and Flex/Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "payout": "Flex or Daily; purchase-date version rules differ."
+          }
+        }
       },
       {
         "id": "tradeify-select-50-25000",
@@ -1787,16 +1973,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $90. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$1,500",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$1,000",
+        "ddType": "EOD trailing",
+        "minDays": "2 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 90,
         "activationFee": 0,
         "consistency": "50% evaluation",
@@ -1804,8 +1990,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $500 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-50-50000",
@@ -1817,16 +2016,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $152. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$3,000 current; $2,500 legacy",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": "2 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 152,
         "activationFee": 0,
         "consistency": "50% evaluation",
@@ -1834,8 +2033,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,000 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-50-100000",
@@ -1847,16 +2059,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $230. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$6,000",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": "2 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 230,
         "activationFee": 0,
         "consistency": "50% evaluation",
@@ -1864,8 +2076,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,250 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-select-50-150000",
@@ -1877,16 +2102,16 @@ var FIRMS = [
         "monthly": false,
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. 50% evaluation. Reset: $319. No activation fee.",
-        "target": "Not yet verified",
+        "target": "$9,000",
         "dailyLoss": "None during evaluation",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "maxDD": "$4,500",
+        "ddType": "EOD trailing",
+        "minDays": "2 trading days",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Daily or Flex after passing",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": 319,
         "activationFee": 0,
         "consistency": "50% evaluation",
@@ -1894,8 +2119,21 @@ var FIRMS = [
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+        ],
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts",
+            "target": null,
+            "dailyLoss": "None on Flex; $1,750 on Daily",
+            "maxDD": null,
+            "ddType": "EOD trailing; Flex and Daily limits differ",
+            "minDays": "5 qualifying winning days on Flex; Daily subject to buffer",
+            "consistency": "None",
+            "payout": "Flex or Daily policy selected after passing; different drawdowns and caps."
+          }
+        }
       },
       {
         "id": "tradeify-lightning-25000",
@@ -1908,24 +2146,39 @@ var FIRMS = [
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.",
         "target": "No evaluation",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "dailyLoss": "Not applicable in evaluation",
+        "maxDD": null,
+        "ddType": null,
+        "minDays": "No evaluation",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%",
+        "consistency": "No evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+        ],
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$1,000",
+            "ddType": "EOD trailing",
+            "minDays": "No minimum trading days",
+            "consistency": "20% first, 25% second, 30% subsequent payouts",
+            "payout": "Payout profit objectives and progressive consistency apply."
+          }
+        }
       },
       {
         "id": "tradeify-lightning-50000",
@@ -1938,24 +2191,39 @@ var FIRMS = [
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.",
         "target": "No evaluation",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "dailyLoss": "Not applicable in evaluation",
+        "maxDD": null,
+        "ddType": null,
+        "minDays": "No evaluation",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%",
+        "consistency": "No evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+        ],
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+            "target": null,
+            "dailyLoss": "$1,250 initial",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing",
+            "minDays": "No minimum trading days",
+            "consistency": "20% first, 25% second, 30% subsequent payouts",
+            "payout": "Payout profit objectives and progressive consistency apply."
+          }
+        }
       },
       {
         "id": "tradeify-lightning-100000",
@@ -1968,24 +2236,39 @@ var FIRMS = [
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.",
         "target": "No evaluation",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "dailyLoss": "Not applicable in evaluation",
+        "maxDD": null,
+        "ddType": null,
+        "minDays": "No evaluation",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%",
+        "consistency": "No evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+        ],
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+            "target": null,
+            "dailyLoss": "$2,250 from Nov 23, 2026; $2,500 legacy",
+            "maxDD": "$3,500 from Nov 23, 2026; $4,000 legacy",
+            "ddType": "EOD trailing",
+            "minDays": "No minimum trading days",
+            "consistency": "20% first, 25% second, 30% subsequent payouts",
+            "payout": "Payout profit objectives and progressive consistency apply."
+          }
+        }
       },
       {
         "id": "tradeify-lightning-150000",
@@ -1998,24 +2281,39 @@ var FIRMS = [
         "coverage": "partial",
         "note": "Official pricing verified Nov 28, 2026; detailed size-specific rules pending. Progressive 20%, 25%, 30%. Reset: not available. No activation fee.",
         "target": "No evaluation",
-        "dailyLoss": "Not yet verified",
-        "maxDD": "Not yet verified",
-        "ddType": "Not yet verified",
-        "minDays": "Not yet verified",
+        "dailyLoss": "Not applicable in evaluation",
+        "maxDD": null,
+        "ddType": null,
+        "minDays": "No evaluation",
         "split": "90% sim funded / 80% Elite Live",
         "payout": "Not yet verified",
         "platform": "Tradovate, NinjaTrader, TradingView, Rithmic, Tradesea, Quantower, Sierra Chart, R|Trader, WealthCharts",
-        "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-        "verifiedOn": "Nov 28, 2026",
+        "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+        "verifiedOn": "2026-11-28",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%",
+        "consistency": "No evaluation",
         "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
         "platformVerifiedOn": "Nov 28, 2026",
         "sources": [
           "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
-          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
-        ]
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+          "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+          "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+        ],
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.tradeify.co/en/articles/10495938-lightning-funded-accounts",
+            "target": null,
+            "dailyLoss": "$3,000 current; $3,750 legacy",
+            "maxDD": "$5,250 current; $6,000 legacy",
+            "ddType": "EOD trailing",
+            "minDays": "No minimum trading days",
+            "consistency": "20% first, 25% second, 30% subsequent payouts",
+            "payout": "Payout profit objectives and progressive consistency apply."
+          }
+        }
       }
     ]
   },
@@ -39834,7 +40132,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 149,
         "resetFee": 49,
         "note": "Base price per official help center. No optional DLL selected. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -39882,7 +40180,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 149,
         "resetFee": null,
         "note": "Base price per official help center. Double payout caps subject to limited-time offer at new Combine checkout. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -39930,7 +40228,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 0,
         "resetFee": 95,
         "note": "Base price per official help center. No optional DLL selected. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -39978,7 +40276,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 0,
         "resetFee": null,
         "note": "Base price per official help center; responsible trading discount applied as advertised. Double payout caps subject to limited-time offer at new Combine checkout. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40026,7 +40324,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 149,
         "resetFee": 99,
         "note": "Base price per official help center. No optional DLL selected. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40074,7 +40372,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 149,
         "resetFee": null,
         "note": "Base price per official help center. Double payout caps subject to limited-time offer at new Combine checkout. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40122,7 +40420,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 0,
         "resetFee": 149,
         "note": "Base price per official help center. No optional DLL selected. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40170,7 +40468,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 0,
         "resetFee": null,
         "note": "Base price per official help center; responsible trading discount applied as advertised. Double payout caps subject to limited-time offer at new Combine checkout. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40218,7 +40516,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 149,
         "resetFee": 199,
         "note": "Base price per official help center. No optional DLL selected. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40266,7 +40564,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 149,
         "resetFee": null,
         "note": "Base price per official help center. Double payout caps subject to limited-time offer at new Combine checkout. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40314,7 +40612,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 0,
         "resetFee": 229,
         "note": "Base price per official help center. No optional DLL selected. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",
@@ -40362,7 +40660,7 @@ var FIRMS = [
         "platform": "TopstepX",
         "source": "https://help.topstep.com/en/articles/14289835-topstep-pricing-and-payment-questions",
         "verifiedOn": "2026-11-28",
-        "consistency": "55% Combine; funded Standard none or Consistency 40%",
+        "consistency": "55% Combine",
         "activationFee": 0,
         "resetFee": null,
         "note": "Base price per official help center; responsible trading discount applied as advertised. Double payout caps subject to limited-time offer at new Combine checkout. Funded stage begins at $0 profit; legacy split exception applies to eligible accounts. Checkout not tested.",

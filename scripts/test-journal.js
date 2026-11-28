@@ -267,6 +267,12 @@ function submit(form) {
     const all=w.journalFirmChoices();
     ok("all firms use shared plan names and sizes",all.every(f=>(f.plans||[]).every(p=>p.size==null||w.journalFirmCatalog(f).some(c=>c.name===(p.name||p.program)&&c.sizes.includes(Number(p.size))))),"all "+all.length+" firms");
     ok("missing catalog cannot synthesize rules",w.firmPlanList({slug:"test",plans:[],target:"10%",dd:"$500"})[0].target===null,"fallback");
+    const legacyTop=w.journalFirmRules(w.firm("topstep"),"Trading Combine",50000,"evaluation");
+    ok("legacy Topstep shows common core rules but not optional DLL",legacyTop.target===3000&&legacyTop.drawdown===2000&&legacyTop.daily===null&&legacyTop.minDays===2&&legacyTop.consistency===55,legacyTop);
+    const growth=w.journalFirmRules(w.firm("tradeify"),"Growth",50000,"evaluation");
+    ok("Tradeify Growth 50K basic rules populated",growth.target===3000&&growth.daily===1250&&growth.drawdown===2000&&growth.minDays===1&&growth.consistency===null,growth);
+    ok("explicit no consistency displayed instead of missing",w.journalRuleCard({firm:"Tradeify",plan:"Growth",account_size:50000,stage:"evaluation"},[]).includes("None in evaluation"),"Growth display");
+    ok("all firms show five basic rule rows even if missing",w.journalFirmChoices().every(f=>["Profit target","Daily loss","drawdown","Minimum days","Consistency"].every(k=>w.journalRuleCard({firm:f.name,plan:"Unknown legacy plan",account_size:50000,stage:"evaluation"},[]).toLowerCase().includes(k.toLowerCase()))),"all firms");
     const ambiguous=w.journalFirmRules({plans:[{name:"Test",size:10000,target:"Not yet verified",maxDD:"EOD trailing, $1000 (25K)",dailyLoss:"Applies; pending",minDays:"No minimum trading days",consistency:"No evaluation consistency; funded 35%"}]},"Test",10000);
     ok("unknown and wrong-size rules stay unknown",ambiguous.target===null&&ambiguous.drawdown===null&&ambiguous.daily===null&&ambiguous.minDays===null&&ambiguous.consistency===null,JSON.stringify(ambiguous));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
