@@ -366,6 +366,15 @@ function submit(form) {
     filterNow.dispatchEvent(new w.Event("change"));
     await waitFor(() => d.getElementById("journalOverview") && d.getElementById("journalOverview").textContent.includes("7 recorded trades"), "all accounts");
     ok("all accounts combines trades", d.querySelectorAll(".journal-symbol").length === 5, d.querySelectorAll(".journal-symbol").length);
+    const rulePicker = d.getElementById("journalRuleAccount");
+    const ruleCards = Array.from(d.querySelectorAll("[data-rule-index]"));
+    ok("all accounts retain rules but only one is visible", rulePicker && ruleCards.length === 2 && ruleCards.filter(c=>!c.hidden).length === 1, ruleCards.length);
+    rulePicker.value = "1";
+    rulePicker.dispatchEvent(new w.Event("change"));
+    ok("rule account selector switches without changing dashboard scope", ruleCards[0].hidden && !ruleCards[1].hidden && w.journalState.selected === "all", rulePicker.value);
+    ok("equity chart shows guides and real recorded metrics", !!d.querySelector(".jv14-equity-chart text") && d.querySelectorAll(".jv14-equity-stats>div").length === 3 && !!d.querySelector(".jv14-equity-dates"), "equity polish");
+    ok("extra policy details stay closed by default", Array.from(d.querySelectorAll(".jv14-rule-details")).every(el=>!el.open), "collapsed");
+
     d.getElementById("journalSymbolsToggle").click();
     ok("show all symbols", d.querySelectorAll(".journal-symbol").length === 7 && d.getElementById("journalSymbolsToggle").textContent === "Show top 5", d.querySelectorAll(".journal-symbol").length);
 
