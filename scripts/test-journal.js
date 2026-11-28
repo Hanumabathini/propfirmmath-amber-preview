@@ -354,8 +354,8 @@ function submit(form) {
     ok("successful add closes editor", d.getElementById("journalAccountEditor").hidden, "closed");
     const created = state.trader_accounts[1];
     ok("platform persists with account",created.platform==="Hyperprop",created);
-    ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
-    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
+    ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature 20K", created);
+    ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature 20K · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);
     ok("new account dashboard is empty", d.getElementById("journalOverview").textContent.includes("0 recorded trades"), "overview");
     const live = w.journalState.accounts.find(a => a.id === created.id);
@@ -563,8 +563,8 @@ function submit(form) {
     ok("nav shows account and sign out", nav.includes("Account") && nav.includes("Sign out") && nav.includes("My Journal") && !nav.includes("Sign In"), nav);
 
     d.getElementById("navSignOut").click();
-    await waitFor(() => w.location.pathname === "/" && d.getElementById("mainnav").textContent.includes("Sign In"), "signed out");
-    ok("signed out nav", !d.getElementById("navSignOut") && d.getElementById("mainnav").textContent.includes("Sign In"), d.getElementById("mainnav").textContent);
+    await waitFor(() => w.location.pathname === "/" && d.getElementById("mainnav").textContent.includes("Log in"), "signed out");
+    ok("signed out nav", !d.getElementById("navSignOut") && d.getElementById("mainnav").textContent.includes("Log in"), d.getElementById("mainnav").textContent);
     w.history.pushState({}, "", "/account");
     w.route();
     ok("free registration offers the journal without pricing cards", !d.querySelector("#memberships") && !!d.querySelector(".pfm-free-journal-intro"), "free signup");
