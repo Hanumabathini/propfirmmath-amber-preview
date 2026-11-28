@@ -1530,6 +1530,31 @@ html,body{overflow-x:clip}
 @media(max-width:600px){#app .terra-spot-ticket[data-slot="-1"]{transform:translate3d(-18%,0,-44px) rotateY(12deg) rotateZ(-6deg)}#app .terra-spot-ticket[data-slot="1"]{transform:translate3d(18%,0,-44px) rotateY(-12deg) rotateZ(6deg)}}
 @media(prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}#app .kinetic-stage.tc-ring-stepping .terra-medallion,#app .kinetic-stage.tc-ring-stepping .terra-coin-object,#app .terra-spot-ticket{transition:none!important}}
 </style>
+<style>
+/* Restore the original Obsidian Amber hero composition, scoped to home.
+   All other Terra route styles and functionality remain intact. */
+:root{--tc-original-dark:#0d0906;--tc-original-light:#f8f6ee;--tc-original-gold:#ffb020;--tc-original-gold-light:#ffd34d;--tc-original-gold-deep:#ff8a00;--tc-original-sub:#e6d7b8;--tc-original-shade:rgba(8,5,2,.95);--tc-original-mid:rgba(8,5,2,.78);--tc-original-clear:rgba(8,5,2,.06)}
+#app[data-terra-route=home] .hero{display:block;position:relative;overflow:clip;margin:22px 0 24px;padding:0;background:var(--tc-original-dark);border:0;border-radius:24px;box-shadow:none}
+#app[data-terra-route=home] .hero-bg{position:absolute;inset:0;min-height:0;aspect-ratio:auto;border-radius:0}
+#app[data-terra-route=home] .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center right;aspect-ratio:auto}
+#app[data-terra-route=home] .hero-shade{position:absolute;inset:0;display:block;background:linear-gradient(90deg,var(--tc-original-shade),var(--tc-original-mid) 45%,var(--tc-original-clear))}
+#app[data-terra-route=home] .hero-in{position:relative;display:grid;grid-template-columns:minmax(0,640px) minmax(0,1fr);gap:20px;padding:44px 42px 40px;color:var(--tc-original-light)}
+#app[data-terra-route=home] .hero h1{font-size:clamp(32px,4.4vw,54px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--tc-original-light);margin:18px 0 0!important}
+#app[data-terra-route=home] .hero h1 .a{color:var(--tc-original-gold)}
+#app[data-terra-route=home] .hero h1 .g{color:var(--tc-original-gold-light);background:linear-gradient(92deg,var(--tc-original-gold-light),var(--tc-original-gold-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#app[data-terra-route=home] .hero .kicker{color:var(--tc-original-gold);font-weight:650}
+#app[data-terra-route=home] .hero p.sub,#app[data-terra-route=home] .hero .mut{color:var(--tc-original-sub);max-width:520px}
+#app[data-terra-route=home] .hero .mut a{color:var(--tc-original-gold-light)}
+#app[data-terra-route=home] .hero .btn{background:var(--tc-original-gold);color:var(--tc-original-dark);border-color:var(--tc-original-gold)}
+#app[data-terra-route=home] .hero .btn.ghost{background:transparent;color:var(--tc-original-light);border-color:var(--tc-original-sub)}
+#app[data-terra-route=home] .hero :focus-visible{outline-color:var(--tc-original-light)}
+#app[data-terra-route=home] .tc-original-marquee-tools{display:flex;justify-content:flex-end;margin-bottom:8px}
+#app[data-terra-route=home] #tc-original-marquee .mq{overflow-x:auto!important}
+#app[data-terra-route=home] #tc-original-marquee .mq-track{display:flex;width:max-content;gap:12px}
+#app[data-terra-route=home] #tc-original-marquee .mq a{flex:none;white-space:nowrap}
+@media(max-width:1100px){#app[data-terra-route=home] .hero-in{grid-template-columns:1fr}}
+@media(max-width:640px){#app[data-terra-route=home] .hero-in{padding:28px 20px}#app[data-terra-route=home] .hero-bg img{object-position:70% center}#app[data-terra-route=home] .hero-shade{background:linear-gradient(90deg,var(--tc-original-shade),var(--tc-original-mid))}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2262,40 +2287,26 @@ function pageHome(){
     function item(f, hidden){
       return '<a href="/firm/'+f.slug+'"'+(hidden?' tabindex="-1" aria-hidden="true"':'')+'>'+avatar(f,30)+esc(f.name)+'<span class="chip grey">'+esc((MARKETS[f.markets[0]]||{label:"Prop firms"}).label)+'</span></a>';
     }
-    return '<div class="mq'+(rev?" rev":"")+'"><div class="mq-track">'+list.map(function(f){ return item(f,false); }).join("")+'</div></div>';
+    return '<div class="mq'+(rev?" rev":"")+'"><div class="mq-track">'+list.map(function(f){ return item(f,false); }).join("")+list.map(function(f){ return item(f,true); }).join("")+'</div></div>';
   }
-  var marketIndex = ["futures","forex","crypto","perps","stocks","prediction"].map(function(key){
-    var n=FIRMS.filter(function(f){return f.markets.indexOf(key)>=0;}).length;
-    var pct=Math.round(100*n/Math.max(1,COUNTS.total));
-    return '<button type="button" class="terra-market" data-terra-market="'+key+'" data-count="'+n+'" aria-pressed="false"><span>'+esc(MARKETS[key].label)+'</span><span class="terra-meter" aria-hidden="true"><span style="--extent:'+pct+'%"></span></span><strong>'+n+'</strong></button>';
-  }).join("");
-  var featuredOffers=[];
-  FIRMS.forEach(function(f){(f.allCodes||f.codes||[]).forEach(function(c){if(!dealExpired(c.detail)&&c.off>0)featuredOffers.push({f:f,c:c});});});
-  featuredOffers.sort(function(a,b){return (b.c.off||0)-(a.c.off||0)||a.f.name.localeCompare(b.f.name);});
-  var seenOffers={};var featured=featuredOffers.filter(function(x){if(seenOffers[x.f.slug])return false;seenOffers[x.f.slug]=true;return true;}).slice(0,3);
-  var featuredMarkup=featured.map(function(x){return '<a class="terra-feature-offer" href="/firm/'+esc(x.f.slug)+'"><span class="terra-offer-brand">'+avatar(x.f,38)+'<span>'+esc(x.f.name)+'</span></span><strong>'+esc(dealHeadline(x.c,false))+'</strong><span class="terra-offer-detail">'+esc(x.c.detail)+'</span><span class="terra-offer-link">Review offer <span aria-hidden="true">↗</span></span></a>';}).join("");
-  var orbitFirms=[],usedOrbit={};
-  ["futures","forex","crypto","perps","stocks","prediction"].forEach(function(key){
-    var item=FIRMS.filter(function(f){return !usedOrbit[f.slug]&&f.markets.indexOf(key)>=0;}).sort(function(a,b){return (b.rating||0)-(a.rating||0)||a.name.localeCompare(b.name);})[0];
-    if(item){usedOrbit[item.slug]=true;orbitFirms.push(item);}
-  });
-  FIRMS.filter(function(f){return !usedOrbit[f.slug];}).sort(function(a,b){return (b.rating||0)-(a.rating||0)||a.name.localeCompare(b.name);}).slice(0,Math.max(0,12-orbitFirms.length)).forEach(function(f){orbitFirms.push(f);});
-  var orbitMarkup=orbitFirms.map(function(f,i){
-    var phase=2*Math.PI*(orbitFirms.length-i)/orbitFirms.length;var scale=[1.18,.88,1.04,.76,1.13,.91][i%6];
-    return '<a class="terra-medallion" href="/firm/'+esc(f.slug)+'" aria-label="Research '+esc(f.name)+'" style="--scale:'+scale+';--phase:'+(-30*i/orbitFirms.length).toFixed(3)+'s;--ox:'+Math.cos(phase).toFixed(4)+';--oy:'+Math.sin(phase).toFixed(4)+'"><span class="terra-coin-object" aria-hidden="true"><span class="terra-coin-rim"></span><span class="tc-coin-slice tc-coin-slice-a"></span><span class="tc-coin-slice tc-coin-slice-b"></span><span class="tc-coin-slice tc-coin-slice-c"></span><span class="terra-coin-face terra-coin-front">'+avatar(f,58)+'</span><span class="terra-coin-face terra-coin-back">'+esc(initials(f.name))+'</span></span><span class="terra-coin-name">'+esc(f.name)+'</span></a>';
-  }).join("");
   go(
-  '<section class="kinetic-hero"><div class="kinetic-heading"><h1>Find the right prop firm.</h1><div><p>Explore '+COUNTS.total+' prop firms. Compare fees, rules and payout conditions before paying for an account.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div></div></div>'+
+  '<section class="hero"><div class="hero-bg"><img src="/img/hero-960.webp" srcset="/img/hero-480.webp 480w, /img/hero-960.webp 960w, /img/hero-1440.webp 1440w" sizes="(max-width: 700px) 100vw, 960px" width="1440" height="960" alt="Golden geometric bull charging in front of a glowing amber candlestick chart" fetchpriority="high" decoding="async" /></div><div class="hero-shade"></div>'+
+  '<div class="hero-in"><div><span class="kicker">Your prop trading math resource</span>'+
+  '<h1 style="margin-top:18px">Compare prop firms by <span class="a">the math,</span> not the <span class="g">marketing.</span></h1>'+
+  '<p class="sub">Side-by-side rules, prices and payout evidence for '+COUNTS.total+' futures, forex, crypto, perps and stocks firms, each researched on its own official site ('+SNAPSHOT+'). Every figure carries the date it was checked.</p>'+
+  '<div class="hero-cta"><a class="btn" href="/deals">See Current Deals →</a><a class="btn ghost" href="/compare">Compare Firms</a></div>'+
+  '<p class="small mut" style="margin-top:16px">Rankings follow published rules and ratings, never commission. <a href="/methodology" style="font-weight:800">How we rank →</a></p></div>'+
+  '</div></section>'+
   '<section class="tc-quick-start" aria-label="Start here"><form class="tc-firm-search" action="/firms" method="get"><input type="hidden" name="view" value="directory"><label for="tc-home-search">Find a firm or trading platform</label><div><input type="search" name="q" id="tc-home-search" placeholder="e.g. FTMO, Tradeify, MT5" maxlength="100"><button class="btn" type="submit">Search firms</button></div></form><div class="tc-start-links"><a href="/firms?view=plans"><strong>Find an account</strong><span>Filter by size and market</span></a><a href="/deals"><strong>Save on fees</strong><span>Browse published offers</span></a><a href="/journal"><strong>Track my trades</strong><span>Private trading journal</span></a></div><p class="tc-start-help">New to prop trading? <a href="/faq">Learn how it works</a> · <a href="/tools">Calculate your costs</a></p></section>'+
-  '<div class="terra-3d-scene kinetic-stage" id="terra-orbit-scene"><div class="kinetic-floor" aria-hidden="true"></div><div class="kinetic-horizon" aria-hidden="true">PropFirmMath</div><div class="kinetic-drag-area" id="kinetic-ring" aria-label="Interactive firm carousel. Drag horizontally or use previous and next."><div class="terra-orbit-layer">'+orbitMarkup+'</div></div><div class="kinetic-ring-controls"><button type="button" id="kinetic-prev" aria-label="Previous firm">←</button><span id="kinetic-selected">Explore firms</span><button type="button" id="kinetic-next" aria-label="Next firm">→</button><button type="button" id="terra-motion-toggle" class="terra-motion-toggle" aria-pressed="false">Pause motion</button></div><span class="kinetic-instruction">Drag to spin · Select a firm to research</span></div>'+
-  '<div class="kinetic-research"><div class="kinetic-research-copy"><h2>Find the market<br>that fits you.</h2><p>Filter the research by the instruments you trade. Counts come directly from our directory.</p><p class="terra-method">Research snapshot: '+SNAPSHOT+'. Markets overlap. <a href="/methodology">How we rank</a></p></div><div class="terra-index terra-command"><div class="terra-command-header"><div><span>Market explorer</span><strong id="terra-total" aria-live="polite">'+COUNTS.total+'</strong><span id="terra-label">Firms across six markets</span></div><div class="terra-command-caption">Select a market</div></div><div class="terra-market-list">'+marketIndex+'</div><div class="terra-index-foot"><button type="button" id="terra-reset">All markets</button><a id="terra-market-link" href="/firms">Explore directory</a></div></div></div></section>'+
-  '<section class="terra-deals-stage terra-offers-editorial"><div class="terra-deals-heading"><h2>Find current deals.</h2><p>Published prop firm deals from '+SNAPSHOT+'. Confirm all terms at checkout.</p><a class="btn" href="/deals">Explore all deals</a></div><div class="terra-feature-offers">'+(featuredMarkup||'<p>No percentage offers in the current research snapshot.</p>')+'</div></section>'+
-  '<section class="terra-workflow terra-workbench"><div class="terra-workbench-title"><h2>Tools for your<br>trading decisions.</h2><p>From research to evaluation costs to your own recorded performance.</p></div><div class="terra-workbench-tools"><a href="/compare" class="terra-workbench-item"><span class="terra-tool-art" aria-hidden="true"><i></i><i></i><i></i></span><strong>Compare accounts</strong><span>See rules and prices side by side.</span></a><a href="/tools" class="terra-workbench-item"><span class="terra-tool-art terra-tool-calc" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>Calculators</strong><span>Work through the numbers before buying.</span></a><a href="/journal" class="terra-workbench-item"><span class="terra-tool-art terra-tool-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>Trading journal</strong><span>Track your own accounts and results.</span></a></div></section>'+
-  '<section class="research-rankings"><div class="section-mast"><div><h2>Highest-rated firms in our research</h2><p class="mut">Ranked by verified numeric trader ratings from the '+SNAPSHOT+' research. Firms without a verified numeric rating remain listed in the directory.</p></div><a class="btn ghost small" href="/firms">Explore all firms</a></div>'+
-  '<div class="pill-tabs" id="home-tabs">'+["all","futures","forex","crypto","perps","stocks","prediction"].map(function(k){return '<button data-m="'+k+'" class="'+(homeState.topFilter===k?"on":"")+'">'+(k==="all"?"All":MARKETS[k].label)+'</button>';}).join("")+'</div>'+
-  '<div id="home-top"></div><div id="home-more"></div>'+snapLine("Prices and ratings checked "+SNAPSHOT+".")+'</section>'+
-  '<section class="research-catalog"><div class="section-mast"><div><h2>Explore the directory</h2><p class="mut">All '+COUNTS.total+' firm profiles, with dated research and official source references.</p></div><a href="/firms">Browse and filter</a></div>'+
-  '<details class="directory-disclosure"><summary>Browse firm names ('+COUNTS.total+')</summary><div class="firm-marquee">'+mqRow(FIRMS.slice(0,half),false)+mqRow(FIRMS.slice(half),true)+'</div></details></section>'
+  '<div class="secttl"><span class="bar"></span><h2>'+COUNTS.total+' Prop Firms in the Directory</h2></div>'+
+  '<p class="mut" style="margin:-6px 0 12px">'+COUNTS.total+' prop firms in the directory · all researched on official sites, '+SNAPSHOT+'. Tap any firm to open its full page.</p>'+
+  '<div class="tc-original-marquee-tools"><button class="btn ghost small" type="button" id="tc-marquee-pause" aria-pressed="false">Pause firm list</button></div><div class="firm-marquee" id="tc-original-marquee">'+mqRow(FIRMS.slice(0,half),false)+mqRow(FIRMS.slice(half),true)+'</div>'+
+  '<div class="secttl"><span class="bar"></span><h2>Highest-rated firms in our research</h2></div>'+
+  '<p class="mut" style="margin:-6px 0 14px;max-width:900px">Ranked by the trader ratings verified in the '+SNAPSHOT+' research, with each firm\'s split, drawdown, payout cycle and verified code. Only firms with a verified numeric score appear in this table — firms whose Trustpilot rating was withheld, or whose score could not be verified on official pages, stay in the directory with that status labelled instead of a score.</p>'+
+  '<div class="pill-tabs" id="home-tabs" style="margin-bottom:14px">'+["all","futures","forex","crypto","perps","stocks","prediction"].map(function(k){ return '<button data-m="'+k+'" class="'+(homeState.topFilter===k?"on":"")+'">'+(k==="all"?"All":MARKETS[k].label)+'</button>'; }).join("")+'</div>'+
+  '<div id="home-top"></div>'+
+  '<div id="home-more" style="text-align:center;margin-top:16px"></div>'+
+  snapLine("Prices and ratings checked "+SNAPSHOT+".")
   );
   function draw(){
     var topList = FIRMS.filter(function(f){ return f.rating; }).sort(function(a,b){ return b.rating-a.rating; });
@@ -2307,25 +2318,8 @@ function pageHome(){
     bindCopy();
   }
   draw();
-  mountKineticRing($("#terra-orbit-scene"));
-  mountTerraTactile(app);
-  $$("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ selectTerraMarket(b.getAttribute("data-m")); }); });
-  function selectTerraMarket(key){
-    var items=$$("[data-terra-market]");
-    var chosen=items.filter(function(el){return el.getAttribute("data-terra-market")===key;})[0];
-    items.forEach(function(el){el.setAttribute("aria-pressed",el===chosen?"true":"false");});
-    var total=$("#terra-total"), label=$("#terra-label"), link=$("#terra-market-link");
-    if(total){total.textContent=chosen?chosen.getAttribute("data-count"):COUNTS.total;total.classList.remove("terra-count-change");void total.offsetWidth;total.classList.add("terra-count-change");}
-    if(label)label.textContent=chosen?MARKETS[key].label+" firms":"Firms across six markets";
-    if(link){link.href=chosen?"/"+key:"/firms";link.textContent=chosen?"Explore "+MARKETS[key].label:"Explore directory";}
-    var selectedKey=chosen?key:"all";
-    homeState.topFilter=selectedKey;homeState.topShow=5;
-    $$("#home-tabs button").forEach(function(el){el.classList.toggle("on",el.getAttribute("data-m")===selectedKey);});
-    draw();
-  }
-  $$("[data-terra-market]").forEach(function(el){el.addEventListener("click",function(){selectTerraMarket(el.getAttribute("data-terra-market"));});});
-  var reset=$("#terra-reset");if(reset)reset.addEventListener("click",function(){selectTerraMarket("all");});
-
+  var pause=$("#tc-marquee-pause"),marquee=$("#tc-original-marquee");if(pause&&marquee){var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;pause.disabled=!!reduced;if(reduced){pause.textContent="Motion reduced";pause.setAttribute("aria-pressed","true");marquee.setAttribute("data-paused","true");}pause.addEventListener("click",function(){var on=pause.getAttribute("aria-pressed")!=="true";pause.setAttribute("aria-pressed",String(on));pause.textContent=on?"Resume firm list":"Pause firm list";marquee.setAttribute("data-paused",String(on));});}
+  $("#home-tabs button").forEach(function(b){ b.addEventListener("click", function(){ homeState.topFilter=b.getAttribute("data-m"); homeState.topShow=5; $$("#home-tabs button").forEach(function(x){ x.classList.toggle("on", x===b); }); draw(); }); });
 }
 /* ================= FIRMS DIRECTORY ================= */
 var dirState = { q:"", market:"all", view:"markets", platform:"all", price:"all", payout:"all", dd:"all", sort:"name", layout:"cards" };
@@ -4555,7 +4549,7 @@ route();
     var rows = document.querySelectorAll(".mq");
     for (var i=0;i<rows.length;i++){
       var el = rows[i], track = el.firstElementChild;
-      if (!track) continue;
+      if (!track || el.closest('[data-paused="true"]')) continue;var rect=el.getBoundingClientRect();if(rect.bottom<0||rect.top>window.innerHeight||document.hidden)continue;
       var half = track.scrollWidth / 2;
       if (half <= el.clientWidth + 4) continue;
       if (!el._mqInit){
