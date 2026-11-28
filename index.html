@@ -2609,7 +2609,7 @@ function pfmMembershipCards(user, accountCount, lockedCount){
   return '<section class="card pfm-memberships" id="memberships" aria-labelledby="journalMembershipHeading"><div class="pfm-member-heading"><div><h2 id="journalMembershipHeading" tabindex="-1">Journal memberships &amp; upgrades</h2><p class="mut small">Choose how many trading accounts you want to track.</p></div><span class="pfm-current-tier">'+esc(current.name)+' · Current plan</span></div><p class="pfm-member-usage"><strong>'+accountCount+' of '+current.limit+'</strong> trading accounts used</p>'+(lockedCount?'<p class="notice small" role="status"><strong>'+lockedCount+' saved '+(lockedCount===1?'account is':'accounts are')+' hidden.</strong> Your account records and trade history are preserved. Upgrade or restore your membership to unlock additional accounts.</p>':'')+(tester?'<div class="pfm-test-switch"><h3>Membership testing</h3><p class="mut small">Use the Switch buttons below to change your actual test membership. No payment. Downgrading preserves all existing trading accounts.</p><p id="journalTestTierMsg" class="form-msg" role="status" aria-live="polite"></p></div>':'')+'<div class="pfm-member-grid">'+PFM_MEMBERSHIPS.map(function(p){
     var active=p.id===current.id;
     return '<div class="pfm-member-column"><details class="card pfm-membership-card pfm-tier-'+p.id+'"'+(active?' data-current="true"':'')+'><summary><strong class="pfm-member-name">'+esc(p.name)+'</strong><span class="pfm-member-price">'+esc(p.price.split("/")[0])+'</span><span class="mut small">'+(p.id==="basic"?"No monthly fee":"Per month")+'</span><span class="pfm-member-cap">'+p.limit+' trading '+(p.limit===1?"account":"accounts")+'</span><span class="pfm-member-action">View details</span></summary><div class="pfm-member-details"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?"Track multiple accounts across prop firms.":"Track one trading account.")+'</p><p class="mut small">'+(active?"Your current Journal membership.":tester?"Use the test switch below. No payment required.":p.id==="basic"?"Basic is free. Plan changes are not available yet.":"Paid upgrade checkout is coming soon. No payment is collected.")+'</p></div></details>'+(tester?'<button type="button" class="btn '+(active?"ghost ":"")+'small pfm-test-card-button" data-test-tier="'+esc(p.id)+'" aria-pressed="'+String(active)+'"'+(active?" disabled":"")+'>'+(active?esc(p.name)+" · Active":"Switch to "+esc(p.name))+'</button>':'')+'</div>';
-  }).join("")+'</div><p class="mut small pfm-member-note">Basic is free for every registered user. Paid upgrades are not available until billing launches. Accounts beyond your current plan limit are hidden, not deleted. Public PropFirmMath research tools remain free.</p></section>';
+  }).join("")+'</div>'+(current.id!=="basic"?'<div class="card" style="margin-top:16px"><h3>Manage membership</h3><p class="mut small">Cancel your paid membership to return to Basic. One account remains accessible; your other accounts and trades are preserved.</p>'+(tester?'<details id="journalCancelMembership" style="margin-top:12px"><summary class="btn ghost small" style="width:max-content;max-width:100%;cursor:pointer">Cancel membership</summary><p class="mut small" style="margin:12px 0">This cancels your test membership immediately. No payment is involved. You can upgrade again at any time.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="button" data-test-tier="basic" data-test-cancel="true">Confirm cancellation</button><button class="btn ghost small" type="button" id="journalKeepMembership">Keep membership</button></div></details>':'<p class="mut small" style="margin-top:10px">Billing is not active yet. Cancellation will be available through membership management when subscriptions launch.</p><button type="button" class="btn ghost small" disabled>Cancel membership</button>')+'</div>':'')+'<p class="mut small pfm-member-note">Basic is free for every registered user. Paid upgrades are not available until billing launches. Accounts beyond your current plan limit are hidden, not deleted. Public PropFirmMath research tools remain free.</p></section>';
 }
 function pageAccount(){
   if (sb && !authReady) { authChecking("Your account"); return; }
@@ -3410,13 +3410,15 @@ function renderJournal(){
   $("#journalViewMemberships").addEventListener("click",function(){journalApplyTab("settings");var h=$("#journalMembershipHeading");if(h){h.focus();if(h.scrollIntoView)h.scrollIntoView({block:"nearest"});}});
   var membershipSection=$("#memberships");
   if(membershipSection&&pfmMembershipTester(PM_USER))membershipSection.addEventListener("click",async function(e){
+    var keep=e.target.closest("#journalKeepMembership");
+    if(keep){var panel=membershipSection.querySelector("#journalCancelMembership");if(panel){panel.open=false;panel.querySelector("summary").focus();}return;}
     var button=e.target.closest("[data-test-tier]");
     if(!button||button.disabled||!membershipSection.contains(button))return;
-    var tier=button.dataset.testTier,uid=PM_USER&&PM_USER.id;
+    var tier=button.dataset.testTier,uid=PM_USER&&PM_USER.id,cancelling=button.dataset.testCancel==="true";
     if(!uid||!pfmMembershipTester(PM_USER)||!PFM_MEMBERSHIPS.some(function(p){return p.id===tier;}))return;
     var buttons=Array.from(membershipSection.querySelectorAll("[data-test-tier]")),msg=membershipSection.querySelector("#journalTestTierMsg"),changed=false;
     buttons.forEach(function(b){b.disabled=true;});
-    msg.className="form-msg";msg.textContent="Switching to "+tier+"…";
+    msg.className="form-msg";msg.textContent=cancelling?"Cancelling test membership…":"Switching to "+tier+"…";
     try{
       var result=await sb.rpc("journal_set_test_tier",{p_tier:tier});
       if(result.error)throw result.error;
@@ -3428,7 +3430,7 @@ function renderJournal(){
       await journalLoad();
       if(!PM_USER||PM_USER.id!==uid||location.pathname.replace(/\/$/,"")!=="/journal")return;
       journalState.tab="settings";renderJournal();
-      var status=$("#journalTestTierMsg");if(status){status.className="form-msg ok";status.textContent=pfmMembership(PM_USER).name+" test membership active. No payment collected.";var target=$("#journalMembershipHeading");if(target&&target.scrollIntoView)target.scrollIntoView({block:"nearest"});}
+      var status=$("#journalTestTierMsg");if(status){status.className="form-msg ok";status.textContent=cancelling?"Test membership cancelled. Basic is active; all additional accounts are safely preserved.":pfmMembership(PM_USER).name+" test membership active. No payment collected.";var target=$("#journalMembershipHeading");if(target&&target.scrollIntoView)target.scrollIntoView({block:"nearest"});}
     }catch(err){
       if(msg.isConnected){msg.className="form-msg err";msg.textContent=(changed?"Membership updated on server; verification failed. Reload the Journal. ":"Membership switch failed. ")+String(err&&err.message||"Please try again.").slice(0,220);buttons.forEach(function(b){b.disabled=b.getAttribute("aria-pressed")==="true";});}
     }
