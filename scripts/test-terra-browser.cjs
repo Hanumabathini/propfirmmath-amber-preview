@@ -24,20 +24,21 @@ const server=http.createServer((req,res)=>{
   await context.route("**/*.supabase.co/**",route=>route.abort());
   const page=await context.newPage();
   const errors=[];page.on("pageerror",e=>errors.push(e.message));
-  for(const route of ["/","/firms","/deals","/compare","/tools","/journal"]){
+  for(const route of ["/","/firms","/firms?view=directory&q=tradeify","/firms?view=plans","/firm/tradeify","/deals","/compare","/tracker","/tools","/journal","/guides","/rules","/statistics","/faq","/glossary","/calendar","/login","/account","/methodology"]){
    await page.goto(base+route,{waitUntil:"domcontentloaded"});
    await page.locator("#app h1").first().waitFor({timeout:15000});
    await page.waitForTimeout(300);
    assert(await page.locator("#app h1").first().isVisible(),profile.name+" "+route+" heading not visible");
    const geometry=await page.evaluate(()=>({width:innerWidth,document:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
    assert(geometry.document<=geometry.width+3&&geometry.body<=geometry.width+3,profile.name+" "+route+" horizontal overflow "+JSON.stringify(geometry));
-   await page.screenshot({path:path.join(out,profile.name+"-"+(route==="/"?"home":route.slice(1))+".png"),timeout:15000});
+   await page.screenshot({path:path.join(out,profile.name+"-"+(route==="/"?"home":route.slice(1).replace(/[^a-z0-9-]/gi,"-"))+".png"),timeout:15000});
    if(route==="/"){
     assert(await page.locator(".terra-medallion").count()>=6);
     const motion=page.locator("#terra-motion-toggle");assert(await motion.isVisible(),"pause control missing "+profile.name);
     const scene=page.locator("#terra-orbit-scene");
     await scene.scrollIntoViewIfNeeded();
     await page.waitForFunction(()=>document.querySelector("#terra-orbit-scene")?.hasAttribute("data-ring-angle"));
+    await page.mouse.move(2,2);
     const angle=await scene.getAttribute("data-ring-angle");
     await page.waitForTimeout(600);
     assert.notEqual(await scene.getAttribute("data-ring-angle"),angle,"kinetic motion inactive "+profile.name);
@@ -54,6 +55,9 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator("#terra-total").textContent(),await market.getAttribute("data-count"));
     await page.locator("#terra-reset").click();
    }
+   if(route==="/tracker"){const bars=page.locator("[data-payout-row]");assert(await bars.count()>1);await bars.nth(1).click();assert.equal(await bars.nth(1).getAttribute("aria-pressed"),"true");}
+   if(route==="/firms?view=plans"){const tiles=page.locator(".tc-account-tile");assert(await tiles.count()>0);await page.locator("#pc-q").fill("tradeify");assert(await tiles.count()>0);}
+   if(route==="/rules"){await page.locator("#tc-rules-q").fill("tradeify");assert(await page.locator(".tc-rules-table tbody tr:not([hidden])").count()>0);}
    if(route==="/deals"&&await page.locator("#terra-ticket-next").count()&&await page.locator(".terra-spot-ticket").count()>1){
     await page.locator("#terra-ticket-next").click();assert.equal(await page.locator(".terra-spot-ticket[data-slot='0']").getAttribute("data-spot-index"),"1");
    }
