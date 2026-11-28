@@ -1489,14 +1489,14 @@ function firmPlanList(f){
     price: f.from,
     currency: f.fromCur || "USD",
     monthly: !!f.monthly,
-    target: f.target || null,
-    dailyLoss: f.dailyDD || null,
-    maxDD: f.dd || null,
-    ddType: (f.ddTypes || []).join(", ") || null,
-    minDays: f.minDays || null,
-    split: f.split || null,
-    payout: f.payoutText || null,
-    platform: listOrDash(f.platforms),
+    target: null,
+    dailyLoss: null,
+    maxDD: null,
+    ddType: null,
+    minDays: null,
+    split: null,
+    payout: null,
+    platform: null,
     source: (f.sources && f.sources[0]) || f.site || null,
     coverage: "starting",
     note: f.fromPlan || "Recorded starting price. A full account-size list has not been verified."
@@ -1507,10 +1507,10 @@ function planSizeLabel(p){
   var n = p.size / 1000;
   return (Math.round(n * 10) / 10).toString().replace(/\.0$/, "") + "K";
 }
-function planLabel(p){ return p.program + (p.size ? " " + planSizeLabel(p) : ""); }
+function planLabel(p){ return (p.name||p.program||"Unconfirmed program") + (p.size ? " " + planSizeLabel(p) : " — size unconfirmed"); }
 function planPriceHTML(p){
   if (!p || p.price == null || p.price === "") return '<span class="mut">Price not verified</span>';
-  var sym = p.currency === "EUR" ? "€" : "$";
+  var sym = p.currency === "EUR" ? "€" : p.currency === "USD" ? "$" : esc(p.currency || "Currency unconfirmed")+" ";
   var num = Number(p.price).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return sym + num + (p.monthly ? '<span class="mut small"> /month</span>' : "");
 }
@@ -1864,15 +1864,15 @@ function pageCompare(q){
     ["US eligibility", function(f){ return esc(cap(presentText(f.us))); }],
     ["Account plan", function(f){ var p = selectedPlan(f); return esc(planLabel(p)) + '<div class="snap-note">' + esc(planCoverageNote(p)) + "</div>"; }],
     ["Plan price", function(f){ return planPriceHTML(selectedPlan(f)); }],
-    ["Profit split", function(f){ return esc(formatSplit(selectedPlan(f).split || f.split)); }],
+    ["Profit split", function(f){ var p=selectedPlan(f); return esc(p.split?formatSplit(p.split):"Not confirmed for this plan"); }],
     ["Profit target", function(f){ return esc(selectedPlan(f).target || "—"); }],
     ["Daily loss", function(f){ return esc(selectedPlan(f).dailyLoss || "—"); }],
-    ["Max drawdown", function(f){ return esc(selectedPlan(f).maxDD || f.dd); }],
+    ["Max drawdown", function(f){ return esc(selectedPlan(f).maxDD || "Not confirmed for this plan"); }],
     ["Drawdown type", function(f){ return esc(selectedPlan(f).ddType || "—"); }],
     ["Min days", function(f){ return esc(selectedPlan(f).minDays || "—"); }],
-    ["Payout", function(f){ return esc(selectedPlan(f).payout || f.payoutText || "—"); }],
-    ["Platform", function(f){ return esc(selectedPlan(f).platform || listOrDash(f.platforms)); }],
-    ["Verified code", function(f){ return f.codes.length ? f.codes.map(function(c){ return esc(c.code) + (c.off ? " (" + c.off + "% off)" : ""); }).join(" · ") : "None verified"; }]
+    ["Payout", function(f){ return esc(selectedPlan(f).payout || "Not confirmed for this plan"); }],
+    ["Platform", function(f){ return esc(selectedPlan(f).platform || "Not confirmed for this plan"); }],
+    ["Firm-level promotions", function(f){ var codes=activeCodes(f); return codes.length ? codes.map(function(c){ return esc(c.code) + (c.off ? " (" + c.off + "% off)" : ""); }).join(" · ")+" — plan eligibility not confirmed" : "None current in catalog"; }]
   ];
   var table = picks.length
     ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(f){ return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
@@ -1975,6 +1975,7 @@ function pageDeals(){
       var countEl = document.getElementById("active-deal-count"); if (countEl) countEl.textContent = String(left);
       var summary = document.querySelector("#ended-deals summary");
       if (summary) summary.textContent = "Ended offers (" + document.querySelectorAll("#deal-ended-list .deal-card").length + ")";
+      else pageDeals();
     }
   }, 60000);
 }
@@ -2487,7 +2488,7 @@ function journalPlatforms(firm, plan, size){
 }
 function journalFirmCatalog(firm){
   if (!firm) return [];
-  if (Array.isArray(firm.plans) && firm.plans.length) return journalNormalizeStructured(firm.plans);
+  if (Array.isArray(firm.plans)) return journalNormalizeStructured(firm.plans);
   if (Array.isArray(firm.accountPlans) && firm.accountPlans.length) return journalNormalizeStructured(firm.accountPlans);
   var plans = [];
   journalPairsFrom(firm.fromPlan, plans);

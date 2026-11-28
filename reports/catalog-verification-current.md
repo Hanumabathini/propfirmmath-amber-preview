@@ -2,21 +2,20 @@
 
 {
   "firms": 151,
-  "records": 1236,
+  "records": 1271,
   "counts": {
-    "partial": 901,
+    "partial": 936,
     "starting": 70,
     "verified": 265
   },
-  "missingPrice": 276,
+  "missingPrice": 311,
   "missingSize": 91,
-  "platformEvidence": 101,
-  "stageRules": 68
+  "platformEvidence": 102,
+  "stageRules": 104
 }
 
-Current pass: 47 plan records updated across FundingPips, FXIFY and The5ers. FundingPips eight model families; pricing remains checkout-dependent. FXIFY seven published 2-Phase Pro sizes, dated source prices, not current checkout confirmation. The5ers Hyper Growth and Bootcamp expanded; High Stakes New/Classic exact tier pricing and limits require more work because official pages conflict. Bootcamp advertised Pro sizes differ from evaluation balance; do not use for automated target dollars until exact evaluation balance verified. All updated rows are partial, not purchase-certified. Existing 151 firm limit retained. Full external verification incomplete.
+36 records updated across GOAT Funded Futures and Goat Funded Trader. Official specification sources: https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size, https://help.goatfundedfutures.com/en/articles/17838201-goat-access-specifications-rules-and-payouts, https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts, https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model, https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model. Prices and regional checkout left unconfirmed. Compare no longer borrows firm-level rules for missing plan fields; expired codes omitted and plan eligibility caveated. Journal no longer infers account menus from summaries when an explicit empty catalog exists. Tests added for Topstep and catalog-wide shared sizes. No claim all firms externally verified.
 
-## Remaining inventory
 | Firm | Records | Verified label | Partial | Starting | No price | No size | Platform evidence | Stage rules |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | My Funded Futures | 3 | 0 | 3 | 0 | 0 | 0 | 3 | 3 |
@@ -30,7 +29,7 @@ Current pass: 47 plan records updated across FundingPips, FXIFY and The5ers. Fun
 | FundedNext | 6 | 0 | 6 | 0 | 0 | 0 | 6 | 6 |
 | FundingPips | 34 | 0 | 34 | 0 | 34 | 0 | 7 | 34 |
 | FXIFY | 8 | 0 | 7 | 1 | 0 | 0 | 0 | 7 |
-| Goat Funded Trader | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| Goat Funded Trader | 19 | 0 | 18 | 1 | 18 | 0 | 0 | 18 |
 | E8 Perpetuals | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | The5ers | 7 | 0 | 6 | 1 | 3 | 0 | 3 | 3 |
 | Alpha Capital | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
@@ -45,7 +44,7 @@ Current pass: 47 plan records updated across FundingPips, FXIFY and The5ers. Fun
 | Top One Trader | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | Blueberry Futures | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | Get Leveraged | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
-| GOAT Funded Futures | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| GOAT Funded Futures | 18 | 0 | 18 | 0 | 17 | 0 | 1 | 18 |
 | Atlas Funded | 2 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
 | Blueberry Funded | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | Core Funded | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |

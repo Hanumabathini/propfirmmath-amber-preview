@@ -5481,6 +5481,678 @@ var FIRMS = [
         "payout": "bi-weekly 14d",
         "platform": "MT5, cTrader, MatchTrader, TradeLocker",
         "source": "https://www.goatfundedtrader.com/blog/goat-funded-trader-vs-the-5ers"
+      },
+      {
+        "id": "goat-funded-trader-2-step-premium-5000",
+        "name": "2-Step Premium",
+        "program": "2-Step Premium",
+        "size": 5000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "10% then 5% or 6%",
+        "dailyLoss": "3%, 4% or 5% chosen at checkout",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase (0.5% each)",
+        "split": "85%",
+        "payout": "7 qualifying profitable days per payout",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+            "target": null,
+            "dailyLoss": "3%, 4% or 5% chosen at checkout",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "dailyProfitCap": 3000,
+            "note": "Goat Guard floating loss rule also applies."
+          }
+        },
+        "note": "Checkout pricing and platform options not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-2-step-premium-10000",
+        "name": "2-Step Premium",
+        "program": "2-Step Premium",
+        "size": 10000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "10% then 5% or 6%",
+        "dailyLoss": "3%, 4% or 5% chosen at checkout",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase (0.5% each)",
+        "split": "85%",
+        "payout": "7 qualifying profitable days per payout",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+            "target": null,
+            "dailyLoss": "3%, 4% or 5% chosen at checkout",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "dailyProfitCap": 3000,
+            "note": "Goat Guard floating loss rule also applies."
+          }
+        },
+        "note": "Checkout pricing and platform options not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-2-step-premium-25000",
+        "name": "2-Step Premium",
+        "program": "2-Step Premium",
+        "size": 25000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "10% then 5% or 6%",
+        "dailyLoss": "3%, 4% or 5% chosen at checkout",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase (0.5% each)",
+        "split": "85%",
+        "payout": "7 qualifying profitable days per payout",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+            "target": null,
+            "dailyLoss": "3%, 4% or 5% chosen at checkout",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "dailyProfitCap": 3000,
+            "note": "Goat Guard floating loss rule also applies."
+          }
+        },
+        "note": "Checkout pricing and platform options not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-2-step-premium-50000",
+        "name": "2-Step Premium",
+        "program": "2-Step Premium",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "10% then 5% or 6%",
+        "dailyLoss": "3%, 4% or 5% chosen at checkout",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase (0.5% each)",
+        "split": "85%",
+        "payout": "7 qualifying profitable days per payout",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+            "target": null,
+            "dailyLoss": "3%, 4% or 5% chosen at checkout",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "dailyProfitCap": 3000,
+            "note": "Goat Guard floating loss rule also applies."
+          }
+        },
+        "note": "Checkout pricing and platform options not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-2-step-premium-100000",
+        "name": "2-Step Premium",
+        "program": "2-Step Premium",
+        "size": 100000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "10% then 5% or 6%",
+        "dailyLoss": "3%, 4% or 5% chosen at checkout",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase (0.5% each)",
+        "split": "85%",
+        "payout": "7 qualifying profitable days per payout",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+            "target": null,
+            "dailyLoss": "3%, 4% or 5% chosen at checkout",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "dailyProfitCap": 3000,
+            "note": "Goat Guard floating loss rule also applies."
+          }
+        },
+        "note": "Checkout pricing and platform options not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-2-step-premium-200000",
+        "name": "2-Step Premium",
+        "program": "2-Step Premium",
+        "size": 200000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "10% then 5% or 6%",
+        "dailyLoss": "3%, 4% or 5% chosen at checkout",
+        "maxDD": "10%",
+        "ddType": "Static",
+        "minDays": "3 profitable days per phase (0.5% each)",
+        "split": "85%",
+        "payout": "7 qualifying profitable days per payout",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+        "verifiedOn": "2026-11-28",
+        "consistency": "None",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model",
+            "target": null,
+            "dailyLoss": "3%, 4% or 5% chosen at checkout",
+            "maxDD": "10%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "dailyProfitCap": 3000,
+            "note": "Goat Guard floating loss rule also applies."
+          }
+        },
+        "note": "Checkout pricing and platform options not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/18230016-2-step-premium-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-trailing-1000",
+        "name": "Instant Daily — Trailing",
+        "program": "Instant Daily — Trailing",
+        "size": 1000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–3% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-trailing-2500",
+        "name": "Instant Daily — Trailing",
+        "program": "Instant Daily — Trailing",
+        "size": 2500,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–3% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-trailing-5000",
+        "name": "Instant Daily — Trailing",
+        "program": "Instant Daily — Trailing",
+        "size": 5000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–3% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-trailing-10000",
+        "name": "Instant Daily — Trailing",
+        "program": "Instant Daily — Trailing",
+        "size": 10000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–3% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-trailing-25000",
+        "name": "Instant Daily — Trailing",
+        "program": "Instant Daily — Trailing",
+        "size": 25000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–3% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-trailing-50000",
+        "name": "Instant Daily — Trailing",
+        "program": "Instant Daily — Trailing",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–3% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-static-1000",
+        "name": "Instant Daily — Static",
+        "program": "Instant Daily — Static",
+        "size": 1000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–2% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-static-2500",
+        "name": "Instant Daily — Static",
+        "program": "Instant Daily — Static",
+        "size": 2500,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–2% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-static-5000",
+        "name": "Instant Daily — Static",
+        "program": "Instant Daily — Static",
+        "size": 5000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–2% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-static-10000",
+        "name": "Instant Daily — Static",
+        "program": "Instant Daily — Static",
+        "size": 10000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–2% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-static-25000",
+        "name": "Instant Daily — Static",
+        "program": "Instant Daily — Static",
+        "size": 25000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–2% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
+      },
+      {
+        "id": "goat-funded-trader-instant-daily-static-50000",
+        "name": "Instant Daily — Static",
+        "program": "Instant Daily — Static",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "60% rising to 80%",
+        "payout": "Daily weekday; 30-day account validity; 1–2% per request",
+        "platform": null,
+        "coverage": "partial",
+        "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "3%",
+            "ddType": "Static",
+            "minDays": null,
+            "consistency": "None",
+            "note": "1% combined floating loss limit; payout can change trailing floor."
+          }
+        },
+        "note": "No evaluation; exact checkout price and platform not confirmed.",
+        "sources": [
+          "https://help.goatfundedtrader.com/en/articles/17677256-instant-daily-model"
+        ]
       }
     ]
   },
@@ -8162,20 +8834,721 @@ var FIRMS = [
         "currency": "USD",
         "monthly": false,
         "coverage": "partial",
-        "note": "Official November 18 rules supersede generic firm-level assumptions. No high-impact news trades in either stage; no overnight/weekend. Checkout not tested.",
-        "target": "$2,500 (5%)",
-        "dailyLoss": "None in either stage",
-        "maxDD": "$2,000 EOD trailing; locks at $50,100",
-        "ddType": "EOD",
-        "minDays": "None evaluation; 5 qualifying funded days",
+        "note": "50K only; no high-impact news trading, no overnight holding. Published fee, checkout not confirmed.",
+        "target": "$2,500",
+        "dailyLoss": "None",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": "None",
         "split": "80%",
-        "payout": "Weekly; 5 days of $150+ each; $2,100 buffer; $500–$1,500 per request",
-        "platform": "Quantower / ATAS / DeepCharts (DxFeed) / TickBlaze",
+        "payout": "Weekly; 5 profitable days of $150; $500 minimum, $1,500 maximum; buffer applies",
+        "platform": "Quantower, ATAS, DeepCharts, TickBlaze",
         "source": "https://help.goatfundedfutures.com/en/articles/17838201-goat-access-specifications-rules-and-payouts",
         "activationFee": 99,
         "resetFee": 39,
-        "consistency": "None evaluation; 35% funded",
-        "verifiedOn": "Nov 28, 2026"
+        "consistency": "None",
+        "verifiedOn": "2026-11-28",
+        "platformSource": "https://help.goatfundedfutures.com/en/articles/17838201-goat-access-specifications-rules-and-payouts",
+        "platformVerifiedOn": "2026-11-28",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/17838201-goat-access-specifications-rules-and-payouts",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "35%",
+            "note": "Five qualifying winning days, $2,100 buffer; lock at $50,100."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/17838201-goat-access-specifications-rules-and-payouts"
+        ]
+      },
+      {
+        "id": "goat-funded-futures-eod-challenge-50000",
+        "name": "EOD Challenge",
+        "program": "EOD Challenge",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "None",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "7 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "2.5% soft breach",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "30%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-eod-challenge-100000",
+        "name": "EOD Challenge",
+        "program": "EOD Challenge",
+        "size": 100000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "None",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "7 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "2.5% soft breach",
+            "maxDD": "$3,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "30%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-eod-challenge-150000",
+        "name": "EOD Challenge",
+        "program": "EOD Challenge",
+        "size": 150000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "None",
+        "maxDD": "$4,500",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "7 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "2.5% soft breach",
+            "maxDD": "$4,500",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "30%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-1-day-pass-25000",
+        "name": "1-Day-Pass",
+        "program": "1-Day-Pass",
+        "size": 25000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $600",
+        "maxDD": "$1,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "5 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "None",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $600",
+            "maxDD": "$1,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "35%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-1-day-pass-50000",
+        "name": "1-Day-Pass",
+        "program": "1-Day-Pass",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $1,000",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "5 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "None",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $1,000",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "35%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-1-day-pass-100000",
+        "name": "1-Day-Pass",
+        "program": "1-Day-Pass",
+        "size": 100000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $1,500",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "5 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "None",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $1,500",
+            "maxDD": "$3,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "35%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-flex-challenge-50000",
+        "name": "Flex Challenge",
+        "program": "Flex Challenge",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "None",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "5 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-flex-challenge-100000",
+        "name": "Flex Challenge",
+        "program": "Flex Challenge",
+        "size": 100000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "None",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "5 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$3,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-flex-challenge-150000",
+        "name": "Flex Challenge",
+        "program": "Flex Challenge",
+        "size": 150000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "None",
+        "maxDD": "$4,500",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "5 qualifying winning days",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$4,500",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-goat-daily-25000",
+        "name": "GOAT Daily",
+        "program": "GOAT Daily",
+        "size": 25000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $500",
+        "maxDD": "$1,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "Every 24h; minimum $500; buffer and progression conditions",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "40% or 50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $500",
+            "maxDD": "$1,000",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-goat-daily-50000",
+        "name": "GOAT Daily",
+        "program": "GOAT Daily",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $1,000",
+        "maxDD": "$2,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "Every 24h; minimum $500; buffer and progression conditions",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "40% or 50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $1,000",
+            "maxDD": "$2,000",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-goat-daily-100000",
+        "name": "GOAT Daily",
+        "program": "GOAT Daily",
+        "size": 100000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $1,500",
+        "maxDD": "$3,000",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "Every 24h; minimum $500; buffer and progression conditions",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "40% or 50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $1,500",
+            "maxDD": "$3,000",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-goat-daily-150000",
+        "name": "GOAT Daily",
+        "program": "GOAT Daily",
+        "size": 150000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": "6%",
+        "dailyLoss": "Optional at checkout: $2,250",
+        "maxDD": "$4,500",
+        "ddType": "EOD trailing",
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "Every 24h; minimum $500; buffer and progression conditions",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+        "verifiedOn": "2026-11-28",
+        "accessType": "evaluation",
+        "consistency": "40% or 50%",
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $2,250",
+            "maxDD": "$4,500",
+            "ddType": "Intraday trailing",
+            "minDays": null,
+            "consistency": "None",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-instant-25000",
+        "name": "Instant",
+        "program": "Instant",
+        "size": 25000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "First reward at 6%; later cycles 5%; cap depends on option",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "consistency": null,
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $500",
+            "maxDD": "$1,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "15% or 20%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-instant-50000",
+        "name": "Instant",
+        "program": "Instant",
+        "size": 50000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "First reward at 6%; later cycles 5%; cap depends on option",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "consistency": null,
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $1,000",
+            "maxDD": "$2,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "15% or 20%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-instant-100000",
+        "name": "Instant",
+        "program": "Instant",
+        "size": 100000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "First reward at 6%; later cycles 5%; cap depends on option",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "consistency": null,
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $1,500",
+            "maxDD": "$3,000",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "15% or 20%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
+      },
+      {
+        "id": "goat-funded-futures-instant-150000",
+        "name": "Instant",
+        "program": "Instant",
+        "size": 150000,
+        "currency": "USD",
+        "price": null,
+        "monthly": false,
+        "target": null,
+        "dailyLoss": null,
+        "maxDD": null,
+        "ddType": null,
+        "minDays": null,
+        "split": "80%; optional 90% add-on",
+        "payout": "First reward at 6%; later cycles 5%; cap depends on option",
+        "platform": "NinjaTrader, Tradovate, TradingView (via Tradovate), TickBlaze, DeepCharts, ATAS, Quantower, TradeSea",
+        "coverage": "partial",
+        "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+        "verifiedOn": "2026-11-28",
+        "accessType": "instant",
+        "consistency": null,
+        "activationFee": 0,
+        "platformNote": "Firm-level official list; individual plan/region checkout not independently confirmed; TradeSea $15 add-on.",
+        "stageRules": {
+          "sim_funded": {
+            "source": "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+            "target": null,
+            "dailyLoss": "Optional at checkout: $2,250",
+            "maxDD": "$4,500",
+            "ddType": "EOD trailing",
+            "minDays": null,
+            "consistency": "15% or 20%",
+            "note": "Payout-cycle and checkout conditions apply."
+          }
+        },
+        "sources": [
+          "https://help.goatfundedfutures.com/en/articles/18512995-instant-specifications-rules-and-payouts",
+          "https://help.goatfundedfutures.com/en/articles/14523731-what-are-the-specifications-of-each-type-and-account-size"
+        ],
+        "note": "Official plan and size specification; purchase price not confirmed. Instant Classic/Lite no longer on sale."
       }
     ]
   },

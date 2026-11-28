@@ -263,6 +263,10 @@ function submit(form) {
     ok("unknown live rules are not inferred",w.journalFirmRules(w.firm("my-funded-futures"),"Signature",10000,"live_funded")===null,"live");
     ok("Bootcamp advertised funded balance cannot drive evaluation rules",w.journalFirmRules(w.firm("the5ers"),"Bootcamp",20000,"evaluation")===null,"Bootcamp phase balance");
     ok("instant account cannot show evaluation targets",w.journalFirmRules(w.firm("fundingpips"),"Zero",25000,"evaluation")===null,"Zero");
+    ok("Topstep platform and all core sizes in journal",w.journalPlatforms(w.firm("topstep"),"Trading Combine — Standard",50000).includes("TopstepX")&&w.journalFirmCatalog(w.firm("topstep")).some(p=>p.name==="Trading Combine — Standard"&&p.sizes.join()==="50000,100000,150000"),"Topstep");
+    const all=w.journalFirmChoices();
+    ok("all firms use shared plan names and sizes",all.every(f=>(f.plans||[]).every(p=>p.size==null||w.journalFirmCatalog(f).some(c=>c.name===(p.name||p.program)&&c.sizes.includes(Number(p.size))))),"all "+all.length+" firms");
+    ok("missing catalog cannot synthesize rules",w.firmPlanList({slug:"test",plans:[],target:"10%",dd:"$500"})[0].target===null,"fallback");
     const ambiguous=w.journalFirmRules({plans:[{name:"Test",size:10000,target:"Not yet verified",maxDD:"EOD trailing, $1000 (25K)",dailyLoss:"Applies; pending",minDays:"No minimum trading days",consistency:"No evaluation consistency; funded 35%"}]},"Test",10000);
     ok("unknown and wrong-size rules stay unknown",ambiguous.target===null&&ambiguous.drawdown===null&&ambiguous.daily===null&&ambiguous.minDays===null&&ambiguous.consistency===null,JSON.stringify(ambiguous));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
