@@ -33,3 +33,9 @@ fundedelite.com advertises a $5 start, sizes up to $400K, up to 95% split, insta
 
 ## Blue Guardian (in progress, still partial)
 Futures matrix read on 2026-11-28 via URL parameters (blueguardian.com/?market=futures&plan=<elite|reserve|zero|direct>&size=<25k|50k|100k|150k>): all 16 plan/size combinations list standard price, sale price (code BLACK, 30-35% off), targets, drawdown, DLL, consistency, payout caps. Still to do: the CFD (forex) matrix, and Reserve/Zero option variants (DLL on/off, drawdown type, consistency, each with a price delta). The firm stays partial until both markets are covered.
+
+## E8 Perpetuals (left partial)
+e8markets.com/perpetual-futures?market=perpetual, read 2026-11-28. E8 Classic sizes $2K, $5K, $10K, $25K, $50K are shown at $27, $54, $108, $207, $405, all with the Black Friday code E8BF (10%) already applied; only the $50K list price is shown ($449). So the $27 for 2K in the catalog is probably a code price, not a list price (2K list is likely about $30). Rules read: 8% target, 5% static floor that never moves, 2% daily limit (removable for a fee, +$162 on 50K), no consistency rule, daily payouts from $100, up to $100K held across Classic accounts. Left partial: standing list prices for the other four sizes are not shown, and the catalog's $27 starting price needs correcting once they are.
+
+## Hola Prime (left partial)
+holaprime.com carries Forex (1-Step Prime, 2-Step Prime, 2-Step Pro, Direct), Futures (1-Step Prime, Direct) and Fly "Proving Ground" challenges, with BLACK20 (20% off Fly challenges) running. Each product has its own size/price table and rulebook. Not read in this pass; stays partial.
