@@ -54,3 +54,21 @@ Most firms read in this pass run Black Friday codes through Nov 30. Several show
 
 ## Blueberry Futures (left partial)
 blueberryfutures.com, read 2026-11-28 with code FUTURES60 (60% off) running. The page shows Accelerated 25K at $110.40 list per month ($44.16 with the code) and Ascent 25K at $139 list ($55.60 with the code). The catalog's Accelerated 25K plan says $129, which does not match the $110.40 the firm record uses as its starting price, so the plan prices need re-checking against the 30-day billing basis. The firm was already partial for US eligibility ("conflicting official checks"), which a public page can't settle. Stays partial.
+
+## Crypto Fund Trader (24 plans added, firm still partial)
+1-Phase Classic, Pro and Turbo plus 2-Phase, 5K to 200K, list fees before code BLACK (30%), from the official homepage widget and FAQ. The firm's own name is "1-Phase", which settles the 1-Phase vs 1-Step conflict. US: allowed on CFT Terminal and Match-Trader; MT5 and Bybit not for US residents. Break and Instant programs not re-read.
+
+## OneFunded (19 plans added, firm still partial)
+Flash, Core, Value and Instant at 5K-100K (Instant has no 100K), list prices before BLACK40, from the official homepage table; payout timing from the help centre (14-day windows, 7 with the add-on). Rules change at 100K (Flash 5 min days; Core 50% and Value 40% consistency). Partial: US eligibility is not stated beyond "MT5 not available in the USA and Turkey", and the base split before add-ons is shown only as "up to 90%".
+
+## Maven Trading (left partial)
+maventrading.com lists Standard 1-, 2- and 3-Step, Instant, Static 1-Step, Buy Now Pay Later, Omo 2-Step and Mini, each with its own sizes. A Black Friday "double the size for the same price" offer on Omo changes the size labels shown today. Not read in full; stays partial.
+
+## Trade The Pool (left partial)
+tradethepool.com shows Flex and Max evaluations for Day Trade and Swing at $5K-$200K buying power, but no prices or full rules on the public pages read (homepage, /the-program/). The purchase flow at hub.tradethepool.com redirects to sign-in. Pricing can't be confirmed from public pages; stays partial.
+
+## Lark Funding (left partial)
+larkfunding.com runs a Black Friday "Buy 1, Get 3" bundle (Nov 17-30) and adds "BF" size tabs to the Instant, 1-Step, 1-Step Max and 3-Step cards. The card fees (for example 10K: Instant $400, 1-Step $200, 1-Step Max $99, 3-Step $105) are shown without a list/sale split, so it isn't clear they are standing prices. Rules read: Instant 8% trailing, 5% daily, 90% reward, on-demand first payout; 1-Step 10% target, 7% max, 5% daily; 1-Step Max 12% target, 12% max, 5% daily, 3 free restarts; 3-Step 5/4/3% targets, 5% max, no daily limit. Re-read after Nov 30.
+
+### ThinkCapital: fully verified
+Read the official homepage on 28 Nov 2026. The firm now sells One Step, Two Step Intraday, Two Step Swing, Three Step and Instant Funding at 5K to 100K (25 plans). The old Lightning, Dual Step, Nexus and Bolt names are gone. The split calculator shows 80% base and 90% with the add-on. The homepage says "Global Presence (Incl. USA)"; only the ThinkMarkets broker-account payout is not for US residents. No sale code was shown, so these are list prices.
