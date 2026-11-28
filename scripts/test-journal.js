@@ -327,6 +327,18 @@ function submit(form) {
     ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily == null, JSON.stringify(apexRules));
 
     ok("approved journal has six labeled SVG side tabs", d.querySelectorAll(".journal-side [data-jtab] svg").length === 6 && Array.from(d.querySelectorAll(".journal-side [data-jtab]")).every(b=>b.getAttribute("aria-label")), "side navigation");
+    const sideTabs=Array.from(d.querySelectorAll(".journal-tabs [data-jtab]"));
+    for(const tab of sideTabs){
+      tab.click();
+      ok("sidebar activates only "+tab.dataset.jtab,sideTabs.filter(b=>b.getAttribute("aria-selected")==="true").length===1&&tab.tabIndex===0&&sideTabs.filter(b=>b!==tab).every(b=>b.tabIndex===-1)&&sideTabs.every(b=>d.getElementById(b.getAttribute("aria-controls")).hidden===(b!==tab))&&d.getElementById(tab.getAttribute("aria-controls")).getAttribute("aria-labelledby")===tab.id,"tab state");
+    }
+    sideTabs[0].click();
+    sideTabs[0].dispatchEvent(new w.KeyboardEvent("keydown",{key:"ArrowDown",bubbles:true,cancelable:true}));
+    ok("sidebar arrow key moves to Accounts",sideTabs[1].getAttribute("aria-selected")==="true"&&d.activeElement===sideTabs[1],"keyboard navigation");
+    sideTabs[1].dispatchEvent(new w.KeyboardEvent("keydown",{key:"End",bubbles:true,cancelable:true}));
+    ok("sidebar End key moves to Settings",sideTabs[5].getAttribute("aria-selected")==="true"&&d.activeElement===sideTabs[5],"keyboard navigation");
+    sideTabs[5].dispatchEvent(new w.KeyboardEvent("keydown",{key:"Home",bubbles:true,cancelable:true}));
+    ok("sidebar Home key returns to Overview",sideTabs[0].getAttribute("aria-selected")==="true"&&d.activeElement===sideTabs[0],"keyboard navigation");
     ok("approved journal has four primary metrics", d.querySelectorAll(".jv14-overview-top .journal-kpi").length === 4, "metric count");
     ok("rules beside equity and workspace mast trade button", !!d.querySelector(".journal-dashboard-top .jv14-rule-monitor") && !!d.querySelector(".journal-mast #journalQuickAdd"), "layout");
     ok("journal uses a single compact site header",d.querySelectorAll("#mainnav a").length===1&&d.querySelector("#mainnav a").getAttribute("href")==="/firms"&&!d.querySelector(".pfm-journal .journal-brand")&&!d.querySelector("#app .pagehead")&&d.querySelector("#journalHeading").tagName==="H1","integrated journal layout");
