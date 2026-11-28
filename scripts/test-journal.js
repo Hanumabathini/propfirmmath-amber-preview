@@ -237,6 +237,12 @@ function submit(form) {
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
     ok("Apex 25k uses the $1,000 drawdown and a 6% target", apexRules.drawdown === 1000 && apexRules.target === 1500 && apexRules.daily === 500, JSON.stringify(apexRules));
 
+    ok("approved journal has six labeled SVG side tabs", d.querySelectorAll(".journal-side [data-jtab] svg").length === 6 && Array.from(d.querySelectorAll(".journal-side [data-jtab]")).every(b=>b.getAttribute("aria-label")), "side navigation");
+    ok("approved journal has four primary metrics", d.querySelectorAll(".jv14-overview-top .journal-kpi").length === 4, "metric count");
+    ok("rules beside equity and top header trade button", !!d.querySelector(".journal-dashboard-top .jv14-rule-monitor") && !!d.querySelector(".jv14-header #journalQuickAdd"), "layout");
+    d.querySelector('[data-jtab="settings"]').click();
+    ok("settings is a dedicated side tab", !d.getElementById("journalSettings").hidden && d.getElementById("journalOverview").hidden, "settings");
+    d.querySelector('[data-jtab="overview"]').click();
     const themeButton = d.getElementById("jv14Theme"), motionButton = d.getElementById("jv14Motion"), workspace = d.querySelector(".pfm-journal");
     themeButton.click();
     ok("workspace theme changes without replacing journal data", workspace.classList.contains("jv14-light") && themeButton.getAttribute("aria-pressed") === "true", workspace.className);
