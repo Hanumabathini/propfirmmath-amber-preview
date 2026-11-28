@@ -33,27 +33,9 @@ const server=http.createServer((req,res)=>{
    assert(geometry.document<=geometry.width+3&&geometry.body<=geometry.width+3,profile.name+" "+route+" horizontal overflow "+JSON.stringify(geometry));
    await page.screenshot({path:path.join(out,profile.name+"-"+(route==="/"?"home":route.slice(1).replace(/[^a-z0-9-]/gi,"-"))+".png"),timeout:15000});
    if(route==="/"){
-    assert(await page.locator(".terra-medallion").count()>=6);
-    const motion=page.locator("#terra-motion-toggle");assert(await motion.isVisible(),"pause control missing "+profile.name);
-    const scene=page.locator("#terra-orbit-scene");
-    await scene.scrollIntoViewIfNeeded();
-    await page.waitForFunction(()=>document.querySelector("#terra-orbit-scene")?.hasAttribute("data-ring-angle"));
-    await page.mouse.move(2,2);
-    const angle=await scene.getAttribute("data-ring-angle");
-    await page.waitForTimeout(600);
-    assert.notEqual(await scene.getAttribute("data-ring-angle"),angle,"kinetic motion inactive "+profile.name);
-    const box=await page.locator("#kinetic-ring").boundingBox();
-    const beforeDrag=Number(await scene.getAttribute("data-ring-angle"));
-    await page.mouse.move(box.x+box.width*.62,box.y+box.height*.40);
-    await page.mouse.down();await page.mouse.move(box.x+box.width*.32,box.y+box.height*.40,{steps:8});await page.mouse.up();
-    assert(Math.abs(Number(await scene.getAttribute("data-ring-angle"))-beforeDrag)>.08,"drag did not rotate ring");
-
-    await motion.click();assert.equal(await motion.getAttribute("aria-pressed"),"true");
-    const stopped=await scene.getAttribute("data-ring-angle");await page.waitForTimeout(350);assert.equal(await scene.getAttribute("data-ring-angle"),stopped,"pause failed");
-    await page.locator("#kinetic-next").click();assert.notEqual(await scene.getAttribute("data-ring-angle"),stopped,"manual rotation failed while paused");
-    const market=page.locator("[data-terra-market=futures]");await market.click();
-    assert.equal(await page.locator("#terra-total").textContent(),await market.getAttribute("data-count"));
-    await page.locator("#terra-reset").click();
+    assert(await page.locator(".hero-bg img").isVisible());assert(await page.locator("#tc-original-marquee .mq").count()===2);
+    const pause=page.locator("#tc-marquee-pause");await pause.click();assert.equal(await pause.getAttribute("aria-pressed"),"true");await pause.click();assert.equal(await pause.getAttribute("aria-pressed"),"false");
+    const market=page.locator("#home-tabs [data-m=futures]");await market.click();assert((await market.getAttribute("class")).includes("on"));await page.locator("#home-tabs [data-m=all]").click();
    }
    if(route==="/compare"){
     const risk=page.locator("[data-tc-field=risk]");await risk.click();
@@ -74,11 +56,7 @@ const server=http.createServer((req,res)=>{
   await context.close();
  }
  const reduced=await browser.newPage({viewport:{width:1280,height:800},reducedMotion:"reduce"});
- await reduced.goto(base,{waitUntil:"domcontentloaded"});await reduced.locator("#terra-motion-toggle").waitFor();
- assert(await reduced.locator("#terra-motion-toggle").isDisabled());
- const reducedScene=reduced.locator("#terra-orbit-scene");const reducedAngle=await reducedScene.getAttribute("data-ring-angle");await reduced.waitForTimeout(400);assert.equal(await reducedScene.getAttribute("data-ring-angle"),reducedAngle);
- const reducedHeader=await reduced.locator("header").evaluate(el=>getComputedStyle(el).viewTransitionName||"none");
- assert(["tc-navigation","none"].includes(reducedHeader));
+ await reduced.goto(base,{waitUntil:"domcontentloaded"});await reduced.locator("#tc-marquee-pause").waitFor();assert(await reduced.locator("#tc-marquee-pause").isDisabled());assert.equal(await reduced.locator("#tc-original-marquee").getAttribute("data-paused"),"true");
  await reduced.close();
  console.log("PASS: Chromium desktop, mobile, route overflow, orbit motion, deals, calculators and reduced motion");
  }finally{await browser.close();server.close();}
