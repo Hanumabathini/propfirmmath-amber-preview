@@ -27,3 +27,6 @@ Firms whose pages show only Black Friday sale prices on 2026-11-28. Sale prices 
 
 ## Bitfunded (left partial)
 The public site (bitfunded.com) has no prices or rules. Its Challenges buttons go to trader.bitfunded.com/client/challenge/, which redirects to a sign-in page. Pricing and rules are only visible after creating an account, so they can't be confirmed from public official pages. Stays partial; needs the firm's help-centre or rules pages, or an account the user chooses to create.
+
+## FundedElite (left partial)
+fundedelite.com advertises a $5 start, sizes up to $400K, up to 95% split, instant accounts and a custom-challenge builder ("custom accounts created: 8,452"). Prices and rules depend on the builder's settings, so there is no fixed plan table to confirm against. The catalog stays as is, partial, until a fixed list of standard plans is published.
