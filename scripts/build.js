@@ -33,7 +33,7 @@ fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out, { recursive:
 // Forge/derive route list from the firm data and the existing sitemap.
 const old = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const routes = new Set([...old.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1] || '/').filter(r => r !== '/quiz'));
-['/account', '/login', '/reset', '/journal'].forEach(r => routes.add(r));
+['/global', '/account', '/login', '/reset', '/journal'].forEach(r => routes.add(r));
 
 const noLib = src.replace('<script src="/vendor/supabase.js"></script>', '');
 function render(route) {
