@@ -230,6 +230,14 @@ function submit(form) {
     ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
     const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
     ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
+    const isolated = {plans:[{name:"Test",size:25000,target:"$1,500",dailyLoss:"$500",maxDD:"$1,000"}]};
+    const exact = w.journalFirmRules(isolated,"Test",25000);
+    ok("explicit dollar targets and daily limits", exact.target === 1500 && exact.daily === 500 && exact.drawdown === 1000, exact);
+    const unknown = w.journalFirmRules(isolated,"Test",50000);
+    ok("custom size never inherits another size rules", unknown.target == null && unknown.daily == null && unknown.drawdown == null, unknown);
+    isolated.plans.push({...isolated.plans[0],target:"$2,000"});
+    const ambiguous = w.journalFirmRules(isolated,"Test",25000);
+    ok("ambiguous variants never silently select first rule", ambiguous.target == null && ambiguous.drawdown == null, ambiguous);
     const ftmoRules = w.journalFirmRules(w.firm("ftmo"), "2-Step", 10000);
     ok("FTMO 2-Step 10k fills target, daily loss, drawdown and days", ftmoRules.target === 1000 && ftmoRules.daily === 500 && ftmoRules.drawdown === 1000 && ftmoRules.minDays === 4 && ftmoRules.consistency == null, JSON.stringify(ftmoRules));
     const mffuRules = w.journalFirmRules(w.firm("my-funded-futures"), "Signature", 10000);
