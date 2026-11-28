@@ -35,9 +35,21 @@ const server=http.createServer((req,res)=>{
    if(route==="/"){
     assert(await page.locator(".terra-medallion").count()>=6);
     const motion=page.locator("#terra-motion-toggle");assert(await motion.isVisible(),"pause control missing "+profile.name);
-    const animation=await page.locator(".terra-coin-object").first().evaluate(el=>getComputedStyle(el).animationName);
-    assert.notEqual(animation,"none","coin animation disabled on "+profile.name);
+    const scene=page.locator("#terra-orbit-scene");
+    await scene.scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>document.querySelector("#terra-orbit-scene")?.hasAttribute("data-ring-angle"));
+    const angle=await scene.getAttribute("data-ring-angle");
+    await page.waitForTimeout(600);
+    assert.notEqual(await scene.getAttribute("data-ring-angle"),angle,"kinetic motion inactive "+profile.name);
+    const box=await page.locator("#kinetic-ring").boundingBox();
+    const beforeDrag=Number(await scene.getAttribute("data-ring-angle"));
+    await page.mouse.move(box.x+box.width*.62,box.y+box.height*.40);
+    await page.mouse.down();await page.mouse.move(box.x+box.width*.32,box.y+box.height*.40,{steps:8});await page.mouse.up();
+    assert(Math.abs(Number(await scene.getAttribute("data-ring-angle"))-beforeDrag)>.08,"drag did not rotate ring");
+
     await motion.click();assert.equal(await motion.getAttribute("aria-pressed"),"true");
+    const stopped=await scene.getAttribute("data-ring-angle");await page.waitForTimeout(350);assert.equal(await scene.getAttribute("data-ring-angle"),stopped,"pause failed");
+    await page.locator("#kinetic-next").click();assert.notEqual(await scene.getAttribute("data-ring-angle"),stopped,"manual rotation failed while paused");
     const market=page.locator("[data-terra-market=futures]");await market.click();
     assert.equal(await page.locator("#terra-total").textContent(),await market.getAttribute("data-count"));
     await page.locator("#terra-reset").click();
@@ -53,7 +65,7 @@ const server=http.createServer((req,res)=>{
  const reduced=await browser.newPage({viewport:{width:1280,height:800},reducedMotion:"reduce"});
  await reduced.goto(base,{waitUntil:"domcontentloaded"});await reduced.locator("#terra-motion-toggle").waitFor();
  assert(await reduced.locator("#terra-motion-toggle").isDisabled());
- assert.equal(await reduced.locator(".terra-coin-object").first().evaluate(el=>getComputedStyle(el).animationName),"none");
+ const reducedScene=reduced.locator("#terra-orbit-scene");const reducedAngle=await reducedScene.getAttribute("data-ring-angle");await reduced.waitForTimeout(400);assert.equal(await reducedScene.getAttribute("data-ring-angle"),reducedAngle);
  await reduced.close();
  console.log("PASS: Chromium desktop, mobile, route overflow, orbit motion, deals, calculators and reduced motion");
  }finally{await browser.close();server.close();}
