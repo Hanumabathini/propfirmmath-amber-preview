@@ -75,3 +75,9 @@ Read the official homepage on 28 Nov 2026. The firm now sells One Step, Two Step
 
 ### Topstep: fully verified
 Re-read the official help centre on 28 Nov 2026. All 19 plan prices and rules match: the Trading Combine pricing article (Standard $49/$99/$199 a month, No Activation Fee $95/$149/$229, $10/$20/$30 off with a DLL, $149 Standard activation), the Labs article (static 25K/50K/100K/150K at $75/$149/$199/$279, $250K Freedom $499, $50K Daily Payouts+ $119 EOD and $149 static, all one-time), and the eligibility article with the country list updated Nov 17, 2026. That clears the earlier "country mapping pending" reason.
+
+### RebelsFunding: catalog read, still partial
+The pricing widget is an iframe from rf-zone.rebelsfunding.com, and opening it directly shows every size. Read Copper (1K-320K), Silver (5K-80K), Gold (5K-80K) and Diamond (5K-20K) in full, plus Bronze 20K-160K from the short selector (25 plans). The full Bronze selector came back empty, so smaller Bronze sizes and Bronze leverage stay open. Prices recorded are list prices; NEWREBEL takes 40% off the first challenge.
+
+### FundingPips: still partial
+The official terms say services are not offered in FATF and EU/UN sanctioned countries, Vietnam and the UAE. The list is "including", and the US is not named either way, so US eligibility stays open.
