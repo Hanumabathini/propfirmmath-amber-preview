@@ -1495,6 +1495,41 @@ html,body{overflow-x:clip}
  }
 }
 </style>
+<style>
+/* Hallmark / Terra motion refinement: stable chrome, local state changes,
+   physical depth reserved for the discovery ring and offer deck. */
+:root{--tc-route-duration:300ms;--tc-route-ease:cubic-bezier(.22,.61,.36,1);--tc-deck-ease:cubic-bezier(.2,.75,.25,1)}
+@view-transition{navigation:auto}
+@supports (view-transition-name:tc-navigation){
+ header{view-transition-name:tc-navigation}
+ ::view-transition-group(tc-navigation){animation:none}
+ ::view-transition-old(tc-navigation){animation:none;opacity:0}
+ ::view-transition-new(tc-navigation){animation:none;opacity:1}
+ ::view-transition-group(root){animation-duration:var(--tc-route-duration);animation-timing-function:var(--tc-route-ease)}
+ ::view-transition-old(root){animation:tc-route-out 160ms var(--tc-leave) both}
+ ::view-transition-new(root){animation:tc-route-in var(--tc-route-duration) var(--tc-route-ease) both}
+ ::view-transition{pointer-events:none}
+ @keyframes tc-route-out{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-5px)}}
+ @keyframes tc-route-in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+}
+#app .kinetic-stage.tc-ring-stepping .terra-medallion{transition:transform 320ms var(--tc-deck-ease),opacity 180ms var(--tc-arrive)}
+#app .kinetic-stage.tc-ring-stepping .terra-coin-object{transition:transform 320ms var(--tc-deck-ease)}
+#app .kinetic-stage .is-dragging .terra-medallion,#app .kinetic-stage .is-dragging .terra-coin-object{transition:none}
+#app .terra-spot-ticket{transition:transform 420ms var(--tc-deck-ease),opacity 220ms var(--tc-arrive)}
+#app .terra-spot-ticket[data-slot="0"]{transform:translate3d(0,0,48px) rotateY(-3deg) rotateZ(0)}
+#app .terra-spot-ticket[data-slot="-1"]{transform:translate3d(-34%,0,-65px) rotateY(20deg) rotateZ(-9deg)}
+#app .terra-spot-ticket[data-slot="1"]{transform:translate3d(34%,0,-65px) rotateY(-20deg) rotateZ(9deg)}
+#app .terra-spot-ticket[data-slot="2"]{transform:translate3d(0,0,-120px) scale(.94);opacity:0}
+#app .terra-spot-ticket .terra-spot-review{transition:none}
+#app .tc-compare-dossier,#app .plan-board #plan-sheet .plan-sheet,#app .pfm-tool-directory .tool-card.pfm-tool-expanded>.card:not([hidden]){animation:none}
+#app .tc-tool-dial svg,#app .terra-feature-offer,#app .market-landing-card,#app #deal-active-list>.deal-card:nth-child(-n+6),#app .firm-grid>.firm-card:nth-child(-n+6){animation:none}
+#app .kinetic-tactile{transform:none;transition:background-color var(--tc-short) var(--tc-arrive)}
+#app #tc-compare-fields button{position:relative;isolation:isolate}
+#app #tc-compare-fields button[aria-pressed=true]::after{content:"";position:absolute;inset:auto 10px 3px;height:2px;background:currentColor;transform-origin:left;animation:tc-indicator 200ms var(--tc-arrive) both}
+@keyframes tc-indicator{from{transform:scaleX(.2);opacity:.4}to{transform:scaleX(1);opacity:1}}
+@media(max-width:600px){#app .terra-spot-ticket[data-slot="-1"]{transform:translate3d(-18%,0,-44px) rotateY(12deg) rotateZ(-6deg)}#app .terra-spot-ticket[data-slot="1"]{transform:translate3d(18%,0,-44px) rotateY(-12deg) rotateZ(6deg)}}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}#app .kinetic-stage.tc-ring-stepping .terra-medallion,#app .kinetic-stage.tc-ring-stepping .terra-coin-object,#app .terra-spot-ticket{transition:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2026,6 +2061,39 @@ if (sb){
     refreshAuthPage();
   });
 }
+
+/* A small, cancellable state-motion layer. State is committed synchronously;
+   animation is never required for a navigation, result, or selection. */
+var tcAnimations=new WeakMap();
+function tcAnimate(el,kind){
+  if(!el||!el.isConnected||typeof el.animate!=="function"||typeof window.matchMedia!=="function"||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var prior=tcAnimations.get(el);if(prior)prior.cancel();
+  var map={
+    panel:[[{opacity:.68,transform:"translateY(5px) scale(.985)"},{opacity:1,transform:"none"}],260],
+    detail:[[{opacity:.6},{opacity:1}],150],
+    result:[[{opacity:.72},{opacity:1}],160],
+    selection:[[{opacity:.82,transform:"translateY(3px)"},{opacity:1,transform:"none"}],200]
+  };
+  var spec=map[kind]||map.detail;
+  try{var a=el.animate(spec[0],{duration:spec[1],easing:"cubic-bezier(.22,.61,.36,1)",fill:"none"});tcAnimations.set(el,a);a.onfinish=a.oncancel=function(){if(tcAnimations.get(el)===a)tcAnimations.delete(el);};}catch(e){}
+}
+function tcCompareRefresh(focusId){
+  var y=window.scrollY||0,group=document.querySelector("#tc-compare-fields [aria-pressed=true]"),groupKey=group&&group.getAttribute("data-tc-field"),only=document.getElementById("tc-differences"),differences=only&&only.getAttribute("aria-pressed")==="true";
+  pageCompare("");
+  var next=groupKey&&Array.from(document.querySelectorAll("#tc-compare-fields button")).find(function(b){return b.getAttribute("data-tc-field")===groupKey;});if(next&&groupKey!=="all")next.click();
+  var diff=document.getElementById("tc-differences");if(differences&&diff&&!diff.disabled)diff.click();
+  window.scrollTo(0,y);
+  var focus=focusId&&document.getElementById(focusId);if(focus)focus.focus({preventScroll:true});
+  tcAnimate(document.querySelector(".tc-compare-overview"),"selection");
+}
+/* Cross-document transitions are opt-in CSS. Keep private/auth routes and
+   same-document hash jumps out of snapshot animations. */
+(function(){
+  function excluded(url){try{return /^\/(account|login|journal|reset)(\/|$)/.test(new URL(url,location.href).pathname);}catch(e){return true;}}
+  window.addEventListener("pageswap",function(e){var v=e.viewTransition;if(!v)return;var dest=e.activation&&e.activation.entry&&e.activation.entry.url;if(excluded(location.href)||!dest||excluded(dest)||window.matchMedia("(prefers-reduced-motion: reduce)").matches)v.skipTransition();});
+  window.addEventListener("pagereveal",function(e){var v=e.viewTransition;if(v&&(excluded(location.href)||window.matchMedia("(prefers-reduced-motion: reduce)").matches))v.skipTransition();});
+})();
+
 function go(html){ app.setAttribute('data-terra-route',(location.pathname.split('/')[1]||'home')); app.innerHTML = html; window.scrollTo(0,0); bindCopy(); }
 
 var ROUTE_DESC={"/":"Compare 150 prop firms by the math: rules, prices, payouts and verified discount codes, each checked on the firm's own site.","/firms":"Every researched prop firm in one directory — profit split, drawdown, payout speed and entry price, each dated.","/deals":"Verified prop firm discount codes, checked on the firms' own sites. Expired codes are removed automatically.","/compare":"Compare up to three prop firms side by side: rating, profit split, entry price, payout cycle and drawdown rules.","/tools":"Free prop firm calculators: pass-probability simulator, cost to get funded, consistency, tick value, forex pips and savings.","/tracker":"A dated snapshot of prop firm payouts seen on-chain, with the limits of what that data can and cannot show.","/guides":"Plain-English prop firm guides: how evaluations work, drawdown types, consistency rules and picking a firm.","/rules":"Side-by-side prop firm rules: drawdown type, daily loss, consistency, news and weekend holding.","/stats":"Prop firm directory statistics computed from the same dated research that powers every page.","/calendar":"Economic calendar for traders, so you can plan around news before holding a funded account.","/journal":"A free trading journal for prop firm accounts: log trades, track payouts and see results per account.","/faq":"Answers to the most common prop firm questions: evaluations, drawdown, payouts, fees, scams and multiple accounts.","/methodology":"How PropFirmMath researches, rates and ranks prop firms, and why commission never changes a ranking.","/disclosure":"PropFirmMath does not currently use affiliate links. This page explains that we may earn a commission from some links in the future, and how rankings stay independent.","/delisted":"Prop firms removed from the directory and why, so you can avoid firms that stopped treating traders fairly.","/glossary":"A glossary of prop trading terms: drawdown, consistency rule, profit split, scaling, payout cycle and more.","/futures":"Futures prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/forex":"Forex prop firms compared: rules, drawdown types, platforms, prices and verified discount codes.","/crypto":"Crypto prop firms compared: rules, payout rails, prices and verified discount codes.","/perps":"Perpetual-futures prop firms compared: rules, funding rates, payout rails and prices.","/prediction":"Prediction-market prop firms compared: rules, payout rails, prices and verified discount codes."};
@@ -2118,7 +2186,7 @@ function mountKineticRing(scene){
   if(!scene)return;
   var area=scene.querySelector("#kinetic-ring"),links=Array.from(scene.querySelectorAll(".terra-medallion")),pause=scene.querySelector("#terra-motion-toggle"),prev=scene.querySelector("#kinetic-prev"),next=scene.querySelector("#kinetic-next"),label=scene.querySelector("#kinetic-selected");
   if(!area||!links.length||!pause)return;
-  var reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches),step=2*Math.PI/links.length,phase=0,speed=0,frame=0,last=0,visible=true,hover=false,focused=false,paused=reduced,drag=null,blockClick=false,selected=-1,focusHold=0;
+  var reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches),step=2*Math.PI/links.length,phase=0,speed=0,frame=0,last=0,visible=true,hover=false,focused=false,paused=reduced,drag=null,blockClick=false,selected=-1,focusHold=0,stepTimer=0;
   function render(){
     var width=area.clientWidth||800,small=width<650,radius=Math.max(116,Math.min(width*.39,490)),depth=small?38:64,frontIndex=0,frontValue=-Infinity;
     links.forEach(function(link,i){
@@ -2145,7 +2213,7 @@ function mountKineticRing(scene){
   }
   function wake(){if(!frame&&visible&&!document.hidden&&scene.isConnected&&!reduced){last=0;frame=requestAnimationFrame(tick);}}
   function stop(){if(frame)cancelAnimationFrame(frame);frame=0;last=0;speed=0;}
-  function nudge(direction){phase+=direction*step;speed=0;focusHold=performance.now()+1600;render();wake();}
+  function nudge(direction){if(stepTimer)clearTimeout(stepTimer);if(!reduced){scene.classList.add("tc-ring-stepping");stepTimer=setTimeout(function(){scene.classList.remove("tc-ring-stepping");stepTimer=0;},340);}phase+=direction*step;speed=0;focusHold=performance.now()+1600;render();wake();}
   function setPaused(v){paused=v;scene.classList.toggle("terra-orbit-paused",v);pause.setAttribute("aria-pressed",String(v));pause.textContent=reduced?"Motion reduced":v?"Resume motion":"Pause motion";if(v)stop();else wake();}
   pause.addEventListener("click",function(){setPaused(!paused);});
   if(prev)prev.addEventListener("click",function(){nudge(1);});
@@ -2154,7 +2222,7 @@ function mountKineticRing(scene){
   area.addEventListener("pointerleave",function(){hover=false;wake();});
   area.addEventListener("focusin",function(){focused=true;stop();});
   area.addEventListener("focusout",function(e){if(!area.contains(e.relatedTarget)){focused=false;wake();}});
-  area.addEventListener("pointerdown",function(e){if(e.button!==0||!e.isPrimary)return;drag={id:e.pointerId,origin:e.clientX,x:e.clientX,y:e.clientY,t:performance.now(),moved:false};speed=0;blockClick=false;});
+  area.addEventListener("pointerdown",function(e){if(e.button!==0||!e.isPrimary)return;scene.classList.remove("tc-ring-stepping");if(stepTimer){clearTimeout(stepTimer);stepTimer=0;}drag={id:e.pointerId,origin:e.clientX,x:e.clientX,y:e.clientY,t:performance.now(),moved:false};speed=0;blockClick=false;});
   area.addEventListener("pointermove",function(e){
     if(!drag||e.pointerId!==drag.id)return;
     var dx=e.clientX-drag.x,dy=e.clientY-drag.y;
@@ -2173,7 +2241,7 @@ function mountKineticRing(scene){
   if(typeof ResizeObserver==="function"){ro=new ResizeObserver(render);ro.observe(area);}
   function visibility(){if(document.hidden)stop();else wake();}
   document.addEventListener("visibilitychange",visibility);
-  if(typeof MutationObserver==="function"){cleanup=new MutationObserver(function(){if(!scene.isConnected){stop();if(io)io.disconnect();if(ro)ro.disconnect();document.removeEventListener("visibilitychange",visibility);cleanup.disconnect();}});cleanup.observe(app,{childList:true});}
+  if(typeof MutationObserver==="function"){cleanup=new MutationObserver(function(){if(!scene.isConnected){stop();if(stepTimer)clearTimeout(stepTimer);if(io)io.disconnect();if(ro)ro.disconnect();document.removeEventListener("visibilitychange",visibility);cleanup.disconnect();}});cleanup.observe(app,{childList:true});}
   if(reduced){pause.disabled=true;setPaused(true);}
   render();wake();
 }
@@ -2452,7 +2520,7 @@ function bindPlanBoard(f){
   var root = document.getElementById("plan-board");
   if (!root) return;
   var plans = firmPlanList(f);
-  var requested=new URLSearchParams(location.search).get("plan");var current=plans.some(function(p){return p.id===requested;})?requested:plans[0].id;
+  var requested=new URLSearchParams(location.search).get("plan");var painted=false;var current=plans.some(function(p){return p.id===requested;})?requested:plans[0].id;
   function programOf(id){
     for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return plans[i].program;
     return plans[0].program;
@@ -2468,10 +2536,10 @@ function bindPlanBoard(f){
     }).join("") : "";
     var chosen = plans[0];
     for (var i = 0; i < plans.length; i++) if (plans[i].id === current) chosen = plans[i];
-    document.getElementById("plan-sheet").innerHTML = planSheetHTML(f, chosen);
+    var sheet=document.getElementById("plan-sheet");sheet.innerHTML=planSheetHTML(f,chosen);if(painted)tcAnimate(sheet,"panel");painted=true;
     var buttons = sizeBox.querySelectorAll("button");
     for (var b = 0; b < buttons.length; b++) {
-      buttons[b].addEventListener("click", function(){ current = this.getAttribute("data-plan"); paint(); });
+      buttons[b].addEventListener("click", function(){ current = this.getAttribute("data-plan"); paint();var id=current;var active=Array.from(sizeBox.querySelectorAll("button")).find(function(b){return b.getAttribute("data-plan")===id;});if(active)active.focus({preventScroll:true}); });
     }
   }
   var tabs = root.querySelectorAll("#plan-programs button");
@@ -2805,7 +2873,7 @@ function pageCompare(q){
       cmpState.picks[i] = e.target.value;
       if (prev && prev !== e.target.value && cmpState.planBySlug) delete cmpState.planBySlug[prev];
       rememberPicks();
-      pageCompare("");
+      tcCompareRefresh(e.target.id);
     });
     var planSel = document.getElementById("cmpPlan" + i);
     if (planSel) planSel.addEventListener("change", function(e){
@@ -2814,7 +2882,7 @@ function pageCompare(q){
       if (!cmpState.planBySlug) cmpState.planBySlug = {};
       cmpState.planBySlug[slug] = e.target.value;
       rememberPicks();
-      pageCompare("");
+      tcCompareRefresh(e.target.id);
     });
   });
   function paint(){
@@ -2831,11 +2899,11 @@ function pageCompare(q){
     }
     box.innerHTML = '<div class="firm-grid">' + list.map(firmCardHTML).join("") + "</div>";
     bindCopy();
-    $$("[data-compare]").forEach(function(b){ b.addEventListener("click", function(){ toggleCompare(b.getAttribute("data-compare")); pageCompare(""); }); });
+    $$("[data-compare]").forEach(function(b){ b.addEventListener("click", function(){ toggleCompare(b.getAttribute("data-compare")); tcCompareRefresh(""); }); });
   }
   paint();
   var activeGroup="all",diffOnly=false;
-  function showCompareRows(){$$(".comparison-table [data-field-group]").forEach(function(row){var vals=Array.from(row.querySelectorAll("td")).slice(1).map(function(td){return td.textContent.trim();});row.hidden=(activeGroup!=="all"&&row.getAttribute("data-field-group")!==activeGroup)||(diffOnly&&vals.length>1&&new Set(vals).size===1);});}
+  function showCompareRows(){$$(".comparison-table [data-field-group]").forEach(function(row){var vals=Array.from(row.querySelectorAll("td")).slice(1).map(function(td){return td.textContent.trim();});row.hidden=(activeGroup!=="all"&&row.getAttribute("data-field-group")!==activeGroup)||(diffOnly&&vals.length>1&&new Set(vals).size===1);});tcAnimate(document.querySelector(".comparison-table tbody"),"detail");}
   $$("#tc-compare-fields button").forEach(function(btn){btn.addEventListener("click",function(){activeGroup=btn.getAttribute("data-tc-field");$$("#tc-compare-fields button").forEach(function(b){b.classList.toggle("on",b===btn);b.setAttribute("aria-pressed",String(b===btn));});showCompareRows();});});
   var diff=$("#tc-differences");if(diff){diff.disabled=picks.length<2;diff.addEventListener("click",function(){diffOnly=!diffOnly;diff.setAttribute("aria-pressed",String(diffOnly));showCompareRows();});}
   var share=$("#tc-share");if(share)share.addEventListener("click",function(){var url=new URL("/compare",location.origin);picks.forEach(function(f){url.searchParams.append("pick",f.slug+"~"+selectedPlan(f).id);});copyText(url.href,"Comparison link copied");});
@@ -2928,7 +2996,7 @@ function pageTracker(){
   '<p class="snap-note" style="margin-top:10px">Rows marked “Partial snapshot” had only their 30-day paid total captured in the tracker snapshot — payout count, average, largest and last-payout were not captured for them, so those cells are deliberately blank rather than estimated. Alpha Trader Firm appears in the tracker data but is not one of the 150 firms in this directory, so it has no review page.</p>'+
   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:22px"><div class="card"><h3>How the tracking works</h3><p class="mut" style="margin-top:8px">1 · Wallet matched — each firm Rise payout wallet is identified and confirmed before it is added.<br/>2 · Payouts indexed — every outgoing RiseUSD payment from that wallet is read from Arbitrum (the source tracker refreshes every 15 minutes).<br/>3 · Linked to proof — each payment links to its public Arbiscan record.</p></div>'+
   '<div class="card"><h3>Not tracked in the last 30 days (snapshot)</h3><p class="mut" style="margin-top:8px">The Nov 25, 2026 tracker snapshot listed firms with no payouts tracked in 30 days — including Blueberry Funded ("no payouts tracked yet") and YRM Prop (last payout Oct 2, 2026 in that snapshot) — mostly firms moving to a new Rise wallet after the V2 migration. YRM Prop is not in this directory; Blueberry Funded is in the directory but had no tracked payouts in that snapshot.</p></div></div>');
-  function inspectPayout(i){var row=TRACKER.rows[i],host=$("#tc-payout-detail");if(!row||!host)return;$$("[data-payout-row]").forEach(function(b){b.setAttribute("aria-pressed",String(Number(b.getAttribute("data-payout-row"))===i));});host.innerHTML='<strong>'+esc(row.firm)+'</strong><dl><div><dt>Paid (30d)</dt><dd>'+money0(row.paid)+'</dd></div><div><dt>Payout count</dt><dd>'+(row.payouts==null?"Not captured":row.payouts.toLocaleString())+'</dd></div><div><dt>Average</dt><dd>'+(row.avg==null?"Not captured":money0(row.avg))+'</dd></div><div><dt>Largest</dt><dd>'+(row.largest==null?"Not captured":money0(row.largest))+'</dd></div></dl>'+(row.slug?'<a href="/firm/'+esc(row.slug)+'">Research this firm</a>':'');}
+  function inspectPayout(i){var row=TRACKER.rows[i],host=$("#tc-payout-detail");if(!row||!host)return;$$("[data-payout-row]").forEach(function(b){b.setAttribute("aria-pressed",String(Number(b.getAttribute("data-payout-row"))===i));});host.innerHTML='<strong>'+esc(row.firm)+'</strong><dl><div><dt>Paid (30d)</dt><dd>'+money0(row.paid)+'</dd></div><div><dt>Payout count</dt><dd>'+(row.payouts==null?"Not captured":row.payouts.toLocaleString())+'</dd></div><div><dt>Average</dt><dd>'+(row.avg==null?"Not captured":money0(row.avg))+'</dd></div><div><dt>Largest</dt><dd>'+(row.largest==null?"Not captured":money0(row.largest))+'</dd></div></dl>'+(row.slug?'<a href="/firm/'+esc(row.slug)+'">Research this firm</a>':'');tcAnimate(host,"detail");}
   $$("[data-payout-row]").forEach(function(b){b.addEventListener("click",function(){inspectPayout(Number(b.getAttribute("data-payout-row")));});});if(TRACKER.rows.length)inspectPayout(0);
   bindCopy();
 }
@@ -3023,11 +3091,12 @@ function pageTools(){
     selected.hidden=false;
     card.appendChild(selected);
     card.setAttribute("aria-expanded","true");
+    tcAnimate(selected,"panel");
     card.scrollIntoView({behavior:window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"});
   }
   closeCalculator();
   var toolRoot=$(".pfm-tool-directory");
-  if(toolRoot)toolRoot.addEventListener("input",function(e){var panel=e.target.closest(".card[id^=calc-]");if(!panel)return;var out=panel.querySelector("[id$=Out]");if(out){out.classList.remove("terra-result-change");void out.offsetWidth;out.classList.add("terra-result-change");}});
+  if(toolRoot)toolRoot.addEventListener("input",function(e){var panel=e.target.closest(".card[id^=calc-]");if(!panel)return;var out=panel.querySelector("[id$=Out]");if(out)tcAnimate(out,"result");});
   $$(".pfm-clickable-calculator").forEach(function(card){
     function activate(){openCalculator(card.getAttribute("data-calculator"),card);}
     card.addEventListener("click",function(e){if(e.target.closest("input,select,textarea,button,a,label") || e.target.closest(".card[id^=calc-]"))return;activate();});
