@@ -16,3 +16,6 @@ FundedHero, Alpha Futures, DayTraders.com, SwissFirmUp, UProfit, FunderPro.
 ## Not yet done
 The remaining partial firms still need this pass. Large configurator firms (Nordic Funder, FundedElite,
 FundedHero-style matrices) take the longest.
+
+## Finotive Funding (left partial)
+Read https://finotivefunding.com/challenge on 2026-11-28. Seven sizes ($2.5K to $200K) for 1-Step, 2-Step and Solo FX are published, but every price on the page is a Black Friday sale price (for example 1-Step $2.5K shows $40, 2-Step $2.5K shows $30). The list price is not shown, so prices can't be confirmed as standing prices. Left partial until the sale ends and the regular prices can be read. Rules per programme (targets, daily/max drawdown, static type, 80% split, no consistency rule) were readable and match what is already on file.
