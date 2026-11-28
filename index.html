@@ -1436,6 +1436,7 @@ function signOutAndLeave(){
   if (!sb) return;
   sb.auth.signOut().then(function(){
     PM_USER = null;
+    pfmServerMembership=null;
     if (typeof journalState !== "undefined" && journalState) journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
     history.pushState({},"","/");
     route();
@@ -1451,6 +1452,7 @@ if (sb){
     PM_USER = session ? session.user : null;
     var id = PM_USER ? PM_USER.id : null;
     var changed = authSeen && id !== lastAuthUserId;
+    if(changed)pfmServerMembership=null;
     lastAuthUserId = id;
     var first = !authReady;
     authReady = true;
@@ -2551,8 +2553,18 @@ function authChecking(title){
     '<div class="card" style="margin-top:20px;max-width:560px"><p class="mut">Checking your session…</p></div>');
 }
 var PFM_MEMBERSHIPS = [{id:"basic",name:"Basic",price:"Free",limit:1},{id:"pro",name:"Pro",price:"$9.99/month",limit:10},{id:"elite",name:"Elite",price:"$19.99/month",limit:25}];
+var pfmServerMembership=null;
+function pfmReadMembership(user){
+  if(!user||!user.id||!sb)return Promise.resolve(null);
+  var uid=user.id;
+  return sb.rpc("journal_current_membership").then(function(r){
+    if(r.error||!r.data||!["basic","pro","elite"].includes(r.data.tier)||typeof r.data.tester!=="boolean")throw Error("Could not verify membership.");
+    if(PM_USER&&PM_USER.id===uid){pfmServerMembership={uid:uid,tier:r.data.tier,tester:r.data.tester};return pfmServerMembership;}
+    return null;
+  });
+}
 function pfmMembership(user){
-  var id=user && user.app_metadata && user.app_metadata.pfm_membership;
+  var id=user&&pfmServerMembership&&pfmServerMembership.uid===user.id?pfmServerMembership.tier:user && user.app_metadata && user.app_metadata.pfm_membership;
   return PFM_MEMBERSHIPS.find(function(p){return p.id===id;})||PFM_MEMBERSHIPS[0];
 }
 function pfmFreeJournalIntro(){return '<div class="card pfm-free-journal-intro"><h3>Free trading journal, included</h3><p class="mut" style="margin-top:8px">Every registered user can track one trading account, log trades, view analytics and export CSV. Optional Journal upgrades are available in Settings when billing launches. The public directory, comparisons, calculators and trackers do not require a paid plan.</p></div>';}
@@ -2562,7 +2574,7 @@ function journalProfileCard(user){
   var verified=user.email_confirmed_at?"Verified":user.email_confirmed_at===null?"Not verified":"Not available";
   return '<section class="card pfm-journal-profile" aria-labelledby="journalProfileHeading"><div class="pfm-profile-heading"><div><h3 id="journalProfileHeading">Personal details</h3><p class="mut small">Private workspace · your registered PropFirmMath profile.</p></div><button type="button" class="btn ghost small" id="journalEditProfile" aria-controls="journalProfileEditor" aria-expanded="false">Edit profile</button></div><dl class="pfm-profile-grid">'+[["Full name",meta.full_name||"Not provided"],["Email address",user.email||"Not provided"],["Country",meta.country||"Not provided"],["Email verification",verified],["Member since",joinedLabel],["Account type","Free PropFirmMath account"]].map(function(x){return '<div><dt>'+esc(x[0])+'</dt><dd>'+esc(String(x[1]))+'</dd></div>';}).join("")+'</dl><form id="journalProfileEditor" hidden><div class="pfm-profile-grid"><div class="field"><label class="fl" for="journalProfileName">Full name</label><input id="journalProfileName" autocomplete="name" maxlength="100" required value="'+esc(String(meta.full_name||""))+'"></div><div class="field"><label class="fl" for="journalProfileCountry">Country</label><input id="journalProfileCountry" autocomplete="country-name" maxlength="100" value="'+esc(String(meta.country||""))+'"></div></div><div class="pfm-profile-actions"><button class="btn small" type="submit">Save profile</button><button class="btn ghost small" type="button" id="journalCancelProfile">Cancel</button></div></form><p class="form-msg" id="journalProfileMsg" role="status" aria-live="polite"></p></section>';
 }
-function pfmMembershipTester(user){return !!(user&&user.app_metadata&&user.app_metadata.pfm_membership_tester===true);}
+function pfmMembershipTester(user){return !!(user&&(pfmServerMembership&&pfmServerMembership.uid===user.id?pfmServerMembership.tester:user.app_metadata&&user.app_metadata.pfm_membership_tester===true));}
 function pfmMembershipCards(user, accountCount){
   if(!user||typeof accountCount!=="number")return "";
   var current=pfmMembership(user),tester=pfmMembershipTester(user);
@@ -2905,7 +2917,11 @@ function pageJournal(){
     return;
   }
   go(head + '<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');
-  journalLoad().then(renderJournal).catch(function(e){
+  var journalUid=PM_USER.id;
+  pfmReadMembership(PM_USER).catch(function(){return null;}).then(function(){
+    if(!PM_USER||PM_USER.id!==journalUid||location.pathname.replace(/\/$/,"")!=="/journal")return null;
+    return journalLoad().then(function(){if(PM_USER&&PM_USER.id===journalUid&&location.pathname.replace(/\/$/,"")==="/journal")renderJournal();});
+  }).catch(function(e){
     go(head + '<div class="notice" style="margin-top:20px"><b>Could not load your journal.</b> ' + esc(e && e.message || "Please try again.") + '</div>');
   });
 }
@@ -3372,14 +3388,13 @@ function renderJournal(){
       if(result.error)throw result.error;
       if(result.data!==tier)throw Error("Unexpected server response. Membership change not confirmed.");
       changed=true;
-      var refreshed=await sb.auth.refreshSession(),user=refreshed.data&&refreshed.data.session&&refreshed.data.session.user;
-      if(refreshed.error)throw refreshed.error;
-      if(!user||user.id!==uid||!pfmMembershipTester(user)||pfmMembership(user).id!==tier)throw Error("Session still contains the previous membership.");
+      var confirmed=await pfmReadMembership(PM_USER);
+      if(!confirmed||confirmed.uid!==uid||!confirmed.tester||confirmed.tier!==tier)throw Error("Server membership could not be confirmed.");
       if(!PM_USER||PM_USER.id!==uid||!msg.isConnected)return;
-      PM_USER=user;journalState.tab="settings";renderJournal();
-      var status=$("#journalTestTierMsg");if(status){status.className="form-msg ok";status.textContent=pfmMembership(user).name+" test membership active. No payment collected.";var target=$("#journalMembershipHeading");if(target&&target.scrollIntoView)target.scrollIntoView({block:"nearest"});}
+      journalState.tab="settings";renderJournal();
+      var status=$("#journalTestTierMsg");if(status){status.className="form-msg ok";status.textContent=pfmMembership(PM_USER).name+" test membership active. No payment collected.";var target=$("#journalMembershipHeading");if(target&&target.scrollIntoView)target.scrollIntoView({block:"nearest"});}
     }catch(err){
-      if(msg.isConnected){msg.className="form-msg err";msg.textContent=(changed?"Membership updated on server; session refresh failed. Sign out and log back in. ":"Membership switch failed. ")+String(err&&err.message||"Please try again.").slice(0,220);buttons.forEach(function(b){b.disabled=b.getAttribute("aria-pressed")==="true";});}
+      if(msg.isConnected){msg.className="form-msg err";msg.textContent=(changed?"Membership updated on server; verification failed. Reload the Journal. ":"Membership switch failed. ")+String(err&&err.message||"Please try again.").slice(0,220);buttons.forEach(function(b){b.disabled=b.getAttribute("aria-pressed")==="true";});}
     }
   });
   var profileEditor=$("#journalProfileEditor"),profileButton=$("#journalEditProfile");
