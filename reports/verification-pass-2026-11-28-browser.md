@@ -84,3 +84,9 @@ The official terms say services are not offered in FATF and EU/UN sanctioned cou
 
 ### BluSky Trading: fully verified
 Clicked through every mode and balance in the homepage configurator (15 plans): Launch 50K/100K/200K static at $59/$69/$79 per 30 days plus $99/$149/$179 on passing, Propel 25K-300K at list $150-$320 (30OFF shown), Orbit 50K-200K at $199-$419 one-time, and Instant $3.5K $749 and 50K $599. The help-centre country list does not include the US (the firm clears through a US FCM), and the platform article lists Volumetrica, Rithmic, Tradovate, TradingView and others.
+
+### Monevis: catalog read, still partial
+Clicked every plan and size in the homepage selector: Instant 3K-50K, One Step 5K-100K and Three Step 5K-100K (16 plans, list prices). US eligibility and payout frequency are not stated on the homepage. The Three Step selector shows the same 4% figure for the target, daily and max drawdown, so that needs a second source.
+
+### IQ Capital: sale-only for now
+The homepage runs "85% off everything" for Black Friday, with crossed-out anchors such as $927 for a 50K one-day-pass challenge. Those anchors don't look like standing prices, so the firm is on the sale-only list for a re-check after Nov 30.
