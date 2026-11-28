@@ -17,6 +17,8 @@ jobs:
         run: npm run build
       - name: Journal behavior checks
         run: node scripts/test-journal.js
+      - name: Terra motion and interactive behavior checks
+        run: node scripts/test-terra-motion.js
       - name: Smoke-check output
         run: |
           test -f dist/404.html
