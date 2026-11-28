@@ -1421,6 +1421,71 @@ header :focus-visible{outline-color:var(--ivory)!important}
  header nav.main .nav-resources-menu{position:static;width:100%;min-width:0;box-shadow:none}
 }
 </style>
+<style>
+/* Hallmark 2.0 · custom Terra Capital · calm editorial / brisk financial tools.
+   Critique: movement formerly repeated on generic tiles; use spatial objects and actual data instead.
+   Preserves user-pinned Earthy Minimal palette, existing routes, forms and research records.
+   Motion: one purposeful state change, one spatial signature, at most one ambient loop. */
+:root{--tc-micro:120ms;--tc-short:220ms;--tc-long:420ms;--tc-arrive:cubic-bezier(.22,.61,.36,1);--tc-leave:cubic-bezier(.55,.06,.68,.19);--tc-toggle:cubic-bezier(.4,0,.2,1);--tc-coin-depth:var(--terra-metal-dark);--tc-coin-edge-hi:var(--terra-metal-light);--tc-focus-paper:var(--forest);--tc-focus-dark:var(--ivory)}
+html,body{overflow-x:clip}
+#app h1,#app h2{overflow-wrap:break-word;min-width:0;text-wrap:balance}
+#app :focus-visible{outline:2px solid var(--tc-focus-paper);outline-offset:3px;transition:none!important}
+#app .kinetic-stage :focus-visible,#app .terra-ticket-stage :focus-visible,#app .tc-firm-identity :focus-visible,#app .tc-catalog-mast :focus-visible,#app .tc-compare-dossier:first-child :focus-visible,#app .tc-compare-dossier:nth-child(3) :focus-visible{outline-color:var(--tc-focus-dark)}
+#app .kinetic-stage .terra-orbit-layer{perspective:850px;transform-style:preserve-3d}
+#app .kinetic-stage .terra-medallion{will-change:auto;transform-style:preserve-3d}
+#app .kinetic-stage .terra-coin-object{transform:rotateY(var(--tc-coin-yaw,0deg)) rotateX(12deg);transition:none;transform-style:preserve-3d}
+.tc-coin-slice{display:block;position:absolute;inset:0;border-radius:50%;border:2px solid var(--tc-coin-edge-hi);background:var(--tc-coin-depth);backface-visibility:visible}
+.tc-coin-slice-a{transform:translateZ(-4px)}.tc-coin-slice-b{transform:translateZ(-1px)}.tc-coin-slice-c{transform:translateZ(2px)}
+#app .kinetic-stage .terra-medallion .terra-coin-front{transform:translateZ(7px)}
+#app .kinetic-stage .terra-medallion .terra-coin-back{transform:rotateY(180deg) translateZ(7px)}
+#app .kinetic-stage .terra-medallion:hover .terra-coin-object,#app .kinetic-stage .terra-medallion:focus-visible .terra-coin-object{transform:rotateY(var(--tc-coin-yaw,0deg)) rotateX(12deg)}
+#app .kinetic-ring-controls>button{min-width:44px;min-height:44px}
+#app .tc-compare-dossier{animation:tc-arrival var(--tc-long) var(--tc-arrive) both}
+#app .tc-compare-dossier:nth-child(2){animation-delay:45ms}#app .tc-compare-dossier:nth-child(3){animation-delay:90ms}
+.tc-fee-visual{margin:20px 0 36px;padding:24px 0;border-block:1px solid var(--sand);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px;align-items:center}
+.tc-fee-visual h2{margin:0;font-size:clamp(26px,3vw,36px)}.tc-fee-visual p{color:var(--muted);max-width:46ch;font-size:14px}
+.tc-fee-columns{display:flex;flex-direction:column;gap:14px}
+.tc-fee-column{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:baseline}
+.tc-fee-column strong{font-size:18px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.tc-fee-depth{grid-column:1/-1;height:18px;background:var(--panel2);border-radius:3px;perspective:500px}
+.tc-fee-depth i{display:block;width:100%;height:100%;background:var(--sage);border-bottom:4px solid var(--forest);transform-origin:left;transform:scaleX(var(--tc-fee-share));animation:tc-fee-in var(--tc-long) var(--tc-arrive) both}
+@keyframes tc-fee-in{from{transform:scaleX(0)}to{transform:scaleX(var(--tc-fee-share))}}
+@keyframes tc-arrival{from{opacity:.75;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#app .tc-payout-track{height:14px;background:var(--panel2);border-radius:3px}
+#app .tc-payout-track i{border-bottom:3px solid var(--forest)}
+#app .tc-payout-bar[aria-pressed=true] .tc-payout-track i{border-bottom-color:var(--tc-dark-clay)}
+#app .tc-payout-bar{min-height:64px}
+#app .tc-account-tile{border-radius:10px;position:relative;box-shadow:none}
+#app .tc-account-tile .tc-account-price{padding:10px 0;border-bottom:1px solid var(--sand)}
+#app .tc-account-tile .tc-save-plan{transition:background-color var(--tc-short) var(--tc-arrive)}
+#app .tc-account-tile .tc-save-plan[aria-pressed=true]{border-color:var(--forest)}
+#app .pfm-tool-directory .tool-card.pfm-tool-expanded>.card:not([hidden]){animation:tc-arrival var(--tc-long) var(--tc-arrive) both}
+#app .plan-board #plan-sheet .plan-sheet{animation:tc-arrival var(--tc-short) var(--tc-arrive) both}
+.tc-stats-markets{background:var(--forest);color:var(--ivory);padding:clamp(20px,4vw,42px);border-radius:12px;margin:24px 0}
+.tc-stats-markets h2{color:var(--ivory);font-size:clamp(26px,4vw,42px)}.tc-stats-markets p{color:var(--sand)}
+.tc-stats-bars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;margin-top:22px}
+.tc-stats-bars>a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;color:var(--ivory);font-weight:650}
+.tc-stats-track{grid-column:1/-1;height:12px;background:var(--tc-stage-mid);border-radius:3px}
+.tc-stats-track i{display:block;width:100%;height:100%;background:var(--sand);border-bottom:3px solid var(--tc-metal);transform-origin:left;transform:scaleX(var(--tc-stat-share));animation:tc-stat-in var(--tc-long) var(--tc-arrive) both}
+@keyframes tc-stat-in{from{transform:scaleX(0)}to{transform:scaleX(var(--tc-stat-share))}}
+#app .tc-stats-bars a:focus-visible{outline-color:var(--ivory)}
+#app .tc-stats-index{gap:18px!important}#app .tc-stats-index>.card{border:0;border-top:1px solid var(--sand);border-radius:0;background:transparent}
+.tc-rules-search{display:grid;gap:8px;max-width:680px;margin:24px 0;padding:18px;background:var(--panel2);border-radius:8px}.tc-rules-search label{font-weight:650}.tc-rules-search input{min-height:44px;background:var(--ivory)}.tc-rules-search p{margin:0;color:var(--muted);font-size:13px}
+.tc-rules-table tr[hidden],#app details.faq[hidden],#app .pfm-glossary-entry[hidden]{display:none!important}
+#app[data-terra-route=glossary] #pfm-glossary-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 28px!important}
+#app[data-terra-route=glossary] .pfm-glossary-entry{background:transparent;border:0;border-top:1px solid var(--sand);border-radius:0;padding:20px 0}
+#app[data-terra-route=glossary] .pfm-glossary-entry h3{font-size:22px!important}
+#app details.faq{border-radius:0;border:0;border-bottom:1px solid var(--sand);background:transparent}
+#app details.faq summary{min-height:48px;padding:12px 0}
+#app details.faq[open] .ans{animation:tc-arrival var(--tc-short) var(--tc-arrive) both}
+#app[data-terra-route=login] .auth-layout,#app[data-terra-route=account] .auth-layout,#app[data-terra-route=reset] .auth-layout{margin-inline:auto;max-width:min(100%,560px)!important}
+#app .auth-layout>.card{padding:clamp(20px,4vw,36px);border:1px solid var(--sand);box-shadow:none}
+#app .auth-layout input:not([type=checkbox]){min-height:46px}
+#app .auth-layout button[type=submit]{min-height:46px}
+#app[data-terra-route=methodology] .prose,#app[data-terra-route=guide] .prose,#app[data-terra-route=privacy] .prose,#app[data-terra-route=terms] .prose{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;max-width:72ch!important}
+@media(max-width:700px){.tc-fee-visual{grid-template-columns:1fr}.tc-stats-bars{grid-template-columns:1fr}#app[data-terra-route=glossary] #pfm-glossary-list{grid-template-columns:1fr!important}}
+@media(prefers-reduced-motion:reduce){#app *,#app *::before,#app *::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -1883,7 +1948,7 @@ function renderNav(route){
     html += '<a href="/account" class="signin'+(route==="/account"?" on":"")+'">Account</a>';
     html += '<button type="button" class="nav-signout" id="navSignOut">Sign out</button>';
   } else {
-    html += '<a href="/journal"'+(route==="/journal"?' class="on"':"")+ '>Journal</a><a href="/login" class="signin'+(route==="/login"?" on":"")+'">Log in</a>';
+    html += '<a href="/journal"'+(route==="/journal"?' class="on"':"")+ '>Journal</a><a href="/login" class="signin'+(route==="/login"?" on":"")+'">Sign In</a>';
   }
   $("#mainnav").innerHTML = html;
   var navOut = document.getElementById("navSignOut");
@@ -2044,13 +2109,13 @@ function mountKineticRing(scene){
   if(!scene)return;
   var area=scene.querySelector("#kinetic-ring"),links=Array.from(scene.querySelectorAll(".terra-medallion")),pause=scene.querySelector("#terra-motion-toggle"),prev=scene.querySelector("#kinetic-prev"),next=scene.querySelector("#kinetic-next"),label=scene.querySelector("#kinetic-selected");
   if(!area||!links.length||!pause)return;
-  var reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches),step=2*Math.PI/links.length,phase=0,speed=0,frame=0,last=0,visible=true,hover=false,paused=reduced,drag=null,blockClick=false,selected=-1,focusHold=0;
+  var reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches),step=2*Math.PI/links.length,phase=0,speed=0,frame=0,last=0,visible=true,hover=false,focused=false,paused=reduced,drag=null,blockClick=false,selected=-1,focusHold=0;
   function render(){
     var width=area.clientWidth||800,small=width<650,radius=Math.max(116,Math.min(width*.39,490)),depth=small?38:64,frontIndex=0,frontValue=-Infinity;
     links.forEach(function(link,i){
-      var p=i*step+phase,z=Math.cos(p),x=Math.sin(p)*radius,y=-z*depth,scale=.57+.43*(z+1)/2;
+      var p=i*step+phase,z=Math.cos(p),x=Math.sin(p)*radius,y=-z*depth,scale=.64+.36*(z+1)/2;
       if(z>frontValue){frontValue=z;frontIndex=i;}
-      link.style.transform="translate3d(calc(-50% + "+x.toFixed(1)+"px),calc(-50% + "+y.toFixed(1)+"px),0) scale("+scale.toFixed(3)+")";
+      link.style.transform="translate3d(calc(-50% + "+x.toFixed(1)+"px),calc(-50% + "+y.toFixed(1)+"px),"+(z*55).toFixed(1)+"px) scale("+scale.toFixed(3)+")";link.style.setProperty("--tc-coin-yaw",(Math.sin(p)*34).toFixed(1)+"deg");
       link.style.zIndex=String(Math.round((z+1)*100));
       link.style.opacity=String(.48+.52*(z+1)/2);
       link.classList.toggle("kinetic-near",z>.76);
@@ -2063,11 +2128,11 @@ function mountKineticRing(scene){
     if(!visible||document.hidden){last=0;return;}
     var dt=last?Math.min(.05,(t-last)/1000):0;last=t;
     if(!drag){
-      var target=paused||focusHold>t?0:(hover?-.035:-.24);
+      var target=paused||focused||hover||focusHold>t?0:-.24;
       speed+=(target-speed)*Math.min(1,dt*3.7);
-      if(!paused&&focusHold<=t)phase+=speed*dt;
+      if(!paused&&!focused&&!hover&&focusHold<=t)phase+=speed*dt;
     }
-    render();if(!paused||drag||Math.abs(speed)>.001)frame=requestAnimationFrame(tick);
+    render();if(!paused&&!focused&&!hover||drag||Math.abs(speed)>.001)frame=requestAnimationFrame(tick);
   }
   function wake(){if(!frame&&visible&&!document.hidden&&scene.isConnected&&!reduced){last=0;frame=requestAnimationFrame(tick);}}
   function stop(){if(frame)cancelAnimationFrame(frame);frame=0;last=0;speed=0;}
@@ -2076,8 +2141,10 @@ function mountKineticRing(scene){
   pause.addEventListener("click",function(){setPaused(!paused);});
   if(prev)prev.addEventListener("click",function(){nudge(1);});
   if(next)next.addEventListener("click",function(){nudge(-1);});
-  area.addEventListener("pointerenter",function(){hover=true;});
-  area.addEventListener("pointerleave",function(){hover=false;});
+  area.addEventListener("pointerenter",function(e){if(e.pointerType!=="touch"){hover=true;stop();}});
+  area.addEventListener("pointerleave",function(){hover=false;wake();});
+  area.addEventListener("focusin",function(){focused=true;stop();});
+  area.addEventListener("focusout",function(e){if(!area.contains(e.relatedTarget)){focused=false;wake();}});
   area.addEventListener("pointerdown",function(e){if(e.button!==0||!e.isPrimary)return;drag={id:e.pointerId,origin:e.clientX,x:e.clientX,y:e.clientY,t:performance.now(),moved:false};speed=0;blockClick=false;});
   area.addEventListener("pointermove",function(e){
     if(!drag||e.pointerId!==drag.id)return;
@@ -2138,7 +2205,7 @@ function pageHome(){
   FIRMS.filter(function(f){return !usedOrbit[f.slug];}).sort(function(a,b){return (b.rating||0)-(a.rating||0)||a.name.localeCompare(b.name);}).slice(0,Math.max(0,12-orbitFirms.length)).forEach(function(f){orbitFirms.push(f);});
   var orbitMarkup=orbitFirms.map(function(f,i){
     var phase=2*Math.PI*(orbitFirms.length-i)/orbitFirms.length;var scale=[1.18,.88,1.04,.76,1.13,.91][i%6];
-    return '<a class="terra-medallion" href="/firm/'+esc(f.slug)+'" aria-label="Research '+esc(f.name)+'" style="--scale:'+scale+';--phase:'+(-30*i/orbitFirms.length).toFixed(3)+'s;--ox:'+Math.cos(phase).toFixed(4)+';--oy:'+Math.sin(phase).toFixed(4)+'"><span class="terra-coin-object" aria-hidden="true"><span class="terra-coin-rim"></span><span class="terra-coin-face terra-coin-front">'+avatar(f,58)+'</span><span class="terra-coin-face terra-coin-back">'+esc(initials(f.name))+'</span></span><span class="terra-coin-name">'+esc(f.name)+'</span></a>';
+    return '<a class="terra-medallion" href="/firm/'+esc(f.slug)+'" aria-label="Research '+esc(f.name)+'" style="--scale:'+scale+';--phase:'+(-30*i/orbitFirms.length).toFixed(3)+'s;--ox:'+Math.cos(phase).toFixed(4)+';--oy:'+Math.sin(phase).toFixed(4)+'"><span class="terra-coin-object" aria-hidden="true"><span class="terra-coin-rim"></span><span class="tc-coin-slice tc-coin-slice-a"></span><span class="tc-coin-slice tc-coin-slice-b"></span><span class="tc-coin-slice tc-coin-slice-c"></span><span class="terra-coin-face terra-coin-front">'+avatar(f,58)+'</span><span class="terra-coin-face terra-coin-back">'+esc(initials(f.name))+'</span></span><span class="terra-coin-name">'+esc(f.name)+'</span></a>';
   }).join("");
   go(
   '<section class="kinetic-hero"><div class="kinetic-heading"><h1>Find the right prop firm.</h1><div><p>Explore '+COUNTS.total+' prop firms. Compare fees, rules and payout conditions before paying for an account.</p><div class="hero-cta"><a class="btn" href="/compare">Compare accounts</a><a class="btn ghost" href="/firms">Explore firms</a></div></div></div>'+
@@ -2217,7 +2284,7 @@ function pageAccountCatalog(){
     var list=catalog.filter(function(x){var p=x.p,f=x.f;return (!query||(f.name+" "+p.program+" "+(p.name||"")).toLowerCase().indexOf(query)>=0)&&(state.market==="all"||f.markets.indexOf(state.market)>=0)&&(state.size==="all"||Number(p.size)===Number(state.size))&&(state.currency==="all"||p.currency===state.currency)&&(state.billing==="all"||(state.billing==="monthly"?p.monthly===true:p.monthly===false))&&(!state.saved||saved.indexOf(f.slug+"|"+p.id)>=0);});
     list.sort(function(a,b){if(state.sort==="price"&&state.currency!=="all"){var ap=a.p.price==null?Infinity:Number(a.p.price),bp=b.p.price==null?Infinity:Number(b.p.price);return ap-bp||a.f.name.localeCompare(b.f.name);}if(state.sort==="size")return (Number(b.p.size)||0)-(Number(a.p.size)||0)||a.f.name.localeCompare(b.f.name);return a.f.name.localeCompare(b.f.name)||String(a.p.program).localeCompare(String(b.p.program))||(Number(a.p.size)||0)-(Number(b.p.size)||0);});
     $("#pc-count").textContent=list.length+" matching records · Showing "+Math.min(state.limit,list.length)+(state.sort==="price"&&state.currency==="all"?" · Choose one currency to sort fees":"");
-    $("#pc-results").innerHTML=list.slice(0,state.limit).map(function(x){var f=x.f,p=x.p,key=f.slug+"|"+p.id,on=saved.indexOf(key)>=0;return '<article class="tc-account-tile"><div class="tc-account-brand">'+avatar(f,38)+'<div><a href="/firm/'+esc(f.slug)+'">'+esc(f.name)+'</a><span>'+esc(planLabel(p))+'</span></div><button class="tc-save-plan" data-save-plan="'+esc(key)+'" type="button" aria-pressed="'+on+'" aria-label="'+(on?"Remove saved plan":"Save plan")+'">'+(on?"★":"☆")+'</button></div><div class="tc-account-price">'+planPriceHTML(p)+'</div><div class="tc-account-meta"><span>Size: '+esc(planSizeLabel(p))+'</span><span>'+esc(p.currency||"Currency not recorded")+'</span></div><p class="tc-account-note">'+esc(planCoverageNote(p))+(p.note?" "+esc(p.note):"")+'</p><div class="tc-account-actions"><a class="btn small" href="/compare?add='+encodeURIComponent(f.slug)+'&amp;plan='+encodeURIComponent(p.id)+'">Compare plan</a><a class="btn ghost small" href="/firm/'+esc(f.slug)+'#plan-board">Full rules</a></div></article>';}).join("")||'<div class="empty-note">No account records match these filters.</div>';
+    $("#pc-results").innerHTML=list.slice(0,state.limit).map(function(x){var f=x.f,p=x.p,key=f.slug+"|"+p.id,on=saved.indexOf(key)>=0;return '<article class="tc-account-tile"><div class="tc-account-brand">'+avatar(f,38)+'<div><a href="/firm/'+esc(f.slug)+'">'+esc(f.name)+'</a><span>'+esc(planLabel(p))+'</span></div><button class="tc-save-plan" data-save-plan="'+esc(key)+'" type="button" aria-pressed="'+on+'" aria-label="'+(on?"Remove saved plan":"Save plan")+'">'+(on?"★":"☆")+'</button></div><div class="tc-account-price">'+planPriceHTML(p)+'</div><div class="tc-account-meta"><span>Size: '+esc(planSizeLabel(p))+'</span><span>'+esc(p.currency||"Currency not recorded")+'</span></div><p class="tc-account-note">'+esc(planCoverageNote(p))+(p.note?" "+esc(p.note):"")+'</p><div class="tc-account-actions"><a class="btn small" href="/compare?add='+encodeURIComponent(f.slug)+'&amp;plan='+encodeURIComponent(p.id)+'">Compare plan</a><a class="btn ghost small" href="/firm/'+esc(f.slug)+'?plan='+encodeURIComponent(p.id)+'#plan-board">Full rules</a></div></article>';}).join("")||'<div class="empty-note">No account records match these filters.</div>';
     $("#pc-more").hidden=list.length<=state.limit;
   }
   ["q","market","size","currency","billing","sort"].forEach(function(k){$("#pc-"+k).addEventListener(k==="q"?"input":"change",function(e){state[k]=e.target.value;state.limit=24;paint();});});
@@ -2376,7 +2443,7 @@ function bindPlanBoard(f){
   var root = document.getElementById("plan-board");
   if (!root) return;
   var plans = firmPlanList(f);
-  var current = plans[0].id;
+  var requested=new URLSearchParams(location.search).get("plan");var current=plans.some(function(p){return p.id===requested;})?requested:plans[0].id;
   function programOf(id){
     for (var i = 0; i < plans.length; i++) if (plans[i].id === id) return plans[i].program;
     return plans[0].program;
@@ -2411,6 +2478,7 @@ function bindPlanBoard(f){
       paint();
     });
   }
+  tabs.forEach(function(tab){var on=tab.getAttribute("data-program")===programOf(current);tab.classList.toggle("on",on);tab.setAttribute("aria-selected",String(on));});
   paint();
 }
 function selectedPlan(f){
@@ -2695,6 +2763,10 @@ function pageCompare(q){
   var groups={"all":"All fields","cost":"Price & account","risk":"Risk & targets","payout":"Payout & eligibility"};
   function rowGroup(label){return ["Account plan","Plan price","Verified code"].indexOf(label)>=0?"cost":["Profit target","Daily loss","Max drawdown","Drawdown type","Min days"].indexOf(label)>=0?"risk":["Profit split","Payout","US eligibility"].indexOf(label)>=0?"payout":"research";}
   var overview=picks.map(function(f){var p=selectedPlan(f);return '<article class="tc-compare-dossier"><div class="tc-dossier-top">'+avatar(f,48)+'<a href="/firm/'+esc(f.slug)+'">'+esc(f.name)+'</a></div><p>'+esc(planLabel(p))+'</p><div class="tc-dossier-price">'+planPriceHTML(p)+'</div><dl><div><dt>Profit split</dt><dd>'+esc(formatSplit(p.split||f.split))+'</dd></div><div><dt>Max drawdown</dt><dd>'+esc(p.maxDD||f.dd)+'</dd></div><div><dt>Payout</dt><dd>'+esc(p.payout||f.payoutText||"—")+'</dd></div></dl><a href="/firm/'+esc(f.slug)+'">Full research</a></article>';}).join("");
+  var plans=picks.map(function(f){return {f:f,p:selectedPlan(f)};});
+  var comparable=plans.length>1&&plans.every(function(x){return x.p.price!=null&&x.p.price!==""&&Number.isFinite(Number(x.p.price))&&Number(x.p.price)>=0&&x.p.currency===plans[0].p.currency&&x.p.monthly===plans[0].p.monthly;});
+  var maxFee=comparable?Math.max(1,Math.max.apply(null,plans.map(function(x){return Number(x.p.price);} ))):1;
+  var feeVisual=plans.length>1?'<section class="tc-fee-visual"><div><h2>Evaluation fees</h2><p>'+(comparable?'Recorded prices on the same currency and payment basis. Check activation fees and discounts separately.':'Different currencies, billing terms, or missing prices. Compare the displayed fees individually.')+'</p></div><div class="tc-fee-columns">'+plans.map(function(x){return '<div class="tc-fee-column"><span>'+esc(x.f.name)+'</span><strong>'+planPriceHTML(x.p)+'</strong>'+(comparable?'<div class="tc-fee-depth" aria-hidden="true"><i style="--tc-fee-share:'+Number(x.p.price)/maxFee+'"></i></div>':'')+'</div>';}).join("")+'</div></section>':'';
   var table = picks.length
     ? '<div class="tblwrap comparison-table"><table class="dt"><thead><tr><th>Field</th>' + picks.map(function(f){ return '<th><a href="/firm/' + f.slug + '" style="display:inline-flex;gap:9px;align-items:center;color:var(--ink)">' + avatar(f,30) + " " + esc(f.name) + "</a></th>"; }).join("") + "</tr></thead><tbody>" +
       rows.map(function(r){ return '<tr data-field-group="'+rowGroup(r[0])+'"><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + r[0] + "</td>" + picks.map(function(f){ return "<td>" + r[1](f) + "</td>"; }).join("") + "</tr>"; }).join("") +
@@ -2708,7 +2780,7 @@ function pageCompare(q){
       var planMenu = picked ? '<label class="fl" for="cmpPlan' + i + '" style="margin-top:8px">Plan</label><select id="cmpPlan' + i + '">' + firmPlanList(picked).map(function(p){ var on = selectedPlan(picked).id === p.id; return '<option value="' + esc(p.id) + '"' + (on ? " selected" : "") + ">" + esc(planLabel(p)) + "</option>"; }).join("") + "</select>" : "";
       return '<div class="field" style="margin:0"><label class="fl" for="cmp' + i + '">Firm ' + (i + 1) + '</label><select class="cmp" id="cmp' + i + '"><option value="">— none —</option>' + FIRMS.map(function(f){ return '<option value="' + f.slug + '"' + (cmpState.picks[i] === f.slug ? " selected" : "") + ">" + esc(f.name) + "</option>"; }).join("") + "</select>" + planMenu + "</div>";
     }).join("") +
-    "</div></div>" + (picks.length?'<section class="tc-compare-overview" aria-label="Selected plan summary">'+overview+'</section><div class="tc-table-toolbar"><h2>Compare the details</h2><div class="tc-compare-actions"><button type="button" class="btn ghost small" id="tc-share">Share comparison</button><button type="button" class="btn ghost small" id="tc-differences" aria-pressed="false">Differences only</button></div><div class="pill-tabs" id="tc-compare-fields" aria-label="Comparison fields">'+Object.keys(groups).map(function(k){return '<button type="button" data-tc-field="'+k+'" aria-pressed="'+(k==="all") +'" class="'+(k==="all"?"on":"")+'">'+groups[k]+'</button>';}).join("")+'</div></div>':"") + table +
+    "</div></div>" + (picks.length?'<section class="tc-compare-overview" aria-label="Selected plan summary">'+overview+'</section>'+feeVisual+'<div class="tc-table-toolbar"><h2>Compare the details</h2><div class="tc-compare-actions"><button type="button" class="btn ghost small" id="tc-share">Share comparison</button><button type="button" class="btn ghost small" id="tc-differences" aria-pressed="false">Differences only</button></div><div class="pill-tabs" id="tc-compare-fields" aria-label="Comparison fields">'+Object.keys(groups).map(function(k){return '<button type="button" data-tc-field="'+k+'" aria-pressed="'+(k==="all") +'" class="'+(k==="all"?"on":"")+'">'+groups[k]+'</button>';}).join("")+'</div></div>':"") + table +
     '<div class="secttl"><span class="bar"></span><h2>Find a firm to add</h2></div>' +
     '<p class="mut small" style="margin-top:-8px">Filter by market, platform, entry price, payout speed and drawdown. Prices stay in each firm\'s own currency.</p>' +
     filterFieldsHTML(cmpFilter, "cmpf") +
@@ -2826,9 +2898,9 @@ function pageVs(a,b){
   if (!fa||!fb) return page404("Matchup not available", "One of these firms is not in the 150-firm directory researched on "+SNAPSHOT+".");
   var rows=[["Rating",function(f){return f.rating?f.rating.toFixed(1):esc(ratingState(f).value)},function(f){return f.rating||0}],["Profit split (max)",function(f){return esc(formatSplit(f.split))},function(f){return f.splitMax||0}],["From price",function(f){return priceHTML(f)},function(f){return f.from===null?-1:100000-f.from}],["Payout cycle",function(f){return esc(f.payoutText)},function(f){return f.payoutDays===null?-1:100-f.payoutDays}],["Consistency rule",function(f){return esc(f.consistencyText)},function(f){return 0}],["Verified code",function(f){return f.code?esc(f.code):"None verified"},function(f){return f.off||0}],["Drawdown",function(f){return esc(f.dd)},function(f){return 0}]];
   go(pageHead('<a href="/">Home</a> · <a href="/compare">Compare</a>', esc(fa.name)+" vs "+esc(fb.name),
-    "Quick answer: on snapshot ratings, "+(((fa.rating||0)>=(fb.rating||0))?esc(fa.name):esc(fb.name))+" edges this matchup; on entry price, "+((fa.from!==null&&(fb.from===null||fa.from<fb.from))?esc(fa.name):esc(fb.name))+" is cheaper. The right pick depends on drawdown type and payout speed — the table has the numbers. Updated "+SNAPSHOT+" · researched snapshot.")+
+    "Compare recorded ratings, evaluation costs and rules. Fees in different currencies or payment periods are not directly comparable. Research snapshot: "+SNAPSHOT+".")+
   '<div class="tblwrap" style="margin-top:20px"><table class="dt"><thead><tr><th></th><th>'+esc(fa.name)+'</th><th>'+esc(fb.name)+'</th></tr></thead><tbody>'+
-  rows.map(function(r){ var va=r[2](fa), vb=r[2](fb); return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.6px;text-transform:uppercase">'+r[0]+"</td><td>"+r[1](fa)+(va>vb?' <span style="color:#a9dc7d" aria-label="better">✓</span>':"")+"</td><td>"+r[1](fb)+(vb>va?' <span style="color:#a9dc7d" aria-label="better">✓</span>':"")+"</td></tr>"; }).join("")+
+  rows.map(function(r){ var va=r[2](fa), vb=r[2](fb);if(r[0]==="From price"&&(fa.from==null||fb.from==null||(fa.fromCur||"USD")!==(fb.fromCur||"USD")||!!fa.monthly!==!!fb.monthly)){va=vb=0;}if(r[0]==="Rating"&&(!fa.rating||!fb.rating)){va=vb=0;} return '<tr><td class="mut" style="font-weight:800;font-size:12px;letter-spacing:.6px;text-transform:uppercase">'+r[0]+"</td><td>"+r[1](fa)+(va>vb?' <span style="color:#a9dc7d" aria-label="better">✓</span>':"")+"</td><td>"+r[1](fb)+(vb>va?' <span style="color:#a9dc7d" aria-label="better">✓</span>':"")+"</td></tr>"; }).join("")+
   '</tbody></table></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn small" href="/firm/'+fa.slug+'">'+esc(fa.name)+' review</a><a class="btn small ghost" href="/firm/'+fb.slug+'">'+esc(fb.name)+' review</a><a class="btn small ghost" href="/compare">Compare 3 firms</a></div>'+
   snapLine("Figures from the "+SNAPSHOT+" snapshot; the ✓ marks the better figure in that row only, not an overall verdict."));
 }
@@ -3023,10 +3095,11 @@ function pageGuide(slug){
 function pageFaq(){
   var cats = [["Prop Firm Basics",7],["Rules & Drawdown",7],["Choosing a Prop Firm",7],["Payouts, Fees & Discounts",7],["Platforms & Eligibility",5],["Managing Your Accounts",4],["About PropFirmMath",3]];
   go(pageHead('<a href="/">Home</a> · FAQ', "Frequently asked questions",
-    "Answers to the 14 questions traders ask most. Figures quoted in answers are dated where they appear.")+
-  '<div style="margin:20px 0"></div>'+
+    "Answers to "+FAQS.length+" questions about evaluation fees, rules and payouts. Figures are dated where they appear.")+
+  '<div class="tc-rules-search"><label for="tc-faq-q">Find an answer</label><input id="tc-faq-q" type="search" placeholder="e.g. payout, drawdown"><p id="tc-faq-count" aria-live="polite"></p></div>'+
   '<div style="max-width:860px">'+faqHTML(FAQS,0)+"</div>"+
   '<div class="card" style="margin-top:22px;max-width:860px"><h3>Figures behind these answers</h3><p class="mut" style="margin-top:8px">'+FIRMS.filter(function(f){ return f.instant; }).length+' of the '+COUNTS.total+' firms sell at least one instant account · '+codesCount()+' discount codes verified on official sites across '+firmsWithCodes().length+' firms · 4 firms price in euros (FTMO global, Core Funded, PineX, BrightFunded) · 4 charge monthly subscriptions (Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero) · payout cycles run from daily/on-demand to quarterly. Source: the '+SNAPSHOT+' official-site research behind every firm page here.</p></div>');
+  var q=$("#tc-faq-q");if(q)q.addEventListener("input",function(){var term=q.value.toLowerCase().trim(),shown=0;$("details.faq").forEach(function(el){var yes=el.textContent.toLowerCase().indexOf(term)>=0;el.hidden=!yes;if(yes)shown++;});$("#tc-faq-count").textContent=shown+" matching questions";});
 }
 /* ================= GLOSSARY ================= */
 function pageGlossary(){
@@ -3043,10 +3116,11 @@ function pageRules(){
   var list = FIRMS.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
   go(pageHead('<a href="/">Home</a> · Rules Comparison', "Trading rules, compared",
     "Drawdown, consistency, split, target and payout cycle for all "+COUNTS.total+" firms — researched on official firm sites, "+SNAPSHOT+". Where a firm has no consistency rule, the table says None; where a figure could not be verified, it says so.")+
-  '<div class="tblwrap" style="margin-top:20px"><table class="dt"><thead><tr><th>Firm</th><th>Max drawdown</th><th>Consistency</th><th>Split</th><th>Target</th><th>Payout cycle</th><th>Platforms</th></tr></thead><tbody>'+
+  '<div class="tc-rules-search"><label for="tc-rules-q">Search rules by firm or term</label><input id="tc-rules-q" type="search" placeholder="e.g. static drawdown, Tradeify"><p id="tc-rules-count" aria-live="polite">'+list.length+' firms</p></div><div class="tblwrap tc-rules-table" style="margin-top:20px"><table class="dt"><thead><tr><th>Firm</th><th>Max drawdown</th><th>Consistency</th><th>Split</th><th>Target</th><th>Payout cycle</th><th>Platforms</th></tr></thead><tbody>'+
   list.map(function(f){ return '<tr><td><a href="/firm/'+f.slug+'" style="display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-weight:700">'+avatar(f,30)+' '+esc(f.name)+'</a></td><td>'+esc(f.dd)+'</td><td>'+esc(f.consistencyText)+'</td><td>'+esc(formatSplit(f.split))+'</td><td>'+esc(f.target)+'</td><td>'+esc(f.payoutText)+'</td><td>'+esc(listOrDash(f.platforms))+"</td></tr>"; }).join("")+
   '</tbody></table></div>'+
   '<div class="card" style="margin-top:22px"><h3>The three drawdown types</h3><p class="mut" style="margin-top:8px"><strong style="color:var(--ink)">Static:</strong> the floor never moves. <strong style="color:var(--ink)">EOD trailing:</strong> the floor follows your end-of-day balance up. <strong style="color:var(--ink)">Intraday trailing:</strong> the floor follows your highest open profit and is the easiest to breach. Consistency figures name the program they belong to. Many firms run several programs with different rules, and the firm page carries the full breakdown.</p></div>');
+  var q=$("#tc-rules-q");if(q)q.addEventListener("input",function(){var words=q.value.trim().toLowerCase().split(/\\s+/).filter(Boolean),shown=0;$(".tc-rules-table tbody tr").forEach(function(row){var text=row.textContent.toLowerCase(),yes=words.every(function(w){return text.indexOf(w)>=0;});row.hidden=!yes;if(yes)shown++;});$("#tc-rules-count").textContent=shown+" matching firms";});
   bindCopy();
 }
 /* ================= STATISTICS ================= */
@@ -3054,7 +3128,7 @@ function pageStats(){
   var cards = [[COUNTS.total,"Firms in this directory","Every one with a full research record — no named-only firms remain"],[VERIF_SPLIT,"Verification split, "+SNAPSHOT,"Official firm websites only; partial means some rules or prices were not confirmed"],[FIRMS.filter(function(f){ return f.instant; }).length,"Firms selling an instant account","Counted from the "+SNAPSHOT+" firm records"],[codesCount(),"Discount codes verified on official sites","Across "+firmsWithCodes().length+" firms — the only deal count this site quotes, and it reconciles with the Deals page"],["9","Firms pricing in euros, not dollars","FTMO (global), Core Funded, PineX Capital, BrightFunded, Darwinex Zero, SpiceProp, AlpineFunded, Amadeux, Nextproptrader"],["10","Firms charging monthly subscriptions","Earn2Trade, Take Profit Trader, Blueberry Futures, Darwinex Zero, Alpha Futures, Purdia Capital, UProfit, Funded Family One, Zenith Funded, QATS Prop"],["Daily → quarterly","Payout cycle range","Daily/on-demand at the fast end; Darwinex Zero pays performance fees quarterly"],[COUNTS.tracked+" of "+COUNTS.total,"Tracker coverage","Rise rail only — paid totals captured in the Nov 25, 2026 tracker snapshot"]];
   go(pageHead('<a href="/">Home</a> · Statistics', "Prop firm statistics",
     "Every figure below is computed from the "+SNAPSHOT+" firm research (official sites only) or labelled with its own snapshot date. Nothing here is a live number.")+
-  '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
+  '<section class="tc-stats-markets"><h2>Coverage by market</h2><p>Markets overlap, so these counts are not additive.</p><div class="tc-stats-bars">'+Object.keys(MARKETS).map(function(k){var n=dirCount(k);return '<a href="/'+k+'"><span>'+esc(MARKETS[k].label)+'</span><strong>'+n+'</strong><span class="tc-stats-track"><i style="--tc-stat-share:'+n/Math.max(1,COUNTS.total)+'"></i></span></a>';}).join("")+'</div></section><div class="grid tc-stats-index" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin-top:20px">'+
   cards.map(function(s){ return '<article class="card"><div style="font-family:Sora;font-size:30px;font-weight:800" class="gold">'+s[0]+'</div><h3 style="margin-top:6px">'+s[1]+'</h3><p class="mut small">'+s[2]+"</p></article>"; }).join("")+
   "</div>");
 }
