@@ -144,12 +144,16 @@ var FIRMS = [
         ],
         "source": "https://myfundedfutures.com/",
         "platforms": [
+          "NinjaTrader",
+          "Hyperprop",
           "Tradovate",
+          "TradingView",
           "Quantower",
-          "DeepChart",
-          "Hyperprop"
+          "Volumetrica",
+          "DeepChart/DeepDom",
+          "ATAS"
         ],
-        "platformSource": "https://myfundedfutures.com/",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
         "verifiedOn": "Nov 28, 2026",
         "coverage": "verified-availability",
         "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
@@ -164,12 +168,16 @@ var FIRMS = [
         ],
         "source": "https://myfundedfutures.com/",
         "platforms": [
+          "NinjaTrader",
+          "Hyperprop",
           "Tradovate",
+          "TradingView",
           "Quantower",
-          "DeepChart",
-          "Hyperprop"
+          "Volumetrica",
+          "DeepChart/DeepDom",
+          "ATAS"
         ],
-        "platformSource": "https://myfundedfutures.com/",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
         "verifiedOn": "Nov 28, 2026",
         "coverage": "verified-availability",
         "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
@@ -184,12 +192,16 @@ var FIRMS = [
         ],
         "source": "https://myfundedfutures.com/",
         "platforms": [
+          "NinjaTrader",
+          "Hyperprop",
           "Tradovate",
+          "TradingView",
           "Quantower",
-          "DeepChart",
-          "Hyperprop"
+          "Volumetrica",
+          "DeepChart/DeepDom",
+          "ATAS"
         ],
-        "platformSource": "https://myfundedfutures.com/",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
         "verifiedOn": "Nov 28, 2026",
         "coverage": "verified-availability",
         "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
@@ -202,12 +214,16 @@ var FIRMS = [
         ],
         "source": "https://myfundedfutures.com/",
         "platforms": [
+          "NinjaTrader",
+          "Hyperprop",
           "Tradovate",
+          "TradingView",
           "Quantower",
-          "DeepChart",
-          "Hyperprop"
+          "Volumetrica",
+          "DeepChart/DeepDom",
+          "ATAS"
         ],
-        "platformSource": "https://myfundedfutures.com/",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
         "verifiedOn": "Nov 28, 2026",
         "coverage": "verified-availability",
         "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
@@ -221,12 +237,16 @@ var FIRMS = [
         ],
         "source": "https://myfundedfutures.com/",
         "platforms": [
+          "NinjaTrader",
+          "Hyperprop",
           "Tradovate",
+          "TradingView",
           "Quantower",
-          "DeepChart",
-          "Hyperprop"
+          "Volumetrica",
+          "DeepChart/DeepDom",
+          "ATAS"
         ],
-        "platformSource": "https://myfundedfutures.com/",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
         "verifiedOn": "Nov 28, 2026",
         "coverage": "verified-availability",
         "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
@@ -236,7 +256,7 @@ var FIRMS = [
       "date": "2026-11-28",
       "status": "partial",
       "source": "https://myfundedfutures.com/",
-      "platformSource": "https://myfundedfutures.com/",
+      "platformSource": "https://help.myfundedfutures.com/en/articles/8528335-overview-of-supported-platforms-at-mffu",
       "note": "Official plan selector reviewed; platform list is firm-wide, not proven for every plan. Existing accounts can be recorded manually."
     }
   },
@@ -413,7 +433,114 @@ var FIRMS = [
         "platform": "MT4, MT5, cTrader, TradingView",
         "source": "https://ftmo.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "2-Step",
+        "sizes": [
+          10000,
+          25000,
+          50000,
+          100000,
+          200000
+        ],
+        "source": "https://ftmo.com/en/2-step-challenge/",
+        "platforms": [
+          "MT4",
+          "MT5",
+          "cTrader",
+          "TradingView"
+        ],
+        "platformSource": "https://ftmo.com/en/faq/which-platforms-can-i-use-for-trading/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD and futures menus separated; country restrictions may differ."
+      },
+      {
+        "name": "1-Step",
+        "sizes": [
+          10000,
+          25000,
+          50000,
+          100000,
+          200000
+        ],
+        "source": "https://promo.ftmo.com/new-1-step-challenge/",
+        "platforms": [
+          "MT4",
+          "MT5",
+          "cTrader",
+          "TradingView"
+        ],
+        "platformSource": "https://ftmo.com/en/faq/which-platforms-can-i-use-for-trading/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD and futures menus separated; country restrictions may differ."
+      },
+      {
+        "name": "Instant",
+        "sizes": [
+          5000,
+          10000,
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://ftmo.com/en/instant-account/",
+        "platforms": [
+          "MT4",
+          "MT5",
+          "cTrader",
+          "TradingView"
+        ],
+        "platformSource": "https://ftmo.com/en/faq/which-platforms-can-i-use-for-trading/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD and futures menus separated; country restrictions may differ."
+      },
+      {
+        "name": "Futures Growth",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://ftmo.com/en/futures/comparison-table/",
+        "platforms": [
+          "NinjaTrader",
+          "Tradovate",
+          "TradingView"
+        ],
+        "platformSource": "https://ftmo.com/en/futures/faq/ftr-which-platforms-can-i-use-for-trading/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD and futures menus separated; country restrictions may differ."
+      },
+      {
+        "name": "Futures Pro",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://ftmo.com/en/futures/comparison-table/",
+        "platforms": [
+          "NinjaTrader",
+          "Tradovate",
+          "TradingView"
+        ],
+        "platformSource": "https://ftmo.com/en/futures/faq/ftr-which-platforms-can-i-use-for-trading/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "CFD and futures menus separated; country restrictions may differ."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "note": "CFD and futures menus separated; country restrictions may differ.",
+      "source": "https://ftmo.com/en/2-step-challenge/"
+    }
   },
   {
     "slug": "top-one-futures",
@@ -482,7 +609,216 @@ var FIRMS = [
     "largest": null,
     "note": "The $39 figure is the Elite Access entry fee. An activation fee of $139–$359 by size is charged after passing.",
     "summary": "US futures firm (CME via Tradovate, NinjaTrader, BlackArrow, WealthCharts). Elite Access has a flat $39 entry fee at every size, with an activation fee after passing; Elite Daily and Instant Sim Funded pay daily or at payout targets.",
-    "verifiedOn": "Nov 27, 2026"
+    "verifiedOn": "Nov 27, 2026",
+    "accountPlans": [
+      {
+        "name": "Elite",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "Elite Daily",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "Elite ACCESS",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "Elite ACCESS Intraday",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "Elite ACCESS Static",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/17889367-elite-access-static-accounts-overview",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "Instant Sim Funded",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "Ignite",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "X-Daily Spark",
+        "sizes": [
+          50000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "X-Ultra",
+        "sizes": [
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      },
+      {
+        "name": "X-HYPER",
+        "sizes": [],
+        "source": "https://help.toponefutures.com/en/",
+        "platforms": [
+          "Tradovate",
+          "NinjaTrader",
+          "BlackArrow",
+          "WealthCharts",
+          "Hyperprop"
+        ],
+        "platformSource": "https://help.toponefutures.com/en/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "type-only",
+        "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "note": "X-HYPER sizes and per-program platform restrictions not established; use manual size.",
+      "source": "https://help.toponefutures.com/en/articles/10906950-maximum-contracts-explained"
+    }
   },
   {
     "slug": "ment-funding",
@@ -765,7 +1101,14 @@ var FIRMS = [
         "platform": "Tradovate, NinjaTrader",
         "source": "https://tradeify.co"
       }
-    ]
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "source": "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+      "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+      "note": "Growth, Lightning, Select checked; newer specialty products and legacy programs need review."
+    }
   },
   {
     "slug": "apex-trader-funding",
@@ -990,7 +1333,72 @@ var FIRMS = [
         "platform": null,
         "source": "https://bulenox.com"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "Qualification",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://bulenox.com/accounts-pricing",
+        "platforms": [
+          "Rithmic",
+          "NinjaTrader",
+          "Tradovate"
+        ],
+        "platformSource": "https://bulenox.com/help-center/connection",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Both risk models listed on official site; detailed platform list beyond these three needs further review."
+      },
+      {
+        "name": "Fast Track",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://bulenox.com/accounts-pricing",
+        "platforms": [
+          "Rithmic",
+          "NinjaTrader",
+          "Tradovate"
+        ],
+        "platformSource": "https://bulenox.com/help-center/connection",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Both risk models listed on official site; detailed platform list beyond these three needs further review."
+      },
+      {
+        "name": "Momentum",
+        "sizes": [
+          25000,
+          50000,
+          100000,
+          150000
+        ],
+        "source": "https://bulenox.com/accounts-pricing",
+        "platforms": [
+          "Rithmic",
+          "NinjaTrader",
+          "Tradovate"
+        ],
+        "platformSource": "https://bulenox.com/help-center/connection",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Both risk models listed on official site; detailed platform list beyond these three needs further review."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "note": "Both risk models listed on official site; detailed platform list beyond these three needs further review.",
+      "source": "https://bulenox.com/accounts-pricing"
+    }
   },
   {
     "slug": "fundednext",
@@ -1775,7 +2183,101 @@ var FIRMS = [
         "platform": "MT5",
         "source": "https://the5ers.com/high-stakes/"
       }
-    ]
+    ],
+    "accountPlans": [
+      {
+        "name": "High Stakes",
+        "sizes": [
+          2500,
+          5000,
+          10000,
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+        "platforms": [
+          "MT5"
+        ],
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Sizes from published account limits. Program-specific platform and newer futures products require further confirmation."
+      },
+      {
+        "name": "High Stakes New",
+        "sizes": [
+          2500,
+          5000,
+          10000,
+          25000,
+          50000,
+          100000
+        ],
+        "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+        "platforms": [
+          "MT5"
+        ],
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Sizes from published account limits. Program-specific platform and newer futures products require further confirmation."
+      },
+      {
+        "name": "Hyper Growth",
+        "sizes": [
+          5000,
+          10000,
+          20000
+        ],
+        "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+        "platforms": [
+          "MT5"
+        ],
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Sizes from published account limits. Program-specific platform and newer futures products require further confirmation."
+      },
+      {
+        "name": "Bootcamp",
+        "sizes": [
+          20000,
+          100000,
+          250000
+        ],
+        "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+        "platforms": [
+          "MT5"
+        ],
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Sizes from published account limits. Program-specific platform and newer futures products require further confirmation."
+      },
+      {
+        "name": "ProGrowth",
+        "sizes": [
+          5000,
+          10000,
+          20000
+        ],
+        "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/",
+        "platforms": [
+          "MT5"
+        ],
+        "platformSource": "https://the5ers.com/faqs/how-does-the-hyper-growth-program-work/",
+        "verifiedOn": "Nov 28, 2026",
+        "coverage": "verified-availability",
+        "note": "Sizes from published account limits. Program-specific platform and newer futures products require further confirmation."
+      }
+    ],
+    "accountCatalogReview": {
+      "date": "2026-11-28",
+      "status": "partial",
+      "note": "Sizes from published account limits. Program-specific platform and newer futures products require further confirmation.",
+      "source": "https://the5ers.com/faqs/how-many-the5ers-accounts-can-i-have/"
+    }
   },
   {
     "slug": "alpha-capital",
