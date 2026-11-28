@@ -224,10 +224,13 @@ function submit(form) {
     }
     ok("FTMO plan is 10k, not a forced 50k", sizesOf("ftmo") === "2-Step:10000", sizesOf("ftmo"));
     ok("FTUK is listed from $9", w.firm("ftuk") && w.firm("ftuk").from === 9, w.firm("ftuk") && w.firm("ftuk").from);
-    ok("Apex stays on the 25k plan", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000", sizesOf("apex-trader-funding"));
+    ok("Apex includes verified 25k to 150k Intraday and EOD choices", sizesOf("apex-trader-funding") === "Intraday Trail Std:25000/50000/100000/150000 | EOD Trail:25000/50000/100000/150000", sizesOf("apex-trader-funding"));
     ok("FundedNext lists the 5k plan", sizesOf("fundednext") === "Stellar Lite:5000", sizesOf("fundednext"));
     const mffu = w.journalFirmCatalog(w.firm("my-funded-futures"));
-    ok("MFFU lists the Signature sizes", mffu.length === 1 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
+    ok("MFFU lists the Signature sizes", mffu.length === 5 && mffu[0].name === "Signature" && mffu[0].sizes.join() === "5000,10000,20000", mffu.map(p => p.name + ":" + p.sizes.join("/")).join(" | "));
+    ok("MFFU Rapid EOD does not invent 100k or 150k", mffu.find(p=>p.name==="Rapid EOD").sizes.join() === "25000,50000", sizesOf("my-funded-futures"));
+    ok("Tradeify Select includes 300k and Growth excludes it", sizesOf("tradeify") === "Growth:25000/50000/100000/150000 | Select:25000/50000/100000/150000/300000 | Lightning:25000/50000/100000/150000", sizesOf("tradeify"));
+    ok("newly researched size does not borrow starting offer rules", w.journalFirmRules(w.firm("apex-trader-funding"),"Intraday Trail Std",50000) === null, "size-only");
     const structured = w.journalFirmCatalog({ plans: [{ name: "Pro", sizes: [25000, 50000] }] });
     ok("plans export is the source when present", structured.length === 1 && structured[0].sizes.join() === "25000,50000", structured);
     const ftmoRules = w.journalFirmRules(w.firm("ftmo"), "2-Step", 10000);
@@ -254,7 +257,13 @@ function submit(form) {
       return Array.prototype.map.call(d.getElementById("newAccountSizePreset").options, o => o.value);
     }
     const filter = d.getElementById("journalAccountFilter");
+    ok("saved accounts are grouped by prop firm", !!filter.querySelector('optgroup[label="FTMO"]'), filter.innerHTML);
     ok("dashboard lists only saved accounts", filter.innerHTML.includes("All my accounts") && filter.innerHTML.includes("Main journal") && !filter.innerHTML.includes("firm:") && !filter.innerHTML.includes("+ FTMO"), filter.innerHTML.slice(0, 240));
+    d.getElementById("newFirm").value = "Apex Trader Funding";
+    d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
+    ok("Apex size chips are visible and include 25K and 50K", Array.from(d.querySelectorAll("#jv14SizeChoices button")).map(b=>b.textContent).join() === "$25K,$50K,$100K,$150K", d.getElementById("jv14SizeChoices").textContent);
+    d.querySelector('[data-account-size="50000"]').click();
+    ok("50K chip changes the saved size selector", d.getElementById("newAccountSizePreset").value === "50000" && d.querySelector('[data-account-size="50000"]').getAttribute("aria-pressed") === "true", d.getElementById("newAccountSizePreset").value);
     d.getElementById("newFirm").value = "FTMO";
     d.getElementById("newFirm").dispatchEvent(new w.Event("change"));
     ok("FTMO defaults to its 10k plan", d.getElementById("newFirm").value === "FTMO" && d.getElementById("newPlan").value === "2-Step" && sizeOptions().join() === "10000,__custom__" && d.getElementById("newAccountSizePreset").value === "10000", sizeOptions().join());
