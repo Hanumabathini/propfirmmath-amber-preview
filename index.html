@@ -886,6 +886,55 @@ html:not([data-pfm-route="/journal"]) .pfm-command-head :is(input,button){border
 @media(max-width:820px){html:not([data-pfm-route="/journal"]) #app .pfm-region-intro{grid-template-columns:minmax(0,1fr)}html:not([data-pfm-route="/journal"]) #app .pfm-region-intro .pfm-globe{max-width:160px}}
 @media(max-width:680px){html:not([data-pfm-route="/journal"]) #app .filterbar .grow{grid-column:1/-1}html:not([data-pfm-route="/journal"]) #app .hero-cta .btn{flex:1 1 100%}html:not([data-pfm-route="/journal"]) #app .section-mast{align-items:flex-start}html:not([data-pfm-route="/journal"]) #app .pfm-region-intro{gap:12px}html:not([data-pfm-route="/journal"]) #app .empty-note{padding:18px}html:not([data-pfm-route="/journal"]) #app .btn{padding-inline:16px}}
 </style>
+<style id="pfm-journal-membership-visibility">
+#app .pfm-journal #memberships{display:block;width:100%;min-width:0;padding:20px!important;margin:0 0 16px!important}
+#app .pfm-journal .pfm-member-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#app .pfm-journal #journalMembershipHeading{font-size:clamp(20px,2.8vw,27px);line-height:1.2;margin:0 0 6px}
+#app .pfm-journal .pfm-current-tier{border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:12px;color:var(--amber)}
+#app .pfm-journal .pfm-member-usage{margin:14px 0;color:var(--muted);font-size:13px}
+#app .pfm-journal .pfm-member-usage strong{color:var(--ink);font-size:17px;font-variant-numeric:tabular-nums}
+#app .pfm-journal .pfm-member-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+#app .pfm-journal #memberships .pfm-membership-card{min-width:0;padding:14px!important;margin:0!important}
+#app .pfm-journal #memberships .pfm-membership-card[data-current="true"]{border-color:var(--amber)!important}
+#app .pfm-journal #memberships summary{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:0;padding:0;cursor:pointer;list-style:none}
+#app .pfm-journal #memberships summary::-webkit-details-marker{display:none}
+#app .pfm-journal .pfm-member-name{font-size:19px}
+#app .pfm-journal .pfm-member-price{display:block;font-size:clamp(24px,3vw,34px);font-weight:750;color:var(--ink);line-height:1.15;font-variant-numeric:tabular-nums}
+#app .pfm-journal .pfm-member-cap{font-size:13px;font-weight:650;margin:6px 0;color:var(--ink)}
+#app .pfm-journal .pfm-member-action{width:100%;padding:9px 7px;border:1px solid var(--line);border-radius:6px;text-align:center;font-size:12px;color:var(--amber);min-height:40px}
+#app .pfm-journal .pfm-member-action:after{content:" ▾"}
+#app .pfm-journal details[open] .pfm-member-action:after{content:" ▴"}
+#app .pfm-journal .pfm-member-details{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;line-height:1.5}
+#app .pfm-journal .pfm-member-note{margin-top:16px;line-height:1.6}
+#app .pfm-journal #journalViewMemberships{white-space:normal;min-height:40px}
+@media(max-width:1050px){#app .pfm-journal .pfm-member-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}}
+@media(max-width:600px){#app .pfm-journal .pfm-member-grid{grid-template-columns:1fr}#app .pfm-journal .pfm-member-current-mini{display:none}#app .pfm-journal #memberships{padding:14px!important}#app .pfm-journal #journalViewMemberships{font-size:11px;padding-inline:8px}}
+</style>
+<style id="pfm-journal-profile-settings">
+#app .pfm-journal .pfm-journal-profile{padding:20px!important;margin:0 0 16px!important;min-width:0}
+#app .pfm-journal .pfm-profile-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#app .pfm-journal .pfm-profile-heading h3{font-size:clamp(19px,2.4vw,23px);margin:0 0 5px}
+#app .pfm-journal .pfm-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;margin:18px 0 0}
+#app .pfm-journal .pfm-profile-grid>div{min-width:0}
+#app .pfm-journal .pfm-profile-grid dt{font-size:12px;color:var(--muted);margin:0 0 5px}
+#app .pfm-journal .pfm-profile-grid dd{font-size:14px;font-weight:600;color:var(--ink);margin:0;overflow-wrap:anywhere}
+#app .pfm-journal #journalProfileEditor{border-top:1px solid var(--line);margin-top:18px}
+#app .pfm-journal #journalProfileEditor[hidden]{display:none!important}
+#app .pfm-journal .pfm-profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+#app .pfm-journal #journalProfileMsg:empty{display:none}
+@media(max-width:600px){#app .pfm-journal .pfm-journal-profile{padding:14px!important}#app .pfm-journal .pfm-profile-grid{grid-template-columns:1fr;gap:12px}}
+</style>
+<style id="pfm-membership-tester-style">
+#app .pfm-journal .pfm-test-switch{margin-top:20px;padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--panel2)}
+#app .pfm-journal .pfm-test-switch h3{margin:0 0 8px}
+#app .pfm-journal .pfm-test-tier-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#app .pfm-journal #journalTestTierMsg:empty{display:none}
+</style>
+<style id="pfm-test-card-actions">
+#app .pfm-journal .pfm-member-column{display:flex;flex-direction:column;min-width:0;gap:9px}
+#app .pfm-journal .pfm-test-card-button{width:100%;min-height:44px;white-space:normal}
+#app .pfm-journal .pfm-test-switch{margin:0 0 16px}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -1387,6 +1436,7 @@ function signOutAndLeave(){
   if (!sb) return;
   sb.auth.signOut().then(function(){
     PM_USER = null;
+    pfmServerMembership=null;
     if (typeof journalState !== "undefined" && journalState) journalState = {rows:[],allRows:[],accounts:[],acct:null,selected:"all",tab:"overview",calYear:null,calMonth:null,showAllSymbols:false};
     history.pushState({},"","/");
     route();
@@ -1402,6 +1452,7 @@ if (sb){
     PM_USER = session ? session.user : null;
     var id = PM_USER ? PM_USER.id : null;
     var changed = authSeen && id !== lastAuthUserId;
+    if(changed)pfmServerMembership=null;
     lastAuthUserId = id;
     var first = !authReady;
     authReady = true;
@@ -2135,7 +2186,7 @@ function pageDeals(){
     '<p class="mut small" style="margin-top:18px">Where an offer names a clock time, that timezone is used. A date alone is treated as 11:59 PM Eastern. Codes are the firms\' published promotions.</p>');
   bindCopy();
   var allOffers=$("#pfmAllOffers");if(allOffers)allOffers.addEventListener("click",function(){dealState.market="all";pageDeals();});
-  $("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
+  $$("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
   if (window.pfmDealTimer) clearInterval(window.pfmDealTimer);
   window.pfmDealTimer = setInterval(function(){
     if (location.pathname !== "/deals") { clearInterval(window.pfmDealTimer); return; }
@@ -2502,16 +2553,35 @@ function authChecking(title){
     '<div class="card" style="margin-top:20px;max-width:560px"><p class="mut">Checking your session…</p></div>');
 }
 var PFM_MEMBERSHIPS = [{id:"basic",name:"Basic",price:"Free",limit:1},{id:"pro",name:"Pro",price:"$9.99/month",limit:10},{id:"elite",name:"Elite",price:"$19.99/month",limit:25}];
+var pfmServerMembership=null;
+function pfmReadMembership(user){
+  if(!user||!user.id||!sb)return Promise.resolve(null);
+  var uid=user.id;
+  return sb.rpc("journal_current_membership").then(function(r){
+    if(r.error||!r.data||!["basic","pro","elite"].includes(r.data.tier)||typeof r.data.tester!=="boolean")throw Error("Could not verify membership.");
+    if(PM_USER&&PM_USER.id===uid){pfmServerMembership={uid:uid,tier:r.data.tier,tester:r.data.tester};return pfmServerMembership;}
+    return null;
+  });
+}
 function pfmMembership(user){
-  var id=user && user.app_metadata && user.app_metadata.pfm_membership;
+  var id=user&&pfmServerMembership&&pfmServerMembership.uid===user.id?pfmServerMembership.tier:user && user.app_metadata && user.app_metadata.pfm_membership;
   return PFM_MEMBERSHIPS.find(function(p){return p.id===id;})||PFM_MEMBERSHIPS[0];
 }
 function pfmFreeJournalIntro(){return '<div class="card pfm-free-journal-intro"><h3>Free trading journal, included</h3><p class="mut" style="margin-top:8px">Every registered user can track one trading account, log trades, view analytics and export CSV. Optional Journal upgrades are available in Settings when billing launches. The public directory, comparisons, calculators and trackers do not require a paid plan.</p></div>';}
+function journalProfileCard(user){
+  var meta=user.user_metadata||{}, joined=user.created_at?new Date(user.created_at):null;
+  var joinedLabel=joined&&Number.isFinite(joined.getTime())?joined.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric",timeZone:"UTC"}):"Not available";
+  var verified=user.email_confirmed_at?"Verified":user.email_confirmed_at===null?"Not verified":"Not available";
+  return '<section class="card pfm-journal-profile" aria-labelledby="journalProfileHeading"><div class="pfm-profile-heading"><div><h3 id="journalProfileHeading">Personal details</h3><p class="mut small">Private workspace · your registered PropFirmMath profile.</p></div><button type="button" class="btn ghost small" id="journalEditProfile" aria-controls="journalProfileEditor" aria-expanded="false">Edit profile</button></div><dl class="pfm-profile-grid">'+[["Full name",meta.full_name||"Not provided"],["Email address",user.email||"Not provided"],["Country",meta.country||"Not provided"],["Email verification",verified],["Member since",joinedLabel],["Account type","Free PropFirmMath account"]].map(function(x){return '<div><dt>'+esc(x[0])+'</dt><dd>'+esc(String(x[1]))+'</dd></div>';}).join("")+'</dl><form id="journalProfileEditor" hidden><div class="pfm-profile-grid"><div class="field"><label class="fl" for="journalProfileName">Full name</label><input id="journalProfileName" autocomplete="name" maxlength="100" required value="'+esc(String(meta.full_name||""))+'"></div><div class="field"><label class="fl" for="journalProfileCountry">Country</label><input id="journalProfileCountry" autocomplete="country-name" maxlength="100" value="'+esc(String(meta.country||""))+'"></div></div><div class="pfm-profile-actions"><button class="btn small" type="submit">Save profile</button><button class="btn ghost small" type="button" id="journalCancelProfile">Cancel</button></div></form><p class="form-msg" id="journalProfileMsg" role="status" aria-live="polite"></p></section>';
+}
+function pfmMembershipTester(user){return !!(user&&(pfmServerMembership&&pfmServerMembership.uid===user.id?pfmServerMembership.tester:user.app_metadata&&user.app_metadata.pfm_membership_tester===true));}
 function pfmMembershipCards(user, accountCount){
   if(!user||typeof accountCount!=="number")return "";
-  var current=pfmMembership(user);
-  var inJournal=typeof accountCount==="number";
-  return '<section class="card pfm-memberships" id="memberships" style="'+(inJournal?'margin-top:0':'margin-top:20px;max-width:1000px')+'"><h2>'+(inJournal?'Journal membership &amp; upgrades':'Journal memberships')+'</h2><p class="mut small">'+(user?'Current plan: <strong>'+esc(current.name)+'</strong>'+(inJournal?' · '+accountCount+' of '+current.limit+' accounts used':'')+'.':'Choose the account capacity that fits your trading.')+' Journal Basic is free for every registered user. Optional paid upgrades apply only to the Journal and are not available until billing launches.'+(inJournal?' Existing accounts remain accessible.':'')+'</p><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin-top:14px">'+PFM_MEMBERSHIPS.map(function(p){var active=!!user&&p.id===current.id;return '<details class="card pfm-membership-card pfm-tier-'+p.id+'" style="'+(active?'border-color:var(--amber);':'')+'"><summary style="cursor:pointer"><strong style="font-size:20px">'+esc(p.name)+'</strong><p style="font-size:22px;font-weight:700;margin:8px 0">'+esc(p.price)+'</p><p class="mut small">Up to '+p.limit+' trading '+(p.limit===1?'account':'accounts')+'</p><span class="mut small">'+(active?'Current plan · View details':'View plan details')+'</span></summary><div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?'Track multiple accounts across prop firms.':'Track one trading account.')+'</p>'+(active?'<p><strong>Current membership</strong></p>':p.id==="basic"&&!user?'<a class="btn ghost small" href="/account">Sign up free</a>':'<p class="mut small">'+(p.id==="basic"?'Free plan. Membership changes are not available yet.':'Paid upgrades coming soon. No payment will be collected.')+'</p>')+'</div></details>';}).join("")+'</div>'+(inJournal?'<p class="mut small" style="margin-top:14px">No subscription is required for the public PropFirmMath tools.</p>':'')+'</section>';
+  var current=pfmMembership(user),tester=pfmMembershipTester(user);
+  return '<section class="card pfm-memberships" id="memberships" aria-labelledby="journalMembershipHeading"><div class="pfm-member-heading"><div><h2 id="journalMembershipHeading" tabindex="-1">Journal memberships &amp; upgrades</h2><p class="mut small">Choose how many trading accounts you want to track.</p></div><span class="pfm-current-tier">'+esc(current.name)+' · Current plan</span></div><p class="pfm-member-usage"><strong>'+accountCount+' of '+current.limit+'</strong> trading accounts used</p>'+(tester?'<div class="pfm-test-switch"><h3>Membership testing</h3><p class="mut small">Use the Switch buttons below to change your actual test membership. No payment. Downgrading preserves all existing trading accounts.</p><p id="journalTestTierMsg" class="form-msg" role="status" aria-live="polite"></p></div>':'')+'<div class="pfm-member-grid">'+PFM_MEMBERSHIPS.map(function(p){
+    var active=p.id===current.id;
+    return '<div class="pfm-member-column"><details class="card pfm-membership-card pfm-tier-'+p.id+'"'+(active?' data-current="true"':'')+'><summary><strong class="pfm-member-name">'+esc(p.name)+'</strong><span class="pfm-member-price">'+esc(p.price.split("/")[0])+'</span><span class="mut small">'+(p.id==="basic"?"No monthly fee":"Per month")+'</span><span class="pfm-member-cap">'+p.limit+' trading '+(p.limit===1?"account":"accounts")+'</span><span class="pfm-member-action">View details</span></summary><div class="pfm-member-details"><p>Private journal, manual trade logging, analytics and CSV export.</p><p class="mut small">'+(p.limit>1?"Track multiple accounts across prop firms.":"Track one trading account.")+'</p><p class="mut small">'+(active?"Your current Journal membership.":tester?"Use the test switch below. No payment required.":p.id==="basic"?"Basic is free. Plan changes are not available yet.":"Paid upgrade checkout is coming soon. No payment is collected.")+'</p></div></details>'+(tester?'<button type="button" class="btn '+(active?"ghost ":"")+'small pfm-test-card-button" data-test-tier="'+esc(p.id)+'" aria-pressed="'+String(active)+'"'+(active?" disabled":"")+'>'+(active?esc(p.name)+" · Active":"Switch to "+esc(p.name))+'</button>':'')+'</div>';
+  }).join("")+'</div><p class="mut small pfm-member-note">Basic is free for every registered user. Paid upgrades are not available until billing launches. Existing accounts remain accessible. Public PropFirmMath research tools remain free.</p></section>';
 }
 function pageAccount(){
   if (sb && !authReady) { authChecking("Your account"); return; }
@@ -2847,7 +2917,11 @@ function pageJournal(){
     return;
   }
   go(head + '<div class="card" style="margin-top:20px"><p class="mut">Loading your journal…</p></div>');
-  journalLoad().then(renderJournal).catch(function(e){
+  var journalUid=PM_USER.id;
+  pfmReadMembership(PM_USER).catch(function(){return null;}).then(function(){
+    if(!PM_USER||PM_USER.id!==journalUid||location.pathname.replace(/\/$/,"")!=="/journal")return null;
+    return journalLoad().then(function(){if(PM_USER&&PM_USER.id===journalUid&&location.pathname.replace(/\/$/,"")==="/journal")renderJournal();});
+  }).catch(function(e){
     go(head + '<div class="notice" style="margin-top:20px"><b>Could not load your journal.</b> ' + esc(e && e.message || "Please try again.") + '</div>');
   });
 }
@@ -3115,7 +3189,7 @@ function journalTabCopy(tab){
     trades: ["Trade log", "Add, edit and review the trades in this view."],
     calendar: ["Trading calendar", "Move between months to see each day's realized P&L."],
     insights: ["Performance analytics", "Understand the numbers behind your trading."],
-    settings: ["Workspace settings", "Make the platform work the way you do."]
+    settings: ["Workspace settings", "Manage your personal details, Journal membership and private data."]
   })[tab] || ["Trading Dashboard", "Performance, consistency and trading decisions in one place."];
 }
 function journalPanelId(tab){ return "journal" + tab.charAt(0).toUpperCase() + tab.slice(1); }
@@ -3197,7 +3271,7 @@ function renderJournal(){
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
     '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
     '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded (unspecified)</option><option value="sim_funded">Sim funded</option><option value="live_funded">Live funded</option><option value="personal">Personal</option></select></div>' +
-    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div</div>' +
+    '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div><div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div></div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel">Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form></div>' +
     '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move records and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var sortedTrades=rows.slice().sort(function(a,b){return String(b.traded_at).localeCompare(String(a.traded_at))||String(a.id).localeCompare(String(b.id));});
@@ -3275,10 +3349,10 @@ function renderJournal(){
   journalStyle += "<style>#app .pfm-journal .journal-dashboard-top{grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:14px;align-items:stretch}\n#app .pfm-journal .jv14-equity-panel{display:flex;flex-direction:column;min-width:0}\n#app .pfm-journal .jv14-equity-chart{display:block;width:100%;height:auto;min-height:180px;flex:1;margin-top:12px}\n#app .pfm-journal .jv14-equity-dates{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin:0 0 14px}\n#app .pfm-journal .jv14-equity-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:14px;margin-top:auto;border-top:1px solid var(--line)}\n#app .pfm-journal .jv14-equity-stats>div{min-width:0;display:flex;flex-direction:column;gap:5px}\n#app .pfm-journal .jv14-equity-stats strong{font-size:clamp(12px,1.6vw,19px);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}\n#app .pfm-journal .jv14-rule-account[hidden]{display:none!important}\n#app .pfm-journal .jv14-rule-account>.card{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}\n#app .pfm-journal #journalRuleAccount{width:100%;min-width:0;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:7px;min-height:36px;padding:6px 8px}\n#app .pfm-journal .jv14-rule-monitor .journal-rules{gap:6px}\n#app .pfm-journal .jv14-rule-monitor .journal-rule{margin-top:8px}\n#app .pfm-journal .jv14-rule-monitor .journal-rule-top{font-size:12px;align-items:baseline}\n#app .pfm-journal .jv14-rule-monitor .journal-rule-top strong{max-width:100%;overflow-wrap:anywhere;text-align:right}\n#app .pfm-journal .jv14-rule-monitor .journal-rule-track{height:5px}\n#app .pfm-journal .jv14-rule-details{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}\n#app .pfm-journal .jv14-rule-details summary{cursor:pointer;font-size:12px;color:var(--muted)}\n#app .pfm-journal .jv14-rule-details[open]>summary{margin-bottom:8px}\n@media(max-width:1050px){#app .pfm-journal .journal-dashboard-top{grid-template-columns:minmax(0,1fr)}}\n@media(max-width:690px){#app .pfm-journal .jv14-equity-stats{gap:6px}#app .pfm-journal .jv14-equity-chart{min-height:120px}#app .pfm-journal .jv14-equity-dates{font-size:10px}}</style>";
   journalStyle += "<style>#app .pfm-journal .jv14-trade-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}\n#app .pfm-journal .jv14-trade-summary>.card{display:flex;flex-direction:column;gap:8px;min-width:0;padding:16px!important}\n#app .pfm-journal .jv14-trade-summary strong{font-size:clamp(20px,2.5vw,30px);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}\n#app .pfm-journal .jv14-trade-entry h3,#app .pfm-journal .jv14-trade-history h3{font-size:clamp(20px,2.5vw,26px);margin:0 0 10px}\n#app .pfm-journal .jv14-trade-entry form{margin-top:16px}\n#app .pfm-journal .jv14-trade-entry .fl{font-size:14px;font-weight:700}\n#app .pfm-journal .jv14-trade-table th{font-size:13px;font-weight:700}\n#app .pfm-journal .jv14-trade-table td{font-size:13px}\n#app .pfm-journal .jv14-trade-table .jv14-trade-note{white-space:normal;min-width:110px;max-width:260px;overflow-wrap:anywhere}\n#app .pfm-journal .jv14-trade-table tr[hidden],#app .pfm-journal #journalTradeEmpty[hidden]{display:none!important}\n#app .pfm-journal .jv14-trade-actions{display:flex;gap:6px}\n#app .pfm-journal .jv14-trade-history .journal-table-wrap{margin-top:14px}\n@media(max-width:690px){#app .pfm-journal .jv14-trade-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}#app .pfm-journal .jv14-trade-summary>.card:last-child{grid-column:1/-1}}</style>";
   go(pageHead('<a href="/">Home</a> · Trading Journal', "Trading journal", "Log trades and P&L across your funded accounts. Entries are saved to your account and visible only to you.") +
-    journalStyle + '<section class="pfm-journal' + (journalLightMode ? ' jv14-light' : '') + (journalReduceMotion ? ' jv14-no-motion' : '') + '" aria-label="Private trading journal"><div class="jv14-header"><div class="journal-brand"><svg aria-hidden="true" viewBox="0 0 28 28"><path d="M14 3L26 24H20L14 13L8 24H2Z" fill="currentColor"/><path d="M14 17L18 24H10Z" fill="var(--amber)"/></svg>PropFirm<span>Math</span></div><div class="jv14-header-actions"><button class="btn small" id="journalQuickAdd" type="button">+ Log trade</button></div></div><aside class="journal-side"><div class="journal-side-label">Workspace</div>' +
+    journalStyle + '<section class="pfm-journal' + (journalLightMode ? ' jv14-light' : '') + (journalReduceMotion ? ' jv14-no-motion' : '') + '" aria-label="Private trading journal"><div class="jv14-header"><div class="journal-brand"><svg aria-hidden="true" viewBox="0 0 28 28"><path d="M14 3L26 24H20L14 13L8 24H2Z" fill="currentColor"/><path d="M14 17L18 24H10Z" fill="var(--amber)"/></svg>PropFirm<span>Math</span></div><div class="jv14-header-actions"><button class="btn ghost small" id="journalViewMemberships" type="button" aria-controls="journalSettings">Memberships &amp; pricing <span class="pfm-member-current-mini">· '+esc(pfmMembership(PM_USER).name)+'</span></button><button class="btn small" id="journalQuickAdd" type="button">+ Log trade</button></div></div><aside class="journal-side"><div class="journal-side-label">Workspace</div>' +
     '<nav class="journal-tabs" role="tablist" aria-label="Journal sections"><span class="jv14-navmark" aria-hidden="true"></span>' +
     tabBtn("overview", "Overview") + tabBtn("accounts", "Accounts") + tabBtn("trades", "Trades") + tabBtn("calendar", "Calendar") + tabBtn("insights", "Analytics") + tabBtn("settings", "Settings") +
-    '</nav><div class="journal-account"><strong>Private workspace</strong>' + esc(PM_USER.email) + '</div></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Your trading accounts"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All my accounts</option>' + savedOptions + '</select><button class="btn ghost small" id="journalAddAccount" type="button" aria-controls="journalAccountEditor" aria-expanded="false">+ Add account</button></div></header>' +
+    '</nav></aside><div class="journal-main"><header class="journal-mast"><div><div class="journal-eyebrow">Home / Trading journal</div><h2 id="journalHeading">' + esc(copy[0]) + '</h2><p id="journalSub">' + esc(copy[1]) + '</p></div><div class="journal-primary"><select id="journalAccountFilter" aria-label="Your trading accounts"><option value="all"' + (journalState.selected === "all" ? " selected" : "") + '>All my accounts</option>' + savedOptions + '</select><button class="btn ghost small" id="journalAddAccount" type="button" aria-controls="journalAccountEditor" aria-expanded="false">+ Add account</button></div></header>' +
     '<div id="journalOverview" role="tabpanel"' + shown("overview") + '><div style="display:flex;justify-content:flex-end;margin:0 0 12px"><button class="btn ghost small" id="jv14ThemeTop" type="button" aria-label="Switch color theme" aria-pressed="false">Light mode</button></div>' + (hasAccounts ? journalDashboard(rows) : '<div class="card journal-empty"><h3>Add your first account</h3><p>The dashboard uses only accounts you add. Choose the firm, plan, and size in the form.</p><button class="btn" type="button" id="journalEmptyAdd">Add your first account</button></div>') + "</div>" +
     '<div id="journalAccounts" role="tabpanel"' + shown("accounts") + ">" + accountsPanel + "</div>" +
     '<div id="journalTrades" role="tabpanel"' + shown("trades") + ">" + tradeSummary +
@@ -3294,8 +3368,52 @@ function renderJournal(){
     tradeRows + "</div></div>" +
     '<div id="journalCalendar" role="tabpanel"' + shown("calendar") + ">" + journalCalendar(rows) + "</div>" +
     '<div id="journalInsights" role="tabpanel"' + shown("insights") + ">" + journalInsights(rows) + "</div>" +
-    '<div id="journalSettings" role="tabpanel"' + shown("settings") + '>'+pfmMembershipCards(PM_USER,journalState.accounts.length)+'<div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export all trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
+    '<div id="journalSettings" role="tabpanel"' + shown("settings") + '>'+journalProfileCard(PM_USER)+pfmMembershipCards(PM_USER,journalState.accounts.length)+'<div class="card jv14-settingscard"><h3>Data and privacy</h3><p class="mut small">Private manual account tracking. No broker login or API keys required.</p><div class="jv14-header-actions"><button class="btn ghost small" id="jv14Export" type="button">Export all trades CSV</button><button class="btn ghost small" id="signOutBtn" type="button">Sign out</button></div></div></div>' +
     "</div></section>");
+  app.querySelectorAll("[data-jtab]").forEach(function(btn){
+    btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
+  });
+  $("#journalViewMemberships").addEventListener("click",function(){journalApplyTab("settings");var h=$("#journalMembershipHeading");if(h){h.focus();if(h.scrollIntoView)h.scrollIntoView({block:"nearest"});}});
+  var membershipSection=$("#memberships");
+  if(membershipSection&&pfmMembershipTester(PM_USER))membershipSection.addEventListener("click",async function(e){
+    var button=e.target.closest("[data-test-tier]");
+    if(!button||button.disabled||!membershipSection.contains(button))return;
+    var tier=button.dataset.testTier,uid=PM_USER&&PM_USER.id;
+    if(!uid||!pfmMembershipTester(PM_USER)||!PFM_MEMBERSHIPS.some(function(p){return p.id===tier;}))return;
+    var buttons=Array.from(membershipSection.querySelectorAll("[data-test-tier]")),msg=membershipSection.querySelector("#journalTestTierMsg"),changed=false;
+    buttons.forEach(function(b){b.disabled=true;});
+    msg.className="form-msg";msg.textContent="Switching to "+tier+"…";
+    try{
+      var result=await sb.rpc("journal_set_test_tier",{p_tier:tier});
+      if(result.error)throw result.error;
+      if(result.data!==tier)throw Error("Unexpected server response. Membership change not confirmed.");
+      changed=true;
+      var confirmed=await pfmReadMembership(PM_USER);
+      if(!confirmed||confirmed.uid!==uid||!confirmed.tester||confirmed.tier!==tier)throw Error("Server membership could not be confirmed.");
+      if(!PM_USER||PM_USER.id!==uid||!msg.isConnected)return;
+      journalState.tab="settings";renderJournal();
+      var status=$("#journalTestTierMsg");if(status){status.className="form-msg ok";status.textContent=pfmMembership(PM_USER).name+" test membership active. No payment collected.";var target=$("#journalMembershipHeading");if(target&&target.scrollIntoView)target.scrollIntoView({block:"nearest"});}
+    }catch(err){
+      if(msg.isConnected){msg.className="form-msg err";msg.textContent=(changed?"Membership updated on server; verification failed. Reload the Journal. ":"Membership switch failed. ")+String(err&&err.message||"Please try again.").slice(0,220);buttons.forEach(function(b){b.disabled=b.getAttribute("aria-pressed")==="true";});}
+    }
+  });
+  var profileEditor=$("#journalProfileEditor"),profileButton=$("#journalEditProfile");
+  function closeProfile(){profileEditor.hidden=true;profileButton.setAttribute("aria-expanded","false");profileEditor.reset();}
+  profileButton.addEventListener("click",function(){var open=profileEditor.hidden;if(open){profileEditor.hidden=false;profileButton.setAttribute("aria-expanded","true");$("#journalProfileName").focus();}else closeProfile();});
+  $("#journalCancelProfile").addEventListener("click",closeProfile);
+  profileEditor.addEventListener("submit",function(e){
+    e.preventDefault();var msg=$("#journalProfileMsg"),button=profileEditor.querySelector('button[type="submit"]'),name=$("#journalProfileName").value.trim(),country=$("#journalProfileCountry").value.trim(),uid=PM_USER&&PM_USER.id;
+    if(!name||name.length>100||country.length>100){msg.className="form-msg err";msg.textContent="Enter a name and a country of up to 100 characters.";return;}
+    if(!sb||!sb.auth||!uid){msg.className="form-msg err";msg.textContent="Please sign in again.";return;}
+    button.disabled=true;msg.className="form-msg";msg.textContent="Saving profile…";
+    sb.auth.updateUser({data:{full_name:name,country:country}}).then(function(result){
+      if(result.error)throw result.error;
+      if(!PM_USER||PM_USER.id!==uid)return;
+      if(!result.data||!result.data.user||result.data.user.id!==uid)throw Error("Profile update could not be confirmed.");
+      PM_USER=result.data.user;
+      if(location.pathname.replace(/\/$/,"")==="/journal"&&profileEditor.isConnected){journalState.tab="settings";renderJournal();var status=$("#journalProfileMsg");if(status){status.className="form-msg ok";status.textContent="Profile saved.";}}
+    }).catch(function(){if(profileEditor.isConnected){msg.className="form-msg err";msg.textContent="Could not save profile. Please try again.";}}).finally(function(){button.disabled=false;});
+  });
   function journalSelectedPlan(){
     var name = $("#newPlan").value;
     if (!name || name === "__custom__") return null;
@@ -3641,6 +3759,7 @@ function renderJournal(){
       toast(text);
     });
   });
+
   var quick = $("#journalQuickAdd");
   if (quick) quick.addEventListener("click", function(){ if(!hasAccounts){journalApplyTab("accounts");$("#journalAddAccount").focus();return;} journalApplyTab("trades"); var inst = $("#jInst"); if (inst) inst.focus(); });
   var rulePicker=$("#journalRuleAccount");
@@ -3649,9 +3768,7 @@ function renderJournal(){
     app.querySelectorAll("[data-rule-index]").forEach(function(card){card.hidden=card.getAttribute("data-rule-index")!==selected;});
   });
   var viewTrades=$("#jv14ViewTrades");if(viewTrades)viewTrades.addEventListener("click",function(){journalApplyTab("trades");});
-  app.querySelectorAll("[data-jtab]").forEach(function(btn){
-    btn.addEventListener("click", function(){ journalApplyTab(btn.getAttribute("data-jtab")); });
-  });
+
   var symbolToggle = $("#journalSymbolsToggle");
   if (symbolToggle) symbolToggle.addEventListener("click", function(){
     journalState.showAllSymbols = !journalState.showAllSymbols;
