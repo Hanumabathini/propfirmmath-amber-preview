@@ -1274,6 +1274,14 @@ header :focus-visible{outline-color:var(--ivory)!important}
 @media(max-width:480px){.kinetic-stage.terra-3d-scene{height:310px}.kinetic-stage .terra-coin-object{width:80px;height:80px}.kinetic-stage .terra-medallion{width:92px}.kinetic-instruction{left:12px;font-size:11px}.kinetic-ring-controls>button{width:36px;min-width:36px;height:36px}.kinetic-ring-controls .terra-motion-toggle{height:36px}.kinetic-research .terra-index{padding:16px}}
 @media(prefers-reduced-motion:reduce){.kinetic-stage .terra-medallion,.kinetic-stage .terra-coin-object,.kinetic-tactile{transition:none!important;animation:none!important}}
 </style>
+<style>
+.terra-ticket-deck{touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.terra-spot-ticket{touch-action:pan-y}
+.terra-spot-ticket[data-slot="0"]{cursor:pointer}
+.terra-ticket-copy:after{content:"Swipe the tickets to browse";display:block;color:var(--sand);font-size:12px;margin-top:18px}
+.kinetic-tactile:focus-visible{transform:none}
+@media(prefers-reduced-motion:reduce){.terra-spot-ticket{transition:none!important}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#app">Skip to main content</a>
@@ -2585,7 +2593,7 @@ function pageDeals(){
   var spotHTML=spotlight.map(function(x,i){return '<a class="terra-spot-ticket" data-spot-index="'+i+'" href="/firm/'+esc(x.f.slug)+'"><span class="terra-spot-brand">'+avatar(x.f,44)+esc(x.f.name)+'</span><strong>'+esc(dealHeadline(x.c,false))+'</strong><span>'+esc(x.c.detail)+'</span><span class="terra-spot-review">Review firm and offer</span></a>';}).join("");
   go(pageHead('<a href="/">Home</a> · Deals', "Prop firm deals &amp; discount codes",
     "Published promotions from the " + SNAPSHOT + " research. A code with an end date leaves this list after that moment. Confirm every offer at checkout.") +
-    (spotlight.length ? '<section class="terra-ticket-stage"><div class="terra-ticket-copy"><h2>Featured offers</h2><div class="terra-ticket-total"><strong>'+shown.length+'</strong><span>Offers in this research view</span></div><p>Published percentage discounts. Check the final price and conditions before purchase.</p><div class="terra-ticket-nav"><button type="button" id="terra-ticket-prev" aria-label="Previous featured offer">Previous</button><span id="terra-ticket-position" aria-live="polite">1 / '+spotlight.length+'</span><button type="button" id="terra-ticket-next" aria-label="Next featured offer">Next</button></div></div><div class="terra-ticket-deck" id="terra-ticket-deck">'+spotHTML+'</div></section>' : '') +
+    (spotlight.length ? '<section class="terra-ticket-stage"><div class="terra-ticket-copy"><h2>Featured offers</h2><div class="terra-ticket-total"><strong>'+shown.length+'</strong><span>Offers in this research view</span></div><p>Published percentage discounts. Check the final price and conditions before purchase.</p><div class="terra-ticket-nav"><button type="button" id="terra-ticket-prev" aria-label="Previous featured offer">Previous</button><span id="terra-ticket-position" aria-live="polite">1 / '+spotlight.length+'</span><button type="button" id="terra-ticket-next" aria-label="Next featured offer">Next</button></div></div><div class="terra-ticket-deck" id="terra-ticket-deck" aria-label="Featured offers. Swipe left or right to browse.">'+spotHTML+'</div></section>' : '') +
     '<div class="card deal-summary" style="margin-top:18px"><strong id="active-deal-count">' + shown.length + '</strong> current ' + (dealState.market === "all" ? "offers" : MARKETS[dealState.market].label + " offers") + ' · <span class="mut">Last researched ' + SNAPSHOT + '. A missing end date means the expiry was not published, not that the code lasts forever.</span></div>' +
     '<div class="terra-deal-controls"><button class="btn ghost small" type="button" id="terra-clock-toggle" aria-pressed="false">Pause countdowns</button><span class="mut small">Timers use published expiry dates, not a live pricing feed.</span></div>' +
     '<div class="pill-tabs" id="deal-markets" style="margin-top:16px">' + ["all","futures","forex","crypto","perps","stocks","prediction"].map(function(k){ return '<button type="button" data-deal="' + k + '" class="' + (dealState.market === k ? "on" : "") + '">' + (k === "all" ? "All markets" : MARKETS[k].label) + '</button>'; }).join("") + '</div>' +
@@ -2601,6 +2609,12 @@ function pageDeals(){
     function showSpot(){items.forEach(function(el,i){var d=(i-spotIndex+items.length)%items.length;var slot=d===0?0:d===1?1:d===items.length-1?-1:2;el.setAttribute("data-slot",String(slot));el.tabIndex=slot===0?0:-1;el.setAttribute("aria-hidden",slot===0?"false":"true");});if(position)position.textContent=(spotIndex+1)+" / "+items.length;prev.disabled=next.disabled=items.length<2;}
     prev.addEventListener("click",function(){spotIndex=(spotIndex-1+items.length)%items.length;showSpot();});
     next.addEventListener("click",function(){spotIndex=(spotIndex+1)%items.length;showSpot();});
+    var swipe=null,skipOfferClick=false;
+    deck.addEventListener("pointerdown",function(e){if(e.button!==0||!e.isPrimary)return;swipe={id:e.pointerId,x:e.clientX,y:e.clientY};skipOfferClick=false;});
+    deck.addEventListener("pointerup",function(e){if(!swipe||e.pointerId!==swipe.id)return;var dx=e.clientX-swipe.x,dy=e.clientY-swipe.y;swipe=null;if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)*1.3&&items.length>1){skipOfferClick=true;spotIndex=(spotIndex+(dx<0?1:-1)+items.length)%items.length;showSpot();setTimeout(function(){skipOfferClick=false;},150);}});
+    deck.addEventListener("pointercancel",function(){swipe=null;});
+    deck.addEventListener("click",function(e){if(skipOfferClick){e.preventDefault();e.stopImmediatePropagation();}},true);
+    deck.addEventListener("keydown",function(e){if(items.length<2)return;if(e.key==="ArrowLeft"||e.key==="ArrowRight"){e.preventDefault();spotIndex=(spotIndex+(e.key==="ArrowRight"?1:-1)+items.length)%items.length;showSpot();items[spotIndex].focus();}});
     showSpot();
   }
   $$("#deal-markets button").forEach(function(b){ b.addEventListener("click", function(){ dealState.market = b.getAttribute("data-deal"); pageDeals(); }); });
