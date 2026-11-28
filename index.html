@@ -2368,7 +2368,7 @@ function journalLoad(){
   });
 }
 function journalStatusLabel(v){
-  var map = { active: "Active", passed: "Passed", breached: "Breached", closed: "Closed", evaluation: "Evaluation", funded: "Funded", personal: "Personal" };
+  var map = { active: "Active", passed: "Passed", breached: "Breached", closed: "Closed", evaluation: "Evaluation", funded: "Funded (unspecified)", sim_funded: "Sim funded", live_funded: "Live funded", personal: "Personal" };
   return map[v] || (v ? String(v).charAt(0).toUpperCase() + String(v).slice(1) : "");
 }
 function journalAccountLabel(a){
@@ -2578,12 +2578,13 @@ function journalMotionOn(){
   return !!(q && q.media && !q.matches);
 }
 function journalFirmRules(firm, plan, size, stage){
-  if (!firm || !plan || !Number.isFinite(Number(size)) || Number(size)<=0 || (stage && stage!=="evaluation")) return null;
+  if (!firm || !plan || !Number.isFinite(Number(size)) || Number(size)<=0 || (stage && ["evaluation","sim_funded","live_funded"].indexOf(stage)<0)) return null;
   var matches=(firm.plans || firm.accountPlans || []).filter(function(p){
     return String(p.name||p.program||"").toLowerCase()===String(plan).toLowerCase() && Number(p.size)===Number(size);
   });
   if(matches.length!==1)return null;
-  var rec=matches[0];
+  var planRecord=matches[0], rec=planRecord;
+  if(stage && stage!=="evaluation"){rec=planRecord.stageRules && planRecord.stageRules[stage];if(!rec || !rec.source)return null;}
   function clean(v){return String(v==null?"":v).trim();}
   function moneyRule(v, allowPhases){
     var s=clean(v);
@@ -2609,7 +2610,7 @@ function journalFirmRules(firm, plan, size, stage){
     var m=/^(\d+(?:\.\d+)?)%\s*(?:Combine|evaluation|eval)?$/i.exec(s);
     return m&&Number(m[1])<=100?Number(m[1]):null;
   }
-  return {target:moneyRule(rec.target,true),daily:moneyRule(rec.dailyLoss,false),drawdown:moneyRule(rec.maxDD,false),minDays:days(rec.minDays),consistency:consistency(rec.consistency),ddType:clean(rec.ddType),coverage:rec.coverage||"partial"};
+  return {target:moneyRule(rec.target,true),daily:moneyRule(rec.dailyLoss,false),drawdown:moneyRule(rec.maxDD,false),minDays:days(rec.minDays),consistency:consistency(rec.consistency),ddType:clean(rec.ddType),coverage:rec.coverage||planRecord.coverage||"partial",dailyProfitCap:Number.isFinite(rec.dailyProfitCap)?rec.dailyProfitCap:null};
 }
 function journalRuleCard(account, rows){
   var firm = FIRMS.filter(function(f){ return f.name === account.firm; })[0];
@@ -2635,13 +2636,13 @@ function journalRuleCard(account, rows){
     if (unit === "days") shown = used + " / " + limit + " days";
     return '<div class="journal-rule"><div class="journal-rule-top"><span>' + label + '</span><strong>' + shown + '</strong></div><div class="journal-rule-track"><div style="width:' + pct.toFixed(1) + '%;background:' + (over ? "#ff7474" : "#a7e3cf") + '"></div></div></div>';
   }
-  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">No uniquely matched evaluation rules for this account, size or stage. Funded and personal accounts require separate rules.</p></div>';
+  if (!rules) return '<div class="card"><h3>' + esc(account.account_label || account.firm || "Account") + '</h3><p class="mut small">No independently specified rules for this account, size and stage.</p></div>';
   return '<div class="card"><h3>' + esc(account.account_label || "Account") + '</h3><p class="mut small">' + esc(account.firm || "Account") + (account.plan ? " · " + esc(account.plan) : "") + (Number(account.account_size) > 0 ? " · " + money(account.account_size) : "") + '</p>' +
     bar("Profit target", Math.max(0, stats.total), rules.target, "$") +
     bar("Daily loss", todayPnl < 0 ? -todayPnl : 0, rules.daily, "$") +
     bar(/static/i.test(rules.ddType) ? "Recorded static loss" : "Recorded peak-to-trough drawdown", /static/i.test(rules.ddType) ? Math.max(0,-Math.min.apply(null,stats.points)) : stats.drawdown, rules.drawdown, "$") +
     bar("Minimum days", dayCount, rules.minDays, "days") +
-    bar("Consistency", bestShare, rules.consistency, "%") + '<p class="mut small">Estimates from manually logged closed trades only; not a live breach or payout check. Multi-phase targets show phase one only. '+(rules.coverage==="verified"?"Catalog marked verified.":"Catalog partially verified.")+'</p></div>';
+    bar("Consistency", bestShare, rules.consistency, "%") + '<p class="mut small">Estimates from manually logged closed trades only; not a live breach or payout check. Multi-phase targets show phase one only. Record each trading stage separately; historical payouts, withdrawals and open positions are not included. '+(rules.coverage==="verified"?"Catalog marked verified.":"Catalog partially verified.")+'</p></div>';
 }
 function journalAnimateKpis(){
   if (!journalMotionOn() || journalReduceMotion) return;
@@ -2677,7 +2678,7 @@ function journalV14Feature(rows){
   var size=a && Number(a.account_size)>0 ? money(Number(a.account_size)) : money(total);
   var firm=a && FIRMS.find(function(f){return f.name===a.firm;});
   var rules=a && journalFirmRules(firm,a.plan,Number(a.account_size),a.stage||"evaluation");
-  var target=rules && rules.target>0 ? rules.target : 0;
+  var target=rules && (a.stage||"evaluation")==="evaluation" && rules.target>0 ? rules.target : 0;
   var pct=target>0 ? Math.min(100,Math.max(0,total/target*100)) : 0;
   var detail=target>0 ? '<div class="jv14-progress-label"><span>Recorded profit / plan target</span><strong>'+pct.toFixed(0)+'%</strong></div><div class="jv14-progress" role="progressbar" aria-label="Recorded profit toward target" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct.toFixed(0)+'"><i style="width:'+pct.toFixed(2)+'%"></i></div><div class="jv14-progress-label"><span>'+money(total)+' / '+money(target)+'</span><strong>'+money(Math.max(0,target-total))+' remaining</strong></div><p class="jv14-foot">Based on recorded trades and directory plan notes; not official payout eligibility.</p>' : '<div class="jv14-progress-label"><span>Recorded net P&amp;L</span><strong>'+money(total)+'</strong></div><p class="jv14-foot">'+(a ? "No unambiguous evaluation target for this plan and size." : journalState.accounts.length+" linked manual accounts · Select one to see plan details.")+'</p>';
   return '<article class="jv14-feature"><span class="jv14-tag">'+esc(stage)+'</span><div class="jv14-amount">'+esc(size)+'</div><h3>'+esc(title)+'</h3><p class="jv14-firm">'+esc(a ? [a.firm,a.plan].filter(Boolean).join(" · ") : "Combined realized trading performance")+'</p>'+detail+'</article>';
@@ -2863,10 +2864,10 @@ function renderJournal(){
     '<div class="field"><label class="fl" for="newAccountLabel">Your account name</label><input id="newAccountLabel" required maxlength="80" placeholder="Account 1"></div>' +
     '<div class="field"><label class="fl" for="newAccountSizePreset">Account size</label><select id="newAccountSizePreset" aria-describedby="journalSizeNote"></select><input id="newAccountSize" type="number" min="0" max="1000000000" step="1" placeholder="Enter account size" style="display:none;margin-top:8px" aria-label="Custom account size"><span class="mut small" id="journalSizeNote">Choose a firm to see the sizes its plan offers.</span></div>' +
     '<div class="field"><label class="fl" for="newPlatform">Trading platform</label><select id="newPlatform"><option value="">Not specified</option></select><input id="newPlatformOther" maxlength="80" placeholder="Enter your platform" aria-label="Custom platform" style="display:none;margin-top:8px"><span class="mut small">Select your actual platform; unconfirmed choices can be entered manually.</span></div>' +
-    '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded</option><option value="personal">Personal</option></select></div>' +
+    '<div class="field"><label class="fl" for="newAccountStage">Stage</label><select id="newAccountStage"><option value="evaluation">Evaluation</option><option value="funded">Funded (unspecified)</option><option value="sim_funded">Sim funded</option><option value="live_funded">Live funded</option><option value="personal">Personal</option></select></div>' +
     '<div class="field"><label class="fl" for="newAccountStatus">Status</label><select id="newAccountStatus"><option value="active">Active</option><option value="passed">Passed</option><option value="breached">Breached</option><option value="closed">Closed</option></select></div></div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" type="submit" id="journalAccountSave">Save account</button><button class="btn ghost small" type="button" id="journalAccountCancel" hidden>Cancel</button></div><p class="form-msg" id="journalAccountMsg" role="status"></p></form>' +
-    '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move trades and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
+    '<div id="journalAccountDelete" class="journal-dialog" hidden><div class="journal-dialog-card" role="dialog" aria-modal="true" aria-labelledby="journalDeleteTitle"><h3 id="journalDeleteTitle">Delete this account?</h3><p id="journalDeleteText"></p><div id="journalDeleteMoveWrap"><label class="fl" for="journalDeleteMove">Move the trades to</label><select id="journalDeleteMove"></select></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn small" type="button" id="journalDeleteMoveBtn">Move records and delete account</button><button class="btn small" type="button" id="journalDeleteAllBtn">Delete account and trades</button><button class="btn ghost small" type="button" id="journalDeleteCancel">Cancel</button></div></div></div></div>';
   var tradeRows = rows.length ? '<div id="journalRows" style="margin-top:10px">' + rows.map(function(r){
     var v = Number(r.pnl);
     return '<div class="pay-row" data-pnl="' + Number(r.pnl) + '"><span><strong>' + esc(r.symbol || "—") + '</strong> <span class="mut">' + esc(journalTradeMeta(r)) + '</span></span><span><span class="num" style="font-weight:800;color:' + journalPnlColor(v) + '">' + money(v) + '</span> <button class="btn ghost small" data-edit="' + esc(r.id) + '" type="button" aria-label="Edit trade">Edit</button> <button class="btn ghost small" data-del="' + esc(r.id) + '" type="button" aria-label="Delete trade">Delete</button></span></div>';
@@ -2974,7 +2975,8 @@ function renderJournal(){
     select.innerHTML="";
     function option(v,label){var o=document.createElement("option");o.value=v;o.textContent=label;select.appendChild(o);}
     option("","Not specified");
-    choices.forEach(function(p){option(p,p);});
+    var rec=firm && (firm.plans||[]).find(function(p){return (p.name||p.program)===plan && Number(p.size)===size;});
+    choices.forEach(function(p){option(p,p+(rec && rec.platformVerifiedOn?"":" (catalog listing)"));});
     option("__custom__","Other / enter platform");
     select.value=preferred ? (choices.indexOf(preferred)>=0?preferred:"__custom__") : "";
     other.value=select.value==="__custom__"?preferred||"":"";
@@ -3188,70 +3190,24 @@ function renderJournal(){
       if (message) toast(message, undo);
     });
   }
-  function journalRestoreDeleted(snapshot){
-    var account = journalCopyRow(snapshot.account);
-    account.user_id = PM_USER.id;
-    return sb.from("trader_accounts").insert(account).select(ACCOUNT_COLS).single().then(function(r){
-      if (r.error) throw r.error;
-      var pending = Promise.resolve();
-      (snapshot.trades || []).forEach(function(trade){
-        pending = pending.then(function(){
-          var row = journalCopyRow(trade);
-          row.user_id = PM_USER.id;
-          row.account_id = account.id;
-          return sb.from("trades").insert(row).select(TRADE_CORE).single().then(function(res){
-            if (res.error) throw res.error;
-          });
-        });
-      });
-      return pending;
-    }).then(function(){ return journalReloadAccounts("Account restored"); });
-  }
-  function journalUndoMove(snapshot){
-    var account = journalCopyRow(snapshot.account);
-    account.user_id = PM_USER.id;
-    return sb.from("trader_accounts").insert(account).select("id").single().then(function(r){
-      if (r.error) throw r.error;
-      var pending = Promise.resolve();
-      (snapshot.trades || []).forEach(function(trade){
-        pending = pending.then(function(){
-          return sb.from("trades").update({ account_id: account.id }).eq("id", trade.id).eq("user_id", PM_USER.id).then(function(res){
-            if (res.error) throw res.error;
-          });
-        });
-      });
-      return pending;
-    }).then(function(){ return journalReloadAccounts("Account restored"); });
-  }
   function journalDeleteAccount(id, mode){
-    var account = journalState.accounts.filter(function(a){ return a.id === id; })[0];
-    var trades = journalState.allRows.filter(function(r){ return r.account_id === id; });
-    var snapshot = { account: journalCopyRow(account), trades: trades.map(journalCopyRow) };
-    var dest = mode === "move" ? $("#journalDeleteMove").value : "";
-    if (mode === "move" && !dest) { toast("Choose another account for these trades."); return; }
-    if (mode === "move" && dest === id) { toast("Choose a different account."); return; }
-    var step = mode === "move"
-      ? sb.from("trades").update({ account_id: dest }).eq("account_id", id).eq("user_id", PM_USER.id)
-      : sb.from("trades").delete().eq("account_id", id).eq("user_id", PM_USER.id);
-    step.then(function(r){
-      if (r.error) throw r.error;
-      return sb.from("trades").select("id,account_id").eq("user_id", PM_USER.id).eq("account_id", id);
-    }).then(function(r){
-      if (r.error) throw r.error;
-      if (r.data && r.data.length) throw new Error("Trades are still on this account, so it was not deleted.");
-      return sb.from("trader_accounts").delete().eq("id", id).eq("user_id", PM_USER.id);
-    }).then(function(r){
-      if (r.error) throw r.error;
-      if (journalState.selected === id) journalState.selected = mode === "move" ? dest : "all";
+    var dest=mode==="move"?$("#journalDeleteMove").value:null;
+    if(mode==="move"&&(!dest||dest===id)){toast("Choose another account you own.");return;}
+    var move=$("#journalDeleteMoveBtn"),del=$("#journalDeleteAllBtn");
+    if(move.disabled||del.disabled)return;
+    move.disabled=del.disabled=true;
+    sb.rpc("journal_remove_account",{p_account:id,p_mode:mode,p_destination:dest}).then(function(r){
+      if(r.error)throw r.error;
+      var snapshot=r.data;
+      if(journalState.selected===id)journalState.selected=mode==="move"?dest:"all";
       journalCloseAccountDelete();
-      var note = mode === "move" ? "Account deleted. Trades were moved." : (trades.length ? "Account and its trades were deleted." : "Account deleted.");
-      return journalReloadAccounts(note, function(){
-        var job = mode === "move" ? journalUndoMove(snapshot) : journalRestoreDeleted(snapshot);
-        job.catch(function(err){ toast(err && err.message ? err.message : "Could not undo"); });
+      return journalReloadAccounts(mode==="move"?"Account deleted. Trades and payouts moved.":"Account and associated records deleted.",function(){
+        sb.rpc("journal_restore_account",{p_snapshot:snapshot}).then(function(res){
+          if(res.error)throw res.error;
+          return journalReloadAccounts("Account restored");
+        }).catch(function(err){toast(err.message||"Could not undo");});
       });
-    }).catch(function(err){
-      toast(err && err.message ? err.message : "Could not delete the account.");
-    });
+    }).catch(function(err){toast(err.message||"Could not delete the account.");}).finally(function(){move.disabled=del.disabled=false;});
   }
   function journalOpenAccountDelete(id){
     var account = journalState.accounts.filter(function(a){ return a.id === id; })[0];
@@ -3267,7 +3223,8 @@ function renderJournal(){
     $("#journalDeleteText").textContent = n
       ? name + " has " + noun + ". Move them to another account, or delete them with this account. Trades are never left without an account."
       : name + " has no trades.";
-    var canMove = n > 0 && others.length > 0;
+    $("#journalDeleteText").textContent += " Any associated payouts are also moved or deleted with the account.";
+    var canMove = others.length > 0;
     $("#journalDeleteMoveWrap").hidden = !canMove;
     $("#journalDeleteMoveBtn").hidden = !canMove;
     if (canMove) {

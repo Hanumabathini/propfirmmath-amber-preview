@@ -106,6 +106,27 @@ function install(window, state) {
             return Promise.resolve({ error: null });
           }
         },
+        rpc(name,args){
+          try {
+            if(name==="journal_remove_account"){
+              const a=state.trader_accounts.find(x=>x.id===args.p_account&&x.user_id===state.user.id);
+              if(!a)throw Error("Account not found");
+              const dest=args.p_destination,mode=args.p_mode;
+              if(mode==="move"&&!state.trader_accounts.some(x=>x.id===dest&&x.user_id===state.user.id&&x.id!==a.id))throw Error("Invalid destination");
+              const snapshot={account:{...a},trades:state.trades.filter(x=>x.account_id===a.id).map(x=>({...x})),payouts:[],mode,destination:dest};
+              if(mode==="move")state.trades.filter(x=>x.account_id===a.id).forEach(x=>x.account_id=dest);else state.trades=state.trades.filter(x=>x.account_id!==a.id);
+              state.trader_accounts=state.trader_accounts.filter(x=>x.id!==a.id);
+              return Promise.resolve({data:snapshot,error:null});
+            }
+            if(name==="journal_restore_account"){
+              const s=args.p_snapshot;if(s.account.user_id!==state.user.id)throw Error("Invalid restore");
+              state.trader_accounts.push({...s.account});
+              if(s.mode==="move")s.trades.forEach(x=>{const row=state.trades.find(y=>y.id===x.id);if(row)row.account_id=s.account.id;});else state.trades.push(...s.trades.map(x=>({...x})));
+              return Promise.resolve({data:s.account.id,error:null});
+            }
+            throw Error("Unknown RPC");
+          }catch(e){return Promise.resolve({data:null,error:{message:e.message}});}
+        },
         from: builder
       };
     }
@@ -237,6 +258,9 @@ function submit(form) {
     ok("MFFU Signature 10k uses $500 static loss and $1,000 target", mffuRules.target === 1000 && mffuRules.daily == null && mffuRules.drawdown === 500 && mffuRules.minDays == null && mffuRules.consistency == null, JSON.stringify(mffuRules));
     ok("unknown size never inherits another account's rules",w.journalFirmRules(w.firm("my-funded-futures"),"Signature",42000)===null,"unknown size");
     ok("funded accounts never show evaluation limits",w.journalFirmRules(w.firm("my-funded-futures"),"Signature",10000,"funded")===null,"funded stage");
+    const sim=w.journalFirmRules(w.firm("my-funded-futures"),"Signature",10000,"sim_funded");
+    ok("Signature sim funded uses separate rules",sim.target===null&&sim.drawdown===500&&sim.dailyProfitCap===5000,sim);
+    ok("unknown live rules are not inferred",w.journalFirmRules(w.firm("my-funded-futures"),"Signature",10000,"live_funded")===null,"live");
     const ambiguous=w.journalFirmRules({plans:[{name:"Test",size:10000,target:"Not yet verified",maxDD:"EOD trailing, $1000 (25K)",dailyLoss:"Applies; pending",minDays:"No minimum trading days",consistency:"No evaluation consistency; funded 35%"}]},"Test",10000);
     ok("unknown and wrong-size rules stay unknown",ambiguous.target===null&&ambiguous.drawdown===null&&ambiguous.daily===null&&ambiguous.minDays===null&&ambiguous.consistency===null,JSON.stringify(ambiguous));
     const apexRules = w.journalFirmRules(w.firm("apex-trader-funding"), "Intraday Trail Std", 25000);
@@ -294,12 +318,12 @@ function submit(form) {
     d.getElementById("newAccountSizePreset").dispatchEvent(new w.Event("change"));
     ok("chosen size is not replaced by 5k", d.getElementById("newAccountSizePreset").value === "20000", d.getElementById("newAccountSizePreset").value);
     const platformSelect=d.getElementById("newPlatform");
-    platformSelect.value="__custom__";platformSelect.dispatchEvent(new w.Event("change"));
-    d.getElementById("newPlatformOther").value="Tradovate";
+    ok("Signature offers Hyperprop only",Array.from(platformSelect.options).map(o=>o.value).join()===",Hyperprop,__custom__",platformSelect.innerHTML);
+    platformSelect.value="Hyperprop";platformSelect.dispatchEvent(new w.Event("change"));
     submit(d.getElementById("journalAccountForm"));
     await waitFor(() => state.trader_accounts[1] && d.getElementById("journalAccountFilter") && d.getElementById("journalAccountFilter").value === state.trader_accounts[1].id, "new account");
     const created = state.trader_accounts[1];
-    ok("platform persists with account",created.platform==="Tradovate",created);
+    ok("platform persists with account",created.platform==="Hyperprop",created);
     ok("selected size saves with its plan", created.firm === "My Funded Futures" && created.plan === "Signature" && Number(created.account_size) === 20000 && created.account_label === "My Funded Futures Signature", created);
     ok("list, dashboard and trade form share plan and size", d.body.textContent.includes("My Funded Futures Signature · Signature · $20,000.00") && d.getElementById("journalAccountFilter").selectedOptions[0].textContent.includes("$20,000.00") && Array.prototype.some.call(d.getElementById("jAccount").options, o => o.textContent.includes("Signature") && o.textContent.includes("$20,000.00")), d.getElementById("journalAccountFilter").selectedOptions[0].textContent);
     ok("switched to the new account", w.journalState.selected === created.id && d.getElementById("journalAccountFilter").value === created.id, d.getElementById("journalAccountFilter").value);

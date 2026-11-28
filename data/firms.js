@@ -83,7 +83,7 @@ var FIRMS = [
         "currency": "USD",
         "monthly": false,
         "coverage": "partial",
-        "note": "Official Signature guide confirms size-specific evaluation and sim-funded rules. Platform mapping and regional checkout not rechecked. Legacy other-program rules removed.",
+        "note": "Official Signature guide confirms evaluation and simulated funded rules and Hyperprop-only platform. Regional checkout not confirmed. Live stage has different rules.",
         "target": "$500",
         "dailyLoss": "None",
         "maxDD": "$250",
@@ -91,7 +91,7 @@ var FIRMS = [
         "minDays": "None",
         "split": "80% sim funded / 90% live",
         "payout": "Sim funded anytime with positions closed; minimum $100 before split",
-        "platform": "Tradovate, NinjaTrader, Quantower",
+        "platform": "Hyperprop",
         "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
         "consistency": "None",
         "activationFee": 0,
@@ -99,7 +99,21 @@ var FIRMS = [
           "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
           "https://myfundedfutures.com/plans/signature"
         ],
-        "verifiedOn": "Nov 28, 2026"
+        "verifiedOn": "Nov 28, 2026",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+        "stageRules": {
+          "sim_funded": {
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$250",
+            "ddType": "Static",
+            "minDays": "None",
+            "consistency": "None",
+            "dailyProfitCap": 2500,
+            "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide"
+          }
+        }
       },
       {
         "id": "my-funded-futures-signature-10000",
@@ -110,7 +124,7 @@ var FIRMS = [
         "currency": "USD",
         "monthly": false,
         "coverage": "partial",
-        "note": "Official Signature guide confirms size-specific evaluation and sim-funded rules. Platform mapping and regional checkout not rechecked. Legacy other-program rules removed.",
+        "note": "Official Signature guide confirms evaluation and simulated funded rules and Hyperprop-only platform. Regional checkout not confirmed. Live stage has different rules.",
         "target": "$1,000",
         "dailyLoss": "None",
         "maxDD": "$500",
@@ -118,7 +132,7 @@ var FIRMS = [
         "minDays": "None",
         "split": "80% sim funded / 90% live",
         "payout": "Sim funded anytime with positions closed; minimum $250 before split",
-        "platform": "Tradovate, NinjaTrader, Quantower",
+        "platform": "Hyperprop",
         "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
         "consistency": "None",
         "activationFee": 0,
@@ -126,7 +140,21 @@ var FIRMS = [
           "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
           "https://myfundedfutures.com/plans/signature"
         ],
-        "verifiedOn": "Nov 28, 2026"
+        "verifiedOn": "Nov 28, 2026",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+        "stageRules": {
+          "sim_funded": {
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$500",
+            "ddType": "Static",
+            "minDays": "None",
+            "consistency": "None",
+            "dailyProfitCap": 5000,
+            "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide"
+          }
+        }
       },
       {
         "id": "my-funded-futures-signature-20000",
@@ -137,7 +165,7 @@ var FIRMS = [
         "currency": "USD",
         "monthly": false,
         "coverage": "partial",
-        "note": "Official Signature guide confirms size-specific evaluation and sim-funded rules. Platform mapping and regional checkout not rechecked. Legacy other-program rules removed.",
+        "note": "Official Signature guide confirms evaluation and simulated funded rules and Hyperprop-only platform. Regional checkout not confirmed. Live stage has different rules.",
         "target": "$2,000",
         "dailyLoss": "None",
         "maxDD": "$1,000",
@@ -145,7 +173,7 @@ var FIRMS = [
         "minDays": "None",
         "split": "80% sim funded / 90% live",
         "payout": "Sim funded anytime with positions closed; minimum $250 before split",
-        "platform": "Tradovate, NinjaTrader, Quantower",
+        "platform": "Hyperprop",
         "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
         "consistency": "None",
         "activationFee": 0,
@@ -153,7 +181,21 @@ var FIRMS = [
           "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
           "https://myfundedfutures.com/plans/signature"
         ],
-        "verifiedOn": "Nov 28, 2026"
+        "verifiedOn": "Nov 28, 2026",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "platformSource": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide",
+        "stageRules": {
+          "sim_funded": {
+            "target": null,
+            "dailyLoss": "None",
+            "maxDD": "$1000",
+            "ddType": "Static",
+            "minDays": "None",
+            "consistency": "None",
+            "dailyProfitCap": 10000,
+            "source": "https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide"
+          }
+        }
       }
     ]
   },
@@ -1156,7 +1198,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 60,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%"
+        "consistency": "No evaluation consistency; funded 35%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-growth-50000",
@@ -1180,7 +1228,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 95,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%"
+        "consistency": "No evaluation consistency; funded 35%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-growth-100000",
@@ -1204,7 +1258,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 169,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%"
+        "consistency": "No evaluation consistency; funded 35%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-growth-150000",
@@ -1228,7 +1288,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 229,
         "activationFee": 0,
-        "consistency": "No evaluation consistency; funded 35%"
+        "consistency": "No evaluation consistency; funded 35%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-30-25000",
@@ -1252,7 +1318,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 69,
         "activationFee": 0,
-        "consistency": "30% evaluation"
+        "consistency": "30% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-30-50000",
@@ -1276,7 +1348,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 105,
         "activationFee": 0,
-        "consistency": "30% evaluation"
+        "consistency": "30% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-30-100000",
@@ -1300,7 +1378,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 164,
         "activationFee": 0,
-        "consistency": "30% evaluation"
+        "consistency": "30% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-30-150000",
@@ -1324,7 +1408,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 225,
         "activationFee": 0,
-        "consistency": "30% evaluation"
+        "consistency": "30% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-40-25000",
@@ -1348,7 +1438,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 75,
         "activationFee": 0,
-        "consistency": "40% evaluation"
+        "consistency": "40% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-40-50000",
@@ -1372,7 +1468,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 119,
         "activationFee": 0,
-        "consistency": "40% evaluation"
+        "consistency": "40% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-40-100000",
@@ -1396,7 +1498,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 169,
         "activationFee": 0,
-        "consistency": "40% evaluation"
+        "consistency": "40% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-40-150000",
@@ -1420,7 +1528,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 239,
         "activationFee": 0,
-        "consistency": "40% evaluation"
+        "consistency": "40% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-40-300000",
@@ -1444,7 +1558,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "40% evaluation"
+        "consistency": "40% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-50-25000",
@@ -1468,7 +1588,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 90,
         "activationFee": 0,
-        "consistency": "50% evaluation"
+        "consistency": "50% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-50-50000",
@@ -1492,7 +1618,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 152,
         "activationFee": 0,
-        "consistency": "50% evaluation"
+        "consistency": "50% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-50-100000",
@@ -1516,7 +1648,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 230,
         "activationFee": 0,
-        "consistency": "50% evaluation"
+        "consistency": "50% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-select-50-150000",
@@ -1540,7 +1678,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": 319,
         "activationFee": 0,
-        "consistency": "50% evaluation"
+        "consistency": "50% evaluation",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-lightning-25000",
@@ -1564,7 +1708,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%"
+        "consistency": "Progressive 20%, 25%, 30%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-lightning-50000",
@@ -1588,7 +1738,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%"
+        "consistency": "Progressive 20%, 25%, 30%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-lightning-100000",
@@ -1612,7 +1768,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%"
+        "consistency": "Progressive 20%, 25%, 30%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       },
       {
         "id": "tradeify-lightning-150000",
@@ -1636,7 +1798,13 @@ var FIRMS = [
         "verifiedOn": "Nov 28, 2026",
         "resetFee": null,
         "activationFee": 0,
-        "consistency": "Progressive 20%, 25%, 30%"
+        "consistency": "Progressive 20%, 25%, 30%",
+        "platformSource": "https://help.tradeify.co/en/articles/10468221-supported-platforms",
+        "platformVerifiedOn": "Nov 28, 2026",
+        "sources": [
+          "https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference",
+          "https://help.tradeify.co/en/articles/10468221-supported-platforms"
+        ]
       }
     ]
   },

@@ -1,0 +1,6 @@
+# Journal phase 1 follow-up
+
+- Atomic account deletion, move and undo: PostgreSQL invoker functions, own-account checks, existing RLS, transactions, full trade and payout snapshots. Migration applied to PropFirmMath Supabase. Database regression executed under authenticated role with two temporary users inside a rolled-back transaction: move/delete/restore, platform preservation and cross-user rejection passed. No existing data touched.
+- Signature platform corrected to Hyperprop only and distinct simulated-funded limits added using https://help.myfundedfutures.com/en/articles/18543937-signature-plans-a-comprehensive-guide. Legacy generic Funded stays unspecified; no live limits inferred. Users must log stages separately; the journal is not a live risk engine.
+- Tradeify platform families checked with https://help.tradeify.co/en/articles/10468221-supported-platforms and https://help.tradeify.co/en/articles/14369021-tradeify-pricing-reference; availability is not region- or checkout-certified. 24 account records have new official platform evidence. Unverified platform labels remain catalog listings, manual entry retained.
+- Browser tests use mocked Supabase RPC. Actual browser login/CRUD remains to be tested, as does full 151-firm per-plan regional platform and stage rule coverage. No paid membership enforcement or payment changes.
