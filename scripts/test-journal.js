@@ -288,6 +288,12 @@ function submit(form) {
     ok("theme in Overview and no manual motion setting", d.getElementById("journalOverview").contains(themeButton) && !d.getElementById("jv14Motion"), "appearance");
     d.getElementById("journalViewMemberships").click();
     ok("membership header opens settings",!d.getElementById("journalSettings").hidden&&d.getElementById("journalOverview").hidden,"membership shortcut");
+    ok("settings includes private user profile",!!d.querySelector("#journalSettings .pfm-journal-profile")&&d.querySelector("#journalSettings .pfm-profile-grid").textContent.includes("Email address"),"profile");
+    d.getElementById("journalEditProfile").click();
+    ok("profile edit opens only on request",!d.getElementById("journalProfileEditor").hidden,"edit profile");
+    d.getElementById("journalCancelProfile").click();
+    ok("profile cancel closes editor",d.getElementById("journalProfileEditor").hidden,"cancel profile");
+    ok("one membership section in Settings",d.querySelectorAll("#journalSettings #memberships").length===1,"membership scope");
     ok("settings owns journal membership upgrades", d.getElementById("journalSettings").textContent.includes("Pro") && d.getElementById("journalSettings").textContent.includes("Journal memberships & upgrades") && !d.querySelector('#journalSettings #memberships a[href="/account"]'), "membership");
     ok("all membership prices visible without expanding",Array.from(d.querySelectorAll("#memberships .pfm-member-price")).map(x=>x.textContent).join("|")==="Free|$9.99|$19.99","prices");
     d.querySelector('[data-jtab="overview"]').click();
