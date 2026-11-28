@@ -286,7 +286,11 @@ function submit(form) {
     d.querySelector('[data-jtab="overview"]').click();
     const themeButton = d.getElementById("jv14ThemeTop"), workspace = d.querySelector(".pfm-journal");
     ok("theme in Overview and no manual motion setting", d.getElementById("journalOverview").contains(themeButton) && !d.getElementById("jv14Motion"), "appearance");
-    ok("settings owns journal membership upgrades", d.getElementById("journalSettings").textContent.includes("Pro") && d.getElementById("journalSettings").textContent.includes("Journal membership & upgrades") && !d.querySelector('#journalSettings #memberships a[href="/account"]'), "membership");
+    d.getElementById("journalViewMemberships").click();
+    ok("membership header opens settings",!d.getElementById("journalSettings").hidden&&d.getElementById("journalOverview").hidden,"membership shortcut");
+    ok("settings owns journal membership upgrades", d.getElementById("journalSettings").textContent.includes("Pro") && d.getElementById("journalSettings").textContent.includes("Journal memberships & upgrades") && !d.querySelector('#journalSettings #memberships a[href="/account"]'), "membership");
+    ok("all membership prices visible without expanding",Array.from(d.querySelectorAll("#memberships .pfm-member-price")).map(x=>x.textContent).join("|")==="Free|$9.99|$19.99","prices");
+    d.querySelector('[data-jtab="overview"]').click();
     const membershipCards=d.querySelectorAll("#journalSettings .pfm-membership-card");
     ok("three memberships have clickable plan summaries",membershipCards.length===3&&Array.from(membershipCards).every(c=>!!c.querySelector("summary")&&!c.open),"membership cards");
     ok("trade log has ordered table and three summary metrics",d.querySelectorAll(".jv14-trade-table th").length===6&&d.querySelectorAll(".jv14-trade-summary>.card").length===3,"trade layout");
